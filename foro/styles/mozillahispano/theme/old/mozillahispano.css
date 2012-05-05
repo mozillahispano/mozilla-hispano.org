@@ -1,0 +1,35 @@
+/* Caja de búsqueda */
+#alojaBusqueda {
+	margin: 0 0 0 15% !important;
+	display: none !important;
+}
+/* Oculto en los temas */
+.section-index #alojaBusqueda, .section-viewforum  #alojaBusqueda{
+	display: block !important;
+}
+
+#page-body h2 {
+	margin: 0.5em 0 !important;
+    padding: 0 !important;
+}
+
+#whosonline, #stats, #permissions, .display-options label {
+	display: none;
+}
+
+dd.topicauthor {
+	margin-top: 0.9em;
+}
+
+ul.profile-icons li.user-agent {
+	float: none;
+}
+
+ul.profile-icons li.user-agent span{
+	display: block;
+}
+
+a.unsolvedlink {
+	font-size: 1.1em;
+    	font-weight: bold;
+}
