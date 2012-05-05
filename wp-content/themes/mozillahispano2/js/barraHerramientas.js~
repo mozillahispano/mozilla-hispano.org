@@ -1,0 +1,37 @@
+BARRA = {
+	inicio : function() {
+		$("#menu").append('<div id="ocultaBarra">esconder barra</div>').find("#ocultaBarra").bind("click", BARRA.interruptor);
+		if ($('body.page-Portada').length > 0){
+			/* Si se trata de la portada ocultamos la barra pero sin guardarlo en la cookie */
+			BARRA.muestraBarra(false);
+		}
+		else
+			if ($.cookie("barraOculta") == "s") {
+				/* Si prefiere la barra oculta le damos al interruptor para que pase de visible a oculta */
+				BARRA.interruptor();
+			}
+	},
+	interruptor : function(evento) {
+		if ($("#barra:visible").length) {
+			BARRA.muestraBarra(false);
+			$.cookie("barraOculta", "s", { path: '/' });
+		}
+		else {
+			BARRA.muestraBarra(true);
+			$.cookie("barraOculta", "n", { path: '/' });
+		}
+	},
+	muestraBarra : function(bEstado) {
+		if (bEstado) {
+			$("#barra").show("normal");
+			$("#contenido").removeClass("todoAncho");
+			$("#menu #ocultaBarra").text("esconder barra");
+		}
+		else {
+			$("#barra").hide("normal");
+			$("#contenido").addClass("todoAncho");
+			$("#menu #ocultaBarra").text("mostrar barra");
+		}
+	}
+}
+$(document).ready(BARRA.inicio);

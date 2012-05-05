@@ -1,0 +1,31 @@
+<?php
+ 
+	include("../themes/mozillahispano/cabecera-pie.php"); 
+
+	/* Twitter */
+	require_once( '../eventos/twitter/twitter_conf.php' );
+	require_once( '../eventos/twitter/twitter_filter.class.php' );
+
+
+	$twitterFilter = new twitterFilter (USER_TWITTER, PASSWORD_TWITTER, PALABRA_FILTRO_TWITTER, TIEMPO_CACHE_TWITTER, RUTA_CACHE_TWITTER);
+	//echo $twitterOU->cacheVigente();
+	$twitterFilter->carga();
+	$follow = $twitterFilter->getTwittsFiltrados();
+	//var_dump($follow);
+	/* Twitter - fin */
+	echo "<?xml version='1.0' encoding='UTF-8'?>";
+?>
+
+<?=pintaCss()?>
+<?=pintaJs()?>
+
+<link rel="stylesheet" href="http://www.mozilla-hispano.org/themes/mozillahispano/css/paisaje.css" type="text/css" />
+<link rel="stylesheet" media="screen" type="text/css" href="custom/style/planet_mh.css" title="Default" />
+	<link rel="alternate" type="application/rss+xml" title="RSS de las fotos" href="http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200" />
+<link rel="alternate" type="application/rss+xml" title="RSS de los twitts" href="http://search.twitter.com/search.atom?q=+%40mozilla_hispano" />
+	<!-- JS y CSS para thickbox -->
+	<script type="text/javascript" src="../themes/mozillahispano/js/jquery.js"></script>
+	<script type="text/javascript" src="../eventos/js/recargaActualizable.js"></script><!-- Tiene que ir la primera -->
+	<script type="text/javascript" src="../themes/mozillahispano/js/thickbox.js"></script>
+	<link rel="stylesheet" href="../themes/mozillahispano/css/thickbox.css" type="text/css" media="screen" />
+
