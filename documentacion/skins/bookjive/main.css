@@ -986,6 +986,7 @@ div.mw-geshi {
   padding-left: 23px;
   position: absolute;
   width: 14px;
+  background: none !important;
 }
 
 #event-map {
