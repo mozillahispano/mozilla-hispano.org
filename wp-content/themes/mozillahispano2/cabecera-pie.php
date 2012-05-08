@@ -25,7 +25,7 @@ $temp= <<<PINTA
 							<li><a href="/podcast/">Podcast</a></li>
 							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
 							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
-							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Únete</a>
+							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Participa</a>
 								<ul class="submenu">
 										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
 										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
