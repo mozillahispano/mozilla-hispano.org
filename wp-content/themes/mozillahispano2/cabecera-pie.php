@@ -10,14 +10,16 @@ $temp= <<<PINTA
 				<div id="menu">
 					<ul class="clearfix">
 							<li><a href="/">Noticias</a></li>
-							<li><a href="/foro/">Foro</a>
+							<li><span>Foro</span>
 								<ul class="submenu">
+									<li><a href="/foro/">Portada</a></li>
 									<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
 									<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
 								</ul>
 							</li>
-							<li><a href="/difusion/" title="Ayuda a difundir Mozilla en español">Difusión</a>
+							<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
 								<ul class="submenu">
+									<li><a href="/difusion/">Portada</a></li>
 									<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
 									<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 								</ul>
@@ -25,8 +27,9 @@ $temp= <<<PINTA
 							<li><a href="/podcast/">Podcast</a></li>
 							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
 							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
-							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Participa</a>
+							<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
 								<ul class="submenu">
+										<li><a href="/documentacion/Colabora">Portada</a></li>
 										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
 										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
 										<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>

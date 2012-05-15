@@ -1,6 +1,6 @@
-/* Dise�o original: elufo, maquetaci�n: stripTM */
+/* Diseño original: elufo, maquetación: stripTM */
 
-/* Css com�n del dise�o paisaje */
+/* Css común del diseño stone */
 /* Contiene los estilos de partes comunes, como cabecera, pie */
 
 @import url('undohtml.css');
@@ -225,7 +225,8 @@ input.text {
 	position: relative;
 }
 
-#menu li a {
+#menu li a,
+#menu li span {
 	color: #444444;
 	cursor: pointer;
 	display: block;
@@ -238,7 +239,9 @@ input.text {
 	text-transform: uppercase;
 }
 
-#menu li:hover, #menu li:hover a {
+#menu li:hover,
+#menu li:hover a,
+.js #menu li:hover span {
 	-webkit-box-shadow: 
 		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
 	-webkit-box-shadow:
@@ -255,16 +258,30 @@ input.text {
 }
 
 #menu li ul.submenu {
+/*
 	background-color: rgba(255, 255, 255, 0.976);
 	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
 	color: #FFFFFF;
 	display: none;
+*/
 	position: absolute;
 	text-align: left;
 	top: 37px;
 	width: 190px;
 	z-index: 100;
 	overflow: hidden;
+}
+.js #menu li ul.submenu {
+	display: none;
+}
+.js .withChilds span {
+	cursor: pointer;
+}
+.js #menu li.visibleChilds ul.submenu {
+	display: block;
+	background: rgb(251,253,255);
+	background: rgba(255,255,255,0);
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 #menu li ul.submenu li a {
