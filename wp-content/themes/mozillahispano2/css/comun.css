@@ -266,7 +266,7 @@ input.text {
 */
 	position: absolute;
 	text-align: left;
-	top: 37px;
+	/* top: 37px; */
 	width: 190px;
 	z-index: 100;
 	overflow: hidden;
