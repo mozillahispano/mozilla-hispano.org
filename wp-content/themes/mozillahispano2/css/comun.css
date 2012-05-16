@@ -220,7 +220,7 @@ input.text {
 #menu li {
 	display: inline-block;
 	float: left;
-	margin: 0 0 0 -3px;
+	margin: 0;
 	padding: 0;
 	position: relative;
 }
@@ -232,7 +232,7 @@ input.text {
 	display: block;
 	font-family: 'Open Sans',sans-serif;
 	font-size: 12px;
-	padding: 13px 18px 10px 13px;
+	padding: 10px 17px 10px 10px;
 	position: relative;
 	text-align: left;
 	text-decoration: none;
