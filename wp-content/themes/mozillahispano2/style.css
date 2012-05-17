@@ -898,39 +898,43 @@ PAGE TEMPLATES
 }
 
 .page-template-difusion-php .texto-portada-individual hr {
-	display: block !important;
 	background-color: #DDDDDD;
-	border: 0 none;
-	display: block;
-	height: 1px;
-	margin: 1em 0;
+    border: 0 none;
+    display: block !important;
+    height: 1px;
+    margin: 0 25px 10px;
+    width: 85%;
 }
 
 .page-template-difusion-php .bloque {
-	background:url("./img/nota-pie.jpg") no-repeat scroll 0 bottom transparent;
-	padding-bottom:25px;
-	padding-right:25px;
-	width: 313px;
+	background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0 0 0 1px #FFFFFF inset;
+    padding-right: 25px;
+    width: 311px;
 }
 
 .page-template-difusion-php .bloque h3 {
-	background:url("./img/nota-cabecera.jpg") no-repeat scroll 0 0 transparent;
-	margin:0;
-	padding:45px 0 0 20px;
 	clear: none;
+    margin: 0;
+    padding: 20px 0 0 20px;
 }
 .page-template-difusion-php .bloque ul {
 	margin:10px 0px;
 }
 
 .page-template-difusion-php .bloque p {
-	font-size:0.85em;
-	text-align:right;
-	width:84%;
+	font-size: 0.85em;
+    text-align: right;
+    width: 100%;
 }
 	
 .page-template-difusion-php div#proximos-eventos {
 	float: left;
+}
+
+.page-template-difusion-php div#proximos-eventos div.ItemTitle {
+    margin: 10px 0 4px 30px;
 }
 
 .page-template-difusion-php div#ultimas-discusiones {
