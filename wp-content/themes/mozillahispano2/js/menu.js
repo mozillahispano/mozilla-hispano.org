@@ -35,7 +35,7 @@ if (isSupported) {
 		done = true
 		removeLoadListener(__onReady)
 		if (!callbacks) return
-		for (var i = 0; i < callbacks.length; i++){
+		for (var i = 0, cbLength = callbacks.length; i < cbLength; i++){
 			callbacks[i]()
 		}
 		callbacks = null
@@ -155,8 +155,7 @@ window.OnReady (
 		changeChild = function(action, liPadre) {
 			//var liPadre = this.parentNode;
 			var liHermanos = liPadre.parentNode.children;
-			var numLi = liHermanos.length;
-			for (var i = 0; i < numLi; i++) {
+			for (var i = 0, numLi = liHermanos.length; i < numLi; i++) {
 				if(liPadre === liHermanos[i]) {
 					switch (action) {
 						case "showChild" :
@@ -202,17 +201,13 @@ window.OnReady (
 		var menu = document.getElementById("menu");
 		// Cogemos los li que despliegan hijos
 		var liPadres = menu.getElementsByTagName("li");
-		var numLi = liPadres.length;
 		/* Detectar los items que tienen hijos */
-		for (var i = 0; i < numLi; i++) {  
+		for (var i = 0, numLi = liPadres.length; i < numLi; i++) {  
 			//console.log(liPadres[i]);//addEventListener
 			if (liPadres[i].getElementsByTagName("ul").length != 0) {
 				// con hijos, buscar el span
 				var hijos = liPadres[i].children;
-				var numHijos = hijos.length;
-
-				//console.log(hijos, hijos.length);
-				for (var j = 0; j < numHijos; j++) {
+				for (var j = 0, numHijos = hijos.length; j < numHijos; j++) {
 					if (hijos[j].nodeName == 'SPAN') {
 
 						xb.addEvent(liPadres[i], 'mouseenter', showChild, false);
