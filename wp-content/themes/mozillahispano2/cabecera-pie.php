@@ -4,37 +4,36 @@ function pintaCabecera()
 $temp= <<<PINTA
 <div id="cabecera">
 				<div id="alojaLogo">
-
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>		
 				</div>			
 				<div id="menu">
 					<ul class="clearfix">
-							<li><a href="/">Noticias</a></li>
-							<li><span>Foro</span>
-								<ul class="submenu">
-									<li><a href="/foro/">Portada</a></li>
-									<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
-									<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
-								</ul>
-							</li>
-							<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
-								<ul class="submenu">
-									<li><a href="/difusion/">Portada</a></li>
-									<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
-									<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
-								</ul>
-							</li>
-							<li><a href="/podcast/">Podcast</a></li>
-							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
-							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
-							<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
-								<ul class="submenu">
-										<li><a href="/documentacion/Colabora">Portada</a></li>
-										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
-										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-										<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
-								</ul>
-							</li>
+						<li><a href="/">Noticias</a></li>
+						<li><span>Asistencia</span>
+							<ul class="submenu">
+								<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
+								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+							</ul>
+						</li>
+						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
+							<ul class="submenu">
+								<li><a href="/difusion/">Promociona Mozilla</a></li>
+								<li><a href="/foro/" title="Foro de difusión">Foro</a></li>
+								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
+								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
+							</ul>
+						</li>
+						<li><a href="/podcast/">Podcast</a></li>
+						<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
+						<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
+							<ul class="submenu">
+								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
+								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
+								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+								<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>	
 				<div id="social">
