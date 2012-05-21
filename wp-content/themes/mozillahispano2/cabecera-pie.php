@@ -11,14 +11,14 @@ $temp= <<<PINTA
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
 							<ul class="submenu">
-								<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
+								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
 								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
 							</ul>
 						</li>
 						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
 							<ul class="submenu">
 								<li><a href="/difusion/">Promociona Mozilla</a></li>
-								<li><a href="/foro/viewforum.php?f=6" title="Foro de difusión">Foro</a></li>
+								<li><a href="/foro/viewforum.php?f=6" title="Foro de difusión">Foros</a></li>
 								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
@@ -30,7 +30,8 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
-								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+                                <li><a href="/foro/viewforum.php?f=11">Foros</a></li>
 								<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
 							</ul>
 						</li>
