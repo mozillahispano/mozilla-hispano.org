@@ -18,7 +18,7 @@ $temp= <<<PINTA
 						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
 							<ul class="submenu">
 								<li><a href="/difusion/">Promociona Mozilla</a></li>
-								<li><a href="/foro/" title="Foro de difusión">Foro</a></li>
+								<li><a href="/foro/viewforum.php?f=6" title="Foro de difusión">Foro</a></li>
 								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
