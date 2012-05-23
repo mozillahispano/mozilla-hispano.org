@@ -40,7 +40,7 @@ get_header(); ?>
 		<div id="ultimas-noticias">
 			<h2>Artículos</h2>
 			<?php 
-				query_posts('tag=desarrollo&posts_per_page=5');
+				query_posts('tag=labs&posts_per_page=5');
 				if (have_posts()) : ?>
 
 				<?php while (have_posts()) : the_post(); ?>
