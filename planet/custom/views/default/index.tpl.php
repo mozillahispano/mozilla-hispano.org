@@ -1,6 +1,6 @@
 <?php
 	ini_set('display_errors', "1");
-	ini_set('error_reporting', E_ALL ^ E_NOTICE);
+	ini_set('error_reporting', E_ALL ^ E_NOTICE); 
 	$limit = $PlanetConfig->getMaxDisplay();
 	$count = 0;
 	header('Content-type: text/html; charset=UTF-8');
@@ -25,7 +25,7 @@
 	<div id="tullido">
 		<?php include(dirname(__FILE__).'/top.tpl.php'); ?>
 		<div id="cuerpo" class="clearfix">
-		    <div id="contenido">
+		    <div id="contenido" class="planet">
 				<div id="main-content">
 					<div id="texto-bienvenida">
 						<p>Bienvenido a Planet Mozilla Hispano, en esta sección se listan los últimos artículos en los blogs, twitts y fotos de los miembros y colaboradores de la comunidad de Mozilla en español. Mozilla Hispano no es responsable de las opiniones de los autores en sus blogs personales.</p>
