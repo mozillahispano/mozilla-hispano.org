@@ -1,3 +1,17 @@
+/* Estructura  */
+.planet .portada-individual {
+	float: none;
+	width: auto;
+}
+
+
+/* Tipografía */
+.planet .dia-publicacion {
+	margin: 0 0 2em 0;
+	float: none;
+}
+
+
 /* Fotos de los artículos */
 .portada-individual .texto-portada-individual img {
         max-width: 100%;
