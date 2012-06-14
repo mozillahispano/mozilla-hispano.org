@@ -106,7 +106,8 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Asistencia">Asistencia</a></li>
 				<li><a href="/documentacion/Noticias">Noticias</a></li>
 				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
-				<li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>               
 				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
 			</ul>
 		</div>
