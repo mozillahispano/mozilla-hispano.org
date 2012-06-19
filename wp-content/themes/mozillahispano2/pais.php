@@ -11,6 +11,8 @@ get_header(); ?>
 		/* Recuperamos metadatos */
 		$countryCode = get_post_meta($post->ID, 'countryCode', true);
 		$countryName = get_post_meta($post->ID, 'countryName', true);
+		// Evitamos que los espacios den problemas en los enlaces a los rss
+		$cleanCountryName = preg_replace('','-20', $countryName);
 		$countryFlickrTag = get_post_meta($post->ID, 'countryFlickrTag', true);
         $countryForumID = get_post_meta($post->ID, 'countryForumID', true);
     ?>
@@ -104,7 +106,7 @@ get_header(); ?>
 <div id="barra">
 	
 	<h3>Últimos eventos</h3>
-	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Evento-5D-5D-0A-5B-5Bpais::' . $countryName . '-5D-5D/-3F%3DNombre-23/-3FFechainicio%3DFecha/-3FPais/-3FCiudad/-3FUrl/mainlabel%3DNombre/limit%3D50/order%3DDESC,DESC/sort%3DFechainicio,/format%3Drss', 5) ?>
+	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Evento-5D-5D-0A-5B-5Bpais::' . $cleanCountryName . '-5D-5D/-3F%3DNombre-23/-3FFechainicio%3DFecha/-3FPais/-3FCiudad/-3FUrl/mainlabel%3DNombre/limit%3D50/order%3DDESC,DESC/sort%3DFechainicio,/format%3Drss', 5) ?>
 	
 	<p><a href="https://www.mozilla-hispano.org/documentacion/Eventos/<?php echo $countryName?>">Ver todos</a></p>
 	
@@ -139,7 +141,7 @@ get_header(); ?>
     <p><a href="https://www.mozilla-hispano.org/foro/viewforum.php?f=<?php echo $countryForumID ?>">Ver todos</a></p>
 
 	<h3>Colaboradores</h3>
-	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $countryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
+	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $cleanCountryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
 </div>
 
 
