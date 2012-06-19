@@ -983,6 +983,17 @@ PAGE TEMPLATES
 	margin: 5px 0 0 8px;
 }
 
+/* Plantilla de pais */
+
+.page-template-pais-php h2.title {
+    color: #282828;
+    font-family: 'Open Sans Light',sans-serif;
+    font-size: 3em;
+    font-weight: 400;
+    margin: 0 0 1em;
+    text-align: center;
+}
+
 /* Events manager */
 
 .eme-calendar-table {

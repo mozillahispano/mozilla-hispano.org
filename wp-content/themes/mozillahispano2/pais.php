@@ -17,7 +17,7 @@ get_header(); ?>
 		query_posts('tag=' . $countryCode . '&posts_per_page=5&paged='.$paged);
 		if (have_posts()) : ?>
 
-		<h2>Mozilla Hispano en <?php echo $countryName ?></h2>
+		<h2 class="title">Comunidad en <?php echo $countryName ?></h2>
 
 		<?php while (have_posts()) : the_post(); ?>
 
