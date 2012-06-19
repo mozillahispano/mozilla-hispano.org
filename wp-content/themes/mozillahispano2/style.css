@@ -1002,6 +1002,11 @@ PAGE TEMPLATES
     width: 14px;
 }
 
+.page-template-pais-php #barra p.more {
+	margin: 1em 0;
+    text-align: right;
+}
+
 /* Events manager */
 
 .eme-calendar-table {

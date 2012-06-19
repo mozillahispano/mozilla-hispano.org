@@ -108,7 +108,12 @@ get_header(); ?>
 	<h3>Últimos eventos</h3>
 	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Evento-5D-5D-0A-5B-5Bpais::' . $cleanCountryName . '-5D-5D/-3F%3DNombre-23/-3FFechainicio%3DFecha/-3FPais/-3FCiudad/-3FUrl/mainlabel%3DNombre/limit%3D50/order%3DDESC,DESC/sort%3DFechainicio,/format%3Drss', 5) ?>
 	
-	<p><a href="https://www.mozilla-hispano.org/documentacion/Eventos/<?php echo $countryName?>">Ver todos</a></p>
+	<p class="more"><a href="https://www.mozilla-hispano.org/documentacion/Eventos/<?php echo $countryName?>">Ver todos</a></p>
+	
+	
+	<h3>Colaboradores</h3>
+	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $cleanCountryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
+	<p class="more"><a href="http://www.mozilla-hispano.org/documentacion/Colabora">¿Quiéres colaborar?</a></p>
 	
 	<h3>Últimas fotos</h3>
 	<!-- Start of Flickr Badge -->
@@ -134,14 +139,11 @@ get_header(); ?>
 	<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&display=latest&size=t&layout=x&source=all_tag&tag=<?php echo $countryFlickrTag ?>"></script>
 	</div></div>
 	<!-- End of Flickr Badge -->
-	<p><a href="http://www.flickr.com/photos/tags/<?php echo $countryFlickrTag ?>/">Ver todas</a></p>
+	<p class="more"><a href="http://www.flickr.com/photos/tags/<?php echo $countryFlickrTag ?>/">Ver todas</a></p>
 
     <h3>Mensajes en el foro</h3>
     <?php echo countryRss('https://www.mozilla-hispano.org/foro/feed.php?f=' . $countryForumID  . '', 6) ?>
-    <p><a href="https://www.mozilla-hispano.org/foro/viewforum.php?f=<?php echo $countryForumID ?>">Ver todos</a></p>
-
-	<h3>Colaboradores</h3>
-	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $cleanCountryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
+    <p class="more"><a href="https://www.mozilla-hispano.org/foro/viewforum.php?f=<?php echo $countryForumID ?>">Ver todos</a></p>
 </div>
 
 
