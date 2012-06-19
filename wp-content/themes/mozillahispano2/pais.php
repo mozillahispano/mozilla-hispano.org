@@ -11,7 +11,8 @@ get_header(); ?>
 		$countryCode = get_post_meta($post->ID, 'countryCode', true);
 		$countryName = get_post_meta($post->ID, 'countryName', true);
 		$countryFlickrTag = get_post_meta($post->ID, 'countryFlickrTag', true);
-		
+        $countryForumID = get_post_meta($post->ID, 'countryForumID', true);
+
 		/* Fix para que funcione la paginacion*/
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		query_posts('tag=' . $countryCode . '&posts_per_page=5&paged='.$paged);
@@ -129,7 +130,9 @@ get_header(); ?>
 	</div></div>
 	<!-- End of Flickr Badge -->
 	<p><a href="http://www.flickr.com/photos/tags/<?php echo $countryFlickrTag ?>/">Ver todas</a></p>
-	
+
+    <h3>Mensajes en el foro</h3>
+    <?php echo countryRss('https://www.mozilla-hispano.org/foro/feed.php?f=' . $countryForumID  . ') ?>
 	<h3>Colaboradores</h3>
 	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $countryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
 </div>
