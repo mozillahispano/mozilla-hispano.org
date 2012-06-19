@@ -12,7 +12,7 @@ get_header(); ?>
 		$countryCode = get_post_meta($post->ID, 'countryCode', true);
 		$countryName = get_post_meta($post->ID, 'countryName', true);
 		// Evitamos que los espacios den problemas en los enlaces a los rss
-		$cleanCountryName = preg_replace(' ','-20', $countryName);
+		$cleanCountryName = str_replace(' ','-20', $countryName);
 		$countryFlickrTag = get_post_meta($post->ID, 'countryFlickrTag', true);
         $countryForumID = get_post_meta($post->ID, 'countryForumID', true);
     ?>
