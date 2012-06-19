@@ -132,7 +132,7 @@ get_header(); ?>
 	<p><a href="http://www.flickr.com/photos/tags/<?php echo $countryFlickrTag ?>/">Ver todas</a></p>
 
     <h3>Mensajes en el foro</h3>
-    <?php echo countryRss('https://www.mozilla-hispano.org/foro/feed.php?f=' . $countryForumID  . ') ?>
+    <?php echo countryRss('https://www.mozilla-hispano.org/foro/feed.php?f=' . echo $countryForumID  . ') ?>
 	<h3>Colaboradores</h3>
 	<?php echo countryRss('https://www.mozilla-hispano.org/documentacion/Especial:Ask/-5B-5BCategor%C3%ADa:Colaborador-5D-5D-20-5B-5Bpais::' . $countryName . '-5D-5D/limit%3D1000/order%3DDESC/sort%3DNombre/format%3Drss', 100) ?>
 </div>
