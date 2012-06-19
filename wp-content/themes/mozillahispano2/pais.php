@@ -5,6 +5,7 @@ Template Name: País
 get_header(); ?>
 	<div id="contenido">
 <div id="main-content">
+	
 	<?php 
 	
 		/* Recuperamos metadatos */
@@ -12,13 +13,17 @@ get_header(); ?>
 		$countryName = get_post_meta($post->ID, 'countryName', true);
 		$countryFlickrTag = get_post_meta($post->ID, 'countryFlickrTag', true);
         $countryForumID = get_post_meta($post->ID, 'countryForumID', true);
-
+    ?>
+    
+    <h2 class="title">Comunidad en <?php echo $countryName ?></h2>
+    
+    <p class="countryRss"><a title="Canal RSS de los artículos" href="http://www.mozilla-hispano.org/etiqueta/<?php echo $countryCode ?>/feed/"></a></p>
+    
+	<?php
 		/* Fix para que funcione la paginacion*/
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		query_posts('tag=' . $countryCode . '&posts_per_page=5&paged='.$paged);
 		if (have_posts()) : ?>
-
-		<h2 class="title">Comunidad en <?php echo $countryName ?></h2>
 
 		<?php while (have_posts()) : the_post(); ?>
 
@@ -53,9 +58,7 @@ get_header(); ?>
 		</div>
 
 	<?php else : ?>
-		<h2 class="center">No encontrado</h2>
-		<p class="center">Lo sentimos, pero está buscado algo que no está aquí.</p>
-		<?php get_search_form(); ?>
+		<p class="center">Lo sentimos, pero actualmente no hay artículos para éste país.</p>
 	<?php endif; ?>
 </div>
 

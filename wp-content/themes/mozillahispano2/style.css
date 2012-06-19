@@ -994,6 +994,14 @@ PAGE TEMPLATES
     text-align: center;
 }
 
+.page-template-pais-php p.countryRss {
+	background: url("./img/rss.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 14px;
+    width: 14px;
+}
+
 /* Events manager */
 
 .eme-calendar-table {
