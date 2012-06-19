@@ -684,7 +684,7 @@ a.fancybox img.size-full, img.size-medium {
     padding: 0;
 }
 
-.home .portada-individual .texto-portada-individual, .archive .portada-individual .texto-portada-individual, .tag .portada-individual .texto-portada-individual, .page-template-labs-index-php .texto-portada-individual {
+.home .portada-individual .texto-portada-individual, .archive .portada-individual .texto-portada-individual, .tag .portada-individual .texto-portada-individual, .page-template-labs-index-php .texto-portada-individual, .page .portada-individual .texto-portada-individual {
 	padding: 0 0 0 150px;
 }
 
@@ -785,7 +785,7 @@ float:left;
 
 }
 
-.home .dia-publicacion, .archive .dia-publicacion, .tag .dia-publicacion, .page-template-labs-index-php .dia-publicacion {
+.home .dia-publicacion, .archive .dia-publicacion, .tag .dia-publicacion, .page-template-labs-index-php .dia-publicacion, .page .dia-publicacion {
 	float: none;
 	font-size: 0.8em !important;
 }
@@ -835,14 +835,14 @@ float: right;
 }
 
 
-.home .portada-individual.post, .archive .portada-individual.post, .tag .portada-individual.post {
+.home .portada-individual.post, .archive .portada-individual.post, .tag .portada-individual.post, .page .portada-individual.post {
     border-bottom: 1px solid #E5E5E5 !important;
     margin: 1em 0 !important;
     padding: 0 !important;
     width:100%;
 }
 
-.home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img {
+.home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page .post-content img {
     float: left;
     height: auto;
     margin: 0 2em 2em 0;
