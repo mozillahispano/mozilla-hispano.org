@@ -252,6 +252,12 @@ input.text {
 		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
 	-moz-transition: 0.2s linear;
 	-moz-transition-property: background, box-shadow, border-right;
+	-webkit-transition: 0.2s linear;
+	-webkit-transition-property: background, box-shadow, border-right;
+	-o-transition: 0.2s linear;
+	-o-transition-property: background, box-shadow, border-right;
+	transition: 0.2s linear;
+	transition-property: background, box-shadow, border-right;
 	background: rgb(251,253,255);
 	background: rgba(255,255,255,0);
 	outline: 0;
@@ -296,6 +302,9 @@ input.text {
 
 #menu li.hover ul.submenu {
 	-moz-transition: opacity 0.4s linear 0s;
+	-wekit-transition: opacity 0.4s linear 0s;
+	-o-transition: opacity 0.4s linear 0s;
+	transition: opacity 0.4s linear 0s;
 	display: block;
 }
 

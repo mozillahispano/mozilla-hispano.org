@@ -2834,6 +2834,7 @@ dl.details dd {
 	background-image: linear-gradient(center top , #FBB450, #F89406);
 	background-image: -webkit-linear-gradient(center top , #FBB450, #F89406);
 	background-image: -ms-linear-gradient(center top , #FBB450, #F89406);
+	background-image: -o-linear-gradient(center top , #FBB450, #F89406);
 	border-radius: 5px 5px 5px 5px;
 	color: #282828;
 	margin: 1em 0 !important;

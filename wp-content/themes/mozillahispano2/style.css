@@ -37,9 +37,8 @@ text-align: center;
 
 /* Capturas de imagen (con sombra - css3) */
 #cuerpo img.captura {
-	box-shadow: grey 0.3em 0.3em 0.6em;
-	-moz-box-shadow: grey 0.3em 0.3em 0.6em;
 	-webkit-box-shadow: grey 0.3em 0.3em 0.6em;
+	box-shadow: grey 0.3em 0.3em 0.6em;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
@@ -339,13 +338,14 @@ ul.listado-podcast li small {
 .page-template-labs-tfox-themes-php .theme {
 	width: 200px;
 	height: 67px;
-	-moz-border-radius:5px;
+	border-radius:5px;
 	margin:0 50px 4em 0;
 	float: left;
 }
 
 .page-template-labs-tfox-themes-php .theme:hover {
-	-moz-box-shadow: 0.3em 0.3em 0.6em grey;
+	-webkit-box-shadow: 0.3em 0.3em 0.6em grey;
+	box-shadow: 0.3em 0.3em 0.6em grey;
 }
 
 .page-template-labs-tfox-themes-php .theme p.details {
@@ -909,6 +909,7 @@ PAGE TEMPLATES
 .page-template-difusion-php .bloque {
 	background: none repeat scroll 0 0 #FFFFFF;
     border-bottom: 1px solid #DDDDDD;
+    -webkit-box-shadow: 0 0 0 1px #FFFFFF inset;
     box-shadow: 0 0 0 1px #FFFFFF inset;
     padding-right: 25px;
     width: 311px;
@@ -986,7 +987,6 @@ PAGE TEMPLATES
 /* Events manager */
 
 .eme-calendar-table {
-        -moz-border-radius:5px;
         border-collapse: separate !important;
         background-color:#FFFFFF;
         border-top:1em solid #F32020;
@@ -994,9 +994,8 @@ PAGE TEMPLATES
         margin:1em auto;
         padding:0.4em 1em 1em;
 		border-radius: 5px;
-		box-shadow: grey 0.3em 0.3em 0.6em;
-		-moz-box-shadow: grey 0.3em 0.3em 0.6em;
 		-webkit-box-shadow: grey 0.3em 0.3em 0.6em;
+		box-shadow: grey 0.3em 0.3em 0.6em;
 }
 
 table.fullcalendar td {
@@ -1023,12 +1022,9 @@ ul.eventos li:before, ul.eme_events_list li:before {
 }
 
 .evento-detalles {
-	-moz-border-radius:5px 5px 5px 5px;
-	-moz-box-shadow:0.1em 0.1em 0.6em grey;
+	-webkit-box-shadow:0.1em 0.1em 0.6em grey;
 	border-radius:5px 5px 5px 5px;
 	box-shadow:0.1em 0.1em 0.6em grey;
-	-webkit-border-radius:5px 5px 5px 5px;
-	-webkit-box-shadow:0.1em 0.1em 0.6em grey;
 	border:1px solid #E3E3E3;
 	padding:0;
 }
