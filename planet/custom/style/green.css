@@ -47,9 +47,7 @@ pre, code{
 	color: #FFF;
 	
 	border-top: 3px solid #7A2;
-	
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
+	border-radius: 0 0 5px 5px;
 }
 
 	#top h1{
