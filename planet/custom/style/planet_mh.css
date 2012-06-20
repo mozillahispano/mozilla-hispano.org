@@ -43,8 +43,9 @@
 }
 
 #texto-bienvenida {
-	-moz-border-radius: 5px 0px 5px 0px;
-	-moz-box-shadow:5px 5px 5px #888888;
+	-webkit-box-shadow:5px 5px 5px #888888;
+	border-radius: 5px 0px 5px;
+	box-shadow:5px 5px 5px #888888;
 	background: #FEEFB3 url(../img/planet.png) no-repeat scroll 5px center;
 	padding: 15px 5px 5px 70px;
 	width: 80%;
@@ -62,10 +63,7 @@
 }
 
 .twitter li {
-	-moz-border-radius-bottomleft:5px;
-	-moz-border-radius-bottomright:5px;
-	-moz-border-radius-topleft:5px;
-	-moz-border-radius-topright:5px;
+	border-radius: 5px;
 	border:1px solid #CFCFCF;
 	clear:both;
 	margin:0px 0px 0.3em 0px;
