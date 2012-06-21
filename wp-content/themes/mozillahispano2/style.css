@@ -995,6 +995,13 @@ PAGE TEMPLATES
     text-align: center;
 }
 
+.page-template-pais-php img#countryImage {
+    display: block;
+    height: 300px;
+    margin: 1em auto;
+    width: 600px;
+}
+
 .page-template-pais-php p.countryRss a {
 	background: url("./img/rss.png") no-repeat scroll 0 0 transparent;
     display: block;

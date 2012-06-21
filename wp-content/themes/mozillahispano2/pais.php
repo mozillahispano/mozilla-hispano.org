@@ -15,9 +15,16 @@ get_header(); ?>
 		$cleanCountryName = str_replace(' ','-20', $countryName);
 		$countryFlickrTag = get_post_meta($post->ID, 'countryFlickrTag', true);
         $countryForumID = get_post_meta($post->ID, 'countryForumID', true);
+        $countryImage = get_post_meta($post->ID, 'countryImage', true);
     ?>
     
     <h2 class="title">Comunidad en <?php echo $countryName ?></h2>
+
+    <?php 
+        if ($countryImage != '') {
+            echo '<img id="countryImage" src="' . $countryImage  . '" alt="Comunidad en ' . $countryName  . '" />';
+        }
+    ?>
     
     <p class="countryRss"><a title="Canal RSS de los artículos" href="http://www.mozilla-hispano.org/etiqueta/<?php echo $countryCode ?>/feed/"></a></p>
     
