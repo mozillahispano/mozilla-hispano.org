@@ -97,8 +97,8 @@ get_header(); ?>
 			// Loop through each feed item and display each item as a hyperlink.
 			foreach ($rss_items as $item)
 			{
-					$content .= '<li>*';
-					$content .='<a href=' . esc_url($item->get_permalink()) . '>';
+					$content .= '<li>';
+					$content .='<a href="' . esc_url($item->get_permalink()) . '">';
 					$content .= esc_html( $item->get_title() ); 
 					$content .= '</a>';
 					$content .='</li>';
