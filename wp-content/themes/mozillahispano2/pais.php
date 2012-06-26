@@ -85,7 +85,7 @@ get_header(); ?>
 			// Build an array of all the items, starting with element 0 (first element).
 			$rss_items = $rss->get_items(0, $maxitems); 
 		}
-		else {echo "ERROR en el fetch_feed";}
+		else {echo "ERROR en el fetch_feed: ".$rss->get_error_message();}
 
 		$content = '<ul>';
 		
