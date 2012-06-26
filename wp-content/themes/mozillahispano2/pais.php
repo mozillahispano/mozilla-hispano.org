@@ -85,7 +85,7 @@ get_header(); ?>
 			// Build an array of all the items, starting with element 0 (first element).
 			$rss_items = $rss->get_items(0, $maxitems); 
 		}
-		else {echo "ERROR en el fetch_feed: $feed ".$rss->get_error_message();}
+		else {echo "ERROR en el fetch_feed: <a href='http://validator.w3.org/appc/check.cgi?url=".urlencode($feed)."'>$feed</a> ".$rss->get_error_message();}
 
 		$content = '<ul>';
 		
