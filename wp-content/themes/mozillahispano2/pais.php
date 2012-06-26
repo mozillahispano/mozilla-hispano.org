@@ -3,7 +3,7 @@
 Template Name: País
 */
 get_header(); ?>
-	<div id="contenido"><!-- FER -->
+	<div id="contenido">
 <div id="main-content">
 	
 	<?php 
@@ -143,7 +143,7 @@ get_header(); ?>
 	#flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#666666 !important;}
 	</style>
 	<div id="flickr_badge_uber_wrapper"><a href="http://www.flickr.com" id="flickr_www">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><div id="flickr_badge_wrapper">
-	<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&display=latest&size=t&layout=x&source=all_tag&tag=<?php echo $countryFlickrTag ?>"></script>
+	<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&amp;display=latest&amp;size=t&amp;layout=x&amp;source=all_tag&amp;tag=<?php echo $countryFlickrTag ?>"></script>
 	</div></div>
 	<!-- End of Flickr Badge -->
 	<p class="more"><a href="http://www.flickr.com/photos/tags/<?php echo $countryFlickrTag ?>/">Ver todas</a></p>
@@ -152,7 +152,7 @@ get_header(); ?>
     <?php echo countryRss('https://www.mozilla-hispano.org/foro/feed.php?f=' . $countryForumID  . '', 6) ?>
     <p class="more"><a href="https://www.mozilla-hispano.org/foro/viewforum.php?f=<?php echo $countryForumID ?>">Ver todos</a></p>
 </div>
-
+</div><!-- contenido -->
 
 
 <?php get_footer(); ?>
