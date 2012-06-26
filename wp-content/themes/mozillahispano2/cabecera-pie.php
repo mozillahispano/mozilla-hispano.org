@@ -30,14 +30,32 @@ $temp= <<<PINTA
                                 <li><a href="/foro/viewforum.php?f=25">Foros</a></li>
                             </ul>
                         </li>
-						<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+						<li><span>Comunidad</span>
+							<ul class="submenu">
+								<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+								<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
+								<li><a href="/ar/">Argentina</a></li>
+								<li><a href="/bo/">Bolivia</a></li>
+								<li><a href="/co/">Colombia</a></li>
+								<li><a href="/cr/">Costa Rica</a></li>
+								<li><a href="/cl/">Chile</a></li>
+								<li><a href="/cu/">Cuba</a></li>
+								<li><a href="/es/">España</a></li>
+								<li><a href="/ec/">Ecuador</a></li>
+								<li><a href="/ni/">Nicaragua</a></li>
+								<li><a href="/mx/">México</a></li>
+								<li><a href="/py/">Paraguay</a></li>
+								<li><a href="/pe/">Perú</a></li>
+								<li><a href="/uy/">Uruguay</a></li>
+								<li><a href="/ve/">Venezuela</a></li>
+							</ul>
+						</li>
 						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
                                 <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
                                 <li><a href="/foro/viewforum.php?f=11">Foros</a></li>
-								<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
 							</ul>
 						</li>
 					</ul>
