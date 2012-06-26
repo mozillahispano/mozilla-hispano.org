@@ -3,7 +3,7 @@
 Template Name: País
 */
 get_header(); ?>
-	<div id="contenido">
+	<div id="contenido"><!-- FER -->
 <div id="main-content">
 	
 	<?php 
