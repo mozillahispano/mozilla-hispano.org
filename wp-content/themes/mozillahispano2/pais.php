@@ -83,7 +83,8 @@ get_header(); ?>
 			$maxitems = $rss->get_item_quantity($limit); 
 
 			// Build an array of all the items, starting with element 0 (first element).
-			$rss_items = $rss->get_items(0, $maxitems); 
+			$rss_items = $rss->get_items(0, $maxitems);
+			echo "<!-- Feed: $feed) -->";
 		}
 		else {echo "ERROR en el fetch_feed: <a href='http://validator.w3.org/appc/check.cgi?url=".urlencode($feed)."'>$feed</a> ".$rss->get_error_message();}
 
