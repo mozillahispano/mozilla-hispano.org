@@ -84,7 +84,7 @@ get_header(); ?>
 
 			// Build an array of all the items, starting with element 0 (first element).
 			$rss_items = $rss->get_items(0, $maxitems);
-			echo "<!-- Feed: $feed) -->";
+			echo "<!-- Feed: $feed -->";
 		}
 		else {echo "ERROR en el fetch_feed: <a href='http://validator.w3.org/appc/check.cgi?url=".urlencode($feed)."'>$feed</a> ".$rss->get_error_message();}
 
@@ -126,24 +126,6 @@ get_header(); ?>
 	
 	<h3>Últimas fotos</h3>
 	<!-- Start of Flickr Badge -->
-	<style type="text/css">
-	/*
-	Las imágenes son envueltas en divs clasificadas como "flickr_badge_image" con ids "flickr_badge_imageX" donde "X" es un número entero especificando una posición ordinaria. ¡A continuación encontrarás algunos estilos para que comiences!
-	*/
-	#flickr_badge_uber_wrapper {text-align:center; width:150px;}
-	#flickr_badge_wrapper {padding:10px 0 10px 0;}
-	.flickr_badge_image {margin:0 10px 10px 10px;}
-	.flickr_badge_image img {border: 1px solid black !important;}
-	#flickr_badge_source {text-align:left; margin:0 10px 0 10px;}
-	#flickr_badge_icon {float:left; margin-right:5px;}
-	#flickr_www {display:block; padding:0 10px 0 10px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
-	#flickr_badge_uber_wrapper a:hover,
-	#flickr_badge_uber_wrapper a:link,
-	#flickr_badge_uber_wrapper a:active,
-	#flickr_badge_uber_wrapper a:visited {text-decoration:none !important; background:inherit !important;color:#3993ff;}
-	#flickr_badge_wrapper {}
-	#flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#666666 !important;}
-	</style>
 	<div id="flickr_badge_uber_wrapper"><a href="http://www.flickr.com" id="flickr_www">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><div id="flickr_badge_wrapper">
 	<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=5&amp;display=latest&amp;size=t&amp;layout=x&amp;source=all_tag&amp;tag=<?php echo $countryFlickrTag ?>"></script>
 	</div></div>
