@@ -38,7 +38,7 @@
 
 </div> <!-- page-body -->
 	
-<div id="barra-small">
+<div id="foro-sidebar">
 	<ul class="linklist navlinks">
 			<li class="rightside"><a href="#" onclick="fontsizeup(); return false;" class="fontsize" title="{L_CHANGE_FONT_SIZE}">{L_CHANGE_FONT_SIZE}</a></li>
 			<!-- IF U_EMAIL_TOPIC --><li class="rightside"><a href="{U_EMAIL_TOPIC}" title="{L_EMAIL_TOPIC}" class="sendemail">{L_EMAIL_TOPIC}</a></li><!-- ENDIF -->
@@ -48,7 +48,7 @@
 	</ul>
 	
 	<!-- Buscador -->
-		<div id="alojaBusqueda">
+		<div class="blocks-sidebar" id="alojaBusqueda">
 				<form action="/buscar.php" method="get" id="form-buscador">
 					<fieldset>
 						<div id="caja-busqueda">
@@ -66,6 +66,7 @@
 				</form>
 		</div>
 
+	<div class="block-sidebar" id="herramientas">
 	<h3>Herramientas</h3>
 	
 		<ul class="linklist">
@@ -81,6 +82,7 @@
 					<!-- IF U_BUMP_TOPIC --><li class="icon-bump"><a href="{U_BUMP_TOPIC}" title="{L_BUMP_TOPIC}">{L_BUMP_TOPIC}</a></li><!-- ENDIF -->
 				<!-- ENDIF -->
 		</ul>
+
 	
 	<!-- IF S_DISPLAY_SEARCH or (S_USER_LOGGED_IN and not S_IS_BOT) -->
 	<ul class="linklist">
@@ -100,6 +102,9 @@
 			<li><a href="{U_MARK_FORUMS}" accesskey="m">{L_MARK_FORUMS_READ}</a></li>
 		<!-- ENDIF -->
 	</ul>
+	</div><!-- #herramientas -->
+
+	<div class="block-sidebar" id="usuario">
 	<!-- ENDIF -->
 	<h3>Usuario</h3>
 	<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
@@ -125,16 +130,21 @@
 								<li class="icon-logout"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">{L_LOGIN_LOGOUT}</a></li>
 							<!-- ENDIF -->
 						</ul>
-	
-	<h3>Comprueba tus plugins</h3>
-	<p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.mozilla.org/media/img/promo.plugins.png" alt="Plugins" /></a></p>
-	<p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
-	<p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
-	
-	<h3>Ayúdanos a ayudar</h3>
-	<p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
-	<p><a href="/documentacion/C%C3%B3mo_ayudar_en_los_foros">Descubre lo fácil que es »</a></p>
-</div>
+	</div><!-- #usuario -->
+
+	<div class="block-sidebar" id="comprueba-plugins">
+		<h3>Comprueba tus plugins</h3>
+		<p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.mozilla.org/media/img/promo.plugins.png" alt="Plugins" /></a></p>
+		<p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
+		<p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
+	</div>
+
+	<div class="block-sidebar" id="ayudanos">
+		<h3>Ayúdanos a ayudar</h3>
+		<p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
+		<p><a href="/documentacion/C%C3%B3mo_ayudar_en_los_foros">Descubre lo fácil que es »</a></p>
+	</div>
+</div><!-- .barra-small -->
 
 </div><!-- Cuerpo -->
 </div><!-- Contenido -->
