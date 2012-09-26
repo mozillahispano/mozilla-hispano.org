@@ -25,19 +25,19 @@ body {
 	font-family: "Open Sans Light";
 	font-style: normal;
 	font-weight: normal;
-	src: url("/media/fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("/media/fonts/OpenSans-Light-webfont.woff") format("woff"), url("/media/fonts/OpenSans-Light-webfont.ttf") format("truetype"), url("/media/fonts/OpenSans-Light-webfont.svg#OpenSansLight") format("svg");
+	src: url("//www.mozilla.org/media/fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("//www.mozilla.org/media/fonts/OpenSans-Light-webfont.woff") format("woff"), url("//www.mozilla.org/media/fonts/OpenSans-Light-webfont.ttf") format("truetype"), url("//www.mozilla.org/media/fonts/OpenSans-Light-webfont.svg#OpenSansLight") format("svg");
 }
 @font-face {
 	font-family: "Open Sans";
 	font-style: normal;
 	font-weight: normal;
-	src: url("/media/fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/media/fonts/OpenSans-Regular-webfont.woff") format("woff"), url("/media/fonts/OpenSans-Regular-webfont.ttf") format("truetype"), url("/media/fonts/OpenSans-Regular-webfont.svg#OpenSansRegular") format("svg");
+	src: url("//www.mozilla.org/media/fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("//www.mozilla.org/media/fonts/OpenSans-Regular-webfont.woff") format("woff"), url("//www.mozilla.org/media/fonts/OpenSans-Regular-webfont.ttf") format("truetype"), url("//www.mozilla.org/media/fonts/OpenSans-Regular-webfont.svg#OpenSansRegular") format("svg");
 }
 @font-face {
 	font-family: "Open Sans";
 	font-style: normal;
 	font-weight: bold;
-	src: url("/media/fonts/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("/media/fonts/OpenSans-Semibold-webfont.woff") format("woff"), url("/media/fonts/OpenSans-Semibold-webfont.ttf") format("truetype"), url("/media/fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold") format("svg");
+	src: url("//www.mozilla.org/media/fonts/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("//www.mozilla.org/media/fonts/OpenSans-Semibold-webfont.woff") format("woff"), url("//www.mozilla.org/media/fonts/OpenSans-Semibold-webfont.ttf") format("truetype"), url("//www.mozilla.org/media/fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold") format("svg");
 }
 
 .open-sans {
