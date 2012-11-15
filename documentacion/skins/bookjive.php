@@ -179,7 +179,6 @@ class bookjiveTemplate extends QuickTemplate {
 									</div>
 									-->
 									<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
-									<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
 
 									<div id="buscador" class="portlet">
 										<div id="searchBody" class="pBody">
@@ -199,8 +198,9 @@ class bookjiveTemplate extends QuickTemplate {
 											</form>
 										</div>
 									</div>
-
-								<div class='portlet caja' id='p-<?php echo htmlspecialchars($bar) ?>'>
+                                <?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
+                                
+                                <div class='portlet caja' id='p-<?php echo htmlspecialchars($bar) ?>'>
 								  <h3><span><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></span></h3>
 								  <div class='pBody'>
 									<ul class="cajacontenido">
@@ -211,7 +211,7 @@ class bookjiveTemplate extends QuickTemplate {
 							<?php			} ?>
 									</ul>
 								  </div>
-								</div>
+							    </div>
 				<?php } ?>
 
 				<!--div id="p-cactions" class="portlet">
