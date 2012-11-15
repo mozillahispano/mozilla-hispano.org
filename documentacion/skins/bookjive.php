@@ -130,7 +130,7 @@ class bookjiveTemplate extends QuickTemplate {
 											<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
 											<li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
 											if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }
-											?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
+											?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskeyAttribs('ca-'.$key) ?>><?php
 											echo htmlspecialchars($tab['text']) ?></a> </li>
 											<?php			 } ?>
 										</ul>
