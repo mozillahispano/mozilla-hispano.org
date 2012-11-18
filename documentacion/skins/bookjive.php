@@ -104,8 +104,10 @@ class bookjiveTemplate extends QuickTemplate {
 
 		<!-- Semantic mediawiki -->
 		<link rel="stylesheet" type="text/css" href="/documentacion/extensions/SemanticMediaWiki/skins/SMW_custom.css" />
-		<script type="text/javascript" src="/documentacion/extensions/SemanticMediaWiki/skins/SMW_sorttable.js"></script>
-		
+<!-- TODO: 2012-11-18 en cuarentena, si pasado un tiempo prudencial no ha ocurrido nada eliminar este SMW_sorttable.js
+        <script type="text/javascript" src="/documentacion/extensions/SemanticMediaWiki/skins/SMW_sorttable.js"></script>
+-->
+
 		<!-- Head Scripts -->
 		<?php $this->html('headscripts') ?>
 		
