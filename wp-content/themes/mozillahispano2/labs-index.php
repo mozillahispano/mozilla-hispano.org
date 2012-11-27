@@ -3,6 +3,19 @@
 Template Name: Portada Labs
 */
 get_header(); ?>
+
+<!-- Carga del Javascript y estilos del bloque de Github -->
+
+	<link rel="stylesheet" href="css/github.min.css">
+	<script src="js/jquery.github.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#github-block").github();
+		});
+	</script>
+
+<!-- FIN Carga del Javascript del bloque de Github -->
+
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		<div id="post-<?php the_ID(); ?>">
 		
@@ -35,6 +48,11 @@ get_header(); ?>
 							<p class="more-info"><a href="<?php the_permalink(); ?>">Más información sobre este proyecto</a></p>
 						</div>
 					<?php endwhile; ?>
+
+				<h2>Colabora Github</h2>
+
+				<div id="github-block"></div>
+
 		</div>
 		
 		<div id="ultimas-noticias">
