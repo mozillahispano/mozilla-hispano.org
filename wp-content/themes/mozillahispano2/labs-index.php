@@ -6,8 +6,9 @@ get_header(); ?>
 
 <!-- Carga del Javascript y estilos del bloque de Github -->
 
-	<link rel="stylesheet" href="css/github.min.css">
-	<script src="js/jquery.github.min.js"></script>
+	<link rel="stylesheet" href="<?php echo get_bloginfo ('template_url');?>/css/github.min.css">
+	<script src="<?php echo get_bloginfo ('template_url');?>/js/jquery.github.min.js"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#github-block").github();
