@@ -10,8 +10,8 @@ get_header(); ?>
 	<script src="/wp-content/themes/mozillahispano2/js/jquery.github.min.js"></script>
 
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#github-block").github();
+		jQuery(document).ready(function(){
+			jQuery("#github-block").github();
 		});
 	</script>
 
