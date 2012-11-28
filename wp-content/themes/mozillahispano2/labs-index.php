@@ -50,7 +50,7 @@ get_header(); ?>
 						</div>
 					<?php endwhile; ?>
 
-				<h2>Colabora Github</h2>
+				<h2>Colabora en Github</h2>
 
 				<div id="github-block"></div>
 
