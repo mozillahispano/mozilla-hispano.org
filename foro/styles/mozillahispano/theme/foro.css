@@ -3619,7 +3619,7 @@ input.search {
     clear: both;
 }
 
-#whosonline, #stats, #permissions, .display-options label {
+#whosonline, #permissions, .display-options label {
 	display: none;
 }
 
