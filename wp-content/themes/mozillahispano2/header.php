@@ -13,11 +13,11 @@
 
 <?php echo pintaCss(); ?>
 
-<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/install_addon.php?id=<?php the_title(); ?>" ></script>
+<script type="application/x-javascript" src="<?php echo site_url(); ?>/wp-content/themes/mozillahispano2/js/install_addon.php?id=<?php the_title(); ?>" ></script>
 
 <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
 
-<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/mozillahispano2/style.css" type="text/css" media="screen" />
 
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -33,7 +33,7 @@
 		echo '<!--Custom css for '.get_the_title().'.-->'."\n";
 		foreach ($css_docs as $css)
 		{
-					echo '<link rel="stylesheet" href="'.$css.'" type="text/css" media="screen" />'."\n";
+					echo '<link rel="stylesheet" href="'.site_url().$css.'" type="text/css" media="screen" />'."\n";
 			}
 	}
 	if (!empty($js_docs))
@@ -41,12 +41,12 @@
 		echo '<!--Custom javascript for '.get_the_title().'.-->'."\n";
 		foreach ($js_docs as $js)
 		{
-			echo '<script src="'.$js.'" type="text/javascript"></script>'."\n";
+			echo '<script src="'.site_url().$js.'" type="text/javascript"></script>'."\n";
 		}
 	}
 ?>
 
-<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
+<script type="application/x-javascript" src="<?php echo site_url(); ?>/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <?php echo pintaJs(); ?>
 
 </head>

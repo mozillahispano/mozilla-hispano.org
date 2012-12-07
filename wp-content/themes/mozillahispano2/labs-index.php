@@ -6,8 +6,8 @@ get_header(); ?>
 
 <!-- Carga del Javascript y estilos del bloque de Github -->
 
-	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/github.min.css">
-	<script src="/wp-content/themes/mozillahispano2/js/jquery.github.min.js"></script>
+	<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/mozillahispano2/css/github.min.css">
+	<script src="<?php echo site_url(); ?>/wp-content/themes/mozillahispano2/js/jquery.github.min.js"></script>
 
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
@@ -79,7 +79,7 @@ get_header(); ?>
 								the_post_thumbnail( array(130,185) );
 								} else {
 								// the current post lacks a thumbnail
-								echo '<img src="/wp-content/themes/mozillahispano/img/post-default.png" alt="Articulo" />';
+								echo '<img src="'.site_url().'/wp-content/themes/mozillahispano/img/post-default.png" alt="Articulo" />';
 							}
 							?>
 							<div class="texto-portada-individual">
@@ -93,7 +93,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 				
-				<p id="labs-more"><a href="/etiqueta/desarrollo/">Ver todos los artículos</a></p>
+				<p id="labs-more"><a href="<?php echo site_url(); ?>/etiqueta/desarrollo/">Ver todos los artículos</a></p>
 			<?php endif; ?>
 
 		</div>

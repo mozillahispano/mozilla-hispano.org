@@ -48,7 +48,7 @@ get_header(); ?>
 						the_post_thumbnail( array(130,185) );
 						} else {
 						// the current post lacks a thumbnail
-						echo '<img src="/wp-content/themes/mozillahispano/img/post-default.png" alt="Articulo" />';
+						echo '<img src="'.site_url().'/wp-content/themes/mozillahispano/img/post-default.png" alt="Articulo" />';
 					}
 					?>
 

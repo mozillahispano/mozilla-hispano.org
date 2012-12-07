@@ -242,7 +242,7 @@ title='".$photo['title']."' "."src='".$f->buildPhotoURL($photo, "square")."' /><
 	$salida.='</div><!-- Fotos -->';
 							
 	$salida.='<p class="all-photos"><a title="Canal RSS de las fotos" href="https://secure.flickr.com/services/feeds/photos_public.gne?tags=' . 
-$tag . '&amp;lang=es-us&amp;format=rss_200"><img src="/wp-content/themes/mozillahispano/img/rss.png" 
+$tag . '&amp;lang=es-us&amp;format=rss_200"><img src="'.site_url().'/wp-content/themes/mozillahispano/img/rss.png" 
 alt=""/></a> <a href="https://secure.flickr.com/photos/tags/' . $tag . '/">Ver todas las 
 fotos</a></p>';
 

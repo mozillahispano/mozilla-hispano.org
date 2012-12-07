@@ -84,7 +84,7 @@ function arrayThemes()
 				<h2 class="post-title"><?php the_title(); ?></h2>
 				
 				<div class="navigation">
-					<div class="alignright"><a href="/labs/">Mozilla Hispano Labs</a> » <a href="<?php echo get_permalink($post->post_parent); ?>"><?php echo get_the_title($post->post_parent); ?></a> » <?php the_title();?></div>
+					<div class="alignright"><a href="<?php echo site_url(); ?>/labs/">Mozilla Hispano Labs</a> » <a href="<?php echo get_permalink($post->post_parent); ?>"><?php echo get_the_title($post->post_parent); ?></a> » <?php the_title();?></div>
 				</div>
 				
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
