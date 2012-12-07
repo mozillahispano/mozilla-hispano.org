@@ -23,7 +23,7 @@ get_header(); ?>
 				<h2 class="post-title"><?php the_title(); ?></h2>
 				
 				<div class="navigation">
-					<div class="alignright"><a href="/labs/">Mozilla Hispano Labs</a> » <?php the_title();?></div>
+					<div class="alignright"><a href="<?php echo site_url(); ?>/labs/">Mozilla Hispano Labs</a> » <?php the_title();?></div>
 				</div>
 				
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

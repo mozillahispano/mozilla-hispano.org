@@ -10,7 +10,7 @@ get_header(); ?>
 				<h2 class="post-title"><?php the_title(); ?></h2>
 				
 				<div class="navigation">
-					<div class="alignright"><a href="/difusion/">Difusión</a>
+					<div class="alignright"><a href="<?php echo site_url(); ?>/difusion/">Difusión</a>
 					<?php
 						if ($post->post_parent) {
 							$children = $post->post_title;
@@ -94,7 +94,7 @@ get_header(); ?>
 		<li id="material" class="widget">
 			<h3>Material</h3>
 			<div class="cajaPodcast">
-				<a href="/difusion/material/"><img src="/wp-content/themes/mozillahispano/img/materiales.png" alt="Colabora"/></a>
+				<a href="/difusion/material/"><img src="<?php echo site_url(); ?>/wp-content/themes/mozillahispano/img/materiales.png" alt="Colabora"/></a>
 				<p>Imágenes, banners, presentaciones y contenido multimedia</p>
 			</div>
 		</li>
@@ -142,7 +142,7 @@ get_header(); ?>
 		<li id="colabora" class="widget">
 			<h2><span>Colabora</span></h2>
 			<div class="cajaPodcast">
-				<a href="/documentacion/Colabora"><img src="/wp-content/themes/mozillahispano/img/colabora-icon.png" alt="Colabora"/></a>
+				<a href="/documentacion/Colabora"><img src="<?php echo site_url(); ?>/wp-content/themes/mozillahispano/img/colabora-icon.png" alt="Colabora"/></a>
 				<p>Descubre todas las área de colaboración y cómo ayudar</p>
 			</div>
 		</li>
