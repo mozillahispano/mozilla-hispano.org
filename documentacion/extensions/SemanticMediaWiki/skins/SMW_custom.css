@@ -415,15 +415,17 @@ tr.smwb-ipropvalue td {
 }
 
 /* Fix de anchos de inputs de los formularios */
-table.formtable .inputSpan input[type=text] {
-	width: 390px !important;
+table.formtable .inputSpan input.createboxInput, 
+table.formtable .inputSpan input.ui-autocomplete-input {
+	width: 34em;
 }
 
 table.formtable .inputSpan textarea {
 	width: 550px !important;
 }
 
-table.formtable .inputSpan > *,  table.formtable .dateInput > *{
+table.formtable .inputSpan > *, 
+table.formtable .dateInput > *{
 	margin-bottom: 1em;
 }
 
