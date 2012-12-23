@@ -55,7 +55,7 @@ $temp= <<<PINTA
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
                                 <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-                                <li><a href="/foro/viewforum.php?f=11">Foros</a></li>
+                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
 							</ul>
 						</li>
 					</ul>
