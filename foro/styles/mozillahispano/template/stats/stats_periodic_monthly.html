@@ -1,0 +1,117 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_periodic_monthly.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_PERIODIC_MONTHLY_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	
+	<div class="user_prompt"><span><i>{STATS_YEAR_EXPLAIN}</i></span></div>
+	<h3>{L_OVERALL}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_TOTAL_TOPICS}:</td> <td class="col2">{TOTAL_TOPICS}</td>
+			<td class="col3">{L_AVG_TOPICS_MONTH}:</td> <td class="col4">{AVG_TOPICS}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_TOTAL_POSTS}:</td> <td class="col2">{TOTAL_POSTS}</td>			
+			<td class="col3">{L_AVG_POSTS_MONTH}:</td> <td class="col4">{AVG_POSTS}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_TOTAL_USER_REGS}:</td> <td class="col2">{TOTAL_USER_REGS}</td>
+			<td class="col3">{L_AVG_USER_REGS_MONTH}:</td> <td class="col4">{AVG_USER_REGS}</td>
+		</tr>
+	</table><br />	
+	<h3>{L_TOPICS}</h3>
+	<!-- IF S_MONTHLY_TOPICS -->
+	<table class="fs_details_graphs">
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_PERIODIC_MONTH}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN periodic_topics_row -->
+			<tr<!-- IF periodic_topics_row.IS_MAX --> style="font-weight:bold"<!-- ENDIF -->>
+				<td>{periodic_topics_row.TIME_ELEMENT}</td><td><div class="graph" style="width:{periodic_topics_row.BARWIDTH}%;">&nbsp;</div></td><td>{periodic_topics_row.COUNT}</td><td>{periodic_topics_row.PCT}%</td>
+			</tr>
+		<!-- END periodic_topics_row -->
+		</tbody>	
+	</table><br />
+	<!-- ELSE -->{L_NONE}<br /><br />
+	<!-- ENDIF -->
+	<h3>{L_POSTS}</h3>
+	<!-- IF S_MONTHLY_POSTS -->
+	<table class="fs_details_graphs">
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_PERIODIC_MONTH}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN periodic_posts_row -->
+			<tr<!-- IF periodic_posts_row.IS_MAX --> style="font-weight:bold"<!-- ENDIF -->>
+				<td>{periodic_posts_row.TIME_ELEMENT}</td><td><div class="graph" style="width:{periodic_posts_row.BARWIDTH}%;">&nbsp;</div></td><td>{periodic_posts_row.COUNT}</td><td>{periodic_posts_row.PCT}%</td>
+			</tr>
+		<!-- END periodic_posts_row -->
+		</tbody>	
+	</table><br />
+	<!-- ELSE -->{L_NONE}<br /><br />
+	<!-- ENDIF -->
+	<h3>{L_USER_REGS}</h3>
+	<!-- IF S_MONTHLY_USER_REGS -->
+	<table class="fs_details_graphs">
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_PERIODIC_MONTH}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN periodic_user_regs_row -->
+			<tr<!-- IF periodic_user_regs_row.IS_MAX --> style="font-weight:bold"<!-- ENDIF -->>
+				<td>{periodic_user_regs_row.TIME_ELEMENT}</td><td><div class="graph" style="width:{periodic_user_regs_row.BARWIDTH}%;">&nbsp;</div></td><td>{periodic_user_regs_row.COUNT}</td><td>{periodic_user_regs_row.PCT}%</td>
+			</tr>
+		<!-- END periodic_user_regs_row -->
+		</tbody>	
+	</table><br />
+	<!-- ELSE -->{L_NONE}<br /><br />
+	<!-- ENDIF -->
+	<div class="user_prompt"><span>{MONTH_SELECT_BOX}</span></div>
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<div>{S_FORM_TOKEN}</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

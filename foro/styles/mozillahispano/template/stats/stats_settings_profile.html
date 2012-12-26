@@ -1,0 +1,122 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_settings_profile.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_SETTINGS_PROFILE_DISABLED -->
+<form id="fs" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_OVERALL}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_USERS_WITH_BIRTHDAY}:</td><td class="col2">{USERS_WITH_BIRTHDAY} / {TOTAL_USERS} ({USERS_WITH_BIRTHDAY_PCT}%)</td>
+			<td class="col3">{L_USERS_WITH_LOCATION}:</td><td class="col4">{USERS_WITH_LOCATION} / {TOTAL_USERS} ({USERS_WITH_LOCATION_PCT}%)</td>
+		</tr>
+		<!-- IF cpf_total -->		
+		<!-- BEGIN cpf_total -->
+			<!-- IF cpf_total.S_ROW_COUNT is even --><tr><td class="col1">{cpf_total.TOTAL_VALUES_SET_PROMPT}:</td><td class="col2">{cpf_total.TOTAL_VALUES_SET} / {TOTAL_USERS} ({cpf_total.PCT}%)</td><!-- ELSE --><td class="col3">{cpf_total.TOTAL_VALUES_SET_PROMPT}:</td><td class="col4">{cpf_total.TOTAL_VALUES_SET} / {TOTAL_USERS} ({cpf_total.PCT}%)</td></tr><!-- ENDIF -->
+		<!-- IF cpf_total.S_ROW_COUNT is even --></tr><!-- ENDIF -->
+		<!-- END cpf_total -->
+		<!-- ENDIF -->
+	</table><br />	
+	<h3>{L_AGE_RANGES}</h3>
+	<table class="fs_details_graphs">
+	<!-- IF S_AGE -->
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_AGE_RANGE}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN age_row -->
+			<tr<!-- IF age_row.IS_MAX--> style="font-weight:bold"<!-- ENDIF -->>
+			<td>&bull; <!-- IF age_row.IS_MINE --><i>{age_row.AGE_RANGE}</i><!-- ELSE -->{age_row.AGE_RANGE}<!-- ENDIF --></td><td><div class="graph" style="width:{age_row.BARWIDTH}%;">&nbsp;</div></td><td>{age_row.COUNT}</td><td>{age_row.PCT}%</td>
+			</tr>
+		<!-- END age_row -->
+		</tbody>		
+	</table><br /><div class="user_prompt"><span>{AGE_INTERVAL_SELECT_BOX}</span></div>
+	<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}<br /><br /></td></tr></table>
+	<!-- ENDIF -->
+	<h3>{TOP_USER_LOCATIONS}</h3>
+	<table class="fs_details_graphs">
+	<!-- IF S_LOCATIONS -->
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_USER_LOCATIONS}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN location_row -->
+			<tr>
+			<td>&bull; <!-- IF location_row.IS_MINE --><i>{location_row.LOCATION}</i><!-- ELSE -->{location_row.LOCATION}<!-- ENDIF --></td><td><div class="graph" style="width:{location_row.BARWIDTH}%;">&nbsp;</div></td><td>{location_row.COUNT}</td><td>{location_row.PCT}%</td>
+			</tr>
+		<!-- END location_row -->
+		</tbody>		
+	</table><br /><div class="user_prompt"><span>{LIMIT_SELECT_BOX}</span></div><br />
+	<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}<br /><br /></td></tr></table>
+	<!-- ENDIF -->
+	
+	<!-- BEGIN cpf_block -->	
+	<h3>{cpf_block.TOP_X_PROMPT} <i>({L_CUSTOM_PROFILE_FIELD})</i></h3>
+	<!-- IF cpf_block.FIELD_TYPE == 2 or cpf_block.FIELD_TYPE == 5 -->
+	<table class="fs_details_graphs">
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{cpf_block.FIELD_TITLE}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN cpf_row -->
+			<tr>
+			<td>&bull; <!-- IF cpf_row.IS_MINE --><i>{cpf_row.VALUE}</i><!-- ELSE -->{cpf_row.VALUE}<!-- ENDIF --><!-- IF cpf_row.IS_DEFAULT --><i> ({L_DEFAULT})</i><!-- ENDIF --></td><td><div class="graph" style="width:{cpf_row.BARWIDTH}%;">&nbsp;</div></td><td>{cpf_row.COUNT}</td><td>{cpf_row.PCT}%</td>
+			</tr>
+		<!-- END cpf_row -->
+		</tbody>
+	</table><br /><div class="user_prompt"><span>{cpf_block.LIMIT_SELECT_BOX}</span></div><br />	
+	<!-- ELSEIF cpf_block.FIELD_TYPE == 4 -->
+	<table class="fs_details_list">
+		<tr>
+			<!-- BEGIN cpf_row -->
+			<td class="col1"><!-- IF cpf_row.IS_MINE --><i>{cpf_row.VALUE}</i><!-- ELSE -->{cpf_row.VALUE}<!-- ENDIF -->:<!-- IF cpf_row.IS_DEFAULT --><br /><i>({L_DEFAULT})</i><!-- ENDIF --></td><td class="col2">{cpf_row.COUNT} / {cpf_row.TOTAL_VALUES} ({cpf_row.PCT}%)</td>
+			<!-- END cpf_row -->
+		</tr>
+	</table><br />	
+	<!-- ENDIF -->
+	<!-- END cpf_block -->
+	<hr /><div><span>{L_LEGEND_BOLD_ITALIC}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

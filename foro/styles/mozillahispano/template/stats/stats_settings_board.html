@@ -1,0 +1,93 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_settings_board.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_SETTINGS_BOARD_DISABLED -->
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_STYLES}</h3>
+	<!-- IF S_OVERRIDE_STYLE -->
+	<span>{L_OVERRIDE_STYLE_EXPLAIN}<br />{DEFAULT_STYLE_EXPLAIN}</span><br />
+	<!-- ELSE -->
+	<table class="fs_details_list">
+		<thead>
+		<tr>
+			<td colspan="2">{L_STYLE}</td><td colspan="2">{L_USERS_INCL_BOTS}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN style_users_count -->
+			<tr>
+				<td colspan="2">&bull; <i>{style_users_count.STYLE_NAME}</i> ({style_users_count.STYLE_COPYRIGHT})</td><td colspan="2">{style_users_count.STYLE_USERS_COUNT}</td>
+			</tr>
+		<!-- END style_users_count -->
+		</tbody>
+	</table>
+	<!-- ENDIF -->
+	<br />
+	<h3>{L_LANGUAGES_BY_USERS}</h3>
+	<!-- IF LANG_PACKS_COUNT > 1 -->
+	<table class="fs_details_graphs">		
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_LANGUAGE}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN lang_row -->
+			<tr<!-- IF lang_row.IS_MAX --> style="font-weight:bold"<!-- ENDIF -->>
+			<td>&bull; <!-- IF lang_row.IS_MINE --><i><!-- ENDIF -->{lang_row.LANG_NAME} ({lang_row.LANG_ISO})<!-- IF lang_row.IS_MINE --></i><!-- ENDIF --></td><td><div class="graph" style="width:{lang_row.BARWIDTH}%;">&nbsp;</div></td><td>{lang_row.COUNT}</td><td>{lang_row.PCT}%</td>
+			</tr>
+		<!-- END lang_row -->		
+		</tbody>
+	</table><br />
+	<!-- ELSEIF LANG_PACKS_COUNT == 1-->
+	<span>{L_SINGLE_LANG_EXPLAIN}<br />{DEFAULT_LANG_EXPLAIN}</span><br /><br />
+	<!-- ELSE -->
+	<span>{L_NONE}</span><br />
+	<!-- ENDIF -->
+	<h3>{L_TIMEZONES_BY_USERS}</h3>
+	<!-- IF S_TIMEZONES -->
+	<table class="fs_details_graphs">		
+		<colgroup span="4">
+			<col class="col_cat" />
+			<col class="col_bar" />
+			<col class="col_count" />
+			<col class="col_pct" />
+		</colgroup>
+		<thead>
+		<tr>
+			<td>{L_TIMEZONE}</td>
+			<td></td>
+			<td>{L_COUNT}</td>
+			<td>{L_PERCENT}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN tz_row -->
+			<tr<!-- IF tz_row.IS_MAX--> style="font-weight:bold"<!-- ENDIF -->>
+			<td>&bull; <!-- IF tz_row.IS_MINE --><i>{tz_row.TZ_TEXT}</i><!-- ELSE -->{tz_row.TZ_TEXT}<!-- ENDIF --></td><td><div class="graph" style="width:{tz_row.BARWIDTH}%;">&nbsp;</div></td><td>{tz_row.COUNT}</td><td>{tz_row.PCT}%</td>
+			</tr>
+		<!-- END tz_row -->		
+		</tbody>
+	</table><br />
+	<!-- ELSE -->{L_NONE}<br /><br />
+	<!-- ENDIF -->
+	<hr /><div><span>{L_LEGEND_BOLD_ITALIC}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

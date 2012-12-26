@@ -1,0 +1,121 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_basic_miscellaneous.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_BASIC_MISCELLANEOUS_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_SMILEY}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_SMILEY_COUNT}:</td><td class="col2">{TOTAL_SMILEY_COUNT}</td>
+			<td class="col3">{L_SMILEY_POST_COUNT}:</td><td class="col4">{DISPLAY_ON_POSTING_COUNT}</td>
+		</tr>		
+	</table><br />
+	<h3>{TOP_SMILIES_BY_URL}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_SMILIES_BY_URL -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_SMILEY}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_by_url_row -->
+			<tr>
+			<td>{top_by_url_row.SMILEY}</td><td><div class="graph" style="width:{top_by_url_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_url_row.COUNT}</td><td>{top_by_url_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_url_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{L_BBCODE}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_BBCODE_COUNT}:</td><td class="col2">{TOTAL_BBCODE_COUNT}</td>
+			<td class="col3">{L_BBCODE_COUNT_CUSTOM}:</td><td class="col4">{CUSTOM_BBCODE_COUNT}</td>
+		</tr>		
+	</table><br />
+	<h3>{TOP_BBCODES}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BBCODES -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_BBCODE}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_bbcodes_row -->
+			<tr>
+			<td>&bull; {top_bbcodes_row.BBCODE}</td><td><div class="graph" style="width:{top_bbcodes_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_bbcodes_row.COUNT}</td><td>{top_bbcodes_row.PCT}%</td>
+			</tr>
+		<!-- END top_bbcodes_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_ICONS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_ICONS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_ICONS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_icons_row -->
+			<tr>
+			<td>{top_icons_row.ICON}</td><td><div class="graph" style="width:{top_icons_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_icons_row.COUNT}</td><td>{top_icons_row.PCT}%</td>
+			</tr>
+		<!-- END top_icons_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<!-- IF not S_HIDE_WARNINGS_STATS -->
+	<h3>{L_WARNINGS}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_WARNING_COUNT}:</td><td class="col2">{TOTAL_WARNING_COUNT}</td>
+			<td class="col3">{L_OWN_WARNINGS_COUNT}:</td><td class="col4">{OWN_WARNINGS_COUNT}</td>
+		</tr>	
+		<tr>
+			<td class="col1">{L_WARNINGS_PER_USER}:</td><td class="col2">{WARNINGS_PER_USER}</td>
+			<td class="col3">{L_WARNINGS_PER_DAY}:</td><td class="col4">{WARNINGS_PER_DAY}</td>
+		</tr>
+	</table><br />
+	<!-- ENDIF -->
+	<hr /><div class="user_prompt"><span>{LIMIT_SELECT_BOX}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<div>{S_FORM_TOKEN}</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

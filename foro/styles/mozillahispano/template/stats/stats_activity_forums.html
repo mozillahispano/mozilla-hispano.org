@@ -1,0 +1,205 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_activity_forums.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_ACTIVITY_FORUMS_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_OVERALL}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_TOTAL_FORUMS}:</td> <td class="col2">{TOTAL_FORUMS}</td>
+			<td class="col3">{L_TOTAL_FORUM_CAT}:</td> <td class="col4">{TOTAL_FORUM_CAT}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_TOTAL_FORUM_POST}:</td> <td class="col2">{TOTAL_FORUM_POST}</td>
+			<td class="col3">{L_TOTAL_FORUM_LINK}:</td> <td class="col4">{TOTAL_FORUM_LINK}</td>
+		</tr>		
+	</table><br />
+	<h3>{TOP_FORUMS_BY_TOPICS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_TOPICS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_topics_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_topics_row.U_FORUM}" title="{top_by_topics_row.FORUM_NAME}">{top_by_topics_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_topics_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_topics_row.COUNT}</td><td>{top_by_topics_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_topics_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_FORUMS_BY_POSTS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_POSTS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_by_posts_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_posts_row.U_FORUM}" title="{top_by_posts_row.FORUM_NAME}">{top_by_posts_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_posts_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_posts_row.COUNT}</td><td>{top_by_posts_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_posts_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_FORUMS_BY_POLLS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_POLLS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_by_polls_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_polls_row.U_FORUM}" title="{top_by_polls_row.FORUM_NAME}">{top_by_polls_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_polls_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_polls_row.COUNT}</td><td>{top_by_polls_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_polls_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_FORUMS_BY_STICKY}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_STICKY -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_by_sticky_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_sticky_row.U_FORUM}" title="{top_by_sticky_row.FORUM_NAME}">{top_by_sticky_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_sticky_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_sticky_row.COUNT}</td><td>{top_by_sticky_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_sticky_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_FORUMS_BY_PARTICIPATION}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_PARTICIPATION -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>
+		<!-- BEGIN top_by_participation_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_participation_row.U_FORUM}" title="{top_by_participation_row.FORUM_NAME}">{top_by_participation_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_participation_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_participation_row.COUNT}</td><td>{top_by_participation_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_participation_row -->	
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />	
+	<h3>{TOP_FORUMS_BY_VIEWS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_VIEWS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_views_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_views_row.U_FORUM}" title="{top_by_views_row.FORUM_NAME}">{top_by_views_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_views_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_views_row.COUNT}</td><td>{top_by_views_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_views_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_FORUMS_BY_SUBSCRIPTIONS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_FORUMS_BY_SUBSCRIPTIONS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_FORUMS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_subscriptions_row -->
+			<tr>
+			<td>&bull; <a href="{top_by_subscriptions_row.U_FORUM}" title="{top_by_subscriptions_row.FORUM_NAME}">{top_by_subscriptions_row.FORUM_NAME}</a></td><td><div class="graph" style="width:{top_by_subscriptions_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_subscriptions_row.COUNT}</td><td>{top_by_subscriptions_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_subscriptions_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<hr /><div class="user_prompt"><span>{LIMIT_SELECT_BOX}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<div>{S_FORM_TOKEN}</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

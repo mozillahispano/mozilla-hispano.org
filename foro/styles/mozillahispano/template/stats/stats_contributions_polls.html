@@ -1,0 +1,79 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_contributions_polls.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_CONTRIBUTIONS_POLLS_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_OVERALL}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_TOTAL_POLLS}:</td> <td class="col2">{TOTAL_POLLS}</td>
+			<td class="col3">{L_TOTAL_POLL_VOTES}:</td> <td class="col4">{TOTAL_POLL_VOTES}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_TOTAL_OPEN_POLLS}:</td> <td class="col2">{TOTAL_OPEN_POLLS}</td>
+			<!-- IF S_TOTAL_POLLS_VOTED -->
+			<td class="col3">{L_TOTAL_POLLS_VOTED}:</td> <td class="col4">{TOTAL_POLLS_VOTED}</td>
+		</tr>		
+		<tr>
+		<!-- ENDIF -->
+			<td class="col1">{L_TOTAL_ACCESSIBLE_POLLS}:</td> <td class="col2">{TOTAL_ACCESSIBLE_POLLS}</td>
+		</tr>
+	</table><br />
+	<h3>{RECENT_POLLS}</h3>
+	<table class="fs_details_list">
+		<!-- IF S_RECENT_POLLS -->
+		<thead>
+		<tr>
+			<td class="col1" colspan="2" style="text-align:left;">{L_POLLS}</td>
+			<td class="col2" colspan="2">{L_ATTACH_DETAILS}</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN recent_polls_row -->
+		<tr>
+			<td class="col1" colspan="2" style="text-align:left;">&bull; <strong>{recent_polls_row.POLL_TITLE}</strong><br />&nbsp;&nbsp;&nbsp;{L_OPTIONS}: {recent_polls_row.POLL_OPTIONS}</td><td class="col2" colspan="2">{L_IN} <a href="{recent_polls_row.U_TOPIC}">{recent_polls_row.L_TOPIC}</a> (<a href="{recent_polls_row.U_FORUM}">{recent_polls_row.L_FORUM}</a>)<br />{L_ATTACH_ON} {recent_polls_row.POLL_START}</td>
+		</tr>
+		<!-- END recent_polls_row -->
+		</tbody>
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->		
+	</table><br />
+	<h3>{TOP_POLLS_BY_VOTES}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BY_VOTES -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_POLLS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_votes_row -->
+			<tr>
+				<td class="col1" style="text-align:left;">&bull; <strong>{top_by_votes_row.POLL_TITLE}</strong><br />&nbsp;&nbsp;&nbsp;{L_OPTIONS}: {top_by_votes_row.POLL_OPTIONS}<br/>&nbsp;&nbsp;&nbsp;{L_IN} <a href="{top_by_votes_row.U_TOPIC}">{top_by_votes_row.L_TOPIC}</a> (<a href="{top_by_votes_row.U_FORUM}">{top_by_votes_row.L_FORUM}</a>)</td><td><div class="graph" style="width:{top_by_votes_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_votes_row.COUNT}</td><td>{top_by_votes_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_votes_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	
+	<hr /><div class="user_prompt"><span>{LIMIT_SELECT_BOX}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

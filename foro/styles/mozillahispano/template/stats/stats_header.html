@@ -1,0 +1,36 @@
+<!-- INCLUDE overall_header.html -->
+<!--version $Id: stats_header.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<h2>{L_STATS}</h2>
+
+<div id="tabs">
+	<ul>
+		<!-- BEGIN t_block1 -->
+		<li <!-- IF t_block1.S_SELECTED -->class="activetab"<!-- ENDIF -->><a href="{t_block1.U_TITLE}"><span>{t_block1.L_TITLE}</span></a></li>
+		<!-- END t_block1 -->
+	</ul>
+</div>
+
+<div class="panel bg3">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	
+
+	<div id="cp-menu">
+		<div id="navigation">
+			<ul>
+			<!-- BEGIN t_block2 -->
+				<!-- IF t_block2.L_TITLE neq STATS_ADDON_DONT_LOAD -->
+					<!-- IF t_block2.S_SELECTED -->
+						<li id="active-subsection"><a href="{t_block2.U_TITLE}"><span>{t_block2.L_TITLE}</span></a></li>
+					<!-- ELSE -->
+						<li><a href="{t_block2.U_TITLE}"><span>{t_block2.L_TITLE}</span></a></li>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
+			<!-- END t_block2 -->
+			</ul>
+		</div>
+		
+		</div>
+	</div>
+	<div id="cp-main" class="fs">

@@ -1,0 +1,153 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_contributions_attachments.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_CONTRIBUTIONS_ATTACHMENTS_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_OVERALL}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_ATTACHMENTS_TOTAL}:</td> <td class="col2">{ATTACHMENTS_TOTAL}</td>
+			<td class="col3">{L_ATTACHMENTS_SIZE}:</td> <td class="col4">{ATTACHMENTS_SIZE}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_ATTACHMENTS_ORPHAN}:</td> <td class="col2">{ATTACHMENTS_ORPHAN}</td>
+			<td class="col3">{L_ATTACHMENTS_ORPHAN_SIZE}:</td> <td class="col4">{ATTACHMENTS_ORPHAN_SIZE}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_TOTAL_DOWNLOADS}:</td> <td class="col2">{TOTAL_DOWNLOADS}</td>
+			<td class="col3">{L_TOTAL_DOWNLOADS_SIZE}:</td> <td class="col4">{TOTAL_DOWNLOADS_SIZE}</td>
+		</tr>
+	</table><br />
+	<h3>{RECENT_ATTACHMENTS}</h3>
+	<table class="fs_details_list">
+		<!-- IF S_RECENT_ATTACHMENTS -->
+		<thead>
+		<tr>
+			<td class="col1" style="text-align:left;">{L_ATTACHMENTS}</td>
+			<td class="col2">{L_ATTACH_DETAILS}</td><td class="col3">&nbsp;</td><td class="col4">&nbsp;</td>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN recent_attach_row -->
+		<tr>
+			<td class="col1" style="text-align:left;">&bull; <strong><a href="{recent_attach_row.U_FILE}">{recent_attach_row.L_FILE}</a></strong> </td><td class="col2" colspan="3">{L_IN} <a href="{recent_attach_row.U_POST}">{recent_attach_row.L_POST}</a> (<a href="{recent_attach_row.U_FORUM}">{recent_attach_row.L_FORUM}</a>)<br />{L_ATTACH_ON} {recent_attach_row.FILETIME} ({recent_attach_row.FILESIZE})</td>
+		</tr>
+		<!-- END recent_attach_row -->
+		</tbody>
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->		
+	</table><br />
+	<h3>{TOP_ATTACHMENTS_BY_FILETYPE}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BY_FILETYPE -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_ATTACHMENT_FILETYPES}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_filetype_row -->
+			<tr>
+			<td>&bull; {top_by_filetype_row.FILE_EXTENSION} ({top_by_filetype_row.FILE_MIMETYPE})</td><td><div class="graph" style="width:{top_by_filetype_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_filetype_row.COUNT}</td><td>{top_by_filetype_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_attachments_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_ATTACHMENTS_BY_DOWNLOAD}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BY_DOWNLOAD -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_ATTACHMENTS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_download_row -->
+			<tr>
+			<td class="col1" style="text-align:left;">&bull; <strong><a href="{top_by_download_row.U_FILE}">{top_by_download_row.L_FILE}</a></strong><br />{L_IN} <a href="{top_by_download_row.U_POST}">{top_by_download_row.L_POST}</a> (<a href="{top_by_download_row.U_FORUM}">{top_by_download_row.L_FORUM}</a>)<br />{L_ATTACH_ON} {top_by_download_row.FILETIME}</td><td><div class="graph" style="width:{top_by_download_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_download_row.COUNT}</td><td>{top_by_download_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_download_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_ATTACHMENTS_BY_FILESIZE}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BY_FILESIZE -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_ATTACHMENTS}</td>
+				<td></td>
+				<td>{L_FILESIZE}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_filesize_row -->
+			<tr>
+			<td class="col1" style="text-align:left;">&bull; <strong><a href="{top_by_filesize_row.U_FILE}">{top_by_filesize_row.L_FILE}</a></strong><br />{L_IN} <a href="{top_by_filesize_row.U_POST}">{top_by_filesize_row.L_POST}</a> (<a href="{top_by_filesize_row.U_FORUM}">{top_by_filesize_row.L_FORUM}</a>)<br />{L_ATTACH_ON} {top_by_filesize_row.FILETIME}</td><td><div class="graph" style="width:{top_by_filesize_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_filesize_row.COUNT}</td><td>{top_by_filesize_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_attachments_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<h3>{TOP_USERS_BY_ATTACHMENTS}</h3>
+	<table class="fs_details_graphs">
+		<!-- IF S_TOP_BY_ATTACHMENTS -->
+			<colgroup span="4">
+				<col class="col_cat" />
+				<col class="col_bar" />
+				<col class="col_count" />
+				<col class="col_pct" />
+			</colgroup>
+			<thead>
+			<tr>
+				<td>{L_USERS}</td>
+				<td></td>
+				<td>{L_COUNT}</td>
+				<td>{L_PERCENT}</td>
+			</tr>
+			</thead>		
+		<!-- BEGIN top_by_attachments_row -->
+			<tr>
+			<td class="col1" style="text-align:left;">&bull; {top_by_attachments_row.U_USER}</td><td><div class="graph" style="width:{top_by_attachments_row.BARWIDTH}%;">&nbsp;</div></td><td>{top_by_attachments_row.COUNT}</td><td>{top_by_attachments_row.PCT}%</td>
+			</tr>
+		<!-- END top_by_attachments_row -->
+		<!-- ELSE --><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{L_NONE}</td></tr>
+		<!-- ENDIF -->
+	</table><br />
+	<hr /><div class="user_prompt"><span>{LIMIT_SELECT_BOX}</span></div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<div>{S_FORM_TOKEN}</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

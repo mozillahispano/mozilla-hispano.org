@@ -1,0 +1,98 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_basic_advanced.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_BASIC_ADVANCED_DISABLED -->
+<form id="stats" method="post" action="{S_STATS_ACTION}"{S_FORM_ENCTYPE}>
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>{L_BOARD_BACKGROUND}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_START_DATE}:</td> <td class="col2">{START_DATE}</td>
+			<td class="col3">{L_BOARD_AGE}:</td> <td class="col4">{BOARD_AGE}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_BOARD_VERSION}:</td> <td class="col2"><!-- IF not S_HIDE_BOARD_VERSION -->{BOARD_VERSION}<!-- ELSE IF $S_HIDE_BOARD_VERSION -->{L_BOARD_VERSION_SECURE}<!-- ENDIF --></td>
+			<td class="col3">{L_GZIP_COMPRESSION}:</td> <td class="col4">{GZIP_COMPRESSION}</td>
+		</tr>
+	</table><br />
+	<!-- IF not S_HIDE_DATABASE_INFO -->
+	<h3>{L_DATABASE}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_DATABASE_INFO}:</td> <td class="col2">{DATABASE_INFO}</td>
+			<td class="col3">{L_DATABASE_SIZE}:</td> <td class="col4">{DATABASE_SIZE}</td>
+		</tr>		
+	</table><br />
+	<!-- ENDIF -->
+	<h3>{L_FILESYSTEM}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">{L_ATTACHMENTS_TOTAL}:</td> <td class="col2">{ATTACHMENTS_TOTAL}</td>
+			<td class="col3">{L_ATTACHMENTS_SIZE}:</td> <td class="col4">{ATTACHMENTS_SIZE}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_AVATARS_TOTAL}:</td> <td class="col2">{AVATARS_TOTAL}</td>
+			<td class="col3">{L_AVATARS_SIZE}:</td> <td class="col4">{AVATARS_SIZE}</td>
+		</tr>
+		<tr>
+			<td class="col1">{L_CACHED_FILES_TOTAL}:</td> <td class="col2">{CACHED_FILES_TOTAL}</td>
+			<td class="col3">{L_CACHED_FILES_SIZE}:</td> <td class="col4">{CACHED_FILES_SIZE}</td>
+		</tr>
+	</table><br />
+	<h3>{L_INSTALLED_COMPONENTS}</h3>
+	<table class="fs_details_list">
+		<tr>			
+			<td class="col1">{L_STYLES}:</td> <td class="col2">
+				<!-- IF S_STYLES -->
+					<!-- BEGIN stylerow -->
+						<i>{stylerow.STYLE_NAME}</i><br /> - {stylerow.STYLE_COPYRIGHT}<!-- IF not stylerow.S_LAST_ROW --><br /><!-- ELSE --><br /><br /><!-- ENDIF -->
+					<!-- END stylerow -->
+				<!-- ELSE -->{L_NONE}
+				<!-- ENDIF --></td>
+			<td class="col3">{L_IMAGESETS}:</td> <td class="col4">
+				<!-- IF S_IMAGESETS -->
+					<!-- BEGIN imagesetrow -->
+						<i>{imagesetrow.IMAGESET_NAME}</i><br /> - {imagesetrow.IMAGESET_COPYRIGHT}<!-- IF not imagesetrow.S_LAST_ROW --><br /><!-- ELSE --><br /><br /><!-- ENDIF -->
+					<!-- END imagesetrow -->
+				<!-- ELSE -->{L_NONE}
+				<!-- ENDIF --></td>			
+		</tr>
+		<tr>			
+			<td class="col1">{L_TEMPLATES}:</td> <td class="col2">
+				<!-- IF S_TEMPLATES -->
+					<!-- BEGIN templaterow -->
+						<i>{templaterow.TEMPLATE_NAME}</i><br /> - {templaterow.TEMPLATE_COPYRIGHT}<!-- IF not templaterow.S_LAST_ROW --><br /><!-- ELSE --><br /><br /><!-- ENDIF -->
+					<!-- END templaterow -->
+				<!-- ELSE -->{L_NONE}
+				<!-- ENDIF --></td>
+			<td class="col3">{L_THEMES}:</td> <td class="col4">
+				<!-- IF S_THEMES -->
+					<!-- BEGIN themerow -->
+						<i>{themerow.THEME_NAME}</i><br /> - {themerow.THEME_COPYRIGHT}<!-- IF not themerow.S_LAST_ROW --><br /><!-- ELSE --><br /><br /><!-- ENDIF -->
+					<!-- END themerow -->
+				<!-- ELSE -->{L_NONE}
+				<!-- ENDIF --></td>			
+		</tr>
+		<tr>			
+			<td class="col1">{L_LANG_PACKS}:</td> <td class="col2">
+				<!-- IF S_LANG_PACKS -->
+					<!-- BEGIN langrow -->
+						<i>{langrow.LANG_NAME}</i> ({langrow.LANG_ISO})<br /> - {L_BY} {langrow.LANG_AUTHOR}<!-- IF not langrow.S_LAST_ROW --><br /><!-- ELSE --><br /><br /><!-- ENDIF -->
+					<!-- END langrow -->
+				<!-- ELSE -->{L_NONE}
+				<!-- ENDIF --></td>
+		</tr>
+	</table><br />
+	<hr /><div class="user_prompt">{SORT_BY_SELECT_BOX}</div><br />
+	<hr /><div style="text-align:right;"><span><i>{AS_ON}</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<div>{S_FORM_TOKEN}</div>
+</form>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->
