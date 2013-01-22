@@ -10,6 +10,8 @@
 
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 
 <?php echo pintaCss(); ?>
 
@@ -18,6 +20,8 @@
 <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
 
 <link rel="stylesheet" href="/wp-content/themes/mozillahispano2/style.css" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/responsive.css" type="text/css" media="screen" />
 
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
