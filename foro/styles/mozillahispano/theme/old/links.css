@@ -27,7 +27,7 @@
 
 /* Links for forum/topic lists */
 a.forumtitle {
-	font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
+	font-family: "Open Sans", "Trebuchet MS", Helvetica, Arial, Sans-serif;
 	font-size: 1.2em;
 	font-weight: bold;
 
@@ -44,7 +44,7 @@ a.forumtitle:active {
 }
 
 a.topictitle {
-	font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
+	font-family: "Open Sans", "Trebuchet MS", Helvetica, Arial, Sans-serif;
 	font-size: 1.2em;
 	font-weight: bold;
 	text-decoration: none;
