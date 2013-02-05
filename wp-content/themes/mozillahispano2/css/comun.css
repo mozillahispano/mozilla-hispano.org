@@ -54,6 +54,7 @@ video {
 #lienzo {
 	min-width: 980px;
 	margin: 0px auto;
+	min-height: 800px;
 }
 
 #tullido {
@@ -322,6 +323,8 @@ input.text {
 	overflow: hidden;
 	padding: 20px 0;
 	width: 100%;
+	position: fixed;
+	bottom: 0;
 }
 #pie a {
 	color: #555;
