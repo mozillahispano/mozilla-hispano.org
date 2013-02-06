@@ -59,13 +59,13 @@ hr {
 }
 
 .author {
-	font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 75%;
 	margin-bottom: 0.6em;
 }
 
 .date {
-	font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	float: right;
 	position: relative;
 	text-align: right;

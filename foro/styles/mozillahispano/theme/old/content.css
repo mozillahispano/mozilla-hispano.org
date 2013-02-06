@@ -85,7 +85,7 @@ li.header dt, li.header dd {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	font-size: 1em;
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-transform: uppercase;
 }
 
@@ -250,7 +250,7 @@ div[class].topic-actions {
 	margin: 0 0 0.3em 0 !important;
 	text-transform: none;
 	border: none;
-	font-family: "Open Sans", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	line-height: 125%;
 }
 
@@ -299,7 +299,7 @@ div[class].topic-actions {
 	min-height: 3em;
 	overflow: hidden;
 	line-height: 1.4em;
-	font-family: "Open Sans", "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1em;
 	color: #333333;
 }
@@ -325,14 +325,14 @@ div[class].topic-actions {
 }
 
 .content p {
-	font-family: "Open Sans", "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1.2em;
 	margin-bottom: 1em;
 	line-height: 1.4em;
 }
 
 dl.faq {
-	font-family: "Open Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1.1em;
 	margin-top: 1em;
 	margin-bottom: 2em;
@@ -375,7 +375,7 @@ dl.faq dt {
 p.author {
 	margin: 0 15em 0.6em 0;
 	padding: 0 0 5px 0;
-	font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1em;
 	line-height: 1.2em;
 }
@@ -401,7 +401,7 @@ dd .signature {
 
 /* Post noticies */
 .notice {
-	font-family: "Open Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	width: auto;
 	margin-top: 1.5em;
 	padding-top: 0.2em;
@@ -521,7 +521,7 @@ dl.codebox code {
 }
 
 .attachbox dt {
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-transform: uppercase;
 }
 
@@ -575,7 +575,7 @@ div.inline-attachment p {
 }
 
 dl.file {
-	font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	display: block;
 }
 
@@ -584,7 +584,7 @@ dl.file dt {
 	margin: 0;
 	padding: 0;
 	font-weight: bold;
-	font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 dl.file dd {
@@ -603,7 +603,7 @@ dl.thumbnail img {
 dl.thumbnail dd {
 	color: #666666;
 	font-style: italic;
-	font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 .attachbox dl.thumbnail dd {
@@ -621,7 +621,7 @@ dl.thumbnail dt a:hover img {
 /* Post poll styles
 ----------------------------------------*/
 fieldset.polls {
-	font-family: "Open Sans", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 fieldset.polls dl {
@@ -667,7 +667,7 @@ fieldset.polls dd input {
 
 fieldset.polls dd div {
 	text-align: right;
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	color: #FFFFFF;
 	font-weight: bold;
 	padding: 0 2px;

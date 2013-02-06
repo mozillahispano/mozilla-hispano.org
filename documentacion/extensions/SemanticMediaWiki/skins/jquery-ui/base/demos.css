@@ -10,7 +10,7 @@ table {
    -------------------------------- */
 
 body {
-	font-family: "Open Sans", "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+	font-family: "Open Sans", "sans-serif";
 }
 
 /* Layout
@@ -31,7 +31,7 @@ body {
 .layout-grid td.normal {
 	border-left: 1px solid #eee;
 	padding: 20px 24px;
-	font-family: "Open Sans", "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+	font-family: "Open Sans", "sans-serif";
 }
 
 .layout-grid td.demos {
@@ -82,7 +82,7 @@ body {
 .demos-nav h4 {
 	margin: 0;
 	padding: 0;
-	font: normal 1.1em "Open Sans", "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+	font: normal 1.1em "Open Sans", "sans-serif";
 	color: #e87b10;
 }
 
@@ -188,7 +188,7 @@ code, pre { padding:8px 0 8px 20px ; font-size: 1.2em; line-height:130%;  }
 
 div.demo {
 	padding:12px;
-	font-family: "Open Sans", "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+	font-family: "Open Sans", "sans-serif";
 }
 
 div.demo h3.docs { clear:left; font-size:12px; font-weight:normal; padding:0 0 1em; margin:0; }
@@ -196,7 +196,7 @@ div.demo h3.docs { clear:left; font-size:12px; font-weight:normal; padding:0 0 1
 div.demo-description {
 	clear:both;
 	padding:12px;
-	font-family: "Open Sans", "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+	font-family: "Open Sans", "sans-serif";
 	font-size: 1.3em;
 	line-height: 1.4em;
 }
@@ -214,8 +214,8 @@ div.demo-description {
 
 /* Component containers
 ----------------------------------*/
-#widget-docs .ui-widget { font-family: "Open Sans","Trebuchet MS",Verdana,Arial,sans-serif; font-size: 1em; }
-#widget-docs .ui-widget input, #widget-docs .ui-widget select, #widget-docs .ui-widget textarea, #widget-docs .ui-widget button { font-family: "Open Sans","Trebuchet MS",Verdana,Arial,sans-serif; font-size: 1em; }
+#widget-docs .ui-widget { font-family: "Open Sans",sans-serif; font-size: 1em; }
+#widget-docs .ui-widget input, #widget-docs .ui-widget select, #widget-docs .ui-widget textarea, #widget-docs .ui-widget button { font-family: "Open Sans",sans-serif; font-size: 1em; }
 #widget-docs .ui-widget-header { border: 1px solid #ffffff; background: #464646 url(images/464646_40x100_textures_01_flat_100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 #widget-docs .ui-widget-header a { color: #ffffff; }
 #widget-docs .ui-widget-content { border: 1px solid #ffffff; background: #ffffff url(images/ffffff_40x100_textures_01_flat_75.png) 50% 50% repeat-x; color: #222222; }

@@ -5,7 +5,7 @@
 ----------------------------------------*/
 fieldset {
 	border-width: 0;
-	font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1.1em;
 }
 
@@ -15,11 +15,11 @@ input {
 	vertical-align: middle;
 	padding: 0 3px;
 	font-size: 1em;
-	font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 select {
-	font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-weight: normal;
 	cursor: pointer;
 	vertical-align: middle;
@@ -33,7 +33,7 @@ option {
 }
 
 textarea {
-	font-family: "Open Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	width: 60%;
 	padding: 2px;
 	font-size: 1em;
@@ -248,7 +248,7 @@ fieldset.submit-buttons input {
 }
 
 #message-box textarea {
-	font-family: "Open Sans", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	width: 100%;
 	font-size: 1.2em;
 	color: #333333;
@@ -311,7 +311,7 @@ a.button1, input.button1, input.button3, a.button2, input.button2 {
 	width: auto !important;
 	padding-top: 1px;
 	padding-bottom: 1px;
-	font-family: "Open Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	color: #000;
 	background: #FAFAFA none repeat-x top;
 }
