@@ -748,7 +748,7 @@ body.page-Colabora #p-cactions,  body.page-Programa_de_mentores #p-cactions{
 }
 
 #colabora {
-		background: url("icons/owly.png") no-repeat scroll 25px 20px #FCFDFE;
+		background: url("icons/owly.png") no-repeat scroll 25px 85px #FCFDFE;
 }
 
 #mentores {
@@ -775,10 +775,10 @@ body.page-Colabora #p-cactions,  body.page-Programa_de_mentores #p-cactions{
 	border: none !important;
 }
 
-#colabora #adopta h2 a, #mentores h2 {
+#colabora #adopta h2, #mentores h2 {
     	color: #C63717;
     	font-family: Georgia,serif;
-   	 font-size: 25px;
+   	font-size: 25px;
     	margin-bottom: 0.5em;
 	background: none;
 }
