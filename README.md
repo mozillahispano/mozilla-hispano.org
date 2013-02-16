@@ -51,7 +51,7 @@ deshabilitamos el sitio default: `# a2dissite default`
 
 `# nano mozilla-hispano`
 
-(<VirtualHost *:80>
+> "<VirtualHost *:80>
         ServerAdmin webmaster@localhost
         ServerName http://local.mozilla-hispano
         ServerAlias local.mozilla-hispano
@@ -61,10 +61,8 @@ deshabilitamos el sitio default: `# a2dissite default`
                 AllowOverride None
         </Directory>
         <Directory /var/www/mozilla-hispano.org>
-
-...
-
-</VirtualHost>)
+        ...
+</VirtualHost>) "
 
 `# a2ensite mozilla-hispano`
 
@@ -79,13 +77,13 @@ descomentar la linea Include /private/etc/apache2/extra/httpd-vhosts.conf
 
 `$ sudo nano /etc/apache2/extra/httpd-vhosts.conf`
 
-(<VirtualHost *:80>
+> "<VirtualHost *:80>
     ServerAdmin webmaster@localhost
     DocumentRoot "/Users/usuario/Sites/mozilla-hispano.org"
     ServerName local.mozilla-hispano
     ErrorLog "/private/var/log/apache2/mozilla-hispano-error_log"
     CustomLog "/private/var/log/apache2/mozilla-hispano-access_log" common
-</VirtualHost>)
+</VirtualHost>)"
 
 `$ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf`
 
