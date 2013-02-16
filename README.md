@@ -26,7 +26,12 @@ Instalación
 
 `git clone https://github.com/mozillahispano/mozilla-hispano.org`
 
-Bajarse WP desde http://es.wordpress.org, descomprimir y copiar todo menos la carpeta wp-content en la carpeta creada al clonar el repositorio.
+`wget http://wordpress.org/latest.zip`
+
+`unzip wordpress-x.zip`
+
+`cp wordpress/* mozilla-hispano.org/`
+
 
 
 2. Cómo montar un servidor virtual con Apache.
