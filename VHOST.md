@@ -13,11 +13,20 @@ deshabilitamos el sitio default: # a2dissite default
 # cp default mozilla-hispano
 # nano mozilla-hispano
 
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        ServerName http://local.mozilla-hispano
+        ServerAlias local.mozilla-hispano
+        DocumentRoot /var/www/mozilla-hispano.org
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /var/www/mozilla-hispano.org>
 
+...
 
-
-
-
+</VirtualHost>
 
 
 
