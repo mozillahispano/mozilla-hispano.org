@@ -22,7 +22,7 @@ http://creativecommons.org/licenses/by-sa/3.0/deed.es
 Instalación
 -----------
 
-1. Clonar el repositorio e instalar Wordpress
+###Clonar el repositorio e instalar Wordpress
 
 `git clone https://github.com/mozillahispano/mozilla-hispano.org`
 
@@ -34,14 +34,14 @@ Instalación
 
 
 
-2. Cómo montar un servidor virtual con Apache.
+###Cómo montar un servidor virtual con Apache.
 
 `# nano /etc/hosts`
 
 añadir: 127.0.0.1 local.mozilla-hispano
 
 
-2.1. En Linux:
+####En Linux:
 
 deshabilitamos el sitio default: `# a2dissite default`
 
@@ -81,7 +81,7 @@ deshabilitamos el sitio default: `# a2dissite default`
 
 
 
-2.2. En Mac:
+####En Mac:
 
 `$ sudo nano /etc/apache2/httpd.conf`
 descomentar la linea Include /private/etc/apache2/extra/httpd-vhosts.conf
