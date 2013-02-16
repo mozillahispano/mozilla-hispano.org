@@ -24,7 +24,7 @@ Instalación
 
 1. Clonar el repositorio e instalar Wordpress
 
-´git clone https://github.com/mozillahispano/mozilla-hispano.org´
+`git clone https://github.com/mozillahispano/mozilla-hispano.org`
 
 Bajarse WP desde http://es.wordpress.org, descomprimir y copiar todo menos la carpeta wp-content en la carpeta creada al clonar el repositorio.
 
