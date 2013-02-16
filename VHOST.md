@@ -28,6 +28,9 @@ deshabilitamos el sitio default: # a2dissite default
 
 </VirtualHost>
 
+# a2ensite mozilla-hispano
+# service apache2 reload
+
 
 
 En Mac:
@@ -47,5 +50,6 @@ $ sudo nano /etc/apache2/extra/httpd-vhosts.conf
 </VirtualHost>
 
 $ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf
+$ sudo apachectl restart
 
 
