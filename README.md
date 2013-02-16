@@ -39,8 +39,11 @@ añadir: 127.0.0.1 local.mozilla-hispano
 2.1. En Linux:
 
 deshabilitamos el sitio default: `# a2dissite default`
+
 `# cd /etc/apache2/sites-available/`
+
 `# cp default mozilla-hispano`
+
 `# nano mozilla-hispano`
 
 `<VirtualHost *:80>
@@ -59,6 +62,7 @@ deshabilitamos el sitio default: `# a2dissite default`
 </VirtualHost>`
 
 `# a2ensite mozilla-hispano`
+
 `# service apache2 reload`
 
 
