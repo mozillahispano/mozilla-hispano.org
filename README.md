@@ -88,5 +88,6 @@ descomentar la linea Include /private/etc/apache2/extra/httpd-vhosts.conf
 </VirtualHost>`
 
 `$ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf`
+
 `$ sudo apachectl restart`
 
