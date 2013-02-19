@@ -15,7 +15,7 @@ body {
 	background-color: #E7EDF1;
 		color: #282828;
 	border-top: 2px solid #FFFFFF;
-	font-family: Helvetica,Arial,serif;
+	font-family: 'Open Sans',sans-serif;
 	font-size: 10px;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
 }
