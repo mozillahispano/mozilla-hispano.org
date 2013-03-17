@@ -1,8 +1,6 @@
 mozilla-hispano.org
 ===================
 
-
-
 Licencia
 ---------
 
@@ -17,21 +15,29 @@ The images are under Creative Commons BY-SA 3.0:
 http://creativecommons.org/licenses/by-sa/3.0/deed.es
 
 
-
 Instalación
 -----------
 
 ###Clonar el repositorio e instalar Wordpress
 
-    $ git clone https://github.com/mozillahispano/mozilla-hispano.org`
+    $ git clone https://github.com/mozillahispano/mozilla-hispano.org
+    $ wget http://wordpress.org/latest.zip
+    $ unzip wordpress-x.zip
+    $ cp wordpress/* mozilla-hispano.org/
 
-    $ wget http://wordpress.org/latest.zip`
+Revisa [la documentación de Wordpress](http://codex.wordpress.org/es:Istalando_Wordpress#La_famosa_.C2.ABInstalaci.C3.B3n_de_5_minutos.C2.BB) para finalizar la instalación. Una vez terminado simplemente tendrás que activar el theme mozillahispano.
 
-    $ unzip wordpress-x.zip`
+###Instalar phpbb
 
-    $ cp wordpress/* mozilla-hispano.org/`
+(Pendiente)
+
+###Instalar mediawiki
+
+(Pendiente)
 
 ###Montar un servidor virtual con Apache.
+
+Referencia rápida de cómo montar un entorno local de pruebas.
 
 Editamos los host locales para trabajar mejor
 
@@ -41,12 +47,13 @@ Añadimos
 
 ```127.0.0.1 local.mozilla-hispano```
 
-
 ####En Linux
 
 Debemos tener instalado ``apache2`` y ``mysql-server``, en debian, ubuntu y similares:
 
     $ sudo aptitude install apache2 mysql-server
+
+(Establecemos una contraseña al mysql y cremos una base de datos para la web)
 
 Deshabilitamos el sitio default:
 
