@@ -116,7 +116,7 @@ Descomentar la linea ``Include /private/etc/apache2/extra/httpd-vhosts.conf``
 
 Copiamos la configuración y reiniciamos Apache
 
-    $ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf`
-    $ sudo apachectl restart`
+    $ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf
+    $ sudo apachectl restart
 
 La web debería estar accesible desde http://local.mozilla-hispano
