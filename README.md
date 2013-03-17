@@ -18,91 +18,98 @@ http://creativecommons.org/licenses/by-sa/3.0/deed.es
 
 
 
-
 Instalación
 -----------
 
 ###Clonar el repositorio e instalar Wordpress
 
-`git clone https://github.com/mozillahispano/mozilla-hispano.org`
+    $ git clone https://github.com/mozillahispano/mozilla-hispano.org`
 
-`wget http://wordpress.org/latest.zip`
+    $ wget http://wordpress.org/latest.zip`
 
-`unzip wordpress-x.zip`
+    $ unzip wordpress-x.zip`
 
-`cp wordpress/* mozilla-hispano.org/`
+    $ cp wordpress/* mozilla-hispano.org/`
+
+###Montar un servidor virtual con Apache.
+
+Editamos los host locales para trabajar mejor
+
+    $ nano /etc/hosts
+
+Añadimos
+
+```127.0.0.1 local.mozilla-hispano```
 
 
+####En Linux
 
-###Cómo montar un servidor virtual con Apache.
+Debemos tener instalado ``apache2`` y ``mysql-server``, en debian, ubuntu y similares:
 
-`# nano /etc/hosts`
+    $ sudo aptitude install apache2 mysql-server
 
-añadir: 127.0.0.1 local.mozilla-hispano
+Deshabilitamos el sitio default:
 
+    $ a2dissite default
+    $ cd /etc/apache2/sites-available/
+    $ cp default mozilla-hispano
 
-####En Linux:
+Editamos el virtualhost
 
-deshabilitamos el sitio default: `# a2dissite default`
+    $ nano mozilla-hispano
 
-`# cd /etc/apache2/sites-available/`
-
-`# cp default mozilla-hispano`
-
-`# nano mozilla-hispano`
-
-        <VirtualHost *:80>
+```
+<VirtualHost *:80>
         
-                ServerAdmin webmaster@localhost
-        
-                ServerName http://local.mozilla-hispano
-    
-                ServerAlias local.mozilla-hispano
-     
-                DocumentRoot /var/www/mozilla-hispano.org
+    ServerAdmin webmaster@localhost
+    ServerName http://local.mozilla-hispano
+    ServerAlias local.mozilla-hispano
+    DocumentRoot /home/usuario/mozilla-hispano.org
       
-                <Directory />
-               
-                        Options FollowSymLinks
-              
-                        AllowOverride None
-     
-                </Directory>
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
                 
-                <Directory /var/www/mozilla-hispano.org>
-        
-                ...
-        
-        </VirtualHost>
+    <Directory /home/usuario/mozilla-hispano.org>
+        Options -Indexes FollowSymLinks
+	AllowOverride All
+	Order allow,deny
+	allow from all
+    </VirtualHost>
+```
+(Sustituye ``/home/usuario/mozilla-hispano.org`` por la ruta donde hayas clonado el repositorio)
 
-`# a2ensite mozilla-hispano`
+Lo activamos y reiniciamos Apache
 
-`# service apache2 reload`
-
-
+    $ a2ensite mozilla-hispano
+    $ service apache2 reload
+    
+La web debería estar accesible desde http://local.mozilla-hispano
 
 ####En Mac:
 
-`$ sudo nano /etc/apache2/httpd.conf`
-descomentar la linea Include /private/etc/apache2/extra/httpd-vhosts.conf
+    $ sudo nano /etc/apache2/httpd.conf
 
-`$ sudo nano /etc/apache2/extra/httpd-vhosts.conf`
+Descomentar la linea ``Include /private/etc/apache2/extra/httpd-vhosts.conf``
 
-        <VirtualHost *:80>
+    $ sudo nano /etc/apache2/extra/httpd-vhosts.conf`
 
-             ServerAdmin webmaster@localhost
+```
+    <VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot "/Users/usuario/Sites/mozilla-hispano.org"
+        ServerName local.mozilla-hispano
+        ErrorLog "/private/var/log/apache2/mozilla-hispano-error_log"
+        CustomLog "/private/var/log/apache2/mozilla-hispano-access_log" common
+    </VirtualHost>
+```
 
-              DocumentRoot "/Users/usuario/Sites/mozilla-hispano.org"
-        
-              ServerName local.mozilla-hispano
-        
-             ErrorLog "/private/var/log/apache2/mozilla-hispano-error_log"
-        
-             CustomLog "/private/var/log/apache2/mozilla-hispano-access_log" common
+(Sustituye ``/Users/usuario/Sites/mozilla-hispano.org`` por la ruta donde hayas clonado el repositorio)
 
-        </VirtualHost>
+Copiamos la configuración y reiniciamos Apache
 
-`$ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf`
+    $ sudo cp /etc/apache2/users/Guest.conf /etc/apache2/users/nombreusuario.conf`
+    $ sudo apachectl restart`
 
-`$ sudo apachectl restart`
-
+La web debería estar accesible desde http://local.mozilla-hispano
