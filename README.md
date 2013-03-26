@@ -22,7 +22,7 @@ Instalación
 
     $ git clone https://github.com/mozillahispano/mozilla-hispano.org
     $ wget http://wordpress.org/latest.zip
-    $ unzip wordpress-x.zip
+    $ unzip latest.zip
     $ cp wordpress/* mozilla-hispano.org/
 
 Revisa [la documentación de Wordpress](http://codex.wordpress.org/es:Istalando_Wordpress#La_famosa_.C2.ABInstalaci.C3.B3n_de_5_minutos.C2.BB) para finalizar la instalación. Una vez terminado simplemente tendrás que activar el theme mozillahispano.
