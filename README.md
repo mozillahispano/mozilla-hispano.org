@@ -83,7 +83,8 @@ Editamos el virtualhost
 	AllowOverride All
 	Order allow,deny
 	allow from all
-    </VirtualHost>
+    </Directory>
+</VirtualHost>
 ```
 (Sustituye ``/home/usuario/mozilla-hispano.org`` por la ruta donde hayas clonado el repositorio)
 
