@@ -151,7 +151,7 @@ function get_search_MH_form() {
 name="q" id="s" />
 	<input type="hidden" name="desde" value="noti" />
 	<input type="hidden" name="donde" value="noti" />
-	<input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
+	<button type="submit" id="searchsubmit" class="button">'. esc_attr__('Search') .'</button>
 	</div>
 	</form>';
 
