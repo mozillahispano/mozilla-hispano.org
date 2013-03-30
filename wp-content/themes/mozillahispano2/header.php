@@ -21,7 +21,7 @@
 
 <link rel="stylesheet" href="/wp-content/themes/mozillahispano2/style.css" type="text/css" media="screen" />
 
-<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/responsive.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" media="screen" />
 
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
