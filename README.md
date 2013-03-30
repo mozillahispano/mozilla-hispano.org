@@ -125,6 +125,24 @@ Copiamos la configuración y reiniciamos Apache
 
 La web debería estar accesible desde http://local.mozilla-hispano
 
+Plugins
+-----------
+
+* All in One SEO Pack
+* Digg Digg
+* FancyBox for WordPress
+* FeedWordPress
+* Fetch Feed shortcode pageable
+* Google Social Analytics Extension
+* Mozilla Persona
+* Quick Cache
+* Stealth Publish
+* WP-Phpbb Last Topics
+* WP-Syntax
+* Wp2BB
+* WP Orbit Slider
+* Yet Another Related Posts Plugin
+
 Envía mejoras
 -----------
 
