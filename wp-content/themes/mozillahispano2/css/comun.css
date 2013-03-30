@@ -22,7 +22,7 @@ body {
 		color: #282828;
 	border-top: 2px solid #FFFFFF;
 	font-family: 'Open Sans',sans-serif;
-	font-size: 10px;
+	font-size: 0.62em;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
     padding-bottom: 200px;
     box-sizing: border-box;
@@ -199,7 +199,7 @@ input.text {
 /* Menu */
 #menu {
 	display: inline-block;
-	font-size: 12px;
+	font-size: 1.2em;
 	height: 80px;
 	width: 540px;
 }
@@ -222,9 +222,7 @@ input.text {
 	color: #444444;
 	cursor: pointer;
 	display: block;
-	font-family: 'Open Sans',sans-serif;
-	font-size: 12px;
-	padding: 10px 9px;
+	padding: 0.8em 0.7em;
 	position: relative;
 	text-align: left;
 	text-decoration: none;
@@ -286,10 +284,10 @@ input.text {
 	border-color: rgba(0, 0, 0, 0.05) -moz-use-text-color -moz-use-text-color;
 	border-width: 1px 0 0;
 	display: block;
-	font-size: 10px;
+	font-size: 0.8em;
 	margin: 0;
-	padding: 5px 10px;
-	width: 190px;
+	padding: 0.5em 1em;
+	width: 19em;
 }
 
 #menu li.hover ul.submenu {
@@ -328,10 +326,9 @@ input.text {
 #pie {
 	background-color: #222222;
 	color: #74726A;
-	font-size: 12px;
+	font-size: 1.2em;
+	padding: 2em 0;
 	overflow: hidden;
-	padding: 20px 0;
-	width: 100%;
     position: absolute;
     bottom: 0;
 }
@@ -372,14 +369,14 @@ input.text {
 }
 
 #pie #pie-contenido .c1 strong {
-	font-size: 13px;
-	line-height: 40px;
+	font-size: 1.1em;
+	line-height: 3em;
 	text-transform: uppercase;
 }
 
 .leer-mas{
-font-weight: bold;
-text-align: center;
+	font-weight: bold;
+	text-align: center;
 }
 
 /* Barra derecha */
@@ -406,7 +403,7 @@ text-align: center;
 }
 
 #barra h3#boletin {
-background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
+	background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
 	height: 57px;
 	line-height: 57px;
 	padding-left: 79px;
@@ -417,7 +414,7 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
 }
 
 #barra h3#destacado {
-background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
+	background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
 	height: 57px;
 	line-height: 57px;
 	padding-left: 79px;
@@ -435,7 +432,7 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
 
 #barra ul {
 	font-size: 1.4em;
-	margin-left: 34px;
+	margin-left: 3em;
 }
 
 #barra ul li {
