@@ -15,6 +15,9 @@ The images are under Creative Commons BY-SA 3.0:
 http://creativecommons.org/licenses/by-sa/3.0/deed.es
 
 
+-------- WIP: PRÓXIMA MIGRACIÓN A MÁQ. VIRTUAL --------
+-----------
+
 Instalación
 -----------
 
