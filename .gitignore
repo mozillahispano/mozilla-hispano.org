@@ -1,0 +1,22 @@
+# Ignorar archivos de wordpress
+
+index.php
+latest.zip
+license.txt
+readme.html
+wordpress/
+wp-activate.php
+wp-admin/
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-cron.php
+wp-includes/
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
