@@ -54,6 +54,9 @@ get_header(); ?>
 
 				<div id="github-block"></div>
 
+				<h2>Labs en YouTube</h2>
+				<?php if(function_exists('db_yt_rss_markup')) { db_yt_rss_markup(); }; ?>
+
 		</div>
 		
 		<div id="ultimas-noticias">
