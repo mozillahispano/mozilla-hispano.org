@@ -115,8 +115,9 @@ get_header(); ?>
 	<?php endif; ?>
 
 </div><!-- #main-content -->
-</div><!-- #contenido -->
 
 <?php get_sidebar(); ?>
+
+</div><!-- #contenido -->
 
 <?php get_footer(); ?>
