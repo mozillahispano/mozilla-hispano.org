@@ -548,3 +548,5 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
 #beast404re, #beast404le{position:absolute;}
 #beast404le{left:125px;top:65px;}
 #beast404re{left:231px;top:68px;}
+#error404-info > p{margin-bottom:0em;padding:0em;}
+#error404-info > ul{padding:0em;}
