@@ -5,8 +5,14 @@
 
 @import url('undohtml.css');
 
+html{
+    height: 100%;
+}
+
 /* Lienzo */
 body {
+    min-height: 100%;
+    position: relative;
 	background-image: linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -o-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -moz-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
@@ -322,6 +328,8 @@ input.text {
 	overflow: hidden;
 	padding: 20px 0;
 	width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 #pie a {
 	color: #555;
