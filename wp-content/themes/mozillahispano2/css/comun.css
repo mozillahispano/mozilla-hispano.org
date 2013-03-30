@@ -24,6 +24,10 @@ body {
 	font-family: 'Open Sans',sans-serif;
 	font-size: 10px;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
+    padding-bottom: 200px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 /* Fonts */
