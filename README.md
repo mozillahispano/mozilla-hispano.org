@@ -15,6 +15,9 @@ The images are under Creative Commons BY-SA 3.0:
 http://creativecommons.org/licenses/by-sa/3.0/deed.es
 
 
+-------- WIP: PRÓXIMA MIGRACIÓN A MÁQ. VIRTUAL --------
+-----------
+
 Instalación
 -----------
 
@@ -22,7 +25,7 @@ Instalación
 
     $ git clone https://github.com/mozillahispano/mozilla-hispano.org
     $ wget http://wordpress.org/latest.zip
-    $ unzip wordpress-x.zip
+    $ unzip latest.zip
     $ cp wordpress/* mozilla-hispano.org/
 
 Revisa [la documentación de Wordpress](http://codex.wordpress.org/es:Istalando_Wordpress#La_famosa_.C2.ABInstalaci.C3.B3n_de_5_minutos.C2.BB) para finalizar la instalación. Una vez terminado simplemente tendrás que activar el theme mozillahispano.
@@ -83,7 +86,8 @@ Editamos el virtualhost
 	AllowOverride All
 	Order allow,deny
 	allow from all
-    </VirtualHost>
+    </Directory>
+</VirtualHost>
 ```
 (Sustituye ``/home/usuario/mozilla-hispano.org`` por la ruta donde hayas clonado el repositorio)
 
@@ -120,6 +124,24 @@ Copiamos la configuración y reiniciamos Apache
     $ sudo apachectl restart
 
 La web debería estar accesible desde http://local.mozilla-hispano
+
+Plugins
+-----------
+
+* All in One SEO Pack
+* Digg Digg
+* FancyBox for WordPress
+* FeedWordPress
+* Fetch Feed shortcode pageable
+* Google Social Analytics Extension
+* Mozilla Persona
+* Quick Cache
+* Stealth Publish
+* WP-Phpbb Last Topics
+* WP-Syntax
+* Wp2BB
+* WP Orbit Slider
+* Yet Another Related Posts Plugin
 
 Envía mejoras
 -----------

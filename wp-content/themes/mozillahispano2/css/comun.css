@@ -22,7 +22,7 @@ body {
 		color: #282828;
 	border-top: 2px solid #FFFFFF;
 	font-family: 'Open Sans',sans-serif;
-	font-size: 10px;
+	font-size: 0.62em;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
     padding-bottom: 200px;
     box-sizing: border-box;
@@ -188,7 +188,7 @@ input.text {
 		}
 
 		a#twitter-icon:hover,
-		a#rss-icon:hover, 
+		a#rss-icon:hover,
 		a#flickr-icon:hover,
 		a#gplus-icon:hover,
 		a#facebook-icon:hover,
@@ -199,7 +199,7 @@ input.text {
 /* Menu */
 #menu {
 	display: inline-block;
-	font-size: 12px;
+	font-size: 1.2em;
 	height: 80px;
 	width: 540px;
 }
@@ -222,9 +222,7 @@ input.text {
 	color: #444444;
 	cursor: pointer;
 	display: block;
-	font-family: 'Open Sans',sans-serif;
-	font-size: 12px;
-	padding: 10px 9px;
+	padding: 0.8em 0.7em;
 	position: relative;
 	text-align: left;
 	text-decoration: none;
@@ -234,7 +232,7 @@ input.text {
 #menu li:hover,
 #menu li:hover a,
 .js #menu li:hover span {
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
 	-webkit-box-shadow:
 		rgba(152,178,201,0.2) 0 0px 0px,
@@ -286,10 +284,10 @@ input.text {
 	border-color: rgba(0, 0, 0, 0.05) -moz-use-text-color -moz-use-text-color;
 	border-width: 1px 0 0;
 	display: block;
-	font-size: 10px;
+	font-size: 0.8em;
 	margin: 0;
-	padding: 5px 10px;
-	width: 190px;
+	padding: 0.5em 1em;
+	width: 19em;
 }
 
 #menu li.hover ul.submenu {
@@ -328,10 +326,9 @@ input.text {
 #pie {
 	background-color: #222222;
 	color: #74726A;
-	font-size: 12px;
+	font-size: 1.2em;
+	padding: 2em 0;
 	overflow: hidden;
-	padding: 20px 0;
-	width: 100%;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -373,14 +370,14 @@ input.text {
 }
 
 #pie #pie-contenido .c1 strong {
-	font-size: 13px;
-	line-height: 40px;
+	font-size: 1.1em;
+	line-height: 3em;
 	text-transform: uppercase;
 }
 
 .leer-mas{
-font-weight: bold;
-text-align: center;
+	font-weight: bold;
+	text-align: center;
 }
 
 /* Barra derecha */
@@ -407,7 +404,7 @@ text-align: center;
 }
 
 #barra h3#boletin {
-background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
+	background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
 	height: 57px;
 	line-height: 57px;
 	padding-left: 79px;
@@ -418,7 +415,7 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -297px transparent;
 }
 
 #barra h3#destacado {
-background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
+	background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
 	height: 57px;
 	line-height: 57px;
 	padding-left: 79px;
@@ -436,7 +433,7 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
 
 #barra ul {
 	font-size: 1.4em;
-	margin-left: 34px;
+	margin-left: 3em;
 }
 
 #barra ul li {
@@ -460,3 +457,106 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
   text-transform: uppercase;
 }
 
+/* Diseño de página 404 */
+/* 404 - Animate the tumbeast's eyes. Original animation by J Zeller. */
+
+@-moz-keyframes crazylefteye {
+	0% {left:125px;top:65px;}
+	10% {left:118px;top:56px;}
+	20% {left:118px;top:56px;}
+	40% {left:148px;top:62px;}
+	50% {left:145px;top:72px;}
+	60% {left:121px;top:70px;}
+	70% {left:125px;top:65px;}
+	100%{left:125px;top:65px;}
+}
+@-moz-keyframes crazyrighteye {
+	0% {left:231px;top:68px;}
+	10% {left:212px;top:62px;}
+	20% {left:212px;top:62px;}
+	40% {left:239px;top:64px;}
+	50% {left:240px;top:80px;}
+	60% {left:215px;top:73px;}
+	70% {left:231px;top:68px;}
+	100% {left:231px;top:68px;}
+}
+@-webkit-keyframes crazylefteye {
+	0% {left:125px;top:65px;}
+	10% {left:118px;top:56px;}
+	20% {left:118px;top:56px;}
+	40% {left:148px;top:62px;}
+	50% {left:145px;top:72px;}
+	60% {left:121px;top:70px;}
+	70% {left:125px;top:65px;}
+	100%{left:125px;top:65px;}
+}
+@-webkit-keyframes crazyrighteye {
+	0% {left:231px;top:68px;}
+	10% {left:212px;top:62px;}
+	20% {left:212px;top:62px;}
+	40% {left:239px;top:64px;}
+	50% {left:240px;top:80px;}
+	60% {left:215px;top:73px;}
+	70% {left:231px;top:68px;}
+	100% {left:231px;top:68px;}
+}
+@keyframes crazylefteye {
+	0% {left:125px;top:65px;}
+	10% {left:118px;top:56px;}
+	20% {left:118px;top:56px;}
+	40% {left:148px;top:62px;}
+	50% {left:145px;top:72px;}
+	60% {left:121px;top:70px;}
+	70% {left:125px;top:65px;}
+	100%{left:125px;top:65px;}
+}
+@keyframes crazyrighteye {
+	0% {left:231px;top:68px;}
+	10% {left:212px;top:62px;}
+	20% {left:212px;top:62px;}
+	40% {left:239px;top:64px;}
+	50% {left:240px;top:80px;}
+	60% {left:215px;top:73px;}
+	70% {left:231px;top:68px;}
+	100% {left:231px;top:68px;}
+}
+#beast404re{
+	-moz-animation-name: crazyrighteye;
+	-moz-animation-delay: 6s;
+	-moz-animation-duration: 7s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-play-state: running;
+	-webkit-animation-name: crazyrighteye;
+	-webkit-animation-delay: 6s;
+	-webkit-animation-duration: 7s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	animation-name: crazyrighteye;
+	animation-delay: 6s;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+#beast404le{
+	-moz-animation-name: crazylefteye;
+	-moz-animation-delay: 6s;
+	-moz-animation-duration: 7s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-play-state: running;
+	-webkit-animation-name: crazylefteye;
+	-webkit-animation-delay: 6s;
+	-webkit-animation-duration: 7s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	animation-name: crazylefteye;
+	animation-delay: 6s;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+#beastainer{padding-top: 1.6em;padding-left: 1.4em;position:relative;float:right;}
+#beast404re, #beast404le{position:absolute;}
+#beast404le{left:125px;top:65px;}
+#beast404re{left:231px;top:68px;}
+#error404-info > p{margin-bottom:0em;padding:0em;}
+#error404-info > ul{padding:0em;}
