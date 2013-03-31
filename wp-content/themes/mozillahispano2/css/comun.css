@@ -18,8 +18,9 @@ body {
 		background-image: -moz-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -webkit-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -ms-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
-	background-color: #E7EDF1;
-		color: #282828;
+	background-color: #FFF;
+    background-repeat: no-repeat;
+    color: #282828;
 	border-top: 2px solid #FFFFFF;
 	font-family: 'Open Sans',sans-serif;
 	font-size: 0.62em;
@@ -331,6 +332,7 @@ input.text {
 	overflow: hidden;
     position: absolute;
     bottom: 0;
+    width: 100%;
 }
 #pie a {
 	color: #555;
