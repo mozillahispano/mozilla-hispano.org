@@ -32,6 +32,42 @@
   #menu li:hover, #menu li:hover a, .js #menu li:hover span {
     background: #FFFFFF; }
 
+  #resp-button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 5px 0px 0px -3px;
+    background: url("../img/icn-menu.png") no-repeat scroll center top transparent;
+    cursor: pointer;
+  }
+
+  #resp-button:active{
+    background-position: center -100px; 
+  }
+
+  #menu .clearfix{
+    width: 100px;
+    position: absolute;
+    background: #fff;
+    z-index: 4;
+  }
+
+  #menu li {
+    width: 100%;
+  }
+
+  #menu li:hover{
+   background: rgb(36, 122, 193); 
+  }
+
+  #menu2 {
+    margin: 0 0 0 40px;
+  }
+
+  #menu .submenu {
+    margin: -40px 0 0 80px;
+  }
+
   #contenido #main-content {
     width: 100%; }
 
@@ -113,20 +149,37 @@
     max-width: 20%;
     width: 130px; }
 
+  sidebar {
+    display: none;
+  }
 }
 
 /* ==========================================================================
    TABLET
    ========================================================================== */
 
-/*@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  #menu .resp-button {
+    display: none;
+  }
+  .home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
+    max-width: 20%;
+    width: 100%; }
+}
 
-}*/
-
+  #menu2 {
+    position: absolute;
+    top: 0;
+    max-width: 450px;
+    margin-top: 20px;
+  }
 /* ==========================================================================
    DESKTOP
    ========================================================================== */
 
- /*@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 800px) {
+  #menu2 {
+    max-width: 540px;
+  }
 
- }*/
+ }

@@ -51,6 +51,7 @@
 ?>
 
 <script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
+<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/app.js" ></script>
 <?php echo pintaJs(); ?>
 
 </head>

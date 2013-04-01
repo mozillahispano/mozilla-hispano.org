@@ -15,7 +15,7 @@ body {
 	background-color: #E7EDF1;
 		color: #282828;
 	border-top: 2px solid #FFFFFF;
-	font-family: Helvetica,Arial,serif;
+	font-family: 'Open Sans',sans-serif;
 	font-size: 10px;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
 }
@@ -52,7 +52,7 @@ video {
 }
 
 #lienzo {
-	min-width: 980px;
+	max-width: 980px;
 	margin: 0px auto;
 }
 
@@ -60,7 +60,7 @@ video {
 	margin: auto;
 	position: relative;
 	text-align: left;
-	width: 980px;
+	max-width: 980px;
 	z-index: 1;
 }
 
@@ -191,7 +191,7 @@ input.text {
 	display: inline-block;
 	font-size: 12px;
 	height: 80px;
-	width: 540px;
+	max-width: 540px;
 }
 
 #menu ul {
