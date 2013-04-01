@@ -29,7 +29,7 @@
   /* ==========================================================================
      Main Nav
      ========================================================================== */
-  #menu li:hover, #menu li:hover a, .js #menu li:hover span {
+  nav li:hover, nav li:hover a, .js nav li:hover span {
     background: #FFFFFF; }
 
   #resp-button {
@@ -45,18 +45,18 @@
     background-position: center -100px; 
   }
 
-  #menu .clearfix{
+  nav .clearfix{
     width: 100px;
     position: absolute;
     background: #fff;
     z-index: 4;
   }
 
-  #menu li {
+  nav li {
     width: 100%;
   }
 
-  #menu li:hover{
+  nav li:hover{
    background: rgb(36, 122, 193); 
   }
 
@@ -64,7 +64,7 @@
     margin: 0 0 0 40px;
   }
 
-  #menu .submenu {
+  nav .submenu {
     margin: -40px 0 0 80px;
   }
 
@@ -78,7 +78,7 @@
   #social {
     display: none; }
 
-  #menu {
+  nav {
     display: inline;
     font-size: 12px;
     height: 80px;
@@ -115,21 +115,21 @@
   /* ==========================================================================
      Footer
      ========================================================================== */
-  #pie {
+  footer {
     margin-top: 30px;
     width: 100%; }
 
-  #pie #pie-contenido {
+  footer #pie-contenido {
     margin: auto;
     width: 100%; }
 
-  #pie #pie-contenido .c2 {
+  footer #pie-contenido .c2 {
     background-position: 50% 50%;
     padding-right: 20px;
     width: 90%;
     margin-bottom: 15px; }
 
-  #pie #pie-contenido .c1 {
+  footer #pie-contenido .c1 {
     margin-left: 5%;
     margin-right: 5%;
     width: auto; }
