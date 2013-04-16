@@ -5,11 +5,13 @@ var App = {
     function showmenu(){
         var menuWrap = document.getElementById('menu2');
 
-        if(menuWrap.style.visibility  == 'false' || menuWrap.style.visibility == 'visible'){
-          menuWrap.style.visibility = "hidden";
+        if(menuWrap.classList.contains('on')){
+          menuWrap.classList.remove('on');
+          menuWrap.classList.add('off');
         }
         else {
-          menuWrap.style.visibility="visible";
+          menuWrap.classList.remove('off');
+          menuWrap.classList.add('on');
         }
     }
     
@@ -17,7 +19,7 @@ var App = {
         menuWrap = document.getElementById('menu2');
 
     if (window.innerWidth < 768){
-      menuWrap.style.visibility = 'hidden';
+      menuWrap.classList.add('off');
     }
     menu.addEventListener("click", showmenu, false);
     menu.addEventListener("touchstart", showmenu, false);

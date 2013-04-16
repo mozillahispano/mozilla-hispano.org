@@ -447,3 +447,10 @@ background: url("../img/about-icons.png") no-repeat scroll 0 -149px transparent;
   text-transform: uppercase;
 }
 
+.on {
+  visibility: visible;
+}
+
+.off {
+  visibility: hidden;
+}
