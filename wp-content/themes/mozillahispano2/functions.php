@@ -105,7 +105,8 @@ Hispano #" . get_post_meta($post->ID, 'podcast_num', true) . "</a></strong></p>"
 $text.= "<p> 
 	<audio controls=\"controls\" src=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\" 
 tabindex=\"0\">
-		
+<!-- FIXME: El player hace que el RSS del podcast no se liste en lectores de podcast
+
 				<p><small>Streaming con flash</small></p>
 						
 								<p>
@@ -127,6 +128,8 @@ player.</a></p>
 </object> 
 																																			
 </p>
+
+-->
 																																				
 </audio>
 																																				
