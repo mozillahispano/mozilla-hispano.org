@@ -1,0 +1,100 @@
+/* Estructura  */
+.planet .portada-individual {
+	float: none;
+	width: auto;
+}
+
+
+/* Tipografía */
+.planet .dia-publicacion {
+	margin: 0 0 2em 0;
+	float: none;
+}
+
+
+/* Fotos de los artículos */
+.portada-individual .texto-portada-individual img {
+        max-width: 100%;
+}
+
+#back-link {
+	margin: 2em;
+	font-size: 1.2em;
+}
+
+#fotos {
+	width: 180px;
+	margin: auto;
+}
+
+#fotos .foto a{
+	margin-right: 10px;
+}
+
+#more-link {
+	margin: 1.4em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.all-photos, .follow_us {
+	margin: 0.5em auto;
+	width: 43%;
+}
+
+#texto-bienvenida {
+	-webkit-box-shadow:5px 5px 5px #888888;
+	border-radius: 5px 0px 5px;
+	box-shadow:5px 5px 5px #888888;
+	background: #FEEFB3 url(../img/planet.png) no-repeat scroll 5px center;
+	padding: 15px 5px 5px 70px;
+	width: 80%;
+	height: 62px;
+	margin: 1em auto;
+	font-size: 1.2em;
+	color: #9F6000;
+}
+
+.twitter {
+	list-style-type:none;
+	margin-left:0px !important;
+	padding:0px !important;
+	width:100%;
+}
+
+.twitter li {
+	border-radius: 5px;
+	border:1px solid #CFCFCF;
+	clear:both;
+	margin:0px 0px 0.3em 0px;
+	padding:0.3em 0 !important;
+	background-color: #FFFFFF;
+}
+
+.twitter li img {
+	float:left;
+	margin:0 0.5em;
+	width: 48px;
+}
+
+.twitter li .nick {
+	display:block;
+	padding:0.5em 0;
+	font-size: 0.9em;
+}
+
+.twitter li .descripcion {
+	display:block;
+	padding-left:0.7em;
+	padding-right:0.7em;
+	font-size: 0.82em !important;
+}
+
+.twitter li .descripcion .filtrado {
+	display:none;
+}
+
+.twitter li .fecha {
+	color:#777777;
+	font-size:0.75em;
+}

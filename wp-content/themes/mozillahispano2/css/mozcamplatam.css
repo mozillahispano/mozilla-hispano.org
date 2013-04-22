@@ -1,0 +1,63 @@
+/* Copyright (c) 2011, David Bengoa Rocandio
+* All rights reserved.
+*
+* This program is licensed under the Chicken Dance License v0.2
+*
+* You should have received a copy of the license text with this
+* software, along with instructions on how to perform the Chicken
+* Dance.
+*
+* Full license: http://bengoarocandio.com/html5tweets/COPYING
+* Chicken Dance instructions: http://bengoarocandio.com/html5tweets/DANCE
+*/
+@charset "UTF-8";
+
+.page-template-mozcamplatam-php .portada-individual {
+	width: 100% !important;
+}
+
+/*@font-face {
+  font-family: MuseoSans;
+  src: url("MuseoSans_500.otf");
+}*/
+
+/* line 29, tweets.scss */
+
+/* line 32, tweets.scss */
+canvas {
+  /*position: absolute;*/
+  top: 0px;
+  left: 0px;
+}
+
+/* line 38, tweets.scss */
+#credits {
+  /*position: absolute;*/
+  bottom: 10px;
+  right: 20px;
+  z-index: 3;
+}
+
+/* line 45, tweets.scss */
+#credits a {
+  color: #fff;
+}
+
+/* line 49, tweets.scss */
+#load {
+  /*position: absolute;
+  left: 50%;*/
+  top: 50%;
+  width: 400px;
+  margin-left: -200px;
+  height: 300px;
+  margin-top: -150px;
+  background: top no-repeat url("http://www.mozilla-hispano.org/wp-content/uploads/logo-only.png");
+  color: #282828;
+  padding-top: 200px;
+  text-align: center;
+  font-size: 40px;
+}
+
+/* line 64, tweets.scss */
+

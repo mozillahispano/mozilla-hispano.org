@@ -1,0 +1,76 @@
+/**
+ * Footer cleanup
+ */
+
+#wpTextbox1 {
+	margin: 0;
+	display: block;
+}
+
+.editOptions {
+	background-color: #F0F0F0;
+	border: 1px solid silver;
+	border-top: none;
+	padding: 1em 1em 1.5em 1em;
+	margin-right: -2px;
+	margin-bottom: 2em;
+}
+
+.collapsible-list {
+	display: inline;
+	cursor: pointer;
+	min-width: 400px;
+}
+.collapsible-list > span {
+	float: left;
+	/* @embed */
+	background: url(./images/open.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	display: block;
+	height: 16px;
+	width: 16px;
+}
+
+.collapsible-list > span.collapsed {
+	/* @embed */
+	background: url(./images/closed-ltr.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.hiddencats > ul, .templatesUsed > ul {
+	margin: 1em 2.5em;
+}
+
+.editCheckboxes {
+	margin-bottom: 1em;
+}
+
+.editCheckboxes input[type='checkbox']:first-child {
+	margin-left: 0;
+}
+
+.cancelLink {
+	margin: 0 0.5em;
+}
+
+.cancelLinkPipeSpace {
+	display: inline-block;
+	width: 0.5em;
+	height: 0.5em;
+}
+
+#editpage-copywarn {
+	font-size: 0.9em;
+}
+
+input#wpSummary {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+.editButtons > input[type='submit']:first-child {
+	margin-left: .1em;
+}
