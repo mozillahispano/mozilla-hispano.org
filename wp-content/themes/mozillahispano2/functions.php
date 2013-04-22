@@ -105,31 +105,6 @@ Hispano #" . get_post_meta($post->ID, 'podcast_num', true) . "</a></strong></p>"
 $text.= "<p> 
 	<audio controls=\"controls\" src=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\" 
 tabindex=\"0\">
-<!-- FIXME: El player hace que el RSS del podcast no se liste en lectores de podcast
-
-				<p><small>Streaming con flash</small></p>
-						
-								<p>
-											<object width=\"300\" 
-height=\"25\" data=\"http://blip.tv/scripts/flash/blipmp3player.swf?song_url=" . get_post_meta($post->ID, 
-'podcast_mp3', true) . "%3Fsource%3D1&amp;autoload=true&amp;song_title=Mozilla%20Hispano%20%23" . 
-get_post_meta($post->ID, 'podcast_num', true) . "\" type=\"application/x-shockwave-flash\">
-														
-																		
-<param value=\"http://blip.tv/scripts/flash/blipmp3player.swf?song_url=" . get_post_meta($post->ID, 
-'podcast_mp3', true). "%3Fsource%3D1&amp;autoload=true&amp;song_title=Mozilla%20Hispano%20%23" . 
-get_post_meta($post->ID, 'podcast_num', true) . "\" name=\"movie\"/>
-																						
-																										
-<p>Escucha el podcast en streaming mediante <a href=\"http://www.macromedia.com/downloads/\">flash 
-player.</a></p>
-																														
-																																	
-</object> 
-																																			
-</p>
-
--->
 																																				
 </audio>
 																																				
