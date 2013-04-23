@@ -1,6 +1,6 @@
 <?php
 /**
- * @package All-in-One-SEO-Pack 
+ * @package All-in-One-SEO-Pack
  */
 $UTF8_TABLES = Array();
 
