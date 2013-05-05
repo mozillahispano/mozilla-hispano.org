@@ -75,6 +75,19 @@
 			<?php } ?>
 
 			<?php endif; ?>
+                
+               <!-- Descargas -->
+		
+		<h3 id="descargas">Descargas</h3>
+			<ul>
+		
+				<li><a href="http://www.mozilla.org/es-ES/firefox/fx/">Firefox</a></li>
+                                <li><a href="http://www.mozilla.org/es/thunderbird/">Thunderbird</a></li>
+                                <li><a href="http://www.seamonkey-project.org/">SeaMonkey</a></li>
+                                <li><a href="http://www.mozilla.org/projects/calendar/">Calendar</a></li>
+                                <li><a href="http://www.getmiro.com/">Miro</a></li>
+
+			</ul>            
 			
 		<!-- Artículos destacados -->
 		
