@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.11
+Version: 3.12
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -36,18 +36,16 @@ if (version_compare(PHP_VERSION, '5.2.4', '<')) {
 	wp_die($exit_msg);
 }
 
-$ure_siteURL = get_site_url();
-$urePluginDirName = substr(strrchr(dirname(__FILE__), DIRECTORY_SEPARATOR), 1);
 
-define('URE_PLUGIN_URL', WP_PLUGIN_URL.'/'.$urePluginDirName);
-define('URE_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$urePluginDirName);
-define('URE_WP_ADMIN_URL', $ure_siteURL.'/wp-admin');
+define('URE_PLUGIN_URL', plugin_dir_url(__FILE__) );
+define('URE_PLUGIN_DIR', plugin_dir_path(__FILE__) );
+define('URE_WP_ADMIN_URL', admin_url());
 define('URE_ERROR', 'Error is encountered');
 define('URE_SPACE_REPLACER', '_URE-SR_');
 define('URE_PARENT', 'users.php');
 define('URE_KEY_CAPABILITY', 'administrator');
 
-require_once('includes/ure-lib.php');
+require_once(URE_PLUGIN_DIR. 'includes/ure-lib.php');
 
 
 /**
@@ -86,7 +84,7 @@ function ure_optionsPage() {
 <div class="wrap">
   <div class="icon32" id="icon-options-general"><br/></div>
     <h2><?php _e('User Role Editor', 'ure'); ?></h2>
-		<?php require_once('includes/ure-options.php'); ?>
+		<?php require_once(URE_PLUGIN_DIR .'includes/ure-options.php'); ?>
   </div>
 <?php
 
@@ -289,7 +287,7 @@ function ure_settings_menu() {
 
 function ure_adminCssAction() {
 
-  wp_enqueue_style('ure_admin_css', URE_PLUGIN_URL.'/css/ure-admin.css', array(), false, 'screen');
+  wp_enqueue_style('ure_admin_css', URE_PLUGIN_URL.'css/ure-admin.css', array(), false, 'screen');
 
 }
 // end of ure_adminCssAction()

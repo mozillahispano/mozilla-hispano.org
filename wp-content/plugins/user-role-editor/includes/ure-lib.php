@@ -364,7 +364,7 @@ function ure_saveRolesToDb() {
   global $wpdb, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole, $ure_currentRoleName;
 
   if (!isset($ure_roles[$ure_currentRole])) {
-    $ure_roles[$ure_currentRole]['name'] = $ure_currentRoleName;
+    return false;
   }
   $ure_roles[$ure_currentRole]['capabilities'] = $ure_capabilitiesToSave;
   $option_name = $wpdb->prefix.'user_roles';
