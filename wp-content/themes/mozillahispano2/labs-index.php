@@ -96,7 +96,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 				
-				<p id="labs-more"><a href="/etiqueta/desarrollo/">Ver todos los artículos</a></p>
+				<p id="labs-more"><a href="/etiqueta/labs/">Ver todos los artículos</a></p>
 			<?php endif; ?>
 
 		</div>
