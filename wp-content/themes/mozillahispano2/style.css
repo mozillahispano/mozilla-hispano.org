@@ -30,6 +30,16 @@ video {
     float: right;
 }
 
+img.aligncenter {
+	display: block;
+	margin: 1em auto;
+}
+
+p.wp-caption-text {
+	font-size: x-small;
+	text-align: center;
+}
+
 .leer-mas{
 font-weight: bold;
 text-align: center;
