@@ -78,7 +78,7 @@
 				</div> <!-- contenido -->
 		</div><!-- Cuerpo -->
 	</div><!-- tullido -->
-	</div>
+	</div><!-- lienzo -->
         <?php include(dirname(__FILE__).'/footer.tpl.php'); ?>
     
     <script src="app/js/mm.js" type="text/javascript"></script>
