@@ -789,6 +789,13 @@ padding-top:0.8em;
 
 }
 
+.portada-individual .wp-caption.aligncenter {
+	margin: auto;
+}
+
+.portada-individual .wp-caption-text {
+	font-style: italic;
+}
 .dia-publicacion{
 
 float:left;
@@ -1120,7 +1127,8 @@ p.evento-rss {
 }
 
 .portada-individual .texto-portada-individual p {
-    line-height: 1.3em;
+    font-size: 1.1em;
+    line-height: 1.5em;
     padding-bottom: 1em;
 }
 
