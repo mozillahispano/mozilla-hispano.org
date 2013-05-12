@@ -301,7 +301,3 @@ Wordpress:
 Una vez que tengas tus mejoras implementadas, no olvides dar pull-request para que las integremos en la web.
 
 Revisa la [documentación en el wiki](https://www.mozilla-hispano.org/documentacion/C%C3%B3mo_usar_el_repositorio_de_c%C3%B3digo#Github) sobre cómo crear un fork y enviar mejoras.
-
-1. Hola
-2. Esto es una
-3. Prueba
