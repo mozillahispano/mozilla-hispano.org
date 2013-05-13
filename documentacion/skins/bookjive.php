@@ -301,11 +301,11 @@ class bookjiveTemplate extends QuickTemplate {
 	      		</div><!-- contenido -->
 		</div><!-- Cuerpo -->
 	</div><!-- tullido -->
+	</div><!-- lienzo -->
 	<?php echo pintaPie(); ?>
 
-	</div>
     <?php $this->html('reporttime') ?>
-    
+
 	<?php $this->html( 'bottomscripts' ); /* JS call to runBodyOnloadHook */ ?>
 	<!--<script type="text/javascript" src="/wp-content/themes/mozillahispano/js/jquery.js"></script>-->
 	<!--<script type="text/javascript" src="/documentacion/extensions/SemanticForms/libs/jquery-1.4.2.min.js"></script>-->

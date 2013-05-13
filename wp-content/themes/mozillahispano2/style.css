@@ -30,6 +30,16 @@ video {
     float: right;
 }
 
+img.aligncenter {
+	display: block;
+	margin: 1em auto;
+}
+
+p.wp-caption-text {
+	font-size: x-small;
+	text-align: center;
+}
+
 .leer-mas{
 font-weight: bold;
 text-align: center;
@@ -1110,10 +1120,18 @@ p.evento-rss {
 }
 
 .portada-individual .texto-portada-individual p {
-    line-height: 1.3em;
+    line-height: 1.5em;
     padding-bottom: 1em;
+    font-size: 1.1em;
 }
 
+.portada-individual .wp-caption.aligncenter {
+    margin: auto;
+}
+
+.portada-individual .wp-caption-text {
+    font-style: italic;
+}
 
 /*
  Slider 
