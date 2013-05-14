@@ -53,9 +53,11 @@ $temp= <<<PINTA
 						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
-								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
-                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+                                                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+                                                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+                                                                <li><a href="/documentacion/Proyectos">Proyectos</a></li>
+                                                                <li><a href="/documentacion/Tareas">Tareas</a></li>
+                                                                <li><a href="/documentacion/Reuniones">Reuniones</a></li>
 							</ul>
 						</li>
 					</ul>
