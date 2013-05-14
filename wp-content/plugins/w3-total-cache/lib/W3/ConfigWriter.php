@@ -76,17 +76,29 @@ class W3_ConfigWriter {
         // collect config data from master config
         if (!$compiled_config->read($this->_get_config_filename(true))) {
             // try to read production master config
+            $success = false;
             if ($this->_preview)
-                $compiled_config->read($this->_get_config_filename(true, false));
+                $success = $compiled_config->read(
+                    $this->_get_config_filename(true, false));
+
+            // try to read legacy master config
+            if (!$success) {
+                $data = $this->get_imported_legacy_config_keys(true);
+                if (!is_null($data)) {
+                    foreach ($data as $key => $value) {
+                        $compiled_config->set($key, $value);
+                    }
+                }
+            }
         }
 
         $this->_put_instance_value_in_config($compiled_config);
 
         // append data from blog config
         $config_admin = w3_instance('W3_ConfigAdmin');
-        $data = $compiled_config->get_array_from_file($this->_get_config_filename());
+        $data = W3_ConfigData::get_array_from_file($this->_get_config_filename());
         if (is_null($data)) {
-            $data = $this->_import_legacy_config($compiled_config);
+            $data = $this->get_imported_legacy_config_keys();
         }
         if (!is_null($data)) {
             foreach ($data as $key => $value) {
@@ -104,11 +116,11 @@ class W3_ConfigWriter {
         $this->_post_process_values($compiled_config);
 
         // write cache
-        if (!$compiled_config->write($cache_filename)) {
-            // retry with folder creation
-            w3_mkdir_from(dirname($cache_filename), W3TC_CACHE_DIR);
+        try {
             $compiled_config->write($cache_filename);
+        } catch (Exception $ex) {   // dont care here about file permissions
         }
+
         $this->flush_apc($cache_filename, true);
 
         return $compiled_config->data;
@@ -153,14 +165,8 @@ class W3_ConfigWriter {
             w3_mkdir_from(dirname($filename), WP_CONTENT_DIR);
         }
 
-        if (!$this->_data->write($filename)) {
-            if (is_dir(W3TC_CONFIG_DIR)) {
-                w3_require_once(W3TC_INC_DIR . '/functions/activation.php');
-                w3_throw_on_write_error($filename, array(W3TC_CACHE_TMP_DIR, W3TC_CONFIG_DIR));
-            }
-        } else {
-            $this->flush_apc($filename);
-        }
+        $this->_data->write($filename);
+        $this->flush_apc($filename);
     }
 
     /**
@@ -280,13 +286,15 @@ class W3_ConfigWriter {
     /**
      * Reads legacy config file
      *
-     * @param object $compiled_config
+     * @param bool $force_master
      * @return array
      */
-    private function _import_legacy_config($compiled_config) {
+    public function get_imported_legacy_config_keys($force_master = false) {
         $suffix = '';
 
-        if ($this->_blog_id > 0) {
+        if ($force_master) {
+
+        } else if ($this->_blog_id > 0) {
             if (w3_is_network()) {
                 if (w3_is_subdomain_install())
                     $suffix = '-' . w3_get_domain(w3_get_host());
@@ -313,7 +321,12 @@ class W3_ConfigWriter {
 
         $filename = WP_CONTENT_DIR . '/w3-total-cache-config' . $suffix . '.php';
 
-        return $compiled_config->get_array_from_file($filename);
+        $legacy_config = W3_ConfigData::get_array_from_file($filename);
+        if (is_array($legacy_config) &&
+            isset($legacy_config['pgcache.engine']) &&
+            $legacy_config['pgcache.engine'] == 'file_pgcache')
+            $legacy_config['pgcache.engine'] = 'file_generic';
+        return $legacy_config;
     }
     
     /**
@@ -338,10 +351,10 @@ class W3_ConfigWriter {
      */
     private function _put_bad_behavior_in_config(&$config_data) {
         if (function_exists('bb2_start')) {
-            if (file_exists(WP_CONTENT_DIR . '/plugins/bad-behavior/bad-behavior-generic.php')) {
-                $bb_file = WP_CONTENT_DIR . '/plugins/bad-behavior/bad-behavior-generic.php';
-            } elseif (file_exists(WP_CONTENT_DIR . '/plugins/Bad-Behavior/bad-behavior-generic.php')) {
-                $bb_file = WP_CONTENT_DIR . '/plugins/Bad-Behavior/bad-behavior-generic.php';
+            if (file_exists(WP_PLUGIN_DIR . '/bad-behavior/bad-behavior-generic.php')) {
+                $bb_file = WP_PLUGIN_DIR . '/bad-behavior/bad-behavior-generic.php';
+            } elseif (file_exists(WP_PLUGIN_DIR . '/Bad-Behavior/bad-behavior-generic.php')) {
+                $bb_file = WP_PLUGIN_DIR . '/Bad-Behavior/bad-behavior-generic.php';
             } else {
                 $bb_file = false;
             }
@@ -359,67 +372,21 @@ class W3_ConfigWriter {
      * @param W3_ConfigData $compiled_config
      */
     private function _put_instance_value_in_config($compiled_config) {
-        if (!isset($compiled_config->data['common.instance_id']) || $compiled_config->data['common.instance_id'] == 0) {
-            $config2 = null;
-            if ($this->_preview) {
-                /**
-                 * defines $keys with descriptors
-                 * @var array $keys config keys
-                 */
-                include W3TC_LIB_W3_DIR . '/ConfigKeys.php';
-                $config2 = new W3_ConfigData($keys);
-                $config2->read($this->_get_config_filename(true, false));
+        if (!isset($compiled_config->data['common.instance_id']) || 
+                $compiled_config->data['common.instance_id'] == 0) {
+            // read common.instance_id from master config
+            /**
+             * @var $keys
+             */
+            include W3TC_LIB_W3_DIR . '/ConfigKeys.php';
+            $config2 = new W3_ConfigData($keys);
+            $config2->read($this->_get_config_filename(true, false));
+
+            if (isset($config2->data['common.instance_id']) && 
+                    $config2->data['common.instance_id'] != 0) {
+                $compiled_config->data['common.instance_id'] = 
+                    $config2->data['common.instance_id'];
             }
-            if (!is_null($config2) && isset($config2->data['common.instance_id'])
-                && $config2->data['common.instance_id'] != 0) {
-                $compiled_config->data['common.instance_id'] = $config2->data['common.instance_id'];
-            } else {
-                $compiled_config->data['common.instance_id'] = mt_rand();
-                if (!isset($keys))
-                    include W3TC_LIB_W3_DIR . '/ConfigKeys.php';
-                $master_config = new W3_ConfigData($keys);
-                $master_config->read($this->_get_config_filename(true, false));
-                $master_config->data['common.instance_id'] = $compiled_config->data['common.instance_id'];
-                $master_config->write($this->_get_config_filename(true, false));
-            }
-        }
-    }
-
-    /**
-     * Overloads the current ConfigWriter with found legacy values and saves to config file.
-     */
-    public function import_legacy_config_and_save() {
-        if ($this->own_config_exists())
-            return;
-
-        /**
-         * defines $keys with descriptors
-         * @var array $keys config keys
-         */
-        include W3TC_LIB_W3_DIR . '/ConfigKeys.php';
-        $compiled_config = new W3_ConfigData($keys);
-        $compiled_config->set_defaults();
-
-        $config_admin = w3_instance('W3_ConfigAdmin');
-
-        $data = $this->_import_legacy_config($compiled_config);
-        if (!is_null($data)) {
-            $master_data = array();
-            if ($this->_blog_id != 0 && w3_is_network()) {
-                $master_config = new W3_ConfigData($keys);
-                $master_config->read($this->_get_config_filename(true));
-                $master_data = $master_config->data;
-            }
-
-            foreach ($data as $key => $value) {
-                if ($master_data && isset($master_data[$key]) && $master_data[$key] === $value)
-                    continue;
-                if (!$this->_key_sealed($key, $this->_data->data, $config_admin, $value))
-                    $this->_data->set($key, $value);
-            }
-            // Since configs don't exist create them.
-            $this->save();
-            $config_admin->save();
         }
     }
 
@@ -433,7 +400,7 @@ class W3_ConfigWriter {
         if(function_exists('apc_clear_cache') && ini_get('apc.stat') == '0' && !(defined('DONOTFLUSHAPC') && DONOTFLUSHAPC)) {
             if ($local_flush) {
                 /** @var $w3_cacheflush W3_CacheFlushLocal */
-               $w3_cacheflush = w3_instance('W3_CacheFlushLocal');
+                $w3_cacheflush = w3_instance('W3_CacheFlushLocal');
                 $w3_cacheflush->apc_reload_file($filename);
             } else {
                 /** @var $w3_cacheflush W3_CacheFlush */

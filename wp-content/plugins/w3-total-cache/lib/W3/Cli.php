@@ -29,9 +29,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
  					$w3_db->dbcache_flush();
 				}
 				catch (Exception $e) {
- 				  WP_CLI::error('Flushing the DB cache failed.');
+ 				  WP_CLI::error(__('Flushing the DB cache failed.', 'w3-total-cache'));
 				}
-				WP_CLI::success('The DB cache is flushed successfully.');
+				WP_CLI::success(__('The DB cache is flushed successfully.', 'w3-total-cache'));
 				break;
 
 			case 'minify':
@@ -40,9 +40,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
  					$w3_minify->minifycache_flush();
 				}
 				catch (Exception $e) {
- 				  WP_CLI::error('Flushing the minify cache failed.');
+ 				  WP_CLI::error(__('Flushing the minify cache failed.', 'w3-total-cache'));
 				}
-				WP_CLI::success('The minify cache is flushed successfully.');
+				WP_CLI::success(__('The minify cache is flushed successfully.', 'w3-total-cache'));
 				break;
 
 			case 'object':
@@ -51,9 +51,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
  					$w3_objectcache->objectcache_flush();
 				}
 				catch (Exception $e) {
- 				  WP_CLI::error('Flushing the object cache failed.');
+ 				  WP_CLI::error(__('Flushing the object cache failed.', 'w3-total-cache'));
 				}
-				WP_CLI::success('The object cache is flushed successfully.');
+				WP_CLI::success(__('The object cache is flushed successfully.', 'w3-total-cache'));
 				break;
 
 			case 'post':
@@ -66,11 +66,11 @@ class W3TotalCache_Command extends WP_CLI_Command {
                         $w3_cacheflush->varnish_flush_post($vars['post_id']);
                       }
   				  catch (Exception $e) {
-   					  WP_CLI::error('Flushing the page from cache failed.');
+   					  WP_CLI::error(__('Flushing the page from cache failed.', 'w3-total-cache'));
    					}
-   					WP_CLI::success('The page is flushed from cache successfully.');
+   					WP_CLI::success(__('The page is flushed from cache successfully.', 'w3-total-cache'));
 					} else {
-						WP_CLI::error('This is not a valid post id.');
+						WP_CLI::error(__('This is not a valid post id.', 'w3-total-cache'));
 					}
 
 					w3tc_pgcache_flush_post($vars['post_id']);
@@ -85,11 +85,11 @@ class W3TotalCache_Command extends WP_CLI_Command {
                           $w3_cacheflush->varnish_flush_post($id);
   				  }
   				  catch (Exception $e) {
-   					  WP_CLI::error('Flushing the page from cache failed.');
+   					  WP_CLI::error(__('Flushing the page from cache failed.', 'w3-total-cache'));
    					}
-   					WP_CLI::success('The page is flushed from cache successfully.');
+   					WP_CLI::success(__('The page is flushed from cache successfully.', 'w3-total-cache'));
 					} else {
-						WP_CLI::error('There is no post with this permalink.');
+						WP_CLI::error(__('There is no post with this permalink.', 'w3-total-cache'));
 					}
 				} else {
 					if (isset($flushed_page_cache) && $flushed_page_cache)
@@ -102,9 +102,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
                       $w3_cacheflush->varnish_flush();
  					}
  					catch (Exception $e) {
-   					WP_CLI::error('Flushing the page cache failed.');
+   					WP_CLI::error(__('Flushing the page cache failed.', 'w3-total-cache'));
    			  }
- 				  WP_CLI::success('The page cache is flushed successfully.');
+ 				  WP_CLI::success(__('The page cache is flushed successfully.', 'w3-total-cache'));
 				}
 			}
 		} while (!empty($args));
@@ -121,10 +121,10 @@ class W3TotalCache_Command extends WP_CLI_Command {
   		$w3_querystring->browsercache_flush();
   	}
 		catch (Exception $e) {
-  		WP_CLI::error('updating the query string failed. with error %s', $e);
+  		WP_CLI::error(__('updating the query string failed. with error %s', 'w3-total-cache'), $e);
 		}
 
-		WP_CLI::success('The query string was updated successfully.');
+		WP_CLI::success(__('The query string was updated successfully.', 'w3-total-cache'));
 
 }
 
@@ -146,9 +146,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
 			  $w3_cdn_purge->cdn_purge_files($purgeitems);
 		}
 		catch (Exception $e) {
-			WP_CLI::error('Files did not successfully purge with error %s', $e);
+			WP_CLI::error(__('Files did not successfully purge with error %s', 'w3-total-cache'), $e);
 		}
-		WP_CLI::success('Files purged successfully.');
+		WP_CLI::success(__('Files purged successfully.', 'w3-total-cache'));
 		
 	}
 
@@ -160,7 +160,7 @@ class W3TotalCache_Command extends WP_CLI_Command {
         try {
             $method = array_shift($args);
             if (!in_array($method, array('SNS', 'local')))
-                WP_CLI::error($method . ' is not supported. Change to SNS or local to reload APC files');
+                WP_CLI::error($method . __(' is not supported. Change to SNS or local to reload APC files', 'w3-total-cache'));
             if ($method == 'SNS') {
                 $w3_cache = w3_instance('W3_CacheFlush');
                 $w3_cache->apc_reload_files($args);
@@ -177,16 +177,16 @@ class W3TotalCache_Command extends WP_CLI_Command {
                 );
                 $result = wp_remote_post($url, $post);
                 if (is_wp_error($result)) {
-                    WP_CLI::error('Files did not successfully reload with error %s', $result);
+                    WP_CLI::error(__('Files did not successfully reload with error %s', 'w3-total-cache'), $result);
                 } elseif ($result['response']['code'] != '200') {
-                    WP_CLI::error('Files did not successfully reload with message: '. $result['body']);
+                    WP_CLI::error(__('Files did not successfully reload with message: ', 'w3-total-cache') . $result['body']);
                 }
             }
         }
         catch (Exception $e) {
-            WP_CLI::error('Files did not successfully reload with error %s', $e);
+            WP_CLI::error(__('Files did not successfully reload with error %s', 'w3-total-cache'), $e);
         }
-        WP_CLI::success('Files reloaded successfully.');
+        WP_CLI::success(__('Files reloaded successfully.', 'w3-total-cache'));
 
     }
 
@@ -198,7 +198,7 @@ class W3TotalCache_Command extends WP_CLI_Command {
         try {
             $method = array_shift($args);
             if (!in_array($method, array('SNS', 'local')))
-                WP_CLI::error($method . ' is not supported. Change to SNS or local to delete APC files');
+                WP_CLI::error($method . __(' is not supported. Change to SNS or local to delete APC files', 'w3-total-cache'));
 
             if ($method == 'SNS') {
                 $w3_cache = w3_instance('W3_CacheFlush');
@@ -216,16 +216,16 @@ class W3TotalCache_Command extends WP_CLI_Command {
                 );
                 $result = wp_remote_post($url, $post);
                 if (is_wp_error($result)) {
-                    WP_CLI::error('Files did not successfully delete with error %s', $result);
+                    WP_CLI::error(__('Files did not successfully delete with error %s', 'w3-total-cache'), $result);
                 } elseif ($result['response']['code'] != '200') {
-                    WP_CLI::error('Files did not successfully delete with message: '. $result['body']);
+                    WP_CLI::error(__('Files did not successfully delete with message: ', 'w3-total-cache'). $result['body']);
                 }
             }
         }
         catch (Exception $e) {
-            WP_CLI::error('Files did not successfully delete with error %s', $e);
+            WP_CLI::error(__('Files did not successfully delete with error %s', 'w3-total-cache'), $e);
         }
-        WP_CLI::success('Files deleted successfully.');
+        WP_CLI::success(__('Files deleted successfully.', 'w3-total-cache'));
 
     }
 	
@@ -238,9 +238,9 @@ class W3TotalCache_Command extends WP_CLI_Command {
         $pgcache_cleanup->cleanup();
 		}
 		catch (Exception $e) {
-			WP_CLI::error('PageCache Garbage cleanup did not start with error %s', $e);
+			WP_CLI::error(__('PageCache Garbage cleanup did not start with error %s', 'w3-total-cache'), $e);
 		}
-		WP_CLI::success('PageCache Garbage cleanup triggered successfully.');
+		WP_CLI::success(__('PageCache Garbage cleanup triggered successfully.', 'w3-total-cache'));
 		
 	}
 

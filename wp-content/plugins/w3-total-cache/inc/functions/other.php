@@ -115,3 +115,64 @@ function w3_parse_faq() {
 
     return $faq;
 }
+
+/**
+ * Returns button link html
+ *
+ * @param string $text
+ * @param string $url
+ * @param boolean $new_window
+ * @return string
+ */
+function w3tc_button_link($text, $url, $new_window = false) {
+    $url = str_replace('&amp;', '&', $url);
+
+    if ($new_window) {
+        $onclick = sprintf('window.open(\'%s\');', addslashes($url));
+    } else {
+        $onclick = sprintf('document.location.href=\'%s\';', addslashes($url));
+    }
+
+    return w3tc_button($text, $onclick);
+}
+
+/**
+ * Returns hide note button html
+ *
+ * @param string $text
+ * @param string $note
+ * @param string $redirect
+ * @param boolean $admin if to use config admin
+ * @return string
+ */
+function w3tc_button_hide_note($text, $note, $redirect = '', $admin = false, $page ='') {
+    if (!$page) {
+        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        $page = W3_Request::get_string('page');
+    }
+
+    $url = sprintf('admin.php?page=%s&w3tc_hide_note&note=%s', $page, $note);
+
+    if ($admin)
+        $url .= '&admin=1';
+
+    if ($redirect != '') {
+        $url .= '&redirect=' . urlencode($redirect);
+    }
+
+    $url = wp_nonce_url($url, 'w3tc');
+
+    return w3tc_button_link($text, $url);
+}
+
+/**
+ * Returns button html
+ *
+ * @param string $text
+ * @param string $onclick
+ * @param string $class
+ * @return string
+ */
+function w3tc_button($text, $onclick = '', $class = '') {
+    return sprintf('<input type="button" class="button %s" value="%s" onclick="%s" />', htmlspecialchars($class), htmlspecialchars($text), htmlspecialchars($onclick));
+}

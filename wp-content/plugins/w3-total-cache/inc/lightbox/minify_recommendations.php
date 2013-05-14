@@ -2,13 +2,13 @@
 <h3>Minify: Help Wizard</h3>
 
 <p>
-    To get started with minify, we've identified the following external CSS and JS objects in the
+    <?php _e('To get started with minify, we\'ve identified the following external CSS and JS objects in the', 'w3-total-cache'); ?>
     <select id="recom_theme">
     <?php foreach ($themes as $_theme_key => $_theme_name): ?>
         <option value="<?php echo htmlspecialchars($_theme_key); ?>"<?php selected($_theme_key, $theme_key); ?>><?php echo htmlspecialchars($_theme_name); ?><?php if ($_theme_key == $theme_key): ?> (active)<?php endif; ?></option>
     <?php endforeach; ?>
     </select>
-    theme. Select "add" the files you wish to minify, then click "apply &amp; close" to save the settings.
+    <?php _e('theme. Select "add" the files you wish to minify, then click "apply &amp; close" to save the settings.', 'w3-total-cache'); ?>
 </p>
 
 <div id="recom_container">
@@ -20,11 +20,11 @@
             <li>
             	<table>
             		<tr>
-            			<th class="minify-files-add">Add:</th>
+            			<th class="minify-files-add"><?php _e('Add:', 'w3-total-cache'); ?></th>
             			<th>&nbsp;</th>
-            			<th>File URI:</th>
-            			<th>Template:</th>
-            			<th colspan="2">Embed Location:</th>
+            			<th><?php _e('File URI:', 'w3-total-cache'); ?></th>
+            			<th><?php _e('Template:', 'w3-total-cache'); ?></th>
+            			<th colspan="2"><?php _e('Embed Location:', 'w3-total-cache'); ?></th>
             		</tr>
             		<tr>
             			<td class="minify-files-add">
@@ -44,13 +44,13 @@
             			<td>
             				<?php $selected = (isset($locations_js[$js_group][$js_file]) ? $locations_js[$js_group][$js_file] : ''); ?>
                             <select name="recom_js_location">
-                                <option value="include"<?php selected($selected, 'include'); ?>>Embed in &lt;head&gt;</option>
-                                <option value="include-body"<?php selected($selected, 'include-body'); ?>>Embed after &lt;body&gt;</option>
-                                <option value="include-footer"<?php selected($selected, 'include-footer'); ?>>Embed before &lt;/body&gt;</option>
+                                <option value="include"<?php selected($selected, 'include'); ?>><?php _e('Embed in &lt;head&gt;', 'w3-total-cache'); ?></option>
+                                <option value="include-body"<?php selected($selected, 'include-body'); ?>><?php _e('Embed after &lt;body&gt;', 'w3-total-cache'); ?></option>
+                                <option value="include-footer"<?php selected($selected, 'include-footer'); ?>><?php _e('Embed before &lt;/body&gt;', 'w3-total-cache'); ?></option>
                             </select>
             			</td>
             			<td>
-			                <input class="js_file_verify button" type="button" value="Verify URI" />
+			                <input class="js_file_verify button" type="button" value="<?php _e('Verify URI', 'w3-total-cache'); ?>" />
             			</td>
 					</tr>
 				</table>
@@ -59,13 +59,13 @@
         <?php endforeach; ?>
     </ul>
     <p>
-    	<a href="#" id="recom_js_check">Check / Uncheck All</a>
+    	<a href="#" id="recom_js_check"><?php _e('Check / Uncheck All', 'w3-total-cache'); ?></a>
     </p>
     <?php else:?>
-    <p>No files found.</p>
+    <p><?php _e('No files found.', 'w3-total-cache'); ?></p>
     <?php endif;?>
 
-    <h4>Cascading Style Sheets:</h4>
+    <h4><?php _e('Cascading Style Sheets:', 'w3-total-cache'); ?></h4>
 
     <?php if (count($css_groups)) :?>
     <ul id="recom_css_files" class="minify-files">
@@ -74,10 +74,10 @@
             <li>
             	<table>
             		<tr>
-            			<th class="minify-files-add">Add:</th>
+            			<th class="minify-files-add"><?php _e('Add:', 'w3-total-cache'); ?></th>
             			<th>&nbsp;</th>
-            			<th>File URI:</th>
-            			<th colspan="2">Template:</th>
+            			<th><?php _e('File URI:', 'w3-total-cache'); ?></th>
+            			<th colspan="2"><?php _e('Template:', 'w3-total-cache'); ?></th>
             		</tr>
             		<tr>
             			<td class="minify-files-add">
@@ -95,7 +95,7 @@
                             </select>
 						</td>
 						<td>
-			                <input class="css_file_verify button" type="button" value="Verify URI" />
+			                <input class="css_file_verify button" type="button" value="<?php _e('Verify URI', 'w3-total-cache'); ?>" />
 						</td>
 					</tr>
 				</table>
@@ -104,7 +104,7 @@
         <?php endforeach; ?>
     </ul>
     <p>
-    	<a href="#" id="recom_css_check">Check / Uncheck All</a>
+    	<a href="#" id="recom_css_check"><?php _e('Check / Uncheck All', 'w3-total-cache'); ?></a>
     </p>
     <?php else:?>
     <p>No files found.</p>
@@ -113,15 +113,15 @@
 
 <div id="recom_container_bottom">
     <p>
-        <input class="recom_apply button-primary" type="button" value="Apply &amp; close" />
+        <input class="recom_apply button-primary" type="button" value="<?php _e('Apply &amp; close', 'w3-total-cache'); ?>" />
     </p>
 
     <fieldset>
-        <legend>Notes</legend>
+        <legend><?php _e('Notes', 'w3-total-cache'); ?></legend>
 
         <ul>
-            <li>Typically minification of advertiser code, analytics/statistics or any other types of tracking code is not recommended.</li>
-            <li>Scripts that were not already detected above may require <a href="admin.php?page=w3tc_support&amp;request_type=plugin_config">professional consultation</a> to implement.</li>
+            <li><?php _e('Typically minification of advertiser code, analytics/statistics or any other types of tracking code is not recommended.', 'w3-total-cache'); ?></li>
+            <li><?php _e('Scripts that were not already detected above may require <a href="admin.php?page=w3tc_support&amp;request_type=plugin_config">professional consultation</a> to implement.', 'w3-total-cache'); ?></li>
         </ul>
     </fieldset>
 </div>

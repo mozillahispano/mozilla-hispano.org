@@ -85,20 +85,12 @@ $.extend({
       
       data = "{}";
       
-      var getData = function(data) {
-        if(typeof data != "string") return data;
-        
-        if( data.indexOf('{') < 0 ) {
-          data = eval("(" + data + ")");
-        }
-      }
-      
       var getObject = function(data) {
         if(typeof data != "string") return data;
         
         data = eval("(" + data + ")");
         return data;
-      }
+      };
       
       if ( settings.type == "html5" ) {
         var object = {};

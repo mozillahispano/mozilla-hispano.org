@@ -160,6 +160,10 @@ $keys = array(
         'type' => 'integer',
         'default' => 180
     ),
+    'objectcache.purge.all' => array(
+        'type' => 'boolean',
+        'default' => false
+    ),
 
     'fragmentcache.enabled' => array(
         'type' => 'boolean',
@@ -287,6 +291,10 @@ $keys = array(
         'type' => 'boolean',
         'default' => false
     ),
+    'pgcache.remove_charset' => array(
+        'type' => 'boolean',
+        'default' => false
+    ),
     'pgcache.accept.uri' => array(
         'type' => 'array',
         'default' => array(
@@ -301,6 +309,10 @@ $keys = array(
             'wp-links-opml.php',
             'wp-locations.php'
         )
+    ),
+    'pgcache.accept.qs' => array(
+        'type' => 'array',
+        'default' => array()
     ),
     'pgcache.reject.front_page' => array(
         'type' => 'boolean',
@@ -332,6 +344,10 @@ $keys = array(
     'pgcache.reject.cookie' => array(
         'type' => 'array',
         'default' => array('wptouch_switch_toggle')
+    ),
+    'pgcache.reject.request_head' => array(
+        'type' => 'boolean',
+        'default' => false
     ),
     'pgcache.purge.front_page' => array(
         'type' => 'boolean',
@@ -778,15 +794,15 @@ $keys = array(
         'type' => 'array',
         'default' => array(
             'favicon.ico',
-            'wp-content/gallery/*',
-            'wp-content/uploads/avatars/*',
-            'wp-content/plugins/wordpress-seo/css/xml-sitemap.xsl',
-            'wp-content/plugins/wp-minify/min*',
-            'wp-content/plugins/*.js',
-            'wp-content/plugins/*.css',
-            'wp-content/plugins/*.gif',
-            'wp-content/plugins/*.jpg',
-            'wp-content/plugins/*.png',
+            '{wp_content_dir}/gallery/*',
+            '{wp_content_dir}/uploads/avatars/*',
+            '{plugins_dir}/wordpress-seo/css/xml-sitemap.xsl',
+            '{plugins_dir}/wp-minify/min*',
+            '{plugins_dir}/*.js',
+            '{plugins_dir}/*.css',
+            '{plugins_dir}/*.gif',
+            '{plugins_dir}/*.jpg',
+            '{plugins_dir}/*.png',
         )
     ),
     'cdn.import.external' => array(
@@ -977,6 +993,10 @@ $keys = array(
         'type' => 'string',
         'default' => ''
     ),
+    'cdn.netdna.authorization_key' => array(
+        'type' => 'string',
+        'default' => ''
+    ),
     'cdn.netdna.domain' => array(
         'type' => 'array',
         'default' => array()
@@ -984,6 +1004,26 @@ $keys = array(
     'cdn.netdna.ssl' => array(
         'type' => 'string',
         'default' => 'auto'
+    ),
+    'cdn.netdna.zone_id' => array(
+        'type' => 'integer',
+        'default' => 0
+    ),
+    'cdn.maxcdn.authorization_key' => array(
+        'type' => 'string',
+        'default' => ''
+    ),
+    'cdn.maxcdn.domain' => array(
+        'type' => 'array',
+        'default' => array()
+    ),
+    'cdn.maxcdn.ssl' => array(
+        'type' => 'string',
+        'default' => 'auto'
+    ),
+    'cdn.maxcdn.zone_id' => array(
+        'type' => 'integer',
+        'default' => 0
     ),
     'cdn.cotendo.username' => array(
         'type' => 'string',
@@ -1088,9 +1128,9 @@ $keys = array(
     'cdn.reject.files' => array(
         'type' => 'array',
         'default' => array(
-            'wp-content/uploads/wpcf7_captcha/*',
-            'wp-content/uploads/imagerotator.swf',
-            'wp-content/plugins/wp-fb-autoconnect/facebook-platform/channel.html'
+            '{uploads_dir}/wpcf7_captcha/*',
+            '{uploads_dir}/imagerotator.swf',
+            '{plugins_dir}/wp-fb-autoconnect/facebook-platform/channel.html'
         )
     ),
     'cdn.reject.ssl' => array(
@@ -1515,10 +1555,6 @@ $keys = array(
         'type' => 'boolean',
         'default' => true
     ),
-    'notes.php_is_old' => array(
-        'type' => 'boolean',
-        'default' => true
-    ),
     'notes.theme_changed' => array(
         'type' => 'boolean',
         'default' => false
@@ -1584,6 +1620,10 @@ $keys = array(
         'default' => true
     ),
     'notes.browsercache_rules_no404wp' => array(
+        'type' => 'boolean',
+        'default' => true
+    ),
+    'notes.cloudflare_plugin' => array(
         'type' => 'boolean',
         'default' => true
     ),
@@ -1686,7 +1726,7 @@ $keys = array(
     ),
     'newrelic.use_php_function' => array (
         'type' => 'boolean',
-        'default' => false,
+        'default' => true,
     ),
     'notes.new_relic_page_load_notification' => array(
         'type' => 'boolean',
@@ -1712,6 +1752,14 @@ $keys = array(
         'type' => 'boolean',
         'default' => false,
         'master_only' => 'true'
+    ),
+    'pgcache.late_init' => array (
+        'type' => 'boolean',
+        'default' => false
+    ),
+    'newrelic.include_rum' => array(
+        'type' => 'boolean',
+        'default' => true,
     )
 );
 

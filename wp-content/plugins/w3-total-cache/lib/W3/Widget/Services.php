@@ -19,6 +19,7 @@ class W3_Widget_Services extends W3_Plugin {
      * @var array
      */
     var $_request_types = array();
+    var $_json_request_types = array();
 
     /**
      * Array of request groups
@@ -47,6 +48,13 @@ class W3_Widget_Services extends W3_Plugin {
     );
 
     function run() {
+        $this->_json_request_types = array(
+            'email_support' => sprintf(__('Less than 15 Minute Email Support Response %s', 'w3-total-cache'), '(M-F 9AM - 5PM EDT): $75 USD'),
+            'phone_support' => sprintf(__('Less than 15 Minute Phone Support Response %s', 'w3-total-cache'), '(M-F 9AM - 5PM EDT): $150 USD'),
+            'plugin_config' => sprintf(__('Professional Plugin Configuration %s', 'w3-total-cache'),'Starting @ $100 USD'),
+            'theme_config' => sprintf(__('Theme Performance Optimization & Plugin Configuration %s', 'w3-total-cache'),'Starting @ $150 USD'),
+            'linux_config' => sprintf(__('Linux Server Optimization & Plugin Configuration %s', 'w3-total-cache'), 'Starting @ $200 USD')
+        );
         $this->_request_types = array(
             'email_support' => sprintf(__('Less than 15 Minute Email Support Response %s', 'w3-total-cache'), '<br /><span>(M-F 9AM - 5PM EDT): $75 USD</span>'),
             'phone_support' => sprintf(__('Less than 15 Minute Phone Support Response %s', 'w3-total-cache'), '<br /><span>(M-F 9AM - 5PM EDT): $150 USD</span>'),
@@ -81,7 +89,7 @@ class W3_Widget_Services extends W3_Plugin {
         w3tc_add_dashboard_widget('w3tc_services', __('Premium Services', 'w3-total-cache'), array(
             &$this,
             'widget_form'
-        ),null, 'top',
+        ),null, 'normal',
         'div'
         );
     }
@@ -101,13 +109,13 @@ class W3_Widget_Services extends W3_Plugin {
         $form_values = array(
             "cmd" => "_xclick",
             "business" =>  W3TC_PAYPAL_BUSINESS,
-            "item_name" => htmlspecialchars(sprintf('%s: %s (#%s)', ucfirst(w3_get_host()), $this->_request_types[$request_type], $request_id)),
+            "item_name" => esc_attr(sprintf('%s: %s (#%s)', ucfirst(w3_get_host()), $this->_json_request_types[$request_type], $request_id)),
             "amount" => sprintf('%.2f', $this->_request_prices[$request_type]),
             "currency_code" => "USD",
             "no_shipping" => "1",
             "rm" => "2",
-            "return" => htmlspecialchars($return_url),
-            "cancel_return" => htmlspecialchars($cancel_url));
+            "return" => esc_attr($return_url),
+            "cancel_return" => esc_attr($cancel_url));
         echo json_encode($form_values);
         die();
     }

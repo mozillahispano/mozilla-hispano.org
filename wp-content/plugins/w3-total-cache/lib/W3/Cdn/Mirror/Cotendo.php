@@ -41,19 +41,19 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
      */
     function purge($files, &$results) {
         if (empty($this->_config['username'])) {
-            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty username.');
+            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, __('Empty username.', 'w3-total-cache'));
 
             return false;
         }
 
         if (empty($this->_config['password'])) {
-            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty password.');
+            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, __('Empty password.', 'w3-total-cache'));
 
             return false;
         }
 
         if (empty($this->_config['zones'])) {
-            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty zones list.');
+            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, __('Empty zones list.', 'w3-total-cache'));
 
             return false;
         }
@@ -68,7 +68,7 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
         $error = $client->getError();
 
         if ($error) {
-            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Constructor error (%s).', $error));
+            $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf(__('Constructor error (%s).', 'w3-total-cache'), $error));
 
             return false;
         }
@@ -97,7 +97,7 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
             $client->call('doFlush', $params, W3TC_CDN_MIRROR_COTENDO_NAMESPACE);
 
             if ($client->fault) {
-                $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Invalid response.');
+                $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, __('Invalid response.', 'w3-total-cache'));
 
                 return false;
             }
@@ -105,13 +105,13 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
             $error = $client->getError();
 
             if ($error) {
-                $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Unable to purge (%s).', $error));
+                $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf(__('Unable to purge (%s).', 'w3-total-cache'), $error));
 
                 return false;
             }
         }
 
-        $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, 'OK');
+        $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, __('OK', 'w3-total-cache'));
 
         return true;
     }

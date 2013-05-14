@@ -33,6 +33,14 @@
 .w3tc-error {
     background: #f99
 }
+div.w3tc-error.inline {
+    display:inline-block;
+}
+input.w3tc-error, textarea.w3tc-error {
+    background: none;
+    border: 1px solid #f99
+}
+
 
 .w3tc-status {
     padding: 5px
@@ -66,6 +74,18 @@
     margin-left: 15px;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+#w3tc ul.w3tc-incomp-plugins {
+    list-style: disc outside;
+    margin-left: 17px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#w3tc ul.w3tc-incomp-plugins li div{
+    width: 150px;
+    display: inline-block;
 }
 
 #w3tc blockquote {
@@ -340,7 +360,6 @@
 }
 #w3tc-dashboard-widgets #postbox-container-left {
     padding: 10px;
-    border: 1px solid;
     margin-right: 200px;
     border: none;
 }
@@ -367,7 +386,7 @@
 }
 #w3tc-dashboard-widgets {
     background: url(../img/sidebar-background.png) repeat-y right;
-    min-width: 985px;
+    min-width: 600px;
 }
 
 #w3tc-dashboard-widgets #postbox-container-right h3.hndle {
@@ -403,9 +422,19 @@
     background: url("../img/w3tc_newrelic-logo.png") 0 3px no-repeat;
 }
 
+#w3tc-dashboard-widgets #postbox-container-left #w3tc_netdna h3.hndle span:first-child{
+    padding-left: 110px;
+    background: url("../img/w3tc_netdna-logo.png") 0 3px no-repeat;
+}
+
+#w3tc-dashboard-widgets #postbox-container-left #w3tc_maxcdn h3.hndle span:first-child{
+    padding-left: 110px;
+    background: url("../img/w3tc_maxcdn-logo.png") 0 3px no-repeat;
+}
+
 #normal-sortables .postbox {
     float:left;
-    margin-right:20px;
+    margin-right:10px;
 }
 /**
  * HiDPI Displays
@@ -443,12 +472,24 @@ only screen and (                min-resolution: 2dppx)  {
         background-image: url("../img/w3tc_newrelic-logo-retina.png");
         background-size: 144px 26px;
     }
+
+    #w3tc-dashboard-widgets #postbox-container-left #w3tc_netdna h3.hndle span:first-child{
+        padding-left: 180px;
+        background-image: url("../img/w3tc_netdna-logo-retina.png");
+        background-size: 177px 90px;
+    }
+
+    #w3tc-dashboard-widgets #postbox-container-left #w3tc_maxcdn h3.hndle span:first-child{
+        padding-left: 180px;
+        background-image: url("../img/w3tc_maxcdn-logo-retina.png");
+        background-size: 468px 90px;
+    }
 }
 
 #w3tc .updated p, #w3tc_general p, #w3tc_cdn p { line-height: 30px}
 
 #w3tc #application ul {
-    margin-top:0px;
+    margin-top:0;
 }
 
 #monitoring td label{
@@ -457,4 +498,32 @@ only screen and (                min-resolution: 2dppx)  {
 
 #monitoring td label input {
     margin-right: 5px;
+}
+
+.w3tc-required-changes strong {
+    font-weight: bold;
+    font-family: courier, sans-serif;
+}
+
+#minify_auto_test_loading {
+    display: inline-block;
+    padding-right:16px;
+    width: 60px;
+}
+
+.minify_auto_test, .w3tc-loading {
+    height: 16px;
+    background: url(../img/wpspin_light.gif) right top no-repeat;
+    width: 16px;
+}
+.create-error p {
+    margin:0px;
+}
+.create-error {
+    padding: 3px;
+    display:none;
+}
+
+#cdn_netdna_authorization_key, #cdn_maxcdn_authorization_key, .maxcdn-netdna-widget-base .button-secondary{
+    margin-bottom: 3px;
 }

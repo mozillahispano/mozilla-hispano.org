@@ -13,6 +13,7 @@ define('W3TC_MARKER_BEGIN_MINIFY_CORE', '# BEGIN W3TC Minify core');
 define('W3TC_MARKER_BEGIN_MINIFY_CACHE', '# BEGIN W3TC Minify cache');
 define('W3TC_MARKER_BEGIN_MINIFY_LEGACY', '# BEGIN W3TC Minify');
 define('W3TC_MARKER_BEGIN_CDN', '# BEGIN W3TC CDN');
+define('W3TC_MARKER_BEGIN_CLOUDFLARE', '# BEGIN W3TC CloudFlare');
 define('W3TC_MARKER_BEGIN_NEW_RELIC_CORE', '# BEGIN W3TC New Relic core');
 
 
@@ -27,6 +28,7 @@ define('W3TC_MARKER_END_MINIFY_CORE', '# END W3TC Minify core');
 define('W3TC_MARKER_END_MINIFY_CACHE', '# END W3TC Minify cache');
 define('W3TC_MARKER_END_MINIFY_LEGACY', '# END W3TC Minify');
 define('W3TC_MARKER_END_CDN', '# END W3TC CDN');
+define('W3TC_MARKER_END_CLOUDFLARE', '# END W3TC CloudFlare');
 define('W3TC_MARKER_END_NEW_RELIC_CORE', '# END W3TC New Relic core');
 
 
@@ -276,4 +278,111 @@ function w3_erase_rules($rules, $start, $end) {
  */
 function w3_has_rules($rules, $start, $end) {
     return preg_match('~' . w3_preg_quote($start) . "\n.*?" . w3_preg_quote($end) . "\n*~s", $rules);
+}
+
+/**
+ * @param SelfTestExceptions $exs
+ * @param string $path
+ * @param string $rules
+ * @param string $start
+ * @param string $end
+ * @param array $order
+ */
+function w3_add_rules($exs, $path, $rules, $start, $end, $order) {
+    $data = @file_get_contents($path);
+
+    if($data === false)
+        $data = '';
+
+    $rules_missing = !empty($rules) && (strstr(w3_clean_rules($data), w3_clean_rules($rules)) === false);
+    if (!$rules_missing)
+        return;
+
+    $replace_start = strpos($data, $start);
+    $replace_end = strpos($data, $end);
+
+    if ($replace_start !== false && $replace_end !== false && $replace_start < $replace_end) {
+        $replace_length = $replace_end - $replace_start + strlen($end) + 1;
+    } else {
+        $replace_start = false;
+        $replace_length = 0;
+
+        $search = $order;
+
+        foreach ($search as $string => $length) {
+            $replace_start = strpos($data, $string);
+
+            if ($replace_start !== false) {
+                $replace_start += $length;
+                break;
+            }
+        }
+    }
+
+    if ($replace_start !== false) {
+        $data = w3_trim_rules(substr_replace($data, $rules, $replace_start, $replace_length));
+    } else {
+        $data = w3_trim_rules($data . $rules);
+    }
+
+    if (strpos($path, W3TC_CACHE_DIR) === false || w3_is_nginx()) {
+        try {
+            w3_wp_write_to_file($path, $data);
+        } catch (FilesystemOperationException $ex) {
+            if ($replace_start !== false)
+                $exs->push(new FilesystemModifyException(
+                    $ex->getMessage(), $ex->credentials_form(),
+                    sprintf(__('Edit file <strong>%s
+                        </strong> and replace all lines between and including <strong>%s</strong> and
+                        <strong>%s</strong> markers with:', 'w3-total-caceh'),$path, $start,$end), $path, $rules));
+            else
+                $exs->push(new FilesystemModifyException(
+                    $ex->getMessage(), $ex->credentials_form(),
+                    sprintf(__('Edit file <strong>%s</strong> and add the following rules
+                                above the WordPress directives:', 'w3-total-cache'),
+                                $path), $path, $rules));
+        }
+    } else {
+        if (!@file_exists(dirname($path))) {
+            w3_mkdir_from(dirname($path), W3TC_CACHE_DIR);
+        }
+
+        if (!@file_put_contents($path, $data)) {
+            try {
+                w3_wp_delete_folder(dirname($path), '',
+                    $_SERVER['REQUEST_URI']);
+            } catch (FilesystemOperationException $ex) {
+                $exs->push($ex);
+            }
+        }
+    }
+}
+
+/**
+ * @param SelfTestExceptions $exs
+ * @param string $path
+ * @param string $start
+ * @param string $end
+ */
+function w3_remove_rules($exs, $path, $start, $end) {
+    if (!file_exists($path))
+        return;
+
+    $data = @file_get_contents($path);
+    if ($data === false)
+        return;
+    if (strstr($data, $start) === false)
+        return;
+
+    $data = w3_erase_rules($data, $start,
+        $end);
+
+    try {
+        w3_wp_write_to_file($path, $data);
+    } catch (FilesystemOperationException $ex) {
+        $exs->push(new FilesystemModifyException(
+            $ex->getMessage(), $ex->credentials_form(),
+            sprintf(__('Edit file <strong>%s</strong> and remove all lines between and including <strong>%s</strong>
+            and <strong>%s</strong> markers.', 'w3-total-cache'), $path, $start, $end), $path));
+    }
 }

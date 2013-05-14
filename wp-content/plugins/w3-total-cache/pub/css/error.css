@@ -13,7 +13,7 @@ body {
 }
 
 body, input {
-    font-family: "Lucida Grande", Verdana, Arial;
+    font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
     font-size: 13px;
 }
 

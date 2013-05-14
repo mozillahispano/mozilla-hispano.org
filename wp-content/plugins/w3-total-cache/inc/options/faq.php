@@ -1,7 +1,7 @@
 <?php if (!defined('W3TC')) die(); ?>
 <?php include W3TC_INC_DIR . '/options/common/header.php'; ?>
 
-<h4>Table of Contents</h4>
+<h4><?php _e('Table of Contents', 'w3-total-cache'); ?></h4>
 
 <div id="toc">
     <ul>

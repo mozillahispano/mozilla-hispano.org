@@ -170,7 +170,7 @@ class W3_Pro_FragmentCache {
         }
 
         if (is_object($value)) {
-            $value = wp_clone($value);
+			$value = clone( $value );
         }
 
         $this->cache[$fragment_group . $group][$key] = $value;
@@ -221,7 +221,7 @@ class W3_Pro_FragmentCache {
         $key = $this->_get_cache_key($id, $group);
 
         if (is_object($data)) {
-            $data = wp_clone($data);
+            $data = clone( $data );
         }
         $fragment_group = $this->_fragment_group($id);
         $this->cache[$fragment_group . $group][$key] = $data;
@@ -579,7 +579,7 @@ class W3_Pro_FragmentCache {
          * Skip if disabled
          */
         if (!$this->_config->get_boolean('fragmentcache.enabled')) {
-            $this->cache_reject_reason = 'Fragment caching is disabled';
+            $this->cache_reject_reason = __('Fragment caching is disabled', 'w3-total-cache');
 
             return false;
         }
@@ -645,13 +645,30 @@ class W3_Pro_FragmentCache {
         if (empty($id))
             return 'nogroup';
         $groups = $this->_fragmentcache->get_registered_fragment_groups();
+        $use_group = '';
+        $length = 0;
         foreach ($groups as $group =>  $actions)
-            if (strpos($id, $group) !== false)
-                    return $group;
+            if (strpos($id, $group) !== false) {
+                if (strlen($group)>$length) {
+                    $length = strlen($group);
+                    $use_group = $group;
+                }
+            }
+        if ($use_group)
+            return $use_group;
+
         $global_groups = $this->_fragmentcache->get_registered_global_fragment_groups();
+        $use_group = '';
+        $length = 0;
         foreach ($global_groups as $group =>  $actions)
-            if (strpos($id, $group) !== false)
-                return $group;
+            if (strpos($id, $group) !== false) {
+                if (strlen($group)>$length) {
+                    $length = strlen($group);
+                    $use_group = $group;
+                }
+            }
+        if ($use_group)
+            return $use_group;
 
         return 'nogroup';
     }

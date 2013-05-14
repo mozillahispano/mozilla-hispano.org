@@ -42,14 +42,14 @@ class W3_Cache_File_Generic extends W3_Cache_File {
      * @param string $key
      * @param string $var
      * @param int $expire
+	 * @param string $group Used to differentiate between groups of cache values
      * @return boolean
      */
-    function set($key, $var, $expire = 0) {
+    function set($key, $var, $expire = 0, $group = '') {
         $key = $this->get_item_key($key);
         $sub_path = $this->_get_path($key);
         $path = $this->_cache_dir . '/' . $sub_path;
 
-        $sub_dir = dirname($sub_path);
         $dir = dirname($path);
 
         if (!@is_dir($dir)) {
@@ -96,11 +96,11 @@ class W3_Cache_File_Generic extends W3_Cache_File {
      * Returns data
      *
      * @param string $key
+	 * @param string $group Used to differentiate between groups of cache values
      * @return string
      */
-    function get($key) {
+    function get($key, $group = '') {
         $key = $this->get_item_key($key);
-        $var = false;
         $path = $this->_cache_dir . '/' . $this->_get_path($key);
 
         $data = $this->_read($path);
@@ -110,14 +110,16 @@ class W3_Cache_File_Generic extends W3_Cache_File {
         $path_old = $path . '.old';
         $too_old_time = time() - 30;
 
-        $file_time = @filemtime($path_old);
-        if ($file_time) {
-            if ($file_time > $too_old_time) {
-                // return old data
-                return $this->_read($path_old);
-            }
+        if ( file_exists( $path_old ) ) {
+            $file_time = @filemtime( $path_old );
+            if ( $file_time ) {
+                if ( $file_time > $too_old_time ) {
+                    // return old data
+                    return $this->_read( $path_old );
+                }
 
-            @touch($path_old);
+                @touch( $path_old );
+            }
         }
 
         return null;
@@ -162,9 +164,10 @@ class W3_Cache_File_Generic extends W3_Cache_File {
      * Deletes data
      *
      * @param string $key
+	 * @param string $group Used to differentiate between groups of cache values
      * @return boolean
      */
-    function delete($key) {
+    function delete($key, $group = '') {
         $key = $this->get_item_key($key);
         $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $this->_get_path($key);
 

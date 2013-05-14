@@ -5,22 +5,22 @@ if (!defined('W3TC')) {
 }
 
 $compilation_levels = array(
-    'WHITESPACE_ONLY' => 'Whitespace only',
-    'SIMPLE_OPTIMIZATIONS' => 'Simple optimizations',
-    'ADVANCED_OPTIMIZATIONS' => 'Advanced optimizations'
+    'WHITESPACE_ONLY' => __('Whitespace only', 'w3-total-cache'),
+    'SIMPLE_OPTIMIZATIONS' => __('Simple optimizations', 'w3-total-cache'),
+    'ADVANCED_OPTIMIZATIONS' => __('Advanced optimizations', 'w3-total-cache')
 );
 
 $compilation_level = $this->_config->get_string('minify.ccjs.options.compilation_level');
 ?>
 <tr>
-    <th><label for="minify_ccjs_path_java">Path to JAVA executable:</label></th>
+    <th><label for="minify_ccjs_path_java"><?php _e('Path to JAVA executable:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="minify_ccjs_path_java" class="js_enabled" type="text" 
            <?php $this->sealing_disabled('minify') ?> name="minify.ccjs.path.java" value="<?php echo htmlspecialchars($this->_config->get_string('minify.ccjs.path.java')); ?>" size="60" />
     </td>
 </tr>
 <tr>
-    <th><label for="minify_ccjs_path_jar">Path to JAR file:</label></th>
+    <th><label for="minify_ccjs_path_jar"><?php _e('Path to JAR file:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="minify_ccjs_path_jar" class="js_enabled" type="text" 
             <?php $this->sealing_disabled('minify') ?> name="minify.ccjs.path.jar" value="<?php echo htmlspecialchars($this->_config->get_string('minify.ccjs.path.jar')); ?>" size="60" />
@@ -29,12 +29,12 @@ $compilation_level = $this->_config->get_string('minify.ccjs.options.compilation
 <tr>
     <th>&nbsp;</th>
     <td>
-        <input class="minifier_test js_enabled button {type: 'ccjs', nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="Test Closure Compiler" />
+        <input class="minifier_test js_enabled button {type: 'ccjs', nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Test Closure Compiler', 'w3-total-cache'); ?>" />
         <span class="minifier_test_status w3tc-status w3tc-process"></span>
     </td>
 </tr>
 <tr>
-    <th><label for="minify_ccjs_options_compilation_level">Compilation level:</label></th>
+    <th><label for="minify_ccjs_options_compilation_level"><?php _e('Compilation level:', 'w3-total-cache'); ?></label></th>
     <td>
         <select id="minify_ccjs_options_compilation_level" class="js_enabled" name="minify.ccjs.options.compilation_level" 
             <?php $this->sealing_disabled('minify') ?>>

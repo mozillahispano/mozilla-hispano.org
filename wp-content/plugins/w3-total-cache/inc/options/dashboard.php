@@ -40,10 +40,9 @@
                 <h1><?php _e('Dashboard', 'w3-total-cache')?></h1>
                 <p>Thanks for choosing W3TC as your Web Performance Optimization (WPO) framework. Eventually, the dashboard will provide at-a-glance insight into key performance indicators for your site(s). Feel free to <a href="admin.php?page=w3tc_support&amp;request_type=new_feature">make suggestions</a> about the statistics you would like to see here. We're already working on: CDN stats, cache stats per module, Cloud Flare stats and much more.</p>
             </div>
-            <div id='postbox-container-1' class='postbox-container'>
-                <?php do_meta_boxes( $screen->id, 'top', '' ); ?>
+            <div id="widgets-container">
+            <?php do_meta_boxes( $screen->id, 'normal', '' ); ?>
             </div>
-                <?php do_meta_boxes( $screen->id, 'normal', '' ); ?>
             </div>
         </div>
         <div id="postbox-container-right">

@@ -153,12 +153,13 @@ class W3_NewRelicService {
         try {
             if (!$this->get_license_key_from_ini())
                 $error['license'] = __('License key could not be detected.', 'w3-total-cache');
+            $licences = explode(' ', trim($this->get_license_key_from_ini()));
+            $licences = array_map('trim', $licences);
             if ($this->get_license_key_from_ini() && $this->get_license_key_from_account()
-                && $this->get_license_key_from_account() != $this->get_license_key_from_ini())
-                $error['license'] = sprintf(__('Configured license key does not match license key in account: %s %s .', 'w3-total-cache')
+                && !in_array(trim($this->get_license_key_from_account()), $licences))
+                $error['license'] = sprintf(__('Configured license key does not match license key(s) in account: <br />%s <br />%s', 'w3-total-cache')
                                             ,$this->get_license_key_from_ini()
-                                            ,$this->get_license_key_from_account());
-
+                                            ,implode('<br />', $licences));
             $this->get_account_id($this->get_api_key());
         } catch (Exception $ex) {
             $error['api_key'] = __('API Key is invalid.', 'w3-total-cache');

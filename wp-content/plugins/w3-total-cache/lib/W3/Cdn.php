@@ -11,6 +11,7 @@ define('W3TC_CDN_RSCF', 'rscf');
 define('W3TC_CDN_AZURE', 'azure');
 define('W3TC_CDN_MIRROR', 'mirror');
 define('W3TC_CDN_NETDNA', 'netdna');
+define('W3TC_CDN_MAXCDN', 'maxcdn');
 define('W3TC_CDN_COTENDO', 'cotendo');
 define('W3TC_CDN_EDGECAST', 'edgecast');
 define('W3TC_CDN_ATT', 'att');
@@ -39,27 +40,27 @@ class W3_Cdn {
                     $instances[$instance_key] = new W3_Cdn_Ftp($config);
                     break;
 
-                case (W3TC_PHP5 && $engine == W3TC_CDN_S3):
+                case ($engine == W3TC_CDN_S3):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/S3.php');
                     $instances[$instance_key] = new W3_Cdn_S3($config);
                     break;
 
-                case (W3TC_PHP5 && $engine == W3TC_CDN_CF_S3):
+                case ($engine == W3TC_CDN_CF_S3):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/S3/Cf/S3.php');
                     $instances[$instance_key] = new W3_Cdn_S3_Cf_S3($config);
                     break;
 
-                case (W3TC_PHP5 && $engine == W3TC_CDN_CF_CUSTOM):
+                case ($engine == W3TC_CDN_CF_CUSTOM):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/S3/Cf/Custom.php');
                     $instances[$instance_key] = new W3_Cdn_S3_Cf_Custom($config);
                     break;
 
-                case (W3TC_PHP5 && $engine == W3TC_CDN_RSCF):
+                case ($engine == W3TC_CDN_RSCF):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/Rscf.php');
                     $instances[$instance_key] = new W3_Cdn_Rscf($config);
                     break;
 
-                case (W3TC_PHP5 && $engine == W3TC_CDN_AZURE):
+                case ($engine == W3TC_CDN_AZURE):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/Azure.php');
                     $instances[$instance_key] = new W3_Cdn_Azure($config);
                     break;
@@ -72,6 +73,11 @@ class W3_Cdn {
                 case ($engine == W3TC_CDN_NETDNA):
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/Mirror/Netdna.php');
                     $instances[$instance_key] = new W3_Cdn_Mirror_Netdna($config);
+                    break;
+
+                case ($engine == W3TC_CDN_MAXCDN):
+                    w3_require_once(W3TC_LIB_W3_DIR . '/Cdn/Mirror/MaxCDN.php');
+                    $instances[$instance_key] = new W3_Cdn_Mirror_MaxCDN($config);
                     break;
 
                 case ($engine == W3TC_CDN_COTENDO):
