@@ -104,10 +104,7 @@ Hispano #" . get_post_meta($post->ID, 'podcast_num', true) . "</a></strong></p>"
 
 $text.= "<p> 
 	<audio controls=\"controls\" src=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\" 
-tabindex=\"0\">
-																																				
-</audio>
-																																				
+tabindex=\"0\"></audio>										
 </p>";
 return $text;
 }
@@ -173,60 +170,6 @@ get_the_title() ."</a></h3>";
         return $list;
 }
 add_shortcode("listar-noticias", "listar_noticias");
-
-function listar_flickr($atts, $content = null) {
-
-	extract(shortcode_atts(array(
-                "tag" => '',
-                "num" => ''
-        ), $atts));
-
-	require_once("/var/www/mozilla-hispano/eventos/flickr/phpFlickr.php"); //Incluyendo el API de Flickr
-	$f = new phpFlickr("XXXXXXXXXXXXXXXXXX"); //Clase de Api, conseguir en: http://www.flickr.com/services/api/keys/
-	$nsid = ""; //NSID Usuario, conseguir en: http://idgettr.com/
-	//Incluir tag, ordenamieno, privacidad, y numero de imagenes a mostrar
-	$photos = $f->photos_search(array("tags"=>$tag, "user_id"=>$nsid, "sort"=>"date-posted-desc", 
-"privacy_filter"=>"1", "per_page"=>$num));
-	$url    = "https://secure.flickr.com/photos/".$photo['id']."/"; //Url de la Imgen Original
-	
-	$salida='<div id="fotos">';
-	if (is_array($photos['photo']))
-	{
-		$sw= 1;
-		foreach ($photos['photo'] as $photo)
-		{
-			if ($sw == 1)
-			{
-				$salida .= "<div class='foto'>";
-				$salida .= "<a href='".$f->buildPhotoURL($photo, "medium")."' 
-title='".$photo['title']."' rel='" . $tag . "'><img alt='".$photo['title']."' 
-title='".$photo['title']."' "."src='".$f->buildPhotoURL($photo, "square")."' /></a>";
-				$sw=0;
-				$salida.= "</div>";
- 			}
-			else
-			{
-				$salida .= "<div class='foto'>";
-				$salida .= "<a href='".$f->buildPhotoURL($photo, "medium")."' 
-title='".$photo['title']."' rel='" . $tag . "'><img alt='".$photo['title']."' 
-title='".$photo['title']."' "."src='".$f->buildPhotoURL($photo, "square")."' /></a>";
-				$salida.="</div>";
-				$sw=1;
-			}
-		}
-	}
-
-
-	$salida.='</div><!-- Fotos -->';
-							
-	$salida.='<p class="all-photos"><a title="Canal RSS de las fotos" href="https://secure.flickr.com/services/feeds/photos_public.gne?tags=' . 
-$tag . '&amp;lang=es-us&amp;format=rss_200"><img src="/wp-content/themes/mozillahispano/img/rss.png" 
-alt=""/></a> <a href="https://secure.flickr.com/photos/tags/' . $tag . '/">Ver todas las 
-fotos</a></p>';
-
-	return $salida;
-}
-add_shortcode("listar-flickr", "listar_flickr");
 
 /* Eliminamos el meta generator del header */
 remove_action('wp_head', 'wp_generator');
