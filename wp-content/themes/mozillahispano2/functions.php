@@ -133,8 +133,6 @@ name="q" id="s" />
 	echo apply_filters('get_search_form', $form);
 }
 
-
-
 function ultimos_posts() {
         global $post;
 
@@ -170,6 +168,31 @@ get_the_title() ."</a></h3>";
         return $list;
 }
 add_shortcode("listar-noticias", "listar_noticias");
+
+function listar_fecha($atts, $content = null) {
+	extract(shortcode_atts(array(
+                "tag" => '',
+                "month" => '',
+		"year" => ''
+        ), $atts));
+	$myposts = get_posts('monthnum='.$month.'&year=' . $year . '&order=DESC&orderby=date&tag='.$tag);
+        
+        foreach($myposts as $post) :
+        	setup_postdata($post);
+        	$list.='<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+		
+		if ( has_post_thumbnail() )
+		{
+			// the current post has a thumbnail
+			$list.='<p style="float:left; margin-right: 1em;">' . get_the_post_thumbnail( array(130,185) ) . '</p>';
+		}
+		
+		$list.='<p>' . get_the_excerpt() . '</p>';
+        endforeach;
+        wp_reset_query();
+        return $list;
+}
+add_shortcode("listar-fecha", "listar_fecha");
 
 /* Eliminamos el meta generator del header */
 remove_action('wp_head', 'wp_generator');
