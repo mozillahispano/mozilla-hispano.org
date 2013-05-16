@@ -79,7 +79,9 @@
                <!-- Descargas -->
 		
 		<h3 id="descargas">Descargas</h3>
-                <a href="/productos">Descarga</a> los programas de mozilla.        
+                <p class="boletin">
+                    <a href="/productos">Descarga</a> los programas de mozilla.
+                </p>       
 			
 		<!-- Artículos destacados -->
 		
