@@ -75,6 +75,11 @@
 			<?php } ?>
 
 			<?php endif; ?>
+                
+               <!-- Descargas -->
+		
+		<h3 id="descargas">Descargas</h3>
+                <a href="/productos">Descarga</a> los programas de mozilla.        
 			
 		<!-- Artículos destacados -->
 		

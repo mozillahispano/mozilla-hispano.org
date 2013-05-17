@@ -60,7 +60,7 @@ get_header(); ?>
 		</div>
 		
 		<div id="ultimas-noticias">
-			<h2>Artículos</h2>
+                    <h2><a href="http://www.mozilla-hispano.org/etiqueta/labs/feed/"><img src="/wp-content/themes/mozillahispano2/img/feed.png" alt="feed" /></a> Artículos</h2>
 			<?php 
 				query_posts('tag=labs&posts_per_page=5');
 				if (have_posts()) : ?>
