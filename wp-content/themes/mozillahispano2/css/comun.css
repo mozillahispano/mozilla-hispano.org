@@ -32,7 +32,7 @@ body {
 }
 
 /* Fonts */
-/* Importado en http://www.mozilla.org/tabzilla/media/css/tabzilla.css */
+/* Importado en //mozorg.cdn.mozilla.net/media/css/tabzilla-min.css */
 .open-sans {
 	font-family: 'Open Sans',sans-serif;
 }
@@ -423,6 +423,12 @@ input.text {
 	padding-left: 79px;
 }
 
+#barra h3#descargas {
+	background: url("../img/downloads.png") no-repeat scroll 10px;
+	height: 57px;
+	line-height: 57px;
+	padding-left: 79px;
+}
 #barra dl dt {
 	font-size: 1.5em;
 	margin: 1em 0 0.5em 1em;

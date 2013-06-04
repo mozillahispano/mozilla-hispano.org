@@ -53,9 +53,11 @@ $temp= <<<PINTA
 						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
-								<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
-                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+                                                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+                                                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+                                                                <li><a href="/documentacion/Proyectos">Proyectos</a></li>
+                                                                <li><a href="/documentacion/Tareas">Tareas</a></li>
+                                                                <li><a href="/documentacion/Reuniones">Reuniones</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -132,7 +134,7 @@ $temp= <<<PINTA
 	</div>
 </div>
 
-<script type='text/javascript' src='//mozilla.org/es/tabzilla/media/js/tabzilla.js'></script>
+<script type="text/javascript" src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
 tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
 
@@ -163,7 +165,7 @@ $temp= <<<PINTA
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
 
-	<link type="text/css" rel="stylesheet" href="//mozilla.org/tabzilla/media/css/tabzilla.css" />
+	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
 
 PINTA;
