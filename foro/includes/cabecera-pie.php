@@ -99,13 +99,14 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Noticias">Noticias</a></li>
 				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
 				<li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>               
 				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
-<script type='text/javascript' src='https://www.mozilla.org/tabzilla/media/js/tabzilla.js'></script>
+<script type='text/javascript' src='//mozilla.org/es/tabzilla/media/js/tabzilla.js'></script>
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
 tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
 
@@ -136,7 +137,7 @@ $temp= <<<PINTA
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
 
-	<link type="text/css" rel="stylesheet" href="https://www.mozilla.org/tabzilla/media/css/tabzilla.css"  />
+	<link type="text/css" rel="stylesheet" href="//mozilla.org/tabzilla/media/css/tabzilla.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
 
 PINTA;

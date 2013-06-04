@@ -1,0 +1,512 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Users\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-02 17:56+0330\n"
+"PO-Revision-Date: \n"
+"Last-Translator: mostafa <mostafa.s1990@gmail.com>\n"
+"Language-Team: Persian Wordpress <Mostafa.s1990@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Persian\n"
+"X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: F:\\Program Files\\apserv\\AppServ\\www\\wordpress\\wp-content\\plugins\\email-users\n"
+"X-Poedit-SearchPath-0: F:\\Program Files\\apserv\\AppServ\\www\\wordpress\\wp-content\\plugins\\email-users\n"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:77
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:99
+msgid "[%BLOG_NAME%] A post of interest: \"%POST_TITLE%\""
+msgstr "[%BLOG_NAME%] یک نوشته با نام: \"%POST_TITLE%\""
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:81
+msgid "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgstr "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:102
+msgid "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgstr "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:196
+msgid "Notify users about this post"
+msgstr "آگاهی کاربران درباره این نوشته"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:206
+msgid "Notify users about this page"
+msgstr "آگاهی کاربران درباره این صفحه"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:219
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:220
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:42
+msgid "Email Users"
+msgstr "ایمیل کاربران"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:229
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:230
+msgid "Email"
+msgstr "پست الکترونیک"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:239
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:240
+msgid "Send to user(s)"
+msgstr "ارسال به کاربران"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:247
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:248
+msgid "Send to group(s)"
+msgstr "ارسال گروهی"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:262
+msgid "Email Preferences"
+msgstr "تنظیمات ایمیل"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:274
+msgid "Accept to recieve post or page notification emails"
+msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:280
+msgid "Accept to recieve emails sent to multiple recipients (but still accept emails sent only to me)"
+msgstr "پذیرفتن چندگانه ایمیل های ارسالی به گیرنده ها"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:22
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:22
+msgid "You are not allowed to send emails to user groups."
+msgstr "شما جازه ندارید به کاربران ایمیل گروهی ارسال کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:47
+msgid "Write an email to user groups"
+msgstr "نوشتن ایمیل برای گروهی از کاربران."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:51
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:78
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:69
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:52
+msgid "Please correct the errors displayed above and try again."
+msgstr "لطفا خطا را در بالا مشاهده کنید, سپس دوباره امتحان کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:61
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:78
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:62
+msgid "Mail format"
+msgstr "قالب ایمیل"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:63
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:39
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:81
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:64
+msgid "HTML"
+msgstr "اچ تی ام ال"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:64
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:40
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:82
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:65
+msgid "Plain text"
+msgstr "متن ساده"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:68
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:94
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:69
+msgid "Sender"
+msgstr "ارسال کننده"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:72
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:98
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:73
+msgid "Recipients"
+msgstr "گیرنده"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:74
+msgid "You can select multiple groups by pressing the CTRL key."
+msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:76
+msgid "Only the groups having at least one user that accepts group mails appear here."
+msgstr "با انتخاب یک گروه, ایمیل به همه کاربران آن ارسال میشود."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:85
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:111
+msgid "Role"
+msgstr "وظیفه"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:94
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:133
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:161
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:99
+msgid "Subject"
+msgstr "موضوع"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:98
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:137
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:165
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:103
+msgid "Message"
+msgstr "پیغام"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:105
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:145
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:110
+msgid "Send Email"
+msgstr "ارسال ایمیل"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:22
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:22
+msgid "You are not allowed to notify users about posts and pages."
+msgstr "شما اجازه آگاهی دادن به کاربران برای نوشته و برگه ها را ندارید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:27
+msgid "Trying to notify of a post without passing the post id !"
+msgstr "دوباره امتحان کنید برای آگاهی نوشته های گذشته!"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:74
+msgid "Notify users of a post or page"
+msgstr "اطلاع کاربران از یک نوشته با برگه"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:91
+msgid "Mail will be sent as:"
+msgstr "ایمیل ارسال شود به:"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:100
+msgid "Use CTRL key to select/deselect multiple items"
+msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:102
+msgid "The users that did not agree to recieve notifications do not appear here."
+msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:124
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:90
+msgid "User"
+msgstr "کاربر"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:22
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_test_mail.php:22
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_set_options.php:22
+msgid "You are not allowed to change the options of this plugin."
+msgstr "شما اجازه تغییر در تنظیمات این افزونه را ندارید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:29
+msgid "It looks like you have an old version of the plugin activated. Please deactivate the plugin and activate it again to complete the installation of the new version."
+msgstr "It looks like you have an old version of the plugin activated. Please deactivate the plugin and activate it again to complete the installation of the new version."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:32
+msgid "Installed version:"
+msgstr "نسخه نصب شده:"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:33
+msgid "Current version:"
+msgstr "نسخه جاری:"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:46
+msgid "Plugin's home page"
+msgstr "خانه این افزونه"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:57
+msgid "EN"
+msgstr "EN"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:83
+msgid "Send mails as plain text or HTML by default?"
+msgstr "ارسال ایمیل به طور متن ساده یا HTML به طور پیشفرض؟"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:87
+msgid "BCC limit"
+msgstr "حد و اندازه BCC"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:90
+msgid "None"
+msgstr "هیچ کدام"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:92
+msgid "Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field)."
+msgstr "اگر در ارسال ایمیل به تعداد زیادی از کاربران مشکل دارید, سعی کنید 30 را انتخاب کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:97
+msgid "Default notification subject"
+msgstr "عنوان پیشفرض اطلاع:"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:105
+msgid "Default notification body"
+msgstr "متن پیشفرض اطلاع"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:113
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:121
+msgid "Notification mail preview (updated when the options are saved)"
+msgstr "مشاهده ایمیل (تنظیمات ذخیره و به روز رسانی هستند)"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:131
+msgid "No post found in the blog in order to build a notification preview."
+msgstr "نوشته در این وبلاگ برای مشاهده اگاهی پیدا نشد."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:175
+msgid "Send test notification to yourself"
+msgstr "ارسال ایمیل آزمایشی به خود شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:183
+msgid "Variables you can include in the subject or body templates"
+msgstr "متغیرهای شما شامل عنوان و قالب متن میباشد"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:189
+msgid "the link to the blog"
+msgstr "پیوند به وبلاگ شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:193
+msgid "the blog's name"
+msgstr "نام وبلاگ شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:197
+msgid "the wordpress user name of the person sending the mail"
+msgstr "نام کاربری در وردپرس برای ارسال شخصی"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:201
+msgid "the title of the post you want to highlight"
+msgstr "عنوان نوشته شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:205
+msgid "the excerpt of the post you want to highlight"
+msgstr "گلچین نوشته های شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:209
+msgid "the link to the post you want to highlight"
+msgstr "آدرس پیوند نوشته شما"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:215
+msgid "Email Users uses capabilities to define what users are allowed to do. Below is a list of the capabilities used by the plugin and the default user role allowed to make these actions."
+msgstr "Email Users uses capabilities to define what users are allowed to do. Below is a list of the capabilities used by the plugin and the default user role allowed to make these actions."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:215
+msgid "If you want to change the roles having those capabilities, you should use the plugin:"
+msgstr "در این افزونه شما میتوانید وظیفه و استعدادشان را تغییر دهید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:220
+msgid "Capability"
+msgstr "قابلیت"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:221
+msgid "Description"
+msgstr "توضیح"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:222
+msgid "Default roles"
+msgstr "وظیفه"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:228
+msgid "Access this options page."
+msgstr "دستیابی به تنظیمات این صفحه."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:229
+msgid "Administrators only."
+msgstr "فقط مدیریت"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:233
+msgid "Send an email to a single user."
+msgstr "ارسال ایمیل به یک کاربر."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:234
+msgid "Administrators, editors, authors and contributors."
+msgstr ".مدیر, ویرایشگر و نویسنده وشرکت کننده"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:238
+msgid "Send an email to various users at the same time."
+msgstr "ارسال یک ایمیل به کاربران گوناگون در یک وقت."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:239
+msgid "Administrators, editors and authors."
+msgstr "مدیر, ویرایشگر و نویسنده"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:243
+msgid "Notify users of new posts."
+msgstr "آگاهی کاربر از نوشته جدید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:244
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:249
+msgid "Administrators and editors."
+msgstr "مدیر و ویرایش گر."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:248
+msgid "Send an email to user groups."
+msgstr "ارسال ایمیل به گروهی از کاربران."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:24
+msgid "You are not allowed to send emails."
+msgstr "شما نمیتوانید اجازه بدهید در ارسال ایمیل ها."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:30
+msgid "Send an email"
+msgstr "ارسال ایمیل"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:36
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:38
+msgid "Send an email to one or more individual users"
+msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:45
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_overview.php:47
+msgid "Send an email to one or more user groups"
+msgstr "ارسال ایمیل به گروهی از کاربران."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:41
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:36
+msgid "You must specify the mail format."
+msgstr "شما باید قالب ایمیل را تعیید کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:47
+msgid "You must select at least a role."
+msgstr "شما باید دست کم یک وظیفه انتخاب کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:53
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:47
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:48
+msgid "You must enter a subject."
+msgstr "باید حتما موضوع ایمیل را وارد کنید"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:59
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:54
+msgid "You must enter some content."
+msgstr "باید حتما متن ایمیل را وارد کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:80
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:76
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_test_mail.php:70
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:75
+msgid "No recipients were found."
+msgstr "گیرنده چیزی دریافت نکرد."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_group_mail.php:91
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:82
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:86
+#, php-format
+msgid "Notification sent to %s user(s)."
+msgstr "ایمیل اطلاع ارسال شد به %s کاربر."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:40
+msgid "You must select at least a recipient."
+msgstr "شما باید انتخاب کنید دسته کم یک گیرنده."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_notify_mail.php:53
+msgid "You must enter a content."
+msgstr "شما باید متحوا را وارد کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_test_mail.php:76
+#, php-format
+msgid "Test email sent to %s."
+msgstr "ایمیل آزمایش ارسال شد به: %s"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:23
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:23
+msgid "You are not allowed to send emails to users."
+msgstr "شما اجازه ندارید به کاربران ایمیل ارسال کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_send_user_mail.php:42
+msgid "You must enter at least a recipient."
+msgstr "شما باید دست کم یک گیرنده وارد کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_set_options.php:55
+msgid "Options set successfully"
+msgstr "تنظیمات با موفقیت ذخیره شد"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:48
+msgid "Write an email to individual users"
+msgstr "نوشتن ایمیل برای کاربران"
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:77
+msgid "You are only allowed to select one user at a time."
+msgstr "شما فعلا یک کاربر را میتوانید انتخاب کنید."
+
+#: F:\Program
+#: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:79
+msgid "You can select multiple users by pressing the CTRL key."
+msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
+

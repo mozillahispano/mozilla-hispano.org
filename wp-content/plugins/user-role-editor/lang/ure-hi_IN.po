@@ -1,0 +1,764 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:46+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: Team Outshine <ash.pr@outshinesolutions.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hindi\n"
+"X-Poedit-Country: INDIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "उपयोगकर्ता भूमिका संपादक 3.0 WordPress के या नए की आवश्यकता है."
+
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "अपडेट करें!"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "उपयोगकर्ता भूमिका संपादक PHP 5.0 या नए की आवश्यकता है.s"
+
+#: ../user-role-editor.php:76
+msgid "Only"
+msgstr "केवल"
+
+#: ../user-role-editor.php:76
+msgid "is allowed to use"
+msgstr "उपयोग करने की अनुमति दी"
+
+#: ../user-role-editor.php:82
+#: ../user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "उपयोगकर्ता भूमिका संपादक"
+
+#: ../user-role-editor.php:223
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: ../user-role-editor.php:233
+#: ../includes/ure-options.php:235
+msgid "Changelog"
+msgstr "Changelog"
+
+#: ../user-role-editor.php:280
+msgid "Capabilities"
+msgstr "क्षमताएं"
+
+#: ../includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "त्रुटि हुई है. लॉग फ़ाइल की जाँच करें."
+
+#: ../includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "डेटाबेस आपरेशन त्रुटि. लॉग फ़ाइल की जाँच करें."
+
+#: ../includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "बैकअप डेटानहीं है. यह पहली भूमिका डेटा अद्यतन करने से पहले स्वचालित रूप से बनाया जाता है."
+
+#: ../includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "बैकअप रिकॉर्ड वर्तमान भूमिका क्षमताओं के लिए बनाया जाता है"
+
+#: ../includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "त्रुटि: भूमिका नाम लैटिन अक्षर और अंक ही होना चाहिए!"
+
+#: ../includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr "भूमिका %s पहले से मौजूद है"
+
+#: ../includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "त्रुटि आपरेशन बनाते नई भूमिका के दौरान सामना करना पड़ा है"
+
+#: ../includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "भूमिका सफलतापूर्वक बनाई गई है %s"
+
+#: ../includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "भूमिका हटा आपरेशन के दौरान त्रुटि का सामना करना पड़ा"
+
+#: ../includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "भूमिका%s को सफलतापूर्वक नष्ट कर दिया है"
+
+#: ../includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "डिफ़ॉल्ट भूमिका बदलने के ऑपरेशन के दौरान त्रुटि का सामना करना पड़ा"
+
+#: ../includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "नए उपयोगकर्ताओं के लिए डिफ़ॉल्ट भूमिका%s करने के लिए सेट कर दिया जाता है "
+
+#: ../includes/ure-lib.php:489
+msgid "Editor"
+msgstr "संपादक"
+
+#: ../includes/ure-lib.php:490
+msgid "Author"
+msgstr "लेखक"
+
+#: ../includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "Contributor"
+
+#: ../includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "ग्राहक"
+
+#: ../includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "विषय स्विच करें"
+
+#: ../includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "संपादन विषय"
+
+#: ../includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "प्लगिन सक्रिय करें"
+
+#: ../includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "संपादित करें प्लगिन"
+
+#: ../includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "उपयोगकर्ताओं को संपादित करें"
+
+#: ../includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "फ़ाइलों को संपादित करें"
+
+#: ../includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "विकल्पों को शासन"
+
+#: ../includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "मध्यम टिप्पणी"
+
+#: ../includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "श्रेणियां प्रबंधित करें"
+
+#: ../includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "लिंक प्रबंधित करें"
+
+#: ../includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "फ़ाइलें अपलोड करें"
+
+#: ../includes/ure-lib.php:505
+msgid "Import"
+msgstr "आयात"
+
+#: ../includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "अनफ़िल्टर्ड एचटीएमएल"
+
+#: ../includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "प्रविष्टियाँ संपादित करें"
+
+#: ../includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "दूसरों की प्रविष्टियाँ संपादित करें"
+
+#: ../includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "प्रकाशित पोस्ट को संपादित करें"
+
+#: ../includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "पोस्ट प्रकाशित करें"
+
+#: ../includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "पृष्ठों को संपादित"
+
+#: ../includes/ure-lib.php:512
+msgid "Read"
+msgstr "पढ़ना"
+
+#: ../includes/ure-lib.php:513
+msgid "Level 10"
+msgstr " स्तर  10"
+
+#: ../includes/ure-lib.php:514
+msgid "Level 9"
+msgstr " स्तर 9"
+
+#: ../includes/ure-lib.php:515
+msgid "Level 8"
+msgstr " स्तर 8"
+
+#: ../includes/ure-lib.php:516
+msgid "Level 7"
+msgstr " स्तर 7"
+
+#: ../includes/ure-lib.php:517
+msgid "Level 6"
+msgstr " स्तर 6"
+
+#: ../includes/ure-lib.php:518
+msgid "Level 5"
+msgstr " स्तर 5"
+
+#: ../includes/ure-lib.php:519
+msgid "Level 4"
+msgstr " स्तर 4"
+
+#: ../includes/ure-lib.php:520
+msgid "Level 3"
+msgstr " स्तर 3"
+
+#: ../includes/ure-lib.php:521
+msgid "Level 2"
+msgstr " स्तर 2"
+
+#: ../includes/ure-lib.php:522
+msgid "Level 1"
+msgstr " स्तर 1"
+
+#: ../includes/ure-lib.php:523
+msgid "Level 0"
+msgstr " स्तर 0"
+
+#: ../includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "दूसरों के पृष्ठों को संपादित करें"
+
+#: ../includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "प्रकाशित पृष्ठों को संपादित करें"
+
+#: ../includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "पृष्ठों को प्रकाशित"
+
+#: ../includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "पृष्ठों को हटा"
+
+#: ../includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "दूसरों के पृष्ठों को हटाएँ"
+
+#: ../includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "प्रकाशित पृष्ठों को हटाएँ"
+
+#: ../includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "प्रविष्टियाँ हटाएँ"
+
+#: ../includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "दूसरों की प्रविष्टियाँ हटाएँ"
+
+#: ../includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "प्रकाशित पोस्ट हटाएँ"
+
+#: ../includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "निजी पोस्ट हटाएँ"
+
+#: ../includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "निजी पोस्ट को संपादित करें"
+
+#: ../includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "निजी पोस्ट पढ़ें"
+
+#: ../includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "निजी पृष्ठों को हटाएँ"
+
+#: ../includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "निजी पृष्ठों को संपादित करें"
+
+#: ../includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "निजी पृष्ठों पढ़ें"
+
+#: ../includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "उपयोगकर्ताओं को हटाएँ"
+
+#: ../includes/ure-lib.php:540
+msgid "Create users"
+msgstr "उपयोगकर्ता बनाएँ"
+
+#: ../includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "अपलोड अनफ़िल्टर्ड"
+
+#: ../includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "संपादन डैशबोर्ड"
+
+#: ../includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "अपडेट प्लगिन"
+
+#: ../includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "प्लगिन हटाएँ"
+
+#: ../includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "plugins स्थापित"
+
+#: ../includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "अपडेट विषय"
+
+#: ../includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "विषय स्थापित"
+
+#: ../includes/ure-lib.php:548
+msgid "Update core"
+msgstr "कोर अपडेट"
+
+#: ../includes/ure-lib.php:549
+msgid "List users"
+msgstr "उपयोगकर्ताओं की सूची"
+
+#: ../includes/ure-lib.php:550
+msgid "Remove users"
+msgstr "उपयोगकर्ताओं को निकालना"
+
+#: ../includes/ure-lib.php:551
+msgid "Add users"
+msgstr "उपयोगकर्ता जोड़ें"
+
+#: ../includes/ure-lib.php:552
+msgid "Promote users"
+msgstr "उपयोगकर्ता को बढ़ावा देना"
+
+#: ../includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr "विषय विकल्प संपादित करें"
+
+#: ../includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr "विषय हटाएँ"
+
+#: ../includes/ure-lib.php:555
+msgid "Export"
+msgstr "निर्यात"
+
+#: ../includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "त्रुटि: क्षमता के नाम लैटिन अक्षर और अंक ही होना चाहिए!"
+
+#: ../includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "क्षमता%s सफलतापूर्वक जोड़ा जाता है"
+
+#: ../includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr "क्षमता%s पहले से मौजूद है"
+
+#: ../includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "रुटि!आपको इस क्षमता को नष्ट करने की अनुमति नहीं है: %s!"
+
+#: ../includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "क्षमता%s सफलतापूर्वक निकाल दिया जाता है"
+
+#: ../includes/ure-lib.php:889
+msgid "Help"
+msgstr "मदद"
+
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "कोई नहीं"
+
+#: ../includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr "नाम खाली नहीं हो सकता!"
+
+#: ../includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr "नाम लैटिन अक्षर और अंक ही होना चाहिए!"
+
+#: ../includes/ure-role-edit.php:110
+#: ../includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "भूमिका हटाएँ"
+
+#: ../includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "डिफ़ॉल्ट भूमिका बदलें"
+
+#: ../includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr "बैकअप प्रतिलिपि से भूमिकाओं को पुनर्स्थापित करें. सावधान रहो, बैकअप बनाया गया था जब आप ure 1 बार शुरू कर दिया. आपने जो परिवर्तन किए के बाद कि खो जाएगा"
+
+#: ../includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "चेतावनी!सावधान रहो - महत्वपूर्ण क्षमता को हटाने के लिए कुछ प्लगइन या अन्य कस्टम कोड दुर्घटना सकता है"
+
+#: ../includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "जारी रखने के लिए पुष्टि करें."
+
+#: ../includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "भूमिका \"%s\" अद्यतन: जारी रखने के लिए कृपया पुष्टि करें."
+
+#: ../includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "भूमिका का चयन करें और अपनी क्षमताओं की सूची परिवर्तन"
+
+#: ../includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "भूमिका का चयन करें:"
+
+#: ../includes/ure-role-edit.php:175
+#: ../includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "मानव पठनीय रूप में क्षमताओं दिखाएँ"
+
+#: ../includes/ure-role-edit.php:184
+#: ../includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr "पदावनत क्षमताओं दिखाएँ"
+
+#: ../includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "यदि जाँच की, तो इस नेटवर्क के सभी साइटों के लिए कार्रवाई लागू"
+
+#: ../includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr "सभी साइटों के लिए लागू"
+
+#: ../includes/ure-role-edit.php:205
+#: ../includes/ure-user-edit.php:105
+#, fuzzy
+msgid "Core capabilities:"
+msgstr "क्षमताएं"
+
+#: ../includes/ure-role-edit.php:268
+#: ../includes/ure-user-edit.php:167
+#, fuzzy
+msgid "Custom capabilities:"
+msgstr "क्षमताएं"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "अपडेट"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "परिवर्तन सहेजें"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "रद्द करना"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "सहेजे गए परिवर्तन रद्दनहीं करें"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "रीसेट करें"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "बैकअप प्रतिलिपि से भूमिकाओं को पुनर्स्थापित करें"
+
+#: ../includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "नई भूमिका में जोड़ें"
+
+#: ../includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr "नाम:"
+
+#: ../includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr "प्रतिलिपि बनाएँ:"
+
+#: ../includes/ure-role-edit.php:353
+#: ../includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "जोड़ना"
+
+#: ../includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "नये उपयोगकर्ता भूमिका जोड़ें"
+
+#: ../includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "नया उपयोगकर्ता के लिए डिफ़ॉल्ट भूमिका"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "परिवर्तन"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "डिफ़ॉल्ट उपयोगकर्ता भूमिका के रूप में सेट करें"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "हटाना"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "उपयोगकर्ता भूमिका को हटाएँ"
+
+#: ../includes/ure-role-edit.php:377
+#: ../includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr "नई क्षमता जोड़ें"
+
+#: ../includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr "क्षमता निकालें"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr "हटाना"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr "उपयोगकर्ता क्षमता निकालें"
+
+#: ../includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "प्रयोक्ता \"%s\" अद्यतन: की पुष्टि जारी रखने के लिए कृपया"
+
+#: ../includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr "उपयोगकर्ता के लिए क्षमताओं को बदलें"
+
+#: ../includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "भूमिका"
+
+#: ../includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr "इस उपयोगकर्ता के लिए क्षमताओं जोड़ें:"
+
+#: ../includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "उपयोगकर्ता भूमिकाएँ डेटा बैकअप से बहाल कर रहे हैं."
+
+#: ../includes/ure-options.php:130
+msgid "Error: "
+msgstr "त्रुटि:"
+
+#: ../includes/ure-options.php:130
+#: ../includes/ure-options.php:146
+msgid "Role"
+msgstr "भूमिका"
+
+#: ../includes/ure-options.php:130
+msgid "does not exist"
+msgstr "मौजूद नहीं है"
+
+#: ../includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "सफलतापूर्वक अपडेट किया"
+
+#: ../includes/ure-options.php:154
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+#: ../includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "क्षमताओं को सफलतापूर्वक नवीनीकृत कर रहे हैं"
+
+#: ../includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "इस प्लगइन के बारे में:"
+
+#: ../includes/ure-options.php:233
+msgid "Author's website"
+msgstr "लेखक की वेबसाइट"
+
+#: ../includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "प्लगइन वेबपेज"
+
+#: ../includes/ure-options.php:236
+msgid "FAQ"
+msgstr "अक्सर पूछे जाने वाले प्रश्न"
+
+#: ../includes/ure-options.php:237
+msgid "Greetings"
+msgstr "बधाई"
+
+#: ../includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "नमस्ते:"
+
+#: ../includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "यह मेरे लिए है, लेखक"
+
+#: ../includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "बेलोरूसि अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr "ब्राजील के अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:263
+#, fuzzy
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "ब्राजील के अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "चीनी अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "डच अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "फिनिश अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:267
+#: ../includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "फ्रेंच अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "जर्मन अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:270
+#: ../includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr "हिब्रू अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr ""
+
+#: ../includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "For the help with Hungarian translation"
+
+#: ../includes/ure-options.php:274
+#: ../includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "इतालवी अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "जापानी अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr "लिथुआनियाई अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:278
+#: ../includes/ure-options.php:279
+#: ../includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr "फारसी अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:281
+#: ../includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "पोलिश अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:283
+#: ../includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "स्पेनिश अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr "अपडेट स्वीडिश अनुवाद के लिए"
+
+#: ../includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "स्वीडिश अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "तुर्की अनुवाद के साथ मदद के लिए"
+
+#: ../includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "प्रशासक भूमिका को छुपाने के लिए कोड "
+
+#: ../includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr "कोड वृद्धि सुझाव के लिए"
+
+#: ../includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "क्या आप अपनी साइट के लिए यहाँ के लिंक के साथ अपना नाम देखना चाहते हैं? आपका स्वागत है! अनुवाद और नए विचारों के साथ तुम्हारी मदद की बहुत सराहना की है."
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "اشکال در خواندن لیست دسترسیهای نقش"

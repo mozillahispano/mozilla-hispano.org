@@ -1,0 +1,746 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FancyBox for WordPress Español\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/fancybox-for-wordpress\n"
+"POT-Creation-Date: 2012-07-03 15:24:31+00:00\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jose Pardilla <info@josepardilla.com>\n"
+"Language-Team: Moskis <jose@moskis.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+
+#: admin.php:11
+msgid "Fancybox for WordPress (version %s)"
+msgstr "Fancybox for WordPress (versión %s)"
+
+#: admin.php:22
+msgid "Info"
+msgstr "Informaci&oacute;n"
+
+#: admin.php:23
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: admin.php:24
+msgid "Animations"
+msgstr "Animaciones"
+
+#: admin.php:25
+msgid "Behaviour"
+msgstr "Comportamiento"
+
+#: admin.php:26
+msgid "Galleries"
+msgstr "Galerías"
+
+#: admin.php:27
+msgid "Miscellaneous"
+msgstr "Miscelánea"
+
+#: admin.php:28
+msgid "Extra Calls"
+msgstr "Llamadas Extra"
+
+#: admin.php:29
+msgid "Troubleshooting"
+msgstr "Ayuda"
+
+#: admin.php:30
+#: lib/admin-tab-support.php:1
+msgid "Support"
+msgstr "Soporte"
+
+#: admin.php:31
+#: lib/admin-tab-uninstall.php:1
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: admin.php:77
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: admin.php:84
+msgid "Revert to defaults"
+msgstr "Restaurar valores por defecto"
+
+#: admin.php:92
+msgid "If you use FancyBox and like it, buy the author a beer!"
+msgstr "Si usas FancyBox y te gusta, c&oacute;mprale una cerveza al autor!"
+
+#: admin.php:109
+msgid "The author of this WordPress Plugin also likes beer :P"
+msgstr "Al autor de este plugin para WordPress tambi&eacute;n le gusta la cerveza :P"
+
+#: admin.php:119
+msgid "Follow me on Twitter for more WordPress Plugins and Themes"
+msgstr "S&iacute;gueme en Twitter para m&aacute;s Plugins y Temas de WordPress"
+
+#: fancybox.php:414
+msgid "Settings"
+msgstr "Opciones"
+
+#: lib/admin-tab-animations.php:1
+msgid "Animation Settings <span style=\"color:green\">(basic)</span>"
+msgstr "Opciones de Animación <span style=\"color:green\">(básico)</span>"
+
+#: lib/admin-tab-animations.php:3
+msgid "These settings control the animations when opening and closing Fancybox, and the optional easing effects."
+msgstr "Estas opciones controlan las animaciones al abrir y cerrar Fancybox, y los efectos opcionales de animación."
+
+#: lib/admin-tab-animations.php:9
+msgid "Zoom Options"
+msgstr "Opciones de Zoom"
+
+#: lib/admin-tab-animations.php:15
+msgid "Change content transparency during zoom animations (default: on)"
+msgstr "Animar opacidad durante el efecto de zoom (por defecto: activado)"
+
+#: lib/admin-tab-animations.php:27
+msgid "Speed in miliseconds of the zooming-in animation (default: 500)"
+msgstr "Velocidad en milisegundos del efecto de Zoom In (por defecto: 500)"
+
+#: lib/admin-tab-animations.php:39
+msgid "Speed in miliseconds of the zooming-out animation (default: 500)"
+msgstr "Velocidad en milisegundos del efecto de Zoom Out (por defecto: 500)"
+
+#: lib/admin-tab-animations.php:51
+msgid "Speed in miliseconds of the animation when navigating thorugh gallery items (default: 300)"
+msgstr "Velocidad en milisegundos de la animación al navegar entre los elementos de una galería (por defecto: 300)"
+
+#: lib/admin-tab-animations.php:59
+msgid "Transition Type"
+msgstr "Tio de Transición"
+
+#: lib/admin-tab-animations.php:73
+msgid "Transition type when opening FancyBox. (default: fade)"
+msgstr "Tipo de transición al abrir FancyBox. (por defecto: fade)"
+
+#: lib/admin-tab-animations.php:86
+msgid "Transition type when closing FancyBox. (default: fade)"
+msgstr "Tipo de transición al cerrar FancyBox. (por defecto: fade)"
+
+#: lib/admin-tab-animations.php:94
+msgid "Easing"
+msgstr "Efecto de Animación"
+
+#: lib/admin-tab-animations.php:100
+msgid "Activate easing (default: off)"
+msgstr "Activar efecto de animación (por defecto: desactivado)"
+
+#: lib/admin-tab-animations.php:103
+msgid "(Will load one additional javascript file, 8KB)"
+msgstr "(Ejecutará un archivo JavaScript adicional, 8KB)"
+
+#: lib/admin-tab-animations.php:117
+msgid "Easing method when opening FancyBox. (default: easeOutBack)"
+msgstr "Efecto de animación al abrir FancyBox. (por defecto: easeOutBack)"
+
+#: lib/admin-tab-animations.php:120
+msgid "(Requires opening transition type to be set to elastic)"
+msgstr "(Requiere el tipo de transición de inicio elástico)"
+
+#: lib/admin-tab-animations.php:132
+msgid "Easing method when closing FancyBox. (default: easeInBack)"
+msgstr "Efecto de animación al cerrar FancyBox. (por defecto: easeInBack)"
+
+#: lib/admin-tab-animations.php:135
+msgid "(Requires closing transition type to be set to elastic)"
+msgstr "(Requiere el tipo de transición de cerrado elástico)"
+
+#: lib/admin-tab-animations.php:147
+msgid "Easing method when navigating through gallery items. (default: easeInOutQuart)"
+msgstr "Efecto de animación al navegar por galerías. (por defecto: easoInOutQuart)"
+
+#: lib/admin-tab-animations.php:150
+msgid "(There are 30 different easing methods, the first ones are the most boring. You can test them <a href=\"http://commadot.com/jquery/easing.php\" target=\"_blank\">here</a> or <a href=\"http://hosted.zeh.com.br/mctween/animationtypes.html\" target=\"_blank\">here</a>)"
+msgstr "(Hay 30 efectos diferentes, los primeros son los más aburridos. Puedes probarlos <a href=\"http://commadot.com/jquery/easing.php\" target=\"_blank\">aquí</a> o <a href=\"http://hosted.zeh.com.br/mctween/animationtypes.html\" target=\"_blank\">aquí</a>)"
+
+#: lib/admin-tab-appearance.php:1
+msgid "Appearance Settings <span style=\"color:green\">(basic)</span>"
+msgstr "Opciones de Apariencia <span style=\"color:green\">(básico)</span>"
+
+#: lib/admin-tab-appearance.php:3
+msgid "These setting control how Fancybox looks, they let you tweak color, borders and position of elements, like the image title and closing buttons."
+msgstr "Estas opciones controlan el aspecto general de FancyBox, te permiten ajustar los colores, bordes y posición de elementos como el título de la imagen y el botón de cerrar."
+
+#: lib/admin-tab-appearance.php:9
+msgid "Border"
+msgstr "Borde"
+
+#: lib/admin-tab-appearance.php:15
+msgid "Show Border (default: off)"
+msgstr "Mostrar Borde (por defecto: desactivado)"
+
+#: lib/admin-tab-appearance.php:22
+msgid "HTML color of the border (default: #BBBBBB)"
+msgstr "Color HTML del borde (por defecto: #BBBBBB)"
+
+#: lib/admin-tab-appearance.php:32
+msgid "Close Button"
+msgstr "Botón de Cerrar"
+
+#: lib/admin-tab-appearance.php:38
+msgid "Show Close button (default: on)"
+msgstr "Mostrar el Botón de Cerrar (por defecto: activado)"
+
+#: lib/admin-tab-appearance.php:43
+msgid "Close button position:"
+msgstr "Posición del Botón de Cerrar:"
+
+#: lib/admin-tab-appearance.php:46
+msgid "Left"
+msgstr "Izquierda"
+
+#: lib/admin-tab-appearance.php:51
+msgid "Right (default)"
+msgstr "Derecha (por defecto)"
+
+#: lib/admin-tab-appearance.php:56
+msgid "Bottom"
+msgstr "Abajo"
+
+#: lib/admin-tab-appearance.php:61
+msgid "Top (default)"
+msgstr "Arriba (por defecto)"
+
+#: lib/admin-tab-appearance.php:71
+msgid "Padding"
+msgstr "Margen"
+
+#: lib/admin-tab-appearance.php:77
+msgid "HTML color of the padding (default: #FFFFFF)"
+msgstr "Color HTML del margen (por defecto: #FFFFFF)"
+
+#: lib/admin-tab-appearance.php:80
+msgid "(This should be left on #FFFFFF (white) if you want to display anything other than images, like inline or framed content)"
+msgstr "(Esta opción debería dejarse en #FFFFFF (blanco) si vas a mostrar algo que no sean imágenes, como contenido anidado)"
+
+#: lib/admin-tab-appearance.php:84
+msgid "Padding size in pixels (default: 10)"
+msgstr "Tamaño del margen en píxeles (por defecto: 10)"
+
+#: lib/admin-tab-appearance.php:92
+msgid "Overlay Options"
+msgstr "Opciones de Overlay"
+
+#: lib/admin-tab-appearance.php:98
+msgid "Add overlay (default: on)"
+msgstr "Añadir overlay (por defecto: activado)"
+
+#: lib/admin-tab-appearance.php:105
+msgid "HTML color of the overlay (default: #666666)"
+msgstr "Color HTML del overlay (por defecto: #666666)"
+
+#: lib/admin-tab-appearance.php:118
+msgid "Opacity of overlay. 0 is transparent, 1 is opaque (default: 0.3)"
+msgstr "Opacidad del overlay. 0 es transparente, 1 es opaco (por defecto: 0.3)"
+
+#: lib/admin-tab-appearance.php:128
+msgid "Title"
+msgstr "Título"
+
+#: lib/admin-tab-appearance.php:134
+msgid "Show the title (default: on)"
+msgstr "Mostrar el título (por defecto: activado)"
+
+#: lib/admin-tab-appearance.php:141
+msgid "Inside (default)"
+msgstr "Dentro (por defecto)"
+
+#: lib/admin-tab-appearance.php:146
+msgid "Outside"
+msgstr "Fuera"
+
+#: lib/admin-tab-appearance.php:151
+msgid "Over"
+msgstr "Encima"
+
+#: lib/admin-tab-appearance.php:158
+msgid "Title text color (default: #333333)"
+msgstr "Color del título (por defecto #333333)"
+
+#: lib/admin-tab-appearance.php:161
+msgid "(Should contrast with the padding color set above)"
+msgstr "(Debería contrastar con el color del margen establecido más arriba)"
+
+#: lib/admin-tab-appearance.php:172
+msgid "Navigation Arrows"
+msgstr "Flechas de Navegación"
+
+#: lib/admin-tab-appearance.php:178
+msgid "Show the navigation arrows (default: on)"
+msgstr "Mostrar flechas de navegación (por defecto: activado)"
+
+#: lib/admin-tab-behaviour.php:1
+msgid "Behavior Settings <span style=\"color:orange\">(medium)</span>"
+msgstr "Opciones de Comportamiento <span style=\"color:orange\">(medio)</span>"
+
+#: lib/admin-tab-behaviour.php:3
+msgid "The following settings should be left alone unless you know what you are doing."
+msgstr "Las siguientes opciones sólo deberían ser editadas si sabes lo que estás haciendo."
+
+#: lib/admin-tab-behaviour.php:9
+msgid "Auto Resize to Fit"
+msgstr "Ajustar Tamaño"
+
+#: lib/admin-tab-behaviour.php:15
+msgid "Scale images to fit in viewport (default: on)"
+msgstr "Ajusta el tamaño de las imagenes a la ventana del navegador (por defecto: activado)"
+
+#: lib/admin-tab-behaviour.php:23
+msgid "Center on Scroll"
+msgstr "Centrar al hacer Scroll"
+
+#: lib/admin-tab-behaviour.php:29
+msgid "Keep image in the center of the browser window when scrolling (default: on)"
+msgstr "Mantiene la imagen en el centro de la ventana del naegador al hacer scroll (por defecto: activado)"
+
+#: lib/admin-tab-behaviour.php:37
+msgid "Close on Content Click"
+msgstr "Cerrar al hacer click en contenido"
+
+#: lib/admin-tab-behaviour.php:43
+msgid "Close FancyBox by clicking on the image (default: off)"
+msgstr "Cerrar FancyBox al hacer click en la imagen (por defecto: desactivado)"
+
+#: lib/admin-tab-behaviour.php:46
+msgid "(You may want to leave this off if you display iframed or inline content that containts clickable elements - for example: play buttons for movies, links to other pages)"
+msgstr "(Puedes que quieras dejar esta opción desactivada si vas a usar contendido anidado que incluya enlaces - for ejemplo: botones de play, enlaces a otras páginas)"
+
+#: lib/admin-tab-behaviour.php:53
+msgid "Close on Overlay Click"
+msgstr "Cerrar al hacer click en el fondo"
+
+#: lib/admin-tab-behaviour.php:59
+msgid "Close FancyBox by clicking on the overlay sorrounding it (default: on)"
+msgstr "Cerrar FancyBox al hacer click en el fondo (por defecto: activado)"
+
+#: lib/admin-tab-behaviour.php:67
+msgid "Close with &quot;Esc&quot;"
+msgstr "Cerrar con &quot;Esc&quot;"
+
+#: lib/admin-tab-behaviour.php:73
+msgid "Close FancyBox when &quot;Escape&quot; key is pressed (default: on)"
+msgstr "Cerrar Fancybox cuando se pulse la tecla &quot;Escape&quot; (por defecto: activado)"
+
+#: lib/admin-tab-behaviour.php:81
+msgid "Cyclic Galleries"
+msgstr "Galerías Cíclicas"
+
+#: lib/admin-tab-behaviour.php:87
+msgid "This will make galleries cyclic, allowing you to keep pressing next/back (default: off)"
+msgstr "Esta oción generará galerías cíclicas, permitíendote pulsar los botones de navegación indefinidamene (por defecto: desactivado)"
+
+#: lib/admin-tab-behaviour.php:95
+msgid "Mouse Wheel Navigation"
+msgstr "Navegación por rueda del ratón"
+
+#: lib/admin-tab-behaviour.php:101
+msgid "Lets visitors navigate galleries with the mouse wheel  (default: off)"
+msgstr "Permita a los visitantes navegar por las galerías con la rueda del ratón (por defecto: desactivado)"
+
+#: lib/admin-tab-behaviour.php:104
+msgid "(Will load one additional javascript file, 3KB)"
+msgstr "(Ejecutará un archivo JavaScript adicional, 3KB)"
+
+#: lib/admin-tab-calls.php:1
+msgid "Extra FancyBox Calls <span style=\"color:red\">(advanced)</span>"
+msgstr "Llamadas Extra de FancyBox <span style=\"color:red\">(avanzado)</span>"
+
+#: lib/admin-tab-calls.php:3
+msgid "Here you can add as many additional calls to fancybox as you want, with different settings. For example, if you want to use fancybox with iframes or ajax on any specific link, you can configure those calls here without affecting the settings for images."
+msgstr "Aquí  puedes añadir todas las llamadas adicionales a FancyBox que quieras, con distintas opciones. Por ejemplo, si quieres usar FancyBox con iframes o con Ajax en cualquier enlace concreto, aquí puedes configurarlo sin afectar al resto de opciones."
+
+#: lib/admin-tab-calls.php:5
+msgid "For information on the options available you can use here see <a href=\"http://fancybox.net/api\">FancyBox's API & Options page</a>."
+msgstr "Para más información acerca de las opciones que puedes usar en este campo, lee esta página sobre la <a href=\"http://fancybox.net/api\">API y Opciones de FancyBox</a>."
+
+#: lib/admin-tab-calls.php:11
+msgid "Additional FancyBox Calls"
+msgstr "Llamadas Extra de FancyBox"
+
+#: lib/admin-tab-calls.php:17
+msgid "Additional FancyBox Calls (default: off)"
+msgstr "Llamadas Extra de FancyBox (por defecto: desactivado)"
+
+#: lib/admin-tab-calls.php:26
+#: lib/admin-tab-other.php:89
+msgid "Example:"
+msgstr "Ejemplo:"
+
+#: lib/admin-tab-galleries.php:1
+msgid "Gallery Settings <span style=\"color:red\">(advanced)</span>"
+msgstr "Opciones de Galería <span style=\"color:red\">(avanzado)</span>"
+
+#: lib/admin-tab-galleries.php:3
+msgid "Here you can choose if you want the plugin to group all images into a gallery, or make a gallery for each post. You can also define you own jQuery expression if you like."
+msgstr "Aquí puedes elegir si quieres que el plugin agrupe las imágenes en una galería, o hacer una galería para cada entrada. También puedes definir tu propia expresión en jQuery."
+
+#: lib/admin-tab-galleries.php:9
+msgid "Gallery Type"
+msgstr "Tipo de Galería"
+
+#: lib/admin-tab-galleries.php:15
+msgid "Make a gallery for all images on the page (default)"
+msgstr "Incluir todas las imágenes de la página en una única galería (opción por defecto)"
+
+#: lib/admin-tab-galleries.php:20
+msgid "Do not group images in gallery automatically (use this if you want to make galleries manually with the <code>REL</code> attribute)"
+msgstr "No agrupar im&aacute;genes en galer&iacute;as autom&aacute;ticamente (usa esta opci&oacute;n si quieres agrupar las imagenes manualmente con el atributo <code>REL</code>)"
+
+#: lib/admin-tab-galleries.php:25
+msgid "Make a gallery for each post (will only work if your theme uses <code>class=\"post\"</code> on each post, which is common in WordPress"
+msgstr "Hacer una galer&iacute;a para cada post (solo funcionar&aacute; si el tema usa <code>class=\"post\"</code> en cada post, que es lo m&aacute;s com&uacute;n en WordPress"
+
+#: lib/admin-tab-galleries.php:30
+msgid "Use a custom expression to apply FancyBox"
+msgstr "Aplicar FancyBox con una expresión personalizada"
+
+#: lib/admin-tab-galleries.php:39
+msgid "Custom expression guidelines:"
+msgstr "Indicaciones para expresiones personalizadas:"
+
+#: lib/admin-tab-galleries.php:41
+msgid "&middot; The custom expression has to apply <code>class=\"fancybox\"</code> to the links where you want to use FancyBox. Do not call the <code>fancybox()</code> function here, the plugin does this for you."
+msgstr "&middot; La expresión personalizada tiene que aplicar el atributo <code>class=\"fancybox\"</code> a los enlaces en los que quieras usar FancyBox. No llames a la funci&oacute;n <code>fancybox()</code> aqu&iacute;, de eso ya se encarga el plugin."
+
+#: lib/admin-tab-galleries.php:43
+msgid "&middot; The jQuery <code>addClass()</code> function is a good way to add the class to the desired links conserving any existing class."
+msgstr "&middot; La funci&oacute;n <code>addClass()</code> de jQuery es una buena forma de a&ntilde;adir el class a los links deseados."
+
+#: lib/admin-tab-galleries.php:45
+msgid "&middot; You can use <code>getTitle()</code> in your expression to copy the title attribute from the <code>IMG</code> tag to the <code>A</code> tag, so that FancyBox can show captions."
+msgstr "&middot; Puedes usar <code>getTitle()</code> en tu expresi&oacute;n para copiar el atributo title desde el tag <code>IMG</code> al tag <code>A</code>, para que FancyBox pueda mostrar el t&iacute;tulo de la imagen."
+
+#: lib/admin-tab-galleries.php:47
+msgid "&middot; You can use <code>jQuery(thumbnails)</code> like in the example expression to apply FancyBox to thumbnails that link to these extensions: BMP, GIF, JPG, JPEG, PNG (both lowercase and uppercase)."
+msgstr "&middot; Puedes usar <code>jQuery(thumbnails)</code> como en el ejemplo para aplicar FancyBox a las miniaturas de im%aacute;genes que enlazen a estas extensiones: BMP, GIF, JPG, JPEG, PNG tanto en min&uacute;scula como en may&uacute;scula)."
+
+#: lib/admin-tab-galleries.php:49
+msgid "&middot; If you want to do it manually you can use something like <code>jQuery(\"a:has(img)[href$='.jpg']\")</code> or whatever works for you."
+msgstr "&middot; Si prefieres hacerlo manualmente puedes usar algo como <code>jQuery(\"a:has(img)[href$='.jpg']\")</code> o lo que m&aacute;s se ajuste a tu blog."
+
+#: lib/admin-tab-galleries.php:51
+msgid "See the <a href=\"http://docs.jquery.com/\" target=\"_blank\">jQuery Documentation</a> for more help."
+msgstr "Visita la <a href=\"http://docs.jquery.com/\" target=\"_blank\">Documentaci&oacute;n de jQuery</a> para encontrar m&aacute;s ayuda."
+
+#: lib/admin-tab-galleries.php:53
+msgid "Examples:"
+msgstr "Ejemplos:"
+
+#: lib/admin-tab-info.php:1
+msgid "Information"
+msgstr "Información"
+
+#: lib/admin-tab-info.php:3
+msgid "<a target=\"_blank\" href=\"http://fancybox.net\">FancyBox</a> developed by <a target=\"_blank\" href=\"http://fancybox.net\">Janis Skarnelis</a>, ported to WordPress by <a target=\"_blank\" href=\"http://josepardilla.com/\">Jos&eacute; Pardilla</a>. Licensed under the <a target=\"_blank\" href=\"http://en.wikipedia.org/wiki/MIT_License\">MIT License</a>."
+msgstr "<a href=\"http://fancybox.net\">FancyBox</a> desarrollado por <a href=\"http://fancybox.net\">Janis Skarnelis</a>, adaptado a WordPress por <a href=\"http://http://josepardilla.com/\">Jos&eacute; Pardilla</a>. Licenciado bajo <a target=\"_blank\" href=\"http://en.wikipedia.org/wiki/MIT_License\">Licencia MIT</a>."
+
+#: lib/admin-tab-info.php:5
+msgid "As you can see, this plugin has many options you can edit, but have no fear, you can leave everything as it is if you don't want to get your hands dirty, since the default options should be a good start... :)"
+msgstr "Como puedes ver, este plugin te permite editar muchas opciones, pero no te preocupes, puedes dejarlo todo como está, ya que las opciones predefinidas no están mal para empezar... :)"
+
+#: lib/admin-tab-info.php:7
+msgid "If you are an advanced user you can <a target=\"_blank\" href=\"https://github.com/moskis/fancybox-for-wordpress\">follow the plugin in Github</a>, fork it or help submitting fixes!"
+msgstr "Si eres un usuario avanzado, puedes <a target=\"_blank\" href=\"https://github.com/moskis/fancybox-for-wordpress\">seguir el plugin en Github</a>, y colaborar aportando correcciones!"
+
+#: lib/admin-tab-info.php:9
+msgid "<strong>Note:</strong> Having a cache plugin may prevent changes from taking effect immidiately, if this happens clear cache after saving changes here or deactivate cache until you finish editing these options."
+msgstr "<strong>Nota:</strong> Usar un plugin de caché puede hacer que los cambios no surjan efecto inmediatamente, si esto ocurre vacía el cache después de guardar los cambios o desactívalo hasta que termines de ajustar estas opciones."
+
+#: lib/admin-tab-info.php:11
+msgid "<strong>Note:</strong> If update to version 3.0.0 breaks fancybox on your blog you will probably have to reset your settings (with the white button below). I have tested this issue on several WordPress installations and it always worked, so it might depend on the server. Sorry for the inconvinience."
+msgstr "<strong>Nota:</strong> Si la actualización a la versión 3.0.0 estropea FancyBox en tu blog, posiblemente tengas que reestablecer las opciones del plugin (desde el botón blanco de abajo)."
+
+#: lib/admin-tab-other.php:1
+msgid "Other Settings <span style=\"color:red\">(advanced)</span>"
+msgstr "Otras Opciones <span style=\"color:red\">(avanzado)</span>"
+
+#: lib/admin-tab-other.php:3
+msgid "These are additional settings for advanced users."
+msgstr "Las siguientes opciones son para usuarios avanzados."
+
+#: lib/admin-tab-other.php:9
+msgid "Dimensions"
+msgstr "Dimensiones"
+
+#: lib/admin-tab-other.php:15
+msgid "Auto detect dimensions (default: on)"
+msgstr "Auto detectar dimensiones (por defecto: activado)"
+
+#: lib/admin-tab-other.php:18
+msgid "Only works with <strong>Ajax</strong> and <strong>Inline</strong> content! Flash dimensions won't be autodetected so specify them below if necessary. If you want to insert several pieces of flash content with different dimensions you will have to use the <strong>Additional FancyBox Calls</strong> option."
+msgstr "Sólo funciona con <strong>Ajax</strong> y  <strong>Contenido en línea</strong>! Las dimenciones de elementos Flash no se autodetectan así que especifícalas aquí debajo si lo necesitas. Si necesitas insertar varios elementos Flash de tamaños distintos tendrás que usar el apartado de <strong>Llamadas Extra</strong>."
+
+#: lib/admin-tab-other.php:22
+msgid "Width for iframe and swf content. Also set for inline content if <em>autoDimensions</em> is disabled (default: 560)"
+msgstr "Ancho para iframes y contenido Flash. También afecta a contenido en línea si <em>Auto detectar dimensiones</em> está desactivado (por defecto: 560)"
+
+#: lib/admin-tab-other.php:27
+msgid "Height for iframe and swf content. Also set for inline content if <em>autoDimensions</em> is disabled (default: 340)"
+msgstr "Alto para iframes y contenido Flash. También afecta a contenido en línea si <em>Auto detectar dimensiones</em> está desactivado (por defecto: 340)"
+
+#: lib/admin-tab-other.php:35
+msgid "Load JavaScript in Footer"
+msgstr "Cargar JavaScript en el Pié de página"
+
+#: lib/admin-tab-other.php:41
+msgid "Loads JavaScript at the end of the blog's HTML (experimental) (default: off)"
+msgstr "Carga el JavaScript al final del código HTML del blog (experimental) (por defecto: desactivado)"
+
+#: lib/admin-tab-other.php:44
+msgid "This option won't be recognized if you use <strong>Parallel Load</strong> plugin. In that case, you can do this from Parallel Load's options."
+msgstr "Esta opción será ignorada si el plugin <strong>Parallel Load</strong> está instalado. Si es así, usa las opciones del plugin Parallel Load."
+
+#: lib/admin-tab-other.php:51
+msgid "Callbacks"
+msgstr "Retrollamadas"
+
+#: lib/admin-tab-other.php:57
+msgid "Enable callbacks (default: off)"
+msgstr "Activar retrollamadas (por defecto: desactivado)"
+
+#: lib/admin-tab-other.php:60
+msgid "Enabling this will show additional settings."
+msgstr "Activar esta opcíón mostrará opociones adicionales."
+
+#: lib/admin-tab-other.php:65
+msgid "Callback on <strong>Start</strong> event: Will be called right before attempting to load the content"
+msgstr "Retrollamada en evento <strong>Inicio</strong>: Se ejecutará justo antes de intentar cargar el contenido"
+
+#: lib/admin-tab-other.php:70
+msgid "Callback on <strong>Cancel</strong> event: Will be called after loading is canceled"
+msgstr "Retrollamada en evento <strong>Cancelar</strong>: Se ejecutará tras cancelar la carga del contenido"
+
+#: lib/admin-tab-other.php:75
+msgid "Callback on <strong>Complete</strong> event: Will be called once the content is displayed"
+msgstr "Retrollamada en evento <strong>Completado</strong>: Se ejecutará una vez se termine de mostrar el contenido"
+
+#: lib/admin-tab-other.php:80
+msgid "Callback on <strong>CleanUp</strong> event: Will be called just before closing"
+msgstr "Retrollamada en evento <strong>Limpieza</strong>: Se ejecutará justo antes de empezar a ocultar el contenido"
+
+#: lib/admin-tab-other.php:85
+msgid "Callback on <strong>Closed</strong> event: Will be called once FancyBox is closed"
+msgstr "Retrollamada en evento <strong>Cerrado</strong>: Se ejecutará tras cerrar FancyBox"
+
+#: lib/admin-tab-other.php:91
+msgid "Leave empty any speciic callbacks you don't need to use."
+msgstr "Deja en blanco cualquier Retrollamada que no quieras usar."
+
+#: lib/admin-tab-support.php:3
+msgid "Help with Fancybox"
+msgstr "Ayuda sobre ancyBox"
+
+#: lib/admin-tab-support.php:5
+msgid "If you have problems or questions about FancyBox itself (and not this WordPress plugin), please start with these links: <a target=\"_blank\" href=\"http://fancybox.net/howto\">How-To</a> & <a target=\"_blank\" href=\"http://fancybox.net/faq\">FAQ</a>.<br />If that does not help, go to <a href=\"http://groups.google.com/group/fancybox\">the FancyBox Google Group</a>, use the <strong>Search</strong> option, and if necesary, post your question."
+msgstr "Si tienes problemas o dudas acerca de FancyBox (y no este plugin en sí), por favor visita estos enlaces (en inglés): <a href=\"http://fancybox.net/howto\">How-To</a> & <a href=\"http://fancybox.net/faq\">FAQ</a>.<br />Si eso no ayuda, ves al <a href=\"http://groups.google.com/group/fancybox\">Grupo de Google de FancyBox</a>, usa la opción de <strong>Búsqueda</strong>, y si no encuentras lo que buscas, pregunta allí."
+
+#: lib/admin-tab-support.php:8
+msgid "Help with Fancybox for WordPress plugin"
+msgstr "Ayuda para el plugin Fancybox for WordPress"
+
+#: lib/admin-tab-support.php:10
+msgid "If you are having trouble with this plugin take a look at this <a target=\"_blank\" href=\"http://plugins.josepardilla.com/fancybox-for-wordpress/faq\">FAQ</a> where i will try to cover the most common problems and their solutions."
+msgstr "Si tienes problemas para hacer funcionar este plugin echa un vistazo a esta página de <a target=\"_blank\" href=\"http://plugins.josepardilla.com/fancybox-for-wordpress/faq\">Preguntas Frecuentes</a> donde intentaré explicar los problemas más habituales y cómo resolverlos."
+
+#: lib/admin-tab-support.php:11
+msgid "Try to localize the problem (switch your theme and deactivate plugins until you find the source of the problem). You can also try the Troubleshooting settings of this plugin if necesary."
+msgstr "Intenta localizar la fuente del problema (cambia de tema y/o desactiva plugins hasta que encuentres lo que causa el problema). También puedes usar las optiones de Resolución de Errores que hay al final de esta página."
+
+#: lib/admin-tab-support.php:12
+msgid "Try reverting the plugin's settings to their defaults with the button below."
+msgstr "Prueba a resetear las opciones a sus valores originales con el botón al pie de esta página."
+
+#: lib/admin-tab-support.php:13
+msgid "If you still can not get the plugin to work, <a target=\"_blank\" href=\"http://wordpress.org/support/plugin/fancybox-for-wordpress#postform\">write a post in the WordPress Support forums</a> explaining the problem or take a look and the <a target=\"_blank\" href=\"http://wordpress.org/support/plugin/fancybox-for-wordpress\">already posted messages</a>."
+msgstr "Si aún no puedes hacer funcionar el plugin, <a target=\"_blank\" href=\"http://wordpress.org/support/plugin/fancybox-for-wordpress#postform\">escribe en el foro de Soporte de WordPress</a> o echa un vistazo a <a target=\"_blank\" href=\"\"http://wordpress.org/support/plugin/fancybox-for-wordpress\">los mensajes ya escritos en dicho foro</a>."
+
+#: lib/admin-tab-support.php:16
+msgid "IMPORTANT:"
+msgstr "IMPORTANTE:"
+
+#: lib/admin-tab-support.php:16
+msgid "When posting your problem please provide a link to your blog and the page where the error is found, and all relevant information you can, especially your theme, plugins, etc."
+msgstr "Cuando expliques tu problema, por favor deja un enlace a tu blog y una página donde FancyBox falla, así como cualquier información reelevante, como el tema de WordPress y plugins que usas."
+
+#: lib/admin-tab-troubleshooting.php:1
+msgid "Troubleshooting Settings"
+msgstr "Resolución de Problemas"
+
+#: lib/admin-tab-troubleshooting.php:3
+msgid "Settings in this section should only be changed if you are having problems with the plugin!"
+msgstr "Las opciones de esta sección solo deben ser editadas si tienes problemas con el plugin!"
+
+#: lib/admin-tab-troubleshooting.php:5
+msgid "If the plugin doesn't seem to work, first you should check for other plugins that may be conflicting with this one, especially other Lightbox, Slimbox, etc. Make sure all your plugins and WordPress itself are up to date (this plugin has only been tested in WordPress 2.7 and above)."
+msgstr "Si el plugin no funciona, lo primero que deberías hacer es comprobar que no haya un conflicto con otros plugins, especialmente otro tipo de Lightbox, Slimbox, etc. Asegúrate de que todos tus plugins y tu WordPress están actualizados (este plugin solo se ha testado con WordPress 2.7 y superiores)."
+
+#: lib/admin-tab-troubleshooting.php:7
+msgid "Change them one at a time and test to see if they help. Remember that having a cache plugin may prevent changes from taking effect immidiately, so clear cache after saving changes here or deactivate cache until you finish editing these options."
+msgstr "Cámbialas de una en una y comprueba si solucionan tu problema. Recuqerda que usar un plugin de caché puede hacer que los cambios no surjan efecto inmediatamente, vacía el cache después de guardar los cambios or desactivalo hasta que termines de ajustar estas opciones."
+
+#: lib/admin-tab-troubleshooting.php:13
+msgid "Do not call jQuery"
+msgstr "No cargar jQuery"
+
+#: lib/admin-tab-troubleshooting.php:19
+msgid "Skip jQuery call. Use this only if jQuery is being loaded twice (default: off)"
+msgstr "Omitir llamada a jQuery. Usa esta opción sólo si jQuery se está cargando dos veces por error. (por defecto: desactivado)"
+
+#: lib/admin-tab-uninstall.php:3
+msgid "Like many other plugins, FancyBox for WordPress stores its settings on your WordPress' options database table. Actually, these settings are not using more than a couple of kilobytes of space, but if you want to completely uninstall this plugin, check the option below, then save changes, and <strong>when you deactivate the plugin</strong>, all its settings will be removed from the database."
+msgstr "Al igual que otros plugins, FancyBox for WordPress guarda sus opciones en la tabla de opciones de la base de datos de WordPress. En realidad, estas opcines no ocupam más que unos kilobytes de espacio, pero si quieres eliminar el plugin por completo, activa la siguiente opción, guarda los cambios, y <strong>cuando desactives el plugin</strong>, todas las opciones se eliminarán de la base de datos."
+
+#: lib/admin-tab-uninstall.php:9
+msgid "Remove settings"
+msgstr "Eliminar Opciones"
+
+#: lib/admin-tab-uninstall.php:15
+msgid "Remove Settings when plugin is deactivated from the \"Manage Plugins\" page. (default: off)"
+msgstr "Eliminar opciones cuando se desactive el plugin desde la página \"Gestionar Plugins\". (por defecto: desactivado)"
+
+#~ msgid "Callback on Start event (default: empty)"
+#~ msgstr "Retrollamada en el evento de Inicio (por defecto: vacío)"
+
+#~ msgid "Callback on Show event (default: empty)"
+#~ msgstr "Retrollamada en el evento de Mostrado (por defecto: vacío)"
+
+#~ msgid "Callback on Close event (default: empty)"
+#~ msgstr "Retrollamada en el evento de Cerrado (por defecto: vacío)"
+
+#~ msgid "Leave the fields empty to disable."
+#~ msgstr "Deja estos campos vacíos para desactivar cualqueir retrollamada."
+
+#~ msgid "Frame Size"
+#~ msgstr "Tamaño del recuadro"
+
+#~ msgid ""
+#~ "Width in pixels of FancyBox when showing iframe content (default: 560)"
+#~ msgstr ""
+#~ "Ancho en píxeles de FancyBox cuado se muestre contenido anidado (por "
+#~ "defecto: 560)"
+
+#~ msgid ""
+#~ "Height in pixels of FancyBox when showing iframe content (default: 340)"
+#~ msgstr ""
+#~ "Alto en píxeles de FancyBox cuado se muestre contenido anidado (por "
+#~ "defecto: 340)"
+
+#~ msgid "jQuery \"noConflict\" Mode"
+#~ msgstr "Modo jQuery \"noConflict\""
+
+#~ msgid "Use jQuery noConflict mode (default: on)"
+#~ msgstr "Usar parámetro noConflict de jQuery (por defecto: activado)"
+
+#~ msgid ""
+#~ "(Turning this off may cause problems if there are plugins activated that "
+#~ "use other js framework like mootools, prototype, scriptaculous, etc.)"
+#~ msgstr ""
+#~ "(Desactivar esta opción puede causar problemas si hay plugins activadoes "
+#~ "que usen otros frameworks javascript como Mootols, Prototype, "
+#~ "Scriptaculous, etc.)"
+
+#~ msgid "Presentation"
+#~ msgstr "Presentación"
+
+#~ msgid ""
+#~ "These are the main settings, which let you tweak color, borders and "
+#~ "animation."
+#~ msgstr ""
+#~ "Estas son las opciones principales, que te permiten ajustar los colores, "
+#~ "bordes y animación."
+
+#~ msgid ""
+#~ "(Set <strong>Border Color</strong> to \"#000000\" and <strong>Padding "
+#~ "Size</strong> to \"0\" for the classic FancyBox look)"
+#~ msgstr ""
+#~ "(Pon el <strong>Color del Borde</strong> en \"#000000\" y el "
+#~ "<strong>Tamaño del Margen</strong> en \"0\" para el aspecto clásico de "
+#~ "FancyBox)"
+
+#~ msgid "Show/Hide Advanced Settings"
+#~ msgstr "Mostrar/Ocultar Opciones Avanzadas"
+
+#~ msgid "Show/Hide Troubleshooting &amp; Uninstall Settings"
+#~ msgstr "Mostrar/Ocultar Resolución de Problemas y Desinstalaci&oacute;n"
+
+#~ msgid ""
+#~ "Do not call the <code>fancybox()</code> function here, the plugin does "
+#~ "this for you."
+#~ msgstr ""
+#~ "No llames a la función <code>fancybox()</code> desde aquí, eso ya lo hace "
+#~ "el plugin por tí."
+
+#~ msgid "Make a gallery for each post"
+#~ msgstr "Hacer una galería para cada entrada"
+
+#~ msgid ""
+#~ "The attribute has to start with fancybox, but can end with however you "
+#~ "like: \"fancybox1\", \"fancybox2\", \"fancybox-custom\" will work."
+#~ msgstr ""
+#~ "El atributo debe empezar por fancybox pero puede terminar como quieras:  "
+#~ "\"fancybox1\", \"fancybox2\", \"fancybox-custom\" servirían."
+
+#~ msgid "Horizontal position of the close button (default: right)"
+#~ msgstr ""
+#~ "Posición horizontal del botón para cerrar FancyBox (por defecto: derecha)"
+
+#~ msgid "About"
+#~ msgstr "Informaci&oacute;n"
+
+#~ msgid ""
+#~ "This plugin integrates FancyBox with WordPress without having to edit any "
+#~ "file or code. Once activated the plugin will apply FancyBox automatically "
+#~ "to all image links, including WordPress galleries. Future versions will "
+#~ "include some more options like easier inline content integration and more "
+#~ "advanced customization. Enjoy!"
+#~ msgstr ""
+#~ "Este plugin integra FancyBox con WordPress sin necesidad de editar ningún "
+#~ "archivo o HTML. Una vez activado, el plugin aplicará FancyBox "
+#~ "automáticamente a todos los enlaces a imágenes, incluyendo galerias de "
+#~ "WordPress. Que lo disfrutes!"
+
+#~ msgid ""
+#~ "If you have problems or questions about FancyBox itself you should <a "
+#~ "href=\"http://groups.google.com/group/fancybox\">ask in the FancyBox "
+#~ "Google Group</a>. If you want to make suggestions or ask just about this "
+#~ "WordPress plugin you can <a href=\"http://blog.moskis.net/downloads/"
+#~ "plugins/fancybox-for-wordpress/\">leave a comment here</a>, <a href="
+#~ "\"http://blog.moskis.net/contactar/\">send me an email</a>, or <a href="
+#~ "\"http://twitter.com/moskis\">contact me on twitter</a>."
+#~ msgstr ""
+#~ "Si tienes problemas o preguntas sobre FancyBox deberías <a href=\"http://"
+#~ "groups.google.com/group/fancybox\">preguntar en este grupo de Google</a> "
+#~ "(enlace en inglés). Si tienes preguntas o sugerencias sobre este plugin "
+#~ "para WordPress, puedes <a href=\"http://blog.moskis.net/downloads/plugins/"
+#~ "fancybox-for-wordpress/\">dejar un comentario aquí</a>, <a href=\"http://"
+#~ "blog.moskis.net/contactar/\">enviarme un email</a>, o <a href=\"http://"
+#~ "twitter.com/moskis\">contactar conmigo vía Twitter</a>."
+
+#~ msgid "Auto Apply"
+#~ msgstr "Auto Aplicar"
+
+#~ msgid ""
+#~ "Apply FancyBox automatically to all links pointing to .jpg, .jpeg, .png "
+#~ "or .gif images (default: on)"
+#~ msgstr ""
+#~ "Aplicar FancyBox automáticamente a todos los enlaces que apunten a "
+#~ "archivos .jpg, .jpeg, .png o .gif (por defecto: activado)"
+
+#~ msgid ""
+#~ "(The link itself must the an image as well, text links will not be "
+#~ "affected by this option!)"
+#~ msgstr ""
+#~ "(El link tiene que estar en una imagen, esta opción no affecta a enlaces "
+#~ "de texto!)"
+
+#~ msgid ""
+#~ "(This does NOT conflict with the previous and next image links on "
+#~ "FancyBox galleries.)"
+#~ msgstr ""
+#~ "(Esto no afecta a los enlaces de Imagen Siguiente e Imagen Anterior en "
+#~ "galerias de varias imágenes)"

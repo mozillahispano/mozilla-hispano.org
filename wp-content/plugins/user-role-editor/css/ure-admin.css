@@ -1,0 +1,85 @@
+/* 
+    Document   : ure_admin
+    Created on : 10.03.2010
+    Author     : Vladimir Garagulya
+    Description:
+    User Role Editor plugin Admin Settings Page CSS
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+.txt_left {
+  text-align: left;
+}
+.txt_center {
+  text-align: center;
+}
+.txt_right {
+  text-align: right;
+}
+
+.form_color_row {
+  float: left;
+  display: block;  
+  margin-bottom: 5px;
+  width: 100%;
+  clear: both;
+}
+
+img.input_radio {
+	vertical-align: middle;
+}
+
+a.ure_rsb_link {
+	padding:4px;
+	display:block;
+	padding-left:25px;
+	background-repeat:no-repeat;
+	background-position:5px 50%;
+	text-decoration:none;
+	border:none;
+}
+
+a.ure_rsb_link:hover {
+	border-bottom-width:1px;
+}
+
+.ure-bottom-box-input {
+  margin-left: auto; margin-right: auto; width: 100%; text-align: center;
+}
+
+input.warning:hover, a.warning:hover {
+	color: red;
+}
+
+.fli {
+  float: left;
+  display: inline;
+}
+
+#foldersdiv {
+  border-style:solid;
+  border-width:1px;
+  height:300px;
+  width: 450px;
+  overflow:auto;
+  padding:0.5em 0.9em;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  white-space: nowrap;
+}
+
+.ure-sidebar {
+  float: right;
+}
+
+#ure_greetings {
+  max-width: 250px;
+}
+
+.hidden {
+	display: none;
+}

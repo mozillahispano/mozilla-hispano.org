@@ -1,0 +1,765 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:43+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: Parsa <i@parsa.ws>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Persian\n"
+"X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: www.parsa.ws\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "ویرایشگر نقش کاربر به وردپرس 3.0 یا جدیدتر احتیاج دارد"
+
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "! لطفا بروزرسانی شود"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "ویرایشگر نقش کاربر به پی‌اچ‌پی 5.0 یا جدیدتر احتیاج دارد"
+
+#: ../user-role-editor.php:76
+msgid "Only"
+msgstr "فقط"
+
+#: ../user-role-editor.php:76
+msgid "is allowed to use"
+msgstr "مجاز به استفاده از"
+
+#: ../user-role-editor.php:82
+#: ../user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "ویرایش نقش کاربر"
+
+#: ../user-role-editor.php:223
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: ../user-role-editor.php:233
+#: ../includes/ure-options.php:235
+msgid "Changelog"
+msgstr "تاریخ تغییرات"
+
+#: ../user-role-editor.php:280
+msgid "Capabilities"
+msgstr "توانمندی‌ها"
+
+#: ../includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "اشکالی رخ داده، لطفاً لاگ عملیات را ببینید"
+
+#: ../includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "مشکل با دیتابیس. لطفاً لاگ عملیات را ببینید"
+
+#: ../includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "اطلاعات پشتیبانی وجود ندارد. این پشتیبان به طور خودکار قبل از اولین بروزرسانی نقش ایجاد می شود"
+
+#: ../includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "اطلاعات پشتیبان برای تنظیمات نقش فعلی ذخیره شد"
+
+#: ../includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "مشکل: نام نقش باید فقط شامل کاراکترهای لاتین و اعداد باشد"
+
+#: ../includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr "نقش %s وجود دارد"
+
+#: ../includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "در زمان ساخت نقش جدید مشکلی بوجود آمد"
+
+#: ../includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "نقش %s با موفقیت ساخته شد"
+
+#: ../includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "اشکال در پاک کردن نقش"
+
+#: ../includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "نقش %s با موفقیت پاک شد "
+
+#: ../includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "اشکال در عملیات تغییر نقش پیش فرض"
+
+#: ../includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "نقش پیش فرض برای کاربران %s با موفقیت تنظیم شد  "
+
+#: ../includes/ure-lib.php:489
+msgid "Editor"
+msgstr "ویرایشگر"
+
+#: ../includes/ure-lib.php:490
+msgid "Author"
+msgstr "نویسنده"
+
+#: ../includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "مشارکت کننده"
+
+#: ../includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "مشترک"
+
+#: ../includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "تغییر پوسته"
+
+#: ../includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "ویرایش پوسته"
+
+#: ../includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "فعال سازی افزونه"
+
+#: ../includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "ویرایش افزونه"
+
+#: ../includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "ویرایش کاربران"
+
+#: ../includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "ویرایش فایلها"
+
+#: ../includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "مدیریت تنظیمات"
+
+#: ../includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "مدیریت نظرات"
+
+#: ../includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "مدیریت دسته ها"
+
+#: ../includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "مدیریت لینکها"
+
+#: ../includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "آپلود فایل"
+
+#: ../includes/ure-lib.php:505
+msgid "Import"
+msgstr "درون ریزی"
+
+#: ../includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "بدون فیلتر html "
+
+#: ../includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "ویرایش پستها"
+
+#: ../includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "ویرایش نوشته های دیگران"
+
+#: ../includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "ویرایش پستهای دیگران"
+
+#: ../includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "انتشار نوشته"
+
+#: ../includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "ویرایش برگه"
+
+#: ../includes/ure-lib.php:512
+msgid "Read"
+msgstr "خواندن"
+
+#: ../includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "سطح 10"
+
+#: ../includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "سطح 9"
+
+#: ../includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "سطح 8"
+
+#: ../includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "سطح 7"
+
+#: ../includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "سطح 6"
+
+#: ../includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "سطح 5"
+
+#: ../includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "سطح 4"
+
+#: ../includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "سطح 3"
+
+#: ../includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "سطح 2"
+
+#: ../includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "سطح 1"
+
+#: ../includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "سطح 0"
+
+#: ../includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "ویرایش برگه های دیگران"
+
+#: ../includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "ویرایش برگه های منتشر شده"
+
+#: ../includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "انتشار برگه"
+
+#: ../includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "حذف برگه"
+
+#: ../includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "حذف برگه های دیگران"
+
+#: ../includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "حذف برگه های منتشر شده"
+
+#: ../includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "حذف نوشته ها"
+
+#: ../includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "حذف نوشته های دیگران"
+
+#: ../includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "حذف نوشته های منتشر شده"
+
+#: ../includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "حذف نوشته های خصوصی"
+
+#: ../includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "ویرایش نوشته های خصوصی"
+
+#: ../includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "خواندن نوشته های خصوصی"
+
+#: ../includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "حذف برگه های خصوصی"
+
+#: ../includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "ویرایش برگه های خصوصی"
+
+#: ../includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "خواندن برگه های خصوصی"
+
+#: ../includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "حذف کاربران"
+
+#: ../includes/ure-lib.php:540
+msgid "Create users"
+msgstr "ایجاد کاربر"
+
+#: ../includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "آپلود بدون محدودیت"
+
+#: ../includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "ویرایش پیش خوان"
+
+#: ../includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "بروز رسانی افزونه ها"
+
+#: ../includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "حذف افزونه ها"
+
+#: ../includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "نصب افزونه ها"
+
+#: ../includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "بروز رسانی پوسته ها"
+
+#: ../includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "نصب پوسته"
+
+#: ../includes/ure-lib.php:548
+msgid "Update core"
+msgstr "بروزرسانی وردپرس"
+
+#: ../includes/ure-lib.php:549
+msgid "List users"
+msgstr "لیست کاربران"
+
+#: ../includes/ure-lib.php:550
+msgid "Remove users"
+msgstr "حذف کاربران"
+
+#: ../includes/ure-lib.php:551
+msgid "Add users"
+msgstr "افزودن کاربر"
+
+#: ../includes/ure-lib.php:552
+msgid "Promote users"
+msgstr "ترفیع کاربران"
+
+#: ../includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr "ویرایش تنظیمات پوشته"
+
+#: ../includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr "حذف پوسته ها"
+
+#: ../includes/ure-lib.php:555
+msgid "Export"
+msgstr "برون ریزی"
+
+#: ../includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "مشکل: نام نقش باید فقط شامل کاراکترهای لاتین و اعداد باشد"
+
+#: ../includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "نقش %s با موفقیت ساخته شد"
+
+#: ../includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr "قابلیت %s در حال حاضر وجود دارد"
+
+#: ../includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "خطا! شما مجوز حذف این قابلیت را ندارید: %s!"
+
+#: ../includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "نقش %s با موفقیت ساخته شد"
+
+#: ../includes/ure-lib.php:889
+msgid "Help"
+msgstr "راهنما"
+
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "هیچ"
+
+#: ../includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr "نام نقش نمی تواند خالی باشد"
+
+#: ../includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr "نام نقش باید فقط شامل کاراکترهای لاتین و اعداد باشد"
+
+#: ../includes/ure-role-edit.php:110
+#: ../includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "حذف نقش"
+
+#: ../includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "تغییر نقش پیش فرض"
+
+#: ../includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr "بازگردانی نقشها از بک‌آپ. با دقت، بک‌آپ هنگام اولین اجرای افزونه ایجاد میشود و تمام تغییرات به حالت اول برگردانده خواهد شد."
+
+#: ../includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "هشدار! با دقت - حذف قابلیتهای بحرانی باعث از کار افتادن افزونه‌ها و دیگر حالتها خواهد شد"
+
+#: ../includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "برای ادامه دادن تأیید کنید"
+
+#: ../includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "برای تأیید کلیک کنید  \"%s\" بروز رسانی نقش  "
+
+#: ../includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "نقشی را انتخاب کنید و دسترسیهایش را درلیست زیر تغییر دهید"
+
+#: ../includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "انتخاب نقش:"
+
+#: ../includes/ure-role-edit.php:175
+#: ../includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "نمایش دسترسیها به فرم قابل درک"
+
+#: ../includes/ure-role-edit.php:184
+#: ../includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr "نمایش قابلیت های بیهوده"
+
+#: ../includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "در صورت انتخاب، و سپس اعمال  به همه سایت های این شبکه اعمال می شود"
+
+#: ../includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr "اعمال به تمام سایتها"
+
+#: ../includes/ure-role-edit.php:205
+#: ../includes/ure-user-edit.php:105
+#, fuzzy
+msgid "Core capabilities:"
+msgstr "توانمندی‌ها"
+
+#: ../includes/ure-role-edit.php:268
+#: ../includes/ure-user-edit.php:167
+#, fuzzy
+msgid "Custom capabilities:"
+msgstr "توانمندی‌ها"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "بروزرسانی"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "ذخیرۀ تغییرات"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "لغو"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "لغو تغییرات اعمال نشده"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr "انتخاب همه"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr "انتخاب تمام قابلیتها"
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr "همه را از حالت انتخاب خارج کن"
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr "همه قابلیتها را از حالت انتخاب خارج کن"
+
+#: ../includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr "بازگرداندن"
+
+#: ../includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr "ویژگی های خاموش را روشن کن و بالعکس"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "تنظیم مجدد"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "بازیابی نقش ها از نسخۀ پشتیبان"
+
+#: ../includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "اضافه کردن نقش جدید"
+
+#: ../includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr "نام:"
+
+#: ../includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr "ساخت کپی از:"
+
+#: ../includes/ure-role-edit.php:353
+#: ../includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "اضافه"
+
+#: ../includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "اضافه کردن نقش کاربری جدید"
+
+#: ../includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "نقش پیش فرض برای کاربر جدید"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "تغییر"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "تنظیم به عنوان نقش پیش فرض کاربر"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "حذف"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "حذف نقش کاربری"
+
+#: ../includes/ure-role-edit.php:377
+#: ../includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr "اضافه کردن نقش جدید"
+
+#: ../includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr "حذف قابلیت"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr "حذف"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr "حذف قابلیت کاربر"
+
+#: ../includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "برای تأیید کلیک کنید  \"%s\" بروز رسانی نقش  "
+
+#: ../includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr "تغییر قابلیتهای برای کاربر"
+
+#: ../includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "نقش:"
+
+#: ../includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr "افزودن قابلیت برای این کاربر:"
+
+#: ../includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "دسترسیهای نقش از اطلاعات پشتیبان بازیابی شدند"
+
+#: ../includes/ure-options.php:130
+msgid "Error: "
+msgstr "خطا:"
+
+#: ../includes/ure-options.php:130
+#: ../includes/ure-options.php:146
+msgid "Role"
+msgstr "نقش"
+
+#: ../includes/ure-options.php:130
+msgid "does not exist"
+msgstr "پیدا نشد"
+
+#: ../includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "با موفقیت بروزرسانی شد"
+
+#: ../includes/ure-options.php:154
+msgid "User"
+msgstr "کاربر"
+
+#: ../includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "با موفقیت بروزرسانی شد"
+
+#: ../includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "در مورد افزونه"
+
+#: ../includes/ure-options.php:233
+msgid "Author's website"
+msgstr "سایت نویسنده"
+
+#: ../includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "وبسایت افزونه"
+
+#: ../includes/ure-options.php:236
+msgid "FAQ"
+msgstr "سؤالات"
+
+#: ../includes/ure-options.php:237
+msgid "Greetings"
+msgstr "خوشامدگویی ها"
+
+#: ../includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "تشکر از:"
+
+#: ../includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "منم، نویسنده!"
+
+#: ../includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "برای ترجمه به زبان بلاروسی"
+
+#: ../includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr "برای ترجمه به زبان برزیلی"
+
+#: ../includes/ure-options.php:263
+#, fuzzy
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "برای ترجمه به زبان برزیلی"
+
+#: ../includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "برای ترجمه به زبان چینی"
+
+#: ../includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "برای ترجمه به زبان هلندی"
+
+#: ../includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "برای ترجمه به زبان فنلاندی"
+
+#: ../includes/ure-options.php:267
+#: ../includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "برای ترجمه به زبان فرانسوی"
+
+#: ../includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "برای ترجمه به زبان آلمانی"
+
+#: ../includes/ure-options.php:270
+#: ../includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr "برای کمک ترجمه عبری"
+
+#: ../includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr "برای کمک ترجمه هندی"
+
+#: ../includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "برای ترجمه به زبان مجارستانی"
+
+#: ../includes/ure-options.php:274
+#: ../includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "برای ترجمه به زبان ایتالیایی"
+
+#: ../includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "برای ترجمه به زبان ژاپنی"
+
+#: ../includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr "برای کمک ترجمه لیتوانیایی"
+
+#: ../includes/ure-options.php:278
+#: ../includes/ure-options.php:279
+#: ../includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr "برای ترجمه به زبان فارسی"
+
+#: ../includes/ure-options.php:281
+#: ../includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "برای ترجمه به زبان لهستانی"
+
+#: ../includes/ure-options.php:283
+#: ../includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "برای ترجمه به زبان اسپانیایی"
+
+#: ../includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr "برای ترجمه به زبان سوئدی"
+
+#: ../includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "برای ترجمه به زبان سوئدی"
+
+#: ../includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "برای ترجمه به زبان ترکی"
+
+#: ../includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "برای کد مخفی کنندۀ نقش مدیر"
+
+#: ../includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr "برای کد افزایش پیشنهاد"
+
+#: ../includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "میخوایین اسم و لینک سایتتون رو اینجا ببینید؟ در ترجمه و ایده دهی کمک کنید"
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "اشکال در خواندن لیست دسترسیهای نقش"

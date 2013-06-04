@@ -415,7 +415,7 @@ tr.smwb-ipropvalue td {
 }
 
 /* Fix de anchos de inputs de los formularios */
-table.formtable .inputSpan input.createboxInput, 
+table.formtable .inputSpan input.createboxInput,
 table.formtable .inputSpan input.ui-autocomplete-input {
 	width: 34em;
 }

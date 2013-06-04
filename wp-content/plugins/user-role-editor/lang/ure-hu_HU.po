@@ -1,0 +1,770 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:46+0700\n"
+"PO-Revision-Date: 2012-09-01 08:46+0700\n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: shinephp.com <vladimir@shinephp.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "A User Role Editor- plugin működéséhez a WordPress 3.0, vagy frissebb verziója kell"
+
+#: user-role-editor.php:35
+#: user-role-editor.php:40
+msgid "Please update!"
+msgstr "Kérem frissítsen!"
+
+#: user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr ""
+
+#: user-role-editor.php:76
+msgid "Only"
+msgstr ""
+
+#: user-role-editor.php:76
+msgid "is allowed to use"
+msgstr ""
+
+#: user-role-editor.php:82
+#: user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "Felhasználó Szerepkör Szerkesztő"
+
+#: user-role-editor.php:223
+msgid "Settings"
+msgstr "Beállítások"
+
+#: user-role-editor.php:233
+#: includes/ure-options.php:235
+msgid "Changelog"
+msgstr "Changelog"
+
+#: user-role-editor.php:280
+msgid "Capabilities"
+msgstr ""
+
+#: includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "Hiba lépett fel! Nézd meg a log fájlt."
+
+#: includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "Adatbázis műveleti hiba! Nézd meg a log fájlt."
+
+#: includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "Nincs biztonsági mentés! Ez automatikusan létrejön az első szerepkör frissítés előtt."
+
+#: includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "A biztonsági mentés elkészült a jelenlegi szerpkörhöz tartozó beállításokról"
+
+#: includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "Hiba: a szerepkör neve csak a latin ABC betűit és számokat tartalmazhat!"
+
+#: includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr ""
+
+#: includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "Hiba lépett fel az új szerepkör létrehozása közben!"
+
+#: includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "A szerepkör: %s sikeresen létrehozva"
+
+#: includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "Hiba lépett fel az új szerepkör törlése közben!"
+
+#: includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "A szerepkör: %s sikeresen törölve"
+
+#: includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "Hiba lépett fel az alapértelmezett szerepkör megváltoztatása közben"
+
+#: includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "Az alapértelmezett szerepkör az új feliratkozók számára sikeresen beállítva erre: %s"
+
+#: includes/ure-lib.php:489
+msgid "Editor"
+msgstr "Szerkesztő"
+
+#: includes/ure-lib.php:490
+msgid "Author"
+msgstr "Szerző"
+
+#: includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "Közreműködő"
+
+#: includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "Feliratkozó"
+
+#: includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "Sablon váltás"
+
+#: includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "Sablon szerkesztés"
+
+#: includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "Plugin aktiválása"
+
+#: includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "Pluginok szerkesztése"
+
+#: includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "Felhasználók szerkesztése"
+
+#: includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "Fájlok szerkesztése"
+
+#: includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "Beállítások módosítása"
+
+#: includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "Kommentek moderálása"
+
+#: includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "Kategóriák kezelése"
+
+#: includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "Linkek szerkesztése"
+
+#: includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "Fájlok feltöltése"
+
+#: includes/ure-lib.php:505
+msgid "Import"
+msgstr "Importálás"
+
+#: includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "Szűretlen HTML"
+
+#: includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "Bejegyzések szerkesztése"
+
+#: includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "Mások bejegyzéseinek szerksztése"
+
+#: includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "Publikált bejegyzések szerkesztése"
+
+#: includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "Bejegyzések közzététele"
+
+#: includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "Oldalak szerkesztése"
+
+#: includes/ure-lib.php:512
+msgid "Read"
+msgstr "Olvasás"
+
+#: includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "10. szint"
+
+#: includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "9. szint"
+
+#: includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "8. szint"
+
+#: includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "7. szint"
+
+#: includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "6. szint"
+
+#: includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "5. szint"
+
+#: includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "4. szint"
+
+#: includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "3. szint"
+
+#: includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "2. szint"
+
+#: includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "1. szint"
+
+#: includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "0. szint"
+
+#: includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "Mások oldalainak szerkesztése"
+
+#: includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "Közzétett oldalak szerkesztése"
+
+#: includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "Oldalak közzététele"
+
+#: includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "Oldalak törlése"
+
+#: includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "Mások oldalainak törlése"
+
+#: includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "Közzétett oldalak törlése"
+
+#: includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "Bejgyzések törlése"
+
+#: includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "Mások bejegyzéseinek törlése"
+
+#: includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "Közzétett bejegyzések törlése"
+
+#: includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "Privát bejegyzések törlése"
+
+#: includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "Privát bejegyzések szerkesztése"
+
+#: includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "Privát bejegyzések megtekintése"
+
+#: includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "Privát oldalak törlése"
+
+#: includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "Privát oldalak szerkesztése"
+
+#: includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "Privát oldalak megtekintése"
+
+#: includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "Felhasználók törlése"
+
+#: includes/ure-lib.php:540
+msgid "Create users"
+msgstr "Felhasználók létrehozása"
+
+#: includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "Ellenőrizetlen feltöltés"
+
+#: includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "Dashboard szerkesztése"
+
+#: includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "Pluginok frissítése"
+
+#: includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "Pluginok törlése"
+
+#: includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "Pluginok telepítése"
+
+#: includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "Sablonok frissítése"
+
+#: includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "Sablonok telepítése"
+
+#: includes/ure-lib.php:548
+msgid "Update core"
+msgstr ""
+
+#: includes/ure-lib.php:549
+msgid "List users"
+msgstr ""
+
+#: includes/ure-lib.php:550
+msgid "Remove users"
+msgstr ""
+
+#: includes/ure-lib.php:551
+msgid "Add users"
+msgstr ""
+
+#: includes/ure-lib.php:552
+msgid "Promote users"
+msgstr ""
+
+#: includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr ""
+
+#: includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr ""
+
+#: includes/ure-lib.php:555
+msgid "Export"
+msgstr ""
+
+#: includes/ure-lib.php:639
+#, fuzzy
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "Hiba: a szerepkör neve csak a latin ABC betűit és számokat tartalmazhat!"
+
+#: includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr ""
+
+#: includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr ""
+
+#: includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr ""
+
+#: includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr ""
+
+#: includes/ure-lib.php:889
+msgid "Help"
+msgstr ""
+
+#: includes/ure-role-edit.php:29
+msgid "None"
+msgstr ""
+
+#: includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr ""
+
+#: includes/ure-role-edit.php:105
+#, fuzzy
+msgid " Name must contain latin characters and digits only!"
+msgstr "A szerepkör neve csak a latin ABC betűit és számokat tartalmazhat!"
+
+#: includes/ure-role-edit.php:110
+#: includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "Szerepkör törlése"
+
+#: includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "Alapértelmezett szerepkör megváltoztatása"
+
+#: includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr ""
+
+#: includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr ""
+
+#: includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "A folytatás előtt, kérem hagyja jóva a műveletet"
+
+#: includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "Szerepkör frissítése \"%s\": kérem hagyja jóvá a folytatáshoz"
+
+#: includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "Szerepkör kiválasztása és lehetőségek módosítása"
+
+#: includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "Szerepkör kiválasztása:"
+
+#: includes/ure-role-edit.php:175
+#: includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "Mutasd a beállításokat emberi olvasható formában"
+
+#: includes/ure-role-edit.php:184
+#: includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr ""
+
+#: includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr ""
+
+#: includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr ""
+
+#: includes/ure-role-edit.php:205
+#: includes/ure-user-edit.php:105
+msgid "Core capabilities:"
+msgstr ""
+
+#: includes/ure-role-edit.php:268
+#: includes/ure-user-edit.php:167
+msgid "Custom capabilities:"
+msgstr ""
+
+#: includes/ure-role-edit.php:319
+#: includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "Frissítés"
+
+#: includes/ure-role-edit.php:319
+#: includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "Beálltások mentése"
+
+#: includes/ure-role-edit.php:320
+#: includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: includes/ure-role-edit.php:320
+#: includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "A nem mentett beállítások elvetése"
+
+#: includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr ""
+
+#: includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr ""
+
+#: includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr ""
+
+#: includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr ""
+
+#: includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+#: includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "Reset"
+
+#: includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "Szerepkör visszaállítása biztonsági mentésből"
+
+#: includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "Új szerepkör"
+
+#: includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr ""
+
+#: includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr ""
+
+#: includes/ure-role-edit.php:353
+#: includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "Hozzáad"
+
+#: includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "Új felhasználói szerepkör hozzáadása"
+
+#: includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "Új felhasználó alapértelmezett szerepköre"
+
+#: includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "Változtat"
+
+#: includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "Alapértelmezett szerepkörként beállít"
+
+#: includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "Törlés"
+
+#: includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "Felhasználói szerepkör törlése"
+
+#: includes/ure-role-edit.php:377
+#: includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr ""
+
+#: includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr ""
+
+#: includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr ""
+
+#: includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr ""
+
+#: includes/ure-user-edit.php:67
+#, fuzzy, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "Szerepkör frissítése \"%s\": kérem hagyja jóvá a folytatáshoz"
+
+#: includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr ""
+
+#: includes/ure-user-edit.php:82
+#, fuzzy
+msgid "Role:"
+msgstr "Szerepkör"
+
+#: includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr ""
+
+#: includes/ure-options.php:59
+#, fuzzy
+msgid "User Roles are restored from the backup data. "
+msgstr "A szerephez tartozó jogosultások visszaállítva a biztonásgi mentésből."
+
+#: includes/ure-options.php:130
+msgid "Error: "
+msgstr ""
+
+#: includes/ure-options.php:130
+#: includes/ure-options.php:146
+msgid "Role"
+msgstr "Szerepkör"
+
+#: includes/ure-options.php:130
+msgid "does not exist"
+msgstr ""
+
+#: includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "sikeresen frissítve"
+
+#: includes/ure-options.php:154
+msgid "User"
+msgstr ""
+
+#: includes/ure-options.php:154
+#, fuzzy
+msgid "capabilities are updated successfully"
+msgstr "sikeresen frissítve"
+
+#: includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "A Pluginról:"
+
+#: includes/ure-options.php:233
+msgid "Author's website"
+msgstr "A készítő weblapja"
+
+#: includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "A plugin weblapja"
+
+#: includes/ure-options.php:236
+msgid "FAQ"
+msgstr "GYIK"
+
+#: includes/ure-options.php:237
+msgid "Greetings"
+msgstr ""
+
+#: includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "Üdvözlet:"
+
+#: includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "A készítő"
+
+#: includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "A Belorusz fordításért"
+
+#: includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr ""
+
+#: includes/ure-options.php:263
+#, fuzzy
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "A japán fordításért"
+
+#: includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "A Chinese fordításért"
+
+#: includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "A Dutch fordításért"
+
+#: includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "A Finnish fordításért"
+
+#: includes/ure-options.php:267
+#: includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "A francia fordításért"
+
+#: includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "A német fordításért"
+
+#: includes/ure-options.php:270
+#: includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr ""
+
+#: includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr ""
+
+#: includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "A magyar fordításért"
+
+#: includes/ure-options.php:274
+#: includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "Az olasz fordításért"
+
+#: includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "A japán fordításért"
+
+#: includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr ""
+
+#: includes/ure-options.php:278
+#: includes/ure-options.php:279
+#: includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr ""
+
+#: includes/ure-options.php:281
+#: includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "A lenygel fordításért"
+
+#: includes/ure-options.php:283
+#: includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "A spanyol fordításért"
+
+#: includes/ure-options.php:285
+#, fuzzy
+msgid "For the updated Swedish translation"
+msgstr "A Swedish fordításért"
+
+#: includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "A Swedish fordításért"
+
+#: includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr ""
+
+#: includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "Az adminisztrátori szerepkör elrejtésére szolgáló kódért"
+
+#: includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr ""
+
+#: includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "Szeretnéd itt látni a neved egy hivatkozással a weblapodra? Megoldható! Így háláljuk meg a fordításban nyújtott segítséged, és új ötleteidet."
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "Szerepkör lista olvasási hiba!"
