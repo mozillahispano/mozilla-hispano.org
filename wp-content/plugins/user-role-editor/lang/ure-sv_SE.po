@@ -1,0 +1,772 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:50+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Swedish\n"
+"X-Poedit-Country: SWEDEN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "User Role Editor kräver WordPress 3.0 eller nyare."
+
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "Vänligen uppdatera!"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "User Role Editor kräver PHP 5.0 eller nyare."
+
+#: ../user-role-editor.php:76
+msgid "Only"
+msgstr "Bara"
+
+#: ../user-role-editor.php:76
+msgid "is allowed to use"
+msgstr "får använda"
+
+#: ../user-role-editor.php:82
+#: ../user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "User Role Editor"
+
+#: ../user-role-editor.php:223
+msgid "Settings"
+msgstr "Inställningar"
+
+#: ../user-role-editor.php:233
+#: ../includes/ure-options.php:235
+msgid "Changelog"
+msgstr "Logg över ändringar"
+
+#: ../user-role-editor.php:280
+msgid "Capabilities"
+msgstr "Förmågor"
+
+#: ../includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "Ett fel inträffade. Vänligen kontrollera loggfilen."
+
+#: ../includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "Databasfel. Kontrollera loggfilen."
+
+#: ../includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "Ingen säkerhetskopia tillgänglig. Data skapas automatiskt vid första rolluppdateringen."
+
+#: ../includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "Säkerhetskopia har skapats för aktuella rollresurser"
+
+#: ../includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "Fel: Rollnamnet får endast innehålla romerska tecken och siffror! "
+
+#: ../includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr "Rollen %s existerar redan"
+
+#: ../includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "Fel uppstod vid skapande av ny roll"
+
+#: ../includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "Skapade rollen %s"
+
+#: ../includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "Fel uppstod vid radering av roll"
+
+#: ../includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "Raderade rollen %s"
+
+#: ../includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "Fel uppstod vid byte av standardroll"
+
+#: ../includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "Standardroll för nya användare satt till %s"
+
+#: ../includes/ure-lib.php:489
+msgid "Editor"
+msgstr "Utgivare"
+
+#: ../includes/ure-lib.php:490
+msgid "Author"
+msgstr "Författare"
+
+#: ../includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "Medarbetare"
+
+#: ../includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "Prenumerant"
+
+#: ../includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "Byt teman"
+
+#: ../includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "Redigera teman"
+
+#: ../includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "Aktivera tillägg"
+
+#: ../includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "Redigera tillägg"
+
+#: ../includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "Redigera användare"
+
+#: ../includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "Redigera filer"
+
+#: ../includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "Hantera inställningar"
+
+#: ../includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "Moderera kommentarer"
+
+#: ../includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "Hantera kategorier"
+
+#: ../includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "Hantera länkar"
+
+#: ../includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "Ladda upp filer"
+
+#: ../includes/ure-lib.php:505
+msgid "Import"
+msgstr "Importera"
+
+#: ../includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "Ofiltrerad html"
+
+#: ../includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "Redigera inlägg"
+
+#: ../includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "Redigera andras inlägg"
+
+#: ../includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "Redigera publicerade inlägg"
+
+#: ../includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "Publicera inlägg"
+
+#: ../includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "Redigera sidor"
+
+#: ../includes/ure-lib.php:512
+msgid "Read"
+msgstr "Läsa"
+
+#: ../includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "Nivå 10"
+
+#: ../includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "Nivå 9"
+
+#: ../includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "Nivå 8"
+
+#: ../includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "Nivå 7"
+
+#: ../includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "Nivå 6"
+
+#: ../includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "Nivå 5"
+
+#: ../includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "Nivå 4"
+
+#: ../includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "Nivå 3"
+
+#: ../includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "Nivå 2"
+
+#: ../includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "Nivå 1"
+
+#: ../includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "Nivå 0"
+
+#: ../includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "Redigera andras sidor"
+
+#: ../includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "Redigera publicerade sidor"
+
+#: ../includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "Publicera sidor"
+
+#: ../includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "Radera sidor"
+
+#: ../includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "Radera andras sidor"
+
+#: ../includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "Radera publicerade sidor"
+
+#: ../includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "Radera inlägg"
+
+#: ../includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "Radera andras inlägg"
+
+#: ../includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "Radera publicerade inlägg"
+
+#: ../includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "Radera privata inlägg"
+
+#: ../includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "Redigera privata inlägg"
+
+#: ../includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "Läs privata inlägg"
+
+#: ../includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "Radera privata sidor"
+
+#: ../includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "Redigera privata sidor"
+
+#: ../includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "Läs privata sidor"
+
+#: ../includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "Radera användare"
+
+#: ../includes/ure-lib.php:540
+msgid "Create users"
+msgstr "Skapa användare"
+
+#: ../includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "Ofiltrerad uppladdning"
+
+#: ../includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "Redigera panelen"
+
+#: ../includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "Uppdatera tillägg"
+
+#: ../includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "Radera tillägg"
+
+#: ../includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "Installera tillägg"
+
+#: ../includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "Uppdatera teman"
+
+#: ../includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "Installera teman"
+
+#: ../includes/ure-lib.php:548
+msgid "Update core"
+msgstr "Uppdatera kärnan"
+
+#: ../includes/ure-lib.php:549
+msgid "List users"
+msgstr "Lista användare"
+
+#: ../includes/ure-lib.php:550
+msgid "Remove users"
+msgstr "Radera användare"
+
+#: ../includes/ure-lib.php:551
+msgid "Add users"
+msgstr "Lägg till användare"
+
+#: ../includes/ure-lib.php:552
+msgid "Promote users"
+msgstr "Befodra användare"
+
+#: ../includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr "Redigera temainställningar"
+
+#: ../includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr "Radera teman"
+
+#: ../includes/ure-lib.php:555
+msgid "Export"
+msgstr "Exportera"
+
+#: ../includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "Fel: Namn på förmågor får endast innehålla romerska tecken och siffror!"
+
+#: ../includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "Förmågan %s skapades"
+
+#: ../includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr "Förmågan %s existerar redan"
+
+#: ../includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "Fel! Du har inte tillstånd att radera denna förmågan: %s!"
+
+#: ../includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "Förmågan %s raderades"
+
+#: ../includes/ure-lib.php:889
+msgid "Help"
+msgstr "Hjälp"
+
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "Ingen"
+
+#: ../includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr " Namnet får inte vara tomt!"
+
+#: ../includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr " Namnet får endast innnehålla romerska tecken och siffror!"
+
+#: ../includes/ure-role-edit.php:110
+#: ../includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "Radera roll"
+
+#: ../includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "Byt standardroll"
+
+#: ../includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr "Återställ roller from säkerhetskopia. Var försiktig, kopian gjordes när du använde User Role Editor första gången. Allting du ändrat därefter kommer gå förlorat. "
+
+#: ../includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "Varning! Var försiktig - borttagning av kritiska förmågor kan krascha vissa tillägg"
+
+#: ../includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "Vänligen bekräfta för att fortsätta"
+
+#: ../includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "Roll \"%s\" uppdateras: vänligen bekräfta för att fortsätta"
+
+#: ../includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "Välj roll och ändra dess resurslista"
+
+#: ../includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "Välj roll:"
+
+#: ../includes/ure-role-edit.php:175
+#: ../includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "Visa förmågor i mänskligt läsbar form"
+
+#: ../includes/ure-role-edit.php:184
+#: ../includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr "Visa föråldrade förmågor"
+
+#: ../includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "Tillämpa på alla webbplatser i detta nätverket, om ikryssad"
+
+#: ../includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr "Tillämpa på alla webbplatser"
+
+#: ../includes/ure-role-edit.php:205
+#: ../includes/ure-user-edit.php:105
+#, fuzzy
+msgid "Core capabilities:"
+msgstr "WordPress Förmågor:"
+
+#: ../includes/ure-role-edit.php:268
+#: ../includes/ure-user-edit.php:167
+#, fuzzy
+msgid "Custom capabilities:"
+msgstr "Förmågor:"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "Uppdatera"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "Ångra"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "Ångra ej sparade ändringar"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "Återställ"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "Återställ roller från säkerhetskopia"
+
+#: ../includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "Lägg till ny roll"
+
+#: ../includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr "Namn: "
+
+#: ../includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr "Gör kopia av: "
+
+#: ../includes/ure-role-edit.php:353
+#: ../includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "Lägg till"
+
+#: ../includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "Lägg till ny användarroll"
+
+#: ../includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "Standardroll för nya användare"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "Ändra"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "Ange som standardroll"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "Radera"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "Radera användarroll"
+
+#: ../includes/ure-role-edit.php:377
+#: ../includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr "Lägg till ny förmåga"
+
+#: ../includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr "Ta bort förmåga"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr "Ta bort användarförmåga"
+
+#: ../includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "Användare \"%s\" uppdateras: vänligen bekräfta för att fortsätta"
+
+#: ../includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr "Ändra förmågor för användare"
+
+#: ../includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "Roll:"
+
+#: ../includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr "Lägg till förmågor till denna användaren:"
+
+#: ../includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "Användarroller återställdes från säkerhetskopian"
+
+#: ../includes/ure-options.php:130
+msgid "Error: "
+msgstr "Fel: "
+
+#: ../includes/ure-options.php:130
+#: ../includes/ure-options.php:146
+msgid "Role"
+msgstr "Roll"
+
+#: ../includes/ure-options.php:130
+msgid "does not exist"
+msgstr "existerar inte"
+
+#: ../includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "är uppdaterad"
+
+#: ../includes/ure-options.php:154
+msgid "User"
+msgstr "Användare"
+
+#: ../includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "förmågor uppdaterades"
+
+#: ../includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "Om detta tillägg:"
+
+#: ../includes/ure-options.php:233
+msgid "Author's website"
+msgstr "Författarens hemsida"
+
+#: ../includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "Webbsida för tillägg"
+
+#: ../includes/ure-options.php:236
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../includes/ure-options.php:237
+msgid "Greetings"
+msgstr ""
+
+#: ../includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "Hälsningar:"
+
+#: ../includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "Det är jag, skaparen"
+
+#: ../includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "För hjälpen med den vitryska översättningen"
+
+#: ../includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr "För hjälpen med den brasilianska översättningen"
+
+#: ../includes/ure-options.php:263
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "För hjälpen med den brasilianska översättningen"
+
+#: ../includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "För hjälpen med den kinesiska översättningen"
+
+#: ../includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "För hjälpen med den nederländska översättningen"
+
+#: ../includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "För hjälpen med den finska översättningen"
+
+#: ../includes/ure-options.php:267
+#: ../includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "För hjälpen med den franska översättningen"
+
+#: ../includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "För hjälpen med den tyska översättningen"
+
+#: ../includes/ure-options.php:270
+#: ../includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr ""
+
+#: ../includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr ""
+
+#: ../includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "För hjälpen med den ungerska översättningen"
+
+#: ../includes/ure-options.php:274
+#: ../includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "För hjälpen med den italienska översättningen"
+
+#: ../includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "För hjälpen med den japanska översättningen"
+
+#: ../includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr ""
+
+#: ../includes/ure-options.php:278
+#: ../includes/ure-options.php:279
+#: ../includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr "För hjälpen med den persiska översättningen"
+
+#: ../includes/ure-options.php:281
+#: ../includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "För hjälpen med den polska översättningen"
+
+#: ../includes/ure-options.php:283
+#: ../includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "För hjälpen med den spanska översättningen"
+
+#: ../includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr ""
+
+#: ../includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "För hjälpen med den svenska översättningen"
+
+#: ../includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "För hjälpen med den turkiska översättningen"
+
+#: ../includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "För koden att gömma administratörsrollen"
+
+#: ../includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr "För kodförbättringsförslaget"
+
+#: ../includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "Hade du velat se ditt namn med en länk till din sida här? Varsågod! Din hjälp med översättningar och nya idéer är mycket uppskattade. "
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "Fel uppstod vid läsning av Rollistor"
+
+#~ msgid "More plugins from"
+#~ msgstr "Fler tillägg från"
+
+#~ msgid "No items found."
+#~ msgstr "Inga inlägg hittades"
+
+#~ msgid "Recent Posts:"
+#~ msgstr "Senaste inlägg:"

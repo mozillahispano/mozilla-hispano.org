@@ -1,0 +1,16 @@
+<div id="alojaBusqueda">
+		<form id="form-buscador" method="get" action="http://www.mozilla-hispano.org/buscar.php">
+			<fieldset>
+			<div id="caja-busqueda">
+				<select name="donde" id="destinoBusqueda">
+					<option value="noti">Noticias</option>
+					<option value="foro">Foros</option>
+					<option value="docu" selected="selected">Documentación</option>
+				</select>
+				<input type="text" onblur="if(this.value=='')this.value='Escribe primero tu pregunta aquí...';" onclick="if(this.value=='Escribe primero tu pregunta aquí...')this.value='';" value="Escribe primero tu pregunta aquí..." class="buscador" title="Buscar palabras clave" maxlength="128" id="keywords" name="q"/>
+				<input type="submit" value="Buscar" class="submit"/>
+				</div>
+			
+			</fieldset>
+		</form>
+</div>

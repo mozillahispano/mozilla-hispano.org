@@ -1,0 +1,656 @@
+.form-table.aioseop {
+	clear: none;
+}
+.form-table.aioseop td {
+	vertical-align: top;
+	padding: 16px 0 10px 0;
+	line-height: 20px;
+	font-size: 12px;
+}
+.form-table.aioseop th {
+	width: 200px;
+	padding: 10px 0 12px 9px;
+}
+.aioseop_help_text_link, .aioseop_help_text_link:active {
+	text-align: left;
+	float: left;
+	width: 100%;
+	max-width: 300px;
+	background: url('images/question.png') no-repeat;
+	min-width: 1px;
+	min-height: 22px;
+	padding-top: 10px;
+	border: none;
+	outline: none;
+}
+.aioseop_help_text_link img {
+	width: 40px;
+	float: left;
+}
+.aioseop_label {
+	color: #5F5F5F;
+	font-weight: bold;
+	line-height: 19px;
+	padding-left: 50px;
+	padding-right: 10px;
+	display: inline-block;
+	text-align: left;
+}
+.aioseop_option_div {
+	max-height: 150px;
+	width: 95%;
+	overflow-y: auto;
+}
+.aioseop_overflowed {
+	border: 1px solid #e1e1e1;
+}
+.aioseop input[type="text"] {
+	color: #515151;
+	height: 35px;
+	padding: 10px 0px 10px 10px;
+	font-size: 14px;
+	width: 95%;
+	max-width: 600px;
+}
+.aioseop textarea {
+	color: #515151;
+	padding: 10px 0px 0px 10px;
+	margin: 0px;
+	font-size: 14px;
+	line-height: 25px;
+	width: 95%;
+	max-width: 600px;
+}
+.aioseop_help_text_div {
+	text-align:left;
+	width:100%;
+	margin: 10px 0px 10px 0px;
+}
+.aioseop_help_text {
+	font-size: 12px;
+	float: left;
+	clear: left;
+	color: #797979;
+	line-height: 15px;
+	font-style: italic;
+}
+.aioseop_head_tagline {
+	color: #5F5F5F;
+	font-size: 13px;
+}
+
+.aioseop_head_nav {
+	float: left;
+	font-size: 18px;
+	margin: 0px 0 16px 0;
+	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+	border-bottom: 1px solid #CCC;
+	width: 100%;
+}
+.aioseop_head_nav_tab {
+	padding: 10px 15px 10px 15px;
+	margin: 0 0 0 15px;
+	border-width: 1px 1px 0;
+	border-radius: 4px 4px 0px 0;
+	border-style: solid;
+	border-color: #CCC #CCC white;
+	float: left;
+	opacity: 0.5;
+	color: black;
+	text-shadow: white 0 1px 0;
+	text-decoration: none;
+}
+.aioseop_head_nav_tab.aioseop_head_nav_active {
+	opacity: 1;
+	margin-bottom: -1px;
+	border-width: 1px;
+}
+.aioseop_head_nav_tab:first-child {
+	margin-left: 0px;
+}
+.aioseop_head_nav_tab:hover {
+	opacity:1;
+}
+.aioseop_header {
+	float: left;
+	clear: left;
+}
+
+.aioseop_advert {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #DDD;
+	height: 200px;
+	width: 423px;
+}
+
+.aioseop_adverts {
+	float: right;
+}
+.aioseop_content {
+	min-width: 760px;
+	clear: left;
+}
+.aioseop_options_wrapper {
+}
+.aioseop_options_wrapper .hndle {
+	font-size: 15px;
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	font-weight: normal;
+	padding: 7px 10px;
+	margin: 0;
+	line-height: 1;
+}
+#aiosp_feature_manager_metabox.postbox {
+	float: left;
+}
+.aioseop_advert p {
+	margin: 25px 0 25px 0;
+}
+.widget, #widget-list .widget-top, .postbox, #titlediv, .aioseop_options_wrapper .postarea, .stuffbox {
+	border-color: #DFDFDF;
+	-moz-box-shadow: inset 0 1px 0 #fff;
+	-webkit-box-shadow: inset 0 1px 0 #fff;
+	box-shadow: inset 0 1px 0 #fff;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.aioseop_advert h3 {
+	padding: 0;
+	margin-top: 6px;
+}
+.aioseop_metabox_text p {
+	margin: 0 0 0px 0;
+	width: 101%;
+}
+.aioseop_sidebar {
+	width: 457px;
+	margin-left: 10px;
+}
+.aioseop_metabox_text {
+	margin-bottom: 0px;
+}
+.aioseop_metabox_wrapper {
+	padding: 0px;
+}
+.aioseop_metabox_text *:last-child {
+	margin: 0;
+}
+.aioseop_metabox_feature {
+	margin-top: 20px;
+}
+.aioseop_option_label {
+	float: left;
+	margin: 0px 0 10px 5px;
+	min-width: 150px;
+	width: 37%;
+	max-width: 270px;
+}
+.aioseop_metabox_text h2 {
+	font-size: 14px;
+	padding: 0px;
+	font-weight: bold;
+	line-height: 29px;
+}
+#aioseop-about {
+	width: 443px;
+	margin-bottom: 20px;
+}
+#aioseop-about .aioseop_metabox_text #mc-embedded-subscribe-form h2 {
+	font-size: 13px;
+}
+.aioseop_sidebar #mc-embedded-subscribe-form {
+	margin: 0 0 10px 0;
+	background: white;
+	padding: 10px 10px;
+	border: 1px solid #DDD;
+}
+.aioseop input[readonly] {
+	background-color: #EEE;
+	margin: 5px 0 5px 0 !important;
+}
+.aioseop input[type="button"] {
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 15px;
+}
+
+.aioseop_settings_left {
+	float: left;
+	padding: 0px;
+	margin: 0px 0 0 0;
+	width: 100%;
+}
+
+#aioseop_top_button {
+	margin-top: 5px;
+	height: 30px;
+}
+
+.aioseop_right_sidebar {
+	float: right;
+	margin-top: 30px;
+}
+/*
+#wpbody-content {
+	min-width: 1180px;
+}
+*/
+#aiosp_settings_form .button-primary.hidden {
+	display: none;
+}
+.All_in_One_SEO_Pack_Feature_Manager > #aiosp_settings_form > #aioseop_top_button {
+	height: 5px;
+}
+.All_in_One_SEO_Pack_Feature_Manager > .aioseop_right_sidebar.aioseop_options_wrapper {
+	margin-top: 10px;
+}
+div#aiosp_feature_manager_metabox .inside {
+	padding: 8px;
+}
+div.aioseop_feature {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 240px;
+	height: 288px;
+	margin: 8px;
+	border: 1px solid #DEDEDE;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background: white;
+	padding: 10px 0px 0px;
+	-webkit-box-shadow: inset 0 1px 0 #fff, inset 0 0 20px rgba(0,0,0,0.05), 0 1px 2px rgba( 0,0,0,0.1 );
+	-moz-box-shadow: inset 0 1px 0 #fff, inset 0 0 20px rgba(0,0,0,0.05), 0 1px 2px rgba( 0,0,0,0.1 );
+	box-shadow: inset 0 1px 0 #fff, inset 0 0 20px rgba(0,0,0,0.05), 0 1px 2px rgba( 0,0,0,0.1 );
+	-webkit-transition-duration: .4s;
+	-moz-transition-duration: .4s;
+}
+.aioseop_feature h3 {
+	font-size: 17px;
+	margin: 0;
+	padding: 0px 10px 5px 10px;
+	font-weight: normal;
+	font-style: normal;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",Verdana,"Bitstream Vera Sans",sans-serif;
+}
+.aioseop_feature p {
+	line-height: 150%;
+	font-size: 12px;
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	margin-bottom: 20px;
+	color: #666;
+	padding: 0px 10px;
+}
+.aioseop_feature p.aioseop_desc {
+	min-height: 80px;
+}
+.aioseop_feature .feature_button {
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	min-width: 80px;
+	text-align: center;
+}
+.aioseop_feature .feature_button:before {
+	content: "Activate";
+}
+.aioseop_feature .active.feature_button:before {
+	content: "Deactivate";
+}
+div.aioseop_feature .aioseop_featured_image {
+	min-height: 100px;
+	background-repeat: no-repeat;
+	display: block;
+	margin: 0 auto;
+	width: 133px;
+}
+div.aioseop_feature .aioseop_featured_image {
+	background-image: url(images/Default-BW-Standard.png);
+}
+div.aioseop_feature .aioseop_featured_image.active {
+	background-image: url(images/Default-Color-Standard.png);
+}
+div.aioseop_feature#aioseop_performance .aioseop_featured_image {
+	background-image: url(images/Performance-BW-Standard.png);
+}
+div.aioseop_feature#aioseop_performance .aioseop_featured_image.active {
+	background-image: url(images/Performance-Color-Standard.png);
+}
+div.aioseop_feature#aioseop_coming_soon .aioseop_featured_image {
+	background-image: url(images/Default-Color-Standard.png);
+}
+div.aioseop_feature#aioseop_coming_soon2 .aioseop_featured_image {
+	background-image: url(images/Default-Color-Standard.png);
+}
+.aioseop_follow_button {
+	min-height: 50px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 100px;
+	background-size: auto 50px !important;
+	margin-right: 5px;
+}
+.aioseop_facebook_follow {
+	background-image: url(images/facebook-follow-standard.png);
+}
+.aioseop_twitter_follow {
+	background-image: url(images/twitter-follow-standard.png);
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (   min--moz-device-pixel-ratio: 1.5),
+only screen and (     -o-min-device-pixel-ratio: 3/2),
+only screen and (        min-device-pixel-ratio: 1.5),
+only screen and (                min-resolution: 1.5dppx) {
+	div.aioseop_feature .aioseop_featured_image {
+        background-size: auto 100px !important;
+	}
+	div.aioseop_feature .aioseop_featured_image.active {
+		background-image: url(images/Default-Color-Retina.png);
+	}
+	div.aioseop_feature .aioseop_featured_image {
+		background-image: url(images/Default-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_performance .aioseop_featured_image {
+		background-image: url(images/Performance-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_performance .aioseop_featured_image.active {
+		background-image: url(images/Performance-Color-Retina.png);
+	}
+	div.aioseop_feature#aioseop_coming_soon .aioseop_featured_image {
+		background-image: url(images/Default-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_coming_soon2 .aioseop_featured_image {
+		background-image: url(images/Default-BW-Retina.png);
+	}
+	.aioseop_facebook_follow {
+		background-image: url(images/facebook-follow-retina.png);	
+	}
+	.aioseop_twitter_follow {
+		background-image: url(images/twitter-follow-retina.png);	
+	}
+}
+
+.aioseop_options {
+	width: 100%;
+	margin: 18px 0px 10px 0px;
+}
+.aioseop_wrapper {
+	width: 100%;
+}
+.aioseop_input {
+	clear: left;
+	width: 100%;
+	padding: 5px;
+}
+.aioseop_option_input {
+	float: left;
+	width: 61%;
+	margin: 0;
+	padding-left: 1px;
+	min-width: 160px;
+/*	max-width: 900px; */
+}
+div.preview_snippet {
+	border: 1px solid #ebebeb;
+	padding: 15px 15px 20px 7px;
+	background-color: #fff;
+}
+div#aioseop_snippet {
+	font-family: arial, sans-serif;
+	font-size: 13px;
+}
+div#aioseop_snippet > h3 {
+	font-size: 16px;
+	border: 0px;
+	background: inherit;
+}
+div#aioseop_snippet > h3 > a {
+	color: #12c;
+	text-decoration: none;
+	cursor: pointer;
+}
+div#aioseop_snippet > div {
+	color: #222;
+		max-width: 42em;
+}
+div#aioseop_snippet > div > div {
+	display: block;
+	margin-bottom: 1px;
+}
+div#aioseop_snippet > div > div > cite {
+	color: #093;
+	font-style: normal;
+}
+div#aioseop_snippet > div > span {
+	margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+.aioseop_top_label .aioseop_option_input,
+.aioseop_no_label .aioseop_option_input {
+	width: 100%;
+}
+
+#aiosp_settings_form .postbox {
+	margin: 0px 0px 20px 0px;
+}
+
+.aioseop_settings_left .postbox {
+	float: left;
+	width: 100%;
+}
+.aioseop_option_setting_label {
+	min-height: 35px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left: 1px;
+	max-width: 229px;
+	min-width: 160px;
+	width: 33%;
+}
+.aioseop_settings_left .postbox .inside {
+	padding: 0;
+	margin: 0;
+}
+#aiosp_settings_form .aioseop_no_label, .aioseop_no_label {
+	float: left;
+	width: 92%;
+	max-width: 100%;
+	margin: 0px 23px 0px 13px;
+}
+.aioseop_top_label {
+	width: 96%;
+	margin: 0 10px;
+}
+.aioseop_hidden_type {
+	margin: 0;
+	padding: 0;
+	height: 0;
+}
+.aioseop_module.error.below-h2 {
+	padding: 5px 0px;
+	margin: 0px 477px 15px 0px !important;
+}
+
+.aioseop_input input[type="checkbox"], 
+.aioseop_input input[type="radio"] {
+	vertical-align: text-bottom;
+	margin: 15px 0 0 0;
+}
+
+#aiosp {
+	width: 100%;
+}
+
+.aioseop_input.aioseop_top_label .aioseop_option_input {
+	margin: 0 0 10px 0;
+}
+
+.aioseop_option_docs {
+	width: 98%;
+	display: none;
+	border: 1px solid #D3D3D3;
+	margin-top: 20px;
+	padding: 1%;
+	background-color: #EEE;
+}
+.aioseop_option_docs h3 {
+	background:none;
+}
+.aioseop_error_notice {
+	color: #f00;
+	font-weight: bold;
+}
+
+.aioseop_input select {
+	margin: 7px 0px;
+}
+.aioseop_help_text ul {
+	margin: 15px 0 0 20px;
+}
+
+.aioseop_help_text ul li {
+	line-height: 20px;
+	margin: 0;
+}
+.aioseop_sidebar #side-sortables {
+	width: 98%;
+}
+
+.aioseop_tabs {
+	padding-top: 6px;
+}
+.aioseop_header_tabs li {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+}
+.aioseop_header_tabs {
+	margin: 0px;
+}
+.aioseop_header_nav {
+	margin: 0px;
+}
+.aioseop_header_tabs li a.aioseop_header_tab.active {
+	background-color: rgb( 255, 255, 255 );
+	border-bottom-color: rgba( 255, 255, 255, 0.5 );
+	font-weight: bold;
+}
+.aioseop_header_tabs li a.aioseop_header_tab {
+	height: 18px;
+	font: 13px/18px Arial,Helvetica,sans-serif normal;
+	text-decoration: none;
+	margin: 5px 5px 0 0;
+	padding: 4px 5px 2px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	background-color: rgb( 255, 255, 255 );
+	background-color: rgba( 255, 255, 255, 0.5 );
+	border-color: #ccc;
+	color: #5F5F5F;
+}
+.aioseop_header_tabs li:first-child a.aioseop_header_tab {
+	border-left: solid 1px #CCC;
+	margin-left: 5px;
+}
+.aioseop_tab {
+	border: solid 1px #CCC;
+	background-color: rgb( 255, 255, 255 );
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
+.aioseop_loading {
+	background-image: url('images/activity.gif');
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+}
+.aiosp_delete_url {
+	background-image: url('images/delete.png');
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+}
+form#aiosp_settings_form, .aioseop_tabs_div {
+	padding-right: 477px;
+}
+.wrap > h2 {
+	padding-bottom: 14px;
+}
+div.wrap > form table.form-table {
+	clear: none;
+	width: 580px;
+}
+div.wrap > div#message.error {
+	max-width: 540px;
+}
+#aiosp_settings_form ul.sfwd_debug_settings li strong {
+	display: block;
+	float: left;
+	text-align: right;
+	background-color: #DDD;
+	margin-right: 8px;
+	padding: 1px;
+	padding-right: 8px;
+	overflow: auto;
+	width: 200px;
+	min-height: 16px;
+}
+#aiosp_settings_form ul.sfwd_debug_settings li:nth-child(2n+1) strong {
+	background-color: #CCC;
+}
+#aiosp_settings_form ul.sfwd_debug_settings li {
+	clear: left;
+	padding: 5px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #EEE;
+	overflow: auto;
+	max-width: 75%;
+	min-width: 800px;
+}
+#aiosp_settings_form ul.sfwd_debug_settings li:nth-child(2n) {
+	background-color: #DDD;
+}
+div.sfwd_debug_mail_sent {
+	background-color: #080;
+	border: 1px solid #0A0;
+	margin: 10px 0px 10px 0px;
+	width: 598px;
+	color: #FFF;
+	text-align: center;
+}
+div.sfwd_debug_error {
+	background-color: #F00;
+	color: #FFF;
+	border: 1px solid #A00;
+	margin: 10px 0px 10px 0px;
+	width: 598px;
+	text-align: center;
+	font-weight: bolder;
+}
+#aiosp_performance_status_wrapper .aioseop_option_div {
+	max-height: 420px;
+}
+#aioseop_coming_soon, #aioseop_coming_soon2 {
+	padding-top: 40px;
+	text-align: center;
+	height: 258px;
+	font-size: 16px;
+}

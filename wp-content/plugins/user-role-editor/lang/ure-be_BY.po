@@ -1,0 +1,1251 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor v.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:28+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: ShinePHP.com <by.marcis@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "Рэдактар роляў карыстачоў патрабуе WordPress 3.0 ці вышэй."
+
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "Калі ласка, абновіце!"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "Рэдактар роляў карыстачоў патрабуе PHP 5.0 ці вышэй."
+
+#: ../user-role-editor.php:76
+msgid "Only"
+msgstr ""
+
+#: ../user-role-editor.php:76
+msgid "is allowed to use"
+msgstr ""
+
+#: ../user-role-editor.php:82
+#: ../user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "Рэдактар роляў карыстачоў"
+
+#: ../user-role-editor.php:223
+msgid "Settings"
+msgstr "Усталёўкі"
+
+#: ../user-role-editor.php:233
+#: ../includes/ure-options.php:235
+msgid "Changelog"
+msgstr "Часопіс змен"
+
+#: ../user-role-editor.php:280
+msgid "Capabilities"
+msgstr ""
+
+#: ../includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "Адбылася памылка. Праверце лог-файл."
+
+#: ../includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "Памылка працы з базай дадзеных. Праверце лог-файл."
+
+#: ../includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "Няма рэзервовай копіі. Яна ствараецца аўтаматычна перад першай зменай роляў."
+
+#: ../includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "Для бягучага размеркавання магчымасцяў па ролях створана рэзервовая копія"
+
+#: ../includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "Памылка: павінна ўтрымоўваць толькі лацінскія літары і лічбы"
+
+#: ../includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr ""
+
+#: ../includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "Адбылася памылка пры стварэнні новай ролі"
+
+#: ../includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "Роля %s створана паспяхова"
+
+#: ../includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "Адбылася памылка пры выдаленні ролі"
+
+#: ../includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "Роля %s выдалена паспяхова"
+
+#: ../includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "Адбылася памылка пры змене ролі па-змаўчанню"
+
+#: ../includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "Роля па-змаўчанню для новых пользователй зменена на %s паспяхова."
+
+#: ../includes/ure-lib.php:489
+msgid "Editor"
+msgstr "Рэдактар"
+
+#: ../includes/ure-lib.php:490
+msgid "Author"
+msgstr "Аўтар"
+
+#: ../includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "Асістэнт"
+
+#: ../includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "Падпісант"
+
+#: ../includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "Змяняць тэмы"
+
+#: ../includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "Змяняць тэмы"
+
+#: ../includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "Актываваць убудовы"
+
+#: ../includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "Рэдагаваць убудовы"
+
+#: ../includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "Змяняць карыстачоў"
+
+#: ../includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "Змяняць файлы"
+
+#: ../includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "Кіраваць усталёўкамі"
+
+#: ../includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "Мадэраваць каментары"
+
+#: ../includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "Кіраваць катэгорыямі"
+
+#: ../includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "Кіраваць спасылкамі"
+
+#: ../includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "Загружаць файлы"
+
+#: ../includes/ure-lib.php:505
+msgid "Import"
+msgstr "Імпарт"
+
+#: ../includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "html без фільтра"
+
+#: ../includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "Змяняць артыкулы"
+
+#: ../includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "Змяняць чужыя артыкулы"
+
+#: ../includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "Рэдагаваць апублікаваныя артыкулы"
+
+#: ../includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "Публікаваць артыкулы"
+
+#: ../includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "Змяняць старонкі"
+
+#: ../includes/ure-lib.php:512
+msgid "Read"
+msgstr "Чытанне"
+
+#: ../includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "Узровень 10"
+
+#: ../includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "Узровень 9"
+
+#: ../includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "Узровень 9"
+
+#: ../includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "Узровень 7"
+
+#: ../includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "Узровень 6"
+
+#: ../includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "Узровень 5"
+
+#: ../includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "Узровень 4"
+
+#: ../includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "Узровень 3"
+
+#: ../includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "Узровень 2"
+
+#: ../includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "Узровень 1"
+
+#: ../includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "Узровень 0"
+
+#: ../includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "Рэдагаваць чужыя старонкі"
+
+#: ../includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "Рэдагаваць апублікаваныя старонкі"
+
+#: ../includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "Публікаваць старонкі"
+
+#: ../includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "Выдаляць старонкі"
+
+#: ../includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "Выдаліць чужыя старонкі"
+
+#: ../includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "Выдаляць апублікаваныя старонкі"
+
+#: ../includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "Выдаляць артыкулы"
+
+#: ../includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "Выдаляць чужыя артыкулы"
+
+#: ../includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "Выдаляць апублікаваныя артыкулы"
+
+#: ../includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "Выдаляць прыватныя артыкулы"
+
+#: ../includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "Рэдагаваць прыватныя артыкулы"
+
+#: ../includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "Чытаць прыватныя артыкулы"
+
+#: ../includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "Выдаляць прыватныя старонкі"
+
+#: ../includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "Рэдагаваць прыватныя старонкі"
+
+#: ../includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "Чытаць прыватныя старонкі"
+
+#: ../includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "Выдаляць карыстачоў"
+
+#: ../includes/ure-lib.php:540
+msgid "Create users"
+msgstr "Ствараць карыстачоў"
+
+#: ../includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "Загрузка без фільтра"
+
+#: ../includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "Змяняць панэль адміністратара"
+
+#: ../includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "Абнаўляць убудовы"
+
+#: ../includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "Выдаляць убудовы"
+
+#: ../includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "Усталёўваць убудовы"
+
+#: ../includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "Абнаўляць тэмы"
+
+#: ../includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "Усталёўваць тэмы"
+
+#: ../includes/ure-lib.php:548
+msgid "Update core"
+msgstr ""
+
+#: ../includes/ure-lib.php:549
+msgid "List users"
+msgstr ""
+
+#: ../includes/ure-lib.php:550
+msgid "Remove users"
+msgstr ""
+
+#: ../includes/ure-lib.php:551
+msgid "Add users"
+msgstr ""
+
+#: ../includes/ure-lib.php:552
+msgid "Promote users"
+msgstr ""
+
+#: ../includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr ""
+
+#: ../includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr ""
+
+#: ../includes/ure-lib.php:555
+msgid "Export"
+msgstr ""
+
+#: ../includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "Памылка: павінна ўтрымоўваць толькі лацінскія літары і лічбы"
+
+#: ../includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "Роля %s створана паспяхова"
+
+#: ../includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr ""
+
+#: ../includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr ""
+
+#: ../includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr ""
+
+#: ../includes/ure-lib.php:889
+msgid "Help"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "Не"
+
+#: ../includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr "Найменне ролі не можа быць пустым!"
+
+#: ../includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr "Найменне ролі павінна ўтрымоўваць толькі лацінскія літары і лічбы."
+
+#: ../includes/ure-role-edit.php:110
+#: ../includes/ure-role-edit.php:361
+msgid "Delete Role"
+msgstr "Выдаліць Ролю"
+
+#: ../includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "Усталяваць як роля па-змаўчанню"
+
+#: ../includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "Калі ласка, пацвердзіце працяг "
+
+#: ../includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "Змена ролі \"%s\": калі ласка, пацвердзіце працяг "
+
+#: ../includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "Абяры Ролю і змяні спіс дазволеных аперацый"
+
+#: ../includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "Абяры Ролю:"
+
+#: ../includes/ure-role-edit.php:175
+#: ../includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "Паказ магчымасцяў у чытэльнай форме"
+
+#: ../includes/ure-role-edit.php:184
+#: ../includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:205
+#: ../includes/ure-user-edit.php:105
+msgid "Core capabilities:"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:268
+#: ../includes/ure-user-edit.php:167
+msgid "Custom capabilities:"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "Захаваць"
+
+#: ../includes/ure-role-edit.php:319
+#: ../includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "Захаваць змены"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "Адмена"
+
+#: ../includes/ure-role-edit.php:320
+#: ../includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "Адмова ад захавання змен"
+
+#: ../includes/ure-role-edit.php:323
+#, fuzzy
+msgid "Select All"
+msgstr "Абяры Ролю:"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:324
+msgid "Unselect All"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:324
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:325
+msgid "Reverse"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:325
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:328
+msgid "Reset"
+msgstr "Скід"
+
+#: ../includes/ure-role-edit.php:328
+msgid "Restore Roles from backup copy"
+msgstr "Аднавіць Ролі з рэзервовай копіі"
+
+#: ../includes/ure-role-edit.php:338
+msgid "Add New Role"
+msgstr "Дадаць новую Ролю"
+
+#: ../includes/ure-role-edit.php:340
+msgid "Name: "
+msgstr ""
+
+#: ../includes/ure-role-edit.php:344
+msgid "Make copy of: "
+msgstr ""
+
+#: ../includes/ure-role-edit.php:347
+#: ../includes/ure-role-edit.php:376
+msgid "Add"
+msgstr "Дадаць"
+
+#: ../includes/ure-role-edit.php:347
+msgid "Add New User Role"
+msgstr "Дадаць новую Ролю карыстача"
+
+#: ../includes/ure-role-edit.php:351
+msgid "Default Role for New User"
+msgstr "Роля па-змаўчанню"
+
+#: ../includes/ure-role-edit.php:356
+msgid "Change"
+msgstr "Змяніць"
+
+#: ../includes/ure-role-edit.php:356
+msgid "Set as Default User Role"
+msgstr "Усталяваць як роля па-змаўчанню"
+
+#: ../includes/ure-role-edit.php:366
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: ../includes/ure-role-edit.php:366
+msgid "Delete User Role"
+msgstr "Выдаліць Ролю карыстача"
+
+#: ../includes/ure-role-edit.php:371
+#: ../includes/ure-role-edit.php:376
+msgid "Add New Capability"
+msgstr "Дадаць новую Ролю"
+
+#: ../includes/ure-role-edit.php:381
+msgid "Remove Capability"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:386
+msgid "Remove"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:386
+msgid "Remove User Capability"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "Роля:"
+
+#: ../includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr ""
+
+#: ../includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "Ролі адноўлены з рэзервовай копіі"
+
+#: ../includes/ure-options.php:130
+msgid "Error: "
+msgstr ""
+
+#: ../includes/ure-options.php:130
+#: ../includes/ure-options.php:146
+msgid "Role"
+msgstr "Роля"
+
+#: ../includes/ure-options.php:130
+msgid "does not exist"
+msgstr ""
+
+#: ../includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "зменена паспяхова"
+
+#: ../includes/ure-options.php:154
+msgid "User"
+msgstr ""
+
+#: ../includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "зменена паспяхова"
+
+#: ../includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "Пра гэту ўбудову"
+
+#: ../includes/ure-options.php:233
+msgid "Author's website"
+msgstr "Вэбсайт аўтара"
+
+#: ../includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "Старонка ўбудовы"
+
+#: ../includes/ure-options.php:236
+msgid "FAQ"
+msgstr "Часта задаваныя пытанні"
+
+#: ../includes/ure-options.php:237
+msgid "Greetings"
+msgstr "Прывітанні"
+
+#: ../includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "Прывітанні"
+
+#: ../includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "Гэта я, аўтар"
+
+#: ../includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "за дапамогу з беларускім перакладам"
+
+#: ../includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr ""
+
+#: ../includes/ure-options.php:263
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "за дапамогу з бразильскім перакладам"
+
+#: ../includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "за дапамогу з китайскім перакладам"
+
+#: ../includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "за дапамогу з датскім перакладам"
+
+#: ../includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr ""
+
+#: ../includes/ure-options.php:267
+#: ../includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "за дапамогу з французскім перакладам"
+
+#: ../includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "за дапамогу з нямецкім перакладам"
+
+#: ../includes/ure-options.php:270
+#: ../includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr "за дапамогу з івріт перакладам"
+
+#: ../includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr "за дапамогу з индийским перакладам"
+
+#: ../includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "за дапамогу з hungary перакладам"
+
+#: ../includes/ure-options.php:274
+#: ../includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "за дапамогу з італьянскім перакладам"
+
+#: ../includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "за дапамогу з японскім перакладам"
+
+#: ../includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr "за дапамогу з літовскім перакладам"
+
+#: ../includes/ure-options.php:278
+#: ../includes/ure-options.php:279
+#: ../includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr ""
+
+#: ../includes/ure-options.php:281
+#: ../includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "за дапамогу з польскім перакладам"
+
+#: ../includes/ure-options.php:283
+#: ../includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "за дапамогу з іспанскім перакладам"
+
+#: ../includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr "за дапамогу з шведскім перакладам"
+
+#: ../includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr ""
+
+#: ../includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "за дапамогу з турецким перакладам"
+
+#: ../includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "За код, які хавае роля адміністратара"
+
+#: ../includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr ""
+
+#: ../includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "Жадаеце ўбачыць сваё імя і спасылку на Ваш сайт тут? Сардэчна запрашаем! Ваша дапамога з перакладам і новыя ідэі вітаюцца."
+
+#~ msgid "Donate"
+#~ msgstr "Падтрымаць"
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "Памылка чытання спісу роляў!"
+
+#~ msgid "Return to default WordPress user role capabilities"
+#~ msgstr "Вярнуцца да зыходнага стану роляў WordPress"
+
+#~ msgid "Role Name must be just a single word without special characters!"
+#~ msgstr "Найменне ролі - адно слова без адмысловых знакаў! "
+
+#~ msgid "action"
+#~ msgstr "аперацыі"
+
+#~ msgid "Please confirm to continue role \""
+#~ msgstr "Калі ласка пацвердзіце працяг для ролі"
+
+#~ msgid "Silence Is Golden Guard Plugin"
+#~ msgstr "Silence Is Golden Guard убудова"
+
+#~ msgid "file open error"
+#~ msgstr "памылка адкрыцця файла"
+
+#~ msgid "file read error"
+#~ msgstr "памылка чытання файла"
+
+#~ msgid "file close error"
+#~ msgstr "памылка пры зачыненні файла"
+
+#~ msgid "file backup copy error"
+#~ msgstr "памылка пры стварэнні рэзервовай копіі файла"
+
+#~ msgid "file permissions change error"
+#~ msgstr "памылка пры змене мае рацыю на файл"
+
+#~ msgid "file write error"
+#~ msgstr "памылка запісу ў файл"
+
+#~ msgid "is modified"
+#~ msgstr "зменены"
+
+#~ msgid "file create error"
+#~ msgstr "памылка стварэння файла"
+
+#~ msgid "permissions change error"
+#~ msgstr "памылка пры змене мае рацыю"
+
+#~ msgid "file is created"
+#~ msgstr "файл створаны"
+
+#~ msgid "\"Silence is Golden\" Scan is finished: "
+#~ msgstr "\"Silence is Golden\" сканаванне завершана: "
+
+#~ msgid "Does not create index.php file in the checked folders"
+#~ msgstr "Не ствараць index.php файл у адзначаных каталогах"
+
+#~ msgid "Exclude Folders for index.php"
+#~ msgstr "Выключыць Каталогі для index.php"
+
+#~ msgid "Modify Apache .htaccess"
+#~ msgstr "Змяніць Apache .htaccess"
+
+#~ msgid ""
+#~ "Modify Apache .htaccess file in the site root folder. Add \"Options -"
+#~ "Indexes\" line to prevent directory listing by Apache Web server.\n"
+#~ "                      If it is turned on (+Indexes) or absent, then if a "
+#~ "URL which maps to a directory is requested, and there is no "
+#~ "DirectoryIndex (e.g., index.html or index.php) file in that directory, "
+#~ "then Web server will return a formatted listing of the directory."
+#~ msgstr ""
+#~ "Змяніць файл Apache .htaccess у каранёвым каталогу сайта. Дадаць радок "
+#~ "\"Options -Indexes\", каб выключыць лістынг змесціва катлогов Web "
+#~ "серверам Apache.\n"
+#~ "Калі опцыя ўключана (+Indexes) ці адсутнічае, тады, калі запроашивается "
+#~ "адрас URL, адпаведны каталогу, і ў гэтым каталогу отстутсвует файл тыпу "
+#~ "DirectoryIndex (г.зн. index.html ці index.php), тады Web сервер верне "
+#~ "адфарматаваны листин гэтага каталога."
+
+#~ msgid "Check folders state automatically with specified period"
+#~ msgstr "Правяраць стан каталогаў аўтаматычна з зададзеным перыядам"
+
+#~ msgid "Auto Monitor"
+#~ msgstr "Аўта Маніторынг"
+
+#~ msgid "Scan Now"
+#~ msgstr "Сканаваць Цяпер"
+
+#~ msgid "Scan and Fix directories listing related problems Now"
+#~ msgstr ""
+#~ "Сканаваць і Выпраўляць праблемы, злучаныя з лістынгам змесціва каталогаў"
+
+#~ msgid ""
+#~ "Every time a new visitor clicks the \"Thank you\" button, one point is "
+#~ "added to the total \"thanks\" counter for this post."
+#~ msgstr ""
+#~ "Кожны раз, калі новы наведвальнік пстрыкае па кнопцы \"Дзякуй\", адзінка "
+#~ "дадаецца да лічыльніка падазяк для дадзенага артыкула."
+
+#~ msgid "Thank You Counter Button Plugin"
+#~ msgstr "Усталёўкі для ўбудовы: Кнопка падліку падазяк"
+
+#~ msgid "Statistics"
+#~ msgstr "Статыстыка"
+
+#~ msgid "You left &ldquo;Thanks&rdquo; already for this post"
+#~ msgstr "Вы ўжо пакінулі падзяку за гэты артыкул"
+
+#~ msgid "Click to left &ldquo;Thanks&rdquo; for this post"
+#~ msgstr "Пстрыкніце мышшу, каб пакінуць падзяку за гэты артыкул"
+
+#~ msgid "View statistics details for \"%s\""
+#~ msgstr "Прагляд дэталізаванай статыстыкі для \"%s\""
+
+#~ msgid "Hide these shortcuts"
+#~ msgstr "Схаваць спасылкі доступу да ўсталёвак і статыстыцы ўбудовы"
+
+#~ msgid "Do you really want to hide these shortcuts?"
+#~ msgstr "Вы сапраўды жадаеце схаваць гэтыя спасылкі?"
+
+#~ msgid "Thank You"
+#~ msgstr "Дзякуй"
+
+#~ msgid "Additional Documentation"
+#~ msgstr "Дадатковая дакументацыя"
+
+#~ msgid "operation is prohibited"
+#~ msgstr "аперацыя забаронена"
+
+#~ msgid "Default Settings are restored"
+#~ msgstr "Усталёўкі па-змаўчанню адноўлены"
+
+#~ msgid "All Thanks Counters are cleared"
+#~ msgstr "Усе лічыльнікі благодраностей абнулены"
+
+#~ msgid "Additional documentation"
+#~ msgstr "Дадатковая дакументацыя"
+
+#~ msgid ""
+#~ "for the help with Spanish translation, ideas and new versions testing"
+#~ msgstr "за дапамогу з іспанскім перакладам, ідэі і тэставанне новых версій"
+
+#~ msgid "for the excelent JQuery color picker"
+#~ msgstr "за выдатны JQuery-убудова для працы з каляровай палітрай"
+
+#~ msgid ""
+#~ "for the help with French translation, ideas, source code contributions "
+#~ "and new versions testing"
+#~ msgstr ""
+#~ "за дапамогу з французскім перакладам, ідэі, унёсак у распрацоўку і "
+#~ "тэставанне новых версій"
+
+#~ msgid "for setting page layout idea and html markup examples"
+#~ msgstr "за ідэю па кампаноўцы экрана з опцыямі і прыклады HTML разметкі"
+
+#~ msgid "for the form input slider code"
+#~ msgstr "за код слайдара для тэкставага поля input HTML формы"
+
+#~ msgid "for the cute online button image generator"
+#~ msgstr "за выдатны анлайнавы генератар малюнкаў кнопак"
+
+#~ msgid ""
+#~ "All settings for TYCB plugin will be return to the default values, "
+#~ "Continue?"
+#~ msgstr ""
+#~ "Усім усталёўкам для TYCB убудовы будуць вернутыя значэнні па-змаўчанню, "
+#~ "Працягнуць?"
+
+#~ msgid ""
+#~ "All thanks counters for all posts will be set to 0,\\n all thanks click "
+#~ "history will be cleared, Continue?"
+#~ msgstr ""
+#~ "Усе лічыльнікі падазяк для ўсіх артыкулаў будуць абнулены,\\n уся "
+#~ "гісторыя клікаў па кнопках падзякі будзе абнулена, Працягнуць?"
+
+#~ msgid "Display"
+#~ msgstr "Адлюстраванне"
+
+#~ msgid "Display button at Pages"
+#~ msgstr "Адлюстроўваць на Старонках"
+
+#~ msgid "Display button at Home page, Categories/Tags archive pages"
+#~ msgstr "Адлюстроўваць на Хатняй старонцы, архівах катэгорый/тэгаў"
+
+#~ msgid "Do not show button for selected categories"
+#~ msgstr "Не адлюстроўваць кнопку для адзначаных катэгорый"
+
+#~ msgid "Position in the Post text"
+#~ msgstr "Размяшчэнне ў артыкуле"
+
+#~ msgid "Before"
+#~ msgstr "Да"
+
+#~ msgid "At first page of multipaged posts only"
+#~ msgstr "Толькі на першай старонцы шматстаронкавых артыкулаў "
+
+#~ msgid "After"
+#~ msgstr "Пасля"
+
+#~ msgid "At last page of multipaged posts only"
+#~ msgstr "Толькі на апошняй старонцы шматстаронкавых артыкулаў"
+
+#~ msgid "Shortcode [thankyou]"
+#~ msgstr "Абрэвіятура [thankyou]"
+
+#~ msgid "Manual"
+#~ msgstr "Уручную"
+
+#~ msgid "Button Caption"
+#~ msgstr "Надпіс на кнопцы"
+
+#~ msgid "Button Styling"
+#~ msgstr "Стыль для Кнопкі"
+
+#~ msgid "Add style to the div:"
+#~ msgstr "Cтиль для div"
+
+#~ msgid "e.g.,"
+#~ msgstr ", напрыклад, "
+
+#~ msgid "to the Caption font:"
+#~ msgstr "для шрыфта:"
+
+#~ msgid "font color: "
+#~ msgstr "колер шрыфта:"
+
+#~ msgid "Size"
+#~ msgstr "Памер"
+
+#~ msgid "Normal"
+#~ msgstr "Звычайны"
+
+#~ msgid "Compact"
+#~ msgstr "Кампактны памер"
+
+#~ msgid "Form and Color"
+#~ msgstr "Форма і Колер"
+
+#~ msgid "Custom button image URL"
+#~ msgstr "URL малюнкі ўласнай кнопкі"
+
+#~ msgid "Width, px"
+#~ msgstr "Шырыня, px"
+
+#~ msgid "Height, px"
+#~ msgstr "Вышыня, px"
+
+#~ msgid "Misc"
+#~ msgstr "Рознае"
+
+#~ msgid "Check IP-address"
+#~ msgstr "Кантраляваць IP-адрас"
+
+#~ msgid "Only one Thanks for post for one IP-address limit"
+#~ msgstr "Толькі адно Дзякуй на артыкул з аднаго IP-адрасы"
+
+#~ msgid "Time limit:"
+#~ msgstr "Абмежаванне па часе:"
+
+#~ msgid "Forever"
+#~ msgstr "Назаўжды"
+
+#~ msgid "Only for this period"
+#~ msgstr "Толькі на дадзены прамежак"
+
+#~ msgid "seconds"
+#~ msgstr "секунд"
+
+#~ msgid "Display settings shortcuts"
+#~ msgstr "Выснова службовых спасылак"
+
+#~ msgid "Add shortcuts next to the buttons for settings quick access"
+#~ msgstr ""
+#~ "Адлюстраваць службовыя спасылкі справа ад кнопак для хуткага доступу да "
+#~ "частцы налад"
+
+#~ msgid "Return to Defaults"
+#~ msgstr "Вярнуць значэнні па-змаўчанню"
+
+#~ msgid "Restore the default values for all settings"
+#~ msgstr "Аднавіць значэнні па-змаўчанню для ўсіх усталёвак"
+
+#~ msgid "Reset Counters"
+#~ msgstr "Абнуліць Лічыльнікі"
+
+#~ msgid "Reset all thanks counters for the all posts"
+#~ msgstr "Скінуць усе лічыльнікі падазяк для ўсіх артыкулаў"
+
+#~ msgid "Button DIV Style Preview"
+#~ msgstr "Стыль для часткі Кнопкі"
+
+#~ msgid "Post Title"
+#~ msgstr "Загаловак артыкула"
+
+#~ msgid "Back to main statistics"
+#~ msgstr "Вярнуцца да асноўнай статыстыкі"
+
+#~ msgid "Not available"
+#~ msgstr "Не даступны"
+
+#~ msgid "Details for &ldquo;%s&rdquo;"
+#~ msgstr "Падрабязнасці для &ldquo;%s&rdquo;"
+
+#~ msgid "Post Id"
+#~ msgstr "Id артыкулы"
+
+#~ msgid "Thanks Quant"
+#~ msgstr "Колькасць падазяк"
+
+#~ msgid "View Post"
+#~ msgstr "Прагляд артыкула"
+
+#~ msgid "View \"%s\""
+#~ msgstr "Прагляд \"%s\""
+
+#~ msgid "Reset this post counter"
+#~ msgstr "Абнуліць лічыльнік для гэтага артыкула"
+
+#~ msgid ""
+#~ "You are about to reset this post '%s' thanks counter. Click 'Cancel' to "
+#~ "do nothing, 'OK' to reset it."
+#~ msgstr ""
+#~ "Вы збіраецеся абнуліць лічыльнік гэтага артыкула '%s'.\n"
+#~ " Выкарыстоўвайце 'Адмена' каб адмовіцца, 'OK' каб вырабіць абнуленне."
+
+#~ msgid "Reset Counter"
+#~ msgstr "Абнуліць Лічыльнік"
+
+#~ msgid "Displaying %s&#8211;%s of %s"
+#~ msgstr "Выснова %s&#8211;%s з %s"
+
+#~ msgid "IP address"
+#~ msgstr "IP-адрас"
+
+#~ msgid "Last Thank Date"
+#~ msgstr "Дата апошняй падзякі"
+
+#~ msgid "Look up IP country"
+#~ msgstr "Знайсці краіну па IP адрасу"
+
+#~ msgid "Show all post dates"
+#~ msgstr "Паказаць артыкулы за ўсе даты"
+
+#~ msgid "Show Posts without Thanks"
+#~ msgstr "Паказаць артыкулы без падазяк"
+
+#~ msgid "Rows per page: "
+#~ msgstr "Радкоў на старонку:"
+
+#~ msgid "Refresh"
+#~ msgstr "Абнавіць"
+
+#~ msgid "descending"
+#~ msgstr "змяншальным"
+
+#~ msgid "Ascending order"
+#~ msgstr "Нарастальны парадак"
+
+#~ msgid "ascending"
+#~ msgstr "нарастальным"
+
+#~ msgid "Descending order"
+#~ msgstr "Змяншальны парадак"
+
+#~ msgid "Click to sort in %s order"
+#~ msgstr "Пстрыкні для сартавання ў %s парадку"
+
+#~ msgid "View details"
+#~ msgstr "Прагляд дэталяў"
+
+#~ msgid ""
+#~ "You are about to reset this post '%s' thanks counter.\n"
+#~ " Click 'Cancel' to do nothing, 'OK' to reset it."
+#~ msgstr ""
+#~ "Вы збіраецеся абнуліць лічыльнік гэтага артыкула '%s'.\n"
+#~ " Выкарыстоўвайце 'Адмена' каб адмовіцца, 'OK' каб вырабіць абнуленне."
+
+#~ msgid "No posts with thanks found"
+#~ msgstr "Артыкулы c падзякамі не знойдзены"
+
+#~ msgid "the latest or the most thanked post titles with total thanks quant"
+#~ msgstr ""
+#~ "Отблагдаренные пооследними артыкулы з агульнай колькасцю падазяк ці "
+#~ "артыкулы з найвялікай колькасцю падазяк"
+
+#~ msgid "Thanks Stat"
+#~ msgstr "Статыстыка падазяк"
+
+#~ msgid "Total quant of thanks: "
+#~ msgstr "Агульная колькасць падазяк:"
+
+#~ msgid "Title:"
+#~ msgstr "Загаловак артыкула"
+
+#~ msgid "Number of posts to show:"
+#~ msgstr "Колькасць артыкулаў для паказу:"
+
+#~ msgid "What posts to show:"
+#~ msgstr "Якія артыкулы паказваць:"
+
+#~ msgid "Latest thanked"
+#~ msgstr "Апошнія падзякі"
+
+#~ msgid "Most thanked"
+#~ msgstr "Максімум падазяк"
+
+#~ msgid "Total quant of thanks"
+#~ msgstr "Агульная колькасць падазяк:"
+
+#~ msgid "Display total quant of thanks"
+#~ msgstr "Паказаць агульную колькасць падазяк"
+
+#~ msgid "Check Full Statistics"
+#~ msgstr "Прагляд поўнай статыстыкі"
+
+#~ msgid "Plugin author home page"
+#~ msgstr "Сайт аўтара ўбудовы"
+
+#~ msgid "No thanks yet"
+#~ msgstr "Пакуль падазяк няма"
+
+#~ msgid "Posts number to show:"
+#~ msgstr "Колькасць артыкулаў для паказу:"
+
+#~ msgid "Display Full Statistics link"
+#~ msgstr "Прагляд поўнай статыстыкі"
+
+#~ msgid "Display plugin author link"
+#~ msgstr "Паказаць спасылку на сайт аўтара ўбудовы"
+
+#~ msgid "Latest Thanks"
+#~ msgstr "Апошнія падзякі"
+
+#~ msgid "Most Thanked"
+#~ msgstr "Максімум падазяк"
+
+#~ msgid "Unknown Post!"
+#~ msgstr "Невядомы артыкул!"
+
+#~ msgid "Submit"
+#~ msgstr "Адправіць"
+
+#~ msgid "Show total quant of thanks"
+#~ msgstr "Паказаць агульную колькасць падазяк"
+
+#~ msgid ""
+#~ "This plugin installs the Thank You Counter Button for each of your blog "
+#~ "post.\n"
+#~ "                It can have custom style in your blog posts."
+#~ msgstr ""
+#~ "Гэта ўбудова дадае кнопку падліку падазяк да кожнага артыкула Вашага "
+#~ "блога.\n"
+#~ "                Стыль і размяшчэнне кнопкі могуць быць адаптаваны да "
+#~ "стылю вашага блога."
+
+#~ msgid ""
+#~ "To exclude Thank You button from particular post use shortcode "
+#~ "[nothankyou] there"
+#~ msgstr ""
+#~ "Каб не паказваць кнопку Дзякуй для конкректной артыкулы, устаўце ў яе "
+#~ "тэкст код [notthankyou]"
+
+#~ msgid "(at most 15)"
+#~ msgstr "(да 15)"
+
+#~ msgid "Before and After"
+#~ msgstr "Да і Пасля"
+
+#~ msgid "Filter"
+#~ msgstr "Фільтр"
+
+#~ msgid "Position"
+#~ msgstr "Размяшчэнне"
+
+#~ msgid "Add style to the Thank You button's div, e.g.,"
+#~ msgstr "Дадаць стыль у частку div кнопкі Дзякуй"
+
+#~ msgid "Color"
+#~ msgstr "Колер"
+
+#~ msgid "Blue"
+#~ msgstr "Сіні"
+
+#~ msgid "Green"
+#~ msgstr "Зялёны"
+
+#~ msgid "Grey"
+#~ msgstr "Шэры"
+
+#~ msgid "Black"
+#~ msgstr "Чорны"
