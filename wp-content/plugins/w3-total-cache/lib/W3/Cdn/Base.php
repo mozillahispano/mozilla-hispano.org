@@ -229,6 +229,7 @@ class W3_Cdn_Base {
      * Formats URL
      *
      * @param string $path
+	 * @return string
      */
     function format_url($path) {
         $url = $this->_format_url($path);

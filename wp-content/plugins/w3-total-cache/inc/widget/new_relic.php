@@ -7,16 +7,6 @@
     <iframe width="100%" height="100px" scrolling="no" src="<?php echo wp_nonce_url(admin_url('admin.php?page=w3tc_general&w3tc_view_new_relic_app&view_application=' . $view_application. '&timestamp=' . time()),'w3tc')?>">
     </iframe>
     <?php endif ?>
-    <?php if (!$new_relic_running && $new_relic_enabled): ?>
-    <p><?php _e('The plugin has detected the following causes for New Relic not running correctly.', 'w3-total-cache')?></p>
-    <ul>
-        <?php foreach($verify_running as $cause):?>
-        <li><?php echo $cause ?></li>
-        <?php endforeach; ?>
-    </ul>
-    <p><?php echo sprintf(__('Please review the <a href="%s">settings</a>', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_general#monitoring')) ?></p>
-    <?php else: ?>
-
     <div id="new-relic-summary">
         <h4><?php _e('Overview', 'w3-total-cache')?></h4>
         <ul>
@@ -94,12 +84,11 @@
         </div>
     </div>
     <div style="clear:both"></div>
-    <?php endif; ?>
     <hr>
     <p>
 <?php _e('PHP agent:', 'w3-total-cache')?> <span class="w3tc-<?php if ($new_relic_running): ?>enabled"><?php _e('enabled', 'w3-total-cache')?><?php else: ?>disabled"><?php _e('disabled', 'w3-total-cache')?><?php endif; ?></span><br />
 <?php _e('Subscription level:', 'w3-total-cache')?> <strong><?php echo $subscription_lvl ?></strong>
-<?php if (!$can_use_metrics): ?><p><a href="<?php echo NEWRELIC_SIGNUP_URL; ?>" target="_blank"><?php _e('Upgrade your New Relic account to enable more metrics.', 'w3-total-cache')?></a></p><?php endif; ?>
-    </p>
+	</p>
+<?php if (!$can_use_metrics): ?><p><a href="<?php echo esc_attr( NEWRELIC_SIGNUP_URL ); ?>" target="_blank"><?php _e('Upgrade your New Relic account to enable more metrics.', 'w3-total-cache')?></a></p><?php endif; ?>
 <?php endif; ?>
 </div>

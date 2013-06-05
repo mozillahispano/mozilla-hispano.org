@@ -279,3 +279,55 @@ function w3_get_file_owner($file = '') {
     }
     return $fileowner . ':' . $filegroup;
 }
+
+/**
+ * Atomically writes file inside W3TC_CACHE_DIR dir
+ * @param $filename
+ * @param $content
+ * @throws Exception
+ * @return void
+ **/
+function w3_file_put_contents_atomic($filename, $content) {
+    if (!is_dir(W3TC_CACHE_TMP_DIR) || !is_writable(W3TC_CACHE_TMP_DIR)) {
+        w3_mkdir_from(W3TC_CACHE_TMP_DIR, W3TC_CACHE_DIR);
+
+        if (!is_dir(W3TC_CACHE_TMP_DIR) || !is_writable(W3TC_CACHE_TMP_DIR)) {
+            throw new Exception('Can\'t create folder <strong>' .
+                W3TC_CACHE_TMP_DIR . '</strong>');
+        }
+    }
+
+    $temp = tempnam(W3TC_CACHE_TMP_DIR, 'temp');
+
+    try {
+        if (!($f = @fopen($temp, 'wb'))) {
+            if (file_exists($temp))
+                @unlink($temp);
+           throw new Exception('Can\'t write to temporary file <strong>' .
+                    $temp . '</strong>');
+        }
+
+        fwrite($f, $content);
+        fclose($f);
+
+        if (!@rename($temp, $filename)) {
+            @unlink($filename);
+            if (!@rename($temp, $filename)) {
+                w3_mkdir_from(dirname($filename), W3TC_CACHE_DIR);
+                if (!@rename($temp, $filename)) {
+                    throw new Exception('Can\'t write to file <strong>' .
+                        $filename . '</strong>');
+                }
+            }
+        }
+
+        $chmod = 0644;
+        if (defined('FS_CHMOD_FILE'))
+            $chmod = FS_CHMOD_FILE;
+        @chmod($filename, $chmod);
+    } catch (Exception $ex) {
+        if (file_exists($temp))
+            @unlink($temp);
+        throw $ex;
+    }
+}

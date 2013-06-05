@@ -42,14 +42,20 @@ class W3_Cache_File_Cleaner_Generic extends W3_Cache_File_Cleaner {
     }
 
     function _clean($path, $remove = false) {
-        $dir = @opendir($path);
+        $dir = false;
+        if (is_dir($path)) {
+            $dir = @opendir($path);
+        }
 
         if ($dir) {
             while (($entry = @readdir($dir)) !== false) {
                 if ($entry == '.' || $entry == '..') {
                     continue;
                 }
-                if (substr($entry, -4) === '.old') {
+
+                $full_path = $path . DIRECTORY_SEPARATOR . $entry;
+
+                if (substr($entry, -4) === '.old' && !$this->is_old_file_expired($full_path)) {
                     continue;
                 }
 
@@ -59,10 +65,12 @@ class W3_Cache_File_Cleaner_Generic extends W3_Cache_File_Cleaner {
                     }
                 }
 
-                $full_path = $path . DIRECTORY_SEPARATOR . $entry;
 
                 if (@is_dir($full_path)) {
                     $this->_clean($full_path);
+                } elseif (substr($entry, -4) === '.old') {
+                    $this->processed_count++;
+                    @unlink($full_path);
                 } elseif (!$this->is_valid($full_path)) {
                     $old_entry_path = $full_path . '.old';
                     $this->processed_count++;
@@ -76,6 +84,8 @@ class W3_Cache_File_Cleaner_Generic extends W3_Cache_File_Cleaner {
             }
 
             @closedir($dir);
+            if ($this->is_empty_dir($path))
+                @rmdir($path);
         }
     }
 
@@ -98,5 +108,18 @@ class W3_Cache_File_Cleaner_Generic extends W3_Cache_File_Cleaner {
         }
 
         return false;
+    }
+
+    function is_old_file_expired($file) {
+        $ftime = @filemtime($file);
+        $expire = $this->_expire ? $this->_expire * 5 : W3TC_CACHE_FILE_EXPIRE_MAX;
+        if ($ftime && $ftime < (time() - $expire)) {
+            return true;
+        }
+
+        return false;
+    }
+    function is_empty_dir($dir){
+        return (($files = @scandir($dir)) && count($files) <= 2);
     }
 }

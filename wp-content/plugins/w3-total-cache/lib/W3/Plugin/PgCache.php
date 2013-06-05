@@ -153,20 +153,10 @@ class W3_Plugin_PgCache extends W3_Plugin {
                 'prime_post'
             ), 30);
         }
-    }
 
-    /**
-     * Activate plugin action (called by W3_Plugins)
-     */
-    function activate() {
-        $this->get_admin()->activate();
-    }
-
-    /**
-     * Deactivate plugin action (called by W3_Plugins)
-     */
-    function deactivate() {
-        return $this->get_admin()->deactivate();
+        if ($this->_config->get_boolean('pgcache.late_init') && !is_admin()) {
+            add_action('init', array($this,'delayed_cache_print'), 99999);
+        }
     }
 
     /**
@@ -175,7 +165,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
      * @return void
      */
     function cleanup() {
-        $this->get_admin()->cleanup();
+        $this->_get_admin()->cleanup();
     }
 
     /**
@@ -185,7 +175,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
      * @return void
      */
     function prime($start = 0) {
-        $this->get_admin()->prime($start);
+        $this->_get_admin()->prime($start);
     }
 
     /**
@@ -193,7 +183,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
      *
      * @return W3_Plugin_PgCacheAdmin
      */
-    function get_admin() {
+    private function _get_admin() {
         return w3_instance('W3_Plugin_PgCacheAdmin');
     }
 
@@ -349,5 +339,10 @@ class W3_Plugin_PgCache extends W3_Plugin {
     function prime_post($post_id) {
         $w3_pgcache = w3_instance('W3_CacheFlush');
         return $w3_pgcache->prime_post($post_id);
+    }
+
+    public function delayed_cache_print() {
+        $w3_pgcache = w3_instance('W3_PgCache');
+        $w3_pgcache->delayed_cache_print();
     }
 }

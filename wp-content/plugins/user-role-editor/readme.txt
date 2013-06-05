@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.2
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: trunk
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role.
@@ -86,6 +86,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.12.1 =
+* 14.05.2013
+* Update for administrators of multi-site WordPress installations. Single-site WordPress installation administrator could skip this update. 
+* "Apply to All Sites" feature did not work at version 3.12. It is fixed.
+* "Apply to All Sites" feature is available now from main site of the network only
+
 = 3.12 =
 * 01.05.2013
 * Critical update: persistent cross-site scripting vulnerability is fixed.

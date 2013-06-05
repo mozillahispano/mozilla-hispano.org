@@ -27,26 +27,4 @@ class W3_Plugin {
      */
     function run() {
     }
-
-    /**
-     * Get the corresponding Admin plugin for the module
-     * @return null|W3_Plugin
-     */
-    function get_admin() {
-        return null;
-    }
-
-    /**
-     * Activate plugin action (called by W3_Plugins)
-     * @return mixed
-     */
-    function activate() {
-    }
-
-    /**
-     * Deactivate plugin action (called by W3_Plugins)
-     * @return mixed
-     */
-    function deactivate() {
-    }
 }

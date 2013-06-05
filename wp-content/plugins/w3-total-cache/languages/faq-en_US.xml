@@ -268,7 +268,7 @@
 			<answer><![CDATA[ 
 				<p>First <a href="http://aws.amazon.com/" target="_blank">create an S3 account</a>; it may take several hours for your account credentials to be functional. Next, you need to obtain your "Access key ID" and "Secret key" from the "Access Credentials" section of the "<a href="http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key" target="_blank">Security Credentials</a>" page of "My Account." Make sure the status is "active." Next, make sure that "Amazon Simple Storage Service (Amazon S3)" is the selected "<acronym title="Content Delivery Network">CDN</acronym> type" on the "General Settings" tab, then save the changes. Now on the "Content Delivery Network Settings" tab enter your "Access key," "Secret key" and enter a name (avoid special characters and spaces) for your bucket in the "Create a bucket" field by clicking the button of the same name. If using an existing bucket simply specify the bucket name in the "Bucket" field. Click the "Test <acronym title="Simple Storage Service">S3</acronym> Upload" button and make sure that the test is successful, if not check your settings and try again. Save your settings.</p>
 				<p>Unless you wish to use CloudFront, you're almost done, skip to the next paragraph if you're using CloudFront. Go to the "General Settings" tab and click the "Enable" checkbox and save the settings to enable <acronym title="Content Delivery Network">CDN</acronym> functionality. Empty the cache for the changes to take effect. If preview mode is active you will need to "deploy" your changes for them to take effect.</p>
-				<p>To use CloudFront, perform all of the steps above, except select the "Amazon CloudFront" "<acronym title="Content Delivery Network">CDN</acronym> type" in the "Content Delivery Network" section of the "General Settings" tab. When creating a new bucket, the distribution ID will automatically be populated. Otherwise, proceed to the <a href="https://console.aws.amazon.com/cloudfront/" target="_blank"><acronym title="Amazon Web Services">AWS</acronym> Management Console</a> and create a new distribution: select the S3 Bucket you created earlier as the "Origin," enter a <a href="http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/index.html?CNAMEs.html" target="_blank"><acronym title="Canonical Name">CNAME</acronym></a> if you wish to add one or more to your DNS Zone. Make sure that "Distribution Status" is enabled and "State" is deployed. Now on "Content Delivery Network" tab of the plugin, copy the subdomain found in the <acronym title="Amazon Web Services">AWS</acronym> Management Console and enter the <acronym title="Canonical Name">CNAME</acronym> used for the distribution in the "<acronym title="Canonical Name">CNAME</acronym>" field.</p>
+				<p>To use CloudFront, perform all of the steps above, except select the "Amazon CloudFront" "<acronym title="Content Delivery Network">CDN</acronym> type" in the "Content Delivery Network" section of the "General Settings" tab. When creating a new bucket, the distribution ID will automatically be populated. Otherwise, proceed to the <a href="https://console.aws.amazon.com/cloudfront/" target="_blank"><acronym title="Amazon Web Services">AWS</acronym> Management Console</a> and create a new distribution: select the S3 Bucket you created earlier as the "Origin," enter a <a href="http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/index.html?CNAMEs.html" target="_blank"><acronym title="Canonical Name">CNAME</acronym></a> if you wish to add one or more to your DNS Zone. Make sure that "Distribution Status" is deployed and "State" is enabled. Now on "Content Delivery Network" tab of the plugin, copy the subdomain found in the <acronym title="Amazon Web Services">AWS</acronym> Management Console and enter the <acronym title="Canonical Name">CNAME</acronym> used for the distribution in the "<acronym title="Canonical Name">CNAME</acronym>" field.</p>
 				<p>You may optionally, specify up to 10 hostnames to use rather than the default hostname, doing so will improve the render performance of your site's pages. Additional hostnames should also be specified in the settings for the distribution you're using in the <acronym title="Amazon Web Services">AWS</acronym> Management Console.</p>
 				<p>Now go to the General tab and click the "Enable" checkbox and save the settings to enable <acronym title="Content Delivery Network">CDN</acronym> functionality and empty the cache for the changes to take effect. If preview mode is active you will need to "deploy" your changes for them to take effect.</p>
 			]]></answer>
@@ -276,7 +276,7 @@
         <entry>
             <question><![CDATA[ Anything I need to do when using Amazon Web Services with limited permissions (<acronym title="Simple Storage Service">S3</acronym>, CloudFront, <acronym title="Simple Notification Service">SNS</acronym>)? ]]></question>
             <answer><![CDATA[
-                <p>We recommend that you use <a href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/AccessPolicyLanguage_KeyConcepts.html" target="_blank"><acronym title="AWS Identity and Access Management">IAM</acronym></a> to create a new policy for <acronym title="Amazon Web Services">AWS</acronym> services that have limited permissions. A helpful tool: <a href="​http://awspolicygen.s3.amazonaws.com/policygen.html" target="_blank">AWS Policy Generator</a></p>
+                <p>We recommend that you use <a href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/AccessPolicyLanguage_KeyConcepts.html" target="_blank"><acronym title="AWS Identity and Access Management">IAM</acronym></a> to create a new policy for <acronym title="Amazon Web Services">AWS</acronym> services that have limited permissions. A helpful tool: <a href="http://awspolicygen.s3.amazonaws.com/policygen.html" target="_blank">AWS Policy Generator</a></p>
                 <p>You also find a <acronym title="Simple Storage Service">S3</acronym> configuration sample in the "ini" folder in the plugins directory.</p>
             ]]>
             </answer>
@@ -497,19 +497,19 @@ Note: To disable page caching of specific theme templates or plugin files you ne
             ]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ How do I implement page fragment caching? ]]></question>
-            <answer><![CDATA[
+             <question><![CDATA[ How do I implement page fragment caching? ]]></question>
+             <answer><![CDATA[
                 <p>First you need to define W3TC_DYNAMIC_SECURITY in your wp-config.php file.</p>
                 <pre>
 define('W3TC_DYNAMIC_SECURITY', 'somesecurestring');
                 </pre>
-                <p>Edit your templates with the following syntax to ensure that dynamic features remain so. Replace <W3TC_DYNAMIC_SECURITY> with content of the constant:</p>
+                <p>Edit your templates with the following syntax to ensure that dynamic features remain so. Replace W3TC_DYNAMIC_SECURITY with content of the constant or use echo to print constant:</p>
                 <ul>
-                 <li>Example 1:<br />&lt;!-- mfunc {the W3TC_DYNAMIC_SECURITY string} any PHP code --&gt;&lt;!-- /mfunc {the W3TC_DYNAMIC_SECURITY string} --&gt;</li>
-                  <li>Example 2:<br />&lt;!-- mfunc {the W3TC_DYNAMIC_SECURITY string} --&gt;any PHP code&lt;!-- /mfunc {the W3TC_DYNAMIC_SECURITY string} --&gt;</li>
-                 <li>Example 3:<br />&lt;!--MFUNC {the W3TC_DYNAMIC_SECURITY string}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo rand();<br />&lt;!--/mfunc {the W3TC_DYNAMIC_SECURITY string} --&gt;</li>
-                  <li>Example 4:<br />&lt;!-- mclude {the W3TC_DYNAMIC_SECURITY string} path/to/file.php --&gt;&lt;!-- /mclude {the W3TC_DYNAMIC_SECURITY string} --&gt;</li>
-                  <li>Example 5:<br />&lt;!-- mclude {the W3TC_DYNAMIC_SECURITY string} --&gt;path/to/file.php&lt;!-- /mclude {the W3TC_DYNAMIC_SECURITY string} --&gt;</li>
+                 <li>Example 1:<br />&lt;!-- mfunc W3TC_DYNAMIC_SECURITY any PHP code --&gt;&lt;!-- /mfunc W3TC_DYNAMIC_SECURITY --&gt;</li>
+                  <li>Example 2:<br />&lt;!-- mfunc W3TC_DYNAMIC_SECURITY --&gt;any PHP code&lt;!-- /mfunc W3TC_DYNAMIC_SECURITY --&gt;</li>
+                 <li>Example 3:<br />&lt;!--MFUNC W3TC_DYNAMIC_SECURITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo rand();<br />&lt;!--/mfunc W3TC_DYNAMIC_SECURITY --&gt;</li>
+                  <li>Example 4:<br />&lt;!-- mclude W3TC_DYNAMIC_SECURITY path/to/file.php --&gt;&lt;!-- /mclude W3TC_DYNAMIC_SECURITY --&gt;</li>
+                  <li>Example 5:<br />&lt;!-- mclude W3TC_DYNAMIC_SECURITY --&gt;path/to/file.php&lt;!-- /mclude W3TC_DYNAMIC_SECURITY --&gt;</li>
                </ul>
                <p>Be aware that WordPress functions will not be available.</p>
               ]]></answer>
@@ -562,7 +562,7 @@ define('W3TC_DYNAMIC_SECURITY', 'somesecurestring');
 		<entry>
 			<question><![CDATA[ What is the purpose of the "modify attachment <acronym title="Uniform Resource Indicator">URL</acronym>s" button? ]]></question>
 			<answer><![CDATA[
-				<p>If the domain name of your site has changed, this tool is useful in updating your posts and pages to use the current addresses. For example, if your site used to be www.domain.com, and you decided to change it to domain.com, the result would either be many "broken" images or many unncessary redirects (which slow down the visitor's browsing experience). You can use this tool to correct this and similar cases. Correcting the <acronym title="Uniform Resource Indicator">URL</acronym>s of your images also allows the plugin to do a better job of determining which images are actually hosted with the <acronym title="Content Delivery Network">CDN</acronym></p>
+				<p>If the domain name of your site has changed, this tool is useful in updating your posts and pages to use the current addresses. For example, if your site used to be www.domain.com, and you decided to change it to domain.com, the result would either be many "broken" images or many unnecessary redirects (which slow down the visitor's browsing experience). You can use this tool to correct this and similar cases. Correcting the <acronym title="Uniform Resource Indicator">URL</acronym>s of your images also allows the plugin to do a better job of determining which images are actually hosted with the <acronym title="Content Delivery Network">CDN</acronym></p>
   				<p>As always, it never hurts to back up your database first.</p>
   			]]></answer>
 		</entry>
@@ -751,6 +751,15 @@ add_filter('w3tc_referrer_groups', 'my_w3tc_referrer_groups');</pre>
             Typically, you should tell your web host about the permission issue and they should be able to resolve it.<br />
             You can however try adding <em>define('FS_METHOD', 'direct');</em> to wp-config.php to circumvent the file and folder checks.</p>
             ]]></answer>
+        </entry>
+        <entry>
+            <question><![CDATA[ I get an CloudFlare error message similar too <em>"certificate verify locations: CAfile: /etc/path/certs/ca-bundle.crt CApath: none "</em> ]]></question>
+            <answer>
+                <![CDATA[ <p>
+                    This is happens when CURL cannot find the proper location of certificates or the certificates have wrong permissions. Talk with your host when you get such an error message.
+                </p>
+                ]]>
+            </answer>
         </entry>
     </section>
 	<section name="Requirements">

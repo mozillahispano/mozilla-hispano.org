@@ -114,68 +114,86 @@ class W3_Dispatcher {
     }
 
     /**
-     * Generates canonical header code for nginx if appropriate
+     * Generates canonical header code for nginx if browsercache plugin has
+     * to generate it
+     * @param W3_Config $config
      * @param boolean $cdnftp if CDN FTP is used
+     * @param string $section
      * @return string
      */
-    function on_browsercache_nginx_generation($cdnftp) {
-        if (is_null($this->_cdnadmin)) {
-            $this->_cdnadmin = w3_instance('W3_Plugin_CdnAdmin');
-        }
-        $rules = '';
+    function on_browsercache_rules_generation_for_section($config, $cdnftp, 
+            $section) {
+        if ($section != 'other')
+            return '';
+        if ($this->canonical_generated_by($config, $cdnftp) != 'browsercache')
+            return '';
 
-        if ($this->_should_browsercache_generate_canonical($cdnftp)) {
-            $rules = $this->_cdnadmin->generate_canonical_nginx($cdnftp);
-        }
-        return $rules;
+        $rules_generator = w3_instance('W3_SharedRules');
+        return $rules_generator->canonical_without_location();
     }
 
     /**
-     * Checks whether canonical should be generated or not
+     * Checks whether canonical should be generated or not by browsercache plugin
+     * @param W3_Config $config
      * @param boolean $cdnftp
-     * @return bool
+     * @return string|null
      */
-    public function should_cdn_generate_canonical($cdnftp = false) {
-        // CDN should not generate when using both nginx and browsercache due to limitation in nginx location checks
-        // when having more than one check for same location
-        if (w3_is_nginx() && $this->_config->get_boolean('browsercache.enabled'))
-            return false;
-        return $this->_canonical_generation_general_check($cdnftp);
-    }
+    public function canonical_generated_by($config, $cdnftp = false) {
+        if (!$this->_should_canonical_be_generated($config, $cdnftp))
+            return null;
 
-    /**
-     * Checks whether canonical should be generated or not
-     * @param boolean $cdnftp
-     * @return bool
-     */
-    private function _should_browsercache_generate_canonical($cdnftp = false) {
-        return $this->_canonical_generation_general_check($cdnftp) &&
-                w3_is_nginx();
+        if (w3_is_nginx()) {
+            // in nginx - browsercache generates canonical if its enabled, 
+            // since it does not allow multiple location tags
+            if ($config->get_boolean('browsercache.enabled'))
+                return 'browsercache';
+        }
+
+        if ($config->get_boolean('cdn.enabled'))
+            return 'cdn';
+
+        return null;
     }
 
     /**
      * Basic check if canonical generation should be done
+     * @param W3_Config $config
      * @param boolean $cdnftp
      * @return bool
      */
-    private function _canonical_generation_general_check($cdnftp) {
+    private function _should_canonical_be_generated($config, $cdnftp) {
         if (is_null($this->_cdncommon)) {
             $this->_cdncommon = w3_instance('W3_Plugin_CdnCommon');
         }
+
+        if (!$config->get_boolean('cdn.canonical_header'))
+            return false;
+
         $cdn = $this->_cdncommon->get_cdn();
-        // Use with cloudflare because they cache frontend
-        return $this->_config->get_boolean('cdn.canonical_header') &&
-            ((($this->_config->get_string('cdn.engine') != 'ftp' || $cdnftp) &&
-                $cdn->headers_support() == W3TC_CDN_HEADER_MIRRORING) ||
-                $this->_config->get_boolean('cloudflare.enabled'));
+        return (($config->get_string('cdn.engine') != 'ftp' || $cdnftp) &&
+                $cdn->headers_support() == W3TC_CDN_HEADER_MIRRORING);
+    }
+
+    /**
+     * Checks whether canonical should be generated or not by browsercache plugin
+     * @param W3_Config $config
+     * @return string|null
+     */
+    public function allow_origin_generated_by($config) {
+        if ($this->_config->get_boolean('cdn.enabled'))
+            return 'cdn';
+
+        return null;
     }
 
     /**
      * If BrowserCache should generate rules specific for CDN. Used with CDN FTP
+     * @param W3_Config $config
      * @return boolean;
      */
-    public function should_browsercache_generate_rules_for_cdn() {
-        if ($this->_config->get_boolean('cdn.enabled') && $this->_config->get_string('cdn.engine') == 'ftp') {
+    public function should_browsercache_generate_rules_for_cdn($config) {
+        if ($config->get_boolean('cdn.enabled') && 
+                $config->get_string('cdn.engine') == 'ftp') {
             if (is_null($this->_cdncommon)) {
                 $this->_cdncommon = w3_instance('W3_Plugin_CdnCommon');
             }
@@ -202,60 +220,34 @@ class W3_Dispatcher {
     }
 
     /**
-     * If rules should be generated for CloudFlare
+     * @param W3_Config $config
      * @return bool
      */
-    private function _should_generate_cloudflare_rules() {
-        return (!$this->_config->get_boolean('cdn.enabled') && $this->_config->get_boolean('cloudflare.enabled'));
-    }
-
-    /**
-     * Returns array of rule descriptors array('filename'=>'', 'content'=> '')
-     * @return array
-     */
-    public function get_required_rules_for_cloudflare() {
-        $rules = array();
-        if ($this->_should_generate_cloudflare_rules()) {
-            if (is_null($this->_cdnadmin)) {
-                $this->_cdnadmin = w3_instance('W3_Plugin_CdnAdmin');
-            }
-            $rules = $this->_cdnadmin->get_required_rules();
-        }
-        return $rules;
-    }
-
-    /**
-     * Makes get requests to url specific to a post, its permalink
-     * @param $post_id
-     * @return boolean returns true on success
-     */
-    public function prime_post($post_id) {
-        /** @var $purges W3_PageUrls */
-        $purges = w3_instance('W3_PageUrls');
-        $post_urls = $purges->get_post_urls($post_id);
-
-        foreach ($post_urls as $url) {
-            $result = w3_http_get($url);
-            if (is_wp_error($result))
-                return false;
-        }
-        return true;
-    }
-
-    /**
-     * @return array
-     */
-    public function remove_cloudflare_rules_with_message() {
-        if (is_null($this->_cdnadmin)) {
-            $this->_cdnadmin = w3_instance('W3_Plugin_CdnAdmin');
-        }
-        return $this->_cdnadmin->remove_rules_with_message();
-    }
-
     public function send_minify_headers($config) {
         $cf = w3_instance('W3_CloudFlare');
         return !$config->get_boolean('cloudflare.enabled') ||
                 ($config->get_boolean('cloudflare.enabled') && !$cf->minify_enabled());
     }
+
+    /**
+     * Sets New Relic appname for an application if current state meets requirements.
+     *
+     * @param W3_Config $config
+     * @return boolean If appname was set or not
+     */
+    public function set_newrelic_appname($config) {
+        if ($config->get_boolean('newrelic.enabled') && !$config->get_boolean('late_init.enabled')) {
+            if (w3_is_multisite() && $config->get_boolean('common.force_master'))
+                return false;
+            /**
+             * @var W3_Plugin_NewRelic $nr
+             */
+            $nr = w3_instance('W3_Plugin_NewRelic');
+            $nr->set_appname();
+            return true;
+        }
+        return false;
+    }
+
 }
 

@@ -5,28 +5,28 @@ if (!defined('W3TC')) {
 }
 
 $csstidy_templates = array(
-    'highest_compression' => 'Highest (no readability, smallest size)',
-    'high_compression' => 'High (moderate readability, smaller size)',
-    'default' => 'Standard (balance between readability and size)',
-    'low_compression' => 'Low (higher readability)',
+    'highest_compression' => __('Highest (no readability, smallest size)', 'w3-total-cache'),
+    'high_compression' => __('High (moderate readability, smaller size)', 'w3-total-cache'),
+    'default' => __('Standard (balance between readability and size)', 'w3-total-cache'),
+    'low_compression' => __('Low (higher readability)', 'w3-total-cache'),
 );
 
 $optimise_shorthands_values = array(
-    0 => 'Don\'t optimise',
-    1 => 'Safe optimisations',
-    2 => 'All optimisations'
+    0 => __('Don\'t optimise', 'w3-total-cache'),
+    1 => __('Safe optimisations', 'w3-total-cache'),
+    2 => __('All optimisations', 'w3-total-cache')
 );
 
 $case_properties_values = array(
-    0 => 'None',
-    1 => 'Lowercase',
-    2 => 'Uppercase'
+    0 => __('None', 'w3-total-cache'),
+    1 => __('Lowercase', 'w3-total-cache'),
+    2 => __('Uppercase', 'w3-total-cache')
 );
 
 $merge_selectors_values = array(
-    0 => 'Do not change anything',
-    1 => 'Only seperate selectors (split at ,)',
-    2 => 'Merge selectors with the same properties (fast)'
+    0 => __('Do not change anything', 'w3-total-cache'),
+    1 => __('Only seperate selectors (split at ,)', 'w3-total-cache'),
+    2 => __('Merge selectors with the same properties (fast)', 'w3-total-cache')
 );
 
 $csstidy_template = $this->_config->get_string('minify.csstidy.options.template');
@@ -35,7 +35,7 @@ $case_properties = $this->_config->get_integer('minify.csstidy.options.case_prop
 $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_selectors');
 ?>
 <tr>
-    <th><label for="minify_csstidy_options_template">Compression:</label></th>
+    <th><label for="minify_csstidy_options_template"><?php _e('Compression:', 'w3-total-cache'); ?></label></th>
     <td>
         <select id="minify_csstidy_options_template" class="css_enabled" name="minify.csstidy.options.template"
             <?php $this->sealing_disabled('minify') ?>>
@@ -46,7 +46,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_optimise_shorthands">Optimize shorthands:</label></th>
+    <th><label for="minify_csstidy_options_optimise_shorthands"><?php _e('Optimize shorthands:', 'w3-total-cache'); ?></label></th>
     <td>
         <select id="minify_csstidy_options_optimise_shorthands" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.optimise_shorthands">
@@ -57,7 +57,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_case_properties">Case for properties:</label></th>
+    <th><label for="minify_csstidy_options_case_properties"><?php _e('Case for properties:', 'w3-total-cache'); ?></label></th>
     <td>
         <select id="minify_csstidy_options_case_properties" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.case_properties">
@@ -68,7 +68,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_merge_selectors">Regroup selectors:</label></th>
+    <th><label for="minify_csstidy_options_merge_selectors"><?php _e('Regroup selectors:', 'w3-total-cache'); ?></label></th>
     <td>
         <select id="minify_csstidy_options_merge_selectors" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.merge_selectors">

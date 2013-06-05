@@ -24,21 +24,50 @@ class W3_Plugin_NewRelicAdmin extends W3_Plugin {
             add_action('wp_ajax_w3tc_verify_newrelic_api_key', array($this, 'verify_newrelic_api_key'));
             add_action('wp_ajax_admin_w3tc_get_newrelic_applications', array($this, 'get_newrelic_applications'));
             add_action('wp_ajax_w3tc_get_newrelic_applications', array($this, 'get_newrelic_applications'));
+            $new_relic_enabled = $this->_config->get_boolean('newrelic.enabled');
+            if ($new_relic_enabled) {
+                global $pagenow;
+                w3_require_once( W3TC_LIB_W3_DIR . '/Request.php');
+                $page = W3_Request::get_string('page');
+                if ($pagenow == 'plugins.php' || strpos($page, 'w3tc_') !== false) {
+                    if ((!w3_is_multisite()) || (w3_is_multisite() && !$this->_config->get_boolean('common.force_master'))) {
+                        add_action('admin_notices', array($this, 'admin_notices'));
+                    } else {
+                        add_action('network_admin_notices', array($this, 'admin_notices'));
+                    }
+                }
+            }
+        }
+    }
+
+    function admin_notices() {
+        /**
+         * @var $nerser W3_NewRelicService
+         */
+        $nerser = w3_instance('W3_NewRelicService');
+        $new_relic_configured = $this->_config->get_string('newrelic.account_id') && $this->_config->get_string('newrelic.api_key');
+        if (w3_get_blog_id() == 0 || !$this->_config->get_boolean('common.force_master')) {
+            $new_relic_configured = $new_relic_configured && $this->_config->get_string('newrelic.application_id');
+        }
+        $verify_running_result = $nerser->verify_running();
+        $not_running = is_array($verify_running_result);
+
+        if ($not_running) {
+            $message = '<p>' . __('New Relic is not running correctly. The plugin has detected the following issues:', 'w3-total-cache') . "</p>\n";
+            $message .= "<ul class=\"w3-bullet-list\">\n";
+            foreach($verify_running_result as $cause) {
+                $message .= "<li>$cause</li>";
+            }
+            $message .= "</ul>\n";
+
+            $message .= "<p>" . sprintf(__('Please review the <a href="%s">settings</a>.', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_general#monitoring')) . "</p>";
+            w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+            w3_e_error_box($message);
         }
     }
 
     /**
-     * Activate plugin action (called by W3_Plugins)
-     */
-    function activate() {}
-
-    /**
-     * Deactivate plugin action (called by W3_Plugins)
-     */
-    function deactivate() {}
-
-    /**
-     * Returns a list of the verification status of the the new relic requirements. To be used on the compability page
+     * Returns a list of the verification status of the the new relic requirements. To be used on the compatibility page
      * @param $verified_list
      * @return array
      */
@@ -93,150 +122,5 @@ class W3_Plugin_NewRelicAdmin extends W3_Plugin {
         } catch (Exception $ex) {}
         echo json_encode($newrelic_applications);
         die();
-    }
-
-
-    /**
-     * Writes rules to file cache .htaccess
-     *
-     * @return boolean
-     */
-    function write_rules_core() {
-        $path = w3_get_new_relic_rules_core_path();
-
-        if (file_exists($path)) {
-            $data = @file_get_contents($path);
-        } else {
-            $data = '';
-        }
-
-        $replace_start = strpos($data, W3TC_MARKER_BEGIN_NEW_RELIC_CORE);
-        $replace_end = strpos($data, W3TC_MARKER_END_NEW_RELIC_CORE);
-
-        if ($replace_start !== false && $replace_end !== false && $replace_start < $replace_end) {
-            $replace_length = $replace_end - $replace_start + strlen(W3TC_MARKER_END_MINIFY_CORE) + 1;
-        } else {
-            $replace_start = false;
-            $replace_length = 0;
-
-            $search = array(
-                W3TC_MARKER_BEGIN_PGCACHE_CORE => 0,
-                W3TC_MARKER_BEGIN_BROWSERCACHE_NO404WP => 0,
-                W3TC_MARKER_BEGIN_WORDPRESS => 0,
-                W3TC_MARKER_END_BROWSERCACHE_CACHE => strlen(W3TC_MARKER_END_BROWSERCACHE_CACHE) + 1,
-                W3TC_MARKER_END_PGCACHE_CACHE => strlen(W3TC_MARKER_END_PGCACHE_CACHE) + 1,
-                W3TC_MARKER_END_MINIFY_CACHE => strlen(W3TC_MARKER_END_MINIFY_CACHE) + 1
-            );
-
-            foreach ($search as $string => $length) {
-                $replace_start = strpos($data, $string);
-
-                if ($replace_start !== false) {
-                    $replace_start += $length;
-                    break;
-                }
-            }
-        }
-
-        $rules = $this->generate_rules_core();
-
-        if (!$rules)
-            return;
-
-        if ($replace_start !== false) {
-            $data = w3_trim_rules(substr_replace($data, $rules, $replace_start, $replace_length));
-        } else {
-            $data = w3_trim_rules($data . $rules);
-        }
-
-        w3_require_once(W3TC_INC_DIR . '/functions/activation.php');
-        w3_wp_write_to_file($path, $data);
-    }
-
-    /**
-     * Erases Minify core directives
-     *
-     * @param string $data
-     * @return string
-     */
-    function erase_rules_core($data) {
-        $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_NEW_RELIC_CORE, W3TC_MARKER_END_NEW_RELIC_CORE);
-
-        return $data;
-    }
-
-    /**
-     * Removes NewRelic core directives
-     *
-     * @return boolean
-     */
-    function remove_rules_core() {
-        $path = w3_get_minify_rules_core_path();
-
-        if (file_exists($path)) {
-            if (($data = @file_get_contents($path)) !== false) {
-                $data = $this->erase_rules_core($data);
-
-                return @file_put_contents($path, $data);
-            }
-            return false;
-        }
-        return true;
-    }
-
-
-    /**
-     * Generates rules
-     *
-     * @return string
-     */
-    function generate_rules_core() {
-        switch (true) {
-            case w3_is_apache():
-            case w3_is_litespeed():
-                return $this->generate_rules_core_apache();
-        }
-
-        return false;
-    }
-
-    /**
-     * Generates rules
-     *
-     * @return string
-     */
-    function generate_rules_core_apache() {
-        $new_relic_app_name = $this->_config->get_string('newrelic.appname');
-
-        $rules = '';
-        if ($new_relic_app_name) {
-            $rules .= W3TC_MARKER_BEGIN_NEW_RELIC_CORE . "\n";
-            $rules .= sprintf('php_value newrelic.appname \'%s\'', $new_relic_app_name) . "\n";
-            $rules .= W3TC_MARKER_END_NEW_RELIC_CORE . "\n";
-        }
-        return $rules;
-    }
-
-
-    /**
-     * @return array
-     */
-    function get_required_rules() {
-        $rewrite_rules = array();
-        $newrelic_core_path = w3_get_minify_rules_core_path();
-        $rewrite_rules[] = array('filename' => $newrelic_core_path, 'content'  => $this->generate_rules_core());
-
-        return $rewrite_rules;
-    }
-
-    /**
-     * Check if core rules exists
-     *
-     * @return boolean
-     */
-    function check_rules_has_core() {
-        $path = w3_get_new_relic_rules_core_path();
-
-        return (($data = @file_get_contents($path)) && w3_has_rules(w3_clean_rules($data), W3TC_MARKER_BEGIN_NEW_RELIC_CORE, W3TC_MARKER_END_NEW_RELIC_CORE));
     }
 }

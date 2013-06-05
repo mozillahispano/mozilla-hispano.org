@@ -458,4 +458,10 @@ class W3_Cdn_Azure extends W3_Cdn_Base {
     function headers_support() {
         return W3TC_CDN_HEADER_UPLOADABLE;
     }
+
+    function get_prepend_path($path) {
+        $path = parent::get_prepend_path($path);
+        $path = $this->_config['container'] ? trim($path, '/') . '/' . trim($this->_config['container'], '/'): $path;
+        return $path;
+    }
 }

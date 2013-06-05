@@ -270,6 +270,11 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'help_text' => __( 'Check this for easy access to settings from the admin menu bar.', 'all_in_one_seo_pack' ),
 				'default' => 'on',
 				),
+			"custom_menu_order" => Array(
+				'name' => __( 'Display Menu At The Top:', 'all_in_one_seo_pack' ),
+				'help_text' => __( 'Check this for easy access to settings from the top of your WordPress Dashboard.', 'all_in_one_seo_pack' ),
+				'default' => 'on',
+				),
 			"google_verify" => Array(
 				'name' => __( 'Google Webmaster Tools:', 'all_in_one_seo_pack' ),
 				'help_text' => __( 'Enter your verification code here to add a meta tag to your homepage to verify your site.', 'all_in_one_seo_pack' ),
@@ -414,7 +419,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					),
 				'display' => Array(
 						'name' => __( 'Display Settings', 'all_in_one_seo_pack' ),
-						'options' => Array( "posttypecolumns", "admin_bar" )
+						'options' => Array( "posttypecolumns", "admin_bar", "custom_menu_order" )
 					),
 				'webmaster' => Array(
 						'name' => __( 'Webmaster Verification', 'all_in_one_seo_pack' ),
@@ -452,7 +457,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( is_object( $post ) ) {
 				$post_id = $post->ID;
 				$p = $post; $w = $wp_query;
-				$wp_query = new WP_Query( array( 'p' => $post_id, 'post_type' => $post->post_type ) );
+				if (! $post->post_modified_gmt != '' )
+					$wp_query = new WP_Query( array( 'p' => $post_id, 'post_type' => $post->post_type ) );
 				if ( $post->post_type == 'page' ) $wp_query->is_page = true;
 				
 				$args['options']['type'] = 'html';
@@ -466,7 +472,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				if ( ( $aioseop_options['aiosp_can'] ) && ( $url = $this->aiosp_mrt_get_url( $wp_query ) ) )
 					$url = apply_filters( 'aioseop_canonical_url',$url );
 				if ( !$url ) $url = get_permalink();
-				
+
 				$description = $this->get_post_description( $post );
 				
 				if ( strlen( $title ) > 70 ) $title = $this->trim_excerpt_without_filters( $title, 70 ) . '...';
@@ -522,7 +528,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			}
 		}
 				
-		$this->pointers['aioseop_welcome'] = Array( 'pointer_target' => '#aiosp_settings_form',
+		$this->pointers['aioseop_welcome_201'] = Array( 'pointer_target' => '#aiosp_settings_form',
 													'pointer_text' => '<h3>' . sprintf( __( 'Welcome to Version %s!', 'all_in_one_seo_pack' ), AIOSEOP_VERSION )
 													. '</h3><p>' . __( 'Thank you for running the latest and greatest All in One SEO Pack ever! New in 2.0: manage your performance with our Performance module; enable it from our new feature manager! And please review your settings, we have added some new ones!', 'all_in_one_seo_pack' ) . '</p>'
 											 );
@@ -619,7 +625,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		return $options;
 	}
 	
-	function display_side_metaboxes( $add, $meta ) {
+	function display_extra_metaboxes( $add, $meta ) {
 		echo "<div class='aioseop_metabox_wrapper' >";
 		switch ( $meta['id'] ) {
 			case "aioseop-about":
@@ -632,13 +638,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 							| <strong><a target="_blank" title="<?php _e('Pro Version', 'all_in_one_seo_pack' ); ?>"
 							href="http://semperplugins.com/plugins/all-in-one-seo-pack-pro-version/">
 							<?php _e('UPGRADE TO PRO VERSION', 'all_in_one_seo_pack' ); ?></a></strong></p>
-							<form action="http://semperfiwebdesign.us1.list-manage.com/subscribe/post?u=794674d3d54fdd912f961ef14&amp;id=af0a96d3d9" 
-							method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-							<h2>Join our mailing list for tips, tricks, and WordPress secrets.</h2>
-							<p><i>Sign up today and receive a free copy of the e-book 5 SEO Tips for WordPress ($39 value).</i></p>
-							<p><input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-								<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn"></p>
-							</form>
 						</div>
 				<?php
 		    case "aioseop-donate":
@@ -665,6 +664,19 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				</div>
 		        <?php
 		        break;
+			case "aioseop-list":
+			?>
+				<div class="aioseop_metabox_text">
+						<form action="http://semperfiwebdesign.us1.list-manage.com/subscribe/post?u=794674d3d54fdd912f961ef14&amp;id=af0a96d3d9" 
+						method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+						<h2><?php _e( 'Join our mailing list for tips, tricks, and WordPress secrets.', 'all_in_one_seo_pack' ); ?></h2>
+						<p><i><?php _e( 'Sign up today and receive a free copy of the e-book 5 SEO Tips for WordPress ($39 value).', 'all_in_one_seo_pack' ); ?></i></p>
+						<p><input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+							<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn"></p>
+						</form>
+				</div>
+			<?php
+				break;
 		    case "aioseop-support":
 		        ?><div class="aioseop_metabox_text">
 		        	<p><?php _e( 'For support please visit the Semper Plugins Support Forum at http://semperplugins.com/support/', 'all_in_one_seo_pack' ); ?></p>
@@ -839,32 +851,41 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				echo "ob_start_detected ";
 			echo "[$this->title_start,$this->title_end] ";
 			echo "-->\n";
-			
 			$is_front_page = is_front_page();
 			
-			$is_front_page_keywords = ( ( is_home() && $aioseop_options['aiosp_home_keywords'] && !$this->is_static_posts_page() ) || $this->is_static_front_page() );
+			$is_front_page_keywords = ( ( $is_front_page && $aioseop_options['aiosp_home_keywords'] && !$this->is_static_posts_page() ) || $this->is_static_front_page() );
+
+			$page_for_posts = get_option( 'page_for_posts' );
+			$blog_page = '';
+			if ( $page_for_posts && ( !is_object( $post ) || ( $page_for_posts != $post->ID ) ) && is_home() )
+				$blog_page = get_post( $page_for_posts );
 			
 			if ( $is_front_page_keywords ) {
 				$keywords = trim( $this->internationalize( $aioseop_options['aiosp_home_keywords'] ) );
 			} elseif ( $this->is_static_posts_page() && !$aioseop_options['aiosp_dynamic_postspage_keywords'] ) {  // and if option = use page set keywords instead of keywords from recent posts
 					$keywords = stripcslashes( $this->internationalize( get_post_meta( $post->ID, "_aioseop_keywords", true ) ) );
+			} elseif ( $blog_page ) {
+					$keywords = stripcslashes( $this->internationalize( get_post_meta( $blog_page->ID, "_aioseop_keywords", true ) ) );
 			} else {
 					$keywords = $this->get_all_keywords();
 			}
-			if ( is_single() || is_page() || $this->is_static_posts_page() ) {
-				if ( $this->is_static_front_page() ) {
+			if ( is_single() || is_page() || is_home() || $this->is_static_posts_page() )
+				if ( $this->is_static_front_page() )
 					$description = trim( stripcslashes( $this->internationalize( $aioseop_options['aiosp_home_description'] ) ) );
-				} else {
-					$description = $this->get_post_description( $post );
-					$description = apply_filters( 'aioseop_description', $description );
-				}
-			} else if ( is_home() ) {
+				elseif ( $blog_page )
+					$description = $this->get_post_description( $blog_page );
+			else if ( $is_front_page )
 				$description = trim( stripcslashes( $this->internationalize( $aioseop_options['aiosp_home_description'] ) ) );
-			} else if ( is_category() ) {
+			else if ( is_category() )
 				$description = $this->internationalize( category_description() );
-			}
-
-			if ( isset($description) && (strlen($description) > $this->minimum_description_length ) && !( is_home() && is_paged() ) ) {
+			
+			if ( empty( $description ) && is_object( $post ) )
+				$description = $this->get_post_description( $post );
+			
+			if ( !empty( $description ) )
+				$description = apply_filters( 'aioseop_description', $description );			
+			
+			if ( isset($description) && (strlen($description) > $this->minimum_description_length ) && !( $is_front_page && is_paged() ) ) {
 				$description = trim( strip_tags( $description ) );
 				$description = str_replace( '"', '', $description );
 
@@ -960,9 +981,12 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( empty( $googleplus ) && !empty( $aioseop_options['aiosp_google_publisher'] ) )
 				$googleplus = $aioseop_options['aiosp_google_publisher'];
 
+			if ( $is_front_page && !empty( $aioseop_options['aiosp_google_publisher'] ) )
+				$meta_string = '<link rel="publisher" href="' . $aioseop_options['aiosp_google_publisher'] . '" />' . "\n" . $meta_string;
+				
 			if ( is_singular() && ( $googleplus ) ) {
 				$meta_string = '<link rel="author" href="' . $googleplus . '" />' . "\n" . $meta_string;
-			} else if ( !is_home() && !empty( $aioseop_options['aiosp_google_publisher'] ) ) {
+			} else if ( !empty( $aioseop_options['aiosp_google_publisher'] ) ) {
 				$meta_string = '<link rel="author" href="' . $aioseop_options['aiosp_google_publisher'] . '" />' . "\n" . $meta_string;
 			}
 			
@@ -1124,7 +1148,7 @@ function aiosp_google_analytics() {
 	}
 
 	function yoast_get_paged( $link ) {
-		$page = get_query_var( 'paged' );
+		$page = get_query_var( 'page' );
         if ( $page && $page > 1 ) {
             $link = trailingslashit( $link ) ."page/". "$page";
 			$link = user_trailingslashit( $link, 'paged' );
@@ -1223,6 +1247,20 @@ function aiosp_google_analytics() {
 				$tag = $this->internationalize( single_term_title( '', false ) );
 			}
 			if ( $tag ) $title = $tag;
+		} else if ( is_author() ) {
+			$author = get_userdata( get_query_var( 'author' ) );
+			if ( $author === false ) {
+				global $wp_query;
+				$author = $wp_query->get_queried_object();
+			}
+			if ($author !== false)
+				$title = $author->display_name;
+		} else if ( is_day() ) {
+			$title = get_the_date();
+		} else if ( is_month() ) {
+			$title = get_the_date( 'F, Y' );
+		} else if ( is_year() ) {
+			$title = get_the_date( 'Y' );
 		} else if ( is_archive() ) {
 			$title = $this->internationalize( post_type_archive_title( '', false) );
 		} else if ( is_404() ) {
@@ -1242,12 +1280,13 @@ function aiosp_google_analytics() {
 		global $aioseop_options;
 		// simple tagging support
 		global $STagging;
-
-		if ( is_paged() || ( isset($STagging) && $STagging->is_tag_view() && $paged ) ) {
+		$page = get_query_var( 'page' );
+		if ( $paged > $page ) $page = $paged;
+		if ( is_paged() || ( isset($STagging) && $STagging->is_tag_view() && $paged ) || $page ) {
 			$part = $this->internationalize( $aioseop_options['aiosp_paged_format'] );
 			if ( isset( $part ) || !empty( $part ) ) {
 				$part = " " . trim( $part );
-				$part = str_replace( '%page%', $paged, $part );
+				$part = str_replace( '%page%', $page, $part );
 				$this->log( "paged_title() [$title] [$part]" );
 				$title .= $part;
 			}
@@ -1258,19 +1297,24 @@ function aiosp_google_analytics() {
 	/*** Gets the title that will be used by AIOSEOP for title rewrites or returns false. ***/
 	function get_aioseop_title( $post ) {
 		global $aioseop_options;
-		
 		// the_search_query() is not suitable, it cannot just return
 		global $s, $STagging;
-		if ( is_home() && !$this->is_static_posts_page() ) {
+		if ( is_front_page() ) {
 			$title = $this->internationalize( $aioseop_options['aiosp_home_title'] );
+			if ( empty( $title ) && !empty( $post ) && $this->is_static_front_page() ) {
+				$title = $this->internationalize( get_post_meta( $post->ID, "_aioseop_title", true ) );
+				if ( !$title )
+					$title = $this->internationalize( $post->post_title );
+				if ( !$title )
+					$title = $this->internationalize( $this->get_original_title( '', false ) );
+			}
 			if (empty( $title ) )
 				$title = $this->internationalize( get_option( 'blogname' ) );
-			
 			return $this->paged_title( $title );
 		} else if ( is_attachment() ) {
 			if ( $post === null ) return false;
 			return get_the_title( $post->post_parent ) . ' ' . $post->post_title . ' – ' . get_option( 'blogname' );
-		} else if ( is_page() || $this->is_static_posts_page() ) {
+		} else if ( is_page() || $this->is_static_posts_page() || ( is_home() && !$this->is_static_posts_page() ) ) {
 			if ( $post === null ) return false;
 			// we're not in the loop :(
 			$authordata = get_userdata( $post->post_author );
@@ -1278,9 +1322,24 @@ function aiosp_google_analytics() {
 				//home title filter
 				return apply_filters( 'aioseop_home_page_title', $home_title );
 			} else {
-				$title = $this->internationalize( get_post_meta( $post->ID, "_aioseop_title", true ) );
+				$page_for_posts = '';
+				if ( is_home() ) {
+					$page_for_posts = get_option( 'page_for_posts' );
+				}
+				if ( $page_for_posts ) {
+					$title = $this->internationalize( get_post_meta( $page_for_posts, "_aioseop_title", true ) );
+					if ( !$title ) {
+						$post_page = get_post( $page_for_posts );
+						$title = $this->internationalize( $post_page->post_title );						
+					}
+				} else {
+					$title = $this->internationalize( get_post_meta( $post->ID, "_aioseop_title", true ) );
+					if ( !$title )
+						$title = $this->internationalize( $post->post_title );
+				}
 				if ( !$title )
 					$title = $this->internationalize( $this->get_original_title( '', false ) );
+
 	            $title_format = $aioseop_options['aiosp_page_title_format'];
 	            $new_title = str_replace( '%blog_title%', $this->internationalize( get_bloginfo( 'name' ) ), $title_format );
 	            $new_title = str_replace( '%blog_description%', $this->internationalize( get_bloginfo( 'description' ) ), $new_title );
@@ -1322,6 +1381,7 @@ function aiosp_google_analytics() {
 			$r_title = array( '%blog_title%', '%blog_description%', '%post_title%', '%category%', '%category_title%', '%post_author_login%', '%post_author_nicename%', '%post_author_firstname%', '%post_author_lastname%' );
 			$d_title = array( $this->internationalize( get_bloginfo('name') ), $this->internationalize( get_bloginfo( 'description' ) ), $title, $category, $category, $authordata->user_login, $authordata->user_nicename, ucwords( $authordata->first_name ), ucwords( $authordata->last_name ) );
 			$title = trim( str_replace( $r_title, $d_title, $title_format ) );
+			$title = $this->paged_title( $title );
 			return apply_filters( 'aioseop_title_single', $title );
 		} else if ( is_search() && isset( $s ) && !empty( $s ) ) {
 			$search = esc_attr( stripcslashes( $s ) );
@@ -1417,7 +1477,8 @@ function aiosp_google_analytics() {
 			return $header;	
 		}
 		$title = $this->wp_title();
-		$header = $this->replace_title( $header, $title );
+		if ( !empty( $title ) )
+			$header = $this->replace_title( $header, $title );
 		return $header;
 	}
 	
@@ -1647,24 +1708,40 @@ function aiosp_google_analytics() {
 		return 5;
 	}
 
-	function admin_menu() {		
+	function admin_menu() {
 		$file = plugin_basename( __FILE__ );
 		$menu_name = __( 'All in One SEO', 'all_in_one_seo_pack' );
-		add_menu_page( $menu_name, $menu_name, 'manage_options', $file, Array( $this, 'display_settings_page' ) );
-		add_meta_box('aioseop-about', "About <span style='float:right;'>Version <b>" . AIOSEOP_VERSION . "</b></span>", array( $this, 'display_side_metaboxes'), 'aioseop_metaboxes', 'side', 'core');
-		add_filter( 'custom_menu_order', '__return_true' );
-		add_filter( 'menu_order', array( $this, 'set_menu_order' ) );
 
 		$this->locations['aiosp']['default_options']['nonce-aioseop-edit']['default'] = wp_create_nonce('edit-aioseop-nonce');
 		
+		$custom_menu_order = false;
+		global $aioseop_options;
+		if ( !isset( $aioseop_options['custom_menu_order'] ) )
+			$custom_menu_order = true;		
+
 		$this->update_options( );
 		
 		$donated = false;
-		if ( ( isset( $_POST ) ) && ( isset( $_POST['nonce-aioseop'] ) ) && ( wp_verify_nonce( $_POST['nonce-aioseop'], 'aioseop-nonce' ) ) ) {
+		if ( ( isset( $_POST ) ) && ( isset( $_POST['module'] ) ) && ( isset( $_POST['nonce-aioseop'] ) ) && ( $_POST['module'] == 'All_in_One_SEO_Pack' ) && ( wp_verify_nonce( $_POST['nonce-aioseop'], 'aioseop-nonce' ) ) ) {
 			if ( isset( $_POST["aiosp_donate"] ) )
 				$donated = $_POST["aiosp_donate"];
-		} elseif ( isset( $this->options["aiosp_donate"] ) ) {
-			$donated = $this->options["aiosp_donate"];
+			if ( isset($_POST["Submit"] ) ) {
+				if ( isset( $_POST["aiosp_custom_menu_order"] ) )
+					$custom_menu_order = $_POST["aiosp_custom_menu_order"];
+				else
+					$custom_menu_order = false;				
+			} else if ( ( isset($_POST["Submit_Default"] ) ) || ( ( isset($_POST["Submit_All_Default"] ) ) ) ) {
+				$custom_menu_order = true;				
+			}
+		} else {
+			if ( isset( $this->options["aiosp_donate"] ) )
+				$donated = $this->options["aiosp_donate"];
+			if ( isset( $this->options["aiosp_custom_menu_order"] ) )
+				$custom_menu_order = $this->options["aiosp_custom_menu_order"];
+		}
+		if ( $custom_menu_order ) {
+			add_filter( 'custom_menu_order', '__return_true' );
+			add_filter( 'menu_order', array( $this, 'set_menu_order' ) );
 		}
 		
 		if ( $donated ) {
@@ -1684,6 +1761,16 @@ function aiosp_google_analytics() {
 		} else {
 			$this->locations['aiosp']['display'] = Array( 'post', 'page' );
 		}
+		
+		if ( $custom_menu_order )
+			add_menu_page( $menu_name, $menu_name, 'manage_options', $file, Array( $this, 'display_settings_page' ) );
+		else
+			add_utility_page( $menu_name, $menu_name, 'manage_options', $file, Array( $this, 'display_settings_page' ) );
+		
+		add_meta_box('aioseop-list', "Join Our Mailing List", array( $this, 'display_extra_metaboxes'), 'aioseop_metaboxes', 'normal', 'core');
+		add_meta_box('aioseop-about', "About <span style='float:right;'>Version <b>" . AIOSEOP_VERSION . "</b></span>", array( $this, 'display_extra_metaboxes'), 'aioseop_metaboxes', 'side', 'core');
+		
+		
 		add_action( 'aioseop_modules_add_menus', Array( $this, 'add_menu' ), 5 );
 		do_action( 'aioseop_modules_add_menus', $file );
 
@@ -1780,6 +1867,11 @@ function aiosp_google_analytics() {
 		}
 		
 ?>
+		<div class="aioseop_top">
+			<div class="aioseop_top_sidebar aioseop_options_wrapper">
+				<?php do_meta_boxes( 'aioseop_metaboxes', 'normal', Array( 'test' ) ); ?>
+			</div>
+		</div>
 		<style>
 			#wpbody-content {
 				min-width: 900px;

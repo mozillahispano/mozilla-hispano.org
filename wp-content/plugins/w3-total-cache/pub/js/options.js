@@ -369,7 +369,7 @@ function w3tc_toggle(name, check) {
 }
 
 function w3tc_toggle2(name, dependent_ids) {
-    var id = '#' + name, dependants = '';
+    var id = '#' + name, dependants = '', n;
     for (n = 0; n < dependent_ids.length; n++)
         dependants += (n > 0 ? ',' : '') + '#' + dependent_ids[n];
     
@@ -429,7 +429,7 @@ jQuery(function() {
         jQuery(el).removeAttr("was_clicked");
     });
 
-    jQuery('#w3tc_general [type=submit]').bind('click', function(e){
+    jQuery('#w3tc_general [type=submit]').bind('click', function(){
         jQuery(this).attr('was_clicked','yes');
     });
 
@@ -449,6 +449,28 @@ jQuery(function() {
     });
     jQuery('.w3tc_read_technical_info').click(function() {
         jQuery('.w3tc_technical_info').toggle();
+    });
+
+    jQuery('#pgcache_engine').change(function() {
+       var late_init = jQuery(this).val() != 'file_generic';
+       var late_input = jQuery('#pgcache_late_init');
+       if (late_init) {
+            var force_master = jQuery('#common_force_master');
+            var newrelic_enabled = jQuery('#newrelic_enabled');
+            if(force_master.length>0 && newrelic_enabled.length>0) {
+                if (force_master.is(':checked') && newrelic_enabled.is(':checked'))   {
+                    late_input.attr('checked', true);
+                    late_input.attr('disabled','disabled');
+                }
+                else {
+                    late_input.removeAttr('disabled');
+                }
+            } else
+                late_input.removeAttr('disabled');
+       } else {
+           late_input.attr('checked', false);
+           late_input.attr('disabled','disabled');
+       }
     });
 
     jQuery('#newrelic_verify_api_key').click(function() {
@@ -874,12 +896,20 @@ jQuery(function() {
                 }
                 break;
 
+            case 'maxcdn':
+                jQuery.extend(params, {
+                    engine: 'maxcdn',
+                    'config[authorization_key]': jQuery('#cdn_naxcdn_authorization_key').val()
+                });
+
+                if (cnames.length) {
+                    params['config[domain][]'] = cnames;
+                }
+                break;
             case 'netdna':
                 jQuery.extend(params, {
                     engine: 'netdna',
-                    'config[alias]': jQuery('#cdn_netdna_alias').val(),
-                    'config[consumerkey]': jQuery('#cdn_netdna_consumerkey').val(),
-                    'config[consumersecret]': jQuery('#cdn_netdna_consumersecret').val()
+                    'config[authorization_key]': jQuery('#cdn_netdna_authorization_key').val()
                 });
 
                 if (cnames.length) {

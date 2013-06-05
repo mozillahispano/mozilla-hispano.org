@@ -148,6 +148,11 @@ if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' && isset( $_POST[
           $mess .= '<br/>';
         }
         $mess = __('Role', 'ure') . ' <em>' . __($ure_roles[$ure_currentRole]['name'], 'ure') . '</em> ' . __('is updated successfully', 'ure');
+      } else {
+        if ($mess) {
+          $mess .= '<br/>';
+        }
+        $mess = __('Error occured during role update', 'ure');
       }
     }
   } else {
@@ -156,6 +161,11 @@ if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' && isset( $_POST[
         $mess .= '<br/>';
       }
       $mess = __('User', 'ure') . ' &lt;<em>' . $ure_userToEdit->display_name . '</em>&gt; ' . __('capabilities are updated successfully', 'ure');
+    } else {
+      if ($mess) {
+        $mess .= '<br/>';
+      }
+      $mess = __('Error occured during role update', 'ure');
     }
   }  
 }

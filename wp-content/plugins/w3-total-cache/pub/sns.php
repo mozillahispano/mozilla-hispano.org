@@ -4,29 +4,35 @@ $message = file_get_contents('php://input');
 // switch blog before any action
 try {
     $message_object = json_decode($message);
+} catch (Exception $e) {
+    echo('SNS listener');
+    exit();
+}
 
-    if (isset($message_object->Type) && isset($message_object->Message)) {
-        if ($message_object->Type == 'SubscriptionConfirmation') {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $message_object->SubscribeURL);
-            curl_exec($ch);
-            curl_close($ch);
-            exit();
+if (isset($message_object->Type) && isset($message_object->Message)) {
+    if ($message_object->Type == 'SubscriptionConfirmation') {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $message_object->SubscribeURL);
+        curl_exec($ch);
+        curl_close($ch);
+        exit();
+    }
+    else if ($message_object->Type == 'Notification') {
+        $w3tc_message = $message_object->Message;
+        $w3tc_message_object = json_decode($w3tc_message);
+
+        if (isset($w3tc_message_object->blog_id)) {
+            global $w3_current_blog_id;
+            $w3_current_blog_id = $w3tc_message_object->blog_id;
         }
-        if ($message_object->Type == 'Notification') {
-            $w3tc_message = $message_object->Message;
-            $w3tc_message_object = json_decode($w3tc_message);
-
-            if (isset($w3tc_message_object->blog_id)) {
-                global $w3_current_blog_id;
-                $w3_current_blog_id = $w3tc_message_object->blog_id;
-            }
-            if (isset($w3tc_message_object->host) && !is_null($w3tc_message_object->host)) {
-                $_SERVER['HTTP_HOST'] = $w3tc_message_object->host;
-            }
+        if (isset($w3tc_message_object->host) && !is_null($w3tc_message_object->host)) {
+            $_SERVER['HTTP_HOST'] = $w3tc_message_object->host;
         }
     }
-} catch (Exception $e) {
+    else {
+        echo('Unsupported message type');
+        exit();
+    }
 }
 
 /**
