@@ -1,0 +1,748 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:44+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: 南宫小骏 <jackytsu@vip.qq.com>\n"
+"Language: en_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "用戶角色編輯器需要WordPress 3.0或更新版本"
+
+#: ../user-role-editor.php:35 ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "請更新！"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "用戶角色編輯器需要PHP 5.0或更新版本"
+
+#: ../user-role-editor.php:76
+msgid "Only"
+msgstr "僅"
+
+#: ../user-role-editor.php:76
+msgid "is allowed to use"
+msgstr "是允許使用"
+
+#: ../user-role-editor.php:82 ../user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "用戶角色編輯器"
+
+#: ../user-role-editor.php:223
+msgid "Settings"
+msgstr "設定"
+
+#: ../user-role-editor.php:233 ../includes/ure-options.php:235
+msgid "Changelog"
+msgstr "更新日誌"
+
+#: ../user-role-editor.php:280
+msgid "Capabilities"
+msgstr "功能"
+
+#: ../includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "發生錯誤，請查看更新日誌。"
+
+#: ../includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "資料庫操作錯誤，請查看更新日誌。"
+
+#: ../includes/ure-lib.php:177
+msgid ""
+"No backup data. It is created automatically before the first role data "
+"update."
+msgstr "沒有備份資料。這是之前自動建立的第一個角色資料更新。"
+
+#: ../includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "已經為當前角色的權限建立備份資料"
+
+#: ../includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "錯誤：角色名稱必須使用英文或數字！"
+
+#: ../includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr "角色 %s 已經存在了"
+
+#: ../includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "建立角色發生錯誤"
+
+#: ../includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "角色 %s 建立成功"
+
+#: ../includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "刪除角色發生錯誤"
+
+#: ../includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "角色 %s 刪除成功"
+
+#: ../includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "更改預設角色發生錯誤"
+
+#: ../includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "將新角色更改為預設角色 %s 成功"
+
+#: ../includes/ure-lib.php:489
+msgid "Editor"
+msgstr "編輯"
+
+#: ../includes/ure-lib.php:490
+msgid "Author"
+msgstr "作者"
+
+#: ../includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "撰寫人員"
+
+#: ../includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "訂閱者"
+
+#: ../includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "更改佈景主題"
+
+#: ../includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "編輯佈景主題"
+
+#: ../includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "啟用外掛"
+
+#: ../includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "編輯外掛"
+
+#: ../includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "編輯帳號"
+
+#: ../includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "編輯檔案"
+
+#: ../includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "管理選項"
+
+#: ../includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "審核評論"
+
+#: ../includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "管理分類"
+
+#: ../includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "管理鏈結"
+
+#: ../includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "新增檔案"
+
+#: ../includes/ure-lib.php:505
+msgid "Import"
+msgstr "導入"
+
+#: ../includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "不過濾 html"
+
+#: ../includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "編輯文章"
+
+#: ../includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "編輯他人文章"
+
+#: ../includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "編輯已發表文章"
+
+#: ../includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "新增文章"
+
+#: ../includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "編輯分頁"
+
+#: ../includes/ure-lib.php:512
+msgid "Read"
+msgstr "瀏覽"
+
+#: ../includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "等級 10"
+
+#: ../includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "等級 9"
+
+#: ../includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "等級 8"
+
+#: ../includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "等級 7"
+
+#: ../includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "等級 6"
+
+#: ../includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "等級 5"
+
+#: ../includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "等級 4"
+
+#: ../includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "等級 3"
+
+#: ../includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "等級 2"
+
+#: ../includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "等級 1"
+
+#: ../includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "等級  0"
+
+#: ../includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "編輯他人分頁"
+
+#: ../includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "編輯已發表分頁"
+
+#: ../includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "新增分頁"
+
+#: ../includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "刪除分頁"
+
+#: ../includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "刪除他人分頁"
+
+#: ../includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "刪除已發布分頁"
+
+#: ../includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "刪除文章"
+
+#: ../includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "刪除他人文章"
+
+#: ../includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "刪除已發表文章"
+
+#: ../includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "刪除私密文章"
+
+#: ../includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "編輯私密文章"
+
+#: ../includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "瀏覽私密文章"
+
+#: ../includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "刪除私密分頁"
+
+#: ../includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "編輯私密分頁"
+
+#: ../includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "瀏覽私密分頁"
+
+#: ../includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "刪除帳號"
+
+#: ../includes/ure-lib.php:540
+msgid "Create users"
+msgstr "新增帳號"
+
+#: ../includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "無限制上傳"
+
+#: ../includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "編輯控制台"
+
+#: ../includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "更新外掛"
+
+#: ../includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "刪除外掛"
+
+#: ../includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "安裝外掛"
+
+#: ../includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "更新佈景主題"
+
+#: ../includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "安裝佈景主題"
+
+#: ../includes/ure-lib.php:548
+msgid "Update core"
+msgstr "更新核心"
+
+#: ../includes/ure-lib.php:549
+msgid "List users"
+msgstr "帳號列表"
+
+#: ../includes/ure-lib.php:550
+msgid "Remove users"
+msgstr "刪除帳號"
+
+#: ../includes/ure-lib.php:551
+msgid "Add users"
+msgstr "新增帳號"
+
+#: ../includes/ure-lib.php:552
+msgid "Promote users"
+msgstr "提升用戶"
+
+#: ../includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr "編輯佈景選項"
+
+#: ../includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr "刪除佈景"
+
+#: ../includes/ure-lib.php:555
+msgid "Export"
+msgstr "導出"
+
+#: ../includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "錯誤：功能名稱必須使用英文或數字！"
+
+#: ../includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "功能 %s 已成功加入"
+
+#: ../includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr "功能 %s 已存在"
+
+#: ../includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "錯誤：您無權刪除這功能： %s ！"
+
+#: ../includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "功能 %s 已成功刪除"
+
+#: ../includes/ure-lib.php:889
+msgid "Help"
+msgstr "幫助"
+
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "無"
+
+#: ../includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr "名字不能為空"
+
+#: ../includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr "名字必須使用英文或數字"
+
+#: ../includes/ure-role-edit.php:110 ../includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "刪除角色"
+
+#: ../includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "更改預設角色"
+
+#: ../includes/ure-role-edit.php:114
+msgid ""
+"Restore Roles from backup copy. Be careful, backup was created when you "
+"started URE 1st time. All changes you made after that will be lost"
+msgstr "從備份還原角色。小心，當您第一次使用時備份已被建立。所有更改將會消失"
+
+#: ../includes/ure-role-edit.php:116
+msgid ""
+"Warning! Be careful - removing critical capability could crash some plugin "
+"or other custom code"
+msgstr "警告！小心-移除關鍵功能可能會使外掛崩潰或其他自定義代碼"
+
+#: ../includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "請確認繼續"
+
+#: ../includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "角色  \"%s\" 更新：請確認繼續"
+
+#: ../includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "選擇一個角色並更改功能"
+
+#: ../includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "選擇角色："
+
+#: ../includes/ure-role-edit.php:175 ../includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "簡單呈現"
+
+#: ../includes/ure-role-edit.php:184 ../includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr "廢棄的功能"
+
+#: ../includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "如果選擇，將會影響這個網站"
+
+#: ../includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr "允許所有網站"
+
+#: ../includes/ure-role-edit.php:205 ../includes/ure-user-edit.php:105
+msgid "Core capabilities:"
+msgstr "核心功能："
+
+#: ../includes/ure-role-edit.php:268 ../includes/ure-user-edit.php:167
+msgid "Custom capabilities:"
+msgstr "自定義功能："
+
+#: ../includes/ure-role-edit.php:319 ../includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "更新"
+
+#: ../includes/ure-role-edit.php:319 ../includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "儲存變更"
+
+#: ../includes/ure-role-edit.php:320 ../includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "取消"
+
+#: ../includes/ure-role-edit.php:320 ../includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "取消儲存變更"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr "選擇全部"
+
+#: ../includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr "選擇全部功能"
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr "取消全選"
+
+#: ../includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr "取消全選功能"
+
+#: ../includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr "反選"
+
+#: ../includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr "將檢查關閉的功能"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "重設"
+
+#: ../includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "從備份恢復角色"
+
+#: ../includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "新增角色"
+
+#: ../includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr "帳號："
+
+#: ../includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr "複製"
+
+#: ../includes/ure-role-edit.php:353 ../includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "增加"
+
+#: ../includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "新增帳號角色"
+
+#: ../includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "新帳號預設角色"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "更改"
+
+#: ../includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "設置為預設角色"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "刪除"
+
+#: ../includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "刪除帳號角色"
+
+#: ../includes/ure-role-edit.php:377 ../includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr "加入新功能"
+
+#: ../includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr "刪除功能"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr "刪除"
+
+#: ../includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr "刪除用戶功能"
+
+#: ../includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "帳號  \"%s\" 更新：請確認繼續"
+
+#: ../includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr "更改用戶功能"
+
+#: ../includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "角色"
+
+#: ../includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr "增加功能給這個帳號："
+
+#: ../includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "用戶角色已從備份還原"
+
+#: ../includes/ure-options.php:130
+msgid "Error: "
+msgstr "錯誤："
+
+#: ../includes/ure-options.php:130 ../includes/ure-options.php:146
+msgid "Role"
+msgstr "角色"
+
+#: ../includes/ure-options.php:130
+msgid "does not exist"
+msgstr "不存在"
+
+#: ../includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "更新成功"
+
+#: ../includes/ure-options.php:154
+msgid "User"
+msgstr "帳號"
+
+#: ../includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "功能已更新成功"
+
+#: ../includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "關於此外掛："
+
+#: ../includes/ure-options.php:233
+msgid "Author's website"
+msgstr "作者網站"
+
+#: ../includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "外掛網站"
+
+#: ../includes/ure-options.php:236
+msgid "FAQ"
+msgstr "常見問題"
+
+#: ../includes/ure-options.php:237
+msgid "Greetings"
+msgstr "感謝"
+
+#: ../includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "感謝："
+
+#: ../includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "是我，外掛作者"
+
+#: ../includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "白俄羅斯版本貢獻者"
+
+#: ../includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr "巴西版本貢獻者"
+
+#: ../includes/ure-options.php:263
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "巴西葡萄牙語版本貢獻者"
+
+#: ../includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "簡體中文版本貢獻者"
+
+#: ../includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "荷蘭文版本貢獻者"
+
+#: ../includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "芬蘭版本貢獻者"
+
+#: ../includes/ure-options.php:267 ../includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "法文版本貢獻者"
+
+#: ../includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "德文版本貢獻者"
+
+#: ../includes/ure-options.php:270 ../includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr "希伯來文版本貢獻者"
+
+#: ../includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr "印地文版本貢獻者"
+
+#: ../includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "匈牙利版本貢獻者"
+
+#: ../includes/ure-options.php:274 ../includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "義大利語版本貢獻者"
+
+#: ../includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "日語版本貢獻者"
+
+#: ../includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr "立陶宛版本貢獻者"
+
+#: ../includes/ure-options.php:278 ../includes/ure-options.php:279
+#: ../includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr "波斯語版本貢獻者"
+
+#: ../includes/ure-options.php:281 ../includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "波蘭語版本貢獻者"
+
+#: ../includes/ure-options.php:283 ../includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "西班牙文版本貢獻者"
+
+#: ../includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr "瑞典版本更新貢獻者"
+
+#: ../includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "瑞典版本貢獻者"
+
+#: ../includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "土耳其版本貢獻者"
+
+#: ../includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "隱藏管理員貢獻者"
+
+#: ../includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr "幫助原碼增強建議"
+
+#: ../includes/ure-options.php:292
+msgid ""
+"Do you wish to see your name with link to your site here? You are welcome! "
+"Your help with translation and new ideas are very appreciated."
+msgstr ""
+"想在這看到您的網站嗎？非常歡迎！凡是提供各國語言翻譯將可以於此發現您的網站。"
+
+#~ msgid "Roles list reading error is encountered"
+#~ msgstr "角色列表读取出错"

@@ -1,0 +1,912 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor v. 2.1.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-01 08:48+0700\n"
+"PO-Revision-Date: 2012-09-01 08:48+0700\n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ ure
+#: user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "User Role Editor reikalauja WordPress 3.0 arba naujesnio."
+
+# @ ure
+#: user-role-editor.php:35
+#: user-role-editor.php:40
+msgid "Please update!"
+msgstr "Prašome Atnaujinti!"
+
+# @ ure
+#: user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "User Role Editor reikalauja PHP 5.0 arba naujesnio."
+
+#: user-role-editor.php:76
+msgid "Only"
+msgstr "Tik"
+
+#: user-role-editor.php:76
+msgid "is allowed to use"
+msgstr "gali naudoti"
+
+# @ ure
+#: user-role-editor.php:82
+#: user-role-editor.php:251
+msgid "User Role Editor"
+msgstr "User Role Editor"
+
+# @ ure
+#: user-role-editor.php:223
+msgid "Settings"
+msgstr "Nuostatos"
+
+# @ ure
+#: user-role-editor.php:233
+#: includes/ure-options.php:235
+msgid "Changelog"
+msgstr "Pasikeitimų žurnalas"
+
+#: user-role-editor.php:280
+msgid "Capabilities"
+msgstr "Gebos"
+
+# @ ure
+#: includes/ure-lib.php:34
+msgid "Error is occur. Please check the log file."
+msgstr "Įvyko klaida. Prašome patikrinti žurnalo rinkmeną."
+
+# @ ure
+#: includes/ure-lib.php:144
+msgid "Database operation error. Check log file."
+msgstr "Duomenų bazės operacijos klaida. Patikrinkite žurnalo rinkmeną."
+
+# @ ure
+#: includes/ure-lib.php:177
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "Nėra atsarginės kopijos duomenų. Tai sukuriama automatiškai prieš pirmą funkcijos duomenų atnaujinimą."
+
+# @ ure
+#: includes/ure-lib.php:215
+msgid "Backup record is created for the current role capabilities"
+msgstr "Atsarginės kopijos įrašas sukurtas pagal dabartinės funkcijų gebas"
+
+# @ ure
+#: includes/ure-lib.php:329
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "Klaida: Funkcijos vardas turi būti sudarytas tik iš lotyniškų simbolių bei skaičių!"
+
+# @ ure
+#: includes/ure-lib.php:336
+#, php-format
+msgid "Role %s exists already"
+msgstr "Funkcija %s jau egzistuoja"
+
+# @ ure
+#: includes/ure-lib.php:349
+msgid "Error is encountered during new role create operation"
+msgstr "Naujos funkcijos sukūrimo metu įvyko klaida"
+
+# @ ure
+#: includes/ure-lib.php:351
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "Funkcija %s sėkmingai sukurta"
+
+# @ ure
+#: includes/ure-lib.php:435
+msgid "Error encountered during role delete operation"
+msgstr "Funkcijos ištrynimo metu įvyko klaida"
+
+# @ ure
+#: includes/ure-lib.php:437
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "Funkcija %s sėkmingai ištrinta"
+
+# @ ure
+#: includes/ure-lib.php:455
+msgid "Error encountered during default role change operation"
+msgstr "Numatytosios funkcijos keitimo metu įvyko klaida"
+
+# @ ure
+#: includes/ure-lib.php:461
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "Numatytoji funkcija naujiems vartotojams sėkmingai nustatyta kaip %s"
+
+# @ ure
+#: includes/ure-lib.php:489
+msgid "Editor"
+msgstr "Redaktorius"
+
+# @ ure
+#: includes/ure-lib.php:490
+msgid "Author"
+msgstr "Autorius"
+
+# @ ure
+#: includes/ure-lib.php:491
+msgid "Contributor"
+msgstr "Bendradarbis"
+
+# @ ure
+#: includes/ure-lib.php:492
+msgid "Subscriber"
+msgstr "Prenumeratorius"
+
+# @ ure
+#: includes/ure-lib.php:494
+msgid "Switch themes"
+msgstr "Pakeisti apipavidalinimus"
+
+# @ ure
+#: includes/ure-lib.php:495
+msgid "Edit themes"
+msgstr "Redaguoti apipavidalinimus"
+
+# @ ure
+#: includes/ure-lib.php:496
+msgid "Activate plugins"
+msgstr "Suaktyvinti papildinius"
+
+# @ ure
+#: includes/ure-lib.php:497
+msgid "Edit plugins"
+msgstr "Redaguoti papildinius"
+
+# @ ure
+#: includes/ure-lib.php:498
+msgid "Edit users"
+msgstr "Redaguoti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:499
+msgid "Edit files"
+msgstr "Redaguoti rinkmenas"
+
+# @ ure
+#: includes/ure-lib.php:500
+msgid "Manage options"
+msgstr "Valdyti parinktis"
+
+# @ ure
+#: includes/ure-lib.php:501
+msgid "Moderate comments"
+msgstr "Prižiūrėti komentarus"
+
+# @ ure
+#: includes/ure-lib.php:502
+msgid "Manage categories"
+msgstr "Valdyti kategorijas"
+
+# @ ure
+#: includes/ure-lib.php:503
+msgid "Manage links"
+msgstr "Valdyti nuorodas"
+
+# @ ure
+#: includes/ure-lib.php:504
+msgid "Upload files"
+msgstr "Išsiųsti rinkmenas"
+
+# @ ure
+#: includes/ure-lib.php:505
+msgid "Import"
+msgstr "Importuoti"
+
+# @ ure
+#: includes/ure-lib.php:506
+msgid "Unfiltered html"
+msgstr "Nefiltruotas html"
+
+# @ ure
+#: includes/ure-lib.php:507
+msgid "Edit posts"
+msgstr "Redaguoti įrašus"
+
+# @ ure
+#: includes/ure-lib.php:508
+msgid "Edit others posts"
+msgstr "Redaguoti kitų įrašus"
+
+# @ ure
+#: includes/ure-lib.php:509
+msgid "Edit published posts"
+msgstr "Redaguoti paskelbtus įrašus"
+
+# @ ure
+#: includes/ure-lib.php:510
+msgid "Publish posts"
+msgstr "Paskelbti įrašus"
+
+# @ ure
+#: includes/ure-lib.php:511
+msgid "Edit pages"
+msgstr "Redaguoti puslapius"
+
+# @ ure
+#: includes/ure-lib.php:512
+msgid "Read"
+msgstr "Skaityti"
+
+# @ ure
+#: includes/ure-lib.php:513
+msgid "Level 10"
+msgstr "10 lygis"
+
+# @ ure
+#: includes/ure-lib.php:514
+msgid "Level 9"
+msgstr "9 lygis"
+
+# @ ure
+#: includes/ure-lib.php:515
+msgid "Level 8"
+msgstr "8 lygis"
+
+# @ ure
+#: includes/ure-lib.php:516
+msgid "Level 7"
+msgstr "7 lygis"
+
+# @ ure
+#: includes/ure-lib.php:517
+msgid "Level 6"
+msgstr "6 lygis"
+
+# @ ure
+#: includes/ure-lib.php:518
+msgid "Level 5"
+msgstr "5 lygis"
+
+# @ ure
+#: includes/ure-lib.php:519
+msgid "Level 4"
+msgstr "4 lygis"
+
+# @ ure
+#: includes/ure-lib.php:520
+msgid "Level 3"
+msgstr "3 lygis"
+
+# @ ure
+#: includes/ure-lib.php:521
+msgid "Level 2"
+msgstr "2 lygis"
+
+# @ ure
+#: includes/ure-lib.php:522
+msgid "Level 1"
+msgstr "1 lygis"
+
+# @ ure
+#: includes/ure-lib.php:523
+msgid "Level 0"
+msgstr "0 lygis"
+
+# @ ure
+#: includes/ure-lib.php:524
+msgid "Edit others pages"
+msgstr "Redaguoti kitų puslapius"
+
+# @ ure
+#: includes/ure-lib.php:525
+msgid "Edit published pages"
+msgstr "Redaguoti paskelbtus puslapius"
+
+# @ ure
+#: includes/ure-lib.php:526
+msgid "Publish pages"
+msgstr "Paskelbti puslapius"
+
+# @ ure
+#: includes/ure-lib.php:527
+msgid "Delete pages"
+msgstr "Ištrinti puslapius"
+
+# @ ure
+#: includes/ure-lib.php:528
+msgid "Delete others pages"
+msgstr "Ištrinti kitų puslapius"
+
+# @ ure
+#: includes/ure-lib.php:529
+msgid "Delete published pages"
+msgstr "Ištrinti paskelbtus puslapius"
+
+# @ ure
+#: includes/ure-lib.php:530
+msgid "Delete posts"
+msgstr "Ištrinti įrašus"
+
+# @ ure
+#: includes/ure-lib.php:531
+msgid "Delete others posts"
+msgstr "Ištrinti kitų įrašus"
+
+# @ ure
+#: includes/ure-lib.php:532
+msgid "Delete published posts"
+msgstr "Ištrinti paskelbtus įrašus"
+
+# @ ure
+#: includes/ure-lib.php:533
+msgid "Delete private posts"
+msgstr "Ištrinti privačius įrašus"
+
+# @ ure
+#: includes/ure-lib.php:534
+msgid "Edit private posts"
+msgstr "Redaguoti privačius įrašus"
+
+# @ ure
+#: includes/ure-lib.php:535
+msgid "Read private posts"
+msgstr "Skaityti privačius įrašus"
+
+# @ ure
+#: includes/ure-lib.php:536
+msgid "Delete private pages"
+msgstr "Ištrinti privačius puslapius"
+
+# @ ure
+#: includes/ure-lib.php:537
+msgid "Edit private pages"
+msgstr "Redaguoti privačius puslapius"
+
+# @ ure
+#: includes/ure-lib.php:538
+msgid "Read private pages"
+msgstr "Skaityti privačius puslapius"
+
+# @ ure
+#: includes/ure-lib.php:539
+msgid "Delete users"
+msgstr "Trinti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:540
+msgid "Create users"
+msgstr "Sukurti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:541
+msgid "Unfiltered upload"
+msgstr "Nefiltruojamas išsiuntimas"
+
+# @ ure
+#: includes/ure-lib.php:542
+msgid "Edit dashboard"
+msgstr "Redaguoti prietaisų skydelį"
+
+# @ ure
+#: includes/ure-lib.php:543
+msgid "Update plugins"
+msgstr "Atnaujinti papildinius"
+
+# @ ure
+#: includes/ure-lib.php:544
+msgid "Delete plugins"
+msgstr "Ištrinti papildinius"
+
+# @ ure
+#: includes/ure-lib.php:545
+msgid "Install plugins"
+msgstr "Įdiegti papildinius"
+
+# @ ure
+#: includes/ure-lib.php:546
+msgid "Update themes"
+msgstr "Atnaujinti apipavidalinimus"
+
+# @ ure
+#: includes/ure-lib.php:547
+msgid "Install themes"
+msgstr "Įdiegti apipavidalinimus"
+
+# @ ure
+#: includes/ure-lib.php:548
+msgid "Update core"
+msgstr "Atnaujinti branduolį"
+
+# @ ure
+#: includes/ure-lib.php:549
+msgid "List users"
+msgstr "Rodyti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:550
+msgid "Remove users"
+msgstr "Šalinti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:551
+msgid "Add users"
+msgstr "Pridėti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:552
+msgid "Promote users"
+msgstr "Paaukštinti vartotojus"
+
+# @ ure
+#: includes/ure-lib.php:553
+msgid "Edit theme options"
+msgstr "Redaguoti apipavidalinimo parinktis"
+
+# @ ure
+#: includes/ure-lib.php:554
+msgid "Delete themes"
+msgstr "Ištrinti apipavidalinimus"
+
+# @ ure
+#: includes/ure-lib.php:555
+msgid "Export"
+msgstr "Eksportuoti"
+
+# @ ure
+#: includes/ure-lib.php:639
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "Klaida: Gebos pavadinimas turi susidaryti tik iš lotyniškų simbolių bei skaičių!"
+
+# @ ure
+#: includes/ure-lib.php:651
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "Geba %s sėkmingai pridėta"
+
+#: includes/ure-lib.php:653
+#, php-format
+msgid "Capability %s exists already"
+msgstr "Geba %s jau egzistuoja"
+
+#: includes/ure-lib.php:802
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "Klaida! Jūs neturite leidimo ištrinti šią gebą: %s!"
+
+# @ ure
+#: includes/ure-lib.php:824
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "Geba %s sėkmingai pašalinta"
+
+#: includes/ure-lib.php:889
+msgid "Help"
+msgstr "Pagalba"
+
+# @ ure
+#: includes/ure-role-edit.php:29
+msgid "None"
+msgstr "Nieko"
+
+# @ ure
+#: includes/ure-role-edit.php:101
+msgid " Name can not be empty!"
+msgstr "Vardo laukelis negali būti tuščias!"
+
+# @ ure
+#: includes/ure-role-edit.php:105
+msgid " Name must contain latin characters and digits only!"
+msgstr "Vardas turi susidaryti tik iš lotyniškų simbolių bei skaičių!"
+
+# @ ure
+#: includes/ure-role-edit.php:110
+#: includes/ure-role-edit.php:367
+msgid "Delete Role"
+msgstr "Ištrinti Funkciją"
+
+# @ ure
+#: includes/ure-role-edit.php:112
+msgid "Change Default Role"
+msgstr "Pakeisti Numatytąją Funkciją"
+
+#: includes/ure-role-edit.php:114
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr "Atstatyti funkcijas iš atsarginės kopijos. Būkite atsargus, atsarginė kopija buvo sukurta, kai pirmą kartą paleidote URE. Visi pakeitimai, kuriuos atlikote po to, bus prarasti"
+
+#: includes/ure-role-edit.php:116
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "Dėmesio! Būkite atsargus - kritinės gebos pašalinimas gali nulemti kai kurių papildinių ar kitų individualizuotų kodų užstrigimą"
+
+# @ ure
+#: includes/ure-role-edit.php:118
+msgid "Please confirm to continue"
+msgstr "Prašome patvirtinti, kad galėtumėte tęsti"
+
+# @ ure
+#: includes/ure-role-edit.php:155
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "Funkcijos \"%s\" atnaujinimas: Prašome patvirtinti, kad galėtumėte tęsti"
+
+# @ ure
+#: includes/ure-role-edit.php:163
+msgid "Select Role and change its capabilities list"
+msgstr "Pasirinkti funkciją ir pakeisti jai priskirtų gebų sąrašą"
+
+# @ ure
+#: includes/ure-role-edit.php:165
+msgid "Select Role:"
+msgstr "Pasirinkite Funkciją:"
+
+# @ ure
+#: includes/ure-role-edit.php:175
+#: includes/ure-user-edit.php:91
+msgid "Show capabilities in human readable form"
+msgstr "Rodyti gebas žmogui suprantama forma"
+
+#: includes/ure-role-edit.php:184
+#: includes/ure-user-edit.php:100
+msgid "Show deprecated capabilities"
+msgstr "Rodyti prieštaraujančias gebas"
+
+#: includes/ure-role-edit.php:188
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "Jeigu pažymėta, tuomet veiksmas pritaikomas VISIEMS šio Tinklo puslapiams"
+
+#: includes/ure-role-edit.php:198
+msgid "Apply to All Sites"
+msgstr "Pritaikyti Visiems Puslapiams"
+
+#: includes/ure-role-edit.php:205
+#: includes/ure-user-edit.php:105
+#, fuzzy
+msgid "Core capabilities:"
+msgstr "WordPress Gebos:"
+
+#: includes/ure-role-edit.php:268
+#: includes/ure-user-edit.php:167
+#, fuzzy
+msgid "Custom capabilities:"
+msgstr "Gebos:"
+
+# @ ure
+#: includes/ure-role-edit.php:319
+#: includes/ure-user-edit.php:222
+msgid "Update"
+msgstr "Atnaujinti"
+
+# @ ure
+#: includes/ure-role-edit.php:319
+#: includes/ure-user-edit.php:222
+msgid "Save Changes"
+msgstr "Įrašyti Pakeitimus"
+
+# @ ure
+#: includes/ure-role-edit.php:320
+#: includes/ure-user-edit.php:223
+msgid "Cancel"
+msgstr "Atšaukti"
+
+# @ ure
+#: includes/ure-role-edit.php:320
+#: includes/ure-user-edit.php:223
+msgid "Cancel not saved changes"
+msgstr "Atšaukti neįrašytus pakeitimus"
+
+# @ ure
+#: includes/ure-role-edit.php:323
+msgid "Select All"
+msgstr ""
+
+#: includes/ure-role-edit.php:323
+msgid "Select All Capabilities"
+msgstr ""
+
+#: includes/ure-role-edit.php:327
+msgid "Unselect All"
+msgstr ""
+
+#: includes/ure-role-edit.php:327
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: includes/ure-role-edit.php:328
+msgid "Reverse"
+msgstr ""
+
+#: includes/ure-role-edit.php:328
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+# @ ure
+#: includes/ure-role-edit.php:334
+msgid "Reset"
+msgstr "Atkurti"
+
+# @ ure
+#: includes/ure-role-edit.php:334
+msgid "Restore Roles from backup copy"
+msgstr "Atkurti funkcijas pagal atsarginės kopijos duomenis"
+
+# @ ure
+#: includes/ure-role-edit.php:344
+msgid "Add New Role"
+msgstr "Pridėti Naują Funkciją"
+
+#: includes/ure-role-edit.php:346
+msgid "Name: "
+msgstr "Vardas:"
+
+#: includes/ure-role-edit.php:350
+msgid "Make copy of: "
+msgstr "Padaryti kopiją:"
+
+# @ ure
+#: includes/ure-role-edit.php:353
+#: includes/ure-role-edit.php:382
+msgid "Add"
+msgstr "Pridėti"
+
+# @ ure
+#: includes/ure-role-edit.php:353
+msgid "Add New User Role"
+msgstr "Pridėti Naują Vartotojo Funkciją"
+
+# @ ure
+#: includes/ure-role-edit.php:357
+msgid "Default Role for New User"
+msgstr "Numatytoji Funkcija Naujam Vartotojui"
+
+# @ ure
+#: includes/ure-role-edit.php:362
+msgid "Change"
+msgstr "Pakeisti"
+
+# @ ure
+#: includes/ure-role-edit.php:362
+msgid "Set as Default User Role"
+msgstr "Nustatyti kaip Numatytąją Vartotojo Funkciją"
+
+# @ ure
+#: includes/ure-role-edit.php:372
+msgid "Delete"
+msgstr "Ištrinti"
+
+# @ ure
+#: includes/ure-role-edit.php:372
+msgid "Delete User Role"
+msgstr "Ištrinti Vartotojo Funkciją"
+
+# @ ure
+#: includes/ure-role-edit.php:377
+#: includes/ure-role-edit.php:382
+msgid "Add New Capability"
+msgstr "Pridėti Naują Gebą"
+
+#: includes/ure-role-edit.php:387
+msgid "Remove Capability"
+msgstr "Pašalinti Gebą"
+
+# @ ure
+#: includes/ure-role-edit.php:392
+msgid "Remove"
+msgstr "Pašalinti"
+
+#: includes/ure-role-edit.php:392
+msgid "Remove User Capability"
+msgstr "Pašalinti Vartotojo Gebą"
+
+# @ ure
+#: includes/ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "Vartotojo \"%s\" atnaujinimas: prašome patvirtinti, kad tęstumėte"
+
+#: includes/ure-user-edit.php:79
+msgid "Change capabilities for user"
+msgstr "Pakeisti šio vartotojo gebas"
+
+# @ ure
+#: includes/ure-user-edit.php:82
+msgid "Role:"
+msgstr "Funkcija:"
+
+#: includes/ure-user-edit.php:104
+msgid "Add capabilities to this user:"
+msgstr "Pridėti gebas šiam vartotojui:"
+
+# @ ure
+#: includes/ure-options.php:59
+msgid "User Roles are restored from the backup data. "
+msgstr "Vartotojo Funkcijos atkurtos pagal atsarginės kopijos duomenis."
+
+#: includes/ure-options.php:130
+msgid "Error: "
+msgstr "Klaida:"
+
+# @ ure
+#: includes/ure-options.php:130
+#: includes/ure-options.php:146
+msgid "Role"
+msgstr "Funkcija"
+
+#: includes/ure-options.php:130
+msgid "does not exist"
+msgstr "neegzistuoja"
+
+# @ ure
+#: includes/ure-options.php:146
+msgid "is updated successfully"
+msgstr "yra sėkmingai atnaujinta"
+
+#: includes/ure-options.php:154
+msgid "User"
+msgstr "Vartotojas"
+
+# @ ure
+#: includes/ure-options.php:154
+msgid "capabilities are updated successfully"
+msgstr "Gebos sėkmingai atnaujintos"
+
+# @ ure
+#: includes/ure-options.php:232
+msgid "About this Plugin:"
+msgstr "Apie šį Papildinį:"
+
+# @ ure
+#: includes/ure-options.php:233
+msgid "Author's website"
+msgstr "Autoriaus svetainė"
+
+# @ ure
+#: includes/ure-options.php:234
+msgid "Plugin webpage"
+msgstr "Papildinio puslapis"
+
+# @ ure
+#: includes/ure-options.php:236
+msgid "FAQ"
+msgstr "DUK"
+
+# @ ure
+#: includes/ure-options.php:237
+msgid "Greetings"
+msgstr ""
+
+# @ ure
+#: includes/ure-options.php:259
+msgid "Greetings:"
+msgstr "Pasisveikinimai:"
+
+# @ ure
+#: includes/ure-options.php:260
+msgid "It's me, the author"
+msgstr "Čia aš, autorius"
+
+# @ ure
+#: includes/ure-options.php:261
+msgid "For the help with Belorussian translation"
+msgstr "Ieškant pagalbos, verčiant į baltarusių kalbą"
+
+# @ ure
+#: includes/ure-options.php:262
+msgid "For the help with Brasilian translation"
+msgstr "Ieškant pagalbos, verčiant į portugalų (Brazilija) kalbą"
+
+# @ ure
+#: includes/ure-options.php:263
+msgid "For the help with Brasilian Portuguese translation"
+msgstr "Ieškant pagalbos, verčiant į portugalų (Brazilija) kalbą"
+
+# @ ure
+#: includes/ure-options.php:264
+msgid "For the help with Chinese translation"
+msgstr "Ieškant pagalbos, verčiant į kinų kalbą"
+
+# @ ure
+#: includes/ure-options.php:265
+msgid "For the help with Dutch translation"
+msgstr "Ieškant pagalbos, verčiant į olandų kalbą"
+
+# @ ure
+#: includes/ure-options.php:266
+msgid "For the help with Finnish translation"
+msgstr "Ieškant pagalbos, verčiant į suomių kalbą"
+
+# @ ure
+#: includes/ure-options.php:267
+#: includes/ure-options.php:268
+msgid "For the help with French translation"
+msgstr "Ieškant pagalbos, verčiant į prancūzų kalbą"
+
+# @ ure
+#: includes/ure-options.php:269
+msgid "For the help with German translation"
+msgstr "Ieškant pagalbos, verčiant į vokiečių kalbą"
+
+# @ ure
+#: includes/ure-options.php:270
+#: includes/ure-options.php:271
+msgid "For the help with Hebrew translation"
+msgstr ""
+
+# @ ure
+#: includes/ure-options.php:272
+msgid "For the help with Hindi translation"
+msgstr ""
+
+# @ ure
+#: includes/ure-options.php:273
+msgid "For the help with Hungarian translation"
+msgstr "Ieškant pagalbos, verčiant į vengrų kalbą"
+
+# @ ure
+#: includes/ure-options.php:274
+#: includes/ure-options.php:275
+msgid "For the help with Italian translation"
+msgstr "Ieškant pagalbos, verčiant į italų kalbą"
+
+# @ ure
+#: includes/ure-options.php:276
+msgid "For the help with Japanese translation"
+msgstr "Ieškant pagalbos, verčiant į japonų kalbą"
+
+# @ ure
+#: includes/ure-options.php:277
+msgid "For the help with Lithuanian translation"
+msgstr ""
+
+# @ ure
+#: includes/ure-options.php:278
+#: includes/ure-options.php:279
+#: includes/ure-options.php:280
+msgid "For the help with Persian translation"
+msgstr "Ieškant pagalbos, verčiant į persų kalbą"
+
+# @ ure
+#: includes/ure-options.php:281
+#: includes/ure-options.php:282
+msgid "For the help with Polish translation"
+msgstr "Ieškant pagalbos, verčiant į lenkų kalbą"
+
+# @ ure
+#: includes/ure-options.php:283
+#: includes/ure-options.php:284
+msgid "For the help with Spanish translation"
+msgstr "Ieškant pagalbos, verčiant į ispanų kalbą"
+
+# @ ure
+#: includes/ure-options.php:285
+msgid "For the updated Swedish translation"
+msgstr ""
+
+# @ ure
+#: includes/ure-options.php:286
+msgid "For the help with Swedish translation"
+msgstr "Ieškant pagalbos, verčiant į švedų kalbą"
+
+# @ ure
+#: includes/ure-options.php:287
+msgid "For the help with Turkish translation"
+msgstr "Ieškant pagalbos, verčiant į turkų kalbą"
+
+# @ ure
+#: includes/ure-options.php:289
+msgid "For the code to hide administrator role"
+msgstr "Kodui, paslėpti administratoriaus funkciją"
+
+#: includes/ure-options.php:290
+msgid "For the code enhancement suggestion"
+msgstr "Kodo gerinimo pasiūlymams"
+
+# @ ure
+#: includes/ure-options.php:292
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "Ar čia norėtumėte matyti savo vardą su nuoroda į Jūsų tinklapį? Maloniai prašome! Jūsų pagalba verčiant ir pateikiant naujas idėjas yra labai laukiama."
+
