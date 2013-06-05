@@ -62,7 +62,7 @@ class W3_ConfigAdmin extends W3_ConfigBase {
         // set defaults 
         $this->_data_object->set_group($this->_aggregated_data_object->data);
         
-        $data = $this->_data_object->get_array_from_file($filename2);
+        $data = W3_ConfigData::get_array_from_file($filename2);
         if (!is_null($data)) {
             foreach ($data as $key => $value) {
                 if ($this->_writable_key($key))
@@ -116,17 +116,7 @@ class W3_ConfigAdmin extends W3_ConfigBase {
             w3_mkdir_from(dirname($filename), WP_CONTENT_DIR);
         }
 
-        if (!is_dir(dirname(W3TC_CACHE_TMP_DIR))) {
-            w3_require_once(W3TC_INC_DIR . '/functions/file.php');
-            w3_mkdir_from(dirname(W3TC_CACHE_TMP_DIR), WP_CONTENT_DIR);
-        }
-
-        if (!$this->_data_object->write($filename)) {
-            if (is_dir(W3TC_CONFIG_DIR)) {
-                w3_require_once(W3TC_INC_DIR . '/functions/activation.php');
-                w3_throw_on_write_error($filename, array(dirname($filename), W3TC_CACHE_TMP_DIR));
-            }
-        }
+        $this->_data_object->write($filename);
     }
 
     /**

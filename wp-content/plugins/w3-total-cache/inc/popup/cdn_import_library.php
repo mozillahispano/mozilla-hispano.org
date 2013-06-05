@@ -9,42 +9,42 @@ jQuery(function() {
 });
 /*]]>*/</script>
 
-<p>This tool will copy post or page attachments into the Media Library allowing WordPress to work as intended.</p>
+<p><?php _e('This tool will copy post or page attachments into the Media Library allowing WordPress to work as intended.', 'w3-total-cache'); ?></p>
 <table cellspacing="5">
 	<tr>
-		<td>Total posts:</td>
+		<td><?php _e('Total posts:', 'w3-total-cache'); ?></td>
 		<td id="cdn_import_library_total"><?php echo $total; ?></td>
 	</tr>
 	<tr>
-		<td>Processed:</td>
+		<td><?php _e('Processed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_import_library_processed">0</td>
 	</tr>
 	<tr>
-		<td>Status:</td>
+		<td><?php _e('Status:', 'w3-total-cache'); ?></td>
 		<td id="cdn_import_library_status">-</td>
 	</tr>
 	<tr>
-		<td>Time elapsed:</td>
+		<td><?php _e('Time elapsed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_import_library_elapsed">-</td>
 	</tr>
 	<tr>
-		<td>Last response:</td>
+		<td><?php _e('Last response:', 'w3-total-cache'); ?></td>
 		<td id="cdn_import_library_last_response">-</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			<label><input id="cdn_import_library_redirect_permanent" type="checkbox" checked="checked" /> Create a list of permanent (301) redirects for use in your site's .htaccess file</label>
+			<label><input id="cdn_import_library_redirect_permanent" type="checkbox" checked="checked" /> <?php _e('Create a list of permanent (301) redirects for use in your site\'s .htaccess file', 'w3-total-cache'); ?></label>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			<label><input id="cdn_import_library_redirect_cdn" type="checkbox" /> Create a list of redirects to <acronym title="Content Delivery Network">CDN</acronym> (hostname specified in hostname field #1.)</label>
+			<label><input id="cdn_import_library_redirect_cdn" type="checkbox" /> <?php _e('Create a list of redirects to <acronym title="Content Delivery Network">CDN</acronym> (hostname specified in hostname field #1.)', 'w3-total-cache'); ?></label>
 		</td>
 	</tr>
 </table>
 
 <p>
-	<input id="cdn_import_library_start" class="button-primary" type="button" value="Start"<?php if (! $total): ?> disabled="disabled"<?php endif; ?> />
+	<input id="cdn_import_library_start" class="button-primary" type="button" value="<?php _e('Start', 'w3-total-cache'); ?>"<?php if (! $total): ?> disabled="disabled"<?php endif; ?> />
 </p>
 
 <div id="cdn_import_library_progress" class="media-item">
@@ -55,7 +55,7 @@ jQuery(function() {
 <div id="cdn_import_library_log" class="log"></div>
 
 <p>
-	Add the following directives to your .htaccess file or if there are several hundred they should be added directly to your configuration file:
+	<?php _e('Add the following directives to your .htaccess file or if there are several hundred they should be added directly to your configuration file:', 'w3-total-cache'); ?>
 </p>
 
 <p>

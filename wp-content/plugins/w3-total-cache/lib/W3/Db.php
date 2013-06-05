@@ -14,7 +14,7 @@ if (!class_exists('W3_Db_Driver')) {
     }
 }
 
-//TODO: Added for backwards compability
+//TODO: Added for backwards compatibility
 if(!class_exists('W3_Db')){
 /**
  * Class W3_Db

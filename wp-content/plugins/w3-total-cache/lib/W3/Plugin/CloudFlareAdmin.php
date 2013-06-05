@@ -54,7 +54,9 @@ class W3_Plugin_CloudFlareAdmin extends W3_Plugin{
         $plugins = get_plugins();
         if (array_key_exists('cloudflare/cloudflare.php', $plugins) && $this->_config->get_boolean('notes.cloudflare_plugin')) {
             w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/other.php');
-            echo sprintf('<div class="error"><p>%s %s</p></div>', __('The CloudFlare plugin is detected. Please note that CloudFlare should only be administered from either CloudFlare or W3 Total Cache in order to avoid confusion. Either can work, but make changes from only a single place while testing. Also note, CloudFlare support may be discontinued in the future.', 'w3-total-cache'),
+            echo sprintf('<div class="error"><p>%s %s</p></div>', __('CloudFlare plugin detected. We recommend removing the
+            plugin as it offers no additional capabilities when W3 Total Cache is installed. This message will disappear
+            when CloudFlare is removed.', 'w3-total-cache'),
                 w3tc_button_hide_note('Hide this message', 'cloudflare_plugin')
             );
         }
@@ -85,9 +87,9 @@ class W3_Plugin_CloudFlareAdmin extends W3_Plugin{
         $value = W3_Request::get_string('value');
         $nonce = W3_Request::get_string('_wpnonce');
 
-        if ( !wp_verify_nonce( $nonce, 'w3tc' ) ) die('not allowed'); 
-
-        if (!$email) {
+        if (!wp_verify_nonce($nonce, 'w3tc')) {
+            $error ='Access denied.';
+        } elseif (!$email) {
             $error = 'Empty email.';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email.';

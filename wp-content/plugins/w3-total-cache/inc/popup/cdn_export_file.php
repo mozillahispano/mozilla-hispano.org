@@ -15,32 +15,32 @@ jQuery(function() {
 });
 /*]]>*/</script>
 
-<p>This tool will upload files of the selected type to content delivery network provider.</p>
+<p><?php _e('This tool will upload files of the selected type to content delivery network provider.', 'w3-total-cache'); ?></p>
 <table cellspacing="5">
 	<tr>
-		<td>Total files:</td>
+		<td><?php _e('Total files:', 'w3-total-cache'); ?></td>
 		<td><?php echo $files_count; ?></td>
 	</tr>
 	<tr>
-		<td>Processed:</td>
+		<td><?php _e('Processed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_export_file_processed">0</td>
 	</tr>
 	<tr>
-		<td>Status:</td>
+		<td><?php _e('Status:', 'w3-total-cache'); ?></td>
 		<td id="cdn_export_file_status">-</td>
 	</tr>
 	<tr>
-		<td>Time elapsed:</td>
+		<td><?php _e('Time elapsed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_export_file_elapsed">-</td>
 	</tr>
 	<tr>
-		<td>Last response:</td>
+		<td><?php _e('Last response:', 'w3-total-cache'); ?></td>
 		<td id="cdn_export_file_last_response">-</td>
 	</tr>
 </table>
 
 <p>
-	<input id="cdn_export_file_start" class="button-primary" type="button" value="Start"<?php if (! $files_count): ?> disabled="disabled"<?php endif; ?> />
+	<input id="cdn_export_file_start" class="button-primary" type="button" value="<?php _e('Start', 'w3-total-cache'); ?>"<?php if (! $files_count): ?> disabled="disabled"<?php endif; ?> />
 </p>
 
 <div id="cdn_export_file_progress" class="media-item">

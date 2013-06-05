@@ -18,17 +18,25 @@ class W3_Plugin_NewRelic extends W3_Plugin{
     var $newrelic_reject_reason = '';
 
     function run() {
-        $appname = NewRelicWrapper::get_wordpress_appname($this->_config, new W3_Config(true));
-
-        if ($this->_config->get_boolean('newrelic.use_php_function') || w3_is_network()) {
-            $enable_xmit = $this->_config->get_boolean('newrelic.enable_xmit');
-            NewRelicWrapper::set_appname($appname,'', $enable_xmit );
-        }
-
         if (defined('DOING_CRON') && DOING_CRON)
             $this->background_task();
 
         add_action('init', array($this, 'init'));
+        /**
+         * Start output buffering
+         */
+        w3tc_add_ob_callback('newrelic', array($this,'ob_callback'));
+    }
+
+    function ob_callback(&$buffer) {
+        if ($this->_config->get_boolean('newrelic.include_rum')) {
+            if (($this->_config->get_boolean('browsercache.html.compression') ||
+                $this->_config->get_string('pgcache.engine') == 'file_generic') && !$this->_should_disable_auto_rum()) {
+                $buffer = preg_replace('~<head(\s+[^<>]+)*>~Ui', '\\0' . NewRelicWrapper::get_browser_timing_header(), $buffer, 1);
+                $buffer = preg_replace('~<\\/body>~', NewRelicWrapper::get_browser_timing_footer() . '\\0', $buffer, 1);
+            }
+        }
+        return $buffer;
     }
 
     /**
@@ -37,29 +45,7 @@ class W3_Plugin_NewRelic extends W3_Plugin{
     function init() {
         if ($this->_should_disable_auto_rum())
             $this->disable_auto_rum();
-    }
-
-    /**
-     * Instantiates worker with admin functionality on demand
-     *
-     * @return W3_Plugin_NewRelicAdmin
-     */
-    function get_admin() {
-        return w3_instance('W3_Plugin_NewRelicAdmin');
-    }
-
-    /**
-     * Activate plugin action (called by W3_Plugins)
-     */
-    function activate() {
-        $this->get_admin()->activate();
-    }
-
-    /**
-     * Deactivate plugin action (called by W3_Plugins)
-     */
-    function deactivate() {
-        $this->get_admin()->deactivate();
+        $this->set_appname();
     }
 
     /**
@@ -82,17 +68,17 @@ class W3_Plugin_NewRelic extends W3_Plugin{
          * Disable for AJAX so its not messed up
          */
         if (defined('DOING_AJAX') && DOING_AJAX) {
-            $this->newrelic_reject_reason = 'DOING_AJAX constant is defined';
+            $this->newrelic_reject_reason = __('DOING_AJAX constant is defined', 'w3-total-cache');
 
             return true;
         }
 
 
-            /**
+        /**
          * Check for DONOTAUTORUM constant
          */
         if (defined('DONOTAUTORUM') && DONOTAUTORUM) {
-            $this->newrelic_reject_reason = 'DONOTAUTORUM constant is defined';
+            $this->newrelic_reject_reason = __('DONOTAUTORUM constant is defined', 'w3-total-cache');
 
             return true;
         }
@@ -101,7 +87,7 @@ class W3_Plugin_NewRelic extends W3_Plugin{
          * Check logged users roles
          */
         if ($this->_config->get_boolean('newrelic.accept.logged_roles') && $this->_check_logged_in_role_not_allowed()) {
-            $this->newrelic_reject_reason = 'logged in role is rejected';
+            $this->newrelic_reject_reason = __('logged in role is rejected', 'w3-total-cache');
 
             return true;
         }
@@ -132,5 +118,15 @@ class W3_Plugin_NewRelic extends W3_Plugin{
         }
 
         return true;
+    }
+
+    public function set_appname() {
+        static $appname_set;
+        if (!$appname_set &&  ($this->_config->get_boolean('newrelic.use_php_function') || w3_is_network())) {
+            $appname_set = true;
+            $appname = NewRelicWrapper::get_wordpress_appname($this->_config, new W3_Config(true));
+            $enable_xmit = $this->_config->get_boolean('newrelic.enable_xmit');
+            NewRelicWrapper::set_appname($appname, '', $enable_xmit);
+        }
     }
 }
