@@ -107,69 +107,14 @@ if ( !function_exists( 'aioseop_option_isset' ) ) {
 		return ( ( isset( $aioseop_options[$option] ) ) && $aioseop_options[$option] );
 	}
 }
-if ( !function_exists( 'aioseop_option_page_icon' ) ) {
-	function aioseop_option_page_icon() { ?>
-	    <style>
-	        #toplevel_page_all-in-one-seo-pack-aioseop_class .wp-menu-image {
-	            background: url(<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>shield-sprite-16.png) no-repeat 6px 6px !important;
-	        }
-	        #toplevel_page_all-in-one-seo-pack-aioseop_class .wp-menu-image img {
-	            display: none;
-	        }
-	        #toplevel_page_all-in-one-seo-pack-aioseop_class:hover .wp-menu-image, #toplevel_page_all-in-one-seo-pack-aioseop_class.wp-has-current-submenu .wp-menu-image {
-	            background-position: 6px -26px !important;
-	        }
-	        #icon-aioseop.icon32 {
-	            background: url(<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>shield32.png) no-repeat left top !important;
-	        }
-			#aioseop_settings_header #message {
-				padding: 5px 0px 5px 50px;
-				background-image: url(<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>update32.png);
-				background-repeat: no-repeat;
-				background-position: 10px;
-				font-size: 14px;
-				min-height: 32px;
-			}
-
-	        @media
-	        only screen and (-webkit-min-device-pixel-ratio: 1.5),
-	        only screen and (   min--moz-device-pixel-ratio: 1.5),
-	        only screen and (     -o-min-device-pixel-ratio: 3/2),
-	        only screen and (        min-device-pixel-ratio: 1.5),
-	        only screen and (                min-resolution: 1.5dppx) {
-
-	            #toplevel_page_all-in-one-seo-pack-aioseop_class .wp-menu-image {
-	                background-image: url('<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>shield-sprite-32.png') !important;
-	                -webkit-background-size: 16px 48px !important;
-	                -moz-background-size: 16px 48px !important;
-	                background-size: 16px 48px !important;
-	            } 
-
-	            #icon-aioseop.icon32 {
-	                background-image: url('<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>shield64.png') !important;
-	                -webkit-background-size: 32px 32px !important;
-	                -moz-background-size: 32px 32px !important;
-	                background-size: 32px 32px !important;
-	            }
-	
-				#aioseop_settings_header #message {
-					background-image: url(<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>update64.png) !important;
-				    -webkit-background-size: 32px 32px !important;
-				    -moz-background-size: 32px 32px !important;
-				    background-size: 32px 32px !important;
-				}
-	        }
-	    </style>
-	<?php
-	}
-}
 
 if ( !function_exists( 'aioseop_addmycolumns' ) ) {
 	function aioseop_addmycolumns() {
-		global $aioseop_options;
+		global $aioseop_options, $pagenow;
 		$aiosp_posttypecolumns = $aioseop_options['aiosp_posttypecolumns'];
-
-		if ( !isset( $_GET['post_type'] ) )
+		if ( !empty( $pagenow ) && ( $pagenow == 'upload.php' ) )
+			$post_type = 'attachment';
+		elseif ( !isset( $_GET['post_type'] ) )
 			$post_type = 'post';
 		else
 			$post_type = $_GET['post_type'];
@@ -178,9 +123,13 @@ if ( !function_exists( 'aioseop_addmycolumns' ) ) {
 		if( is_array( $aiosp_posttypecolumns ) && in_array( $post_type, $aiosp_posttypecolumns ) ) {
 			if ( $post_type == 'page' )
 				add_filter( 'manage_pages_columns', 'aioseop_mrt_pcolumns' );
+			elseif ( $post_type == 'attachment' )
+				add_filter( 'manage_media_columns', 'aioseop_mrt_pcolumns' );			
 			else
 				add_filter( 'manage_posts_columns', 'aioseop_mrt_pcolumns' );
-			if( is_post_type_hierarchical( $post_type ) )
+			if ( $post_type == 'attachment' )
+				add_action( 'manage_media_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
+			elseif ( is_post_type_hierarchical( $post_type ) )
 				add_action( 'manage_pages_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
 			else
 				add_action( 'manage_posts_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
@@ -400,7 +349,9 @@ if ( !function_exists( 'aioseop_filter_callback' ) ) {
 
 if ( !function_exists( 'aioseop_add_contactmethods' ) ) {
 	function aioseop_add_contactmethods( $contactmethods ) {
-		$contactmethods['googleplus'] = __( 'Google+', 'all_in_one_seo_pack' );
+		global $aioseop_options;
+		if ( empty( $aioseop_options['aiosp_google_disable_profile'] ) )
+			$contactmethods['googleplus'] = __( 'Google+', 'all_in_one_seo_pack' );
 		return $contactmethods;
 	}
 }

@@ -1099,8 +1099,13 @@ class W3_Minify {
      * @return array
      */
     private function _minify_path_replacements() {
+        if (w3_is_network())
+            $theme = get_theme_root();
+        else
+            $theme = get_stylesheet_directory();
+
         return array(
-            ltrim(str_replace(w3_get_document_root(), '', w3_path(get_theme_root())), '/'),
+            ltrim(str_replace(w3_get_document_root(), '', w3_path($theme)), '/'),
             ltrim(str_replace(w3_get_document_root(), '', w3_path(WP_PLUGIN_DIR)), '/'),
             ltrim(str_replace(w3_get_document_root(), '', w3_path(WPMU_PLUGIN_DIR)), '/'),
             WPINC . '/js/jquery',

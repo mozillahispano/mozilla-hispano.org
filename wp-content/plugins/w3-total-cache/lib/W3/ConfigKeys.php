@@ -1685,6 +1685,10 @@ $keys = array(
         'type' => 'integer',
         'default' => 150
     ),
+    'minify.auto.disable_filename_length_test' => array(
+        'type' => 'boolean',
+        'default' => false,
+    ),
     'common.instance_id' => array(
         'type' => 'integer',
         'default' => 0

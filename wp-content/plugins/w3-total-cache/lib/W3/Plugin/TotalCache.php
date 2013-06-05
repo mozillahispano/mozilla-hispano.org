@@ -547,10 +547,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     function ob_callback(&$buffer) {
         global $wpdb;
 
-        if ($buffer != '' && w3_is_xml($buffer)) {
+        if ($buffer != '') {
             if (w3_is_database_error($buffer)) {
                 status_header(503);
-            } else {
+            } elseif (w3_can_print_comment($buffer)) {
                 /**
                  * Replace links for preview mode
                  */

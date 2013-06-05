@@ -16,45 +16,51 @@ $ure_caps_readable = get_option('ure_caps_readable');
 $ure_show_deprecated_caps = get_option('ure_show_deprecated_caps');
 $option_name = $wpdb->prefix.'user_roles';
 
+// could be sent as by POST, as by GET
 if (isset($_REQUEST['object'])) {
   $ure_object = $_REQUEST['object'];
 } else {
   $ure_object = 'role';
 }
 
-if (isset($_REQUEST['action'])) {
-  $action = $_REQUEST['action'];
+if (isset($_POST['action'])) {
+  if (empty($_POST['ure_nonce']) || !wp_verify_nonce($_POST['ure_nonce'],'user-role-editor')) {
+    echo '<h3>Wrong nonce. Action prohibitied.</h3>';
+    return;
+  }
+  
+  $action = $_POST['action'];
   // restore roles capabilities from the backup record
   if ($action=='reset') {
     $mess = ure_reset_user_roles();
     if (!$mess) {
       return;
     }
-  } else if ($action=='addnewrole') {
+  } else if ($action=='add-new-role') {
     // process new role create request
     $mess = ure_newRoleCreate($ure_currentRole);
-  } else if ($action=='delete') {
+  } else if ($action=='delete-role') {
     $mess = ure_deleteRole();
-  } else if ($action=='default') {
+  } else if ($action=='change-default-role') {
     $mess = ure_changeDefaultRole();
-  } else if ($action=='capsreadable') {
+  } else if ($action=='caps-readable') {
     if ($ure_caps_readable) {
       $ure_caps_readable = 0;
     } else {
       $ure_caps_readable = 1;
     }
     update_option('ure_caps_readable', $ure_caps_readable);
-  } else if ($action=='showdeprecatedcaps') {
+  } else if ($action=='show-deprecated-caps') {
     if ($ure_show_deprecated_caps) {
       $ure_show_deprecated_caps = 0;
     } else {
       $ure_show_deprecated_caps = 1;
     }
     update_option('ure_show_deprecated_caps', $ure_show_deprecated_caps);  
-  } else if ($action=='addnewcapability') {
+  } else if ($action=='add-new-capability') {
     $mess = ure_AddNewCapability();
-  } else if ($action=='removeusercapability') {
-    $mess = ure_RemoveCapability();
+  } else if ($action=='delete-user-capability') {
+    $mess = ure_deleteCapability();
   } else if ($action=='roles_restore_note') {
     $mess = __('User Roles are restored to WordPress default values. ', 'ure');
   }
@@ -124,7 +130,7 @@ if ($ure_object=='user') {
   }  
 }
 
-if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' && isset( $_POST['submit'] ) ) {
+if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' ) {
 	if ( isset( $_POST['user_role'] ) ) {		
 		if (!isset($ure_roles[ $_POST['user_role'] ])) {
 			$mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . $ure_currentRole . '</em> ' . __('does not exist', 'ure');
@@ -170,6 +176,8 @@ if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' && isset( $_POST[
   }  
 }
 
+$ure_advert = new ure_Advertisement();
+
 // options page display part
 function ure_displayBoxStart($title, $style='') {
 ?>
@@ -192,49 +200,12 @@ function ure_displayBoxEnd() {
 ure_showMessage($mess);
 
 ?>
-<script language="javascript" type="text/javascript" > 
-  function ure_select_all(selected) {
-    
-    var form = document.getElementById('ure_form');
-    for (i=0; i<form.elements.length; i++) {
-      el = form.elements[i];
-      if (el.type!='checkbox') { 
-        continue;
-      }  
-      if (el.name=='ure_caps_readable' || el.name=='ure_show_deprecated_caps') {
-        continue;
-      }
-      if (selected>=0) {
-        form.elements[i].checked = selected;      
-      } else {
-        form.elements[i].checked = !form.elements[i].checked;      
-      }
-    }
-    
-  }
-  // end of ure_select_all()
-  
-  
-</script>
 <div id="poststuff">
 	<div class="ure-sidebar" >
-		<div style="text-align: center;">
-			<a href="http://w-shadow.com/admin-menu-editor-pro/?utm_source=UserRoleEditor&utm_medium=banner&utm_campaign=Plugins " target="_new" ><img src="<?php echo URE_PLUGIN_URL . 'images/admin-menu-editor-pro.jpg'; ?>" alt="Admin Menu Editor Pro" title="Move, rename, hide, add admin menu items, restrict access"/></a>
-		</div>  
-
-		<div style="text-align: center;">
-			<a title="ManageWP" href="http://managewp.com/?utm_source=user_role_editor&utm_medium=Banner&utm_content=mwp250_2&utm_campaign=Plugins" target="_new" >
-				<img width="250" height="250" alt="ManageWP" src="<?php echo URE_PLUGIN_URL; ?>images/mwp250_2.png">
-			</a>                        
-		</div>  
-
-		<div style="text-align: center;">
-			<a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL . 'images/chooseplugin.png'; ?>" alt="Choose WordPress plugins with ChoosePlugin.com" title="Advanced search WordPress plugins service from User Role Editor developer" /></a>
-		</div>  
-
+		<?php $ure_advert->display(); ?>		
 		<?php ure_displayBoxStart(__('About this Plugin:', 'ure')); ?>
 		<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
-		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/"><?php _e('Plugin webpage', 'ure'); ?></a>
+		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://role-editor.com"><?php _e('Plugin webpage', 'ure'); ?></a>
 		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
 		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/faq-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq"><?php _e('FAQ', 'ure'); ?></a>
 		<hr />
@@ -251,8 +222,10 @@ ure_showMessage($mess);
 	</div>
 
 	<div class="has-sidebar" >
-		<form id="ure_form" method="post" action="<?php echo URE_PARENT; ?>?page=user-role-editor.php" onsubmit="return ure_onSubmit();">
+		<form id="ure_form" method="post" action="<?php echo URE_PARENT; ?>?page=user-role-editor.php" >			
+      <div id="ure_form_controls">				
 			<?php
+			wp_nonce_field('user-role-editor', 'ure_nonce');
 			settings_fields('ure-options');
 			?>
 								
@@ -261,9 +234,9 @@ ure_showMessage($mess);
 				require_once(URE_PLUGIN_DIR .'includes/ure-user-edit.php');
 			} else {
 				require_once(URE_PLUGIN_DIR .'includes/ure-role-edit.php');
-			}
+			}      
 			?>
-		</form>
+      </div>      
+		</form>		      
 	</div>          
 </div>
-

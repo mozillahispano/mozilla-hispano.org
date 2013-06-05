@@ -203,7 +203,7 @@ function w3tc_do_failure(testUrl,minLength, maxLength, tryLength, minTestedAndSu
             jQuery('#minify_auto_test_loading').toggleClass('minify_auto_test');
             jQuery('#minify_auto_error').html('<p>Minify Auto does not work properly. Try using Minify Manual instead ' +
                 'or try another Minify cache method. You can also try a lower filename length value manually on ' +
-                '<a href="admin.php?page=w3tc_minify#advanced">settings page</a></p>');
+                '<a href="admin.php?page=w3tc_minify#advanced">settings page</a> by checking "Disable the Minify Auto automatic filename test" </p>');
             return;
         }
         else {
@@ -756,6 +756,13 @@ jQuery(function() {
         return true;
     });
 
+    jQuery('#minify_auto_disable_filename_length_test').live('click', function() {
+        if(jQuery(this).attr('checked'))
+            jQuery('#minify_auto_filename_length').removeAttr('disabled');
+        else
+            jQuery('#minify_auto_filename_length').attr('disabled','disabled');
+    });
+
     // CDN
     jQuery('.w3tc-tab').click(function() {
         jQuery('.w3tc-tab-content').hide();
@@ -899,7 +906,7 @@ jQuery(function() {
             case 'maxcdn':
                 jQuery.extend(params, {
                     engine: 'maxcdn',
-                    'config[authorization_key]': jQuery('#cdn_naxcdn_authorization_key').val()
+                    'config[authorization_key]': jQuery('#cdn_maxcdn_authorization_key').val()
                 });
 
                 if (cnames.length) {

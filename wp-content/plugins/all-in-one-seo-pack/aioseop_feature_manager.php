@@ -35,6 +35,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Feature_Manager' ) ) {
 			$mod[] = 'coming_soon';
 			
 			foreach ( $mod  as $m ) {
+				if ( $m == 'performance' && !is_super_admin() ) continue;
 				$module_name = ucwords( strtr( $m, '_', ' ' ) );
 				$this->default_options["enable_$m"] = Array( 'name'		 => $this->module_info[$m]['name'],
 				 											 'help_text' => $this->module_info[$m]['description'],
