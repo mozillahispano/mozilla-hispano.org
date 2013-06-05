@@ -19,10 +19,12 @@ class W3_Config extends W3_ConfigBase {
      */
     private $_preview;
 
+    private $_md5 = null;
+
     /**
      * Constructor
      */
-    function __construct($master = false) {
+    function __construct($master = false, $blog_id = null) {
         $preview = w3_is_preview_mode();
         if (defined('WP_ADMIN')) {
             $config_admin = w3_instance('W3_ConfigAdmin');
@@ -30,8 +32,10 @@ class W3_Config extends W3_ConfigBase {
         }
         if ($master)
             $this->_blog_id = 0;
-        else
+        elseif ($blog_id == null)
             $this->_blog_id = w3_get_blog_id();
+        else
+            $this->_blog_id = $blog_id;
         $this->_preview = $preview;
         $this->load();
     }
@@ -100,8 +104,18 @@ class W3_Config extends W3_ConfigBase {
      */
     function load() {
         $filename = $this->_get_config_filename();
-        if (!$this->_read($filename))
-            $this->_data = $this->_get_writer()->create_compiled_config($filename);
+
+        // dont use cache in admin - may load some old cache when real config
+        // contains different state (even manually edited)
+        if (!defined('WP_ADMIN')) {
+            $data = $this->_read($filename);
+            if (!is_null($data)) {
+                $this->_data = $data;
+                return;
+            }
+        }
+
+        $this->_data = $this->_get_writer()->create_compiled_config($filename);
     }
 
     /**
@@ -138,12 +152,41 @@ class W3_Config extends W3_ConfigBase {
         return false;
     }
 
+    function import_legacy_config() {
+        $data = $this->_get_writer()->get_imported_legacy_config_keys();
+        if (!is_null($data)) {
+            foreach ($data as $key => $value) {
+                $this->set($key, $value);
+            }
+        }
+    }
+
     /**
      * Returns true if we edit master config
      * @return boolean
      */
     function is_master() {
         return ($this->_blog_id <= 0);
+    }
+
+    /**
+     * Checks if cache file is actual
+     * @throws Exception
+     */
+    function validate_cache_actual() {
+        $filename = $this->_get_config_filename();
+
+        $data = $this->_read($filename);
+        if (is_null($data))
+            throw new Exception('Can\'t read file <strong>' .
+                $filename . '</strong>. Remove it manually.');
+
+        foreach ($this->_data as $key => $value) {
+            if (!isset($data[$key]) || $value != $data[$key])
+                throw new Exception('Cache file <strong>' . 
+                    $filename . '</strong> can\'t be actualized. ' .
+                    'Remove it manually.' . $key);
+        }
     }
     
     /**
@@ -197,6 +240,12 @@ class W3_Config extends W3_ConfigBase {
         return $value;
     }
 
+    function get_md5() {
+        if (is_null($this->_md5))
+            $this->_md5 = substr(md5(serialize($this->_data)), 20);
+        return $this->_md5;
+    }
+
     /**
      * Reads config from file
      *
@@ -212,15 +261,15 @@ class W3_Config extends W3_ConfigBase {
             if (is_array($config)) {
                 if (isset($config['version']) 
                         && $config['version'] == W3TC_VERSION) {
-                    $this->_data = $config;
-                    return true;
+                    return $config;
                 }
             }
         }
-        return false;
+        return null;
     }
     
     private function _flush_cache($forced_preview = null) {
+        $this->_md5 = null;
         if ($this->_blog_id > 0)
             @unlink($this->_get_config_filename($forced_preview));
         else {

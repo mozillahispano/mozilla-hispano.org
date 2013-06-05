@@ -11,8 +11,31 @@
  * @param mixed $callback
  * @return void
  */
-function w3tc_add_action($action, $callback) {
-    $GLOBALS['_w3tc_actions'][$action][] = $callback;
+function w3tc_add_ob_callback($key, $callback) {
+    $GLOBALS['_w3tc_ob_callbacks'][$key] = $callback;
+}
+
+function w3tc_do_ob_callbacks($order, &$value) {
+    foreach ($order as $key) {
+        if (isset($GLOBALS['_w3tc_ob_callbacks'][$key])) {
+            $callback = $GLOBALS['_w3tc_ob_callbacks'][$key];
+            if (is_callable($callback)) {
+                $value = call_user_func($callback, $value);
+            }
+        }
+    }
+    return $value;
+}
+/**
+ * Add W3TC action callback
+ *
+ * @param string $action
+ * @param mixed $callback
+ * @return void
+ */
+function w3tc_add_action($action, $callback, $priority = 10) {
+    $GLOBALS['_w3tc_actions'][$action][$priority][] = $callback;
+    ksort($GLOBALS['_w3tc_actions'][$action]);
 }
 
 /**
@@ -24,9 +47,32 @@ function w3tc_add_action($action, $callback) {
  */
 function w3tc_do_action($action, $value = null) {
     if (isset($GLOBALS['_w3tc_actions'][$action])) {
-        foreach ((array) $GLOBALS['_w3tc_actions'][$action] as $callback) {
-            if (is_callable($callback)) {
-                $value = call_user_func($callback, $value);
+        foreach ((array) $GLOBALS['_w3tc_actions'][$action] as $callbacks) {
+            foreach ($callbacks as $callback) {
+                if (is_callable($callback)) {
+                    $value = call_user_func($callback, $value);
+                }
+            }
+        }
+    }
+
+    return $value;
+}
+
+/**
+ * Do W3TC action
+ *
+ * @param string $action
+ * @param mixed $value
+ * @return mixed
+ */
+function w3tc_do_action_by_ref($action, &$value = null) {
+    if (isset($GLOBALS['_w3tc_actions'][$action])) {
+        foreach ((array) $GLOBALS['_w3tc_actions'][$action] as $callbacks) {
+            foreach ($callbacks as $callback) {
+                if (is_callable($callback)) {
+                    $value = call_user_func($callback, $value);
+                }
             }
         }
     }

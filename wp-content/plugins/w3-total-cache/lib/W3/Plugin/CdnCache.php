@@ -114,18 +114,6 @@ class W3_Plugin_CdnCache extends W3_Plugin {
     }
 
     /**
-     * Activate plugin action (called by W3_Plugins)
-     */
-    function activate() {
-    }
-
-    /**
-     * Deactivate plugin action (called by W3_Plugins)
-     */
-    function deactivate() {
-    }
-
-    /**
      * Post edit action
      *
      * @param integer $post_id

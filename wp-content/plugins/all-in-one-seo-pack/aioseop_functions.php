@@ -192,10 +192,10 @@ if ( !function_exists( 'aioseop_mrt_pcolumns' ) ) {
 	function aioseop_mrt_pcolumns( $aioseopc ) {
 		global $aioseop_options;
 	    $aioseopc['seotitle'] = __( 'SEO Title', 'all_in_one_seo_pack' );
-	    if ($aioseop_options['aiosp_togglekeywords'] == 0) $aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
+	    if ( !empty( $aioseop_options['aiosp_togglekeywords'] ) ) $aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
 	    $aioseopc['seodesc'] = __( 'SEO Description', 'all_in_one_seo_pack' );
 	    return $aioseopc;
-	}	
+	}
 }
 
 if ( !function_exists( 'aioseop_admin_head' ) ) {
@@ -402,20 +402,6 @@ if ( !function_exists( 'aioseop_add_contactmethods' ) ) {
 	function aioseop_add_contactmethods( $contactmethods ) {
 		$contactmethods['googleplus'] = __( 'Google+', 'all_in_one_seo_pack' );
 		return $contactmethods;
-	}
-}
-
-/***
- * Backwards compatibility - see http://php.net/manual/en/function.str-getcsv.php
- */
-if( !function_exists( 'str_getcsv' ) ) {
-	function str_getcsv( $input, $delimiter = ",", $enclosure = '"', $escape = "\\" ) {
-		$fp = fopen( "php://memory", 'r+' );
-		fputs( $fp, $input );
-		rewind( $fp );
-		$data = fgetcsv( $fp, null, $delimiter, $enclosure ); // $escape only got added in 5.3.0
-		fclose( $fp );
-		return $data;
 	}
 }
 

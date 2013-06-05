@@ -321,7 +321,9 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			$post_types = null;
 			$has_data = null;
 			$general_settings = null;
-			$exporter_choices = $_REQUEST[ 'aiosp_importer_exporter_export_choices' ];
+			$exporter_choices = '';
+			if ( !empty( $_REQUEST[ 'aiosp_importer_exporter_export_choices' ] ) )
+				$exporter_choices = $_REQUEST[ 'aiosp_importer_exporter_export_choices' ];
 			if ( !empty( $exporter_choices ) && is_array( $exporter_choices ) ) {
 				foreach( $exporter_choices as $ex ) {
 					if ( $ex == 1 ) $general_settings = true;
@@ -409,11 +411,26 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		}
 				
 		/***
+		 * Backwards compatibility - see http://php.net/manual/en/function.str-getcsv.php
+		 */
+		function str_getcsv( $input, $delimiter = ",", $enclosure = '"', $escape = "\\" ) {
+			$fp = fopen( "php://memory", 'r+' );
+			fputs( $fp, $input );
+			rewind( $fp );
+			$data = fgetcsv( $fp, null, $delimiter, $enclosure ); // $escape only got added in 5.3.0
+			fclose( $fp );
+			return $data;
+		}
+		
+		/***
 		 * Helper function to convert csv in key/value pair format to an associative array.
 		 */
 		function csv_to_array( $csv ) {
 			$args = Array();
-			$v = str_getcsv( $csv );
+			if ( !function_exists( 'str_getcsv' ) )
+				$v = $this->str_getcsv( $csv );
+			else
+				$v = str_getcsv( $csv );
 			$size = count( $v );
 			if ( is_array( $v ) && isset( $v[0] ) && $size >= 2 )
 				for( $i = 0; $i < $size; $i += 2 )
@@ -609,7 +626,9 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		 * Load scripts and styles for metaboxes.
 		 */
 		function enqueue_metabox_scripts( ) {
-			$screen = get_current_screen();
+			$screen = '';
+			if ( function_exists( 'get_current_screen' ) )
+				$screen = get_current_screen();
 			if ( empty( $screen ) ) return;
 			if ( ( $screen->base != 'post' ) && ( $screen->base != 'toplevel_page_shopp-products' ) ) return;
 			foreach( $this->locations as $k => $v ) {

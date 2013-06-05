@@ -113,6 +113,107 @@ class NetDNA {
 	public function delete($selected_call, $params = array()){
 		return $this->execute($selected_call, 'DELETE', $params);
 	}
-	
-	
+
+    /**
+     * Finds the zone id that matches the provided url.
+     * @param $url
+     * @return null
+     */
+    public function get_zone_id($url) {
+        $zone_id = null;
+        $pull_zones =  json_decode($this->get('/zones/pull.json'));
+
+        if (preg_match("(200|201)", $pull_zones->code)) {
+            foreach ($pull_zones->data->pullzones as $zone) {
+                if (trim($zone->url, '/') != trim($url, '/'))
+                    continue;
+                else {
+                    $zone_id = $zone->id;
+                    break;
+                }
+            }
+        } else
+            return null;
+        return $zone_id;
+    }
+
+    public function get_stats_per_zone($zone_id) {
+        $api_stats = json_decode($this->get("/reports/{$zone_id}/stats.json"), true);
+        if (preg_match("(200|201)", $api_stats['code'])) {
+            $summary = $api_stats['data']['summary'];
+            return $summary;
+        } else
+            return null;
+    }
+
+    public function get_list_of_file_types_per_zone($zone_id) {
+        $api_list = json_decode($this->get("/reports/pull/{$zone_id}/filetypes.json"), true);
+        if (preg_match("(200|201)", $api_list['code'])) {
+            $stats['total'] = $api_list['data']['total'];
+
+            foreach($api_list['data']['filetypes'] as $filetyp) {
+                $stats['filetypes'][] = $filetyp;
+            }
+            $stats['summary'] = $api_list['data']['summary'];
+            return $stats;
+        } else
+            return null;
+    }
+
+    public function get_list_of_popularfiles_per_zone($zone_id) {
+        $api_popularfiles = json_decode($this->get("/reports/{$zone_id}/popularfiles.json"), true);
+        if (preg_match("(200|201)", $api_popularfiles['code'])) {
+            $popularfiles = $api_popularfiles['data']['popularfiles'];
+            return $popularfiles;
+        } else
+            return null;
+    }
+
+    public function get_account() {
+        $api_account = json_decode($this->get("/account.json"), true);
+        if (preg_match("(200|201)", $api_account['code'])) {
+            $account = $api_account['data']['account'];
+            return $account;
+        } else
+            return null;
+    }
+
+    public function get_pull_zone($zone_id) {
+        $api_pull_zone = json_decode($this->get("/zones/pull.json/{$zone_id}"), true);
+        if (preg_match("(200|201)", $api_pull_zone['code'])) {
+            $pull_zone = $api_pull_zone['data']['pullzone'];
+            return $pull_zone;
+        } else
+            return null;
+    }
+
+    /**
+     * @param $zone
+     * @return mixed
+     * @throws Exception
+     */
+    public function create_pull_zone($zone) {
+        $zone_data = json_decode($this->post('/zones/pull.json', $zone), true);
+        if (preg_match("(200|201)", $zone_data['code'])) {
+            return $zone_data['data']['pullzone'];
+        } else
+            throw new Exception($zone_data['error']['message']);
+    }
+
+    public function get_zones_by_url($url) {
+        $zone_id = null;
+        $pull_zones =  json_decode($this->get('/zones/pull.json'), true);
+        $zones = array();
+        if (preg_match("(200|201)", $pull_zones['code'])) {
+            foreach ($pull_zones ['data']['pullzones'] as $zone) {
+                if (trim($zone['url'], '/') != trim($url, '/'))
+                    continue;
+                else {
+                    $zones[] = $zone;
+                }
+            }
+        } else
+            return null;
+        return $zones;
+    }
 }

@@ -4,43 +4,43 @@
 <script type="text/javascript">/*<![CDATA[*/
 jQuery(function() {
 	W3tc_Popup_Cdn_Rename_Domain.nonce = '<?php echo wp_create_nonce('w3tc'); ?>';
-	W3tc_Popup_Cdn_Rename_Domain.init();
+	W3tc_Popup_Cdn_Rename_Domain.init('');
 });
 /*]]>*/</script>
 
-<p>This tool allows you to modify the URL of Media Library attachments. Use it if the "WordPress address (<acronym title="Uniform Resource Indicator">URL</acronym>)" value has been changed in the past.</p>
+<p><?php _e('This tool allows you to modify the URL of Media Library attachments. Use it if the "WordPress address (<acronym title="Uniform Resource Indicator">URL</acronym>)" value has been changed in the past.', 'w3-total-cache'); ?></p>
 <table cellspacing="5">
 	<tr>
-		<td>Total posts:</td>
+		<td><?php _e('Total posts:', 'w3-total-cache'); ?></td>
 		<td id="cdn_rename_domain_total"><?php echo $total; ?></td>
 	</tr>
 	<tr>
-		<td>Processed:</td>
+		<td><?php _e('Processed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_rename_domain_processed">0</td>
 	</tr>
 	<tr>
-		<td>Status:</td>
+		<td><?php _e('Status:', 'w3-total-cache'); ?></td>
 		<td id="cdn_rename_domain_status">-</td>
 	</tr>
 	<tr>
-		<td>Time elapsed:</td>
+		<td><?php _e('Time elapsed:', 'w3-total-cache'); ?></td>
 		<td id="cdn_rename_domain_elapsed">-</td>
 	</tr>
 	<tr>
-		<td>Last response:</td>
+		<td><?php _e('Last response:', 'w3-total-cache'); ?></td>
 		<td id="cdn_rename_domain_last_response">-</td>
 	</tr>
 	<tr>
-		<td>Domains to rename:</td>
+		<td><?php _e('Domains to rename:', 'w3-total-cache'); ?></td>
 		<td>
 			<textarea cols="40" rows="3" id="cdn_rename_domain_names"></textarea><br />
-			e.g.: domain.com
+			<?php _e('e.g.: domain.com', 'w3-total-cache'); ?>
 		</td>
 	</tr>
 </table>
 
 <p>
-	<input id="cdn_rename_domain_start" class="button-primary" type="button" value="Start"<?php if (! $total): ?> disabled="disabled"<?php endif; ?> />
+	<input id="cdn_rename_domain_start" class="button-primary" type="button" value="<?php _e('Start', 'w3-total-cache'); ?>"<?php if (! $total): ?> disabled="disabled"<?php endif; ?> />
 </p>
 
 <div id="cdn_rename_domain_progress" class="media-item">

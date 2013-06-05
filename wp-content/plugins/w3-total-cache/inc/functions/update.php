@@ -48,16 +48,3 @@ function w3_find_old_folders(){
     }
     return $folders;
 }
-
-/**
- * Updates the plugin from older version.
- */
-function w3_run_legacy_update() {
-    w3_require_once(W3TC_LIB_W3_DIR . '/ConfigWriter.php');
-    $writer = new W3_ConfigWriter(w3_get_blog_id(), w3_is_preview_mode());
-    $writer->import_legacy_config_and_save();
-
-    // Only remove folders when master blog is running.
-    if (w3_get_blog_id() == 0)
-        w3_remove_old_folders();
-}

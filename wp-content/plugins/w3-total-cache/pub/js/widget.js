@@ -1,4 +1,5 @@
 jQuery(function() {
+    var ajaxurl = window.ajaxurl;
     jQuery('.w3tc-widget-ps-view-all').click(function() {
         window.open('admin.php?page=w3tc_dashboard&w3tc_pagespeed_results&_wpnonce=' + jQuery(this).metadata().nonce, 'pagespeed_results', 'width=800,height=600,status=no,toolbar=no,menubar=no,scrollbars=yes');
 
@@ -55,8 +56,9 @@ jQuery(function() {
                             type: 'hidden',
                             id: key,
                             name: key,
-                            value: val
-                        }).appendTo('#buy-w3-service-area');                    })
+                            value: val.replace(/&amp;/g, '&')
+                        }).appendTo('#buy-w3-service-area');
+                    })
                 }
             );
             service.removeAttr("disabled");
@@ -67,6 +69,10 @@ jQuery(function() {
             jQuery('input:radio[name=service]:checked').prop('checked', false);
             jQuery('#buy-w3-service-area').empty();
             jQuery('#buy-w3-service').attr("disabled", "disabled");
+        });
+
+        jQuery('#buy-w3-service').live('click', function() {
+            alert('Do not forget to fill out the support form after purchasing.');
         });
         var nr_widget = jQuery('#new-relic-widget');
         nr_widget.find('div.top-five').hide();

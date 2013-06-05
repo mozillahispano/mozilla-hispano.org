@@ -1,5 +1,5 @@
 function w3tc_seconds_to_string(seconds) {
-    var string = '', days = 0, hours = 0, minutes = 0;
+    var string = '', days, hours, minutes;
     days = Math.floor(seconds / 86400);
     if (days) {
         seconds -= days * 86400;
@@ -136,7 +136,7 @@ var W3tc_Popup_Cdn_Export_File = {
             clearInterval(this.timer);
         } else {
             this.offset += this.upload_files.length;
-            this.set_progress((this.offset * 100 / files.length).toFixed(0));
+            this.set_progress((this.offset * 100 / this.files.length).toFixed(0));
             this.set_processed(this.offset);
 
             if (this.offset < this.files.length) {
@@ -402,7 +402,7 @@ var W3tc_Popup_Cdn_Import_Library = {
         }
 
         if (this.is_redirect_cdn()) {
-            dst = 'http://' + (this.cdn_host ? this.cdn_host : document.location.host) + '/' + dst;
+            dst = 'http://' + (this.cdn_host.length > 0 ? this.cdn_host : document.location.host) + '/' + dst;
         } else {
             dst = '/' + dst;
         }

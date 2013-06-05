@@ -13,72 +13,79 @@
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <p>
-        Minify via
-        <strong><?php echo w3_get_engine_name($this->_config->get_string('minify.engine')); ?></strong>
-        is currently <span class="w3tc-<?php if ($minify_enabled): ?>enabled">enabled<?php else: ?>disabled">disabled<?php endif; ?></span>.
+        <?php sprintf(__('%s is currently %s.', 'w3-total-cache'), 
+		'<strong>' . w3_get_engine_name($this->_config->get_string('minify.engine')) . '</strong>',
+		($minify_enabled ? 'enabled">' . __('enabled', 'w3-total-cache') : 'disabled">' . __('disabled', 'w3-total-cache') . '</span>' )); ?>
     </p>
     <p>
-        To rebuild the minify cache use the
+		<?php
+			sprintf( __('To rebuild the minify cache use the %s operation.', 'w3-total-cache'),
+				$this->nonce_field('w3tc') . '<input type="submit" name="w3tc_flush_minify" value="' . __('empty cache','w3-total-cache') . '"' . disabled($minify_enabled, false, false) . ' class="button" />');
+		?>
+        <?php _e('To rebuild the minify cache use the', 'w3-total-cache'); ?>
         <?php echo $this->nonce_field('w3tc'); ?>
-        <input type="submit" name="w3tc_flush_minify" value="empty cache"<?php if (! $minify_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
+        <input type="submit" name="w3tc_flush_minify" value="<?php _e('empty cache', 'w3-total-cache'); ?>" <?php if (! $minify_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
         operation.
         <?php if (!$auto): ?>
-        Get minify hints using the
-        <input type="button" class="button button-minify-recommendations {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" value="help" />
-        wizard.
-        <?php endif; ?><input type="submit" name="w3tc_flush_browser_cache" value="Update media query string"<?php disabled(! ($browsercache_enabled && $browsercache_update_media_qs)) ?> class="button" /> to make existing file modififications visible to visitors with a primed cache.
+            <?php _e('Get minify hints using the', 'w3-total-cache'); ?>
+            <input type="button" class="button button-minify-recommendations {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" value="<?php _e('help', 'w3-total-cache'); ?>" />
+            <?php _e('wizard.', 'w3-total-cache'); ?>
+        <?php endif; ?>
+        <?php echo sprintf( __('%s to make existing file modifications visible to visitors with a primed cache.', 'w3-total-cache'),
+            '<input type="submit" name="w3tc_flush_browser_cache" value="'. __('Update media query string', 'w3-total-cache') . '"' . disabled(! ($browsercache_enabled && $browsercache_update_media_qs), true, false) . ' class="button" />');
+        ?>
     </p>
 </form>
 
 <form id="minify_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
-        <?php echo $this->postbox_header('General', '', 'general'); ?>
+        <?php echo $this->postbox_header(__('General', 'w3-total-cache'), '', 'general'); ?>
         <table class="form-table">
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('minify.rewrite', !w3_can_check_rules() || $minify_rewrite_disabled) ?> Rewrite <acronym title="Uniform Resource Locator">URL</acronym> structure</label><br />
-                    <span class="description">If disabled, <acronym title="Cascading Style Sheet">CSS</acronym> and <acronym title="JavaScript">JS</acronym> embeddings will use GET variables instead of "fancy" links.</span>
+                    <?php $this->checkbox('minify.rewrite', !w3_can_check_rules() || $minify_rewrite_disabled) ?> <?php _e('Rewrite <acronym title="Uniform Resource Locator">URL</acronym> structure', 'w3-total-cache'); ?></label><br />
+                    <span class="description"><?php _e('If disabled, <acronym title="Cascading Style Sheet">CSS</acronym> and <acronym title="JavaScript">JS</acronym> embeddings will use GET variables instead of "fancy" links.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('minify.reject.logged') ?> Disable minify for logged in users</label><br />
-                    <span class="description">Authenticated users will not receive minified pages if this option is enabled.</span>
+                    <?php $this->checkbox('minify.reject.logged') ?> <?php _e('Disable minify for logged in users', 'w3-total-cache'); ?></label><br />
+                    <span class="description"><?php _e('Authenticated users will not receive minified pages if this option is enabled.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="minify_error_notification">Minify error notification:</label>
+                    <label for="minify_error_notification"><?php _e('Minify error notification:', 'w3-total-cache'); ?></label>
                 </th>
                 <td>
                     <select id="minify_error_notification" name="minify.error.notification"
                         <?php $this->sealing_disabled('minify') ?>>
                         <?php $value = $this->_config_admin->get_string('minify.error.notification'); ?>
-                        <option value=""<?php selected($value, ''); ?>>Disabled</option>
-                        <option value="admin"<?php selected($value, 'admin'); ?>>Admin Notification</option>
-                        <option value="email"<?php selected($value, 'email'); ?>>Email Notification</option>
-                        <option value="admin,email"<?php selected($value, 'admin,email'); ?>>Both Admin &amp; Email Notification</option>
+                        <option value=""<?php selected($value, ''); ?>><?php _e('Disabled', 'w3-total-cache'); ?></option>
+                        <option value="admin"<?php selected($value, 'admin'); ?>><?php _e('Admin Notification', 'w3-total-cache'); ?></option>
+                        <option value="email"<?php selected($value, 'email'); ?>><?php _e('Email Notification', 'w3-total-cache'); ?></option>
+                        <option value="admin,email"<?php selected($value, 'admin,email'); ?>><?php _e('Both Admin &amp; Email Notification', 'w3-total-cache'); ?></option>
                     </select>
-                    <br /><span class="description">Notify when minify cache creation errors occur.</span>
+                    <br /><span class="description"><?php _e('Notify when minify cache creation errors occur.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
         </table>
 
         <p class="submit">
             <?php echo $this->nonce_field('w3tc'); ?>
-            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="<?php _e('Save all settings', 'w3-total-cache'); ?>" />
         </p>
         <?php echo $this->postbox_footer(); ?>
 
-        <?php echo $this->postbox_header('<acronym title="Hypertext Markup Language">HTML</acronym> &amp; <acronym title="eXtensible Markup Language">XML</acronym>', '', 'html_xml'); ?>
+        <?php echo $this->postbox_header(__('<acronym title="Hypertext Markup Language">HTML</acronym> &amp; <acronym title="eXtensible Markup Language">XML</acronym>', 'w3-total-cache'), '', 'html_xml'); ?>
         <table class="form-table">
             <tr>
-                <th><acronym title="Hypertext Markup Language">HTML</acronym> minify settings:</th>
+                <th><?php _e('<acronym title="Hypertext Markup Language">HTML</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.html.enable') ?> Enable</label><br />
-                    <?php $this->checkbox('minify.html.inline.css', false, 'html_') ?> Inline <acronym title="Cascading Style Sheet">CSS</acronym> minification</label><br />
-                    <?php $this->checkbox('minify.html.inline.js', false, 'html_') ?> Inline <acronym title="JavaScript">JS</acronym> minification</label><br />
-                    <?php $this->checkbox('minify.html.reject.feed', false, 'html_') ?> Don't minify feeds</label><br />
+                    <?php $this->checkbox('minify.html.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.html.inline.css', false, 'html_') ?> <?php _e('Inline <acronym title="Cascading Style Sheet">CSS</acronym> minification', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.html.inline.js', false, 'html_') ?> <?php _e('Inline <acronym title="JavaScript">JS</acronym> minification', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.html.reject.feed', false, 'html_') ?> <?php _e('Don\'t minify feeds', 'w3-total-cache'); ?></label><br />
                     <?php
                         $html_engine_file = '';
 
@@ -96,12 +103,12 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_html_comments_ignore">Ignored comment stems:</label></th>
+                <th><label for="minify_html_comments_ignore"><?php _e('Ignored comment stems:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_html_comments_ignore" 
                         <?php $this->sealing_disabled('minify') ?>
                         name="minify.html.comments.ignore" class="html_enabled" cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.html.comments.ignore'))); ?></textarea><br />
-                    <span class="description">Do not remove comments that contain these terms.</span>
+                    <span class="description"><?php _e('Do not remove comments that contain these terms.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <?php
@@ -122,54 +129,54 @@
 
         <p class="submit">
             <?php echo $this->nonce_field('w3tc'); ?>
-            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="<?php _e('Save all settings', 'w3-total-cache'); ?>" />
         </p>
         <?php echo $this->postbox_footer(); ?>
 
-        <?php echo $this->postbox_header('<acronym title="JavaScript">JS</acronym>', '', 'js'); ?>
+        <?php echo $this->postbox_header(__('<acronym title="JavaScript">JS</acronym>', 'w3-total-cache'), '', 'js'); ?>
         <table class="form-table">
             <tr>
-                <th><acronym title="JavaScript">JS</acronym> minify settings:</th>
+                <th><?php _e('<acronym title="JavaScript">JS</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.js.enable') ?> Enable</label><br />
-                    <fieldset><legend>Operations in areas:</legend>
+                    <?php $this->checkbox('minify.js.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
+                    <fieldset><legend><?php _e('Operations in areas:', 'w3-total-cache'); ?></legend>
                         <p>
-                            <span>Embed type:</span>
+                            <span><?php _e('Embed type:', 'w3-total-cache'); ?></span>
                         </p>
-                        <span class="oia-desc">Before <span class="html-tag">&lt;/head&gt;</span></span>
-                        <?php $this->radio('minify.js.combine.header', false, false, 'js_') ?> Minify </label> <?php $this->radio('minify.js.combine.header', true, false, 'js_') ?> Combine only</label>
+                        <span class="oia-desc"><?php _e('Before <span class="html-tag">&lt;/head&gt;', 'w3-total-cache'); ?></span></span>
+                        <?php $this->radio('minify.js.combine.header', false, false, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.header', true, false, 'js_') ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
                         <select id="js_use_type_header" name="minify.js.header.embed_type" class="js_enabled">
-                            <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Default (blocking)</option>
-                            <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Non-blocking using JS</option>
-                            <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Non-blocking using "async"</option>
-                            <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Non-blocking using "defer"</option>
+                            <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                            <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                            <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                            <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
                             <?php if (!$auto): ?>
-                            <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Non-blocking using "extsrc"</option>
-                            <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>>Non-blocking using "asyncsrc"</option>
+								<option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                            <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
                             <?php endif; ?>
                         </select>
                         <?php if (!$auto): ?>
                         <br />
-                        <span class="oia-desc">After <span class="html-tag">&lt;body&gt;</span></span>
-                        <?php $this->radio('minify.js.combine.body', false, $auto, 'js_') ?> Minify </label> <?php $this->radio('minify.js.combine.body', true) ?> Combine only</label>
+                        <span class="oia-desc"><?php _e('After <span class="html-tag">&lt;body&gt;</span>', 'w3-total-cache'); ?></span>
+                        <?php $this->radio('minify.js.combine.body', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.body', true) ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
                             <select id="js_use_type_body" name="minify.js.body.embed_type" class="js_enabled">
-                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Default (blocking)</option>
-                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Non-blocking using JS</option>
-                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Non-blocking using "async"</option>
-                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Non-blocking using "defer"</option>
-                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Non-blocking using "extsrc"</option>
-                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>>Non-blocking using "asyncsrc"</option>
+                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
                             </select>
                             <br />
-                        <span class="oia-desc">Before <span class="html-tag">&lt;/body&gt;</span></span>
-                        <?php $this->radio('minify.js.combine.footer', false, $auto, 'js_') ?> Minify </label> <?php $this->radio('minify.js.combine.footer', true) ?> Combine only</label>
+                        <span class="oia-desc"><?php _e('Before <span class="html-tag">&lt;/body&gt;</span>', 'w3-total-cache'); ?></span>
+                        <?php $this->radio('minify.js.combine.footer', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.footer', true) ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
                             <select id="js_use_type_footer" name="minify.js.footer.embed_type" class="js_enabled">
-                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Default (blocking)</option>
-                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Non-blocking using JS</option>
-                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Non-blocking using "async"</option>
-                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Non-blocking using "defer"</option>
-                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Non-blocking using "extsrc"</option>
-                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>>Non-blocking using "asyncsrc"</option>
+                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
                             </select>
                             <?php endif; ?>
                     </fieldset>
@@ -207,11 +214,11 @@
             ?>
             <?php if (!$auto): ?>
             <tr>
-                <th><acronym title="JavaScript">JS</acronym> file management:</th>
+                <th><?php _e('<acronym title="JavaScript">JS</acronym> file management:', 'w3-total-cache'); ?></th>
                 <td>
                     <p>
                         <label>
-                            Theme:
+                            <?php _e('Theme:', 'w3-total-cache'); ?>
                             <select id="js_themes" class="js_enabled" name="js_theme"
                                 <?php $this->sealing_disabled('minify') ?>>
                                 <?php foreach ($themes as $theme_key => $theme_name): ?>
@@ -219,7 +226,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </label>
-                        <br /><span class="description">Files are minified by template. First select the theme to manage, then add scripts used in all templates to the "All Templates" group. Use the menu above to manage scripts unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).</span>
+                        <br /><span class="description"><?php _e('Files are minified by template. First select the theme to manage, then add scripts used in all templates to the "All Templates" group. Use the menu above to manage scripts unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).', 'w3-total-cache'); ?></span>
                     </p>
                     <ul id="js_files" class="minify-files">
                     <?php foreach ($js_groups as $js_theme => $js_templates): if (isset($templates[$js_theme])): ?>
@@ -230,9 +237,9 @@
                                     <table>
                                         <tr>
                                             <th>&nbsp;</th>
-                                            <th>File URI:</th>
-                                            <th>Template:</th>
-                                            <th colspan="3">Embed Location:</th>
+                                            <th><?php _e('File URI:', 'w3-total-cache'); ?></th>
+                                            <th><?php _e('Template:', 'w3-total-cache'); ?></th>
+                                            <th colspan="3"><?php _e('Embed Location:', 'w3-total-cache'); ?></th>
                                         </tr>
                                         <tr>
                                             <td><?php echo $index; ?>.</td>
@@ -250,14 +257,14 @@
                                             </td>
                                             <td>
                                                 <select class="js_file_location js_enabled" <?php $this->sealing_disabled('minify') ?>>
-                                                    <option value="include" <?php selected($js_location,'include') ?>>Embed in &lt;head&gt;</option>
-                                                    <option value="include-body" <?php selected($js_location, 'include-body') ?>>Embed after &lt;body&gt;</option>
-                                                    <option value="include-footer" <?php selected($js_location, 'include-footer') ?>>Embed before &lt;/body&gt;</option>
+                                                    <option value="include" <?php selected($js_location,'include') ?>><?php _e('Embed in &lt;head&gt;', 'w3-total-cache'); ?></option>
+                                                    <option value="include-body" <?php selected($js_location, 'include-body') ?>><?php _e('Embed after &lt;body&gt;', 'w3-total-cache'); ?></option>
+                                                    <option value="include-footer" <?php selected($js_location, 'include-footer') ?>><?php _e('Embed before &lt;/body&gt;', 'w3-total-cache'); ?></option>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input class="js_file_delete js_enabled button" type="button" value="Delete" />
-                                                <input class="js_file_verify js_enabled button" type="button" value="Verify URI" />
+                                                <input class="js_file_delete js_enabled button" type="button" value="<?php _e('Delete', 'w3-total-cache'); ?>" />
+                                                <input class="js_file_verify js_enabled button" type="button" value="<?php _e('Verify URI', 'w3-total-cache'); ?>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -267,8 +274,8 @@
                         <?php endforeach; ?>
                     <?php endif; endforeach; ?>
                     </ul>
-                    <div id="js_files_empty" class="w3tc-empty" style="display: none;">No <acronym title="JavaScript">JS</acronym> files added</div>
-                    <input id="js_file_add" class="js_enabled button" type="button" value="Add a script" />
+                    <div id="js_files_empty" class="w3tc-empty" style="display: none;"><?php _e('No <acronym title="JavaScript">JS</acronym> files added', 'w3-total-cache'); ?></div>
+                    <input id="js_file_add" class="js_enabled button" type="button" value="<?php _e('Add a script', 'w3-total-cache'); ?>" />
                 </td>
             </tr>
             <?php endif; ?>
@@ -276,17 +283,17 @@
 
         <p class="submit">
             <?php echo $this->nonce_field('w3tc'); ?>
-            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="<?php _e('Save all settings', 'w3-total-cache'); ?>" />
         </p>
         <?php echo $this->postbox_footer(); ?>
 
-        <?php echo $this->postbox_header('<acronym title="Cascading Style Sheet">CSS</acronym>', '', 'css'); ?>
+        <?php echo $this->postbox_header(__('<acronym title="Cascading Style Sheet">CSS</acronym>', 'w3-total-cache'), '', 'css'); ?>
         <table class="form-table">
             <tr>
-                <th><acronym title="Cascading Style Sheet">CSS</acronym> minify settings:</th>
+                <th><?php _e('<acronym title="Cascading Style Sheet">CSS</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.css.enable') ?> Enable</label><br />
-                    <?php $this->checkbox('minify.css.combine', false, 'css_') ?> Combine only</label><br />
+                    <?php $this->checkbox('minify.css.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.css.combine', false, 'css_') ?> <?php _e('Combine only', 'w3-total-cache'); ?></label><br />
                     <?php
                         $css_engine_file = '';
 
@@ -305,7 +312,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_css_import">@import handling:</label></th>
+                <th><label for="minify_css_import"><?php _e('@import handling:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <select id="minify_css_import" class="css_enabled" name="minify.css.imports"
                         <?php $this->sealing_disabled('minify') ?>>
@@ -332,11 +339,11 @@
             ?>
             <?php if (!$auto): ?>
             <tr>
-                <th><acronym title="Cascading Style Sheet">CSS</acronym> file management:</th>
+                <th><?php _e('<acronym title="Cascading Style Sheet">CSS</acronym> file management:', 'w3-total-cache'); ?></th>
                 <td>
                     <p>
                         <label>
-                            Theme:
+                            <?php _e('Theme:', 'w3-total-cache'); ?>
                             <select id="css_themes" class="css_enabled" name="css_theme"
                                 <?php $this->sealing_disabled('minify') ?>>
                                 <?php foreach ($themes as $theme_key => $theme_name): ?>
@@ -344,7 +351,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </label>
-                        <br /><span class="description">Files are minified by template. First select the theme to manage, then add style sheets used in all templates to the "All Templates" group. Use the menu above to manage style sheets unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).</span>
+                        <br /><span class="description"><?php _e('Files are minified by template. First select the theme to manage, then add style sheets used in all templates to the "All Templates" group. Use the menu above to manage style sheets unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).', 'w3-total-cache'); ?></span>
                     </p>
                     <ul id="css_files" class="minify-files">
                     <?php foreach ($css_groups as $css_theme => $css_templates): if (isset($templates[$css_theme])): ?>
@@ -355,8 +362,8 @@
                                     <table>
                                         <tr>
                                             <th>&nbsp;</th>
-                                            <th>File URI:</th>
-                                            <th colspan="2">Template:</th>
+                                            <th><?php _e('File URI:', 'w3-total-cache'); ?></th>
+                                            <th colspan="2"><?php _e('Template:', 'w3-total-cache'); ?></th>
                                         </tr>
                                         <tr>
                                             <td><?php echo $index; ?>.</td>
@@ -373,8 +380,8 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input class="css_file_delete css_enabled button" type="button" value="Delete" />
-                                                <input class="css_file_verify css_enabled button" type="button" value="Verify URI" />
+                                                <input class="css_file_delete css_enabled button" type="button" value="<?php _e('Delete', 'w3-total-cache'); ?>" />
+                                                <input class="css_file_verify css_enabled button" type="button" value="<?php _e('Verify URI', 'w3-total-cache'); ?>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -384,8 +391,8 @@
                         <?php endforeach; ?>
                     <?php endif; endforeach; ?>
                     </ul>
-                    <div id="css_files_empty" class="w3tc-empty" style="display: none;">No <acronym title="Cascading Style Sheet">CSS</acronym> files added</div>
-                    <input id="css_file_add" class="css_enabled button" type="button" value="Add a style sheet" />
+                    <div id="css_files_empty" class="w3tc-empty" style="display: none;"><?php _e('No <acronym title="Cascading Style Sheet">CSS</acronym> files added', 'w3-total-cache'); ?></div>
+                    <input id="css_file_add" class="css_enabled button" type="button" value="<?php _e('Add a style sheet', 'w3-total-cache'); ?>" />
                 </td>
             </tr>
             <?php endif; ?>
@@ -393,85 +400,97 @@
 
         <p class="submit">
             <?php echo $this->nonce_field('w3tc'); ?>
-            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="<?php _e('Save all settings', 'w3-total-cache'); ?>" />
         </p>
         <?php echo $this->postbox_footer(); ?>
 
-        <?php echo $this->postbox_header('Advanced', '', 'advanced'); ?>
+        <?php echo $this->postbox_header(__('Advanced', 'w3-total-cache'), '', 'advanced'); ?>
         <table class="form-table">
+        <?php if ($auto):?>
+        <tr>
+            <th><label for="minify_auto_filename_length">Filename length:</label></th>
+            <td><input id="minify_auto_filename_length" name="minify.auto.filename_length" type="text" size="4" value="<?php echo $this->_config->get_integer('minify.auto.filename_length')?>" />
+                <br /><span class="description">Maximum filename length to enter is 246. Change this value to decrease or
+                increase the number of minified files that are generated.
+                The more JS/CSS files you have the more files will be generated since the filenames are combined in
+                the filename. This is only applicable when using Minify Auto.
+            </span>
+            </td>
+        </tr>
+        <?php endif ?>
         <?php if ($this->_config->get_string('minify.engine') == 'memcached'): ?>
             <tr>
-                <th><label for="memcached_servers">Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:</label></th>
+                <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="memcached_servers" type="text"
                         <?php $this->sealing_disabled('minify') ?>
                         name="minify.memcached.servers" value="<?php echo htmlspecialchars(implode(',', $this->_config->get_array('minify.memcached.servers'))); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}"
-                        type="button" value="Test" />
+                        type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>
-                    <br /><span class="description">Multiple servers may be used and seperated by a comma; e.g. 192.168.1.100:11211, domain.com:22122</span>
+                    <br /><span class="description"><?php _e('Multiple servers may be used and seperated by a comma; e.g. 192.168.1.100:11211, domain.com:22122', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <?php endif; ?>
             <tr>
-                <th><label for="minify_lifetime">Update external files every:</label></th>
+                <th><label for="minify_lifetime"><?php _e('Update external files every:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="minify_lifetime" type="text" name="minify.lifetime"
                         <?php $this->sealing_disabled('minify') ?>
-                        value="<?php echo $this->_config->get_integer('minify.lifetime'); ?>" size="8" /> seconds<br />
-                    <span class="description">Specify the interval between download and update of external files in the minify cache. Hint: 6 hours is 21600 seconds. 12 hours is 43200 seconds. 24 hours is 86400 seconds.</span>
+                        value="<?php echo $this->_config->get_integer('minify.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?><br />
+                    <span class="description"><?php _e('Specify the interval between download and update of external files in the minify cache. Hint: 6 hours is 21600 seconds. 12 hours is 43200 seconds. 24 hours is 86400 seconds.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_file_gc">Garbage collection interval:</label></th>
+                <th><label for="minify_file_gc"><?php _e('Garbage collection interval:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="minify_file_gc" type="text" name="minify.file.gc"
                         <?php $this->sealing_disabled('minify') ?>
-                        value="<?php echo $this->_config->get_integer('minify.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('minify.engine') != 'file'): ?> disabled="disabled"<?php endif; ?> /> seconds
-                    <br /><span class="description">If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.</span>
+                        value="<?php echo $this->_config->get_integer('minify.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('minify.engine') != 'file'): ?> disabled="disabled"<?php endif; ?> /> <?php _e('seconds', 'w3-total-cache'); ?>
+                    <br /><span class="description"><?php _e('If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_uri">Never minify the following pages:</label></th>
+                <th><label for="minify_reject_uri"><?php _e('Never minify the following pages:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_uri" name="minify.reject.uri" 
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.uri'))); ?></textarea><br />
-                    <span class="description">Always ignore the specified pages / directories.</span>
+                    <span class="description"><?php _e('Always ignore the specified pages / directories.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_files_js">Never minify the following JS files:</label></th>
+                <th><label for="minify_reject_files_js"><?php _e('Never minify the following JS files:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_js" name="minify.reject.files.js"
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.files.js'))); ?></textarea><br />
-                    <span class="description">Always ignore the specified JS files.</span>
+                    <span class="description"><?php _e('Always ignore the specified JS files.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_files_css">Never minify the following CSS files:</label></th>
+                <th><label for="minify_reject_files_css"><?php _e('Never minify the following CSS files:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_css" name="minify.reject.files.css"
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.files.css'))); ?></textarea><br />
-                    <span class="description">Always ignore the specified CSS files.</span>
+                    <span class="description"><?php _e('Always ignore the specified CSS files.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_ua">Rejected user agents:</label></th>
+                <th><label for="minify_reject_ua"><?php _e('Rejected user agents:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_ua" name="minify.reject.ua"
                         <?php $this->sealing_disabled('minify') ?>
                         cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.ua'))); ?></textarea><br />
-                    <span class="description">Specify user agents that will never receive minified content.</span>
+                    <span class="description"><?php _e('Specify user agents that will never receive minified content.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <?php if ($auto): ?>
             <tr>
-                <th><label for="minify_cache_files">Include external files/libaries:</label></th>
+                <th><label for="minify_cache_files"><?php _e('Include external files/libaries:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_cache_files" name="minify.cache.files"
                         <?php $this->sealing_disabled('minify') ?>
                               cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.cache.files'))); ?></textarea><br />
-                    <span class="description">Specify external files/libraries that should be combined.</span>
+                    <span class="description"><?php _e('Specify external files/libraries that should be combined.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <?php endif; ?>
@@ -479,17 +498,17 @@
 
         <p class="submit">
             <?php echo $this->nonce_field('w3tc'); ?>
-            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            <input type="submit" name="w3tc_save_options" class="w3tc-button-save button-primary" value="<?php _e('Save all settings', 'w3-total-cache'); ?>" />
         </p>
         <?php echo $this->postbox_footer(); ?>
 
-        <?php echo $this->postbox_header('Note(s):', '', 'notes'); ?>
+        <?php echo $this->postbox_header(__('Note(s):', 'w3-total-cache'), '', 'notes'); ?>
         <table class="form-table">
             <tr>
                 <th colspan="2">
                     <ul>
-                        <li>Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> compression in the "Cascading Style Sheets &amp; JavaScript" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.</li>
-                        <li>The <acronym title="Time to Live">TTL</acronym> of page cache files is set via the "Expires header lifetime" field in the "Cascading Style Sheets &amp; JavaScript" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.</li>
+                        <li><?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> compression in the "Cascading Style Sheets &amp; JavaScript" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.', 'w3-total-cache'); ?></li>
+                        <li><?php _e('The <acronym title="Time to Live">TTL</acronym> of page cache files is set via the "Expires header lifetime" field in the "Cascading Style Sheets &amp; JavaScript" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.', 'w3-total-cache'); ?></li>
                     </ul>
                 </th>
             </tr>

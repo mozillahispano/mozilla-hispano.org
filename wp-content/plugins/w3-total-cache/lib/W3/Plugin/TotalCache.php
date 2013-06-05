@@ -20,16 +20,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      * @return void
      */
     function run() {
-        register_activation_hook(W3TC_FILE, array(
-            &$this,
-            'activate'
-        ));
-        
-        register_deactivation_hook(W3TC_FILE, array(
-            &$this,
-            'deactivate'
-        ));
-
         add_action('init', array(
             &$this,
             'init'
@@ -83,7 +73,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         if ($this->_config->get_boolean('cloudflare.enabled')) {
             w3_require_once(W3TC_LIB_W3_DIR . '/CloudFlare.php');
             @$w3_cloudflare = new W3_CloudFlare();
+
             $w3_cloudflare->fix_remote_addr();
+
         }
 
         if ($this->_config->get_string('common.support') == 'footer') {
@@ -99,32 +91,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 'ob_callback'
             ));
         }
-
-        $plugins = w3_instance('W3_Plugins');
-        $plugins->run();
     }
-
-    /**
-     * Activate plugin action
-     *
-     * @param $network_wide
-     * @return void
-     */
-    function activate($network_wide) {
-        $activation_worker = w3_instance('W3_Plugin_TotalCacheActivation');
-        $activation_worker->activate($network_wide);
-    }
-
-    /**
-     * Deactivate plugin action
-     *
-     * @return void
-     */
-    function deactivate() {
-        $activation_worker = w3_instance('W3_Plugin_TotalCacheActivation');
-        $activation_worker->deactivate();
-    }
-
 
     /**
      * Init action
@@ -132,24 +99,43 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      * @return void
      */
     function init() {
+        // Load plugin text domain
+        load_plugin_textdomain(W3TC_TEXT_DOMAIN, null, plugin_basename(W3TC_DIR) . '/languages/');
+        
         if (is_multisite()) {
             global $w3_current_blog_id, $current_blog;
             if ($w3_current_blog_id != $current_blog->blog_id && !isset($GLOBALS['w3tc_blogmap_register_new_item'])) {
-				$url = w3_get_host() . $_SERVER['REQUEST_URI'];
-				$pos = strpos($url, '?');
-				if ($pos !== false)
-					$url = substr($url, 0, $pos);
-				$GLOBALS['w3tc_blogmap_register_new_item'] = $url;
-			}
-		}
+                $url = w3_get_host() . $_SERVER['REQUEST_URI'];
+                $pos = strpos($url, '?');
+                if ($pos !== false)
+                    $url = substr($url, 0, $pos);
+                $GLOBALS['w3tc_blogmap_register_new_item'] = $url;
+            }
+        }
 
         if (isset($GLOBALS['w3tc_blogmap_register_new_item'])) {
             $do_redirect = false;
             // true value is a sign to just generate config cache
-            if ($GLOBALS['w3tc_blogmap_register_new_item'] !== true) {
+            if ($GLOBALS['w3tc_blogmap_register_new_item'] != 'cache_options') {
+                if (w3_is_subdomain_install())
+                    $blog_home_url = $GLOBALS['w3tc_blogmap_register_new_item'];
+                else {
+                    $home_url = rtrim(get_home_url(), '/');
+                    if (substr($home_url, 0, 7) == 'http://')
+                        $home_url = substr($home_url, 7);
+                    else if (substr($home_url, 0, 8) == 'https://')
+                        $home_url = substr($home_url, 8);
+
+                    if (substr($GLOBALS['w3tc_blogmap_register_new_item'], 0,
+                            strlen($home_url)) == $home_url)
+                        $blog_home_url = $home_url;
+                    else
+                        $blog_home_url = $GLOBALS['w3tc_blogmap_register_new_item'];
+                }
+
                 w3_require_once(W3TC_INC_DIR . '/functions/multisite.php');
-                $do_redirect = w3_blogmap_register_new_item(
-                    $GLOBALS['w3tc_blogmap_register_new_item'], $this->_config);
+                $do_redirect = w3_blogmap_register_new_item($blog_home_url,
+                    $this->_config);
 
                 // reset cache of blog_id
                 global $w3_current_blog_id;
@@ -167,10 +153,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             // so need to redirect to something a bit different
             if ($do_redirect) {
                 if (strpos($_SERVER['REQUEST_URI'], '?') === false)
-                    w3_redirect($_SERVER['REQUEST_URI'] . '?repeat=w3tc');
+                    w3_redirect_temp($_SERVER['REQUEST_URI'] . '?repeat=w3tc');
                 else {
                     if (strpos($_SERVER['REQUEST_URI'], 'repeat=w3tc') === false)
-                        w3_redirect($_SERVER['REQUEST_URI'] . '&repeat=w3tc');
+                        w3_redirect_temp($_SERVER['REQUEST_URI'] . '&repeat=w3tc');
                 }
             }
         }
@@ -254,7 +240,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             $menu_items = array(
                 array(
                     'id' => 'w3tc',
-                    'title' => 'Performance',
+                    'title' => __('Performance', 'w3-total-cache'),
                     'href' => admin_url('admin.php?page=w3tc_dashboard')
                 ));
 
@@ -262,8 +248,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-pgcache-purge-post',
                     'parent' => 'w3tc',
-                    'title' => 'Purge From Cache',
-                    'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_pgcache_purge_post&amp;post_id=' . $this->_detect_post_id()), 'w3tc')
+                    'title' => __('Purge From Cache', 'w3-total-cache'),
+                    'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_pgcache_purge_post&amp;post_id=' . w3_detect_post_id()), 'w3tc')
                 );
             }
 
@@ -271,7 +257,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-file',
                     'parent' => 'w3tc-empty-caches',
-                    'title' => 'Empty Disc Cache(s)',
+                    'title' => __('Empty Disc Cache(s)', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_file'), 'w3tc')
                 );
             }
@@ -280,7 +266,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-opcode',
                     'parent' => 'w3tc-empty-caches',
-                    'title' => 'Empty Opcode Cache',
+                    'title' => __('Empty Opcode Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_opcode'), 'w3tc')
                 );
             }
@@ -289,7 +275,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-memcached',
                     'parent' => 'w3tc-empty-caches',
-                    'title' => 'Empty Memcached Cache(s)',
+                    'title' => __('Empty Memcached Cache(s)', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_memcached'), 'w3tc')
                 );
             }
@@ -298,7 +284,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-update-media-qs',
                     'parent' => 'w3tc',
-                    'title' => 'Update Media Query String',
+                    'title' => __('Update Media Query String', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_browser_cache'), 'w3tc')
                 );
             }
@@ -307,14 +293,14 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-empty-caches',
                     'parent' => 'w3tc',
-                    'title' => 'Empty All Caches',
+                    'title' => __('Empty All Caches', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_all'), 'w3tc')
                 );
 
                 $menu_items[] = array(
                     'id' => 'w3tc-modules',
                     'parent' => 'w3tc',
-                    'title' => 'Empty Modules'
+                    'title' => __('Empty Modules', 'w3-total-cache')
                 );
             }
 
@@ -322,7 +308,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-pgcache',
                     'parent' => 'w3tc-modules',
-                    'title' => 'Empty Page Cache',
+                    'title' => __('Empty Page Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_pgcache'), 'w3tc')
                 );
             }
@@ -331,7 +317,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-minify',
                     'parent' => 'w3tc-modules',
-                    'title' => 'Empty Minify Cache',
+                    'title' => __('Empty Minify Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_minify'), 'w3tc')
                 );
             }
@@ -340,7 +326,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-dbcache',
                     'parent' => 'w3tc-modules',
-                    'title' => 'Empty Database Cache',
+                    'title' => __('Empty Database Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_dbcache'), 'w3tc')
                 );
             }
@@ -349,7 +335,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-objectcache',
                     'parent' => 'w3tc-modules',
-                    'title' => 'Empty Object Cache',
+                    'title' => __('Empty Object Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_objectcache'), 'w3tc')
                 );
             }
@@ -359,7 +345,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     $menu_items[] = array(
                         'id' => 'w3tc-flush-fragmentcache',
                         'parent' => 'w3tc-modules',
-                        'title' => 'Empty Fragment Cache',
+                        'title' => __('Empty Fragment Cache', 'w3-total-cache'),
                         'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_fragmentcache'), 'w3tc')
                     );
                 }
@@ -369,7 +355,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items[] = array(
                     'id' => 'w3tc-flush-varnish',
                     'parent' => 'w3tc-modules',
-                    'title' => 'Purge Varnish Cache',
+                    'title' => __('Purge Varnish Cache', 'w3-total-cache'),
                     'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_dashboard&amp;w3tc_flush_varnish'), 'w3tc')
                 );
             }
@@ -379,7 +365,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     $menu_items[] = array(
                         'id' => 'w3tc-cdn-purge',
                         'parent' => 'w3tc',
-                        'title' => 'Purge CDN',
+                        'title' => __('Purge CDN', 'w3-total-cache'),
                         'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_cdn&amp;w3tc_cdn_purge'), 'w3tc'),
                         'meta' => array('onclick' => "w3tc_popupadmin_bar(this.href); return false")
                     );
@@ -389,7 +375,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     $menu_items[] = array(
                         'id' => 'w3tc-cdn-purge-full',
                         'parent' => 'w3tc',
-                        'title' => 'Purge CDN Completely',
+                        'title' => __('Purge CDN Completely', 'w3-total-cache'),
                         'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_cdn&amp;w3tc_flush_cdn'), 'w3tc')
                     );
                 }
@@ -397,7 +383,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     $menu_items[] = array(
                         'id' => 'w3tc-cdn-queue',
                         'parent' => 'w3tc',
-                        'title' => 'Unsuccessfull file transfers',
+                        'title' => __('Unsuccessful file transfers', 'w3-total-cache'),
                         'href' => wp_nonce_url(admin_url('admin.php?page=w3tc_cdn&amp;w3tc_cdn_queue'), 'w3tc'),
                         'meta' => array('onclick' => "w3tc_popupadmin_bar(this.href); return false")
                     );
@@ -408,13 +394,13 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 array(
                     'id' => 'w3tc-faq',
                     'parent' => 'w3tc',
-                    'title' => 'FAQ',
+                    'title' => __('FAQ', 'w3-total-cache'),
                     'href' => admin_url('admin.php?page=w3tc_faq')
                 ),
                 array(
                     'id' => 'w3tc-support',
                     'parent' => 'w3tc',
-                    'title' => '<span style="color: red; background: none;">Support</span>',
+                    'title' => __('<span style="color: red; background: none;">Support</span>', 'w3-total-cache'),
                     'href' => admin_url('admin.php?page=w3tc_support')
                 )
             ));
@@ -423,25 +409,25 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $menu_items = array_merge($menu_items, array(
                     array(
                         'id' => 'cloudflare',
-                        'title' => 'CloudFlare',
+                        'title' => __('CloudFlare', 'w3-total-cache'),
                         'href' => 'https://www.cloudflare.com'
                     ),
                     array(
                         'id' => 'cloudflare-my-websites',
                         'parent' => 'cloudflare',
-                        'title' => 'My Websites',
+                        'title' => __('My Websites', 'w3-total-cache'),
                         'href' => 'https://www.cloudflare.com/my-websites.html'
                     ),
                     array(
                         'id' => 'cloudflare-analytics',
                         'parent' => 'cloudflare',
-                        'title' => 'Analytics',
+                        'title' => __('Analytics', 'w3-total-cache'),
                         'href' => 'https://www.cloudflare.com/analytics.html'
                     ),
                     array(
                         'id' => 'cloudflare-account',
                         'parent' => 'cloudflare',
-                        'title' => 'Account',
+                        'title' => __('Account', 'w3-total-cache'),
                         'href' => 'https://www.cloudflare.com/my-account.html'
                     )
                 ));
@@ -591,13 +577,13 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     if ($this->_config->get_boolean('minify.enabled') && !$this->_config->get_boolean('minify.debug')) {
                         $w3_plugin_minify = w3_instance('W3_Plugin_Minify');
 
-                        $strings[] = sprintf("Minified using %s%s", w3_get_engine_name($this->_config->get_string('minify.engine')), ($w3_plugin_minify->minify_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_minify->minify_reject_reason) : ''));
+                        $strings[] = sprintf(__('Minified using %s%s', 'w3-total-cache'), w3_get_engine_name($this->_config->get_string('minify.engine')), ($w3_plugin_minify->minify_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_minify->minify_reject_reason) : ''));
                     }
 
                     if ($this->_config->get_boolean('pgcache.enabled') && !$this->_config->get_boolean('pgcache.debug')) {
                         $w3_pgcache = w3_instance('W3_PgCache');
 
-                        $strings[] = sprintf("Page Caching using %s%s", w3_get_engine_name($this->_config->get_string('pgcache.engine')), ($w3_pgcache->cache_reject_reason != '' ? sprintf(' (%s)', $w3_pgcache->cache_reject_reason) : ''));
+                        $strings[] = sprintf(__('Page Caching using %s%s', 'w3-total-cache'), w3_get_engine_name($this->_config->get_string('pgcache.engine')), ($w3_pgcache->cache_reject_reason != '' ? sprintf(' (%s)', $w3_pgcache->cache_reject_reason) : ''));
                     }
 
                     if ($this->_config->get_boolean('dbcache.enabled') &&
@@ -608,12 +594,12 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                             '');
 
                         if ($db->query_hits) {
-                            $strings[] = sprintf("Database Caching %d/%d queries in %.3f seconds using %s%s",
+                            $strings[] = sprintf(__('Database Caching %d/%d queries in %.3f seconds using %s%s', 'w3-total-cache'),
                                 $db->query_hits, $db->query_total, $db->time_total,
                                 w3_get_engine_name($this->_config->get_string('dbcache.engine')),
                                 $append);
                         } else {
-                            $strings[] = sprintf("Database Caching using %s%s",
+                            $strings[] = sprintf(__('Database Caching using %s%s', 'w3-total-cache'),
                                 w3_get_engine_name($this->_config->get_string('dbcache.engine')),
                                 $append);
                         }
@@ -631,7 +617,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                             sprintf(' (%s)', $w3_objectcache->cache_reject_reason) :
                             '');
 
-                        $strings[] = sprintf("Object Caching %d/%d objects using %s%s",
+                        $strings[] = sprintf(__('Object Caching %d/%d objects using %s%s', 'w3-total-cache'),
                             $w3_objectcache->cache_hits, $w3_objectcache->cache_total,
                             w3_get_engine_name($this->_config->get_string('objectcache.engine')),
                             $append);
@@ -641,7 +627,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                         $w3_fragmentcache = w3_instance('W3_Pro_FragmentCache');
                         $append = ($w3_fragmentcache->cache_reject_reason != '' ?
                             sprintf(' (%s)', $w3_fragmentcache->cache_reject_reason) :'');
-                        $strings[] = sprintf("Fragment Caching %d/%d fragments using %s%s",
+                        $strings[] = sprintf(__('Fragment Caching %d/%d fragments using %s%s', 'w3-total-cache'),
                             $w3_fragmentcache->cache_hits, $w3_fragmentcache->cache_total,
                             w3_get_engine_name($this->_config->get_string('fragmentcache.engine')),
                             $append);
@@ -650,10 +636,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     if ($this->_config->get_boolean('cdn.enabled') && !$this->_config->get_boolean('cdn.debug')) {
                         $w3_plugin_cdn = w3_instance('W3_Plugin_Cdn');
                         $w3_plugin_cdncommon = w3_instance('W3_Plugin_CdnCommon');
-                        $cdn = & $w3_plugin_cdncommon->get_cdn();
+                        $cdn = $w3_plugin_cdncommon->get_cdn();
                         $via = $cdn->get_via();
 
-                        $strings[] = sprintf("Content Delivery Network via %s%s", ($via ? $via : 'N/A'), ($w3_plugin_cdn->cdn_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_cdn->cdn_reject_reason) : ''));
+                        $strings[] = sprintf(__('Content Delivery Network via %s%s', 'w3-total-cache'), ($via ? $via : 'N/A'), ($w3_plugin_cdn->cdn_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_cdn->cdn_reject_reason) : ''));
                     }
 
                     if ($this->_config->get_boolean('newrelic.enabled')) {
@@ -687,6 +673,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                         $buffer .= "\r\n\r\n" . $w3_fragmentcache->_get_debug_info();
                     }
                 }
+                $buffer = w3tc_do_ob_callbacks(array('minify', 'newrelic', 'cdn', 'browsercache', 'pagecache'), $buffer);
             }
         }
 
@@ -699,6 +686,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      * @return boolean
      */
     function can_ob() {
+        global $w3_late_init;
         $enabled = w3_is_preview_mode();
         $enabled = $enabled || $this->_config->get_boolean('pgcache.enabled');
         $enabled = $enabled || $this->_config->get_boolean('dbcache.enabled');
@@ -708,6 +696,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         $enabled = $enabled || $this->_config->get_boolean('cdn.enabled');
         $enabled = $enabled || $this->_config->get_boolean('fragmentcache.enabled');
         $enabled = $enabled || w3_is_dbcluster();
+        $enabled = $enabled && !$w3_late_init;
 
         /**
          * Check if plugin enabled
@@ -783,39 +772,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     }
 
     /**
-     * Now actually allow CF to see when a comment is approved/not-approved.
-     *
-     * @param int $id
-     * @param string $status
-     * @return void
-     */
-    function cloudflare_set_comment_status($id, $status) {
-        if ($status == 'spam') {
-            $email = $this->_config->get_string('cloudflare.email');
-            $key = $this->_config->get_string('cloudflare.key');
-
-            if ($email && $key) {
-                w3_require_once(W3TC_LIB_W3_DIR . '/CloudFlare.php');
-                @$w3_cloudflare = new W3_CloudFlare(array(
-                    'email' => $email,
-                    'key' => $key
-                ));
-
-                $comment = get_comment($id);
-
-                $value = array(
-                    'a' => $comment->comment_author,
-                    'am' => $comment->comment_author_email,
-                    'ip' => $comment->comment_author_IP,
-                    'con' => substr($comment->comment_content, 0, 100)
-                );
-
-                $w3_cloudflare->external_event('WP_SPAM', json_encode($value));
-            }
-        }
-    }
-
-    /**
      * User login hook
      * Check if current user is not listed in pgcache.reject.* rules
      * If so, set a role cookie so the requests wont be cached
@@ -840,25 +796,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         
         if (in_array( $role, $this->_config->get_array('pgcache.reject.roles')))
             setcookie('w3tc_logged_' . $role_hash, true, $expire, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
-    }
-
-    /**
-     * @return int
-     */
-    function _detect_post_id() {
-        global $posts, $comment_post_ID, $post_ID;
-
-        if ($post_ID) {
-            return $post_ID;
-        } elseif ($comment_post_ID) {
-            return $comment_post_ID;
-        } elseif (is_single() || is_page() && count($posts)) {
-            return $posts[0]->ID;
-        } elseif (isset($_REQUEST['p'])) {
-            return (integer) $_REQUEST['p'];
-        }
-
-        return 0;
     }
 
     function popup_script() {

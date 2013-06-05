@@ -38,7 +38,7 @@ class NewRelicAPI {
         } else {
             switch ($response['response']['code']) {
                 case '403':
-                    $message = 'Invalid API key or Account ID';
+                    $message = __('Invalid API key or Account ID', 'w3-total-cache');
                     break;
                 default:
                     $message = $response['response']['message'];

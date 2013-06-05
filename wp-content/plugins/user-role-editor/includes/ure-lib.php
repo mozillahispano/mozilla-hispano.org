@@ -361,7 +361,7 @@ function ure_makeRolesBackup() {
 
 // Save Roles to database
 function ure_saveRolesToDb() {
-  global $wpdb, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole, $ure_currentRoleName;
+  global $wpdb, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole;
 
   if (!isset($ure_roles[$ure_currentRole])) {
     return false;
@@ -407,7 +407,7 @@ function ure_direct_site_roles_update($blogIds) {
 
 
 function ure_updateRoles() {
-  global $wpdb, $ure_apply_to_all, $ure_roles, $ure_toldAboutBackup;
+  global $wpdb, $ure_apply_to_all, $ure_roles, $ure_toldAboutBackup, $ure_currentRole, $ure_currentRoleName;
   
   $ure_toldAboutBackup = false;
   if (is_multisite() && is_super_admin() && $ure_apply_to_all) {  // update Role for the all blogs/sites in the network (permitted to superadmin only)
@@ -427,11 +427,14 @@ function ure_updateRoles() {
         $ure_roles = ure_getUserRoles();
         if (!$ure_roles) {
           echo '<div class="error fade below-h2">'.URE_ERROR.'</div>';
+          switch_to_blog($old_blog);
+          $ure_roles = ure_getUserRoles();
           return false;
         }
-        if (!ure_saveRolesToDb()) {
-          return false;
-        }
+        if (!isset($ure_roles[$ure_currentRole])) { // add new role to this blog
+          $ure_roles[$ure_currentRole] = array( 'name' => $ure_currentRoleName, 'capabilities' => array('read'=>1) );
+        }        
+        ure_saveRolesToDb();
       }
       switch_to_blog($old_blog);
       $ure_roles = ure_getUserRoles();            

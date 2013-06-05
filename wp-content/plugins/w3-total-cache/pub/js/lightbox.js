@@ -307,7 +307,7 @@ function w3tc_lightbox_self_test(nonce) {
         minHeight: 300,
         url: 'admin.php?page=w3tc_dashboard&w3tc_self_test&_wpnonce=' + nonce,
         callback: function(lightbox) {
-            jQuery('.button-primary', lightbox.container).click(function() {
+                jQuery('.button-primary', lightbox.container).click(function() {
                 lightbox.close();
             });
         }
@@ -327,24 +327,79 @@ function w3tc_lightbox_cdn_s3_bucket_location(type, nonce) {
     });
 }
 
-function w3tc_lightbox_oauth(type, nonce){
-    var page='admin.php?page=w3tc_dashboard&w3tc_cdn_oauth&type=' + type + '&_wpnonce=' + nonce;
-    w3tc_popup(page,'w3tcoauth',700,600);
-    /*jQuery('body').append('<div id="oauthContainer" />');
-    jQuery('#oauthContainer').dialog({
-        autoOpen: false,
-        modal: true,
-        height: 600,
-        width: 600,
-        closeText:'Close window',
-        close: function(){
-            jQuery(this).remove();
+function w3tc_lightbox_netdna_maxcdn_pull_zone(type, nonce) {
+    W3tc_Lightbox.open({
+        width: 500,
+        height: 400,
+        url: 'admin.php?page=w3tc_dashboard&w3tc_create_netdna_maxcdn_pull_zone_form&type=' + type + '&_wpnonce=' + nonce,
+        callback: function(lightbox) {
+            jQuery('#create_pull_zone', lightbox.container).click(function() {
+                var loader = jQuery('#pull-zone-loading');
+                loader.addClass('w3tc-loading');
+                var pull_button = jQuery(this);
+                pull_button.attr("disabled", "disabled");
+                jQuery('.create-error').text('');
+                var name_val = jQuery('#name', lightbox.container).val();
+                var name_filter = /^[a-zA-Z\d\-]*$/;
+                if (name_val == '') {
+                    jQuery('#name', lightbox.container).addClass('w3tc-error');
+                    jQuery('.name_message', lightbox.container).text('Cannot be empty.');
+                } else if(name_val.length < 3) {
+                    jQuery('#name', lightbox.container).addClass('w3tc-error');
+                    jQuery('.name_message', lightbox.container).text('Too short.');
+                } else if (name_val.length > 32) {
+                    jQuery('#name', lightbox.container).addClass('w3tc-error');
+                    jQuery('.name_message', lightbox.container).text('Too long.');
+                } else if (!name_filter.test(name_val)) {
+                    jQuery('#name', lightbox.container).addClass('w3tc-error');
+                    jQuery('.name_message', lightbox.container).text('Cannot use unsupported characters.');
+                } else {
+                    jQuery('#name', lightbox.container).removeClass('w3tc-error');
+                    jQuery('.name_message', lightbox.container).text('');
+                }
+
+                var label_val = jQuery('#label', lightbox.container).val();
+                if (label_val == '') {
+                    jQuery('#label', lightbox.container).addClass('w3tc-error');
+                    jQuery('.label_message', lightbox.container).text('Cannot be empty.');
+                } else if(label_val.length < 1) {
+                    jQuery('#label', lightbox.container).addClass('w3tc-error');
+                    jQuery('.label_message', lightbox.container).text('Too short.');
+                } else if (label_val.length > 255) {
+                    jQuery('#label', lightbox.container).addClass('w3tc-error');
+                    jQuery('.label_message', lightbox.container).text('Too long.');
+                } else {
+                    jQuery('#label', lightbox.container).removeClass('w3tc-error');
+                    jQuery('.label_message', lightbox.container).text('');
+                }
+                if (!jQuery('#label').hasClass('w3tc-error') && !jQuery('#name').hasClass('w3tc-error')) {
+                    jQuery.post('admin.php?page=w3tc_dashboard&w3tc_create_netdna_maxcdn_pull_zone', {name:name_val, label: label_val, nonce: jQuery('#_wp_nonce').val(), type: type},function(data) {
+                            loader.removeClass('w3tc-loading');
+                            if (data['status'] == 'error') {
+                                jQuery('.create-error').show();
+                                jQuery('.create-error').html('<p>Something is wrong:<br />' + data['message'] + '</p>');
+                                pull_button.removeAttr("disabled");
+                            } else {
+                                if (jQuery('#cdn_cnames > :first-child > :first-child').val() == '') {
+                                    jQuery('#cdn_cnames > :first-child > :first-child').val(data['temporary_url']);
+                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. Following url was added as default "Replace site\'s hostname with:" ' + data['temporary_url'] + '</p>');
+                                } else {
+                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. cnames were already set so "Replace site\'s hostname with:" were not replaced with ' + data['temporary_url'] + '</p>');
+                                }
+                            }
+                        },
+                    'json');
+                } else {
+                    loader.removeClass('w3tc-loading');
+                    pull_button.removeAttr("disabled");
+                }
+            });
+            jQuery('.button', lightbox.container).click(function() {
+                lightbox.close();
+            });
         }
     });
-    jQuery("#oauthContainer").html('<iframe id="modalIframeId" width="100%" height="100%"  marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" />').dialog("open");
-    jQuery("#modalIframeId").attr("src",page); /**/
 }
-
 jQuery(function() {
     jQuery('.button-minify-recommendations').click(function() {
         var nonce = jQuery(this).metadata().nonce;
@@ -372,10 +427,10 @@ jQuery(function() {
         return false;
     });
 
-    jQuery('.button-cdn-oauth').click(function() {
+    jQuery('#netdna-maxcdn-create-pull-zone').click(function() {
         var type = jQuery(this).metadata().type;
         var nonce = jQuery(this).metadata().nonce;
-        w3tc_lightbox_oauth(type, nonce);
+        w3tc_lightbox_netdna_maxcdn_pull_zone(type, nonce);
         return false;
     });
 });
