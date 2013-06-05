@@ -72,9 +72,9 @@ class W3_PgCacheFlush extends W3_PgCache {
             }
 
             /**
-             * @var $purge_urls W3_PageUrls
+             * @var $purge_urls W3_SharedPageUrls
              */
-            $purge_urls = w3_instance('W3_PageUrls');
+            $purge_urls = w3_instance('W3_SharedPageUrls');
 
             $post = get_post($post_id);
             $post_type = in_array($post->post_type, array('post', 'page', 'attachment', 'revision')) ? null : $post->post_type;

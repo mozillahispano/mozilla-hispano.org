@@ -32,6 +32,7 @@ class W3_ModuleStatus {
                || $this->is_enabled('cdn')
                || $this->is_enabled('cloudflare')
                || $this->is_enabled('varnish')
+               || $this->is_enabled('newrelic')
                || $this->is_enabled('fragmentcache');
     }
 

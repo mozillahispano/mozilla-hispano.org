@@ -1170,6 +1170,9 @@ class W3_Db_Driver extends SQL_Translations {
                         $this->following_query = false;
                 }
 
+                if ( function_exists( 'apply_filters' ) )
+                    apply_filters( 'after_query', $query );
+
                 return $return_val;
         }
 
@@ -1738,7 +1741,8 @@ class Fields_map
      * @since 2.7.1
      */
     function __construct() {
-        $this->filepath = trim(str_replace('mu-plugins/wp-db-abstraction/translations/sqlsrv', '', strtr(dirname(__FILE__), '\\', '/')), '/') . '/fields_map.parsed_types.php';
+        $folder = basename(WPMU_PLUGIN_DIR);
+        $this->filepath = trim(str_replace($folder . '/wp-db-abstraction/translations/sqlsrv', '', strtr(dirname(__FILE__), '\\', '/')), '/') . '/fields_map.parsed_types.php';
     }
 
     /**

@@ -2,19 +2,19 @@
 <?php include W3TC_INC_DIR . '/popup/common/header.php'; ?>
 
 <p>
-    Remove objects from the CDN by specifying the relative path on individual lines below and clicking the "Purge" button when done. For example:
+    <?php _e('Remove objects from the CDN by specifying the relative path on individual lines below and clicking the "Purge" button when done. For example:', 'w3-total-cache'); ?>
 </p>
 <p>
     <?php switch ($this->_config->get_string('cdn.engine')):
         case 'cotendo': ?>
         <ul>
-            <li><em>wp-content/themes/twentyten/images/headers/</em> &mdash; the directory itself (only when accessed directly without any file).</li>
-            <li><em>wp-content/themes/twentyten/images/headers/*.</em> &mdash; all files in the directory with no extension, with all parameter variations.</li>
-            <li><em>wp-content/themes/twentyten/images/headers/*.jpg</em> &mdash; all files in the directory whose extension is "jpg".</li>
-            <li><em>wp-content/themes/twentyten/images/headers/path</em> &mdash; the specific file (when the file does not have an extension), and without parameters.</li>
-            <li><em>wp-content/themes/twentyten/images/headers/path.jpg</em> &mdash; the specific file with its extension, and without parameters.</li>
-            <li><em>wp-content/themes/twentyten/images/headers/path.jpg?*</em> &mdash; the specific file with its extension, with all variation of parameters.</li>
-            <li><em>wp-content/themes/twentyten/images/headers/path.jpg?key=value</em> &mdash; the specific file with its extension, with the specific parameters.</li>
+            <li><em>wp-content/themes/twentyten/images/headers/</em> &mdash; <?php _e('the directory itself (only when accessed directly without any file).', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/*.</em> &mdash; <?php _e('all files in the directory with no extension, with all parameter variations.', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/*.jpg</em> &mdash; <?php _e('all files in the directory whose extension is "jpg".', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/path</em> &mdash; <?php _e('the specific file (when the file does not have an extension), and without parameters.', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/path.jpg</em> &mdash; <?php _e('the specific file with its extension, and without parameters.', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/path.jpg?*</em> &mdash; <?php _e('the specific file with its extension, with all variation of parameters.', 'w3-total-cache'); ?></li>
+            <li><em>wp-content/themes/twentyten/images/headers/path.jpg?key=value</em> &mdash; <?php _e('the specific file with its extension, with the specific parameters.', 'w3-total-cache'); ?></li>
         </ul>
         <?php break;
 
@@ -26,13 +26,13 @@
 
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
-    <p>Files to purge:</p>
+    <p><?php _e('Files to purge:', 'w3-total-cache'); ?></p>
     <p>
         <textarea name="files" rows="10" cols="90"></textarea>
     </p>
     <p>
         <?php echo $this->nonce_field('w3tc'); ?>
-        <input class="button-primary" type="submit" name="w3tc_cdn_purge_post" value="Purge" />
+        <input class="button-primary" type="submit" name="w3tc_cdn_purge_post" value="<?php _e('Purge', 'w3-total-cache'); ?>" />
     </p>
 </form>
 

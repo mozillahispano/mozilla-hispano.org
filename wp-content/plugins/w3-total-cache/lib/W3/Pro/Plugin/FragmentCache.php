@@ -50,21 +50,6 @@ class W3_Pro_Plugin_FragmentCache extends W3_Plugin {
         }
     }
 
-
-    /**
-     * Activate plugin action (called by W3_PluginProxy)
-     */
-    function activate() {
-        $this->get_admin()->activate();
-    }
-
-    /**
-     * Deactivate plugin action (called by W3_PluginProxy)
-     */
-    function deactivate() {
-        $this->get_admin()->deactivate();
-    }
-
     /**
      * Does disk cache cleanup
      *

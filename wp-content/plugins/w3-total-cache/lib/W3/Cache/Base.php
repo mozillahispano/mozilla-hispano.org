@@ -77,7 +77,7 @@ class W3_Cache_Base {
      * @param string $group Used to differentiate between groups of cache values
      * @return boolean
      */
-    function set($key, &$data, $expire = 0, $group = '') {
+    function set($key, $data, $expire = 0, $group = '') {
         return false;
     }
 

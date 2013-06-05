@@ -4,11 +4,16 @@
  */
 
 if (!defined('ABSPATH')) {
-    require_once dirname(__FILE__) . '/../../../../wp-load.php';
+    if (file_exists(dirname(__FILE__) . '/../../../../wp-load.php')) {
+        require_once dirname(__FILE__) . '/../../../../wp-load.php';
+    }
+    else {
+        require_once dirname(__FILE__) . '/../../w3tc-wp-loader.php';
+    }
 }
 
 if (!defined('W3TC_DIR')) {
-    define('W3TC_DIR', realpath(dirname(__FILE__) . '/../../plugins/w3-total-cache'));
+    define('W3TC_DIR', WP_PLUGIN_DIR . '/w3-total-cache');
 }
 
 if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {

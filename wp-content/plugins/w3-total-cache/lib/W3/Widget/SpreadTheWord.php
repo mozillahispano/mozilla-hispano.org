@@ -42,7 +42,7 @@ class W3_Widget_SpreadTheWord extends W3_Plugin {
         w3tc_add_dashboard_widget('w3tc_spreadtheword', __('Spread The Word', 'w3-total-cache'), array(
             &$this,
             'widget_form'
-        ),null, 'top',
+        ),null, 'normal',
         'div'
         );
     }

@@ -5,9 +5,10 @@ if (!defined('ABSPATH')) {
 }
 
 define('W3TC', true);
-define('W3TC_VERSION', '0.9.2.9');
+define('W3TC_VERSION', '0.9.2.10');
 define('W3TC_POWERED_BY', 'W3 Total Cache/' . W3TC_VERSION);
 define('W3TC_EMAIL', 'w3tc@w3-edge.com');
+define('W3TC_TEXT_DOMAIN', 'w3-total-cache');
 define('W3TC_PAYPAL_URL', 'https://www.paypal.com/cgi-bin/webscr');
 define('W3TC_PAYPAL_BUSINESS', 'w3tc-team@w3-edge.com');
 define('W3TC_LINK_URL', 'http://www.w3-edge.com/wordpress-plugins/');
@@ -17,9 +18,9 @@ define('W3TC_NEWS_FEED_URL', 'http://feeds.w3-edge.com/W3EDGE');
 define('W3TC_README_URL', 'http://plugins.svn.wordpress.org/w3-total-cache/trunk/readme.txt');
 define('W3TC_SUPPORT_US_TIMEOUT', 2592000);
 define('W3TC_SUPPORT_REQUEST_URL', 'http://www.w3-edge.com/?w3tc_support_request=1');
-define('NEWRELIC_SIGNUP_URL', 'https://rpm.newrelic.com/signup?product[level]=Standard&product[commitment]=Monthly&subscription[number_of_hosts]=1&partnership_id=295');
+define('NEWRELIC_SIGNUP_URL', 'https://rpm.newrelic.com/signup?product%5Blevel%5D=Standard&product%5Bcommitment%5D=Monthly&subscription%5Bnumber_of_hosts%5D=1&partnership_id=295');
+define('MAXCDN_SIGNUP_URL', 'http://bit.ly/pXZ4t1');
 
-define('W3TC_PHP5', PHP_VERSION >= 5);
 define('W3TC_WIN', (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'));
 
 defined('W3TC_DIR') || define('W3TC_DIR', realpath(dirname(__FILE__) . '/..'));
@@ -76,6 +77,8 @@ w3_require_once(W3TC_INC_DIR . '/functions/plugin.php');
 @ini_set('pcre.backtrack_limit', 4194304);
 @ini_set('pcre.recursion_limit', 4194304);
 
+global $w3_late_init;
+$w3_late_init = false;
 /**
  * Returns current microtime
  *
@@ -275,7 +278,7 @@ function w3_is_nginx() {
  * @return boolean
  */
 function w3_is_cdn_engine($engine) {
-    return in_array($engine, array('ftp', 's3', 'cf', 'cf2', 'rscf', 'azure', 'mirror', 'netdna', 
+    return in_array($engine, array('ftp', 's3', 'cf', 'cf2', 'rscf', 'azure', 'mirror', 'netdna', 'maxcdn',
                                 'cotendo', 'akamai', 'edgecast', 'att'));
 }
 
@@ -286,15 +289,16 @@ function w3_is_cdn_engine($engine) {
  * @return bool
  */
 function w3_is_cdn_mirror($engine) {
-    return in_array($engine, array('mirror', 'netdna', 'cotendo', 'cf2', 'akamai', 'edgecast', 'att'));
+    return in_array($engine, array('mirror', 'netdna', 'maxcdn', 'cotendo', 'cf2', 'akamai', 'edgecast', 'att'));
 }
 
 /**
  * Returns true if CDN has purge all support
  * @param $engine
+ * @return bool
  */
 function w3_cdn_can_purge_all($engine) {
-    return in_array($engine, array('cotendo', 'edgecast', 'att', 'netdna'));
+    return in_array($engine, array('cotendo', 'edgecast', 'att', 'netdna', 'maxcdn'));
 }
 
 /**
@@ -359,45 +363,14 @@ function w3_get_blog_id() {
         return $w3_current_blog_id;
     }
 
-    $uri = w3_generate_request_uri();
-
-    $w3_current_blog_id = w3_blogmap_get_blog_id($uri);
+    
+    $blog_data = w3_blogmap_get_blog_data();
+    if (!is_null($blog_data))
+        $w3_current_blog_id = substr($blog_data, 1);
+    else
+        $w3_current_blog_id = 0;
 
     return $w3_current_blog_id;
-}
-
-/**
- * @return string
- */
-function w3_generate_request_uri() {
-    $host = w3_get_domain(w3_get_host());
-    $site_home_uri = w3_get_base_path();
-
-    // default path
-    $uri = $host . $site_home_uri;
-
-    if (!w3_is_subdomain_install()) {
-        // try subdir blog
-        $request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
-        $content_path = trim(substr(WP_CONTENT_DIR, strlen(w3_get_site_root())), '/');
-        if (substr($request_uri, 1, strlen($content_path)) != $content_path && substr($request_uri, 0, strlen($site_home_uri)) == $site_home_uri) {
-            $request_path_in_wp = '/' . substr($request_uri, strlen($site_home_uri));
-
-            $n = strpos($request_path_in_wp, '/', 1);
-            if ($n === false) {
-                // case for homepage like /mywp/myblog
-                // unfortunately catches also /index.php here and other pages
-                // of "default" blog
-                $blog_path_in_wp = substr($request_path_in_wp, 1);
-            } else
-                $blog_path_in_wp = substr($request_path_in_wp, 1, $n);
-
-            $uri = $host . $site_home_uri . $blog_path_in_wp;
-            return $uri;
-        }
-        return $uri;
-    }
-    return $uri;
 }
 
 /**
@@ -425,57 +398,79 @@ function w3_blogmap_filename($blog_home_url) {
  * Returns blog_id by home url
  * If database not initialized yet - returns 0
  *
- * @param string $blog_home_url
  * @return integer
  */
-function w3_blogmap_get_blog_id($blog_home_url) {
+function w3_blogmap_get_blog_data() {
+    $host = w3_get_host();
 
-    $blog_data = w3_get_blogmap_data($blog_home_url);
-    if ($blog_data && !is_int($blog_data))
-        return substr($blog_data, 1);
+    // subdomain
+    if (w3_is_subdomain_install()) {
+        $blog_data = w3_blogmap_try_get_blog_data($host);
+        if (is_null($blog_data))
+            $GLOBALS['w3tc_blogmap_register_new_item'] = $host;
 
-    // we've faced new unknown yet url
+        return $blog_data;
+    } else {
+        // try subdir blog
+        $url = $host . $_SERVER['REQUEST_URI'];
+        $pos = strpos($url, '?');
+        if ($pos !== false)
+            $url = substr($url, 0, $pos);
 
-    if (isset($GLOBALS['current_blog']))
-        return $GLOBALS['current_blog']->blog_id;
+        $url = rtrim($url, '/');
+        $start_url = $url;
 
-    // use master config until data set and
-    $GLOBALS['w3tc_blogmap_register_new_item'] = $blog_home_url;
-    
-    return 0;
+        for (;;) {
+            $blog_data = w3_blogmap_try_get_blog_data($url);
+            if (!is_null($blog_data))
+                return $blog_data;
+            $pos = strrpos($url, '/');
+            if ($pos === false)
+                break;
+
+            $url = rtrim(substr($url, 0, $pos), '/');
+        }
+
+        $GLOBALS['w3tc_blogmap_register_new_item'] = $start_url;
+        return null;
+    }
+}
+
+
+
+function w3_blogmap_try_get_blog_data($url) {
+    $filename = w3_blogmap_filename($url);
+
+    if (file_exists($filename)) {
+        $data = file_get_contents($filename);
+        $blog_data = @eval($data);
+
+        if (is_array($blog_data) && isset($blog_data[$url]))
+            return $blog_data[$url];
+    }
+    return null;
 }
 
 /**
  * @return bool
  */
 function w3_force_master() {
+    global $w3_force_master;
+    if (!is_null($w3_force_master))
+        return $w3_force_master;
+
     if (!w3_is_multisite())
-        return false;
-    $blog_home_url = w3_generate_request_uri();
-    $blog_data = w3_get_blogmap_data($blog_home_url);
-    if (is_null($blog_data) || is_int($blog_data)) {
-        // use master config until data set and
-        $GLOBALS['w3tc_blogmap_register_new_item'] = $blog_home_url;
-        return true;
+        $w3_force_master = false;
+    else {
+        $blog_data = w3_blogmap_get_blog_data();
+        if (is_null($blog_data) || 
+            ($blog_data[0] != 'm' && $blog_data[0] != 'c'))
+            $w3_force_master = true;
+        else
+            $w3_force_master = ($blog_data[0] == 'm');
     }
-    return $blog_data[0] == 'm';
-}
 
-/**
- * @param $blog_home_url
- * @return null|string
- */
-function w3_get_blogmap_data($blog_home_url) {
-    $filename = w3_blogmap_filename($blog_home_url);
-
-    if (file_exists($filename)) {
-        $data = file_get_contents($filename);
-        $blog_data = @eval($data);
-
-        if (is_array($blog_data) && isset($blog_data[$blog_home_url]))
-            return $blog_data[$blog_home_url];
-    }
-    return null;
+    return $w3_force_master;
 }
 
 /**
@@ -659,6 +654,19 @@ function w3_get_home_url_regexp() {
     $regexp = w3_get_url_regexp($home_url);
 
     return $regexp;
+}
+
+/**
+ * Network installs returns wrong wp site path
+ * @return string
+ */
+function w3_get_wp_sitepath() {
+    if (w3_is_network()) {
+        global $current_site;
+        return $current_site->path;
+    } else {
+        return w3_get_site_path();
+    }
 }
 
 /**
@@ -979,7 +987,7 @@ function w3_can_check_rules() {
  * @return bool
  */
 function w3_can_cdn_purge($engine) {
-    return in_array($engine, array('ftp', 's3', 'cf', 'cf2', 'rscf', 'azure', 'netdna', 'cotendo', 
+    return in_array($engine, array('ftp', 's3', 'cf', 'cf2', 'rscf', 'azure', 'netdna', 'maxcdn', 'cotendo',
                                    'edgecast', 'akamai', 'att'));
 }
 
@@ -1162,10 +1170,42 @@ function w3_redirect($url = '', $params = array()) {
     w3_require_once(W3TC_INC_DIR . '/functions/url.php');
 
     $url = w3_url_format($url, $params);
-    do_action('w3_redirect');
+    if (function_exists('do_action'))
+        do_action('w3_redirect');
 
     @header('Location: ' . $url);
     exit();
+}
+
+/**
+ * Redirects to URL
+ *
+ * @param string $url
+ * @param array  $params
+ *
+ * @return string
+ */
+function w3_redirect_temp( $url = '', $params = array() ) {
+	w3_require_once( W3TC_INC_DIR . '/functions/url.php' );
+
+	$url = w3_url_format( $url, $params );
+    if (function_exists('do_action'))
+        do_action( 'w3_redirect' );
+
+	$status_code = 301;
+
+	$protocol = $_SERVER["SERVER_PROTOCOL"];
+	if ( 'HTTP/1.1' === $protocol ) {
+		$status_code = 307;
+	}
+
+	$text = get_status_header_desc( $status_code );
+	if ( !empty( $text ) ) {
+		$status_header = "$protocol $status_code $text";
+		@header( $status_header, true, $status_code );
+	}
+	@header( 'Location: ' . $url, true, $status_code );
+	exit();
 }
 
 /**
@@ -1174,7 +1214,7 @@ function w3_redirect($url = '', $params = array()) {
  * @param $engine
  * @return string
  */
-function w3_get_engine_name($engine) {
+function w3_get_engine_name($engine, $module = '') {
     switch ($engine) {
         case 'memcached':
             $engine_name = 'memcached';
@@ -1197,7 +1237,10 @@ function w3_get_engine_name($engine) {
             break;
 
         case 'file':
-            $engine_name = 'disk: basic';
+            if ($module == 'pgcache')
+                $engine_name = 'disk: basic';
+            else
+                $engine_name = 'disk';
             break;
 
         case 'file_generic':
@@ -1233,7 +1276,11 @@ function w3_get_engine_name($engine) {
             break;
 
         case 'netdna':
-            $engine_name = 'netdna / maxcdn';
+            $engine_name = 'netdna';
+            break;
+
+        case 'maxcdn':
+            $engine_name = 'maxcdn';
             break;
 
         case 'cotendo':
@@ -1415,7 +1462,7 @@ function w3_get_instance_id() {
 /**
  * Checks if post should be flushed or not. Returns true if it should not be flushed
  * @param $post
- * @param $module which cache module to check against (pgcache, varnish, cdncache, dbcache or objectcache)
+ * @param string $module which cache module to check against (pgcache, varnish, cdncache, dbcache or objectcache)
  * @param W3_Config $config
  * @return bool
  */

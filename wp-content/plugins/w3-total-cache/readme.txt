@@ -1,9 +1,9 @@
-﻿=== Plugin Name ===
+=== Plugin Name ===
 Contributors: fredericktownes
 Tags: wpo, web performance optimization, performance, availability, scaling, scalability, user experience, cache, caching, page cache, css cache, js cache, db cache, disk cache, disk caching, database cache, http compression, gzip, deflate, minify, cdn, content delivery network, media library, performance, speed, multiple hosts, css, merge, combine, unobtrusive javascript, compress, optimize, optimizer, javascript, js, cascading style sheet, plugin, yslow, yui, google, google rank, google page speed, mod_pagespeed, new relic, newrelic, aws, s3, cloudfront, sns, elasticache, rds, flash media server, amazon web services, cloud files, rackspace, akamai, max cdn, netdna, limelight, cloudflare, mod_cloudflare, microsoft, microsoft azure, iis, nginx, litespeed, apache, varnish, xcache, apc, eacclerator, wincache, mysql, w3 total cache, batcache, wp cache, wp super cache, quick cache, wp minify, bwp-minify, buddypress
-Requires at least: 2.8
+Requires at least: 3.2
 Tested up to: 3.5.1
-Stable tag: 0.9.2.9
+Stable tag: 0.9.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -202,7 +202,7 @@ If you specify CDN hostnames in your preferences, they'll be shown under the det
 
 = What is the purpose of the "modify attachment URLs" button? =
 
-If the domain name of your site has changed, this tool is useful in updating your posts and pages to use the current addresses. For example, if your site used to be www.domain.com, and you decided to change it to domain.com, the result would either be many "broken" images or many unncessary redirects (which slow down the visitor's browsing experience). You can use this tool to correct this and similar cases. Correcting the URLs of your images also allows the plugin to do a better job of determining which images are actually hosted with the CDN.
+If the domain name of your site has changed, this tool is useful in updating your posts and pages to use the current addresses. For example, if your site used to be www.domain.com, and you decided to change it to domain.com, the result would either be many "broken" images or many unnecessary redirects (which slow down the visitor's browsing experience). You can use this tool to correct this and similar cases. Correcting the URLs of your images also allows the plugin to do a better job of determining which images are actually hosted with the CDN.
 
 As always, it never hurts to back up your database first.
 
@@ -731,22 +731,65 @@ It's quite difficult to recall all of the innovators that have shared their thou
 Please reach out to all of these people and support their projects if you're so inclined.
 
 == Changelog ==
+= 0.9.2.10 =
+* Added NetDNA / MaxCDN dashboard widget
+* Added zone dropdown for NetDNA and MaxCDN CDNs
+* Added create pull zone for NetDNA and MaxCDN CDNs
+* Added notification(s) if incompatible plugins are detected
+* Added "Disable CDN on the following pages" setting
+* Added "Disable CDN on SSL pages" setting
+* Added late init support for page cache's fragment caching
+* Added POT file
+* Added translations NL, PL
+* Fixed setenvif issue in htaccess rules
+* Fixed failed rewrite (404) and not caching feeds in nginx
+* Fixed NetDNA / MaxCDN CNAME purging issues and "Test CDN" functionality
+* Fixed Azure container handling
+* Fixed New Relic verification
+* Fixed theme preview
+* Fixed wrong path issue with w3tc-wp-loader.php
+* Fixed auto mode of Minify and filename lengths
+* Fixed purging monthly archives with Varnish
+* Fixed insert, delete, update quries purging with database cache
+* Fixed HTTP compression when dynamic page fragments are used
+* Fixed PHP_STRING and other warnings
+* Fixed case sensitive header detection
+* Fixed HEAD request handling
+* Fixed event scheduling propagation in Multi Site
+* Improved CDN custom file paths
+* Improved handling of legacy config files
+* Improved NetDNA / MaxCDN alias, key, secret string handling (backwards compatible)
+* Improved auto mode for minify file naming which was causing unncessary issues
+* Improved handling of hardcoded WordPress paths
+* Improved the file management functionality (FTP support, file permissions etc)
+* Improved disk cache directory usage
+* Improved garbage collection of expired cache files for disk enhanced method of page caching
+* Improved drop-in verification, only adds required drop-ins
+* Improved New Relic error notification handling
+* Improved New Relic "app name" settings with Multi Site
+* Improved cacheable mime type detection in Page Cache
+* Improved ob_callback performance and reduced number of output buffer calls
+* Improved minify handling with CDN and Multi Site
+* Improved Object Cache purge policy performance
+* Improved Database Cache purge policy performance
+* Improved handling of request methods other than GET, POST for page caching
+* Removed setting of New Relic app name in htaccess; set manually or use the dynamic setting on the "Monitoring" tab
+
 = 0.9.2.9 =
 * Fixed saving settings issue with CloudFlare on activation
 * Fixed issue with DbCache and Object Cache flushing
 * Improved security for CloudFlare API calls
-* Improved security for mfunc, now disabled by default and requires security string in order to execute
+* Improved security for mfunc, now disabled by default and requires security string in order to execute: CVE-2013-2010
 * Improved behavior of GET string, used for detecting blogs in disk enhanced page caching mode for multi site to prevent redirect loops and other issues
 
 = 0.9.2.8 =
 * Fixed /tmp file creation issue when saving settings
-* Fixed an issue with auto minify
-* Fixed an issue with New Relic API key verification
+* Fixed auto minify
+* Fixed New Relic API key verification
 * Fixed uncommon issue with require ObjectCache failing
 * Fixed uncommon open_basedir verification issue
 * Improved notification handling by modified WordPress FileSystem API implementation
 * Added PHP file handling to support cases not covered by default WordPress FileSystem API
-
 
 = 0.9.2.7 =
 * Fixed config file write in more hosting environments
@@ -846,7 +889,7 @@ Please reach out to all of these people and support their projects if you're so 
 * Fixed unnecessary flushing with SSL, user agents and referrer not being activated
 * Fixed "Purge from Page Cache" not purging varnish or CDN when enabled
 * Fixed CSS minification and relative paths in external files
-* Fixed login / logout and compability with BuddyPress
+* Fixed login / logout and compatibility  with BuddyPress
 * Fixed flushing same posts many times if status is trashed or restored
 * Fixed handling of .html fancy permalinks with nginx
 * Fixed handling of missing xcache opcode cache
@@ -860,13 +903,13 @@ Please reach out to all of these people and support their projects if you're so 
 * Fixed uploading to CDNs multiple times even if force overwrite is disabled
 * Improved CloudFlare support: purging, dev mode, minification options, automatic IP range updates, rocket loader feature, security levels
 * Improved support for the Bad Behavior plugin
-* Improved object cache and MultiSite compability
+* Improved object cache and MultiSite compatibility
 * Improved flushing behavior with better post and pages detection. To change behavior hook into filter 'w3tc_flushable_post'
 * Improved XML user interface when using Page Cache Disc: Enhanced
 * Improved minify filename path generation
 * Improved minify custom placement usage
-* Improved PHP 5 compability by removing deprecated functionality
-* Improved WordPress 3.4 and 3.5 compability by removing deprecated functions usage
+* Improved PHP 5 compatibility by removing deprecated functionality
+* Improved WordPress 3.4 and 3.5 compatibility by removing deprecated functions usage
 * Improved plugin by removing unnecessary ob_starts
 * Improved minify usage by returning old minify files while generating new
 * Improved update procedure by removing need to manually deactivate and reactivate plugin
@@ -1241,5 +1284,8 @@ Please reach out to all of these people and support their projects if you're so 
 
 == Upgrade Notice ==
 
-= 0.9.2.9 =
-Thanks for using W3 Total Cache! As always, this update is very strongly recommended. This release addresses security issues for Cloudflare users as well as users that implement fragment caching via the mfunc functionality. For those using mfunc, temporarily disable page caching to allow yourself time to check the FAQ tab for new usage instructions; if you have a staging environment, that is the most convenient way to test prior to production roll out.
+= 0.9.2.10 =
+Thanks for using W3 Total Cache! As always, this update is very strongly recommended. This release includes performance improvements for every type of caching and numerous bug fixes and stability / compatbility improvements. Make sure to keep W3TC updated to ensure optimal reliability and security.
+
+= 0.9.2.8 =
+Thanks for using W3 Total Cache! As always, this update is very strongly recommended. The recent releases attempted to use WordPress' built in support for managing files and folders and clearly has not worked. Since W3TC is a caching plugin, file management is a critical issue that will cause lots of issues if it doesn't work perfectly. This release is hopefully the last attempt to restore file management back to the reliability of previous versions (0.9.2.4 etc). We realize that having *any* problems is not acceptable, but caching means changing server behavior so while this plugin is still in pre-release we're trying to work on learning the lessons.

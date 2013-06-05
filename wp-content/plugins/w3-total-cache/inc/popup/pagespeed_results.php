@@ -2,13 +2,13 @@
 <?php include W3TC_INC_DIR . '/popup/common/header.php'; ?>
 
 <?php if ($results): ?>
-<h4>Page Speed Score: <?php echo $results['score']; ?>/100</h4>
+<h4><?php _e('Page Speed Score:', 'w3-total-cache'); ?> <?php echo $results['score']; ?>/100</h4>
 
 <p>
     <input class="w3tc-widget-ps-nonce" type="hidden" value="<?php echo wp_create_nonce('w3tc'); ?>" />
-    <input class="button ps-expand-all" type="button" value="Expand all" />
-    <input class="button ps-collapse-all" type="button" value="Collapse all" />
-    <input class="button ps-refresh" type="button" value="Refresh analysis" />
+    <input class="button ps-expand-all" type="button" value="<?php _e('Expand all', 'w3-total-cache'); ?>" />
+    <input class="button ps-collapse-all" type="button" value="<?php _e('Collapse all', 'w3-total-cache'); ?>" />
+    <input class="button ps-refresh" type="button" value="<?php _e('Refresh analysis', 'w3-total-cache'); ?>" />
 </p>
 
 <ul class="ps-rules">
@@ -39,7 +39,7 @@
             <?php endif; ?>
 
             <?php if (count($rule['resolution'])): ?>
-            <p><strong>Resolution:</strong> <?php echo $rule['resolution']['header']; ?></p>
+				<p><strong><?php _e('Resolution:', 'w3-total-cache'); ?></strong> <?php echo $rule['resolution']['header']; ?></p>
             <?php endif; ?>
         </div>
         <?php endif; ?>
@@ -47,9 +47,9 @@
     <?php endforeach; ?>
 </ul>
 <?php else: ?>
-<p>Unable to fetch Page Speed results.</p>
+<p><?php _e('Unable to fetch Page Speed results.', 'w3-total-cache'); ?></p>
 <p>
-    <input class="button ps-refresh" type="button" value="Refresh Analysis" />
+    <input class="button ps-refresh" type="button" value="<?php _e('Refresh Analysis', 'w3-total-cache'); ?>" />
 </p>
 <?php endif; ?>
 

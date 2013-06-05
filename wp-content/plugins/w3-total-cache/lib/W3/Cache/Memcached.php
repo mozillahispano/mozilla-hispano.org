@@ -81,7 +81,7 @@ class W3_Cache_Memcached extends W3_Cache_Base {
      * @param string $group Used to differentiate between groups of cache values
      * @return boolean
      */
-    function set($key, &$var, $expire = 0, $group = '0') {
+    function set($key, $var, $expire = 0, $group = '0') {
         $key = $this->get_item_key($key);
 
         $var['key_version'] = $this->_get_key_version($group);

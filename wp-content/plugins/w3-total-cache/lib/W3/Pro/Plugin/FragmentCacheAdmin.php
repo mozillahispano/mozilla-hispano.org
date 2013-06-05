@@ -12,37 +12,6 @@ w3_require_once(W3TC_LIB_W3_DIR . '/Plugin.php');
  * Class W3_Plugin_FragmentCacheAdmin
  */
 class W3_Pro_Plugin_FragmentCacheAdmin extends W3_Plugin {
-
-    function activate() {
-        $this->schedule();
-    }
-
-    function deactivate() {
-        $this->unschedule();
-    }
-
-    /**
-     * Schedules events
-     */
-    function schedule() {
-        if ($this->_config->get_boolean('fragmentcache.enabled') && $this->_config->get_string('fragmentcache.engine') == 'file') {
-            if (!wp_next_scheduled('w3_fragmentcache_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 'w3_fragmentcache_cleanup', 'w3_fragmentcache_cleanup');
-            }
-        } else {
-            $this->unschedule();
-        }
-    }
-
-    /**
-     * Unschedules events
-     */
-    function unschedule() {
-        if (wp_next_scheduled('w3_fragmentcache_cleanup')) {
-            wp_clear_scheduled_hook('w3_fragmentcache_cleanup');
-        }
-    }
-
     function cleanup() {
         $engine = $this->_config->get_string('fragmentcache.engine');
 
@@ -58,9 +27,5 @@ class W3_Pro_Plugin_FragmentCacheAdmin extends W3_Plugin {
                 $w3_cache_file_cleaner->clean();
                 break;
         }
-    }
-
-    function get_required_rules() {
-        return null;
     }
 }

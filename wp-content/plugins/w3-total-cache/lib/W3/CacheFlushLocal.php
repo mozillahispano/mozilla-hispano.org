@@ -295,9 +295,8 @@ class W3_CacheFlushLocal {
      * @return mixed
      */
     function prime_post($post_id) {
-        /** @var $dispatcher W3_Dispatcher */
-        $dispatcher = w3_instance('W3_Dispatcher');
-        return $dispatcher->prime_post($post_id);
+        /** @var $pgcache W3_Plugin_PgCacheAdmin */
+        $pgcache = w3_instance('W3_Plugin_PgCacheAdmin');
+        return $pgcache->prime_post($post_id);
     }
-
 }

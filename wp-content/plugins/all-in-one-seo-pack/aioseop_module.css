@@ -147,7 +147,19 @@
 .aioseop_advert p {
 	margin: 25px 0 25px 0;
 }
+/*
 .widget, #widget-list .widget-top, .postbox, #titlediv, .aioseop_options_wrapper .postarea, .stuffbox {
+	border-color: #DFDFDF;
+	-moz-box-shadow: inset 0 1px 0 #fff;
+	-webkit-box-shadow: inset 0 1px 0 #fff;
+	box-shadow: inset 0 1px 0 #fff;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+*/
+.aioseop_options_wrapper .postarea {
 	border-color: #DFDFDF;
 	-moz-box-shadow: inset 0 1px 0 #fff;
 	-webkit-box-shadow: inset 0 1px 0 #fff;
@@ -229,9 +241,22 @@
 	height: 30px;
 }
 
+#aioseop-list #mce-EMAIL {
+	margin-top: 5px;
+	width: 250px;
+}
+
+.aioseop_top {
+	margin: 10px 10px 0px 0px;
+/*	margin: 10px 477px 0px 0px; */
+}
+
+.aioseop_top #aioseop-list {
+	margin-bottom: 0px;
+}
 .aioseop_right_sidebar {
 	float: right;
-	margin-top: 30px;
+	margin-top: 35px;
 }
 /*
 #wpbody-content {
@@ -395,7 +420,7 @@ only screen and (                min-resolution: 1.5dppx) {
 	min-width: 160px;
 /*	max-width: 900px; */
 }
-div.preview_snippet {
+#aiosp div.preview_snippet {
 	border: 1px solid #ebebeb;
 	padding: 15px 15px 20px 7px;
 	background-color: #fff;
@@ -483,15 +508,12 @@ div#aioseop_snippet > div > span {
 	vertical-align: text-bottom;
 	margin: 15px 0 0 0;
 }
-
 #aiosp {
 	width: 100%;
 }
-
 .aioseop_input.aioseop_top_label .aioseop_option_input {
 	margin: 0 0 10px 0;
 }
-
 .aioseop_option_docs {
 	width: 98%;
 	display: none;
@@ -514,7 +536,6 @@ div#aioseop_snippet > div > span {
 .aioseop_help_text ul {
 	margin: 15px 0 0 20px;
 }
-
 .aioseop_help_text ul li {
 	line-height: 20px;
 	margin: 0;
@@ -522,7 +543,6 @@ div#aioseop_snippet > div > span {
 .aioseop_sidebar #side-sortables {
 	width: 98%;
 }
-
 .aioseop_tabs {
 	padding-top: 6px;
 }
@@ -590,6 +610,7 @@ div#aioseop_snippet > div > span {
 form#aiosp_settings_form, .aioseop_tabs_div {
 	padding-right: 477px;
 }
+/*
 .wrap > h2 {
 	padding-bottom: 14px;
 }
@@ -600,6 +621,7 @@ div.wrap > form table.form-table {
 div.wrap > div#message.error {
 	max-width: 540px;
 }
+*/
 #aiosp_settings_form ul.sfwd_debug_settings li strong {
 	display: block;
 	float: left;

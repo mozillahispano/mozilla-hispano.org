@@ -26,11 +26,11 @@ class W3_Minify {
     var $_config_admin = null;
 
     /**
-     * Tracks if an error has occured.
+     * Tracks if an error has occurred.
      *
      * @var bool
      */
-    var $_error_occured = false;
+    var $_error_occurred = false;
 
     /**
      * Returns instance. for backward compatibility with 0.9.2.3 version of /wp-content files
@@ -59,6 +59,8 @@ class W3_Minify {
     /**
      * Runs minify
      *
+     * @param string|null $file
+     *
      * @return void
      */
     function process($file = NULL) {
@@ -73,6 +75,35 @@ class W3_Minify {
             echo 'OK';
             exit();
         }
+
+        $rewrite_test = W3_Request::get_string('test_file');
+
+        if ($rewrite_test) {
+            $cache = $this->_get_cache();
+            header('Content-type: text/css');
+
+            if ($cache->store(basename($rewrite_test), 'content ok')) {
+                if ((function_exists('gzencode') &&
+                    $this->_config->get_boolean('browsercache.enabled') &&
+                    $this->_config->get_boolean('browsercache.cssjs.compression')))
+                    if (!$cache->store(basename($rewrite_test) . '.gzip', gzencode('content ok'))) {
+                        echo 'error storing';
+                        exit();
+                    }
+
+                if ($this->_config->get_string('minify.engine') != 'file') {
+                    if ($cache->fetch(basename($rewrite_test)) == 'content ok') {
+                        echo 'content ok';
+                    } else
+                        echo 'error storing';
+                } else
+                    echo 'retry';
+            } else {
+                echo 'error storing';
+            }
+            exit();
+        }
+
         if (is_null($file))
             $file = W3_Request::get_string('file');
 
@@ -225,7 +256,7 @@ class W3_Minify {
             $this->error($exception->getMessage());
         }
 
-        if (!$this->_error_occured && $this->_config_admin->get_boolean('notes.minify_error')) {
+        if (!$this->_error_occurred && $this->_config_admin->get_boolean('notes.minify_error')) {
             $error_file = $this->_config_admin->get_string('minify.error.file');
             if ($error_file == $file) {
                 $this->_config_admin->set('notes.minify_error', false);
@@ -248,8 +279,8 @@ class W3_Minify {
     /**
      * Creates file with content of minify file
      * 
-     * @param type $file
-     * @param type $file_name 
+     * @param string $file
+     * @param string $file_name
      */
     function store_to_file($file, $file_name) {
         ob_start();
@@ -410,35 +441,10 @@ class W3_Minify {
                 if (is_a($file, 'Minify_Source')) {
                     $path = $file->filepath;
                 } else {
-                    $path = $document_root . '/' . $file;
+                    $path = rtrim($document_root,'/') . '/' . ltrim($file, '/');
                 }
 
                 $sources[] = $path;
-            }
-        }
-
-        return $sources;
-    }
-
-    /**
-     * Returns array of custom sources
-     *
-     * @param string $hash
-     * @param string $type
-     * @return array
-     */
-    function get_sources_custom($hash, $type) {
-        $sources = array();
-        $files = $this->get_custom_files($hash, $type);
-
-        if (is_array($files)) {
-            $document_root = w3_get_document_root();
-
-            foreach ($files as $file) {
-                if (is_string($file))
-                    $sources[] = $document_root . '/' . $file;
-                else
-                    $sources[] = $file;
             }
         }
 
@@ -559,7 +565,7 @@ class W3_Minify {
     function error($error, $handle = true, $status = 400) {
         $debug = $this->_config->get_boolean('minify.debug');
 
-        $this->_error_occured = true;
+        $this->_error_occurred = true;
 
         if ($debug) {
             $this->log($error);
@@ -727,13 +733,13 @@ class W3_Minify {
     }
 
     /**
-     * Send E-mail notification when error occured
+     * Send E-mail notification when error occurred
      *
      * @return boolean
      */
     function _send_notification() {
         $from_email = 'wordpress@' . w3_get_domain($_SERVER['SERVER_NAME']);
-        $from_name = get_option('blogname');
+        $from_name = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
         $to_name = $to_email = get_option('admin_email');
         $body = @file_get_contents(W3TC_INC_DIR . '/email/minify_error_notification.php');
 
@@ -933,7 +939,7 @@ class W3_Minify {
 
     /**
      * Compresses an array of files into a filename containing all files.
-     * If filename length exceeds 251 characters or value defined in minify.auto.filename_length when gzcompress/gzdeflate is available
+     * If filename length exceeds 246 characters or value defined in minify.auto.filename_length when gzcompress/gzdeflate is available
      * multiple compressed filenames will be returned
      * @param $files
      * @param $type
@@ -974,11 +980,11 @@ class W3_Minify {
         $imploded = implode(',',$input);
         $config = w3_instance('W3_Config');
         if (!W3TC_WIN) {
-            $fn_length = $config->get_integer('minify.auto.filename_length',150);
-            $fn_length = $fn_length>150 ? 150 : $fn_length;
+            $fn_length = $config->get_integer('minify.auto.filename_length',246);
+            $fn_length = $fn_length>246 ? 246 : $fn_length;
         } else {
             $dir = w3_cache_blog_dir('minify');
-            $fn_length = 255-strlen($dir);
+            $fn_length = 246-strlen($dir);
         }
         $compressed = $this->_compress($imploded);
         if (strlen($compressed) >= $fn_length) {
@@ -997,8 +1003,8 @@ class W3_Minify {
 
     /**
      * Make a a list where each value is an array that consists of length verified filenames
-     * @param $filename_list
-     * @param $length maximum length of imploded filenames
+     * @param string[] $filename_list
+     * @param int $length maximum length of imploded filenames
      * @return array
      */
     private function _combine_and_check_filenames($filename_list, $length) {
@@ -1094,7 +1100,7 @@ class W3_Minify {
      */
     private function _minify_path_replacements() {
         return array(
-            ltrim(str_replace(w3_get_document_root(), '', w3_path(get_stylesheet_directory())), '/'),
+            ltrim(str_replace(w3_get_document_root(), '', w3_path(get_theme_root())), '/'),
             ltrim(str_replace(w3_get_document_root(), '', w3_path(WP_PLUGIN_DIR)), '/'),
             ltrim(str_replace(w3_get_document_root(), '', w3_path(WPMU_PLUGIN_DIR)), '/'),
             WPINC . '/js/jquery',

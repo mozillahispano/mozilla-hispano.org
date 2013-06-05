@@ -117,7 +117,7 @@ class Minify_ImportProcessor {
             // failed. leave in place for CSS, comment for JS
             return self::$_isCss
                 ? $m[0]
-                : "/* Minify_ImportProcessor could not fetch '{$file}' */";;
+                : "/* Minify_ImportProcessor could not fetch '{$file}' */";
         }
         return (!self::$_isCss || preg_match('@(?:^$|\\ball\\b)@', $mediaList))
             ? $content
