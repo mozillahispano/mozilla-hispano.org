@@ -1,10 +1,10 @@
 <?php
 class add_from_server_settings {
 	var $main; // main Add From Server instance.
-	function __construct($afs) {
+	function __construct( &$afs ) {
 		$this->main = $afs;
 	}
-	
+
 	function render() {
 		echo '<div class="wrap">';
 		screen_icon('options-general');

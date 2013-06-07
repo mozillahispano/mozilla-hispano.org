@@ -781,6 +781,8 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 					$this->setting_options( $k ); // hack -- make sure this runs anyhow, for now -- pdb
 					add_action( 'edit_post',		array( $this, 'save_post_data' ) );
 					add_action( 'publish_post',		array( $this, 'save_post_data' ) );
+					add_action( 'add_attachment',	array( $this, 'save_post_data' ) );
+					add_action( 'edit_attachment',	array( $this, 'save_post_data' ) );
 					add_action( 'save_post',		array( $this, 'save_post_data' ) );
 					add_action( 'edit_page_form',	array( $this, 'save_post_data' ) );
 					if ( isset( $v['display'] ) && !empty( $v['display'] ) ) {
@@ -895,7 +897,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			$buf = '';
 			if ( !empty( $options['count'] ) ) {
 				$n++;
-				$attr .= " onKeyDown='countChars(document.post.$name,document.post.length$n)' onKeyUp='countChars(document.post.$name,document.post.length$n)'";
+				$attr .= " onKeyDown='countChars(document.post.$name,document.post.{$prefix}length$n)' onKeyUp='countChars(document.post.$name,document.post.{$prefix}length$n)'";
 			}
 			if ( isset( $opts['id'] ) ) $attr .= " id=\"{$opts['id']}\" ";
 			switch ( $options['type'] ) {
@@ -919,7 +921,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 				$size = 60;
 				if ( isset( $options['size'] ) ) $size = $options['size'];
 				elseif ( isset( $options['rows'] ) && isset( $options['cols'] ) ) $size = $options['rows'] * $options['cols'];				
-				$buf .= "<br /><input readonly type='text' name='length$n' size='3' maxlength='3' style='width:53px;height:23px;margin:0px;padding:0px 0px 0px 10px;' value='" . strlen($value) . "' />"
+				$buf .= "<br /><input readonly type='text' name='{$prefix}length$n' size='3' maxlength='3' style='width:53px;height:23px;margin:0px;padding:0px 0px 0px 10px;' value='" . strlen($value) . "' />"
 					 . sprintf( __(' characters. Most search engines use a maximum of %s chars for the %s.', 'all_in_one_seo_pack'), $size, strtolower( $options['name'] ) );
 			}
 			return $buf;

@@ -3,7 +3,7 @@ Contributors: fredericktownes
 Tags: wpo, web performance optimization, performance, availability, scaling, scalability, user experience, cache, caching, page cache, css cache, js cache, db cache, disk cache, disk caching, database cache, http compression, gzip, deflate, minify, cdn, content delivery network, media library, performance, speed, multiple hosts, css, merge, combine, unobtrusive javascript, compress, optimize, optimizer, javascript, js, cascading style sheet, plugin, yslow, yui, google, google rank, google page speed, mod_pagespeed, new relic, newrelic, aws, s3, cloudfront, sns, elasticache, rds, flash media server, amazon web services, cloud files, rackspace, akamai, max cdn, netdna, limelight, cloudflare, mod_cloudflare, microsoft, microsoft azure, iis, nginx, litespeed, apache, varnish, xcache, apc, eacclerator, wincache, mysql, w3 total cache, batcache, wp cache, wp super cache, quick cache, wp minify, bwp-minify, buddypress
 Requires at least: 3.2
 Tested up to: 3.5.1
-Stable tag: 0.9.2.10
+Stable tag: 0.9.2.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -731,6 +731,20 @@ It's quite difficult to recall all of the innovators that have shared their thou
 Please reach out to all of these people and support their projects if you're so inclined.
 
 == Changelog ==
+
+= 0.9.2.11 =
+* Added option to disable the Minify Auto filename length test and specify manual value for hosting environments like Windows that require it
+* Fixed NetDNA / MaxCDN authorization key issues
+* Fixed OAuth name conflict for NetDNA / MaxCDN
+* Fixed CDN and CNAME replacement for minify URLs
+* Fixed WordPress sub-directory issue
+* Fixed handling of moved / renamed wp-content and plugin directory
+* Fixed Multisite issue when CDN is enabled and Minify is in auto mode and network-wide settings are applied
+* Fixed late init handling
+* Fixed handling of HTML debug comments being incorrectly inserted into documents
+* Improved minify auto file naming for single install
+* Improved page caching performance in NFS-based hosting environments
+
 = 0.9.2.10 =
 * Added NetDNA / MaxCDN dashboard widget
 * Added zone dropdown for NetDNA and MaxCDN CDNs
@@ -1283,6 +1297,9 @@ Please reach out to all of these people and support their projects if you're so 
 * Initial release
 
 == Upgrade Notice ==
+
+= 0.9.2.11 =
+Thanks for using W3 Total Cache! As always, this update is very strongly recommended. This release includes various fixes for MaxCDN and minify users. As always there are general stability / compatibility improvements. Make sure to test in a sandbox or staging environment and report any issues via the bug submission form available on the support tab of the plugin.
 
 = 0.9.2.10 =
 Thanks for using W3 Total Cache! As always, this update is very strongly recommended. This release includes performance improvements for every type of caching and numerous bug fixes and stability / compatbility improvements. Make sure to keep W3TC updated to ensure optimal reliability and security.

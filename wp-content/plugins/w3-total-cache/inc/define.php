@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('W3TC', true);
-define('W3TC_VERSION', '0.9.2.10');
+define('W3TC_VERSION', '0.9.2.11');
 define('W3TC_POWERED_BY', 'W3 Total Cache/' . W3TC_VERSION);
 define('W3TC_EMAIL', 'w3tc@w3-edge.com');
 define('W3TC_TEXT_DOMAIN', 'w3-total-cache');
@@ -108,6 +108,15 @@ function w3_is_xml($content) {
     $content = ltrim($content, "\x00\x09\x0A\x0D\x20\xBB\xBF\xEF");
 
     return (stripos($content, '<?xml') === 0 || stripos($content, '<html') === 0 || stripos($content, '<!DOCTYPE') === 0);
+}
+
+/**
+ * If content can handle HTML comments, can disable printout per request using filter 'w3tc_can_print_comment'
+ * @param $buffer
+ * @return bool
+ */
+function w3_can_print_comment(&$buffer) {
+    return apply_filters('w3tc_can_print_comment', w3_is_xml($buffer) && !defined('DOING_AJAX'));
 }
 
 /*

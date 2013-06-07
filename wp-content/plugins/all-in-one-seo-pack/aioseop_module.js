@@ -93,20 +93,6 @@ function aioseop_do_condshow( condshow ) {
 	}	
 }
 
-function aioseop_show_pointer( handle, value ) {
-	if ( typeof( jQuery( value.pointer_target ).pointer) != 'undefined' ) {
-		jQuery(value.pointer_target).pointer({
-					content    : value.pointer_text,
-					close  : function() {
-						jQuery.post( ajaxurl, {
-							pointer: handle,
-							action: 'dismiss-wp-pointer'
-						});
-					}
-				}).pointer('open');
-	}
-}
-
 jQuery(document).ready(function(){
 if (typeof aioseop_data != 'undefined') {
 	if ( typeof aioseop_data.condshow != 'undefined' ) {

@@ -61,17 +61,17 @@ abstract class OAuthClientBase
      * @return array
      */
     private function _get_auth_request_tokens(){
-        $test_consumer = new OAuthConsumer($this->key, $this->secret, NULL);
+        $test_consumer = new W3tcOAuthConsumer($this->key, $this->secret, NULL);
 
         //prepare to get request token
-        $sig_method = new OAuthSignatureMethod_HMAC_SHA1();
+        $sig_method = new W3tcOAuthSignatureMethod_HMAC_SHA1();
         $parsed = parse_url($this->request_token_url);
         $params = array('callback' => $this->base_url);
 
         if (isset($parsed['query']))
             parse_str($parsed['query'], $params);
 
-        $req_req = OAuthRequest::from_consumer_and_token($test_consumer, NULL, "GET", W3TC_CDN_OAUTH_REQUEST_TOKEN_URL, $params);
+        $req_req = W3tcOAuthRequest::from_consumer_and_token($test_consumer, NULL, "GET", W3TC_CDN_OAUTH_REQUEST_TOKEN_URL, $params);
         $req_req->sign_request($sig_method, $test_consumer, NULL);
 
         $page = wp_remote_get($req_req->to_url());

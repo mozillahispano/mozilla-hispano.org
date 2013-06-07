@@ -298,7 +298,7 @@ class W3_PgCache {
             /**
              * Append debug info
              */
-            if ($this->_debug) {
+            if ($this->_debug && w3_can_print_comment($buffer)) {
                 $time_total = w3_microtime() - $this->_time_start;
                 $debug_info = $this->_get_debug_info(true, '', true, $time_total);
                 $content .= "\r\n\r\n" . $debug_info;
@@ -418,7 +418,7 @@ class W3_PgCache {
                 $this->_send_headers($is_404, $time, $etag, $compression, $headers);
 
                 if ($raw) {
-                    if ($this->_debug) {
+                    if ($this->_debug && w3_can_print_comment($buffer)) {
                         /**
                          * Set page key for debug
                          */
@@ -441,7 +441,7 @@ class W3_PgCache {
                         $this->_compress($buffer, $compression);
                     }
                 }
-            } elseif ($this->_debug) {
+            } elseif ($this->_debug && w3_can_print_comment($buffer)) {
                 $mobile_group = $this->_get_mobile_group();
                 $referrer_group = $this->_get_referrer_group();
                 $encryption = $this->_get_encryption();

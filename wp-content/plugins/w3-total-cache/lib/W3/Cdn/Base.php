@@ -149,12 +149,6 @@ class W3_Cdn_Base {
                     $domain = $domains[0];
                     break;
 
-                /**
-                 * Reserved JS in head
-                 */
-                case (isset($domains[1]) && $this->_is_js($path)):
-                    $domain = $domains[1];
-                    break;
 
                 /**
                  * Reserved JS after body
@@ -168,6 +162,13 @@ class W3_Cdn_Base {
                  */
                 case (isset($domains[3]) && $this->_is_js_footer($path)):
                     $domain = $domains[3];
+                    break;
+
+                /**
+                 * Reserved JS in head, moved here due to greedy regex
+                 */
+                case (isset($domains[1]) && $this->_is_js($path)):
+                    $domain = $domains[1];
                     break;
 
                 default:
@@ -503,7 +504,7 @@ class W3_Cdn_Base {
      * @return boolean
      */
     function _is_css($path) {
-        return preg_match('~[a-z0-9\-_]+\.include\.[0-9]+\.css$~', $path);
+        return preg_match('~[a-zA-Z0-9\-_]*(\.include\.[0-9]+)?\.css$~', $path);
     }
 
     /**
@@ -513,7 +514,8 @@ class W3_Cdn_Base {
      * @return boolean
      */
     function _is_js($path) {
-        return preg_match('~[a-z0-9\-_]+\.include\.[a-z0-9]+\.js$~', $path);
+        return preg_match('~([a-z0-9\-_]+(\.include\.[a-z0-9]+)\.js)$~', $path) ||
+        preg_match('~[\w\d\-_]+\.js~', $path);
     }
 
     /**
@@ -523,7 +525,7 @@ class W3_Cdn_Base {
      * @return boolean
      */
     function _is_js_body($path) {
-        return preg_match('~[a-z0-9\-_]+\.include-body\.[a-z0-9]+\.js$~', $path);
+        return preg_match('~[a-z0-9\-_]+(\.include-body\.[a-z0-9]+)\.js$~', $path);
     }
 
     /**
@@ -533,7 +535,7 @@ class W3_Cdn_Base {
      * @return boolean
      */
     function _is_js_footer($path) {
-        return preg_match('~[a-z0-9\-_]+\.include-footer\.[a-z0-9]+\.js$~', $path);
+        return preg_match('~[a-z0-9\-_]+(\.include-footer\.[a-z0-9]+)\.js$~', $path);
     }
 
     /**
