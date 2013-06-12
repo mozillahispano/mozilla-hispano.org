@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: W3 Total Cache\n"
-"POT-Creation-Date: 2013-05-13 15:46+0100\n"
-"PO-Revision-Date: 2013-05-13 15:46+0100\n"
+"POT-Creation-Date: 2013-05-16 16:07+0100\n"
+"PO-Revision-Date: 2013-05-16 16:07+0100\n"
 "Last-Translator: Andreas Nurbo <andreas@cyonitesystems.com>\n"
 "Language-Team: W3 EDGE\n"
 "Language: en_US\n"
@@ -868,7 +868,7 @@ msgstr ""
 #: inc/options/general.php:735 inc/options/general.php:765
 #: inc/options/minify.php:76 inc/options/minify.php:132
 #: inc/options/minify.php:286 inc/options/minify.php:403
-#: inc/options/minify.php:501 inc/options/mobile.php:83
+#: inc/options/minify.php:504 inc/options/mobile.php:83
 #: inc/options/objectcache.php:83 inc/options/pgcache.php:95
 #: inc/options/pgcache.php:142 inc/options/pgcache.php:229
 #: inc/options/pgcache.php:390 inc/options/referrer.php:83
@@ -895,8 +895,8 @@ msgstr ""
 #: inc/options/browsercache.php:137 inc/options/browsercache.php:228
 #: inc/options/browsercache.php:303 inc/options/cdn.php:208
 #: inc/options/cdn.php:217 inc/options/dbcache.php:53
-#: inc/options/dbcache.php:61 inc/options/minify.php:440
-#: inc/options/minify.php:449 inc/options/objectcache.php:41
+#: inc/options/dbcache.php:61 inc/options/minify.php:443
+#: inc/options/minify.php:452 inc/options/objectcache.php:41
 #: inc/options/objectcache.php:49 inc/options/pgcache.php:111
 #: inc/options/pgcache.php:275 inc/options/pgcache.php:285
 #: inc/options/pgcache.php:292 inc/options/pro/fragmentcache.php:63
@@ -1247,7 +1247,7 @@ msgid ""
 "currentblog&gt;/."
 msgstr ""
 
-#: inc/options/cdn.php:273 inc/options/minify.php:478
+#: inc/options/cdn.php:273 inc/options/minify.php:481
 #: inc/options/pgcache.php:306
 msgid "Rejected user agents:"
 msgstr ""
@@ -1277,7 +1277,7 @@ msgid ""
 msgstr ""
 
 #: inc/options/cdn.php:305 inc/options/install.php:269
-#: inc/options/minify.php:505 inc/options/mobile.php:87
+#: inc/options/minify.php:508 inc/options/mobile.php:87
 #: inc/options/support/form.php:6
 msgid "Note(s):"
 msgstr ""
@@ -1384,7 +1384,7 @@ msgid ""
 "Enabling this option is recommended to maintain default WordPress behavior."
 msgstr ""
 
-#: inc/options/dbcache.php:38 inc/options/minify.php:423
+#: inc/options/dbcache.php:38 inc/options/minify.php:426
 #: inc/options/objectcache.php:27 inc/options/pgcache.php:237
 #: inc/options/pro/fragmentcache.php:50
 msgid ""
@@ -1392,13 +1392,13 @@ msgid ""
 "port:"
 msgstr ""
 
-#: inc/options/dbcache.php:42 inc/options/minify.php:429
+#: inc/options/dbcache.php:42 inc/options/minify.php:432
 #: inc/options/objectcache.php:31 inc/options/pgcache.php:245
 #: inc/options/pro/fragmentcache.php:54
 msgid "Test"
 msgstr ""
 
-#: inc/options/dbcache.php:44 inc/options/minify.php:431
+#: inc/options/dbcache.php:44 inc/options/minify.php:434
 #: inc/options/objectcache.php:33 inc/options/pgcache.php:247
 #: inc/options/pro/fragmentcache.php:56
 msgid ""
@@ -1417,13 +1417,13 @@ msgid ""
 "the value, the larger the cache."
 msgstr ""
 
-#: inc/options/dbcache.php:58 inc/options/minify.php:445
+#: inc/options/dbcache.php:58 inc/options/minify.php:448
 #: inc/options/objectcache.php:46 inc/options/pgcache.php:281
 #: inc/options/pro/fragmentcache.php:68
 msgid "Garbage collection interval:"
 msgstr ""
 
-#: inc/options/dbcache.php:62 inc/options/minify.php:450
+#: inc/options/dbcache.php:62 inc/options/minify.php:453
 #: inc/options/objectcache.php:50 inc/options/pgcache.php:286
 #: inc/options/pro/fragmentcache.php:71
 msgid ""
@@ -2831,61 +2831,81 @@ msgstr ""
 msgid "Add a style sheet"
 msgstr ""
 
-#: inc/options/minify.php:436
+#: inc/options/minify.php:411
+msgid "Disable Minify Auto automatic filename test"
+msgstr ""
+
+#: inc/options/minify.php:412
+msgid ""
+"Disables functionality that tries to find optimal filename length for Minify "
+"Auto files. Needs to be checked to be able to set manual filename length "
+"below."
+msgstr ""
+
+#: inc/options/minify.php:416
+msgid ""
+"Maximum filename length to enter is 246. Change this value to decrease or\n"
+"                increase the number of minified files that are generated.\n"
+"                The more JS/CSS files you have the more files will be "
+"generated since the filenames are combined in\n"
+"                the filename. This is only applicable when using Minify Auto."
+msgstr ""
+
+#: inc/options/minify.php:439
 msgid "Update external files every:"
 msgstr ""
 
-#: inc/options/minify.php:441
+#: inc/options/minify.php:444
 msgid ""
 "Specify the interval between download and update of external files in the "
 "minify cache. Hint: 6 hours is 21600 seconds. 12 hours is 43200 seconds. 24 "
 "hours is 86400 seconds."
 msgstr ""
 
-#: inc/options/minify.php:454
+#: inc/options/minify.php:457
 msgid "Never minify the following pages:"
 msgstr ""
 
-#: inc/options/minify.php:458
+#: inc/options/minify.php:461
 msgid "Always ignore the specified pages / directories."
 msgstr ""
 
-#: inc/options/minify.php:462
+#: inc/options/minify.php:465
 msgid "Never minify the following JS files:"
 msgstr ""
 
-#: inc/options/minify.php:466
+#: inc/options/minify.php:469
 msgid "Always ignore the specified JS files."
 msgstr ""
 
-#: inc/options/minify.php:470
+#: inc/options/minify.php:473
 msgid "Never minify the following CSS files:"
 msgstr ""
 
-#: inc/options/minify.php:474
+#: inc/options/minify.php:477
 msgid "Always ignore the specified CSS files."
 msgstr ""
 
-#: inc/options/minify.php:483
+#: inc/options/minify.php:486
 msgid "Specify user agents that will never receive minified content."
 msgstr ""
 
-#: inc/options/minify.php:488
+#: inc/options/minify.php:491
 msgid "Include external files/libaries:"
 msgstr ""
 
-#: inc/options/minify.php:493
+#: inc/options/minify.php:496
 msgid "Specify external files/libraries that should be combined."
 msgstr ""
 
-#: inc/options/minify.php:510
+#: inc/options/minify.php:513
 msgid ""
 "Enable <acronym title=\"Hypertext Transfer Protocol\">HTTP</acronym> "
 "compression in the \"Cascading Style Sheets &amp; JavaScript\" section on <a "
 "href=\"admin.php?page=w3tc_browsercache\">Browser Cache</a> Settings tab."
 msgstr ""
 
-#: inc/options/minify.php:511
+#: inc/options/minify.php:514
 msgid ""
 "The <acronym title=\"Time to Live\">TTL</acronym> of page cache files is set "
 "via the \"Expires header lifetime\" field in the \"Cascading Style Sheets "
@@ -3816,14 +3836,20 @@ msgstr ""
 msgid "Select the pull zone to use with this site."
 msgstr ""
 
-#: inc/options/cdn/maxcdn.php:18 inc/options/cdn/maxcdn.php:20
-#: inc/options/cdn/netdna.php:18 inc/options/cdn/netdna.php:20
+#: inc/options/cdn/maxcdn.php:18 inc/options/cdn/netdna.php:18
 msgid "Create pull zone:"
 msgstr ""
 
-#: inc/options/cdn/maxcdn.php:18 inc/options/cdn/maxcdn.php:20
-#: inc/options/cdn/netdna.php:18 inc/options/cdn/netdna.php:20
+#: inc/options/cdn/maxcdn.php:18 inc/options/cdn/netdna.php:18
 msgid "Create new pull zone:"
+msgstr ""
+
+#: inc/options/cdn/maxcdn.php:20 inc/options/cdn/netdna.php:20
+msgid "Create pull zone"
+msgstr ""
+
+#: inc/options/cdn/maxcdn.php:20 inc/options/cdn/netdna.php:20
+msgid "Create new pull zone"
 msgstr ""
 
 #: inc/options/cdn/maxcdn.php:22 inc/options/cdn/netdna.php:22
@@ -3847,7 +3873,8 @@ msgid ""
 msgstr ""
 
 #: inc/options/cdn/maxcdn.php:36 inc/options/cdn/netdna.php:36
-#: inc/widget/maxcdn_signup.php:13 lib/W3/Plugin/TotalCacheAdmin.php:1394
+#: inc/widget/maxcdn_signup.php:13 inc/widget/netdna_signup.php:17
+#: lib/W3/Plugin/TotalCacheAdmin.php:1394
 #: lib/W3/Plugin/TotalCacheAdmin.php:1414
 msgid "Authorization key"
 msgstr ""
@@ -4787,7 +4814,7 @@ msgid ""
 "CDN:"
 msgstr ""
 
-#: inc/widget/maxcdn_signup.php:17
+#: inc/widget/maxcdn_signup.php:17 inc/widget/netdna_signup.php:21
 msgid "Save key"
 msgstr ""
 
@@ -5305,7 +5332,7 @@ msgid ""
 "            when CloudFlare is removed."
 msgstr ""
 
-#: lib/W3/Plugin/MinifyAdmin.php:110
+#: lib/W3/Plugin/MinifyAdmin.php:112
 #, php-format
 msgid ""
 "Minify Auto encountered an error. The filename length value is most likely "

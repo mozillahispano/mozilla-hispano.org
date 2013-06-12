@@ -134,7 +134,7 @@ class add_from_server {
 			return;
 
 		include 'class.add-from-server-settings.php';
-		$this->settings = new add_from_server_settings(&$this);
+		$this->settings = new add_from_server_settings($this);
 		$this->settings->render();
 	}
 
@@ -248,12 +248,12 @@ class add_from_server {
 				$filename = $cwd . $file;
 				$id = $this->handle_import_file($filename, $post_id, $import_date);
 				if ( is_wp_error($id) ) {
-					echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'add-from-server'), $file, $id->get_error_message() ) . '</p></div>';
+					echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'add-from-server'), esc_html($file), $id->get_error_message() ) . '</p></div>';
 				} else {
 					//increment the gallery count
 					if ( $import_to_gallery )
 						echo "<script type='text/javascript'>jQuery('#attachments-count').text(1 * jQuery('#attachments-count').text() + 1);</script>";
-					echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'add-from-server'), $file) . '</p></div>';
+					echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'add-from-server'), esc_html($file)) . '</p></div>';
 				}
 				flush();
 				wp_ob_end_flush_all();
@@ -297,7 +297,7 @@ class add_from_server {
 
 			$attachment = get_posts(array( 'post_type' => 'attachment', 'meta_key' => '_wp_attached_file', 'meta_value' => ltrim($mat[1], '/') ));
 			if ( !empty($attachment) )
-				return new WP_Error('file_exists', __( 'Sorry, That file already exists in the WordPress media library.' ) );
+				return new WP_Error('file_exists', __( 'Sorry, That file already exists in the WordPress media library.', 'add-from-server' ) );
 
 			//Ok, Its in the uploads folder, But NOT in WordPress's media library.
 			if ( 'file' == $import_date ) {
@@ -491,7 +491,7 @@ class add_from_server {
 					$adir = preg_replace('!^' . preg_quote($this->get_root(), '!') . '!i', '', $adir);
 					if ( strlen($adir) > 1 )
 						$adir = ltrim($adir, '/');
-					$durl = add_query_arg(array('adirectory' => addslashes($adir)), $url);
+					$durl = add_query_arg(array('adirectory' => rawurlencode($adir)), $url);
 					$pieces[] = "<a href='$durl'>$text</a>";
 				}
 				if ( ! empty($pieces) ) {
@@ -521,7 +521,7 @@ class add_from_server {
 			<tr>
 				<td>&nbsp;</td>
 				<?php /*  <td class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($file) ?>' /></td> */ ?>
-				<td><a href="<?php echo add_query_arg(array('adirectory' => $parent), $url) ?>" title="<?php echo esc_attr(dirname($cwd)) ?>"><?php _e('Parent Folder', 'add-from-server') ?></a></td>
+				<td><a href="<?php echo add_query_arg(array('adirectory' => rawurlencode($parent)), $url) ?>" title="<?php echo esc_attr(dirname($cwd)) ?>"><?php _e('Parent Folder', 'add-from-server') ?></a></td>
 			</tr>
 		<?php endif; ?>
 		<?php
@@ -539,12 +539,12 @@ class add_from_server {
 			foreach( (array)$directories as $file  ) :
 				$filename = preg_replace('!^' . preg_quote($cwd) . '!i', '', $file);
 				$filename = ltrim($filename, '/');
-				$folder_url = add_query_arg(array('directory' => $filename, 'import-date' => $import_date, 'gallery' => $import_to_gallery ), $url);
+				$folder_url = add_query_arg(array('directory' => rawurlencode($filename), 'import-date' => $import_date, 'gallery' => $import_to_gallery ), $url);
 		?>
 			<tr>
 				<td>&nbsp;</td>
 				<?php /* <td class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($file) ?>' /></td> */ ?>
-				<td><a href="<?php echo $folder_url ?>"><?php echo rtrim($filename, '/') . DIRECTORY_SEPARATOR ?></a></td>
+				<td><a href="<?php echo $folder_url ?>"><?php echo esc_html( rtrim($filename, '/') . DIRECTORY_SEPARATOR ); ?></a></td>
 			</tr>
 		<?php
 			endforeach;
@@ -591,7 +591,7 @@ class add_from_server {
 		?>
 			<tr class="<?php echo esc_attr(implode(' ', $classes)); ?>" title="<?php if ( ! $file_meets_guidelines ) { _e('Sorry, this file type is not permitted for security reasons. Please see the FAQ.', 'add-from-server'); } elseif ($unreadable) { _e('Sorry, but this file is unreadable by your Webserver. Perhaps check your File Permissions?', 'add-from-server'); } ?>">
 				<th class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($filename) ?>' <?php disabled(!$file_meets_guidelines || $unreadable); ?> /></th>
-				<td><label for='file-<?php echo $sanname; ?>'><?php echo $filename ?></label></td>
+				<td><label for='file-<?php echo $sanname; ?>'><?php echo esc_html($filename) ?></label></td>
 			</tr>
 			<?php endforeach; endforeach;?>
 		</tbody>

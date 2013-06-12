@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     die();
 }
 
-w3_require_once(W3TC_LIB_OAUTH_DIR . '/OAuth.php');
+w3_require_once(W3TC_LIB_OAUTH_DIR . '/W3tcOAuth.php');
 
 require_once("CurlException.php");
 
@@ -30,12 +30,12 @@ class NetDNA {
 		$this->alias  = $alias;
 		$this->key    = $key;
 		$this->secret = $secret;
-		$consumer = new OAuthConsumer($key, $secret, NULL);
+		$consumer = new W3tcOAuthConsumer($key, $secret, NULL);
 		
 	}
 
 	private function execute($selected_call, $method_type, $params) {
-		$consumer = new OAuthConsumer($this->key, $this->secret, NULL);
+		$consumer = new W3tcOAuthConsumer($this->key, $this->secret, NULL);
 
 		// the endpoint for your request
 		$endpoint = "$this->netdnarws_url/$this->alias$selected_call"; 
@@ -48,10 +48,10 @@ class NetDNA {
 		}
 
 		//generate a request from your consumer
-		$req_req = OAuthRequest::from_consumer_and_token($consumer, NULL, $method_type, $endpoint, $params);
+		$req_req = W3tcOAuthRequest::from_consumer_and_token($consumer, NULL, $method_type, $endpoint, $params);
 
 		//sign your OAuth request using hmac_sha1
-		$sig_method = new OAuthSignatureMethod_HMAC_SHA1();
+		$sig_method = new W3tcOAuthSignatureMethod_HMAC_SHA1();
 		$req_req->sign_request($sig_method, $consumer, NULL);
 
 		// create curl resource 
@@ -69,7 +69,7 @@ class NetDNA {
 
 
 		if ($method_type == "POST" || $method_type == "PUT" || $method_type == "DELETE") {
-		    $query_str = OAuthUtil::build_http_query($params);
+		    $query_str = W3tcOAuthUtil::build_http_query($params);
 		    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:', 'Content-Length: ' . strlen($query_str)));
 		    curl_setopt($ch, CURLOPT_POSTFIELDS,  $query_str);
 		}

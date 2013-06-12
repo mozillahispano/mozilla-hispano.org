@@ -3,7 +3,7 @@ Contributors: stomlinson, Marcel Bokhorst, M66B
 Tags: security, admin, authentication, access, widget, login, shortcode, comment, comments, discussion, bbPress, bbPress 2.0, browserid, mozilla, persona
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 0.42
+Stable tag: 0.43
 
 Implementation of Mozilla Persona (BrowserID) for WordPress
 
@@ -118,6 +118,13 @@ Follow these steps to install the development version:
 * Click *Upload* (a link at the top)
 * Click *Choose file* and select the file you downloaded before
 * Click *Install*, then *Activate Plugin*
+
+= 0.43 =
+* Continue with 0.41
+* Bug Fix: Fix the missing arguments errors
+* Bug Fix: HTML Escape the hostname when printing debug information
+* Bug Fix: Logout link from the widget signs the user out of Persona
+* Security Improvement: Remove the "Noverify SSL Certificate" option
 
 = 0.42 =
 * Revert to 0.37

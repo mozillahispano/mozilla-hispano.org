@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-01 08:44+0700\n"
+"POT-Creation-Date: 2013-05-17 11:14+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: Lauri Merisaari <lauri@viidakkorumpu.fi>\n"
@@ -17,386 +17,484 @@ msgstr ""
 "X-Poedit-Country: FINLAND\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../user-role-editor.php:35
-msgid "User Role Editor requires WordPress 3.0 or newer."
-msgstr "User Role Editor tarvitsee Wordpress 3.0 tai uudemman."
+#: ../user-role-editor.php:34
+#, fuzzy, php-format
+msgid "User Role Editor requires PHP %s or newer."
+msgstr "User Role Editor tarvitsee PHP 5.0:n tai uudemman."
 
 #: ../user-role-editor.php:35
-#: ../user-role-editor.php:40
+#: ../user-role-editor.php:107
 msgid "Please update!"
 msgstr "Ole hyvä ja päivitä!"
 
-#: ../user-role-editor.php:40
-msgid "User Role Editor requires PHP 5.0 or newer."
-msgstr "User Role Editor tarvitsee PHP 5.0:n tai uudemman."
-
-#: ../user-role-editor.php:76
+#: ../user-role-editor.php:80
 msgid "Only"
 msgstr "Vain"
 
-#: ../user-role-editor.php:76
+#: ../user-role-editor.php:80
 msgid "is allowed to use"
 msgstr "sallitaan käyttää"
 
-#: ../user-role-editor.php:82
-#: ../user-role-editor.php:251
+#: ../user-role-editor.php:86
+#: ../user-role-editor.php:312
+#: ../user-role-editor.php:368
 msgid "User Role Editor"
 msgstr "User Role Editor"
 
-#: ../user-role-editor.php:223
+#: ../user-role-editor.php:106
+#, fuzzy, php-format
+msgid "User Role Editor requires WordPress %s or newer."
+msgstr "User Role Editor tarvitsee Wordpress 3.0 tai uudemman."
+
+#: ../user-role-editor.php:139
+msgid "Select All"
+msgstr ""
+
+#: ../user-role-editor.php:140
+msgid "Unselect All"
+msgstr ""
+
+#: ../user-role-editor.php:141
+msgid "Reverse"
+msgstr ""
+
+#: ../user-role-editor.php:142
+msgid "Update"
+msgstr "Päivitä"
+
+#: ../user-role-editor.php:143
+#, fuzzy
+msgid "Please confirm permissions update"
+msgstr "Varmista jatkaaksesi"
+
+#: ../user-role-editor.php:144
+msgid "Add New Role"
+msgstr "Lisää uusi rooli"
+
+#: ../user-role-editor.php:145
+#, fuzzy
+msgid " Role name (ID) can not be empty!"
+msgstr " Roolin nimi ei voi olla tyhjä!"
+
+#: ../user-role-editor.php:146
+#, fuzzy
+msgid " Role name (ID) must contain latin characters, digits, hyphens or underscore only!"
+msgstr "Virhe: Roolin nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
+
+#: ../user-role-editor.php:147
+#, fuzzy
+msgid "Add Role"
+msgstr "Lisää uusi rooli"
+
+#: ../user-role-editor.php:148
+msgid "Delete Role"
+msgstr "Poista rooli"
+
+#: ../user-role-editor.php:149
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: ../user-role-editor.php:150
+#, fuzzy
+msgid "Add Capability"
+msgstr "Lisää uusi oikeus"
+
+#: ../user-role-editor.php:151
+#: ../user-role-editor.php:156
+#, fuzzy
+msgid "Delete Capability"
+msgstr "Poista oikeus"
+
+#: ../user-role-editor.php:152
+msgid "Reset"
+msgstr "Palauta"
+
+#: ../user-role-editor.php:153
+msgid "Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?"
+msgstr ""
+
+#: ../user-role-editor.php:154
+#, fuzzy
+msgid "Default Role"
+msgstr "Poista rooli"
+
+#: ../user-role-editor.php:155
+#, fuzzy
+msgid "Set New Default Role"
+msgstr "Muuta oletus rooliksi"
+
+#: ../user-role-editor.php:157
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "Varoitus! Ole varovainen - kriittisen oikeuden poistaminen voi rikkoa jonkun lisäosan tai muun muokatun koodin"
+
+#: ../user-role-editor.php:158
+#, fuzzy
+msgid " Capability name (ID) can not be empty!"
+msgstr " Roolin nimi ei voi olla tyhjä!"
+
+#: ../user-role-editor.php:159
+#, fuzzy
+msgid " Capability name (ID) must contain latin characters, digits, hyphens or underscore only!"
+msgstr "Virhe: Oikeuden nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
+
+#: ../user-role-editor.php:284
 msgid "Settings"
 msgstr "Asetukset"
 
-#: ../user-role-editor.php:233
-#: ../includes/ure-options.php:235
+#: ../user-role-editor.php:294
+#: ../includes/ure-options.php:209
 msgid "Changelog"
 msgstr "Muutos loki"
 
-#: ../user-role-editor.php:280
+#: ../user-role-editor.php:342
 msgid "Capabilities"
 msgstr "Oikeudet"
 
-#: ../includes/ure-lib.php:34
+#: ../user-role-editor.php:371
+#: ../user-role-editor.php:407
+#, fuzzy
+msgid "Other Roles"
+msgstr "Poista rooli"
+
+#: ../user-role-editor.php:381
+#, fuzzy
+msgid "Edit"
+msgstr "Päätoimittaja"
+
+#: ../includes/ure-lib.php:35
 msgid "Error is occur. Please check the log file."
 msgstr "Sattui virhe. Ole hyvä ja tarkista loki tiedosto."
 
-#: ../includes/ure-lib.php:144
-msgid "Database operation error. Check log file."
-msgstr "Tietokanta virhe. Tarkista loki tiedosto."
-
-#: ../includes/ure-lib.php:177
-msgid "No backup data. It is created automatically before the first role data update."
-msgstr "Ei varmuuskopio tietoja. Tiedot luodaan automaattisesti ennen ensimmäistä roolitietojen päivitystä."
-
-#: ../includes/ure-lib.php:215
+#: ../includes/ure-lib.php:364
 msgid "Backup record is created for the current role capabilities"
 msgstr "Varmuuskopio luodaan nykyisiä rooli oikeuksia varten"
 
-#: ../includes/ure-lib.php:329
-msgid "Error: Role name must contain latin characters and digits only!"
+#: ../includes/ure-lib.php:481
+#, fuzzy
+msgid "Error: Role ID must contain latin characters, digits, hyphens or underscore only!"
 msgstr "Virhe: Roolin nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
 
-#: ../includes/ure-lib.php:336
+#: ../includes/ure-lib.php:496
 #, php-format
 msgid "Role %s exists already"
 msgstr "Rooli %s on jo olemassa"
 
-#: ../includes/ure-lib.php:349
+#: ../includes/ure-lib.php:511
 msgid "Error is encountered during new role create operation"
 msgstr "Virhe sattui roolia luotaessa"
 
-#: ../includes/ure-lib.php:351
+#: ../includes/ure-lib.php:513
 #, php-format
 msgid "Role %s is created successfully"
 msgstr "Rooli %s luotiin onnistuneesti"
 
-#: ../includes/ure-lib.php:435
+#: ../includes/ure-lib.php:597
 msgid "Error encountered during role delete operation"
 msgstr "Sattui virhe rooli poistettaessa"
 
-#: ../includes/ure-lib.php:437
+#: ../includes/ure-lib.php:599
 #, php-format
 msgid "Role %s is deleted successfully"
 msgstr "Rooli %s on poistettu onnistuneesti"
 
-#: ../includes/ure-lib.php:455
+#: ../includes/ure-lib.php:619
 msgid "Error encountered during default role change operation"
 msgstr "Sattui virhe oletusroolia muutettaessa"
 
-#: ../includes/ure-lib.php:461
+#: ../includes/ure-lib.php:625
 #, php-format
 msgid "Default role for new users is set to %s successfully"
 msgstr "Oletusrooli uusille käyttäjille asetettiin %s onnistuneesti"
 
-#: ../includes/ure-lib.php:489
+#: ../includes/ure-lib.php:652
 msgid "Editor"
 msgstr "Päätoimittaja"
 
-#: ../includes/ure-lib.php:490
+#: ../includes/ure-lib.php:653
 msgid "Author"
 msgstr "Kirjoittaja"
 
-#: ../includes/ure-lib.php:491
+#: ../includes/ure-lib.php:654
 msgid "Contributor"
 msgstr "Avustaja"
 
-#: ../includes/ure-lib.php:492
+#: ../includes/ure-lib.php:655
 msgid "Subscriber"
 msgstr "Tilaaja"
 
-#: ../includes/ure-lib.php:494
+#: ../includes/ure-lib.php:657
 msgid "Switch themes"
 msgstr "Vaihda teema"
 
-#: ../includes/ure-lib.php:495
+#: ../includes/ure-lib.php:658
 msgid "Edit themes"
 msgstr "Muokkaa teemoja"
 
-#: ../includes/ure-lib.php:496
+#: ../includes/ure-lib.php:659
 msgid "Activate plugins"
 msgstr "Aktivoi lisäosia"
 
-#: ../includes/ure-lib.php:497
+#: ../includes/ure-lib.php:660
 msgid "Edit plugins"
 msgstr "Muokkaa lisäosia"
 
-#: ../includes/ure-lib.php:498
+#: ../includes/ure-lib.php:661
 msgid "Edit users"
 msgstr "Muokkaa käyttäjiä"
 
-#: ../includes/ure-lib.php:499
+#: ../includes/ure-lib.php:662
 msgid "Edit files"
 msgstr "Muokkaa tiedostoja"
 
-#: ../includes/ure-lib.php:500
+#: ../includes/ure-lib.php:663
 msgid "Manage options"
 msgstr "Hallitse asetuksia"
 
-#: ../includes/ure-lib.php:501
+#: ../includes/ure-lib.php:664
 msgid "Moderate comments"
 msgstr "Suodata kommentteja"
 
-#: ../includes/ure-lib.php:502
+#: ../includes/ure-lib.php:665
 msgid "Manage categories"
 msgstr "Hallitse kategorioita"
 
-#: ../includes/ure-lib.php:503
+#: ../includes/ure-lib.php:666
 msgid "Manage links"
 msgstr "Hallitse linkkejä"
 
-#: ../includes/ure-lib.php:504
+#: ../includes/ure-lib.php:667
 msgid "Upload files"
 msgstr "Lisää tiedostoja"
 
-#: ../includes/ure-lib.php:505
+#: ../includes/ure-lib.php:668
 msgid "Import"
 msgstr "Tuo"
 
-#: ../includes/ure-lib.php:506
+#: ../includes/ure-lib.php:669
 msgid "Unfiltered html"
 msgstr "Suodattamaton html"
 
-#: ../includes/ure-lib.php:507
+#: ../includes/ure-lib.php:670
 msgid "Edit posts"
 msgstr "Muokkaa artikkeleja"
 
-#: ../includes/ure-lib.php:508
+#: ../includes/ure-lib.php:671
 msgid "Edit others posts"
 msgstr "Muokkaa toisten artikkeleja"
 
-#: ../includes/ure-lib.php:509
+#: ../includes/ure-lib.php:672
 msgid "Edit published posts"
 msgstr "Muokkaa julkaistuja artikkeleja"
 
-#: ../includes/ure-lib.php:510
+#: ../includes/ure-lib.php:673
 msgid "Publish posts"
 msgstr "Julkaise artikkeleja"
 
-#: ../includes/ure-lib.php:511
+#: ../includes/ure-lib.php:674
 msgid "Edit pages"
 msgstr "Muokkaa sivuja"
 
-#: ../includes/ure-lib.php:512
+#: ../includes/ure-lib.php:675
 msgid "Read"
 msgstr "Lue"
 
-#: ../includes/ure-lib.php:513
+#: ../includes/ure-lib.php:676
 msgid "Level 10"
 msgstr "Taso 10"
 
-#: ../includes/ure-lib.php:514
+#: ../includes/ure-lib.php:677
 msgid "Level 9"
 msgstr "Taso 9"
 
-#: ../includes/ure-lib.php:515
+#: ../includes/ure-lib.php:678
 msgid "Level 8"
 msgstr "Taso 8"
 
-#: ../includes/ure-lib.php:516
+#: ../includes/ure-lib.php:679
 msgid "Level 7"
 msgstr "Taso 7"
 
-#: ../includes/ure-lib.php:517
+#: ../includes/ure-lib.php:680
 msgid "Level 6"
 msgstr "Taso 6"
 
-#: ../includes/ure-lib.php:518
+#: ../includes/ure-lib.php:681
 msgid "Level 5"
 msgstr "Taso 5"
 
-#: ../includes/ure-lib.php:519
+#: ../includes/ure-lib.php:682
 msgid "Level 4"
 msgstr "Taso 4"
 
-#: ../includes/ure-lib.php:520
+#: ../includes/ure-lib.php:683
 msgid "Level 3"
 msgstr "Taso 3"
 
-#: ../includes/ure-lib.php:521
+#: ../includes/ure-lib.php:684
 msgid "Level 2"
 msgstr "Taso 2"
 
-#: ../includes/ure-lib.php:522
+#: ../includes/ure-lib.php:685
 msgid "Level 1"
 msgstr "Taso 1"
 
-#: ../includes/ure-lib.php:523
+#: ../includes/ure-lib.php:686
 msgid "Level 0"
 msgstr "Taso 0"
 
-#: ../includes/ure-lib.php:524
+#: ../includes/ure-lib.php:687
 msgid "Edit others pages"
 msgstr "Muokkaa toisten sivuja"
 
-#: ../includes/ure-lib.php:525
+#: ../includes/ure-lib.php:688
 msgid "Edit published pages"
 msgstr "Muokkaa julkaistuja sivuja"
 
-#: ../includes/ure-lib.php:526
+#: ../includes/ure-lib.php:689
 msgid "Publish pages"
 msgstr "Julkaise sivuja"
 
-#: ../includes/ure-lib.php:527
+#: ../includes/ure-lib.php:690
 msgid "Delete pages"
 msgstr "Poista sivuja"
 
-#: ../includes/ure-lib.php:528
+#: ../includes/ure-lib.php:691
 msgid "Delete others pages"
 msgstr "Poista toisten sivuja"
 
-#: ../includes/ure-lib.php:529
+#: ../includes/ure-lib.php:692
 msgid "Delete published pages"
 msgstr "Poista julkaistuja sivuja"
 
-#: ../includes/ure-lib.php:530
+#: ../includes/ure-lib.php:693
 msgid "Delete posts"
 msgstr "Poista artikkeleja"
 
-#: ../includes/ure-lib.php:531
+#: ../includes/ure-lib.php:694
 msgid "Delete others posts"
 msgstr "Poista toisten artikkeleja"
 
-#: ../includes/ure-lib.php:532
+#: ../includes/ure-lib.php:695
 msgid "Delete published posts"
 msgstr "Poista julkaistuja artikkeleja"
 
-#: ../includes/ure-lib.php:533
+#: ../includes/ure-lib.php:696
 msgid "Delete private posts"
 msgstr "Poista yksityisiä artikkeleja"
 
-#: ../includes/ure-lib.php:534
+#: ../includes/ure-lib.php:697
 msgid "Edit private posts"
 msgstr "Muokkaa yksityisiä artikkeleja"
 
-#: ../includes/ure-lib.php:535
+#: ../includes/ure-lib.php:698
 msgid "Read private posts"
 msgstr "Lue yksityisiä artikkeleja"
 
-#: ../includes/ure-lib.php:536
+#: ../includes/ure-lib.php:699
 msgid "Delete private pages"
 msgstr "Poista yksityisiä sivuja"
 
-#: ../includes/ure-lib.php:537
+#: ../includes/ure-lib.php:700
 msgid "Edit private pages"
 msgstr "Muokkaa yksityisiä sivuja"
 
-#: ../includes/ure-lib.php:538
+#: ../includes/ure-lib.php:701
 msgid "Read private pages"
 msgstr "Lue yksityisiä sivuja"
 
-#: ../includes/ure-lib.php:539
+#: ../includes/ure-lib.php:702
 msgid "Delete users"
 msgstr "Poista käyttäjiä"
 
-#: ../includes/ure-lib.php:540
+#: ../includes/ure-lib.php:703
 msgid "Create users"
 msgstr "Luo käyttäjiä"
 
-#: ../includes/ure-lib.php:541
+#: ../includes/ure-lib.php:704
 msgid "Unfiltered upload"
 msgstr "Suodattamaton tiedostojen lisäys"
 
-#: ../includes/ure-lib.php:542
+#: ../includes/ure-lib.php:705
 msgid "Edit dashboard"
 msgstr "Muokkaa ohjausnäkymää"
 
-#: ../includes/ure-lib.php:543
+#: ../includes/ure-lib.php:706
 msgid "Update plugins"
 msgstr "Päivitä lisäosia"
 
-#: ../includes/ure-lib.php:544
+#: ../includes/ure-lib.php:707
 msgid "Delete plugins"
 msgstr "Poista lisäosia"
 
-#: ../includes/ure-lib.php:545
+#: ../includes/ure-lib.php:708
 msgid "Install plugins"
 msgstr "Asenna lisäosia"
 
-#: ../includes/ure-lib.php:546
+#: ../includes/ure-lib.php:709
 msgid "Update themes"
 msgstr "Päivitä teemoja"
 
-#: ../includes/ure-lib.php:547
+#: ../includes/ure-lib.php:710
 msgid "Install themes"
 msgstr "Asenna teemoja"
 
-#: ../includes/ure-lib.php:548
+#: ../includes/ure-lib.php:711
 msgid "Update core"
 msgstr "Päivitä ydin"
 
-#: ../includes/ure-lib.php:549
+#: ../includes/ure-lib.php:712
 msgid "List users"
 msgstr "Listaa käyttäjät"
 
-#: ../includes/ure-lib.php:550
+#: ../includes/ure-lib.php:713
 msgid "Remove users"
 msgstr "Poista käyttäjiä"
 
-#: ../includes/ure-lib.php:551
+#: ../includes/ure-lib.php:714
 msgid "Add users"
 msgstr "Lisää käyttäjiä"
 
-#: ../includes/ure-lib.php:552
+#: ../includes/ure-lib.php:715
 msgid "Promote users"
 msgstr "Ylennä käyttäjiä"
 
-#: ../includes/ure-lib.php:553
+#: ../includes/ure-lib.php:716
 msgid "Edit theme options"
 msgstr "Muokkaa teeman asetuksia"
 
-#: ../includes/ure-lib.php:554
+#: ../includes/ure-lib.php:717
 msgid "Delete themes"
 msgstr "Poista teemoja"
 
-#: ../includes/ure-lib.php:555
+#: ../includes/ure-lib.php:718
 msgid "Export"
 msgstr "Vie"
 
-#: ../includes/ure-lib.php:639
+#: ../includes/ure-lib.php:834
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr "Virhe: Oikeuden nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
 
-#: ../includes/ure-lib.php:651
+#: ../includes/ure-lib.php:846
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr "Rooli %s luotiin onnistuneesti"
 
-#: ../includes/ure-lib.php:653
+#: ../includes/ure-lib.php:848
 #, php-format
 msgid "Capability %s exists already"
 msgstr "Oikeus %s on jo määritelty"
 
-#: ../includes/ure-lib.php:802
+#: ../includes/ure-lib.php:997
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr "Virhe! Sinulla ei ole lupaa poistaa tätä oikeutta: %s!"
 
-#: ../includes/ure-lib.php:824
+#: ../includes/ure-lib.php:1016
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr "Rooli %s poistettiin onnistuneesti"
 
-#: ../includes/ure-lib.php:889
+#: ../includes/ure-lib.php:1083
 msgid "Help"
 msgstr ""
 
@@ -404,361 +502,257 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../includes/ure-role-edit.php:101
-msgid " Name can not be empty!"
-msgstr " Roolin nimi ei voi olla tyhjä!"
-
-#: ../includes/ure-role-edit.php:105
-msgid " Name must contain latin characters and digits only!"
-msgstr " Nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
-
-#: ../includes/ure-role-edit.php:110
-#: ../includes/ure-role-edit.php:367
-msgid "Delete Role"
-msgstr "Poista rooli"
-
-#: ../includes/ure-role-edit.php:112
-msgid "Change Default Role"
-msgstr "Muuta oletus rooli"
-
-#: ../includes/ure-role-edit.php:114
-msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:116
-msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
-msgstr "Varoitus! Ole varovainen - kriittisen oikeuden poistaminen voi rikkoa jonkun lisäosan tai muun muokatun koodin"
-
-#: ../includes/ure-role-edit.php:118
-msgid "Please confirm to continue"
-msgstr "Varmista jatkaaksesi"
-
-#: ../includes/ure-role-edit.php:155
-#, php-format
-msgid "Role \"%s\" update: please confirm to continue"
-msgstr "Roolin \"%s\" päivitys: varmista jatkaaksesi"
-
-#: ../includes/ure-role-edit.php:163
+#: ../includes/ure-role-edit.php:67
 msgid "Select Role and change its capabilities list"
 msgstr "Valitse rooli ja muuta sen oikeuksia"
 
-#: ../includes/ure-role-edit.php:165
+#: ../includes/ure-role-edit.php:69
+#: ../includes/ure-role-edit.php:166
 msgid "Select Role:"
 msgstr "Valitse rooli:"
 
-#: ../includes/ure-role-edit.php:175
-#: ../includes/ure-user-edit.php:91
+#: ../includes/ure-role-edit.php:79
+#: ../includes/ure-user-edit.php:38
 msgid "Show capabilities in human readable form"
 msgstr "Näytä oikeudet helpommin luettavassa muodossa suomeksi"
 
-#: ../includes/ure-role-edit.php:184
-#: ../includes/ure-user-edit.php:100
+#: ../includes/ure-role-edit.php:88
+#: ../includes/ure-user-edit.php:47
 msgid "Show deprecated capabilities"
 msgstr ""
 
-#: ../includes/ure-role-edit.php:188
+#: ../includes/ure-role-edit.php:92
 msgid "If checked, then apply action to ALL sites of this Network"
 msgstr "Jos valittu, muutos toteutetaan KAIKILLA sivustoilla tässä verkossa"
 
-#: ../includes/ure-role-edit.php:198
+#: ../includes/ure-role-edit.php:102
 msgid "Apply to All Sites"
 msgstr "Tee muutos kaikille sivustoille"
 
-#: ../includes/ure-role-edit.php:205
-#: ../includes/ure-user-edit.php:105
+#: ../includes/ure-role-edit.php:109
+#: ../includes/ure-user-edit.php:88
 #, fuzzy
 msgid "Core capabilities:"
 msgstr "Oikeudet"
 
-#: ../includes/ure-role-edit.php:268
-#: ../includes/ure-user-edit.php:167
+#: ../includes/ure-role-edit.php:124
+#: ../includes/ure-user-edit.php:103
 #, fuzzy
 msgid "Custom capabilities:"
 msgstr "Oikeudet"
 
-#: ../includes/ure-role-edit.php:319
-#: ../includes/ure-user-edit.php:222
-msgid "Update"
-msgstr "Päivitä"
-
-#: ../includes/ure-role-edit.php:319
-#: ../includes/ure-user-edit.php:222
-msgid "Save Changes"
-msgstr "Tallenna muutokset"
-
-#: ../includes/ure-role-edit.php:320
-#: ../includes/ure-user-edit.php:223
-msgid "Cancel"
-msgstr "Peruuta"
-
-#: ../includes/ure-role-edit.php:320
-#: ../includes/ure-user-edit.php:223
-msgid "Cancel not saved changes"
-msgstr "Peruuta"
-
-#: ../includes/ure-role-edit.php:323
-msgid "Select All"
+#: ../includes/ure-role-edit.php:155
+msgid "Role name (ID): "
 msgstr ""
 
-#: ../includes/ure-role-edit.php:323
-msgid "Select All Capabilities"
+#: ../includes/ure-role-edit.php:157
+msgid "Display Role Name: "
 msgstr ""
 
-#: ../includes/ure-role-edit.php:327
-msgid "Unselect All"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:327
-msgid "Unselect All Capabilities"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:328
-msgid "Reverse"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:328
-msgid "Turn checked capabilities off and vise versa"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:334
-msgid "Reset"
-msgstr "Palauta"
-
-#: ../includes/ure-role-edit.php:334
-msgid "Restore Roles from backup copy"
-msgstr "Palauta rooli varmuuskopiosta"
-
-#: ../includes/ure-role-edit.php:344
-msgid "Add New Role"
-msgstr "Lisää uusi rooli"
-
-#: ../includes/ure-role-edit.php:346
-msgid "Name: "
-msgstr ""
-
-#: ../includes/ure-role-edit.php:350
+#: ../includes/ure-role-edit.php:159
 msgid "Make copy of: "
 msgstr ""
 
-#: ../includes/ure-role-edit.php:353
-#: ../includes/ure-role-edit.php:382
-msgid "Add"
-msgstr "Lisää"
-
-#: ../includes/ure-role-edit.php:353
-msgid "Add New User Role"
-msgstr "Lisää uusi käyttäjä rooli"
-
-#: ../includes/ure-role-edit.php:357
-msgid "Default Role for New User"
-msgstr "Oletus rooli uusille käyttäjille"
-
-#: ../includes/ure-role-edit.php:362
-msgid "Change"
-msgstr "Muuta"
-
-#: ../includes/ure-role-edit.php:362
-msgid "Set as Default User Role"
-msgstr "Muuta oletus rooliksi"
-
-#: ../includes/ure-role-edit.php:372
-msgid "Delete"
+#: ../includes/ure-role-edit.php:181
+#, fuzzy
+msgid "Delete:"
 msgstr "Poista"
 
-#: ../includes/ure-role-edit.php:372
-msgid "Delete User Role"
-msgstr "Poista käyttäjän rooli"
+#: ../includes/ure-role-edit.php:188
+msgid "Capability name (ID): "
+msgstr ""
 
-#: ../includes/ure-role-edit.php:377
-#: ../includes/ure-role-edit.php:382
-msgid "Add New Capability"
-msgstr "Lisää uusi oikeus"
-
-#: ../includes/ure-role-edit.php:387
-msgid "Remove Capability"
-msgstr "Poista oikeus"
-
-#: ../includes/ure-role-edit.php:392
-msgid "Remove"
-msgstr "Poista"
-
-#: ../includes/ure-role-edit.php:392
-msgid "Remove User Capability"
-msgstr "Poista käyttäjän oikeudet"
-
-#: ../includes/ure-user-edit.php:67
-#, php-format
-msgid "User \"%s\" update: please confirm to continue"
-msgstr "Roolin \"%s\" päivitys: varmista jatkaaksesi"
-
-#: ../includes/ure-user-edit.php:79
+#: ../includes/ure-user-edit.php:22
 msgid "Change capabilities for user"
 msgstr "Muuta käyttäjän oikeuksia"
 
-#: ../includes/ure-user-edit.php:82
-msgid "Role:"
-msgstr "Rooli:"
-
-#: ../includes/ure-user-edit.php:104
-msgid "Add capabilities to this user:"
-msgstr "Lisää oikeudet käyttäjälle:"
-
-#: ../includes/ure-options.php:59
-msgid "User Roles are restored from the backup data. "
+#: ../includes/ure-user-edit.php:52
+msgid "Primary Role:"
 msgstr ""
 
-#: ../includes/ure-options.php:130
+#: ../includes/ure-user-edit.php:62
+msgid "bbPress Role:"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:72
+#, fuzzy
+msgid "Other Roles:"
+msgstr "Poista rooli"
+
+#: ../includes/ure-options.php:65
+msgid "User Roles are restored to WordPress default values. "
+msgstr ""
+
+#: ../includes/ure-options.php:136
 msgid "Error: "
 msgstr ""
 
-#: ../includes/ure-options.php:130
-#: ../includes/ure-options.php:146
+#: ../includes/ure-options.php:136
+#: ../includes/ure-options.php:156
 msgid "Role"
 msgstr "Rooli"
 
-#: ../includes/ure-options.php:130
+#: ../includes/ure-options.php:136
 msgid "does not exist"
 msgstr ""
 
-#: ../includes/ure-options.php:146
+#: ../includes/ure-options.php:156
 msgid "is updated successfully"
 msgstr "on päivitetty onnistuneesti"
 
-#: ../includes/ure-options.php:154
+#: ../includes/ure-options.php:161
+#: ../includes/ure-options.php:174
+#, fuzzy
+msgid "Error occured during role update"
+msgstr "Sattui virhe rooli poistettaessa"
+
+#: ../includes/ure-options.php:169
 msgid "User"
 msgstr "Käyttäjä"
 
-#: ../includes/ure-options.php:154
+#: ../includes/ure-options.php:169
 msgid "capabilities are updated successfully"
 msgstr "Oikeudet on päivitetty onnistuneesti"
 
-#: ../includes/ure-options.php:232
+#: ../includes/ure-options.php:206
 msgid "About this Plugin:"
 msgstr "Tietoja lisäosasta:"
 
-#: ../includes/ure-options.php:233
+#: ../includes/ure-options.php:207
 msgid "Author's website"
 msgstr "Tekijän kotisivu"
 
-#: ../includes/ure-options.php:234
+#: ../includes/ure-options.php:208
 msgid "Plugin webpage"
 msgstr "Lisäosan kotisivu"
 
-#: ../includes/ure-options.php:236
+#: ../includes/ure-options.php:210
 msgid "FAQ"
 msgstr "Usein kysytyt kysymykset"
 
-#: ../includes/ure-options.php:237
-msgid "Greetings"
-msgstr ""
+#~ msgid "Database operation error. Check log file."
+#~ msgstr "Tietokanta virhe. Tarkista loki tiedosto."
 
-#: ../includes/ure-options.php:259
-msgid "Greetings:"
-msgstr "Tervehdys:"
+#~ msgid ""
+#~ "No backup data. It is created automatically before the first role data "
+#~ "update."
+#~ msgstr ""
+#~ "Ei varmuuskopio tietoja. Tiedot luodaan automaattisesti ennen ensimmäistä "
+#~ "roolitietojen päivitystä."
 
-#: ../includes/ure-options.php:260
-msgid "It's me, the author"
-msgstr "Se olen minä tekijä"
+#~ msgid " Name must contain latin characters and digits only!"
+#~ msgstr " Nimi saa sisältää vain latinalaisia aakkosia ja numeroita!"
 
-#: ../includes/ure-options.php:261
-msgid "For the help with Belorussian translation"
-msgstr "Apua Valkovenäjän kieliseen käännökseen"
+#~ msgid "Change Default Role"
+#~ msgstr "Muuta oletus rooli"
 
-#: ../includes/ure-options.php:262
-msgid "For the help with Brasilian translation"
-msgstr "Apua Brasilian kieliseen käännökseen"
+#~ msgid "Role \"%s\" update: please confirm to continue"
+#~ msgstr "Roolin \"%s\" päivitys: varmista jatkaaksesi"
 
-#: ../includes/ure-options.php:263
+#~ msgid "Save Changes"
+#~ msgstr "Tallenna muutokset"
+
+#~ msgid "Cancel not saved changes"
+#~ msgstr "Peruuta"
+
+#~ msgid "Restore Roles from backup copy"
+#~ msgstr "Palauta rooli varmuuskopiosta"
+
+#~ msgid "Add"
+#~ msgstr "Lisää"
+
+#~ msgid "Add New User Role"
+#~ msgstr "Lisää uusi käyttäjä rooli"
+
+#~ msgid "Default Role for New User"
+#~ msgstr "Oletus rooli uusille käyttäjille"
+
+#~ msgid "Change"
+#~ msgstr "Muuta"
+
+#~ msgid "Delete User Role"
+#~ msgstr "Poista käyttäjän rooli"
+
+#~ msgid "Remove"
+#~ msgstr "Poista"
+
+#~ msgid "Remove User Capability"
+#~ msgstr "Poista käyttäjän oikeudet"
+
+#~ msgid "User \"%s\" update: please confirm to continue"
+#~ msgstr "Roolin \"%s\" päivitys: varmista jatkaaksesi"
+
+#~ msgid "Role:"
+#~ msgstr "Rooli:"
+
+#~ msgid "Add capabilities to this user:"
+#~ msgstr "Lisää oikeudet käyttäjälle:"
+
+#~ msgid "Greetings:"
+#~ msgstr "Tervehdys:"
+
+#~ msgid "It's me, the author"
+#~ msgstr "Se olen minä tekijä"
+
+#~ msgid "For the help with Belorussian translation"
+#~ msgstr "Apua Valkovenäjän kieliseen käännökseen"
+
+#~ msgid "For the help with Brasilian translation"
+#~ msgstr "Apua Brasilian kieliseen käännökseen"
+
 #, fuzzy
-msgid "For the help with Brasilian Portuguese translation"
-msgstr "Apua Brasilian kieliseen käännökseen"
+#~ msgid "For the help with Brasilian Portuguese translation"
+#~ msgstr "Apua Brasilian kieliseen käännökseen"
 
-#: ../includes/ure-options.php:264
-msgid "For the help with Chinese translation"
-msgstr "Apua Kiinan kieliseen käännökseen"
+#~ msgid "For the help with Chinese translation"
+#~ msgstr "Apua Kiinan kieliseen käännökseen"
 
-#: ../includes/ure-options.php:265
-msgid "For the help with Dutch translation"
-msgstr "Apua Hollannin kieliseen käännökseen"
+#~ msgid "For the help with Dutch translation"
+#~ msgstr "Apua Hollannin kieliseen käännökseen"
 
-#: ../includes/ure-options.php:266
-msgid "For the help with Finnish translation"
-msgstr "Apua suomen kieliseen käännökseen"
+#~ msgid "For the help with Finnish translation"
+#~ msgstr "Apua suomen kieliseen käännökseen"
 
-#: ../includes/ure-options.php:267
-#: ../includes/ure-options.php:268
-msgid "For the help with French translation"
-msgstr "Apua Ranskan kieliseen käännökseen"
+#~ msgid "For the help with French translation"
+#~ msgstr "Apua Ranskan kieliseen käännökseen"
 
-#: ../includes/ure-options.php:269
-msgid "For the help with German translation"
-msgstr "Apua Saksan kieliseen käännökseen"
+#~ msgid "For the help with German translation"
+#~ msgstr "Apua Saksan kieliseen käännökseen"
 
-#: ../includes/ure-options.php:270
-#: ../includes/ure-options.php:271
-msgid "For the help with Hebrew translation"
-msgstr ""
+#~ msgid "For the help with Hungarian translation"
+#~ msgstr "Apua Unkarin kieliseen käännökseen"
 
-#: ../includes/ure-options.php:272
-msgid "For the help with Hindi translation"
-msgstr ""
+#~ msgid "For the help with Italian translation"
+#~ msgstr "Apua Italian kieliseen käännökseen"
 
-#: ../includes/ure-options.php:273
-msgid "For the help with Hungarian translation"
-msgstr "Apua Unkarin kieliseen käännökseen"
+#~ msgid "For the help with Japanese translation"
+#~ msgstr "Apua Japanin kieliseen käännökseen"
 
-#: ../includes/ure-options.php:274
-#: ../includes/ure-options.php:275
-msgid "For the help with Italian translation"
-msgstr "Apua Italian kieliseen käännökseen"
+#~ msgid "For the help with Persian translation"
+#~ msgstr "Apua Persialaiseen käännökseen"
 
-#: ../includes/ure-options.php:276
-msgid "For the help with Japanese translation"
-msgstr "Apua Japanin kieliseen käännökseen"
+#~ msgid "For the help with Polish translation"
+#~ msgstr "Apua Puolalaiseen käännökseen"
 
-#: ../includes/ure-options.php:277
-msgid "For the help with Lithuanian translation"
-msgstr ""
+#~ msgid "For the help with Spanish translation"
+#~ msgstr "Apua Espanian kieliseen käännökseen"
 
-#: ../includes/ure-options.php:278
-#: ../includes/ure-options.php:279
-#: ../includes/ure-options.php:280
-msgid "For the help with Persian translation"
-msgstr "Apua Persialaiseen käännökseen"
+#~ msgid "For the help with Swedish translation"
+#~ msgstr "Apua Swedish kieliseen käännökseen"
 
-#: ../includes/ure-options.php:281
-#: ../includes/ure-options.php:282
-msgid "For the help with Polish translation"
-msgstr "Apua Puolalaiseen käännökseen"
+#~ msgid "For the help with Turkish translation"
+#~ msgstr "Apua Turkin kieliseen käännökseen"
 
-#: ../includes/ure-options.php:283
-#: ../includes/ure-options.php:284
-msgid "For the help with Spanish translation"
-msgstr "Apua Espanian kieliseen käännökseen"
+#~ msgid "For the code to hide administrator role"
+#~ msgstr "Koodi Pääkäyttäjän roolin piilottamiseen"
 
-#: ../includes/ure-options.php:285
-msgid "For the updated Swedish translation"
-msgstr ""
-
-#: ../includes/ure-options.php:286
-msgid "For the help with Swedish translation"
-msgstr "Apua Swedish kieliseen käännökseen"
-
-#: ../includes/ure-options.php:287
-msgid "For the help with Turkish translation"
-msgstr "Apua Turkin kieliseen käännökseen"
-
-#: ../includes/ure-options.php:289
-msgid "For the code to hide administrator role"
-msgstr "Koodi Pääkäyttäjän roolin piilottamiseen"
-
-#: ../includes/ure-options.php:290
-msgid "For the code enhancement suggestion"
-msgstr ""
-
-#: ../includes/ure-options.php:292
-msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
-msgstr "Haluatko nähdä nimesi sekä linkin sivuillesi tässä? Olet tervetullut auttamaan käännöksen kanssa. Myös kaikista uusista ideoista ollaan kiitollisia."
+#~ msgid ""
+#~ "Do you wish to see your name with link to your site here? You are "
+#~ "welcome! Your help with translation and new ideas are very appreciated."
+#~ msgstr ""
+#~ "Haluatko nähdä nimesi sekä linkin sivuillesi tässä? Olet tervetullut "
+#~ "auttamaan käännöksen kanssa. Myös kaikista uusista ideoista ollaan "
+#~ "kiitollisia."
 
 #~ msgid "Roles list reading error is encountered"
 #~ msgstr "Virhe: Rooleja ei pystytty lukemaan"

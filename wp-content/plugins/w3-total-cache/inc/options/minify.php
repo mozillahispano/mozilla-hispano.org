@@ -408,14 +408,17 @@
         <table class="form-table">
         <?php if ($auto):?>
         <tr>
-            <th><label for="minify_auto_filename_length">Filename length:</label></th>
-            <td><input id="minify_auto_filename_length" name="minify.auto.filename_length" type="text" size="4" value="<?php echo $this->_config->get_integer('minify.auto.filename_length')?>" />
-                <br /><span class="description">Maximum filename length to enter is 246. Change this value to decrease or
+            <th colspan="2"><?php $this->checkbox('minify.auto.disable_filename_length_test')?> <?php _e('Disable Minify Auto automatic filename test', 'w3-total-cache') ?></label><br />
+                <span class="description"><?php _e('Disables functionality that tries to find optimal filename length for Minify Auto files. Needs to be checked to be able to set manual filename length below.', 'w3-total-cache')?></span><br />
+                <br />
+                <label for="minify_auto_filename_length">Filename length:</label>
+                <input id="minify_auto_filename_length" name="minify.auto.filename_length" type="text" size="4" <?php disabled($this->_config->get_boolean('minify.auto.disable_filename_length_test'), false) ?> value="<?php echo $this->_config->get_integer('minify.auto.filename_length')?>" />
+                <br /><span class="description"><?php _e('Maximum filename length to enter is 246. Change this value to decrease or
                 increase the number of minified files that are generated.
                 The more JS/CSS files you have the more files will be generated since the filenames are combined in
-                the filename. This is only applicable when using Minify Auto.
+                the filename. This is only applicable when using Minify Auto.', 'w3-total-cache') ?>
             </span>
-            </td>
+            </th>
         </tr>
         <?php endif ?>
         <?php if ($this->_config->get_string('minify.engine') == 'memcached'): ?>

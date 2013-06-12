@@ -56,9 +56,9 @@
                 </td>
             </tr>
             <tr>
-                <th><?php _e('Page cache method:', 'w3-total-cache'); ?></th>
+                <th><label for="pgcache_engine"><?php _e('Page cache method:', 'w3-total-cache'); ?></label></th>
                 <td>
-                    <select name="pgcache.engine" <?php $this->sealing_disabled('pgcache') ?>>
+                    <select id="pgcache_engine" name="pgcache.engine" <?php $this->sealing_disabled('pgcache') ?>>
                         <optgroup label="<?php _e('Shared Server (disk enhanced is best):', 'w3-total-cache'); ?>">
                             <option value="file"<?php selected($this->_config->get_string('pgcache.engine'), 'file'); ?>><?php _e('Disk: Basic', 'w3-total-cache'); ?></option>
                             <option value="file_generic"<?php selected($this->_config->get_string('pgcache.engine'), 'file_generic'); ?><?php if (! $check_rules): ?> disabled="disabled"<?php endif; ?>><?php _e('Disk: Enhanced', 'w3-total-cache'); ?></option>
