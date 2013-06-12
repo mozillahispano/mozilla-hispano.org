@@ -4,6 +4,7 @@
  * @subpackage Default_Theme
  */
 ?>
+<sidebar>
 	<div id="barra">
 				<?php get_search_MH_form(); ?>
 			
@@ -95,4 +96,4 @@
 				<?php $post = $tmp_post; ?>
 			</ul>
 	</div>
-
+</sidebar>

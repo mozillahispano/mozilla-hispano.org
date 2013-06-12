@@ -2,11 +2,11 @@
 function pintaCabecera()
 {
 $temp= <<<PINTA
-<div id="cabecera">
+<header id="cabecera">
 				<div id="alojaLogo">
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
 				</div>
-				<div id="menu">
+				<nav id="menu">
 					<ul class="clearfix">
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
@@ -59,7 +59,7 @@ $temp= <<<PINTA
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</nav>
 				<div id="social">
 					<ul>
 						<li><a title="Síguenos en Twitter" id="twitter-icon" href="http://twitter.com/mozilla_hispano">Síguenos en Twitter</a></li>
@@ -70,7 +70,7 @@ $temp= <<<PINTA
 						<li><a title="Feed RSS" id="rss-icon" href="http://feeds.mozilla-hispano.org/mozillahispano">Feed RSS</a></li>
 					</ul>
 				</div>
-</div>
+</header>
 PINTA;
 return $temp;
 }
@@ -78,7 +78,7 @@ return $temp;
 function pintaPie()
 {
 $temp= <<<PINTA
-<div id="pie">
+<footer id="pie">
 	<div id="pie-contenido">
 		<div class="c2">
 			<a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Licencia" title="Licencia para el uso del contenido de este proyecto"><img src="/images/cc-by-sa.png" id="cc" alt="cc-by-sa"/></a>
@@ -130,7 +130,7 @@ $temp= <<<PINTA
 			</ul>
 		</div>
 	</div>
-</div>
+</footer>
 
 <script type='text/javascript' src='https://www.mozilla.org/tabzilla/media/js/tabzilla.js'></script>
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
