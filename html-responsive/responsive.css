@@ -50,9 +50,123 @@
     margin-top: 60px;
     width: 100%; }
 
-  /* ==========================================================================
-     Main Nav
-     ========================================================================== */
+
+/* ==========================================================================
+  Forum
+  ========================================================================== */
+
+#page-body {
+  width: 100%;
+}
+
+.header dl.icon dd {
+  font-size: 1.3em;
+  line-height: 1em;
+  margin: 0;
+  padding: 5px 1%;
+  text-align: center;
+  width: 100%;
+}
+
+.header dl.icon dt {
+  display: block;
+  font-size: 1.8em;
+  padding: 0 !important;
+  text-align: center;
+  width: 100%;
+}
+
+.topiclist.forums dt {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 17px;
+  padding-left: 4%;
+  width: 100%;
+}
+
+.topiclist .topics, .topiclist .posts, .topiclist .lastpost, #stats, #page-footer {
+  display: none;
+}
+
+.topiclist dl.icon {
+  background-image: none !important;
+}
+
+#contenido h3 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+#barra-small ul.linklist {
+  text-align: center;
+}
+
+fieldset.quick-login label {
+  margin-top: 10px;
+  padding-right: 2px;
+}
+
+.quick-login label {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 0;
+}
+
+fieldset.quick-login input {
+  width: 100%;
+}
+
+label[for="autologin"] {
+  display: none;
+}
+
+.headerspace {
+  margin-top: 0;
+}
+
+.quick-login .button2 {
+  display: block;
+  font-size: 1.2em;
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+
+#barra-small {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+#barra-small ul.linklist li {
+  display: block;
+  font-size: 1.1em;
+  line-height: 2.2em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: auto;
+}
+
+
+/* ==========================================================================
+  Wordpress
+  ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Main Nav
+   -------------------------------------------------------------------------- */
   #menu li:hover, #menu li:hover a, .js #menu li:hover span {
     background: #FFFFFF; }
 
@@ -76,9 +190,9 @@
   .timer {
     z-index: 3 !important; }
 
-  /* ==========================================================================
+  /* --------------------------------------------------------------------------
      Slider
-     ========================================================================== */
+     -------------------------------------------------------------------------- */
   .orbit-wrapper .orbit-caption h3 {
     font-size: 1em;
     margin: 2%;
@@ -97,9 +211,9 @@
     margin-bottom: 3em;
     margin-top: 3em; }
 
-  /* ==========================================================================
+  /* --------------------------------------------------------------------------
      Footer
-     ========================================================================== */
+     -------------------------------------------------------------------------- */
   #pie {
     margin-top: 30px;
     width: 100%; }
