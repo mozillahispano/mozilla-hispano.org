@@ -77,7 +77,7 @@
 
 @media only screen and (max-width: 719px) {
 #lienzo {
-	min-width: 400px;
+	min-width: 320px;
 }
 			#alojaLogo {
 				height: 1.5em;
