@@ -1,0 +1,38 @@
+#content-bar{
+
+}
+
+/* contenido */
+
+#contenido #main-content {
+    float: left;
+    width: 70%;
+}
+
+.home .portada-individual.post, .archive .portada-individual.post, .tag .portada-individual.post, .page-template-pais-php .portada-individual.post {
+    border-bottom: 1px solid #E5E5E5 !important;
+    margin: 1em 0 !important;
+    padding: 0 !important;
+    width:100%;
+}
+
+.home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
+    float: left;
+    height: auto;
+    margin: 0 2em 2em 0;
+    max-width: 20%;
+    width: 130px;
+}
+
+/* barra */
+
+#barra {
+    width: 25%;
+    float: right;
+    padding: 0px 5px 0px 13px;
+}
+
+#searchform{
+
+}
+
