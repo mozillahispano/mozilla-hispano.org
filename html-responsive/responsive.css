@@ -127,6 +127,8 @@ label[for="autologin"] {
 
 .headerspace {
   margin-top: 0;
+  border-bottom: 1px solid #CCCCCC;
+padding-bottom: 20px;
 }
 
 .quick-login .button2 {
@@ -158,11 +160,141 @@ label[for="autologin"] {
   width: auto;
 }
 
+/*/ ----- List forums view ----- /*/
+
+#caja-busqueda .buscador, .section-viewforum input.search, #search_keywords {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 30px;
+  width: 100%;
+}
+
+a.button1, input.button1, input.button3, a.button2, input.button2, .submit {
+  float: none;
+  height: 50px;
+  margin-top: 10px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  width: 100% !important;
+}
+
+.search-box, .buscador {
+  width: 100%;
+  float: left;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+}
+
+.pagination {
+  display: block;
+  float: left;
+  font-size: 1.5em;
+  height: auto;
+  margin: 25px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.topic-actions .pagination {
+  margin-top: 20px 0;
+}
+
+.topic-actions {
+  display: block;
+  margin-top: 10px !important;
+  position: relative;
+}
+
+.topic-actions .buttons {
+  margin-bottom: 10px;
+  margin-left: 33%;
+  margin-top: 10px;
+}
+
+ul.topiclist {
+  margin-bottom: 0;
+}
+
+.linklist.navlinks {
+  display: none;
+}
+
+.page-dots {
+  display: none !important;
+}
+
+.views {
+  display: none !important;
+}
+
+.right-box.right {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  float: none;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+dl.icon dt {
+  background-position: 5px 95%;
+  background-repeat: no-repeat;
+  padding-left: 5%;
+}
+
+ul.topiclist dt {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.pagination span a, .pagination span a:link, .pagination span a:visited, .pagination span a:active {
+  padding: 0 8px;
+}
+
+.row .pagination {
+  height: auto;
+}
+
+.pagination span {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.pagination span strong {
+  padding: 0 8px;
+}
+
+
+/* Hilo */
+
+.postprofile {
+  border-top: 1px solid #CCCCCC;
+  float: left;
+  margin: 20px 0 0;
+  padding-top: 10px;
+  min-height: 0;
+  text-align: center;
+  width: 100%;
+}
+.postbody {
+  border: medium none;
+  float: none;
+  padding: 0;
+  width: 100%;
+}
+
 
 /* ==========================================================================
   Wordpress
   ========================================================================== */
-
 
 /* --------------------------------------------------------------------------
    Main Nav
@@ -216,7 +348,8 @@ label[for="autologin"] {
      -------------------------------------------------------------------------- */
   #pie {
     margin-top: 30px;
-    width: 100%; }
+    width: 100%;
+    position: relative; }
 
   #pie #pie-contenido {
     margin: auto;

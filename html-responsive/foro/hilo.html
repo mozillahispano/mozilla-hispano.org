@@ -1,0 +1,847 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es" xml:lang="es">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="copyright" content="2000, 2002, 2005, 2007 phpBB Group" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<title>Mozilla Hispano &bull; Ver foro - Mozilla Firefox</title>
+		<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+
+	<link rel="alternate" type="application/rss+xml" title="Noticias de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano" />
+	<link rel="alternate" type="application/rss+xml" title="Artículos en Planet Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-planet" />
+    	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
+
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
+
+	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+	<link rel="stylesheet" href="http://www.mozilla-hispano.org/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
+
+
+	<link rel="alternate" type="application/atom+xml" title="Canal - Mozilla Hispano" href="http://www.mozilla-hispano.org/foro/feed.php" />
+	<link rel="alternate" type="application/atom+xml" title="Canal - Todos los Temas" href="http://www.mozilla-hispano.org/foro/feed.php?mode=topics" /><link rel="alternate" type="application/atom+xml" title="Canal - Foro - Mozilla Firefox" href="http://www.mozilla-hispano.org/foro/feed.php?f=2" />
+
+<script type="text/javascript">
+// <![CDATA[
+	var jump_page = 'Introduzca el número de página al que desea saltar:';
+	var on_page = '1';
+	var per_page = '25';
+	var base_url = './viewforum.php?f=2';
+	var style_cookie = 'phpBBstyle';
+	var style_cookie_settings = '; path=/; domain=www.mozilla-hispano.org; secure';
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+
+
+
+	/**
+	* Find a member
+	*/
+	function find_username(url)
+	{
+		popup(url, 760, 570, '_usersearch');
+		return false;
+	}
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	}
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	}
+
+// ]]>
+</script>
+<script type="text/javascript" src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/template/styleswitcher.js"></script>
+<script type="text/javascript" src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/template/forum_fn.js"></script>
+
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
+<link href="http://www.mozilla-hispano.org/style.php?id=7&amp;lang=es" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/normal.css" rel="stylesheet" type="text/css" title="A" />
+<link href="./forum.css" rel="stylesheet" type="text/css" title="A" />
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/medium.css" rel="alternate stylesheet" type="text/css" title="A+" />
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/large.css" rel="alternate stylesheet" type="text/css" title="A++" />
+
+<link rel="stylesheet" href="forum.css">
+<link rel="stylesheet" href="../responsive.css">
+
+	<script type="text/javascript" src="http://www.mozilla-hispano.org/wp-content/themes/mozillahispano2/js/menu.js"></script>
+
+</head>
+
+<body id="phpbb" class="section-viewtopic ltr">
+
+<div id="lienzo">
+	<div id="tullido">
+
+		<div id="cabecera">
+				<div id="alojaLogo">
+
+					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
+				</div>
+				<div id="menu">
+					<ul class="clearfix">
+							<li><a href="/">Noticias</a></li>
+							<li><a href="/foro/">Foro</a>
+								<ul class="submenu">
+									<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
+									<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								</ul>
+							</li>
+							<li><a href="/difusion/" title="Ayuda a difundir Mozilla en español">Difusión</a>
+								<ul class="submenu">
+									<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
+									<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
+								</ul>
+							</li>
+							<li><a href="/podcast/">Podcast</a></li>
+							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
+							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Únete</a>
+								<ul class="submenu">
+										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
+										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+										<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
+								</ul>
+							</li>
+					</ul>
+				</div>
+				<div id="social">
+					<ul>
+						<li><a title="Síguenos en Twitter" id="twitter-icon" href="http://twitter.com/mozilla_hispano">Síguenos en Twitter</a></li>
+						<li><a title="Síguenos en Facebook" id="facebook-icon" href="http://www.facebook.com/mozillahispano">Síguenos en Facebook</a></li>
+						<li><a title="Síguenos en Google Plus" id="gplus-icon" href="https://plus.google.com/113725577998863887008/posts">Síguenos en Google Plus</a></li>
+						<li><a title="Nuestros vídeos en YouTube" id="youtube-icon" href="http://www.youtube.com/mozillahispano">Nuestros vídeos en YouTube</a></li>
+						<li><a title="Nuestros fotos en Flickr" id="flickr-icon" href="http://www.flickr.com/photos/tags/mozillahispano/">Nuestras fotos en Flickr</a></li>
+						<li><a title="Feed RSS" id="rss-icon" href="http://feeds.mozilla-hispano.org/mozillahispano">Feed RSS</a></li>
+					</ul>
+				</div>
+</div>
+
+		<div id="cuerpo">
+			<div id="contenido">
+				<div id="page-body">
+			<a id="top" name="top" accesskey="t"></a>
+			<a name="wrap"></a>
+			<!-- Aviso temporal
+			<p style="text-align: center; font-weight: bold; margin: 1em 0pt 2em ! important;">Se ha habilitado la opción de subir tu avatar desde <a href="https://www.mozilla-hispano.org/foro/ucp.php?i=profile&mode=avatar">la página de perfil</a>.</p>
+			Fin aviso temporal -->
+			<div class="navbar">
+						<ul class="linklist navlinks">
+							<li><a class="icon-home" href="./index.php" accesskey="h">Índice general</a>  <strong>&#8249;</strong> <a href="./viewforum.php?f=1">Asistencia</a> <strong>&#8249;</strong> <a href="./viewforum.php?f=2">Mozilla Firefox</a> <strong>&#8249;</strong> <a href="./viewforum.php?f=37">Firefox Aurora/Beta</a></li>
+						</ul>
+					</div>
+
+		<a name="start_here"></a>
+
+
+<h2><a href="./viewtopic.php?f=37&amp;t=8680">[Sondeo] Cuéntanos qué te pareció la beta</a> &nbsp;<a href="./viewtopic.php?f=37&amp;t=8680&amp;p=35802&amp;#p35802"><img src="./styles/mozillahispano/imageset/icon_topic_solved_head.png" width="100" height="20" alt="El tema está solucionado" title="El tema está solucionado" /></a></h2>
+<!-- NOTE: remove the style="display: none" when you want to have the forum description on the topic body --><div style="display: none !important;">Foro de discusión sobre las versiones en desarrollo (aurora/beta) de Firefox.<br /></div>
+
+<div class="topic-actions">
+
+	<div class="buttons">
+
+		<div class="reply-icon"><a href="./posting.php?mode=reply&amp;f=37&amp;t=8680" title="Publicar una respuesta"><span>Publicar una respuesta</span></a></div>
+
+	</div>
+
+
+		<div class="search-box">
+			<form method="get" id="topic-search" action="./search.php">
+			<fieldset>
+				<input class="inputbox search tiny"  type="text" name="keywords" id="search_keywords" size="20" value="Buscar este tema…" onclick="if(this.value=='Buscar este tema…')this.value='';" onblur="if(this.value=='')this.value='Buscar este tema…';" />
+				<input class="button2" type="submit" value="Buscar" />
+				<input type="hidden" name="t" value="8680" />
+<input type="hidden" name="sf" value="msgonly" />
+
+			</fieldset>
+			</form>
+		</div>
+
+		<div class="pagination">
+			68 mensajes
+			 &bull; <a href="#" onclick="jumpto(); return false;" title="Clic para saltar a página…">Página <strong>1</strong> de <strong>7</strong></a> &bull; <span><strong>1</strong><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=10">2</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=20">3</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=30">4</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=40">5</a><span class="page-dots"> ... </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=60">7</a></span>
+		</div>
+
+
+</div>
+<div class="clear"></div>
+
+
+	<div id="p35802" class="post bg2 topicauthor">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=35802" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 class="first"><a href="#p35802">[Sondeo] Cuéntanos qué te pareció la beta&nbsp;&nbsp;<img src="./styles/mozillahispano/imageset/icon_topic_solved_post.png" width="90" height="20" alt="El tema está solucionado" title="El tema está solucionado" /></a></h3>
+			<p class="author"><a href="./viewtopic.php?p=35802#p35802"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong><a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a></strong> &raquo; Vie Jul 23, 2010 21:11 </p>
+
+
+
+			<div class="content">Sí ya estás usando la beta de Firefox 4, nos gustaría saber qué te pareció contestando a unas cuantas preguntas. Puedes responder a este mensaje con tus respuestas.<br /><br /><ul><li>¿Qué opinas de la beta en general?</li><li>¿Son fáciles de usar las pestañas en la parte superior?</li><li>¿Algún problema con la reproducción de vídeo online?</li><li>¿Qué tal funciona Facebook o tu red social preferida en la beta?</li><li>¿Te parece más rápido que Firefox estable?</li><li>¿Qué te parece el nuevo botón de marcadores?</li><li>¿Te parece que las páginas cargan más rápido?</li><li>¿Cómo se comportan Gmail,Yahoo Mail u otros clientes web en la beta? ¿Algún problema?</li><li>¿Qué tal se comporta la beta al jugar a juegos?</li><li>¿Algún problema con la reproducción de música online?</li><li>¿Algún problema con la gestión de pestañas?</li><li>¿Algún problema extraño con alguna web popular?</li><li>¿Cuál es la cosa que más te gusta de la beta?</li><li>¿Qué cosa te gustaría cambiar de la beta?</li></ul></div>
+
+			<div id="sig35802" class="signature">Antes de preguntar usa la búsqueda y revisa la documentación.<br /><a href="https://www.mozilla-hispano.org/documentacion/Usuario:Nukeador" class="postlink">Perfil de colaborador</a></div>
+
+		</div>
+
+
+			<dl class="postprofile" id="profile35802">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=2"><img src="https://www.mozilla-hispano.org/foro/download/file.php?avatar=2_1356312702.png" width="90" height="90" alt="Avatar de Usuario" /></a><br />
+				<a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a>
+			</dt>
+
+			<dd><img src="./images/ranks/rango-miembros.png" alt="Miembro del proyecto" title="Miembro del proyecto" /><br />Miembro del proyecto</dd>
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Mensajes:</strong> 3254</dd><dd><strong>Registrado:</strong> Vie Jul 06, 2007 00:11</dd><dd><strong>Ubicación:</strong> España</dd><dd class="topicauthor">Inició este tema</dd>
+			<dd>
+				<ul class="profile-icons">
+					<li class="web-icon"><a href="http://www.nukeador.com" title="WWW: http://www.nukeador.com"><span>Sitio web</span></a></li>
+				</ul>
+			</dd>
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p35805" class="post bg1">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=35805" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p35805">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=35805#p35805"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Invitado</strong> &raquo; Sab Jul 24, 2010 01:47 </p>
+
+
+
+			<div class="content">1-es casi igual al 3.6<br />2-si faciles<br />3-hasta ahora sin problemas<br />4-ningun problema con face<br />5-son casi iguales en velocidad<br />6-no le veo mucho sentido al boton<br />7-cargan igual<br />8-yahoo funciona bien<br />10-no hay problema con la musica<br />11-las pestanas funcionan normal<br />12-ningun problema<br />13-el detector de links asi le doy a 1 hipervinculo y me lo abre <br />14-ke al dar F11 y luego restaurar si se kede maximizado como 3.6</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile35805">
+			<dt>
+				<strong>Invitado</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p35806" class="post bg2">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=35806" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p35806">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=35806#p35806"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Invitado</strong> &raquo; Sab Jul 24, 2010 01:53 </p>
+
+
+
+			<div class="content"><blockquote><div><cite>Invitado escribió:</cite>a esto me referia en el punto 13<br /><a href="http://img96.imageshack.us/i/11311894.jpg/" class="postlink"><img src="http://img96.imageshack.us/img96/7755/11311894.th.jpg" alt="Imagen" /></a></div></blockquote></div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile35806">
+			<dt>
+				<strong>Invitado</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p35812" class="post bg1 topicauthor">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=35812" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p35812">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=35812#p35812"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong><a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a></strong> &raquo; Sab Jul 24, 2010 10:39 </p>
+
+
+
+			<div class="content"><blockquote><div><cite>Invitado escribió:</cite><blockquote><div><cite>Invitado escribió:</cite>a esto me referia en el punto 13<br /><a href="http://img96.imageshack.us/i/11311894.jpg/" class="postlink"><img src="http://img96.imageshack.us/img96/7755/11311894.th.jpg" alt="Imagen" /></a></div></blockquote></div></blockquote><br /><br />La versión que veo que usas no es la beta de Firefox4, si no ¡una versión anterior a la primera alpha!<br /><br />Las betas se pueden descargar siempre de <!-- m --><a class="postlink" href="http://www.mozilla.com/firefox/beta/">http://www.mozilla.com/firefox/beta/</a><!-- m --> pero quizá quieras esperarte al martes que salga Firefox 4.0 beta 2 localizada en diferentes idiomas, ya que la beta1 sólo salió en inglés.<br /><br />Un saludo.</div>
+
+			<div id="sig35812" class="signature">Antes de preguntar usa la búsqueda y revisa la documentación.<br /><a href="https://www.mozilla-hispano.org/documentacion/Usuario:Nukeador" class="postlink">Perfil de colaborador</a></div>
+
+		</div>
+
+
+			<dl class="postprofile" id="profile35812">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=2"><img src="https://www.mozilla-hispano.org/foro/download/file.php?avatar=2_1356312702.png" width="90" height="90" alt="Avatar de Usuario" /></a><br />
+				<a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a>
+			</dt>
+
+			<dd><img src="./images/ranks/rango-miembros.png" alt="Miembro del proyecto" title="Miembro del proyecto" /><br />Miembro del proyecto</dd>
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Mensajes:</strong> 3254</dd><dd><strong>Registrado:</strong> Vie Jul 06, 2007 00:11</dd><dd><strong>Ubicación:</strong> España</dd><dd class="topicauthor">Inició este tema</dd>
+			<dd>
+				<ul class="profile-icons">
+					<li class="web-icon"><a href="http://www.nukeador.com" title="WWW: http://www.nukeador.com"><span>Sitio web</span></a></li>
+				</ul>
+			</dd>
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36035" class="post bg2">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36035" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36035">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36035#p36035"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Almena92</strong> &raquo; Lun Ago 02, 2010 12:43 </p>
+
+
+
+			<div class="content">Me parece fantástica<br />Es muy sencillo adaptarse<br />Si, pero el problema es mas de mi ordenador que de Firefox<br />Ahora mismo funciona perfectamente<br />Si, aunque aun tarda un poquito a veces en iniciarse<br />Muy útil, ya que ahorra muchísimo espacio<br />Si, se nota cierta ganancia de rapidez<br />Carga la versión móvil de hotmail. Pero puede ser la beta en general, o mi beta únicamente<br />Bastante bien teniendo en cuenta la falta de potencia de mi equipo<br />Si, no reproduce los mp3, pide el plugin de WMP, y tras instalarlo sigue pidiéndolo<br />Ninguno<br />Ídem<br />El aspecto visual. Y en concreto el nuevo botón, aunque espero que se le añadan mas apartados<br />La verdad, creo que nada. Aunque espero ansioso JaegerMonkey</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36035">
+			<dt>
+				<strong>Almena92</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36086" class="post bg1">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36086" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36086">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36086#p36086"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Invitado</strong> &raquo; Mié Ago 04, 2010 01:57 </p>
+
+
+
+			<div class="content">Hola.<br /><br />1- La beta 2 de Firefox 4 me pareció muy, pero muy buena.<br />2- Sí, son muy fáciles de utilizar las pestañas en la parte de arriba.<br />3- No, no tuve ningún problema, sentí que los videos de Vimeo se reproducen mejor en la beta que en la versión 3.6.8.<br />4- No utilizo ninguna red social, así que no puedo colaborar en este apartado.<br />5- Sí, me parece más rápido para cargar que Firefox 3.6.<br />6- Ni lo probé al botón, no utilizo los marcadores en general, así que no me afecta el botón.<br />7- Las páginas cargan igual, aunque algunas páginas que antes me cargaban lento en Firefox 3.6 cargan un poco más rápido en Firefox 4 beta 2.<br />8- Gmail se comporta igual que antes.<br />9- Probé sólo con un juego de minijuegos.com y no vi cambio a cómo se funciona en Firefox 3.6.<br />10- Ninguno.<br />11- Ninguno, en realidad sentí que las pestañas funcionan mejor en la beta 2 que en Firefox 3.6.<br />12- Ningún problema con ninguna de las webs que generalmente veo.<br />13- Que es algo más rápido que Firefox 3.6 y que tiene menos consumo de la CPU.<br />14- Nada, lo único que vi es que consume algo más de memoria la beta cuando se tienen abiertas muchas pestañas que Firefox 3.6.<br /><br />Además quiero agregar que hice un pequeño experimento con Firefox 3.6 y la beta 2 de Firefox 4. Abrí 8 páginas webs a la vez, mientras se reproducían dos videos de forma simultanea. Noté que Firefox 4 andaba más rápido, cambiaba a una velocidad aceptable entre pestañas y los videos se reprodujeron mejor que en Firefox 3.6.8. Me fijé en el Administrador de tareas de Windows el uso de la memoria y el de la CPU, Firefox 4 beta 2 gastaba unos 171 MB de memoria y 2% de CPU, mientras que Firefox 3.6.8 gastaba 129 MB de memoria pero usaba un 54% de CPU.<br /><br />Saludos.</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36086">
+			<dt>
+				<strong>Invitado</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36183" class="post bg2">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36183" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36183">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36183#p36183"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong><a href="./memberlist.php?mode=viewprofile&amp;u=7640">Albaro</a></strong> &raquo; Lun Ago 09, 2010 06:34 </p>
+
+
+
+			<div class="content">Buenas, bueno la verdad que yo tenia win xp en mi pc, pero de pronto decidi instalarle win98 y no me imagine lo rapido que ba win 98 tengo una pc con un micro de 1 ghz y 1 gb de memoria y creanme que ba MUY RAPIDISIMO, claro yo tenia win 98 en una pc con 533 mhz de micro y 36 mb de memoria, bueno quise instalar el 3.6 de fire fox pero SORPRESA  no se puede por lo que no me imagino esta version veta 4 de fire fox, ahun hay mucha gente navegando por internet con win98 y la verdad estaria bueno si firefox saca una NUEVA VERSION para este win98 ya que no agota recursos como win xp y menos que el desastre de win vista, GRACIAS XD........PD: La verdad que me ubiera gustado poner que me parecio la version 4, pero ahora volvi a win98 y con lo rapida que va mi pc se me hara dificil volver al win xp........</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36183">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=7640">Albaro</a>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Mensajes:</strong> 7</dd><dd><strong>Registrado:</strong> Lun Ago 09, 2010 05:58</dd>
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36215" class="post bg1">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36215" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36215">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36215#p36215"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Invitado</strong> &raquo; Mar Ago 10, 2010 18:38 </p>
+
+
+
+			<div class="content"><blockquote><div><cite>Nukeador escribió:</cite>¿Qué opinas de la beta en general?</div></blockquote><br />En general bien, pero a veces no aplica los estilos y saca la pagina descolocada. Hay que recargarla para que la visualice bien.<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Son fáciles de usar las pestañas en la parte superior?</div></blockquote><br />Si.<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Algún problema con la reproducción de vídeo online?</div></blockquote><br />Mi interes en videos se centra en HTML5, solo he encontrado un video WEBM en youtube y literalmente se arrastra. Tan mal o incluso peor que con flash!<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Te parece más rápido que Firefox 3.6?</div></blockquote><br />La verdad es que no. Los veo a la par.<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Qué te parece el nuevo botón de marcadores?</div></blockquote><br />Ninguna ventaja respecto a la correspondiente entrada en el menu.<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Te parece que las páginas cargan más rápido?</div></blockquote><br />Como dije antes, mas o menos igual que con la 3.6.8<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Cuál es la cosa que más te gusta de la beta?</div></blockquote><br />Quizas el aspecto grafico<br /><br /><blockquote><div><cite>Nukeador escribió:</cite>¿Qué cosa te gustaría cambiar de la beta?</div></blockquote><br />La opcion de ocultar la barra de menus y cambiarla por un boton es muy buena, pero como en ese boton no estan todas las entradas del menu, a los dos minutos te das cuenta de que es una cosa inutil y vuelves a poner la barra de menus. En otras palabras: Menus completos desde el boton o mejor dejarlo como estaba.</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36215">
+			<dt>
+				<strong>Invitado</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36220" class="post bg2">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36220" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36220">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36220#p36220"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong><a href="./memberlist.php?mode=viewprofile&amp;u=7640">Albaro</a></strong> &raquo; Mié Ago 11, 2010 02:21 </p>
+
+
+
+			<div class="content">Ya habia dejado anteriormente un comentario para ver si pudieran sacar un firefox para win98 ( tengo Fé que saldra uno ), pero andube por otra maquina y probe el firefox 4 y la verdad casi nada con respecto al 3.7Minefield de firefox por lo que puedo decir que el gran desafio para la nueva version es de que no pida ningun pluguin como en el caso del internet explorer de micrsoft, ya que almenos nunca me pidio algo adicional para visualizar correctamente tal pagina a la que entraba, de ya no tener que andar configurando el firefox para que sea MAS RAPIDO y na da por estilo ( CLARO LO UNICO CONFIGURABLE SERIA EL TEMA DE LAS PROPAGANDAS DE LAS PAGINAS DE INTERNET ) y sobre la reproduccion de los nuevos formatos de video FULL HD de you tube, si este fire fox cumple con almenos de estos tres aspectos estariamos al frente de UN INMEJORABLE PROGRAMA PARA YA NO NAVEGAR, SINO PARA VOLAR POR INTERNET XD, Y NO SE OLVIDEN PORFAVOR DE WIN98 QUE YO ALMENOS LA SIGO USANDO XD.....</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36220">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=7640">Albaro</a>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Mensajes:</strong> 7</dd><dd><strong>Registrado:</strong> Lun Ago 09, 2010 05:58</dd>
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p36250" class="post bg1">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="postbody">
+
+				<ul class="profile-icons">
+					<li class="quote-icon"><a href="./posting.php?mode=quote&amp;f=37&amp;p=36250" title="Responder citando"><span>Responder citando</span></a></li>
+				</ul>
+
+
+			<h3 ><a href="#p36250">Re: [Sondeo] Cuéntanos qué te pareció la beta</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=36250#p36250"><img src="./styles/mozillahispano/imageset/icon_post_target.gif" width="11" height="9" alt="Nota" title="Nota" /></a>por <strong>Invitado</strong> &raquo; Jue Ago 12, 2010 15:50 </p>
+
+
+
+			<div class="content"><blockquote><div><cite>Albaro escribió:</cite>( CLARO LO UNICO CONFIGURABLE SERIA EL TEMA DE LAS PROPAGANDAS DE LAS PAGINAS DE INTERNET ) </div></blockquote><br />para eso tenemos el adblock plus<br /> <img src="./images/smilies/icon_arrow.gif" alt=":arrow:" title="Flecha" /> <!-- m --><a class="postlink" href="https://addons.mozilla.org/es-ES/firefox/addon/1865/">https://addons.mozilla.org/es-ES/firefox/addon/1865/</a><!-- m --><br />yo con la beta 4 no puedo usarlo pero de la beta 3 hacia atras si pueden</div>
+
+
+
+		</div>
+
+
+			<dl class="postprofile" id="profile36250">
+			<dt>
+				<strong>Invitado</strong>
+			</dt>
+
+
+
+		<dd>&nbsp;</dd>
+
+
+
+		</dl>
+
+
+		<div class="back2top"><a href="#wrap" class="top" title="Arriba">Arriba</a></div>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<hr class="divider" />
+
+	<form id="viewtopic" method="post" action="./viewtopic.php?f=37&amp;t=8680">
+
+	<fieldset class="display-options" style="margin-top: 0; ">
+		<a href="./viewtopic.php?f=37&amp;t=8680&amp;start=10" class="right-box right">Siguiente</a>
+		<label>Mostrar mensajes previos: <select name="st" id="st"><option value="0" selected="selected">Todos los mensajes</option><option value="1">1 día</option><option value="7">7 días</option><option value="14">2 semanas</option><option value="30">1 mes</option><option value="90">3 meses</option><option value="180">6 meses</option><option value="365">1 año</option></select></label>
+		<label>Ordenar por <select name="sk" id="sk"><option value="a">Autor</option><option value="t" selected="selected">Fecha publicación</option><option value="s">Asunto</option></select></label> <label><select name="sd" id="sd"><option value="a" selected="selected">Ascendente</option><option value="d">Descendente</option></select> <input type="submit" name="sort" value="Ir" class="button2" /></label>
+
+	</fieldset>
+
+	</form>
+	<hr />
+
+
+<div class="topic-actions">
+	<div class="buttons">
+
+		<div class="reply-icon"><a href="./posting.php?mode=reply&amp;f=37&amp;t=8680" title="Publicar una respuesta"><span></span>Publicar una respuesta</a></div>
+
+	</div>
+
+
+		<div class="pagination">
+			68 mensajes
+			 &bull; <a href="#" onclick="jumpto(); return false;" title="Clic para saltar a página…">Página <strong>1</strong> de <strong>7</strong></a> &bull; <span><strong>1</strong><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=10">2</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=20">3</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=30">4</a><span class="page-sep">, </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=40">5</a><span class="page-dots"> ... </span><a href="./viewtopic.php?f=37&amp;t=8680&amp;start=60">7</a></span>
+		</div>
+
+</div>
+
+
+	<p></p><p><a href="./viewforum.php?f=37" class="left-box left" accesskey="r">Volver a Firefox Aurora/Beta</a></p>
+
+	<br /><br />
+
+	<div id="whosonline">
+	<h3>¿Quién está conectado?</h3>
+	<p>Usuarios navegando por este Foro: No hay usuarios registrados visitando el Foro y 1 invitado</p>
+	</div>
+<div id="page-footer">
+
+	<div class="navbar">
+
+		<ul class="linklist">
+			<li class="icon-home"><a href="./index.php" accesskey="h">Índice general</a></li>
+		</ul>
+
+	</div>
+
+<!--
+	We request you retain the full copyright notice below including the link to www.phpbb.com.
+	This not only gives respect to the large amount of time given freely by the developers
+	but also helps build interest, traffic and use of phpBB3. If you (honestly) cannot retain
+	the full copyright we ask you at least leave in place the "Powered by phpBB" line, with
+	"phpBB" linked to www.phpbb.com. If you refuse to include even this then support on our
+	forums may be affected.
+
+	The phpBB Group : 2006
+//-->
+
+	<div class="copyright">
+		<p >Fecha actual Mar Jun 18, 2013 22:43</p>
+
+		<p>Powered by <a href="http://www.phpbb.com/">phpBB</a> - <a href="./memberlist.php?mode=leaders">El Equipo</a> &bull; <a href="./ucp.php?mode=delete_cookies">Borrar todas las cookies del Sitio</a> &bull;  Todos los horarios son UTC + 1 hora
+		</p>
+	</div>
+</div>
+<div>
+	<a id="bottom" name="bottom" accesskey="z"></a>
+
+
+</div>
+
+</div> <!-- page-body -->
+
+<div id="barra-small">
+	<ul class="linklist navlinks">
+			<li class="rightside"><a href="#" onclick="fontsizeup(); return false;" class="fontsize" title="Cambiar tamaño de la fuente">Cambiar tamaño de la fuente</a></li>
+			<li class="rightside"><a href="./memberlist.php?mode=email&amp;t=8680" title="Email a un amigo" class="sendemail">Email a un amigo</a></li><li class="rightside"><a href="./viewtopic.php?f=37&amp;t=8680&amp;view=print" title="Imprimir vista" accesskey="p" class="print">Imprimir vista</a></li>
+	</ul>
+
+	<!-- Buscador -->
+		<div id="alojaBusqueda">
+				<form action="/buscar.php" method="get" id="form-buscador">
+					<fieldset>
+						<div id="caja-busqueda">
+							<select id="destinoBusqueda" name="donde">
+								<option value="noti">Noticias</option>
+								<option selected="selected" value="foro">Foros</option>
+								<option value="docu">Documentación</option>
+							</select>
+							<input name="desde" type="hidden" value="foro" />
+							<input type="text" name="q" id="keywords" maxlength="128" title="Escribe primero tu pregunta aquí..." class="buscador" value="Escribe primero tu pregunta aquí..." onclick="if(this.value=='Escribe primero tu pregunta aquí...')this.value='';" onblur="if(this.value=='')this.value='Escribe primero tu pregunta aquí...';"/>
+							<input type="submit" class="submit" value="Buscar"/>
+						</div>
+
+					</fieldset>
+				</form>
+		</div>
+
+	<h3>Herramientas</h3>
+
+		<ul class="linklist">
+			<li class="icon-home"><a href="./index.php" accesskey="h">Índice general</a></li>
+				<li><a  class="icon-subscribe-rss" title="Canal - Foro - Firefox Aurora/Beta" href="http://www.mozilla-hispano.org/foro/feed.php?f=37">Este subforo por RSS</a></li><li><a  class="icon-subscribe-rss" title="Canal - Tema - [Sondeo] Cuéntanos qué te pareció la beta" href="http://www.mozilla-hispano.org/foro/feed.php?f=37&amp;t=8680">Este tema por RSS</a></li>
+		</ul>
+
+
+	<ul class="linklist">
+
+			<li><a href="./search.php?search_id=unanswered">Buscar temas sin respuesta</a></li>
+
+			<li><a href="./search.php?search_id=active_topics">Ver temas activos</a></li>
+
+	</ul>
+
+	<h3>Usuario</h3>
+
+
+						<ul class="linklist">
+							<li class="icon-faq"><a href="./faq.php" title="Preguntas Frecuentes">FAQ</a></li>
+							<li class="icon-register"><a href="./ucp.php?mode=register">Registrarse</a></li>
+								<li class="icon-logout"><a href="./ucp.php?mode=login" title="Identificarse" accesskey="x">Identificarse</a></li>
+
+						</ul>
+
+	<h3>Comprueba tus plugins</h3>
+	<p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.mozilla.org/media/img/promo.plugins.png" alt="Plugins" /></a></p>
+	<p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
+	<p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
+
+	<h3>Ayúdanos a ayudar</h3>
+	<p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
+	<p><a href="/documentacion/C%C3%B3mo_ayudar_en_los_foros">Descubre lo fácil que es »</a></p>
+</div>
+
+</div><!-- Cuerpo -->
+</div><!-- Contenido -->
+</div><!-- tullido -->
+<div id="pie">
+	<div id="pie-contenido">
+		<div class="c2">
+			<a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Licencia" title="Licencia para el uso del contenido de este proyecto"><img src="/images/cc-by-sa.png" alt="cc-by-sa"/></a>
+		</div>
+
+		<div class="c1">
+			<strong>Acerca de</strong>
+			<ul>
+				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano" title="Conoce más sobre el proyecto">Acerca de Mozilla Hispano</a></li>
+				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Contacto" title="Contacta con el proyecto">Contacto</a></li>
+				<li><a href="/documentacion/Colabora" title="Colabora con el proyecto">Colabora</a></li>
+				<li><a href="/comunidad/">Comunidad</a></li>
+				<li><a href="/marca/">Uso de marca y logos</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Comunidad</strong>
+			<ul>
+				<li><a href="/">Noticias</a></li>
+				<li><a href="/foro/">Foro</a></li>
+				<li><a href="/documentacion/">Documentación</a></li>
+				<li><a href="/planet/">Planet</a></li>
+				<li><a href="/labs/">Labs</a></li>
+				<li><a href="/difusion/">Difusión</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Webs Mozilla</strong>
+			<ul>
+				<li><a href="http://addons.mozilla.org/es-ES/">Mozilla Addons</a></li>
+				<li><a href="http://developer.mozilla.org/es">Mozilla Developer Network</a></li>
+				<li><a href="http://www.mozilla.org/es-ES/newsletter/">Boletín Firefox</a></li>
+				<li><a href="http://input.mozilla.com/es/">Firefox Input</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Únete</strong>
+			<ul>
+				<li><a href="/documentacion/Difusi%C3%B3n">Difusión</a></li>
+				<li><a href="/documentacion/Asistencia">Asistencia</a></li>
+				<li><a href="/documentacion/Noticias">Noticias</a></li>
+				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
+				<li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
+				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script type='text/javascript' src='https://www.mozilla.org/tabzilla/media/js/tabzilla.js'></script>
+<script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
+tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2846159-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</div>
+
+</body>
+</html>

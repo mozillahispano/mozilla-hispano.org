@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es" xml:lang="es">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="copyright" content="2000, 2002, 2005, 2007 phpBB Group" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<title>Mozilla Hispano &bull; Ver foro - Mozilla Firefox</title>
+		<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+
+	<link rel="alternate" type="application/rss+xml" title="Noticias de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano" />
+	<link rel="alternate" type="application/rss+xml" title="Artículos en Planet Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-planet" />
+    	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
+
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
+	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
+
+	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+	<link rel="stylesheet" href="http://www.mozilla-hispano.org/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
+
+
+	<link rel="alternate" type="application/atom+xml" title="Canal - Mozilla Hispano" href="http://www.mozilla-hispano.org/foro/feed.php" />
+	<link rel="alternate" type="application/atom+xml" title="Canal - Todos los Temas" href="http://www.mozilla-hispano.org/foro/feed.php?mode=topics" /><link rel="alternate" type="application/atom+xml" title="Canal - Foro - Mozilla Firefox" href="http://www.mozilla-hispano.org/foro/feed.php?f=2" />
+
+<script type="text/javascript">
+// <![CDATA[
+	var jump_page = 'Introduzca el número de página al que desea saltar:';
+	var on_page = '1';
+	var per_page = '25';
+	var base_url = './viewforum.php?f=2';
+	var style_cookie = 'phpBBstyle';
+	var style_cookie_settings = '; path=/; domain=www.mozilla-hispano.org; secure';
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+
+
+
+	/**
+	* Find a member
+	*/
+	function find_username(url)
+	{
+		popup(url, 760, 570, '_usersearch');
+		return false;
+	}
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	}
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	}
+
+// ]]>
+</script>
+<script type="text/javascript" src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/template/styleswitcher.js"></script>
+<script type="text/javascript" src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/template/forum_fn.js"></script>
+
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
+<link href="http://www.mozilla-hispano.org/style.php?id=7&amp;lang=es" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/normal.css" rel="stylesheet" type="text/css" title="A" />
+<link href="./forum.css" rel="stylesheet" type="text/css" title="A" />
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/medium.css" rel="alternate stylesheet" type="text/css" title="A+" />
+<link href="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/large.css" rel="alternate stylesheet" type="text/css" title="A++" />
+
+<link rel="stylesheet" href="forum.css">
+<link rel="stylesheet" href="../responsive.css">
+
+	<script type="text/javascript" src="http://www.mozilla-hispano.org/wp-content/themes/mozillahispano2/js/menu.js"></script>
+
+</head>
+
+<body id="phpbb" class="section-viewforum ltr">
+
+<div id="lienzo">
+	<div id="tullido">
+
+		<div id="cabecera">
+				<div id="alojaLogo">
+
+					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
+				</div>
+				<div id="menu">
+					<ul class="clearfix">
+							<li><a href="/">Noticias</a></li>
+							<li><a href="/foro/">Foro</a>
+								<ul class="submenu">
+									<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
+									<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								</ul>
+							</li>
+							<li><a href="/difusion/" title="Ayuda a difundir Mozilla en español">Difusión</a>
+								<ul class="submenu">
+									<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
+									<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
+								</ul>
+							</li>
+							<li><a href="/podcast/">Podcast</a></li>
+							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
+							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Únete</a>
+								<ul class="submenu">
+										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
+										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+										<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
+								</ul>
+							</li>
+					</ul>
+				</div>
+				<div id="social">
+					<ul>
+						<li><a title="Síguenos en Twitter" id="twitter-icon" href="http://twitter.com/mozilla_hispano">Síguenos en Twitter</a></li>
+						<li><a title="Síguenos en Facebook" id="facebook-icon" href="http://www.facebook.com/mozillahispano">Síguenos en Facebook</a></li>
+						<li><a title="Síguenos en Google Plus" id="gplus-icon" href="https://plus.google.com/113725577998863887008/posts">Síguenos en Google Plus</a></li>
+						<li><a title="Nuestros vídeos en YouTube" id="youtube-icon" href="http://www.youtube.com/mozillahispano">Nuestros vídeos en YouTube</a></li>
+						<li><a title="Nuestros fotos en Flickr" id="flickr-icon" href="http://www.flickr.com/photos/tags/mozillahispano/">Nuestras fotos en Flickr</a></li>
+						<li><a title="Feed RSS" id="rss-icon" href="http://feeds.mozilla-hispano.org/mozillahispano">Feed RSS</a></li>
+					</ul>
+				</div>
+</div>
+
+		<div id="cuerpo">
+			<div id="contenido">
+				<div id="page-body">
+			<a id="top" name="top" accesskey="t"></a>
+			<a name="wrap"></a>
+			<!-- Aviso temporal
+			<p style="text-align: center; font-weight: bold; margin: 1em 0pt 2em ! important;">Se ha habilitado la opción de subir tu avatar desde <a href="https://www.mozilla-hispano.org/foro/ucp.php?i=profile&mode=avatar">la página de perfil</a>.</p>
+			Fin aviso temporal -->
+			<div class="navbar">
+						<ul class="linklist navlinks">
+							<li><a class="icon-home" href="./index.php" accesskey="h">Índice general</a>  <strong>&#8249;</strong> <a href="./viewforum.php?f=1">Asistencia</a> <strong>&#8249;</strong> <a href="./viewforum.php?f=2">Mozilla Firefox</a></li>
+						</ul>
+					</div>
+
+		<a name="start_here"></a>
+
+
+<h2><a href="./viewforum.php?f=2">Mozilla Firefox</a></h2>
+
+
+<div>
+	<!-- NOTE: remove the style="display: none" when you want to have the forum description on the forum body --><div style="display: none !important;">Foro de ayuda del navegador Mozilla Firefox<br /></div>
+</div>
+
+		<div class="forabg">
+			<div class="inner"><span class="corners-top"><span></span></span>
+			<ul class="topiclist">
+				<li class="header">
+					<dl class="icon">
+						<dt>Foro</dt>
+						<dd class="topics">Temas</dd>
+						<dd class="posts">Mensajes</dd>
+						<dd class="lastpost"><span>Último mensaje</span></dd>
+					</dl>
+				</li>
+			</ul>
+			<ul class="topiclist forums">
+
+		<li class="row">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/forum_read.gif); background-repeat: no-repeat;">
+				<dt title="">
+				<!-- <a class="feed-icon-forum" title="Canal - Firefox Aurora/Beta" href="http://www.mozilla-hispano.org/foro/feed.php?f=37"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/images/feed.gif" alt="Canal - Firefox Aurora/Beta" /></a> --><span class="forum-image"><img src="https://www.mozilla-hispano.org/themes/mozillahispano2/img/fx-beta-logo.png" alt="" /></span>
+					<a href="./viewforum.php?f=37" class="forumtitle">Firefox Aurora/Beta</a><br />
+					Foro de discusión sobre las versiones en desarrollo (aurora/beta) de Firefox.
+
+				</dt>
+
+					<dd class="topics">173 <dfn>Temas</dfn></dd>
+					<dd class="posts">870 <dfn>Mensajes</dfn></dd>
+					<dd class="lastpost"><span>
+						<dfn>Último mensaje</dfn> por <a href="./memberlist.php?mode=viewprofile&amp;u=12956">infoasistencia</a>
+						<a href="./viewtopic.php?f=37&amp;p=62556#p62556"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Jue Jun 13, 2013 13:25</span>
+					</dd>
+
+			</dl>
+		</li>
+
+		<li class="row">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/forum_read.gif); background-repeat: no-repeat;">
+				<dt title="">
+				<!-- <a class="feed-icon-forum" title="Canal - Firefox para Android" href="http://www.mozilla-hispano.org/foro/feed.php?f=46"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/theme/images/feed.gif" alt="Canal - Firefox para Android" /></a> --><span class="forum-image"><img src="https://www.mozilla-hispano.org/themes/mozillahispano2/img/android-logo.png" alt="" /></span>
+					<a href="./viewforum.php?f=46" class="forumtitle">Firefox para Android</a><br />
+					Asistencia para Firefox en dispositivos Android
+
+				</dt>
+
+					<dd class="topics">62 <dfn>Temas</dfn></dd>
+					<dd class="posts">236 <dfn>Mensajes</dfn></dd>
+					<dd class="lastpost"><span>
+						<dfn>Último mensaje</dfn> por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+						<a href="./viewtopic.php?f=46&amp;p=62620#p62620"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 16, 2013 10:59</span>
+					</dd>
+
+			</dl>
+		</li>
+
+			</ul>
+
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+
+	<div class="topic-actions" style="margin-top: 2em;">
+
+
+		<div class="buttons">
+			<div class="post-icon" title="Publicar un nuevo tema"><a href="./posting.php?mode=post&amp;f=2"><span></span>Publicar un nuevo tema</a></div>
+		</div>
+
+		<div class="search-box">
+			<form method="get" id="forum-search" action="./search.php">
+			<fieldset>
+				<input class="inputbox search tiny" type="text" name="keywords" id="search_keywords" size="20" value="Buscar en este Foro…" onclick="if (this.value == 'Buscar en este Foro…') this.value = '';" onblur="if (this.value == '') this.value = 'Buscar en este Foro…';" />
+				<input class="button2" type="submit" value="Buscar" />
+				<input type="hidden" name="fid[0]" value="2" />
+
+			</fieldset>
+			</form>
+		</div>
+
+		<div class="pagination">
+			8754 temas &bull; <a href="#" onclick="jumpto(); return false;" title="Clic para saltar a página…">Página <strong>1</strong> de <strong>351</strong></a> &bull; <span><strong>1</strong><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=25">2</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=50">3</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=75">4</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=100">5</a><span class="page-dots"> ... </span><a href="./viewforum.php?f=2&amp;start=8750">351</a></span>
+		</div>
+
+
+	</div>
+
+		<div class="forumbg announcement">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<ul class="topiclist">
+			<li class="header">
+				<dl class="icon">
+					<dt>Anuncios</dt>
+					<dd class="posts">Respuestas</dd>
+					<dd class="views">Vistas</dd>
+					<dd class="lastpost"><span>Último mensaje</span></dd>
+				</dl>
+			</li>
+		</ul>
+		<ul class="topiclist topics">
+
+
+		<li class="row bg1 announce">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/announce_read_locked.gif); background-repeat: no-repeat;">
+				<dt title="Este tema está cerrado, no puede editar mensajes o enviar nuevas respuestas"><a href="./viewtopic.php?f=2&amp;t=15" class="topictitle">¿Buscas ayuda? Léeme antes de preguntar</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a> &raquo; Mié Oct 17, 2007 20:19
+				</dt>
+				<dd class="posts">0 <dfn>Respuestas</dfn></dd>
+				<dd class="views">22707 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=2">Nukeador</a>
+					<a href="./viewtopic.php?f=2&amp;t=15&amp;p=153#p153"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Mié Oct 17, 2007 20:19</span>
+				</dd>
+			</dl>
+		</li>
+
+
+		</ul>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+		<div class="forumbg">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		<ul class="topiclist">
+			<li class="header">
+				<dl class="icon">
+					<dt>Temas</dt>
+					<dd class="posts">Respuestas</dd>
+					<dd class="views">Vistas</dd>
+					<dd class="lastpost"><span>Último mensaje</span></dd>
+				</dl>
+			</li>
+		</ul>
+		<ul class="topiclist topics">
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16043" class="topictitle">cuevana</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12968">mozilla</a> &raquo; Lun Jun 17, 2013 18:51
+				</dt>
+				<dd class="posts">3 <dfn>Respuestas</dfn></dd>
+				<dd class="views">13 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16043&amp;p=62649#p62649"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 21:29</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16023" class="topictitle">Firefox 21.0 se cierra solo</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=4151">Aliku</a> &raquo; Jue Jun 13, 2013 21:01
+				</dt>
+				<dd class="posts">2 <dfn>Respuestas</dfn></dd>
+				<dd class="views">33 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por holapollo
+					<a href="./viewtopic.php?f=2&amp;t=16023&amp;p=62648#p62648"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 21:23</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16044" class="topictitle">Configurar descarga de videos de Youtube en Real Player</a><br />
+					por mianfergar &raquo; Lun Jun 17, 2013 20:57
+				</dt>
+				<dd class="posts">0 <dfn>Respuestas</dfn></dd>
+				<dd class="views">4 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por mianfergar
+					<a href="./viewtopic.php?f=2&amp;t=16044&amp;p=62646#p62646"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 20:57</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15931" class="topictitle">pestaña nueva</a><br />
+					<strong class="pagination"><span><a href="./viewtopic.php?f=2&amp;t=15931">1</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=15931&amp;start=10">2</a></span></strong>por <a href="./memberlist.php?mode=viewprofile&amp;u=12346">catanga</a> &raquo; Mié May 29, 2013 09:21
+				</dt>
+				<dd class="posts">17 <dfn>Respuestas</dfn></dd>
+				<dd class="views">172 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=15931&amp;p=62645#p62645"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 19:47</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15730" class="topictitle">Incapaz de hacer funcionar SYNC</a><br />
+					por JoseLu &raquo; Mar Abr 30, 2013 12:35
+				</dt>
+				<dd class="posts">2 <dfn>Respuestas</dfn></dd>
+				<dd class="views">67 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por FranciscoJavier
+					<a href="./viewtopic.php?f=2&amp;t=15730&amp;p=62643#p62643"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 19:38</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16039" class="topictitle">consulta mixidj</a><br />
+					por lbsilvina &raquo; Lun Jun 17, 2013 13:39
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">14 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=12131">FNK</a>
+					<a href="./viewtopic.php?f=2&amp;t=16039&amp;p=62640#p62640"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 18:37</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16025" class="topictitle">desaparecio barra de busqueda de google</a><br />
+					por mauronavet &raquo; Vie Jun 14, 2013 01:09
+				</dt>
+				<dd class="posts">3 <dfn>Respuestas</dfn></dd>
+				<dd class="views">49 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16025&amp;p=62630#p62630"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 17, 2013 04:14</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16033" class="topictitle">problema de software?</a>&nbsp;&nbsp;<a href="./viewtopic.php?f=2&amp;t=16033&amp;p=62618#p62618" class="topictitle"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_solved_list.png" width="12" height="12" alt="El tema está solucionado" title="El tema está solucionado" /></a><br />
+					por afi360 &raquo; Sab Jun 15, 2013 17:34
+				</dt>
+				<dd class="posts">6 <dfn>Respuestas</dfn></dd>
+				<dd class="views">54 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=12965">afi360</a>
+					<a href="./viewtopic.php?f=2&amp;t=16033&amp;p=62626#p62626"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 16, 2013 20:16</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt style="background-image: url(./images/icons/smile/alert.gif); background-repeat: no-repeat;" title=""><a href="./viewtopic.php?f=2&amp;t=16037" class="topictitle">Buscador Propio</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12966">darkneptune</a> &raquo; Dom Jun 16, 2013 16:03
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">26 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16037&amp;p=62622#p62622"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 16, 2013 17:41</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=14382" class="topictitle">al iniciar me abre automaticamente 2º pestaña con plugings</a><br />
+					<strong class="pagination"><span><a href="./viewtopic.php?f=2&amp;t=14382">1</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=14382&amp;start=10">2</a></span></strong>por Rafaelco &raquo; Lun Oct 08, 2012 18:46
+				</dt>
+				<dd class="posts">13 <dfn>Respuestas</dfn></dd>
+				<dd class="views">1848 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=14382&amp;p=62607#p62607"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Sab Jun 15, 2013 16:38</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16029" class="topictitle">Scroll no funciona</a><br />
+					por usuario-scroll &raquo; Sab Jun 15, 2013 00:28
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">22 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16029&amp;p=62604#p62604"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Sab Jun 15, 2013 16:09</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15034" class="topictitle">CAMIAR PAGINA INICIO PESTAÑAS</a><br />
+					<strong class="pagination"><span><a href="./viewtopic.php?f=2&amp;t=15034">1</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=15034&amp;start=10">2</a></span></strong>por <a href="./memberlist.php?mode=viewprofile&amp;u=12415">cati garcia barral</a> &raquo; Mié Ene 23, 2013 18:27
+				</dt>
+				<dd class="posts">10 <dfn>Respuestas</dfn></dd>
+				<dd class="views">376 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por Sakura04
+					<a href="./viewtopic.php?f=2&amp;t=15034&amp;p=62601#p62601"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Sab Jun 15, 2013 04:00</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15858" class="topictitle">Firefox se bloquea con Flash player 11.7   2013</a><br />
+					por Ricardo A &raquo; Sab May 18, 2013 02:21
+				</dt>
+				<dd class="posts">6 <dfn>Respuestas</dfn></dd>
+				<dd class="views">324 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por anaLeón
+					<a href="./viewtopic.php?f=2&amp;t=15858&amp;p=62600#p62600"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Sab Jun 15, 2013 03:20</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16030" class="topictitle">Contraseña maestra pide contraseña cada 2x3</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12961">cat</a> &raquo; Vie Jun 14, 2013 20:18
+				</dt>
+				<dd class="posts">0 <dfn>Respuestas</dfn></dd>
+				<dd class="views">16 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=12961">cat</a>
+					<a href="./viewtopic.php?f=2&amp;t=16030&amp;p=62587#p62587"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Vie Jun 14, 2013 20:18</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16001" class="topictitle">problema deshacer cierre ultima pestaña</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12947">situyo</a> &raquo; Dom Jun 09, 2013 15:18
+				</dt>
+				<dd class="posts">5 <dfn>Respuestas</dfn></dd>
+				<dd class="views">68 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16001&amp;p=62576#p62576"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Vie Jun 14, 2013 04:48</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15996" class="topictitle">Firefox falla continuamente</a><br />
+					por InacioSolar &raquo; Sab Jun 08, 2013 18:31
+				</dt>
+				<dd class="posts">3 <dfn>Respuestas</dfn></dd>
+				<dd class="views">84 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=15996&amp;p=62575#p62575"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Vie Jun 14, 2013 04:43</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read_hot.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15955" class="topictitle">Youtube no carga para nada en Firefox 21.0</a>&nbsp;&nbsp;<a href="./viewtopic.php?f=2&amp;t=15955&amp;p=62430#p62430" class="topictitle"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_solved_list.png" width="12" height="12" alt="El tema está solucionado" title="El tema está solucionado" /></a><br />
+					<strong class="pagination"><span><a href="./viewtopic.php?f=2&amp;t=15955">1</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=15955&amp;start=10">2</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=15955&amp;start=20">3</a></span></strong>por junmax &raquo; Vie May 31, 2013 22:27
+				</dt>
+				<dd class="posts">26 <dfn>Respuestas</dfn></dd>
+				<dd class="views">618 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=15955&amp;p=62572#p62572"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Vie Jun 14, 2013 04:24</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16022" class="topictitle">No funciona</a><br />
+					por NNNNNNN &raquo; Jue Jun 13, 2013 20:58
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">31 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=12380">ninrod</a>
+					<a href="./viewtopic.php?f=2&amp;t=16022&amp;p=62566#p62566"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Jue Jun 13, 2013 23:20</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15893" class="topictitle">Qué fuente es, que caracteres no se ven en Firefox</a><br />
+					<strong class="pagination"><span><a href="./viewtopic.php?f=2&amp;t=15893">1</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=15893&amp;start=10">2</a></span></strong>por Caracteres Raros &raquo; Jue May 23, 2013 18:57
+				</dt>
+				<dd class="posts">12 <dfn>Respuestas</dfn></dd>
+				<dd class="views">150 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por Caracteres Raros
+					<a href="./viewtopic.php?f=2&amp;t=15893&amp;p=62534#p62534"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Mar Jun 11, 2013 21:31</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15512" class="topictitle">Borrar firmas digitales de FireFox</a>&nbsp;&nbsp;<a href="./viewtopic.php?f=2&amp;t=15512&amp;p=60890#p60890" class="topictitle"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_solved_list.png" width="12" height="12" alt="El tema está solucionado" title="El tema está solucionado" /></a><br />
+					por Miguelitto &raquo; Jue Abr 04, 2013 07:41
+				</dt>
+				<dd class="posts">9 <dfn>Respuestas</dfn></dd>
+				<dd class="views">375 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por Miguelitto
+					<a href="./viewtopic.php?f=2&amp;t=15512&amp;p=62498#p62498"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Lun Jun 10, 2013 08:02</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16002" class="topictitle">problema al abrir facebook</a><br />
+					por alexandertabel &raquo; Dom Jun 09, 2013 16:36
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">63 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16002&amp;p=62487#p62487"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 09, 2013 17:21</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=16000" class="topictitle">Descargas</a><br />
+					por satur26 &raquo; Dom Jun 09, 2013 09:56
+				</dt>
+				<dd class="posts">2 <dfn>Respuestas</dfn></dd>
+				<dd class="views">51 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=16000&amp;p=62485#p62485"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 09, 2013 17:13</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15936" class="topictitle">recuperar la antigua configuracion de fire fox una vez formt</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12921">Julio Cesar Herrera</a> &raquo; Jue May 30, 2013 01:10
+				</dt>
+				<dd class="posts">2 <dfn>Respuestas</dfn></dd>
+				<dd class="views">79 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=12921">Julio Cesar Herrera</a>
+					<a href="./viewtopic.php?f=2&amp;t=15936&amp;p=62480#p62480"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 09, 2013 15:23</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg1">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15913" class="topictitle">firefox y carpeta de descarga</a><br />
+					por luis carlos &raquo; Dom May 26, 2013 19:56
+				</dt>
+				<dd class="posts">5 <dfn>Respuestas</dfn></dd>
+				<dd class="views">130 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por Oriana
+					<a href="./viewtopic.php?f=2&amp;t=15913&amp;p=62477#p62477"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 09, 2013 07:09</span>
+				</dd>
+			</dl>
+		</li>
+
+
+
+		<li class="row bg2">
+			<dl class="icon" style="background-image: url(http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/topic_read.gif); background-repeat: no-repeat;">
+				<dt title=""><a href="./viewtopic.php?f=2&amp;t=15999" class="topictitle">inicio de Firefox</a><br />
+					por <a href="./memberlist.php?mode=viewprofile&amp;u=12921">Julio Cesar Herrera</a> &raquo; Dom Jun 09, 2013 01:06
+				</dt>
+				<dd class="posts">1 <dfn>Respuestas</dfn></dd>
+				<dd class="views">62 <dfn>Vistas</dfn></dd>
+				<dd class="lastpost"><span><dfn>Último mensaje </dfn>por <a href="./memberlist.php?mode=viewprofile&amp;u=61">noctuido</a>
+					<a href="./viewtopic.php?f=2&amp;t=15999&amp;p=62475#p62475"><img src="http://www.mozilla-hispano.org/foro/styles/mozillahispano/imageset/icon_topic_latest.gif" width="11" height="9" alt="Ver último mensaje" title="Ver último mensaje" /></a> <br />Dom Jun 09, 2013 04:29</span>
+				</dd>
+			</dl>
+		</li>
+
+
+			</ul>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+
+	<form method="post" action="./viewforum.php?f=2">
+		<fieldset class="display-options">
+			<a href="./viewforum.php?f=2&amp;start=25" class="right-box right">Siguiente</a>
+			<label>Mostrar temas previos: <select name="st" id="st"><option value="0" selected="selected">Todos los Temas</option><option value="1">1 día</option><option value="7">7 días</option><option value="14">2 semanas</option><option value="30">1 mes</option><option value="90">3 meses</option><option value="180">6 meses</option><option value="365">1 año</option></select></label>
+			<label>Ordenar por <select name="sk" id="sk"><option value="a">Autor</option><option value="t" selected="selected">Fecha publicación</option><option value="r">Respuestas</option><option value="s">Asunto</option><option value="v">Vistas</option></select></label>
+			<label><select name="sd" id="sd"><option value="a">Ascendente</option><option value="d" selected="selected">Descendente</option></select> <input type="submit" name="sort" value="Ir" class="button2" /></label>
+
+		</fieldset>
+	</form>
+	<hr />
+
+	<div class="topic-actions">
+
+		<div class="buttons">
+			<div class="post-icon" title="Publicar un nuevo tema"><a href="./posting.php?mode=post&amp;f=2"><span></span>Publicar un nuevo tema</a></div>
+		</div>
+
+		<div class="pagination">
+			 8754 temas &bull;  <a href="#" onclick="jumpto(); return false;" title="Clic para saltar a página…">Página <strong>1</strong> de <strong>351</strong></a>
+			 &bull;  <span><strong>1</strong><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=25">2</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=50">3</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=75">4</a><span class="page-sep">, </span><a href="./viewforum.php?f=2&amp;start=100">5</a><span class="page-dots"> ... </span><a href="./viewforum.php?f=2&amp;start=8750">351</a></span>
+		</div>
+
+	</div>
+
+	<p></p><p><a href="./index.php" class="left-box left" accesskey="r">Volver a Índice general</a></p>
+
+	<br /><br />
+
+	<div id="whosonline">
+	<h3>¿Quién está conectado?</h3>
+	<p>Usuarios navegando por este Foro: No hay usuarios registrados visitando el Foro y 5 invitados</p>
+	</div>
+
+	<div id="permissions">
+	<h3>Permisos del foro</h3>
+	<p><strong>Puede</strong> abrir nuevos temas en este Foro<br /><strong>Puede</strong> responder a temas en este Foro<br /><strong>No puede</strong> editar sus mensajes en este Foro<br /><strong>No puede</strong> borrar sus mensajes en este Foro<br /><strong>No puede</strong> enviar adjuntos en este Foro<br /></p>
+	</div>
+<div id="page-footer">
+
+	<div class="navbar">
+
+		<ul class="linklist">
+			<li class="icon-home"><a href="./index.php" accesskey="h">Índice general</a></li>
+		</ul>
+
+	</div>
+
+<!--
+	We request you retain the full copyright notice below including the link to www.phpbb.com.
+	This not only gives respect to the large amount of time given freely by the developers
+	but also helps build interest, traffic and use of phpBB3. If you (honestly) cannot retain
+	the full copyright we ask you at least leave in place the "Powered by phpBB" line, with
+	"phpBB" linked to www.phpbb.com. If you refuse to include even this then support on our
+	forums may be affected.
+
+	The phpBB Group : 2006
+//-->
+
+	<div class="copyright">
+		<p >Fecha actual Lun Jun 17, 2013 22:34</p>
+
+		<p>Powered by <a href="http://www.phpbb.com/">phpBB</a> - <a href="./memberlist.php?mode=leaders">El Equipo</a> &bull; <a href="./ucp.php?mode=delete_cookies">Borrar todas las cookies del Sitio</a> &bull;  Todos los horarios son UTC + 1 hora
+		</p>
+	</div>
+</div>
+<div>
+	<a id="bottom" name="bottom" accesskey="z"></a>
+
+
+</div>
+
+</div> <!-- page-body -->
+
+<div id="barra-small">
+	<ul class="linklist navlinks">
+			<li class="rightside"><a href="#" onclick="fontsizeup(); return false;" class="fontsize" title="Cambiar tamaño de la fuente">Cambiar tamaño de la fuente</a></li>
+
+	</ul>
+
+	<!-- Buscador -->
+		<div id="alojaBusqueda">
+				<form action="/buscar.php" method="get" id="form-buscador">
+					<fieldset>
+						<div id="caja-busqueda">
+							<select id="destinoBusqueda" name="donde">
+								<option value="noti">Noticias</option>
+								<option selected="selected" value="foro">Foros</option>
+								<option value="docu">Documentación</option>
+							</select>
+							<input name="desde" type="hidden" value="foro" />
+							<input type="text" name="q" id="keywords" maxlength="128" title="Escribe primero tu pregunta aquí..." class="buscador" value="Escribe primero tu pregunta aquí..." onclick="if(this.value=='Escribe primero tu pregunta aquí...')this.value='';" onblur="if(this.value=='')this.value='Escribe primero tu pregunta aquí...';"/>
+							<input type="submit" class="submit" value="Buscar"/>
+						</div>
+
+					</fieldset>
+				</form>
+		</div>
+
+	<h3>Herramientas</h3>
+
+		<ul class="linklist">
+			<li class="icon-home"><a href="./index.php" accesskey="h">Índice general</a></li>
+				<li><a  class="icon-subscribe-rss" title="Canal - Foro - Mozilla Firefox" href="http://www.mozilla-hispano.org/foro/feed.php?f=2">Este subforo por RSS</a></li>
+		</ul>
+
+
+	<ul class="linklist">
+
+			<li><a href="./search.php?search_id=unanswered">Buscar temas sin respuesta</a></li>
+
+			<li><a href="./search.php?search_id=active_topics">Ver temas activos</a></li>
+
+	</ul>
+
+	<h3>Usuario</h3>
+
+
+						<ul class="linklist">
+							<li class="icon-faq"><a href="./faq.php" title="Preguntas Frecuentes">FAQ</a></li>
+							<li class="icon-register"><a href="./ucp.php?mode=register">Registrarse</a></li>
+								<li class="icon-logout"><a href="./ucp.php?mode=login" title="Identificarse" accesskey="x">Identificarse</a></li>
+
+						</ul>
+
+	<h3>Comprueba tus plugins</h3>
+	<p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.mozilla.org/media/img/promo.plugins.png" alt="Plugins" /></a></p>
+	<p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
+	<p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
+
+	<h3>Ayúdanos a ayudar</h3>
+	<p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
+	<p><a href="/documentacion/C%C3%B3mo_ayudar_en_los_foros">Descubre lo fácil que es »</a></p>
+</div>
+
+</div><!-- Cuerpo -->
+</div><!-- Contenido -->
+</div><!-- tullido -->
+<div id="pie">
+	<div id="pie-contenido">
+		<div class="c2">
+			<a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Licencia" title="Licencia para el uso del contenido de este proyecto"><img src="/images/cc-by-sa.png" alt="cc-by-sa"/></a>
+		</div>
+
+		<div class="c1">
+			<strong>Acerca de</strong>
+			<ul>
+				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano" title="Conoce más sobre el proyecto">Acerca de Mozilla Hispano</a></li>
+				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Contacto" title="Contacta con el proyecto">Contacto</a></li>
+				<li><a href="/documentacion/Colabora" title="Colabora con el proyecto">Colabora</a></li>
+				<li><a href="/comunidad/">Comunidad</a></li>
+				<li><a href="/marca/">Uso de marca y logos</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Comunidad</strong>
+			<ul>
+				<li><a href="/">Noticias</a></li>
+				<li><a href="/foro/">Foro</a></li>
+				<li><a href="/documentacion/">Documentación</a></li>
+				<li><a href="/planet/">Planet</a></li>
+				<li><a href="/labs/">Labs</a></li>
+				<li><a href="/difusion/">Difusión</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Webs Mozilla</strong>
+			<ul>
+				<li><a href="http://addons.mozilla.org/es-ES/">Mozilla Addons</a></li>
+				<li><a href="http://developer.mozilla.org/es">Mozilla Developer Network</a></li>
+				<li><a href="http://www.mozilla.org/es-ES/newsletter/">Boletín Firefox</a></li>
+				<li><a href="http://input.mozilla.com/es/">Firefox Input</a></li>
+			</ul>
+		</div>
+
+		<div class="c1">
+			<strong>Únete</strong>
+			<ul>
+				<li><a href="/documentacion/Difusi%C3%B3n">Difusión</a></li>
+				<li><a href="/documentacion/Asistencia">Asistencia</a></li>
+				<li><a href="/documentacion/Noticias">Noticias</a></li>
+				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
+				<li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
+				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script type='text/javascript' src='https://www.mozilla.org/tabzilla/media/js/tabzilla.js'></script>
+<script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
+tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2846159-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</div>
+
+</body>
+</html>
