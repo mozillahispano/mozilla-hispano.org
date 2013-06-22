@@ -1,0 +1,134 @@
+#content-bar{
+
+}
+
+/* contenido */
+
+#contenido #main-content {
+    float: left;
+    width: 70%;
+}
+
+.home .portada-individual.post, .archive .portada-individual.post, .tag .portada-individual.post, .page-template-pais-php .portada-individual.post {
+    border-bottom: 1px solid #E5E5E5 !important;
+    margin: 1em 0 !important;
+    padding: 0 !important;
+    width:100%;
+}
+
+.home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
+    float: left;
+    height: auto;
+    margin: 0 2em 2em 0;
+    max-width: 20%;
+    width: 130px;
+}
+
+/* barra */
+
+#barra {
+    width: 25%;
+    float: right;
+    padding: 0px 5px 0px 13px;
+}
+
+#searchform {
+
+}
+
+h3 {
+
+}
+
+p {
+
+}
+
+ul {
+
+}
+/* artículos */
+
+.portada-individual, .portada-extra{
+    border-bottom: 1px solid #E5E5E5 !important;
+    margin: 1em !important;
+    padding: 1em 0 2em !important;
+    float:left;
+    width:70%;
+}
+
+.portada-individual h2 {
+    border: medium none !important;
+    border-bottom: 1px dotted;
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+}
+
+.dia-publicacion{
+
+float:left;
+
+}
+
+.portada-individual .texto-portada-individual{
+    font-size: 1.3em;
+    padding: 0;
+}
+
+.articulo-single {
+    float:left !important;
+    margin-top: 20px;
+    width: 100% !important;
+}
+
+p.postmetadata {
+
+}
+
+
+
+/* esqueleto */
+#lienzo {
+    width: 100%;
+}
+    
+#tullido {
+       
+}
+ 
+#cabecera {      
+    position: relative;
+}
+
+@media only screen and (min-width: 720px) and (max-width: 979px) {
+            #menu {
+                float: none;
+                clear: both;
+            }
+            #social {
+                display: none;
+            }
+}
+
+@media only screen and (max-width: 719px) {
+#lienzo {
+    min-width: 320px;
+}
+            #alojaLogo {
+                height: 1.5em;
+                width: 3.5em;
+            }
+            #menu {
+                width: 1.5em;
+                height: 1.5em;
+                float: left;
+            }
+            #social {
+                display: none;
+            }
+            #contenido,
+            #barra {
+                float: none;
+                width: 100%;
+            }
+    }
