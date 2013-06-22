@@ -46,17 +46,45 @@
     max-width: 100%; }
 
 
-  #alojaLogo {
-    margin-top: 60px;
-    width: 100%; }
+/* ==========================================================================
+  General
+  ========================================================================== */
+
+#menu {
+  display: block;
+  font-size: 12px;
+  height: 80px;
+  width: 100%;
+}
+
+#menu, .quick-login, #alojaLogo {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 5%;
+}
+
+#alojaLogo, #page-body, #menu {
+   -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 5%;
+}
 
 
 /* ==========================================================================
   Forum
   ========================================================================== */
 
-#page-body {
-  width: 100%;
+.forabg {
+  clear: both;
+  margin-bottom: 4px;
+  padding: 0 5%;
+}
+
+.forumbg {
+  clear: both;
+  margin-bottom: 4px;
+  padding: 0;
 }
 
 .header dl.icon dd {
@@ -99,7 +127,7 @@
   margin-bottom: 10px;
   margin-top: 10px;
   padding-bottom: 0;
-  text-align: center;
+  text-align: left;
 }
 
 #barra-small ul.linklist {
@@ -146,7 +174,8 @@ padding-bottom: 20px;
   float: left;
   margin: 0 auto;
   padding: 0;
-  width: 100%;
+  width: 90%;
+  margin: 0 5%;
 }
 
 #barra-small ul.linklist li {
@@ -158,6 +187,10 @@ padding-bottom: 20px;
   padding: 0;
   text-align: center;
   width: auto;
+}
+
+#page-body h2 {
+  margin: 0 5% !important;
 }
 
 /*/ ----- List forums view ----- /*/
@@ -178,12 +211,12 @@ a.button1, input.button1, input.button3, a.button2, input.button2, .submit {
   width: 100% !important;
 }
 
-.search-box, .buscador {
-  width: 100%;
+.search-box {
+  width: 90%;
   float: left;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 10px 0 0;
+  margin: 0 5%;
 }
 
 .pagination {
@@ -309,11 +342,6 @@ ul.topiclist dt {
   #social {
     display: none; }
 
-  #menu {
-    display: inline;
-    font-size: 12px;
-    height: 80px;
-    width: 100%; }
 
   #cc {
     margin-bottom: -15px;
@@ -383,8 +411,38 @@ ul.topiclist dt {
 
 /* TODO */
 /* Wide Mobile Layout: 480px */
-/*@media only screen and (min-width: 480px) and (max-width: 760px) {
-  #wrapper, #tullido, #lienzo {
+@media only screen and (min-width: 480px) and (max-width: 760px) {
+
+  /* ==========================================================================
+  General
+  ========================================================================== */
+
+#lienzo, #tullido {
+  width: 480px;
+  min-width: 480px;
+}
+
+
+  /* ==========================================================================
+  Forum
+  ========================================================================== */
+
+
+.topic-actions .buttons {
+  margin-bottom: 10px;
+  margin-left: 40%;
+  margin-top: 10px;
+}
+
+  /* ==========================================================================
+  Wordpress
+  ========================================================================== */
+
+  #cuerpo {
+    padding: 0 5%;
+  }
+
+  /*#wrapper, #tullido, #lienzo {
     width: 440px;
   }
   #masthead,
