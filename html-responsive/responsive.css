@@ -19,11 +19,6 @@
     width: auto !important;
   }
 
-  #barra {
-    float: none;
-    width: 100%;
-  }
-
   #lienzo, #tullido {
     width: 320px;
     min-width: 320px;
@@ -394,7 +389,7 @@ ul.topiclist dt {
     margin-right: 5%;
     width: auto; }
 
-  .home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
+ /* .home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
     float: left;
     height: auto;
     min-width: 40%; }
@@ -404,10 +399,99 @@ ul.topiclist dt {
 
   .home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
     max-width: 20%;
-    width: 130px; }
+    width: 130px; } */
+
+
+
+/* contenido */
+
+#contenido #main-content {
+    float: left;
+    width: 70%;
+}
+
+.home .portada-individual.post, .archive .portada-individual.post, .tag .portada-individual.post, .page-template-pais-php .portada-individual.post {
+    border-bottom: 1px solid #E5E5E5 !important;
+    margin: 1em 0 !important;
+    padding: 0 !important;
+    width:100%;
+}
+
+.home .post-content img, .archive .post-content img, .tag .post-content img, .page-template-labs-index-php .post-content img, .page-template-pais-php .post-content img {
+    float: left;
+    height: auto;
+    margin: 0 2em 2em 0;
+    max-width: 20%;
+    width: 75px;
+}
+
+.home .portada-individual .texto-portada-individual, .archive .portada-individual .texto-portada-individual, .tag .portada-individual .texto-portada-individual, .page-template-labs-index-php .texto-portada-individual, .page-template-pais-php .portada-individual .texto-portada-individual {
+  padding: 0 0 0 0px;
+  text-align: justify;
+}
+
+/* barra */
+
+#barra {
+    float: left;
+    width: 100%;
+}
+
+#searchform {
 
 }
 
+h3 {
+
+}
+
+p {
+
+}
+
+ul {
+
+}
+/* artículos */
+
+.portada-individual, .portada-extra{
+    border-bottom: 1px solid #E5E5E5 !important;
+    margin: 1em !important;
+    padding: 1em 0 2em !important;
+    float:left;
+    width:100%;
+    text-align: justify;
+}
+
+.portada-individual h2 {
+    border: medium none !important;
+    border-bottom: 1px dotted;
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+}
+
+.dia-publicacion{
+
+float:left;
+
+}
+
+.portada-individual .texto-portada-individual{
+    font-size: 1.3em;
+    padding: 0;
+}
+
+.articulo-single {
+    float:left !important;
+    margin-top: 20px;
+    width: 100% !important;
+}
+
+p.postmetadata {
+
+}
+
+}
 
 /* TODO */
 /* Wide Mobile Layout: 480px */
