@@ -233,8 +233,8 @@ window.OnReady (
 				for (var j = 0, numHijos = hijos.length; j < numHijos; j++) {
 					if (hijos[j].nodeName == 'SPAN') {
 
-						xb.addEvent(liPadres[i], 'mouseenter', showChild, false);
-						xb.addEvent(liPadres[i], 'mouseleave', hiddeChild, false);
+						//xb.addEvent(liPadres[i], 'mouseenter', showChild, false);
+						//xb.addEvent(liPadres[i], 'mouseleave', hiddeChild, false);
 						xb.addEvent(hijos[j], 'click', toggleChild, false);
 						addClassName(liPadres[i], "withChilds");
 					}
