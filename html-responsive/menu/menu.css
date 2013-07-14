@@ -1,13 +1,13 @@
 /* Fonts */
 /* Importado en //mozorg.cdn.mozilla.net/media/css/tabzilla-min.css */
 body {
-	background-color: #FFF;
+	background-color: #FFFFFF;
 	background-image: linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -o-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -moz-linear-gradient(bottom, #FFFFFF 35%, #E7EDF1 100%);
 		background-image: -webkit-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
 		background-image: -ms-linear-gradient(bottom, #FFFFFF 75%, #E7EDF1 100%);
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
     color: #282828;
 	border-top: 2px solid #FFFFFF;
 	font-family: 'Open Sans',sans-serif;
@@ -150,6 +150,9 @@ body {
 	}
 	#menu #main-menu.visibleChilds {
 		display: block;
+		background-color: rgb(255, 255, 255);
+		border: 1px solid #aaa;
+		border-width: 0 1px 1px 0;
 	}
 	#menu ul {
 		float: none;
