@@ -122,19 +122,13 @@ body {
 }
 
 @media only screen and (min-width: 720px) and (max-width: 979px) {
-	#menu li {
-		display: block;
-		float: none;
-		margin: 0;
-		padding: 0;
-		position: relative;
-	}
-
 }
 
 @media only screen and (max-width: 719px) {
 	#menu {
 		height: auto;
+		position: absolute;
+		font-size: 130%;
 	}
 	#menu #nav-main-menu {
 		display: block;
@@ -149,13 +143,18 @@ body {
 	}
 	#menu #main-menu {
 		display: none;
-		margin: -32px 0px 0px;
+		float: left;
+		position: absolute;
+		top: 0;
+		left: 32px;
 	}
 	#menu #main-menu.visibleChilds {
 		display: block;
 	}
 	#menu ul {
 		float: none;
+		margin: 0;
+		padding: 0;
 	}
 	#menu li {
 		display: block;
@@ -166,7 +165,7 @@ body {
 	}
 	#menu li ul.submenu {
 		position: static;
-		padding: 0 1em 0 1em;
+		padding: 0 1em 0 2em;
 		width: auto;
 		z-index: auto;
 		overflow: visible;
