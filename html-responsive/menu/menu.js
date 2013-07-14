@@ -214,10 +214,10 @@ window.OnReady (
 				
 			}
 		}
-		var toggleMenu = function(el) {
-			console.log("cambio menu", el);
+		var toggleMenu = function(e) {
 			toggleClassName(navMainMenu, "visibleChilds");
 			toggleClassName(mainMenu, "visibleChilds");
+			e.preventDefault();
 		}
 
 		var menu = document.getElementById("menu");
@@ -226,7 +226,6 @@ window.OnReady (
 		var liPadres = menu.getElementsByTagName("li");
 		/* Detectar los items que tienen hijos */
 		for (var i = 0, numLi = liPadres.length; i < numLi; i++) {  
-			//console.log(liPadres[i]);//addEventListener
 			if (liPadres[i].getElementsByTagName("ul").length != 0) {
 				// con hijos, buscar el span
 				var hijos = liPadres[i].children;
@@ -244,8 +243,5 @@ window.OnReady (
 		/* Dar funcionalidad al manejador de menús para resoluciones pequeñas */
 		var navMainMenu = document.getElementById("nav-main-menu");
 		xb.addEvent(navMainMenu, "click", toggleMenu, false);
-		console.log(
-			getStatusNavMainMenu(navMainMenu)
-		);
 	}
 );
