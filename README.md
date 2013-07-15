@@ -97,7 +97,7 @@ Primero debemos instalar ``apache2`` y ``mysql-server``:
 **OSX**:
 
 > Apache ya viene instalado, MySQL hay que instalarlo con los instaladores provistos
-> por Oracle.
+> [por Oracle](https://dev.mysql.com/downloads/mysql/).
 
 Una vez instalado MySQL hay que configurarlo con un usuario root. Los datos a
 usar son los siguientes:
@@ -169,14 +169,15 @@ Luego deshabilitamos el sitio default:
 > _Sustituye `/Users/usuario/Sites/mozilla-hispano.org` por la ruta donde hayas
 > clonado el repositorio)_
 
-Activamos el nuevo sitio y reiniciamos Apache:
+Activamos el nuevo sitio, habilitamos mod_rewrite y reiniciamos Apache:
 
 **Linux:**
 
     $ a2ensite mozilla-hispano
+    $ sudo a2enmod rewrite
     $ service apache2 reload
 
-**OSX**:
+**OSX**: <small>(_sólo hace falta reiniciar Apache_)</small>
 
     $ sudo apachectl restart
 
@@ -184,8 +185,9 @@ Ahora hay que configurar el servidor de ftp para que funcionen ciertos plugins
 de Wordpress.
 
 **Linux:**
-Seguir los pasos indicados [aqui](https://help.ubuntu.com/10.04/serverguide/ftp-server.html).
-Configurarlo
+
+> Seguir los pasos indicados [aquí](https://help.ubuntu.com/10.04/serverguide/ftp-server.html).
+> Configurarlo de modo que se pueda acceder con cualquier cuenta del sistema.
 
 **OSX**:
 > Ir a "Compartir" en las preferencias del sistema. Tildar "permitir acceso FTP".
@@ -245,6 +247,20 @@ Reemplazar `<usuario>` y `<password>` por los valores correspondientes al usuari
 y password configurados para el FTP. Por lo general suele ser los datos de la
 cuenta del usuario del sistema.
 
+Poner lo siguiente en el archivo `.htaccess` para que wordpress pueda servir
+correctamente las páginas
+
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+    </IfModule>
+
+Ir a `Settings` -> `Permalinks` y elegir la opción `Post name` y guardar los cambios3rfg
+
 Instalar uno a uno los siguientes plugins:
 
 * All in One SEO Pack
@@ -260,28 +276,74 @@ Instalar uno a uno los siguientes plugins:
 * WP Orbit Slider
 * Yet Another Related Posts Plugin
 * Wordpress Importer
+* _add-from-server_
+* _db-youtube-rss_
+* _email-users_
+* _memcached_
+* _php-code-widget_
+* _w3-total-cache_
 
-> Los siguientes plugins deben ser instalados pero deshabilitados hasta que se
+**Notas:**
+> * Los siguientes plugins deben ser instalados pero deshabilitados hasta que se
 > indique lo contrario:
-> * WP-Phpbb Last Topics
-> * Wp2BB
-
-Si alguno de los plugins falla, puede ser por falte de permisos totales de
-escritura en wp-content. Agregarlos de la siguient manera.
-
-```
-chmod -R 777 wp-content/
-```
+>   * WP-Phpbb Last Topics
+>   * Wp2BB
+> * Si alguno de los plugins falla, puede ser por falta de permisos de
+> escritura en wp-content.
 
 Hay algunos plugins que han sido modificados para el sitio de mozilla hispano,
 revisar el siguiente apartado que detalla cada caso.
 
-Una vez listos lis plugins, importar las noticias base usando el Wordpress
+Una vez configurados los plugins, importar las noticias base usando el Wordpress
 Importer.
+
+* Setear los permalinks como corresponden
+
 
 #### Cambios a plugins
 
-> Pendiente
+Los siguientes plugins tienen cambios:
+
+* Fetch Feed shortcode pageable
+* WP-Phpbb Last Topics
+* WP Orbit Slider
+* Wp2BB
+
+Dado que no es de interés realizar un fork de estos plugins, y que algunos ya no
+tienen desarrollo activo, se lleva un registro de los cambios mediante un patch.
+El mismo se encuentra en la carpeta `plugins-mod`.
+
+A su vez, también es necesario llevar registro de los cambios en las imagenes
+contenidas en los plugins. En estos casos, simplemente hay una copia con la
+estructura de carpetas que corresponde dentro de la carpeta `plugins-mod`.
+
+La manera de aplicar los cambios es yendo a la carpeta donde están contenidos
+los plugins de wordpress, copiar el patch, ejecutarlo y copiar las imágenes.
+
+Aplicamos el patch:
+
+    $ cp plugins-mod/plugins-patch.diff wp-content/plugins
+    $ cd wp-content/plugins
+    $ patch -p1 -i plugins-patch.diff
+    $ rm plugins-patch.diff
+
+Sobreescribimos las imágenes, reemplazando `plugin` por cada plugin al que haya
+que reemplazarle las imágenes:
+
+    $ cp -r plugins-mod/<plugin> wp-content/plugins/
+
+#### Configuraciones de plugins
+
+##### wp-orbit-slider
+
+Ir a `Slides` -> `Slide Options`:
+
+* General Settings:
+  * Show Nav Arrows: Off
+* Autoplay Timer Settings:
+  * Slide Timer Animation: On
+* Advanced Settings
+  * Elegir "Custom Size"
 
 ### Instalar phpBB
 
