@@ -125,7 +125,7 @@
 }
 
 #cabecera h1 {
-  margin: auto;
+  margin: 30px auto auto;
 }
 
 #contenido h3 {
@@ -364,6 +364,7 @@ ul.topiclist dt {
     margin: -3px 0 0 -3px;
     background: no-repeat center top url("img/icn-menu.png");
     cursor: pointer;
+    position: relative;
   }
 
   #toggle:active {
@@ -678,4 +679,4 @@ p.postmetadata {
 }
 /* }}} */
 
-
+}
