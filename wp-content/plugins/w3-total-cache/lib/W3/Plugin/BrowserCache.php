@@ -127,7 +127,7 @@ class W3_Plugin_BrowserCache extends W3_Plugin {
      * @return string
      */
     function link_replace_callback($matches) {
-        static $id = null, $extensions = null;
+        static $id = null, $extensions = null, $exceptions = null;
 
         if ($id === null) {
             $id = $this->get_replace_id();
@@ -137,10 +137,17 @@ class W3_Plugin_BrowserCache extends W3_Plugin {
             $extensions = $this->get_replace_extensions();
         }
 
+        if ($exceptions === null) {
+            $exceptions = $this->_config->get_array('browsercache.replace.exceptions');
+        }
+
         list ($match, $attr, $url, , , , , $extension) = $matches;
 
         if (in_array($extension, $extensions)) {
             $url = w3_remove_query($url);
+            foreach($exceptions as  $exception)
+                if(preg_match('/' . $exception . '/',$url))
+                    return $match;
             $url .= (strstr($url, '?') !== false ? '&amp;' : '?') . $id;
 
             if ($attr != 'w3tc_load_js(')

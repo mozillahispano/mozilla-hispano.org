@@ -170,6 +170,7 @@ class W3_CloudFlare {
      * @throws FileOperationException
      */
     public function update_ip_ranges() {
+        w3_require_once(W3TC_INC_DIR . '/functions/http.php');
         $ip4_diff = $ip6_diff = false;
         $config_master = new W3_Config(true);
         $response =w3_http_get(W3TC_CLOUDFLARE_IP4_URL);

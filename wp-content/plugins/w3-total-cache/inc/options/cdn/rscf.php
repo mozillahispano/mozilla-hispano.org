@@ -3,14 +3,14 @@
 	<th style="width: 300px;"><label for="cdn_rscf_user"><?php _e('Username:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_rscf_user" class="w3tc-ignore-change" type="text"
-                   <?php $this->sealing_disabled('cdn') ?> name="cdn.rscf.user" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.rscf.user')); ?>" size="30" />
+                   <?php $this->sealing_disabled('cdn') ?> name="cdn.rscf.user" value="<?php echo esc_attr($this->_config->get_string('cdn.rscf.user')); ?>" size="30" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_rscf_key"><?php _e('<acronym title="Application Programming Interface">API</acronym> key:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_rscf_key" class="w3tc-ignore-change" type="password"
-                   <?php $this->sealing_disabled('cdn') ?> name="cdn.rscf.key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.rscf.key')); ?>" size="60" />
+                   <?php $this->sealing_disabled('cdn') ?> name="cdn.rscf.key" value="<?php echo esc_attr($this->_config->get_string('cdn.rscf.key')); ?>" size="60" />
 	</td>
 </tr>
 <tr>
@@ -26,7 +26,7 @@
 	<th><label for="cdn_rscf_container"><?php _e('Container:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_rscf_container" type="text" name="cdn.rscf.container"
-                    <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($this->_config->get_string('cdn.rscf.container')); ?>" size="30" />
+                    <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($this->_config->get_string('cdn.rscf.container')); ?>" size="30" />
 		<input id="cdn_create_container"
                     <?php $this->sealing_disabled('cdn') ?> class="button {type: 'rscf', nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Create container', 'w3-total-cache'); ?>" />
 		<span id="cdn_create_container_status" class="w3tc-status w3tc-process"></span>

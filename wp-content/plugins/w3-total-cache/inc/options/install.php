@@ -30,7 +30,16 @@
     <?php endforeach; ?>
     <hr />
     <?php endif; ?>
-
+    <?php if (count($other_areas)): ?>
+        <h3><?php _e('Other', 'w3-total-cache'); ?></h3>
+        <?php foreach ($other_areas as $area => $descriptors): ?>
+            <?php foreach ($descriptors as $descriptor): ?>
+            <p><strong><?php echo htmlspecialchars($descriptor['title']); ?>:</strong></p>
+            <pre class="code"><?php echo htmlspecialchars($descriptor['content']); ?></pre>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+        <hr />
+    <?php endif; ?>
     <h3><?php _e('Software Installation for Dedicated / Virtual Dedicated / Multiple Servers (Optional)', 'w3-total-cache'); ?></h3>
 
 	<p><?php _e('<strong>Server Preparation:</strong><br /><em>Time required: ~1 minute</em>', 'w3-total-cache'); ?></p>

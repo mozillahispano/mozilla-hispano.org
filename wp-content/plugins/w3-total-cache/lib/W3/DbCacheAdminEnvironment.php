@@ -20,7 +20,6 @@ class W3_DbCacheAdminEnvironment {
      **/
     public function fix_on_wpadmin_request($config, $force_all_checks) {
         $exs = new SelfTestExceptions();
-
         try {
             if ($config->get_boolean('dbcache.enabled'))
                 $this->create_addin();
@@ -52,6 +51,7 @@ class W3_DbCacheAdminEnvironment {
 
     /**
      * Fixes environment after plugin deactivation
+     * @throws SelfTestExceptions
      * @return array
      */
     public function fix_after_deactivation() {
@@ -71,6 +71,7 @@ class W3_DbCacheAdminEnvironment {
 
     /**
      * Returns required rules for module
+     * @var W3_Config $config
      * @return array
      */
     function get_required_rules($config) {
@@ -94,10 +95,21 @@ class W3_DbCacheAdminEnvironment {
         $src = W3TC_INSTALL_FILE_DB;
         $dst = W3TC_ADDIN_FILE_DB;
 
-        if (file_exists($dst)) {
-            $script_data = @file_get_contents($dst);
-            if ($script_data == @file_get_contents($src))
-                return;
+
+        if ($this->db_installed()) {
+            if ($this->is_dbcache_add_in()) {
+                $script_data = @file_get_contents($dst);
+                if ($script_data == @file_get_contents($src))
+                    return;
+            } elseif (!$this->db_check_old_add_in()) {
+                $remove_url = is_network_admin() ?
+                    network_admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=dbcache') :
+                    admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=dbcache');
+                throw new FilesystemOperationException(
+                    sprintf(__('The Database add-in file db.php is not a W3 Total Cache drop-in.
+                    Remove it or disable Database Caching. %s', 'w3-total-cache'),
+                    w3tc_button_link(__('Remove it for me', 'w3-total-cache'), wp_nonce_url($remove_url,'w3tc'))));
+            }
         }
 
         w3_wp_copy_file($src, $dst);
@@ -108,6 +120,35 @@ class W3_DbCacheAdminEnvironment {
      * @throws FilesystemOperationException
      */
     private function delete_addin() {
-        w3_wp_delete_file(W3TC_ADDIN_FILE_DB);
+        if ($this->is_dbcache_add_in())
+            w3_wp_delete_file(W3TC_ADDIN_FILE_DB);
+    }
+
+    /**
+     * Returns true if db.php is installed
+     *
+     * @return boolean
+     */
+    public function db_installed() {
+        return file_exists(W3TC_ADDIN_FILE_DB);
+    }
+
+    /**
+     * Returns true if db.php is old version.
+     * @return boolean
+     */
+    public function db_check_old_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_DB))
+            && strstr($script_data, '& w3_instance') !== false);
+    }
+
+    /**
+     * Checks if db.php is W3TC drop in
+     *
+     * @return boolean
+     */
+    public function is_dbcache_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_DB))
+            && strstr($script_data, 'W3 Total Cache Database module') !== false);
     }
 }

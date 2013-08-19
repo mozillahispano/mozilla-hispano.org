@@ -108,8 +108,9 @@ class W3_Request {
         $request = W3_Request::get_request();
         $array = array();
         foreach ($request as $key => $value) {
-            if (strpos($key, $prefix) === 0)
+            if (strpos($key, $prefix) === 0 || strpos($key, str_replace('.', '_',$prefix)) === 0) {
                 $array[substr($key,strlen($prefix))] = $value;
+            }
         }
         return $array;
     }

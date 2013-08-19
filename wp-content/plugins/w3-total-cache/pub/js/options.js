@@ -140,6 +140,8 @@ function w3tc_minify_filename_test_once(url, filename) {
                 } else if (data != 'content ok') {
                     $('#minify_auto_error').show();
                     w3tc_start_minify_try_solve();
+                } else {
+                    $.get(ajaxurl, {action:'w3tc_minify_disable_filename_test'});
                 }
             },
             function (data, url) {
@@ -199,11 +201,16 @@ function w3tc_do_failure(testUrl,minLength, maxLength, tryLength, minTestedAndSu
             return;
         } else    if (tryLength <= minLength) {
             jQuery.get(ajaxurl, {action:'w3tc_minify_disable_filename_test'});
+            var url;
+            if (w3_use_network_link)
+                url = 'admin.php?page=w3tc_minify#advanced';
+            else
+                url = 'network/admin.php?page=w3tc_minify#advanced';
             alert('Plugin could not solve the Minify Auto issue automatically.');
             jQuery('#minify_auto_test_loading').toggleClass('minify_auto_test');
             jQuery('#minify_auto_error').html('<p>Minify Auto does not work properly. Try using Minify Manual instead ' +
                 'or try another Minify cache method. You can also try a lower filename length value manually on ' +
-                '<a href="admin.php?page=w3tc_minify#advanced">settings page</a> by checking "Disable the Minify Auto automatic filename test" </p>');
+                '<a href="' + url + '">settings page</a> by checking "Disable the Minify Auto automatic filename test" </p>');
             return;
         }
         else {
@@ -451,28 +458,6 @@ jQuery(function() {
         jQuery('.w3tc_technical_info').toggle();
     });
 
-    jQuery('#pgcache_engine').change(function() {
-       var late_init = jQuery(this).val() != 'file_generic';
-       var late_input = jQuery('#pgcache_late_init');
-       if (late_init) {
-            var force_master = jQuery('#common_force_master');
-            var newrelic_enabled = jQuery('#newrelic_enabled');
-            if(force_master.length>0 && newrelic_enabled.length>0) {
-                if (force_master.is(':checked') && newrelic_enabled.is(':checked'))   {
-                    late_input.attr('checked', true);
-                    late_input.attr('disabled','disabled');
-                }
-                else {
-                    late_input.removeAttr('disabled');
-                }
-            } else
-                late_input.removeAttr('disabled');
-       } else {
-           late_input.attr('checked', false);
-           late_input.attr('disabled','disabled');
-       }
-    });
-
     jQuery('#newrelic_verify_api_key').click(function() {
         var api_key = jQuery('#newrelic_api_key').val();
 
@@ -529,6 +514,34 @@ jQuery(function() {
         });
     });
 
+
+    jQuery('#plugin_license_key_verify').click(function() {
+        original_button_value = jQuery('#plugin_license_key_verify').val();
+        jQuery('#plugin_license_key_verify').val("Checking...");
+
+        var license_key = jQuery('#plugin_license_key').val();
+
+        if (!license_key) {
+            alert('Please enter an license key and try again.');
+            return;
+        }
+        var params = {
+            action: 'w3tc_verify_plugin_license_key',
+            license_key: license_key
+        };
+
+        jQuery.get(ajaxurl, params, function(data) {
+            jQuery('#plugin_license_key_verify').val(original_button_value);
+            if (data == 'expired') {
+                alert('The license key has expired. Please renew it.');
+            }else if (data == 'valid') {
+                alert('License key is correct.');
+            }else {
+                alert('The license key is not valid. Please check it and try again.');
+            }
+        });
+    });
+
     jQuery("#manual").click(function () {
         jQuery('#newrelic_application_name_textbox_div').show();
         jQuery('#newrelic_application_id_dropdown_div').hide();
@@ -574,7 +587,7 @@ jQuery(function() {
     w3tc_toggle2('browsercache_etag',
         ['browsercache_cssjs_etag', 'browsercache_html_etag', 'browsercache_other_etag']);
     w3tc_toggle2('browsercache_w3tc',
-        ['browsercache.cssjs_w3tc', 'browsercache.html_w3tc', 'browsercache.other_w3tc']);
+        ['browsercache_cssjs_w3tc', 'browsercache_html_w3tc', 'browsercache_other_w3tc']);
     w3tc_toggle2('browsercache_compression',
         ['browsercache_cssjs_compression', 'browsercache_html_compression', 'browsercache_other_compression']);
     w3tc_toggle2('browsercache_replace',

@@ -44,6 +44,7 @@
 				    <li>Adds support for grouping transients both per blog and site wide</li>
 				    <li>Adds support for manual flushing of registered transient groups</li>
 				    <li>Adds support for action based flushing of registered transient groups</li>
+				    <li>Adds support for caching filters and actions</li>
 				</ul>
 				<p>To make the plugin aware that you group transients see code examples below:</p>
 				<pre>
@@ -51,9 +52,9 @@ add_action('w3tc_register_fragment_groups', 'my_plugin_register_groups');
 
 function my_plugin_register_groups() {
 	//blog specific group and an array of actions that will trigger a flush of the group
-	w3tc_register_fragment_group('my_plugin_', array('publish_post'));
+	w3tc_register_fragment_group('my_plugin_', array('publish_post'), 3600);
 	//If using MultiSite Network/site wide specific group and an array of actions that will trigger a flush of the group
-	w3tc_register_fragment_group_global('my_plugin_global_', array('edit_site'));
+	w3tc_register_fragment_group_global('my_plugin_global_', array('edit_site'), 3600);
 }
 function my_plugin_flush_group() {
 	//manually flush a blog specific group.
@@ -72,6 +73,41 @@ function on_some_event() {
     if (false === get_site_transient('my_plugin_some_key'))
         //my_plugin_site_ prefix is the group name we registered earlier
         set_site_transient('my_plugin_site_some_key', 'site wide specific value');
+}
+
+// Cache action example
+add_action('theme_post_loop', 'cache_theme_post_loop_start',-999999999);
+add_action('theme_post_loop', 'cache_theme_post_loop_end', 999999999);
+
+/**
+ * Start outputbuffering
+ */
+function cache_theme_post_loop_start() {
+    w3tc_fragmentcache_start('example1', 'examples', 'theme_post_loop');
+}
+
+/**
+ * Store the output buffer .
+ */
+function cache_theme_post_loop_end() {
+    w3tc_fragmentcache_end('example1', 'examples', false);
+}
+
+// Cache filter example
+add_filter('theme_filter', 'cache_theme_filter_start',-999999999);
+add_filter('theme_filter', 'cache_theme_filter_end', 999999999);
+/**
+ * Start filter buffering and return filter result
+ */
+function cache_theme_filter_start($data) {
+    return w3tc_fragmentcache_filter_start('example_filter1', 'examples', $hook, $data);
+}
+
+/**
+ * Store the filter result and return filter result.
+ */
+function cache_theme_filter_end($data) {
+    return w3tc_fragmentcache_filter_end('example_filter1', 'examples', $data);
 }
 	</pre>
 			]]></answer>

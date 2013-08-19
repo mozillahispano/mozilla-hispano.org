@@ -21,7 +21,7 @@ class W3_AdminEnvironment {
             }
         }
         // call plugin-related handlers
-        foreach ($this->get_handlers() as $h) {
+        foreach ($this->get_handlers($config) as $h) {
             try {
                 $h->fix_on_wpadmin_request($config, $force_all_checks);
                 if ($fix_on_event) {
@@ -44,7 +44,7 @@ class W3_AdminEnvironment {
         $exs = new SelfTestExceptions();
 
         // call plugin-related handlers
-        foreach ($this->get_handlers() as $h) {
+        foreach ($this->get_handlers($config) as $h) {
             try {
                 $h->fix_on_event($config, $event);
             } catch (SelfTestExceptions $ex) {
@@ -58,13 +58,14 @@ class W3_AdminEnvironment {
 
     /**
      * Fixes environment after plugin deactivation
+     * @param W3_Config $config
      * @throws SelfTestExceptions
      */
-    public function fix_after_deactivation() {
+    public function fix_after_deactivation($config) {
         $exs = new SelfTestExceptions();
 
         // call plugin-related handlers
-        foreach ($this->get_handlers() as $h) {
+        foreach ($this->get_handlers($config) as $h) {
             try {
                 $h->fix_after_deactivation();
             } catch (SelfTestExceptions $ex) {
@@ -83,46 +84,95 @@ class W3_AdminEnvironment {
      */
     public function get_required_rules($config) {
         $rewrite_rules_descriptors = array();
+        $rewrite_rules_descriptors_last = array();
 
-        foreach ($this->get_handlers() as $h) {
+        foreach ($this->get_handlers($config) as $h) {
             $required_rules = $h->get_required_rules($config);
 
             if (!is_null($required_rules)) {
                 foreach ($required_rules as $descriptor) {
                     $filename = $descriptor['filename'];
-                    $content = isset($rewrite_rules_descriptors[$filename]) ? 
-                        $rewrite_rules_descriptors[$filename]['content'] : '';
-                    $rewrite_rules_descriptors[$filename] = array(
-                        'filename' => $filename, 
-                        'content' => $content . $descriptor['content']
-                    );
+                    $last = isset($descriptor['last']) && $descriptor['last'];
+                    if ($last) {
+                        $content = isset($rewrite_rules_descriptors_last[$filename]) ?
+                            $rewrite_rules_descriptors_last[$filename]['content'] : '';
+
+                        $rewrite_rules_descriptors_last[$filename] = array(
+                            'filename' => $filename,
+                            'content' => $content . $descriptor['content']
+                        );
+                    } else {
+                        $content = isset($rewrite_rules_descriptors[$filename]) ?
+                            $rewrite_rules_descriptors[$filename]['content'] : '';
+
+                        $rewrite_rules_descriptors[$filename] = array(
+                            'filename' => $filename,
+                            'content' => $content . $descriptor['content']
+                        );
+                    }
                 }
             }
         }
-
-        ksort($rewrite_rules_descriptors);
-        return $rewrite_rules_descriptors;
+        $rewrite_rules_descriptors_temp = array();
+        foreach($rewrite_rules_descriptors as $filename => $descriptor) {
+            if (isset($rewrite_rules_descriptors_last[$filename]['content'])) {
+                $rewrite_rules_descriptors_temp[$filename] = array(
+                    'filename' => $filename,
+                    'content' => $descriptor['content'] . $rewrite_rules_descriptors_last[$filename]['content']
+                );
+            } else {
+                $rewrite_rules_descriptors_temp[$filename] = array(
+                    'filename' => $filename,
+                    'content' => $descriptor['content']
+                );
+            }
+        }
+        ksort($rewrite_rules_descriptors_temp);
+        return $rewrite_rules_descriptors_temp;
     }
 
     /**
      * Returns plugin-related environment handlers
+     * @param W3_Config $config
+     * @return array
      */
-    private function get_handlers() {
+    private function get_handlers($config) {
         $a = array(
             w3_instance('W3_GenericAdminEnvironment'),
+            w3_instance('W3_MinifyAdminEnvironment'),
             w3_instance('W3_PgCacheAdminEnvironment'),
+            w3_instance('W3_BrowserCacheAdminEnvironment'),
             w3_instance('W3_ObjectCacheAdminEnvironment'),
             w3_instance('W3_DbCacheAdminEnvironment'),
-            w3_instance('W3_BrowserCacheAdminEnvironment'),
-            w3_instance('W3_MinifyAdminEnvironment'),
             w3_instance('W3_CdnAdminEnvironment'),
             w3_instance('W3_NewRelicAdminEnvironment')
         );
 
-        if (w3_is_pro() || w3_is_enterprise())
+        if (w3_is_pro($config) || w3_is_enterprise($config))
             array_push($a,
                 w3_instance('W3_Pro_FragmentCacheAdminEnvironment'));
         
         return $a;
+    }
+
+    public function get_other_instructions($config) {
+        $instructions_descriptors = array();
+
+        foreach ($this->get_handlers($config) as $h) {
+            if (method_exists($h, 'get_instructions')) {
+                $instructions = $h->get_instructions($config);
+                if (!is_null($instructions)) {
+                    foreach ($instructions as $descriptor) {
+                        $area = $descriptor['area'];
+                        $instructions_descriptors[$area][] = array(
+                            'title' => $descriptor['title'],
+                            'content' => $descriptor['content']
+                        );
+                    }
+                }
+            }
+
+        }
+        return $instructions_descriptors;
     }
 }

@@ -20,23 +20,29 @@
             <th><?php _e('Registered fragment groups:', 'w3-total-cache'); ?></th>
             <td>
                 <ul>
-                    <?php foreach ($registered_groups as $group => $actions)
-                    echo '<li>',$group,': ',implode(',', $actions), '</li>';
+                    <?php 
+                    foreach ($registered_groups as $group => $descriptor)
+                        echo '<li>', $group,
+                            ' (', $descriptor['expiration'], ' secs): ',
+                            implode(',', $descriptor['actions']), '</li>';
                     ?>
                 </ul>
-                <span class="description"><?php _e('Groups that will be flushed on actions.', 'w3-total-cache'); ?></span>
+                <span class="description"><?php _e('The groups above will be flushed upon setting changes.', 'w3-total-cache'); ?></span>
             </td>
         </tr>
         <?php if (w3_is_network()): ?>
             <tr>
-                <th><?php _e('Registered site wide fragment groups:', 'w3-total-cache'); ?></th>
+                <th><?php _e('Registered site-wide fragment groups:', 'w3-total-cache'); ?></th>
                 <td>
                     <ul>
-                        <?php foreach ($registered_global_groups as $group => $actions)
-                        echo '<li>',$group,': ',implode(',', $actions), '</li>';
+                        <?php 
+                        foreach ($registered_global_groups as $group => $descriptor)
+                            echo '<li>', $group,
+                                ' (', $descriptor['expiration'], ' secs): ',
+                                implode(',', $descriptor['actions']), '</li>';
                         ?>
                     </ul>
-                    <span class="description"><?php _e('Site wide groups that will be flushed on actions.', 'w3-total-cache'); ?></span>
+                    <span class="description"><?php _e('The site-wide groups above will be purged upon setting changes.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
         <?php endif ?>
@@ -50,7 +56,7 @@
                 <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="memcached_servers" type="text"
-                        <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.memcached.servers" value="<?php echo htmlspecialchars(implode(',', $this->_config->get_array('fragmentcache.memcached.servers'))); ?>" size="100" />
+                        <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.memcached.servers" value="<?php echo esc_attr(implode(',', $this->_config->get_array('fragmentcache.memcached.servers'))); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>
                     <br /><span class="description"><?php _e('Multiple servers may be used and seperated by a comma; e.g. 192.168.1.100:11211, domain.com:22122', 'w3-total-cache'); ?></span>
@@ -60,14 +66,14 @@
             <tr>
                 <th style="width: 250px;"><label for="fragmentcache_lifetime"><?php _e('Default lifetime of cached fragments:', 'w3-total-cache'); ?></label></th>
                 <td>
-                    <input id="fragmentcache_lifetime" type="text" <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.lifetime" value="<?php echo $this->_config->get_integer('fragmentcache.lifetime') ?>" size="8" /><?php _e('seconds', 'w3-total-cache') ?>
+                    <input id="fragmentcache_lifetime" type="text" <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.lifetime" value="<?php echo esc_attr($this->_config->get_integer('fragmentcache.lifetime')) ?>" size="8" /><?php _e('seconds', 'w3-total-cache') ?>
                     <br /><span class="description"><?php _e('Determines the natural expiration time of unchanged cache items. The higher the value, the larger the cache.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th><label for="fragmentcache_file_gc"><?php _e('Garbage collection interval:', 'w3-total-cache'); ?></label></th>
                 <td>
-                    <input id="fragmentcache_file_gc" type="text" <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.file.gc" value="<?php echo $this->_config->get_integer('fragmentcache.file.gc') ?>" size="8" /> <?php _e('seconds', 'w3-total-cache') ?>
+                    <input id="fragmentcache_file_gc" type="text" <?php $this->sealing_disabled('fragmentcache') ?> name="fragmentcache.file.gc" value="<?php echo esc_attr($this->_config->get_integer('fragmentcache.file.gc')) ?>" size="8" /> <?php _e('seconds', 'w3-total-cache') ?>
                     <br /><span class="description"><?php _e('If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -76,8 +82,8 @@
                 <td>
                     <textarea id="fragmentcache_groups" name="fragmentcache.groups"
                         <?php $this->sealing_disabled('fragmentcache') ?>
-                              cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('fragmentcache.groups'))); ?></textarea><br />
-                    <span class="description"><?php _e('Specify fragment groups that should be handled. One per line Actions to be performed is entered on same line comma delimited. (group, action1, action2). The prefix used for a transient in theme or plugin.', 'w3-total-cache'); ?></span>
+                              cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('fragmentcache.groups'))); ?></textarea><br />
+                    <span class="description"><?php _e('Specify fragment groups that should be managed by W3 Total Cache. Enter one action per line comma delimited, e.g. (group, action1, action2). Include the prefix used for a transient by a theme or plugin.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
         </table>

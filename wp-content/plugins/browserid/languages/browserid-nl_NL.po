@@ -1,0 +1,255 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-07-28 22:13+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jan Willem Oostendorp <janw.oostendorp@gmail.com>\n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../browserid.php:155 ../browserid.php:1003
+msgid "Sign in with your email"
+msgstr "Log in met je email"
+
+#: ../browserid.php:159 ../browserid.php:1008
+msgid "Logout"
+msgstr "Log uit"
+
+#: ../browserid.php:185
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../browserid.php:294 ../browserid.php:420
+msgid "Verification failed"
+msgstr "Verificatie mislukt"
+
+#: ../browserid.php:413
+msgid "Verification response invalid"
+msgstr "Verificatie antwoord ongeldig"
+
+#: ../browserid.php:487
+msgid "You must already have an account to log in with Persona."
+msgstr "Je moet al een Persona account hebben voordat je kunt inloggen"
+
+#: ../browserid.php:615
+msgid "Register"
+msgstr "Registreer"
+
+#: ../browserid.php:647
+#, php-format
+msgid ""
+"<strong>ERROR</strong>:  %s uses Mozilla Persona for registration. Please "
+"register using Persona."
+msgstr ""
+"<strong>ERROR</strong>:  %s maakt gebruikt van Mozilla Persona voor "
+"registratie. Registreer je met Persona."
+
+#: ../browserid.php:674
+msgid "Password reset disabled"
+msgstr "Wachtwoord reset is uitgeschakeld"
+
+#: ../browserid.php:675
+#, php-format
+msgid ""
+"%s uses Mozilla Persona to sign in and does not use passwords. Password "
+"reset is disabled."
+msgstr ""
+"%s maakt gebruik van Mozilla Persona om in te loggen en gebruikt geen "
+"wachtwoorden. Wachtwoord reset is uitgeschakeld."
+
+#: ../browserid.php:741 ../browserid.php:743
+msgid "Comment must be submitted using Persona"
+msgstr "Reactie moet via Persona ingestuurd worden"
+
+#: ../browserid.php:830
+msgid "What is Persona?"
+msgstr "Wat is Persona?"
+
+#: ../browserid.php:861 ../browserid.php:862 ../browserid.php:1146
+msgid "Mozilla Persona"
+msgstr "Mozilla Persona"
+
+#: ../browserid.php:861
+msgid "Administration"
+msgstr "Administratie"
+
+#: ../browserid.php:872
+msgid "Site name:"
+msgstr "Website naam:"
+
+#: ../browserid.php:873
+msgid "Site logo:"
+msgstr "Website logo:"
+
+#: ../browserid.php:874
+msgid "Dialog background color:"
+msgstr "Popup achtergrond kleur:"
+
+#: ../browserid.php:876
+msgid "Terms of service:"
+msgstr "Gebruikersvoorwaarden:"
+
+#: ../browserid.php:878
+msgid "Privacy policy:"
+msgstr "Privacybeleid:"
+
+#: ../browserid.php:880
+msgid "Disable non-Persona logins:"
+msgstr "Schakel niet-Persona logins uit:"
+
+#: ../browserid.php:881
+msgid "Login button color:"
+msgstr "Login knop kleur:"
+
+#: ../browserid.php:883
+msgid "Login button HTML:"
+msgstr "Login knop HTML:"
+
+#: ../browserid.php:884
+msgid "Logout button HTML:"
+msgstr "Uitlog knop HTML:"
+
+#: ../browserid.php:886
+msgid "Login redirection URL:"
+msgstr "Login doorstuur URL:"
+
+#: ../browserid.php:887
+msgid "Enable for comments:"
+msgstr "Inschakelen op reacties"
+
+#: ../browserid.php:888
+msgid "Comment button HTML:"
+msgstr "Reacties knop HTML:"
+
+#: ../browserid.php:890
+msgid "Enable bbPress integration:"
+msgstr "Schakel bbPress intergratie in:"
+
+#: ../browserid.php:891
+msgid "Persona source:"
+msgstr "Persona bron:"
+
+#: ../browserid.php:892
+msgid "Verification server:"
+msgstr "Verificatie server:"
+
+#: ../browserid.php:893
+msgid "Debug mode:"
+msgstr "Debug modus:"
+
+#: ../browserid.php:953
+msgid "Absolute path, works only with SSL"
+msgstr "Absoluut pad, werkt alleen met SSL"
+
+#: ../browserid.php:969
+msgid "3 or 6 character hex value. e.g. #333 or #333333"
+msgstr "3 of 6 karakter hexidecimale waarde. b.v. #333 or #333333"
+
+#: ../browserid.php:981
+msgid "Absolute path, must be defined together with Privacy policy"
+msgstr "Absoluut pad, moet gedefinieerd zijn samen met Privicybeleid"
+
+#: ../browserid.php:992
+msgid "Absolute path, must be defined together with Terms of service"
+msgstr "Absoluut pad, moet gedefinieerd zijn samen met Gebruikersvoorwaarden"
+
+#: ../browserid.php:1014
+msgid "Default WordPress dashboard"
+msgstr "Standaard WordPress dashboard"
+
+#: ../browserid.php:1035
+msgid "Post Comment"
+msgstr "Verstuur Reactie"
+
+#: ../browserid.php:1039
+msgid "post comment"
+msgstr "rverstuur Reactie"
+
+#: ../browserid.php:1048
+msgid "Enables anonymous posting implicitly"
+msgstr "Maakt anoniem posten impliciet"
+
+#: ../browserid.php:1061 ../browserid.php:1071
+msgid "Default"
+msgstr "Standaard"
+
+#: ../browserid.php:1093
+msgid "Security risk!"
+msgstr "Beveiligings risico!"
+
+#: ../browserid.php:1118
+msgid "Blue"
+msgstr "Blauw"
+
+#: ../browserid.php:1119
+msgid "Black"
+msgstr "Zwart"
+
+#: ../browserid.php:1120
+msgid "Orange"
+msgstr "Oranje"
+
+#: ../browserid.php:1151
+msgid "Save Changes"
+msgstr "Wijzigingen Opslaan"
+
+#: ../browserid.php:1224
+msgid "Mozilla Persona login button"
+msgstr "Mozilla Persona login knop"
+
+#: ../browserid.php:1255
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../browserid.php:1299
+#, php-format
+msgid "New user registration on your site %s:"
+msgstr "Nieuwe gebruiker registratie op je site %s:"
+
+#: ../browserid.php:1300 ../browserid.php:1308
+#, php-format
+msgid "Username: %s"
+msgstr "Gebruikersnaam: %s"
+
+#: ../browserid.php:1301
+#, php-format
+msgid "E-mail: %s"
+msgstr "E-mail: %s"
+
+#: ../browserid.php:1303
+#, php-format
+msgid "[%s] New User Registration"
+msgstr "[%s] Nieuwe Gebruiker Registratie"
+
+#: ../browserid.php:1317
+#, php-format
+msgid "%s uses Mozilla Persona to sign in and does not use passwords"
+msgstr ""
+"%s maakt gebruik van Mozilla Persona om in te loggen en gebruikt geen "
+"wachtwoorden"
+
+#: ../browserid.php:1318
+#, php-format
+msgid "[%s] Your username"
+msgstr "[%s] Jou gebruikersnaam"
+
+#: ../browserid.php:1320
+#, php-format
+msgid "Password: %s"
+msgstr "Wachtwoord: %s"
+
+#: ../browserid.php:1321
+#, php-format
+msgid "[%s] Your username and password"
+msgstr "[%s] Jou gebruiksnaam en wachtwoord"

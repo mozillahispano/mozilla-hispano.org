@@ -8,7 +8,7 @@ class W3_SharedRules
      * @param bool $cdnftp
      * @return string
      */
-    public function canonical_without_location($cdnftp) {
+    public function canonical_without_location($cdnftp = false) {
         $rules = '';
 
         switch (true) {
@@ -88,7 +88,7 @@ class W3_SharedRules
                     return $r;
                 else
                     return 
-                        "<FilesMatch \"\.(ttf|otf|eot|woff)$\">\n" .
+                        "<FilesMatch \"\.(ttf|ttc|otf|eot|woff|font.css)$\">\n" .
                         $r .
                         "</FilesMatch>\n";
 
@@ -99,7 +99,7 @@ class W3_SharedRules
                     return $r;
                 else
                     return
-                        "location ~ \\.(ttf|otf|eot|woff)$ {\n" .
+                        "location ~ \\.(ttf|ttc|otf|eot|woff|font.css)$ {\n" .
                         $r .
                         "}\n";
             }

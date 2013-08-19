@@ -2,613 +2,622 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-17 11:12+0700\n"
+"POT-Creation-Date: 2013-08-12 09:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
-"Language: \n"
+"Language: en_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../user-role-editor.php:34
-#, php-format
-msgid "User Role Editor requires PHP %s or newer."
+#: ../includes/settings-template.php:60
+msgid "Save"
 msgstr ""
 
-#: ../user-role-editor.php:35
-#: ../user-role-editor.php:107
-msgid "Please update!"
+#: ../includes/class-user-role-editor.php:170
+#: ../includes/class-user-role-editor.php:172
+msgid "You do not have permission to edit this user."
 msgstr ""
 
-#: ../user-role-editor.php:80
-msgid "Only"
-msgstr ""
-
-#: ../user-role-editor.php:80
-msgid "is allowed to use"
-msgstr ""
-
-#: ../user-role-editor.php:86
-#: ../user-role-editor.php:312
-#: ../user-role-editor.php:368
-msgid "User Role Editor"
-msgstr ""
-
-#: ../user-role-editor.php:106
-#, php-format
-msgid "User Role Editor requires WordPress %s or newer."
-msgstr ""
-
-#: ../user-role-editor.php:139
-msgid "Select All"
-msgstr ""
-
-#: ../user-role-editor.php:140
-msgid "Unselect All"
-msgstr ""
-
-#: ../user-role-editor.php:141
-msgid "Reverse"
-msgstr ""
-
-#: ../user-role-editor.php:142
-msgid "Update"
-msgstr ""
-
-#: ../user-role-editor.php:143
-msgid "Please confirm permissions update"
-msgstr ""
-
-#: ../user-role-editor.php:144
-msgid "Add New Role"
-msgstr ""
-
-#: ../user-role-editor.php:145
-msgid " Role name (ID) can not be empty!"
-msgstr ""
-
-#: ../user-role-editor.php:146
-msgid " Role name (ID) must contain latin characters, digits, hyphens or underscore only!"
-msgstr ""
-
-#: ../user-role-editor.php:147
-msgid "Add Role"
-msgstr ""
-
-#: ../user-role-editor.php:148
-msgid "Delete Role"
-msgstr ""
-
-#: ../user-role-editor.php:149
-msgid "Cancel"
-msgstr ""
-
-#: ../user-role-editor.php:150
-msgid "Add Capability"
-msgstr ""
-
-#: ../user-role-editor.php:151
-#: ../user-role-editor.php:156
-msgid "Delete Capability"
-msgstr ""
-
-#: ../user-role-editor.php:152
-msgid "Reset"
-msgstr ""
-
-#: ../user-role-editor.php:153
-msgid "Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?"
-msgstr ""
-
-#: ../user-role-editor.php:154
-msgid "Default Role"
-msgstr ""
-
-#: ../user-role-editor.php:155
-msgid "Set New Default Role"
-msgstr ""
-
-#: ../user-role-editor.php:157
-msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
-msgstr ""
-
-#: ../user-role-editor.php:158
-msgid " Capability name (ID) can not be empty!"
-msgstr ""
-
-#: ../user-role-editor.php:159
-msgid " Capability name (ID) must contain latin characters, digits, hyphens or underscore only!"
-msgstr ""
-
-#: ../user-role-editor.php:284
-msgid "Settings"
-msgstr ""
-
-#: ../user-role-editor.php:294
-#: ../includes/ure-options.php:209
-msgid "Changelog"
-msgstr ""
-
-#: ../user-role-editor.php:342
+#: ../includes/class-user-role-editor.php:313
 msgid "Capabilities"
 msgstr ""
 
-#: ../user-role-editor.php:371
-#: ../user-role-editor.php:407
+#: ../includes/class-user-role-editor.php:404
+msgid "Settings"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:417
+#: ../includes/class-ure-lib.php:1966
+msgid "Changelog"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:429
+#: ../includes/class-user-role-editor.php:447
+#: ../includes/class-user-role-editor.php:630
+#: ../includes/class-ure-lib.php:234
+msgid "User Role Editor"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:483
+msgid "User Role Editor options are updated"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:534
+msgid "Only"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:534
+msgid "is allowed to use"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:587
+msgid "Select All"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:588
+msgid "Unselect All"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:589
+msgid "Reverse"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:590
+msgid "Update"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:591
+msgid "Please confirm permissions update"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:592
+msgid "Add New Role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:593
+msgid " Role name (ID) can not be empty!"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:594
+msgid ""
+" Role name (ID) must contain latin characters, digits, hyphens or underscore "
+"only!"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:595
+msgid "Add Role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:596
+msgid "Delete Role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:597
+msgid "Cancel"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:598
+msgid "Add Capability"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:599
+#: ../includes/class-user-role-editor.php:604
+msgid "Delete Capability"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:600
+msgid "Reset"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:601
+msgid ""
+"Reset Roles to WordPress defaults. Be careful, all changes made by you or "
+"plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation "
+"could be needed. Continue?"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:602
+msgid "Default Role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:603
+msgid "Set New Default Role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:605
+msgid ""
+"Warning! Be careful - removing critical capability could crash some plugin "
+"or other custom code"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:606
+msgid " Capability name (ID) can not be empty!"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:607
+msgid ""
+" Capability name (ID) must contain latin characters, digits, hyphens or "
+"underscore only!"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:633
+#: ../includes/class-user-role-editor.php:668
 msgid "Other Roles"
 msgstr ""
 
-#: ../user-role-editor.php:381
+#: ../includes/class-user-role-editor.php:643
 msgid "Edit"
 msgstr ""
 
-#: ../includes/ure-lib.php:35
+#: ../includes/ure-role-edit.php:17
+msgid "Select Role and change its capabilities list"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:19 ../includes/class-ure-lib.php:195
+msgid "Select Role:"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:30 ../includes/ure-user-edit.php:51
+msgid "Show capabilities in human readable form"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:40 ../includes/ure-user-edit.php:61
+msgid "Show deprecated capabilities"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:45
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:57
+msgid "Apply to All Sites"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:64 ../includes/ure-user-edit.php:106
+msgid "Core capabilities:"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:66 ../includes/ure-user-edit.php:108
+msgid "Quick filter:"
+msgstr ""
+
+#: ../includes/ure-role-edit.php:84 ../includes/ure-user-edit.php:127
+msgid "Custom capabilities:"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:152
+msgid "Error: wrong request"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:184
+msgid "Role name (ID): "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:186
+msgid "Display Role Name: "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:188
+msgid "Make copy of: "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:210
+msgid "Delete:"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:217
+msgid "Capability name (ID): "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:332
+msgid "Error: "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:332
+msgid "Role"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:332
+msgid "does not exist"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:375
+msgid "Role is updated successfully"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:377
+msgid "Roles are updated for all network"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:383
+msgid "Error occured during role(s) update"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:390
+msgid "User capabilities are updated successfully"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:395
+msgid "Error occured during user update"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:450
+msgid "User Roles are restored to WordPress default values. "
+msgstr ""
+
+#: ../includes/class-ure-lib.php:1220
+msgid "Help"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:1522
 msgid "Error is occur. Please check the log file."
 msgstr ""
 
-#: ../includes/ure-lib.php:364
-msgid "Backup record is created for the current role capabilities"
+#: ../includes/class-ure-lib.php:1547
+msgid ""
+"Error: Role ID must contain latin characters, digits, hyphens or underscore "
+"only!"
 msgstr ""
 
-#: ../includes/ure-lib.php:481
-msgid "Error: Role ID must contain latin characters, digits, hyphens or underscore only!"
-msgstr ""
-
-#: ../includes/ure-lib.php:496
+#: ../includes/class-ure-lib.php:1562
 #, php-format
 msgid "Role %s exists already"
 msgstr ""
 
-#: ../includes/ure-lib.php:511
+#: ../includes/class-ure-lib.php:1577
 msgid "Error is encountered during new role create operation"
 msgstr ""
 
-#: ../includes/ure-lib.php:513
+#: ../includes/class-ure-lib.php:1579
 #, php-format
 msgid "Role %s is created successfully"
 msgstr ""
 
-#: ../includes/ure-lib.php:597
+#: ../includes/class-ure-lib.php:1608
 msgid "Error encountered during role delete operation"
 msgstr ""
 
-#: ../includes/ure-lib.php:599
+#: ../includes/class-ure-lib.php:1610
 #, php-format
 msgid "Role %s is deleted successfully"
 msgstr ""
 
-#: ../includes/ure-lib.php:619
+#: ../includes/class-ure-lib.php:1635
 msgid "Error encountered during default role change operation"
 msgstr ""
 
-#: ../includes/ure-lib.php:625
+#: ../includes/class-ure-lib.php:1641
 #, php-format
 msgid "Default role for new users is set to %s successfully"
 msgstr ""
 
-#: ../includes/ure-lib.php:652
+#: ../includes/class-ure-lib.php:1660
 msgid "Editor"
 msgstr ""
 
-#: ../includes/ure-lib.php:653
+#: ../includes/class-ure-lib.php:1661
 msgid "Author"
 msgstr ""
 
-#: ../includes/ure-lib.php:654
+#: ../includes/class-ure-lib.php:1662
 msgid "Contributor"
 msgstr ""
 
-#: ../includes/ure-lib.php:655
+#: ../includes/class-ure-lib.php:1663
 msgid "Subscriber"
 msgstr ""
 
-#: ../includes/ure-lib.php:657
+#: ../includes/class-ure-lib.php:1665
 msgid "Switch themes"
 msgstr ""
 
-#: ../includes/ure-lib.php:658
+#: ../includes/class-ure-lib.php:1666
 msgid "Edit themes"
 msgstr ""
 
-#: ../includes/ure-lib.php:659
+#: ../includes/class-ure-lib.php:1667
 msgid "Activate plugins"
 msgstr ""
 
-#: ../includes/ure-lib.php:660
+#: ../includes/class-ure-lib.php:1668
 msgid "Edit plugins"
 msgstr ""
 
-#: ../includes/ure-lib.php:661
+#: ../includes/class-ure-lib.php:1669
 msgid "Edit users"
 msgstr ""
 
-#: ../includes/ure-lib.php:662
+#: ../includes/class-ure-lib.php:1670
 msgid "Edit files"
 msgstr ""
 
-#: ../includes/ure-lib.php:663
+#: ../includes/class-ure-lib.php:1671
 msgid "Manage options"
 msgstr ""
 
-#: ../includes/ure-lib.php:664
+#: ../includes/class-ure-lib.php:1672
 msgid "Moderate comments"
 msgstr ""
 
-#: ../includes/ure-lib.php:665
+#: ../includes/class-ure-lib.php:1673
 msgid "Manage categories"
 msgstr ""
 
-#: ../includes/ure-lib.php:666
+#: ../includes/class-ure-lib.php:1674
 msgid "Manage links"
 msgstr ""
 
-#: ../includes/ure-lib.php:667
+#: ../includes/class-ure-lib.php:1675
 msgid "Upload files"
 msgstr ""
 
-#: ../includes/ure-lib.php:668
+#: ../includes/class-ure-lib.php:1676
 msgid "Import"
 msgstr ""
 
-#: ../includes/ure-lib.php:669
+#: ../includes/class-ure-lib.php:1677
 msgid "Unfiltered html"
 msgstr ""
 
-#: ../includes/ure-lib.php:670
+#: ../includes/class-ure-lib.php:1678
 msgid "Edit posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:671
+#: ../includes/class-ure-lib.php:1679
 msgid "Edit others posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:672
+#: ../includes/class-ure-lib.php:1680
 msgid "Edit published posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:673
+#: ../includes/class-ure-lib.php:1681
 msgid "Publish posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:674
+#: ../includes/class-ure-lib.php:1682
 msgid "Edit pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:675
+#: ../includes/class-ure-lib.php:1683
 msgid "Read"
 msgstr ""
 
-#: ../includes/ure-lib.php:676
+#: ../includes/class-ure-lib.php:1684
 msgid "Level 10"
 msgstr ""
 
-#: ../includes/ure-lib.php:677
+#: ../includes/class-ure-lib.php:1685
 msgid "Level 9"
 msgstr ""
 
-#: ../includes/ure-lib.php:678
+#: ../includes/class-ure-lib.php:1686
 msgid "Level 8"
 msgstr ""
 
-#: ../includes/ure-lib.php:679
+#: ../includes/class-ure-lib.php:1687
 msgid "Level 7"
 msgstr ""
 
-#: ../includes/ure-lib.php:680
+#: ../includes/class-ure-lib.php:1688
 msgid "Level 6"
 msgstr ""
 
-#: ../includes/ure-lib.php:681
+#: ../includes/class-ure-lib.php:1689
 msgid "Level 5"
 msgstr ""
 
-#: ../includes/ure-lib.php:682
+#: ../includes/class-ure-lib.php:1690
 msgid "Level 4"
 msgstr ""
 
-#: ../includes/ure-lib.php:683
+#: ../includes/class-ure-lib.php:1691
 msgid "Level 3"
 msgstr ""
 
-#: ../includes/ure-lib.php:684
+#: ../includes/class-ure-lib.php:1692
 msgid "Level 2"
 msgstr ""
 
-#: ../includes/ure-lib.php:685
+#: ../includes/class-ure-lib.php:1693
 msgid "Level 1"
 msgstr ""
 
-#: ../includes/ure-lib.php:686
+#: ../includes/class-ure-lib.php:1694
 msgid "Level 0"
 msgstr ""
 
-#: ../includes/ure-lib.php:687
+#: ../includes/class-ure-lib.php:1695
 msgid "Edit others pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:688
+#: ../includes/class-ure-lib.php:1696
 msgid "Edit published pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:689
+#: ../includes/class-ure-lib.php:1697
 msgid "Publish pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:690
+#: ../includes/class-ure-lib.php:1698
 msgid "Delete pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:691
+#: ../includes/class-ure-lib.php:1699
 msgid "Delete others pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:692
+#: ../includes/class-ure-lib.php:1700
 msgid "Delete published pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:693
+#: ../includes/class-ure-lib.php:1701
 msgid "Delete posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:694
+#: ../includes/class-ure-lib.php:1702
 msgid "Delete others posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:695
+#: ../includes/class-ure-lib.php:1703
 msgid "Delete published posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:696
+#: ../includes/class-ure-lib.php:1704
 msgid "Delete private posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:697
+#: ../includes/class-ure-lib.php:1705
 msgid "Edit private posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:698
+#: ../includes/class-ure-lib.php:1706
 msgid "Read private posts"
 msgstr ""
 
-#: ../includes/ure-lib.php:699
+#: ../includes/class-ure-lib.php:1707
 msgid "Delete private pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:700
+#: ../includes/class-ure-lib.php:1708
 msgid "Edit private pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:701
+#: ../includes/class-ure-lib.php:1709
 msgid "Read private pages"
 msgstr ""
 
-#: ../includes/ure-lib.php:702
+#: ../includes/class-ure-lib.php:1710
 msgid "Delete users"
 msgstr ""
 
-#: ../includes/ure-lib.php:703
+#: ../includes/class-ure-lib.php:1711
 msgid "Create users"
 msgstr ""
 
-#: ../includes/ure-lib.php:704
+#: ../includes/class-ure-lib.php:1712
 msgid "Unfiltered upload"
 msgstr ""
 
-#: ../includes/ure-lib.php:705
+#: ../includes/class-ure-lib.php:1713
 msgid "Edit dashboard"
 msgstr ""
 
-#: ../includes/ure-lib.php:706
+#: ../includes/class-ure-lib.php:1714
 msgid "Update plugins"
 msgstr ""
 
-#: ../includes/ure-lib.php:707
+#: ../includes/class-ure-lib.php:1715
 msgid "Delete plugins"
 msgstr ""
 
-#: ../includes/ure-lib.php:708
+#: ../includes/class-ure-lib.php:1716
 msgid "Install plugins"
 msgstr ""
 
-#: ../includes/ure-lib.php:709
+#: ../includes/class-ure-lib.php:1717
 msgid "Update themes"
 msgstr ""
 
-#: ../includes/ure-lib.php:710
+#: ../includes/class-ure-lib.php:1718
 msgid "Install themes"
 msgstr ""
 
-#: ../includes/ure-lib.php:711
+#: ../includes/class-ure-lib.php:1719
 msgid "Update core"
 msgstr ""
 
-#: ../includes/ure-lib.php:712
+#: ../includes/class-ure-lib.php:1720
 msgid "List users"
 msgstr ""
 
-#: ../includes/ure-lib.php:713
+#: ../includes/class-ure-lib.php:1721
 msgid "Remove users"
 msgstr ""
 
-#: ../includes/ure-lib.php:714
+#: ../includes/class-ure-lib.php:1722
 msgid "Add users"
 msgstr ""
 
-#: ../includes/ure-lib.php:715
+#: ../includes/class-ure-lib.php:1723
 msgid "Promote users"
 msgstr ""
 
-#: ../includes/ure-lib.php:716
+#: ../includes/class-ure-lib.php:1724
 msgid "Edit theme options"
 msgstr ""
 
-#: ../includes/ure-lib.php:717
+#: ../includes/class-ure-lib.php:1725
 msgid "Delete themes"
 msgstr ""
 
-#: ../includes/ure-lib.php:718
+#: ../includes/class-ure-lib.php:1726
 msgid "Export"
 msgstr ""
 
-#: ../includes/ure-lib.php:834
+#: ../includes/class-ure-lib.php:1806
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr ""
 
-#: ../includes/ure-lib.php:846
+#: ../includes/class-ure-lib.php:1819
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr ""
 
-#: ../includes/ure-lib.php:848
+#: ../includes/class-ure-lib.php:1821
 #, php-format
 msgid "Capability %s exists already"
 msgstr ""
 
-#: ../includes/ure-lib.php:997
+#: ../includes/class-ure-lib.php:1846
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr ""
 
-#: ../includes/ure-lib.php:1016
+#: ../includes/class-ure-lib.php:1865
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr ""
 
-#: ../includes/ure-lib.php:1083
-msgid "Help"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:29
-msgid "None"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:67
-msgid "Select Role and change its capabilities list"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:69
-#: ../includes/ure-role-edit.php:166
-msgid "Select Role:"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:79
-#: ../includes/ure-user-edit.php:38
-msgid "Show capabilities in human readable form"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:88
-#: ../includes/ure-user-edit.php:47
-msgid "Show deprecated capabilities"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:92
-msgid "If checked, then apply action to ALL sites of this Network"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:102
-msgid "Apply to All Sites"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:109
-#: ../includes/ure-user-edit.php:88
-msgid "Core capabilities:"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:124
-#: ../includes/ure-user-edit.php:103
-msgid "Custom capabilities:"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:155
-msgid "Role name (ID): "
-msgstr ""
-
-#: ../includes/ure-role-edit.php:157
-msgid "Display Role Name: "
-msgstr ""
-
-#: ../includes/ure-role-edit.php:159
-msgid "Make copy of: "
-msgstr ""
-
-#: ../includes/ure-role-edit.php:181
-msgid "Delete:"
-msgstr ""
-
-#: ../includes/ure-role-edit.php:188
-msgid "Capability name (ID): "
-msgstr ""
-
-#: ../includes/ure-user-edit.php:22
-msgid "Change capabilities for user"
-msgstr ""
-
-#: ../includes/ure-user-edit.php:52
-msgid "Primary Role:"
-msgstr ""
-
-#: ../includes/ure-user-edit.php:62
-msgid "bbPress Role:"
-msgstr ""
-
-#: ../includes/ure-user-edit.php:72
-msgid "Other Roles:"
-msgstr ""
-
-#: ../includes/ure-options.php:65
-msgid "User Roles are restored to WordPress default values. "
-msgstr ""
-
-#: ../includes/ure-options.php:136
-msgid "Error: "
-msgstr ""
-
-#: ../includes/ure-options.php:136
-#: ../includes/ure-options.php:156
-msgid "Role"
-msgstr ""
-
-#: ../includes/ure-options.php:136
-msgid "does not exist"
-msgstr ""
-
-#: ../includes/ure-options.php:156
-msgid "is updated successfully"
-msgstr ""
-
-#: ../includes/ure-options.php:161
-#: ../includes/ure-options.php:174
-msgid "Error occured during role update"
-msgstr ""
-
-#: ../includes/ure-options.php:169
-msgid "User"
-msgstr ""
-
-#: ../includes/ure-options.php:169
-msgid "capabilities are updated successfully"
-msgstr ""
-
-#: ../includes/ure-options.php:206
+#: ../includes/class-ure-lib.php:1962
 msgid "About this Plugin:"
 msgstr ""
 
-#: ../includes/ure-options.php:207
+#: ../includes/class-ure-lib.php:1964
 msgid "Author's website"
 msgstr ""
 
-#: ../includes/ure-options.php:208
+#: ../includes/class-ure-lib.php:1965
 msgid "Plugin webpage"
 msgstr ""
 
-#: ../includes/ure-options.php:210
+#: ../includes/class-ure-lib.php:1967
 msgid "FAQ"
 msgstr ""
 
+#: ../includes/class-ure-lib.php:2008
+msgid "None"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:34
+msgid "Change capabilities for user"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:66
+msgid "Primary Role:"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:77
+msgid "bbPress Role:"
+msgstr ""
+
+#: ../includes/ure-user-edit.php:87
+msgid "Other Roles:"
+msgstr ""

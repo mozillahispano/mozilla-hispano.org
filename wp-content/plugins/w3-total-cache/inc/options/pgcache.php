@@ -108,7 +108,7 @@
                 <td>
                     <input id="pgcache_prime_interval" type="text" name="pgcache.prime.interval" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo $this->_config->get_integer('pgcache.prime.interval'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?><br />
+                        value="<?php echo esc_attr($this->_config->get_integer('pgcache.prime.interval')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?><br />
                     <span class="description"><?php _e('The number of seconds to wait before creating another set of cached pages.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -117,7 +117,7 @@
                 <td>
                     <input id="pgcache_prime_limit" type="text" name="pgcache.prime.limit" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo $this->_config->get_integer('pgcache.prime.limit'); ?>" size="8" /><br />
+                        value="<?php echo esc_attr( $this->_config->get_integer('pgcache.prime.limit')); ?>" size="8" /><br />
                     <span class="description"><?php _e('Limit the number of pages to create per batch. Fewer pages may be better for under-powered servers.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -126,13 +126,13 @@
                 <td>
                     <input id="pgcache_prime_sitemap" type="text" name="pgcache.prime.sitemap" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo $this->_config->get_string('pgcache.prime.sitemap'); ?>" size="100" /><br />
+                        value="<?php echo esc_attr($this->_config->get_string('pgcache.prime.sitemap')); ?>" size="100" /><br />
                     <span class="description"><?php _e('A <a href="http://www.xml-sitemaps.com/validate-xml-sitemap.html" target="_blank">compliant</a> sitemap can be used to specify the pages to maintain in the primed cache. Pages will be cached according to the priorities specified in the <acronym title="Extensible Markup Language">XML</acronym> file. Due to its completeness and integrations, <a href="http://wordpress.org/extend/plugins/wordpress-seo/" target="_blank">WordPress SEO</a> is recommended for use with this feature.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('pgcache.prime.post.enabled') ?> <?php _e('Prime post cache on publish.', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('pgcache.prime.post.enabled') ?> <?php _e('Preload the post cache upon publish events.', 'w3-total-cache'); ?></label><br />
                 </th>
             </tr>
         </table>
@@ -202,7 +202,7 @@
             <tr>
                 <th><label for="pgcache_purge_postpages_limit"><?php _e('Limit page purging:', 'w3-total-cache'); ?></label></th>
                 <td>
-                    <input id="pgcache_purge_postpages_limit" name="pgcache.purge.postpages_limit" <?php $this->sealing_disabled('pgcache') ?> type="text" value="<?php echo $this->_config->get_integer('pgcache.purge.postpages_limit'); ?>" /><br />
+                    <input id="pgcache_purge_postpages_limit" name="pgcache.purge.postpages_limit" <?php $this->sealing_disabled('pgcache') ?> type="text" value="<?php echo esc_attr($this->_config->get_integer('pgcache.purge.postpages_limit')); ?>" /><br />
                     <span class="description"><?php _e('Specify number of pages that lists posts (archive etc) that should be purged on post updates etc, i.e example.com/ ... example.com/page/5. <br />0 means all pages that lists posts are purged, i.e example.com/page/2 ... .', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -211,7 +211,7 @@
                 <td>
                     <textarea id="pgcache_purge_pages" name="pgcache.purge.pages"
                         <?php $this->sealing_disabled('pgcache') ?>
-                              cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.purge.pages'))); ?></textarea><br />
+                              cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.purge.pages'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify additional pages to purge. Including parent page in path. Ex: parent/posts.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -232,6 +232,14 @@
 
         <?php echo $this->postbox_header(__('Advanced', 'w3-total-cache'), '', 'advanced'); ?>
         <table class="form-table">
+            <tr>
+                <th><label for="pgcache_late_init"><?php _e('Use late init:', 'w3-total-cache'); ?></label></th>
+                <td>
+                    <input type="hidden" name="pgcache.late_init" value="0" />
+                    <label><input id="pgcache_late_init" type="checkbox" name="pgcache.late_init" value="1"<?php checked($this->_config->get_boolean('pgcache.late_init'), $this->_config->get_string('pgcache.engine') != 'file_generic'); ?> <?php disabled($this->_config->get_string('pgcache.engine'), 'file_generic') ?> /> <?php _e('Enable late init', 'w3-total-cache'); ?></label>
+                    <br /><span class="description"><?php _e('Enables support for WordPress functionality in fragment caching for the page caching engine. As a result, use of this feature will increase response times.', 'w3-total-cache')?></span>
+                </td>
+            </tr>
             <?php if ($this->_config->get_string('pgcache.engine') == 'memcached'): ?>
             <tr>
                 <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
@@ -239,10 +247,10 @@
                     <input id="memcached_servers" type="text" 
                         name="pgcache.memcached.servers" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo htmlspecialchars(implode(',', $this->_config->get_array('pgcache.memcached.servers'))); ?>" size="100" />
+                        value="<?php echo esc_attr(implode(',', $this->_config->get_array('pgcache.memcached.servers'))); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
+                        type="button" value="<?php esc_attr_e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>
                     <br /><span class="description"><?php _e('Multiple servers may be used and seperated by a comma; e.g. 192.168.1.100:11211, domain.com:22122', 'w3-total-cache'); ?></span>
                 </td>
@@ -260,11 +268,22 @@
                 <tr>
                     <th><label><?php _e('Charset:', 'w3-total-cache')?></label></th>
                     <td>
-                        <?php $this->checkbox('pgcache.remove_charset') ?> <?php _e('Remove UTF8/blog charset support' ,'w3-total-cache') ?></label><br />
-                        <span class="description"><?php _e('Check if you have odd characters or incorrect punctuation when viewing cached pages.', 'w3-total-cache')?></span>
+                        <?php $this->checkbox('pgcache.remove_charset') ?> <?php _e('Disable UTF-8 blog charset support' ,'w3-total-cache') ?></label><br />
+                        <span class="description"><?php _e('Resolve issues incorrect odd character encoding that may appear in cached pages.', 'w3-total-cache')?></span>
                     </td>
                 </tr>
-                <?php endif; ?>
+            <?php endif; ?>
+            <tr>
+                <th><label for="pgcache_reject_request_head"><?php _e('Reject HEAD requests:', 'w3-total-cache'); ?></label></th>
+                <td>
+                    <?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'):?>
+                    <input id="pgcache_reject_request_head" type="checkbox" name="pgcache.reject.request_head" value="1" disabled="disabled" /> Disable caching of HEAD <acronym title="Hypertext Transfer Protocol">HTTP</acronym> requests<br />
+                    <?php else: ?>
+                    <?php $this->checkbox('pgcache.reject.request_head', false,'', false) ?> Disable caching of HEAD <acronym title="Hypertext Transfer Protocol">HTTP</acronym> requests<br />
+                    <?php endif; ?>
+                    <span class="description"><?php _e('If disabled, HEAD requests can often be cached resulting in "empty pages" being returned for subsequent requests for a <acronym title="Uniform Resource Indicator">URL</acronym>.', 'w3-total-cache'); ?></span>
+                </td>
+            </tr>
             <?php endif; ?>
             <?php if ($this->_config->get_string('pgcache.engine') != 'file' && $this->_config->get_string('pgcache.engine') != 'file_generic'): ?>
             <tr>
@@ -272,7 +291,7 @@
                 <td>
                     <input id="pgcache_lifetime" type="text" name="pgcache.lifetime"
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo $this->_config->get_integer('pgcache.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                        value="<?php echo esc_attr($this->_config->get_integer('pgcache.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                     <br /><span class="description"><?php _e('Determines the natural expiration time of unchanged cache items. The higher the value, the larger the cache.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -282,14 +301,14 @@
                 <td>
                     <input id="pgcache_file_gc" type="text" name="pgcache.file.gc" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        value="<?php echo $this->_config->get_integer('pgcache.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('pgcache.engine') != 'file' && $this->_config->get_string('pgcache.engine') != 'file_generic'): ?> disabled="disabled"<?php endif; ?> /> <?php _e('seconds', 'w3-total-cache') ?>
+                        value="<?php echo esc_attr($this->_config->get_integer('pgcache.file.gc')); ?>" size="8"<?php if ($this->_config->get_string('pgcache.engine') != 'file' && $this->_config->get_string('pgcache.engine') != 'file_generic'): ?> disabled="disabled"<?php endif; ?> /> <?php _e('seconds', 'w3-total-cache') ?>
                     <br /><span class="description"><?php _e('If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th><label for="pgcache_comment_cookie_ttl"><?php _e('Comment cookie lifetime:', 'w3-total-cache'); ?></label></th>
                 <td>
-                        <input id="pgcache_comment_cookie_ttl" type="text" name="pgcache.comment_cookie_ttl" value="<?php echo $this->_config->get_integer('pgcache.comment_cookie_ttl'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                        <input id="pgcache_comment_cookie_ttl" type="text" name="pgcache.comment_cookie_ttl" value="<?php echo esc_attr($this->_config->get_integer('pgcache.comment_cookie_ttl')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                         <br /><span class="description"><?php _e('Significantly reduce the default <acronym title="Time to Live">TTL</acronym> for comment cookies to reduce the number of authenticated user traffic. Enter -1 to revert to default <acronym title="Time to Live">TTL</acronym>.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -298,7 +317,7 @@
                 <td>
                     <textarea id="pgcache_accept_qs" name="pgcache.accept.qs"
                         <?php $this->sealing_disabled('pgcache') ?>
-                              cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.accept.qs'))); ?></textarea><br />
+                              cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.accept.qs'))); ?></textarea><br />
                     <span class="description"><?php _e('Always cache URLs with these query strings.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -307,7 +326,7 @@
                 <td>
                     <textarea id="pgcache_reject_ua" name="pgcache.reject.ua" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.reject.ua'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.reject.ua'))); ?></textarea><br />
                     <span class="description"><?php _e('Never send cache pages for these user agents.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -316,7 +335,7 @@
                 <td>
                     <textarea id="pgcache_reject_cookie" name="pgcache.reject.cookie" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.reject.cookie'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.reject.cookie'))); ?></textarea><br />
                     <span class="description"><?php _e('Never cache pages that use the specified cookies.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -325,7 +344,7 @@
                 <td>
                     <textarea id="pgcache_reject_uri" name="pgcache.reject.uri" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.reject.uri'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.reject.uri'))); ?></textarea><br />
                     <span class="description">
 						<?php 
 							echo sprintf( 
@@ -335,22 +354,11 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="pgcache_reject_request_head"><?php _e('Reject HEAD request method:', 'w3-total-cache'); ?></label></th>
-                <td>
-                    <?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'):?>
-                    <input id="pgcache_reject_request_head" type="checkbox" name="pgcache.reject.request_head" value="1" disabled="disabled" />
-                    <?php else: ?>
-                    <?php $this->checkbox('pgcache.reject.request_head', false,'', false) ?><br />
-                    <?php endif; ?>
-                    <span class="description"><?php _e('Do not cache HEAD request.', 'w3-total-cache'); ?></span>
-                </td>
-            </tr>
-            <tr>
                 <th><label for="pgcache_accept_files"><?php _e('Cache exception list:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="pgcache_accept_files" name="pgcache.accept.files" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.accept.files'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.accept.files'))); ?></textarea><br />
                     <span class="description"><?php echo sprintf( __('Cache the specified pages / directories even if listed in the "never cache the following pages" field. Supports regular expression (See <a href="%s">FAQ</a>)', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?></span>
                 </td>
             </tr>
@@ -360,7 +368,7 @@
                 <td>
                     <textarea id="pgcache_accept_uri" name="pgcache.accept.uri" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.accept.uri'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.accept.uri'))); ?></textarea><br />
                     <span class="description"><?php _e('Cache the specified pages even if they don\'t have tailing slash.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -370,7 +378,7 @@
                 <td>
                     <textarea id="pgcache_cache_headers" name="pgcache.cache.headers" 
                         <?php $this->sealing_disabled('pgcache') ?>
-                        cols="40" rows="5"<?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'): ?> disabled="disabled"<?php endif; ?>><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.cache.headers'))); ?></textarea><br />
+                        cols="40" rows="5"<?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'): ?> disabled="disabled"<?php endif; ?>><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('pgcache.cache.headers'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify additional page headers to cache.', 'w3-total-cache')?></span>
                 </td>
             </tr>
@@ -394,7 +402,7 @@
         <?php echo $this->postbox_header(__('Note(s)', 'w3-total-cache'), '', 'notes'); ?>
         <table class="form-table">
             <tr>
-                <th colspan="2">
+                <th>
                     <ul>
                         <li><?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> compression in the "<acronym title="Hypertext Markup Language">HTML</acronym>" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.', 'w3-total-cache'); ?></li>
                         <li><?php _e('The <acronym title="Time to Live">TTL</acronym> of page cache files is set via the "Expires header lifetime" field in the "<acronym title="Hypertext Markup Language">HTML</acronym>" section on <a href="admin.php?page=w3tc_browsercache">Browser Cache</a> Settings tab.', 'w3-total-cache'); ?></li>

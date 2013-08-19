@@ -684,8 +684,27 @@ WHERE p.post_type = "attachment" AND (pm.meta_value IS NOT NULL OR pm2.meta_valu
         return $regexp;
     }
 
+    /**
+     * @param $error
+     */
     function update_cnames(&$error) {
         $cdn = $this->_get_common()->get_cdn();
         $cdn->update_cnames($error);
+    }
+
+
+    /**
+     * media_row_actions filter
+     *
+     * @param array $actions
+     * @param object $post
+     * @return array
+     */
+    function media_row_actions($actions, $post) {
+        $actions = array_merge($actions, array(
+            'cdn_purge' => sprintf('<a href="%s">' . __('Purge from CDN', 'w3-total-cache') . '</a>', wp_nonce_url(sprintf('admin.php?page=w3tc_dashboard&w3tc_cdn_purge_attachment&attachment_id=%d', $post->ID), 'w3tc'))
+        ));
+
+        return $actions;
     }
 }

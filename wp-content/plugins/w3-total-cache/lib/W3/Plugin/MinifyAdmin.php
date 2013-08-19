@@ -100,6 +100,7 @@ class W3_Plugin_MinifyAdmin extends W3_Plugin {
 
     function print_script() { ?>
         <script type="text/javascript">
+            var w3_use_network_link = <?php echo w3_force_master() ? 'true' : 'false' ?>;
             function w3tc_start_minify_try_solve() {
                 var testUrl = '<?php echo w3_filename_to_url(w3_cache_blog_dir('minify').'/') ?>';
                 w3tc_filename_auto_solve(testUrl);

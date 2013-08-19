@@ -149,7 +149,8 @@ class W3_PgCacheAdminEnvironment {
         $pgcache_rules_core_path = w3_get_pgcache_rules_core_path();
         $rewrite_rules[] = array(
             'filename' => $pgcache_rules_core_path, 
-            'content' => $this->rules_core_generate($config)
+            'content' => $this->rules_core_generate($config),
+            'last' => true
         );
 
         $pgcache_rules_cache_path = w3_get_pgcache_rules_cache_path();
@@ -261,6 +262,7 @@ class W3_PgCacheAdminEnvironment {
         $result = get_transient($key);
 
         if ($result === false) {
+            w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/http.php');
             $response = w3_http_get($url);
 
             $result = (!is_wp_error($response) && $response['response']['code'] == 200 && trim($response['body']) == 'OK');
@@ -409,14 +411,14 @@ class W3_PgCacheAdminEnvironment {
 
         $data = $original_data;
 
-        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY, 
+        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY,
             W3TC_MARKER_END_PGCACHE_LEGACY);
-        $has_legacy = ($new_data != $data);
+        $has_legacy = strlen($new_data) < strlen($data);
         $data = $new_data;
 
-        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC, 
+        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC,
             W3TC_MARKER_END_PGCACHE_WPSC);
-        $has_wpsc = ($new_data != $data);
+        $has_wpsc = strlen($new_data) < strlen($data);
         $data = $new_data;
 
         $rules = $this->rules_core_generate($config);
@@ -616,8 +618,9 @@ class W3_PgCacheAdminEnvironment {
         $rules .= "    RewriteEngine On\n";
         $rules .= "    RewriteBase " . $rewrite_base . "\n";
 
+
         if ($config->get_boolean('pgcache.debug')) {
-            $rules .= "    RewriteRule ^(.*\\/)?w3tc_rewrite_test$ $1?w3tc_rewrite_test=1 [L]\n";
+            $rules .= "    RewriteRule ^(.*\\/)?w3tc_rewrite_test/?$ $1?w3tc_rewrite_test=1 [L]\n";
         }
 
         /**
@@ -845,7 +848,7 @@ class W3_PgCacheAdminEnvironment {
         $rules = '';
         $rules .= W3TC_MARKER_BEGIN_PGCACHE_CORE . "\n";
         if ($config->get_boolean('pgcache.debug')) {
-            $rules .= "rewrite ^(.*\\/)?w3tc_rewrite_test$ $1?w3tc_rewrite_test=1 last;\n";
+            $rules .= "rewrite ^(.*\\/)?w3tc_rewrite_test/?$ $1?w3tc_rewrite_test=1 last;\n";
         }
 
         /**
@@ -1213,7 +1216,7 @@ class W3_PgCacheAdminEnvironment {
 
                 case 'cache_noproxy':
                     $header_rules .= "    Header set Pragma \"public\"\n";
-                    $header_rules .= "    Header set Cache-Control \"public, must-revalidate\"\n";
+                    $header_rules .= "    Header set Cache-Control \"private, must-revalidate\"\n";
                     break;
 
                 case 'cache_maxage':
@@ -1302,7 +1305,7 @@ class W3_PgCacheAdminEnvironment {
 
                 case 'cache_noproxy':
                     $common_rules .= "    add_header Pragma \"public\";\n";
-                    $common_rules .= "    add_header Cache-Control \"public, must-revalidate\";\n";
+                    $common_rules .= "    add_header Cache-Control \"private, must-revalidate\";\n";
                     break;
 
                 case 'cache_maxage':

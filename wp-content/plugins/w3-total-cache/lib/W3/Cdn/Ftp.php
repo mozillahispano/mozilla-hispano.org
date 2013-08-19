@@ -35,6 +35,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
             'path' => '',
             'pasv' => false,
             'domain' => array(),
+            'docroot' => ''
         ), $config);
 
         $host_port = explode(':', $config['host']);
@@ -188,7 +189,9 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
                 }
             }
 
-            $remote_file = basename($remote_path);
+            // basename cannot be used, kills chinese chars and similar characters
+            $remote_file = substr($remote_path, strrpos($remote_path, '/')+1);
+
             $mtime = @filemtime($local_path);
 
             if (!$force_rewrite) {
@@ -297,6 +300,18 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
             $error = sprintf('Unable to make directory: %s (%s).', $tmp_dir, $this->_get_last_error());
 
             @unlink($tmp_path);
+
+            $this->_restore_error_handler();
+            $this->_disconnect();
+
+            return false;
+        }
+
+        if (file_exists($this->_config['docroot'] . '/' . $tmp_dir)) {
+            $error = sprintf('Test directory was made in your site root, not on separate FTP host or path. Change path or FTP information: %s.', $tmp_dir);
+
+            @unlink($tmp_path);
+            @ftp_rmdir($this->_ftp, $tmp_dir);
 
             $this->_restore_error_handler();
             $this->_disconnect();

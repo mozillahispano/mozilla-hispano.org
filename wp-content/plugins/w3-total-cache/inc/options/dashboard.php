@@ -5,10 +5,9 @@
     <?php echo sprintf(__('The plugin is currently <span class="w3tc-%s">%s</span> in <strong>%s</strong> mode.', 'w3-total-cache')
                       , $enabled ? "enabled" : "disabled"
                       , $enabled ? __('enabled', 'w3-total-cache') : __('disabled', 'w3-total-cache')
-                      , w3_w3tc_release_version());
+                      , w3_w3tc_release_version($this->_config));
     ?>
 </p>
-
 <form id="w3tc_dashboard" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <p>
         Perform a
@@ -38,7 +37,7 @@
             <div class="content">
             <div id="dashboard-text" style="display:inline-block;">
                 <h1><?php _e('Dashboard', 'w3-total-cache')?></h1>
-                <p>Thanks for choosing W3TC as your Web Performance Optimization (WPO) framework. Eventually, the dashboard will provide at-a-glance insight into key performance indicators for your site(s). Feel free to <a href="admin.php?page=w3tc_support&amp;request_type=new_feature">make suggestions</a> about the statistics you would like to see here. We're already working on: CDN stats, cache stats per module, Cloud Flare stats and much more.</p>
+                <p>Thanks for choosing W3TC as your Web Performance Optimization (<acronym title="Web Performance Optimization">WPO</acronym>) framework. Eventually, the dashboard will provide at-a-glance insight into key performance indicators for this WordPress installation. Please share <a href="admin.php?page=w3tc_support&amp;request_type=new_feature">your suggestions</a> about the statistics and reporting you would like to see here!</p>
             </div>
             <div id="widgets-container">
             <?php do_meta_boxes( $screen->id, 'normal', '' ); ?>

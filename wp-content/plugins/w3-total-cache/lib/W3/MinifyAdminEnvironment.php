@@ -135,7 +135,8 @@ class W3_MinifyAdminEnvironment {
         $minify_rules_core_path = w3_get_minify_rules_core_path();
         $rewrite_rules[] = array(
             'filename' => $minify_rules_core_path, 
-            'content'  => $this->rules_core_generate($config)
+            'content'  => $this->rules_core_generate($config),
+            'last' => true
         );
 
         return $rewrite_rules;
@@ -277,6 +278,8 @@ class W3_MinifyAdminEnvironment {
         $result = get_transient($key);
 
         if ($result === false) {
+            w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/http.php');
+
             $response = w3_http_get($url);
 
             $result = (!is_wp_error($response) && $response['response']['code'] == 200 && trim($response['body']) == 'OK');
@@ -601,7 +604,7 @@ class W3_MinifyAdminEnvironment {
 
                     case 'cache_noproxy':
                         $rules .= "    Header set Pragma \"public\"\n";
-                        $rules .= "    Header set Cache-Control \"public, must-revalidate\"\n";
+                        $rules .= "    Header set Cache-Control \"private, must-revalidate\"\n";
                         break;
 
                     case 'cache_maxage':
@@ -683,7 +686,7 @@ class W3_MinifyAdminEnvironment {
 
                 case 'cache_noproxy':
                     $common_rules .= "    add_header Pragma \"public\";\n";
-                    $common_rules .= "    add_header Cache-Control \"public, must-revalidate\";\n";
+                    $common_rules .= "    add_header Cache-Control \"private, must-revalidate\";\n";
                     break;
 
                 case 'cache_maxage':

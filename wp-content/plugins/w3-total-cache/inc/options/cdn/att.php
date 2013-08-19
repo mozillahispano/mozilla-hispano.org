@@ -3,14 +3,14 @@
     <th style="width: 300px;"><label for="cdn_att_account"><?php _e('Account #:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="cdn_att_account" class="w3tc-ignore-change" type="text"
-           <?php $this->sealing_disabled('cdn') ?> name="cdn.att.account" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.att.account')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> name="cdn.att.account" value="<?php echo esc_attr($this->_config->get_string('cdn.att.account')); ?>" size="60" />
     </td>
 </tr>
 <tr>
     <th><label for="cdn_att_token"><?php _e('Token:', 'w3-total-cache'); ?></th>
     <td>
         <input id="cdn_att_token" class="w3tc-ignore-change" type="password"
-           <?php $this->sealing_disabled('cdn') ?> name="cdn.att.token" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.att.token')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> name="cdn.att.token" value="<?php echo esc_attr($this->_config->get_string('cdn.att.token')); ?>" size="60" />
     </td>
 </tr>
 <tr>

@@ -69,6 +69,9 @@ class W3_Plugin_Cdn extends W3_Plugin {
                 &$this,
                 'update_feedback'
             ));
+
+            add_filter( 'wpseo_xml_sitemap_img_src', array($this, 'wpseo_cdn_filter' ));
+
         }
 
         /**
@@ -76,6 +79,13 @@ class W3_Plugin_Cdn extends W3_Plugin {
          */
         if ($this->can_cdn()) {
             w3tc_add_ob_callback('cdn', array($this,'ob_callback'));
+        }
+
+        if (is_admin() && w3_can_cdn_purge($cdn_engine)) {
+            add_filter('media_row_actions', array(
+                &$this,
+                'media_row_actions'
+            ), 0, 2);
         }
     }
 
@@ -943,6 +953,36 @@ class W3_Plugin_Cdn extends W3_Plugin {
         $file = str_replace('{uploads_dir}', $upload_dir, $file);
 
         return $file;
+    }
+
+
+
+    /**
+     * media_row_actions filter
+     *
+     * @param array $actions
+     * @param object $post
+     * @return array
+     */
+    function media_row_actions($actions, $post) {
+        return $this->get_admin()->media_row_actions($actions, $post);
+    }
+
+    /**
+     * Hook into WordPress SEO sitemap image filter.
+     * @param $uri
+     * @return string
+     */
+    function wpseo_cdn_filter( $uri ) {
+        $site_path = w3_get_site_path();
+        $domain_url_regexp = w3_get_domain_url_regexp();
+        $cdn = $this->_get_common()->get_cdn();
+        $parsed = parse_url($uri);
+        $path = $parsed['path'];
+        $remote_path = $this->_get_common()->uri_to_cdn_uri($path);
+        $new_url = $cdn->format_url($remote_path);
+
+        return  $new_url;
     }
 }
 

@@ -3,21 +3,21 @@
 	<th style="width: 300px;"><label for="cdn_azure_user"><?php _e('Account name:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_azure_user" class="w3tc-ignore-change" type="text"
-                       <?php $this->sealing_disabled('cdn') ?> name="cdn.azure.user" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.azure.user')); ?>" size="30" />
+                       <?php $this->sealing_disabled('cdn') ?> name="cdn.azure.user" value="<?php echo esc_attr($this->_config->get_string('cdn.azure.user')); ?>" size="30" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_azure_key"><?php _e('Account key:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_azure_key" class="w3tc-ignore-change"
-                       <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.azure.key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.azure.key')); ?>" size="60" />
+                       <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.azure.key" value="<?php echo esc_attr($this->_config->get_string('cdn.azure.key')); ?>" size="60" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_azure_container"><?php _e('Container:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_azure_container" type="text"
-                       <?php $this->sealing_disabled('cdn') ?> name="cdn.azure.container" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.azure.container')); ?>" size="30" />
+                       <?php $this->sealing_disabled('cdn') ?> name="cdn.azure.container" value="<?php echo esc_attr($this->_config->get_string('cdn.azure.container')); ?>" size="30" />
 		<input id="cdn_create_container" <?php $this->sealing_disabled('cdn') ?> class="button {type: 'azure', nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Create container', 'w3-total-cache'); ?>" />
         <span id="cdn_create_container_status" class="w3tc-status w3tc-process"></span>
 	</td>
@@ -37,7 +37,7 @@
 	<th><?php _e('Replace site\'s hostname with:', 'w3-total-cache'); ?></th>
 	<td>
 		<?php if (($cdn_azure_user = $this->_config->get_string('cdn.azure.user')) != ''): ?>
-		    <?php echo htmlspecialchars($cdn_azure_user); ?>.blob.core.windows.net
+		    <?php echo esc_attr($cdn_azure_user); ?>.blob.core.windows.net
 		<?php else: ?>
 		    &lt;account name&gt;.blob.core.windows.net
 		<?php endif; ?> <?php _e('or CNAME:', 'w3-total-cache'); ?>

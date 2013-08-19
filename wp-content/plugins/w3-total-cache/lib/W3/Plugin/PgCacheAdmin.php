@@ -15,6 +15,11 @@ w3_require_once(W3TC_LIB_W3_DIR . '/Plugin.php');
  * Class W3_Plugin_PgCacheAdmin
  */
 class W3_Plugin_PgCacheAdmin extends W3_Plugin {
+
+    function run() {
+        add_filter('w3tc_save_options', array($this, 'remove_old_files'),10,2);
+    }
+
     function cleanup() {
         // We check to see if we're dealing with a cluster
         $config = w3_instance('W3_Config');
@@ -222,5 +227,24 @@ class W3_Plugin_PgCacheAdmin extends W3_Plugin {
                 return false;
         }
         return true;
+    }
+
+    /**
+     * Remove .old files if changing settings.
+     *
+     * @param W3_Config $new_config
+     * @param W3_Config $old_config
+     * @param W3_ConfigAdmin $config_admin
+     * @return W3_Config
+     */
+    public function remove_old_files($new_config, $old_config, $config_admin = null) {
+        if ((!$new_config->get_boolean('pgcache.cache.home') && $old_config->get_boolean('pgcache.cache.home')) ||
+              $new_config->get_boolean('pgcache.reject.front_page') && !$old_config->get_boolean('pgcache.reject.front_page') ||
+              !$new_config->get_boolean('pgcache.cache.feed') && $old_config->get_boolean('pgcache.cache.feed') ||
+              !$new_config->get_boolean('pgcache.cache.query') && $old_config->get_boolean('pgcache.cache.query') ||
+              !$new_config->get_boolean('pgcache.cache.ssl') && $old_config->get_boolean('pgcache.cache.ssl')) {
+            $new_config->set('notes.need_empty_pgcache', true);
+        }
+        return $new_config;
     }
 }

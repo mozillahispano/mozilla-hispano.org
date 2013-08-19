@@ -1,0 +1,187 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/browserid-wordpress\n"
+"POT-Creation-Date: 2013-07-04 11:02:57+00:00\n"
+"PO-Revision-Date: 2013-07-14 16:39+0300\n"
+"Last-Translator: Ruslan Bekenev (KryDos) <furyinbox@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: browserid.php:131 browserid.php:909
+msgid "Sign in with your email"
+msgstr "Войти с помощью Email"
+
+#: browserid.php:135 browserid.php:918
+msgid "Logout"
+msgstr "Выход"
+
+#: browserid.php:139 browserid.php:973
+msgid "Comment"
+msgstr "Комментарий"
+
+#: browserid.php:164
+msgid "Settings"
+msgstr "Настройки"
+
+#: browserid.php:269 browserid.php:395
+msgid "Verification failed"
+msgstr "Ошибка во время проверки"
+
+#: browserid.php:388
+msgid "Verification response invalid"
+msgstr "Ответ от сервера не правильный"
+
+#: browserid.php:462
+msgid "You must already have an account to log in with Persona."
+msgstr "У вас должен быть аккаунт для входа с помощью Persona."
+
+#: browserid.php:491
+msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
+msgstr "<strong>ОШИБКА</strong>: В Вашем аккаунте замечена спам активность."
+
+#: browserid.php:497
+msgid "Site Suspended."
+msgstr "Работа сайта приостановлена."
+
+#: browserid.php:594
+msgid "Register"
+msgstr "Регистрация"
+
+#: browserid.php:654
+msgid "Password reset disabled"
+msgstr "Сброс пароля отключен"
+
+#: browserid.php:655
+msgid ""
+"%s uses Mozilla Persona to sign in and does not use passwords. Password "
+"reset is disabled."
+msgstr ""
+"%s использовал Mozilla Persona для входа на сайт без пароля. Сброс пароля "
+"отключен."
+
+#: browserid.php:793
+msgid "What is Persona?"
+msgstr "Что такое Pesona?"
+
+#: browserid.php:845 browserid.php:846 browserid.php:1031
+msgid "Mozilla Persona"
+msgstr "Mozilla Persona"
+
+#: browserid.php:845
+msgid "Administration"
+msgstr "Администрация"
+
+#: browserid.php:856
+msgid "Site name:"
+msgstr "Название сайта:"
+
+#: browserid.php:857
+msgid "Site logo:"
+msgstr "Логотип сайта:"
+
+#: browserid.php:858
+msgid "Disable non-Persona logins:"
+msgstr "Сделать Persona единственным инструментом для входа в систему:"
+
+#: browserid.php:859
+msgid "Login button HTML:"
+msgstr "HTML кнопка входа:"
+
+#: browserid.php:860
+msgid "Logout button HTML:"
+msgstr "HTML кнопка выхода:"
+
+#: browserid.php:862
+msgid "Login redirection URL:"
+msgstr "URL для перенаправления после входа:"
+
+#: browserid.php:863
+msgid "Enable for comments:"
+msgstr "Включить в комментариях:"
+
+#: browserid.php:864
+msgid "Enable bbPress integration:"
+msgstr "Включить интеграцию с bbPress:"
+
+#: browserid.php:865
+msgid "Comment button HTML:"
+msgstr "HTML кнопка комментария:"
+
+#: browserid.php:866
+msgid "Verification server:"
+msgstr "Сервер проверки:"
+
+#: browserid.php:867
+msgid "Debug mode:"
+msgstr "Режим отладки:"
+
+#: browserid.php:901
+msgid "Absolute path, works only with SSL"
+msgstr "Абсолютный путь, работает только с SSL"
+
+#: browserid.php:928
+msgid "Default WordPress dashboard"
+msgstr "Стандартная панель WordPress"
+
+#: browserid.php:958
+msgid "Enables anonymous posting implicitly"
+msgstr "Включает анонимный постинг"
+
+#: browserid.php:984
+msgid "Default"
+msgstr "По умолчанию"
+
+#: browserid.php:1004
+msgid "Security risk!"
+msgstr "Возможны проблемы с безопасностью!"
+
+#: browserid.php:1036
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: browserid.php:1109
+msgid "Mozilla Persona login button"
+msgstr "Кнопка входа Mozilla Persona"
+
+#: browserid.php:1140
+msgid "Title:"
+msgstr "Заголовок:"
+
+#: browserid.php:1184
+msgid "New user registration on your site %s:"
+msgstr "Новый пользователь зарегистрировался на вашем сайте %s:"
+
+#: browserid.php:1185 browserid.php:1193
+msgid "Username: %s"
+msgstr "Имя пользователя: %s"
+
+#: browserid.php:1186
+msgid "E-mail: %s"
+msgstr "E-mail: %s"
+
+#: browserid.php:1188
+msgid "[%s] New User Registration"
+msgstr "[%s] Регистрация нового пользователя"
+
+#: browserid.php:1202
+msgid "%s uses Mozilla Persona to sign in and does not use passwords"
+msgstr "[%s] использовал Mozilla Persona для входа без пароля"
+
+#: browserid.php:1203
+msgid "[%s] Your username"
+msgstr "[%s] Ваше имя пользователя"
+
+#: browserid.php:1205
+msgid "Password: %s"
+msgstr "Пароль: %s"
+
+#: browserid.php:1206
+msgid "[%s] Your username and password"
+msgstr "[%s] Ваше имя пользователя и пароль"

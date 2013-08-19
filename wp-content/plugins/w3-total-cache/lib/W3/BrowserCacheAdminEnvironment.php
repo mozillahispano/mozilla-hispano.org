@@ -388,7 +388,7 @@ class W3_BrowserCacheAdminEnvironment {
 
                 case 'cache_noproxy':
                     $headers_rules .= "        Header set Pragma \"public\"\n";
-                    $headers_rules .= "        Header set Cache-Control \"public, must-revalidate\"\n";
+                    $headers_rules .= "        Header set Cache-Control \"private, must-revalidate\"\n";
                     break;
 
                 case 'cache_maxage':
@@ -552,7 +552,7 @@ class W3_BrowserCacheAdminEnvironment {
 
                     case 'cache_noproxy':
                         $rules .= "    add_header Pragma \"public\";\n";
-                        $rules .= "    add_header Cache-Control \"public, must-revalidate\";\n";
+                        $rules .= "    add_header Cache-Control \"private, must-revalidate\";\n";
                         break;
 
                     case 'cache_maxage':

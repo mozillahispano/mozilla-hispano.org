@@ -687,16 +687,16 @@ add_filter('w3tc_referrer_groups', 'my_w3tc_referrer_groups');</pre>
 			]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ When I post/like my posts on Facebook the wrong text or no images are shown on Facebook.]]></question>
+            <question><![CDATA[ When I post / like my posts on Facebook the wrong text or no images are shown on Facebook.]]></question>
             <answer><![CDATA[ <p>If this happens you need to add the following user agents to the textarea "Rejected user agents" the Page Cache settings page:</p>
             <pre>facebookexternalhit
-				 FacebookExternalHit/1.1
-				 FacebookExternalHit/1.0</pre>
+FacebookExternalHit/1.1
+FacebookExternalHit/1.0</pre>
             <p>Also make sure you have the correct xmlns:og /xmlns:fb  tags in your opening HTML tag.</p>
             ]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ How do I remove the W3 Total Cache HTML comment? ]]></question>
+            <question><![CDATA[ How do I remove the W3 Total Cache <acronym title="Hypertext Markup Language">HTML</acronym> comment? ]]></question>
             <answer> <![CDATA[
                 <p>Define APP_REQUEST in wp-config.php for example:<br /><br />
                 if ($_SERVER['REQUEST_URI'] == '/my-specific-page/') {<br />
@@ -708,8 +708,8 @@ add_filter('w3tc_referrer_groups', 'my_w3tc_referrer_groups');</pre>
         <entry>
             <question><![CDATA[ Why doesn't minify work for me? ]]></question>
             <answer> <![CDATA[
-                <p>Great question. W3 Total Cache uses several open source tools to attempt to combine and optimize CSS, JavaScript and HTML etc. Unfortunately some trial and error is required on the part of developers is required to make sure that their code can be successfully minified with the various libraries W3 Total Cache supports. Even still, if developers do test their code thoroughly, they cannot be sure that interoperability with other code your site may have. This fault does not lie with any single party here, because there are thousands of plugins and theme combinations that a given site can have, there are millions of possible combinations of CSS, JavaScript etc.</p>
-                <p>A good rule of thumb is to try auto mode, work with a developer to identify the code that is not compatible and start with combine only mode (the safest optimization) and increase the optimization to the point just before functionality (JavaScript) or user interface / layout (CSS) breaks in your site.</p>
+                <p>Great question. W3 Total Cache uses several open source tools to attempt to combine and optimize <acronym title="Cascading Style Sheet">CSS</acronym>, JavaScript and <acronym title="Hypertext Markup Language">HTML</acronym> etc. Unfortunately some trial and error is required on the part of developers is required to make sure that their code can be successfully minified with the various libraries W3 Total Cache supports. Even still, if developers do test their code thoroughly, they cannot be sure that interoperability with other code your site may have. This fault does not lie with any single party here, because there are thousands of plugins and theme combinations that a given site can have, there are millions of possible combinations of <acronym title="Cascading Style Sheet">CSS</acronym>, JavaScript etc.</p>
+                <p>A good rule of thumb is to try auto mode, work with a developer to identify the code that is not compatible and start with combine only mode (the safest optimization) and increase the optimization to the point just before functionality (JavaScript) or user interface / layout (<acronym title="Cascading Style Sheet">CSS</acronym>) breaks in your site.</p>
                 <p>We're always working to make this more simple and straight forward in future releases, but this is not an undertaking we can realize on our own. When you find a plugin, theme or file that is not compatible with minification reach out to the developer and ask them either to provide a minified version with their distribution or otherwise make sure their code is minification-friendly.</p>
              ]]></answer>
         </entry>
@@ -729,26 +729,26 @@ add_filter('w3tc_referrer_groups', 'my_w3tc_referrer_groups');</pre>
             ]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ How can I issue delete and reload APC commands over HTTP/wp-cli? ]]></question>
+            <question><![CDATA[ How can I issue delete and reload APC commands over <acronym title="Hypertext Transfer Protocol">HTTP</acronym>/WP-CLI? ]]></question>
             <answer> <![CDATA[
-                <p>Functions required for deleting and reloading over HTTP is found in inc/functions/plugin.php.<br />
+                <p>Functions required for deleting and reloading over <acronym title="Hypertext Transfer Protocol">HTTP</acronym> is found in inc/functions/plugin.php.<br />
                 Call <em>w3tc_apc_reload_files(array('file1' ...),true)</em> to reload files.<br />
                 Call <em>w3tc_apc_delete_files_based_on_regex('a regular expression', true)</em> to delete files.</p>
                 <p>
-                <p>To do it locally with <em>wp-cli</em>:<br />
+                <p>To do it locally with <em>WP-CLI</em>:<br />
                      Call <em>wp w3-total-cache apc_reload_files local file1 file2 file3</em><br />
                      Call <em>wp w3-total-cache apc_delete_based_on_regex local regex</em><br />
                 </p>
             ]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ Sitemaps are not cached. How do I solve this? ]]></question>
+            <question><![CDATA[ Sitemaps are not being cached. How do I resolve this? ]]></question>
             <answer><![CDATA[ <p>Enable "Cache feeds: site, categories, tags, comments" on the "Page Cache" settings tab. Some sitemap implementations are considered by WordPress to be "feeds."</p> ]]></answer>
         </entry>
         <entry>
-            <question><![CDATA[ A notification about file owner appears along with an <acronym title="File Transfer Protocol">FTP</acronym> form, how can I resolve this? ]]></question>
-            <answer><![CDATA[ <p>The plugin uses WordPress FileSystem functionality to write to files. It checks if file owner, file owner group of created files match process owner. If this is not the case it cannot write or modify files.<br />
-            Typically, you should tell your web host about the permission issue and they should be able to resolve it.<br />
+            <question><![CDATA[ A notification about file owner appears along with a <acronym title="File Transfer Protocol">FTP</acronym> form, how can I resolve this? ]]></question>
+            <answer><![CDATA[ <p>The plugin uses WordPress FileSystem functionality to write to files. It verifies that file owner, file owner group of created files match process owner. If this is not the case it cannot write or modify files.</[>
+            <p>Typically, you should ask your web host about the permissions issue and they should be able to resolve it.
             You can however try adding <em>define('FS_METHOD', 'direct');</em> to wp-config.php to circumvent the file and folder checks.</p>
             ]]></answer>
         </entry>
@@ -756,10 +756,36 @@ add_filter('w3tc_referrer_groups', 'my_w3tc_referrer_groups');</pre>
             <question><![CDATA[ I get an CloudFlare error message similar too <em>"certificate verify locations: CAfile: /etc/path/certs/ca-bundle.crt CApath: none "</em> ]]></question>
             <answer>
                 <![CDATA[ <p>
-                    This is happens when CURL cannot find the proper location of certificates or the certificates have wrong permissions. Talk with your host when you get such an error message.
+                    This is happens when CURL cannot find the proper location of certificates or the certificates have incorrect permissions. Ask your web host for help addressing this issue.
                 </p>
                 ]]>
             </answer>
+        </entry>
+        <entry>
+            <question><![CDATA[ How do I add new extensions? ]]></question>
+            <answer><![CDATA[
+             <p>
+             Refer to w3-total-cache/extensions/GenesisAdmin.php to see how to create an extension by example.
+             </p>
+<pre>
+// Adding a basic function. See GenesisAdmin.php for how to setup settings screen.
+add_filter('w3tc_extensions', 'custom_extension');
+function custom_extension($extensions) {
+        $extensions['some.theme'] = array (
+            'name' => 'Custpom Framework Extension',
+            'author' => 'Bluw Widgets',
+            'description' => 'Adds specific caching capabilities.',
+            'author uri' => 'http://example.com',
+            'extension uri' => 'http://example.com',
+            'extension id' => 'some.theme',
+            'version' => '0.1',
+            'enabled' => true,
+            'requirements' => array(),
+            'path' => 'your-plugin-folder/extensions/CustomExtension.php'
+        );
+}
+</pre>
+             ]]></answer>
         </entry>
     </section>
 	<section name="Requirements">

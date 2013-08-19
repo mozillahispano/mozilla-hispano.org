@@ -1,7 +1,7 @@
 <?php
 
 /**
- * W3 PgCache plugin - administrative interface
+ * W3 Object Cache plugin - administrative interface
  */
 if (!defined('W3TC')) {
     die();
@@ -71,6 +71,7 @@ class W3_ObjectCacheAdminEnvironment {
 
     /**
      * Returns required rules for module
+     * @var W3_Config $config
      * @return array
      */
     function get_required_rules($config) {
@@ -94,10 +95,20 @@ class W3_ObjectCacheAdminEnvironment {
         $src = W3TC_INSTALL_FILE_OBJECT_CACHE;
         $dst = W3TC_ADDIN_FILE_OBJECT_CACHE;
 
-        if (file_exists($dst)) {
-            $script_data = @file_get_contents($dst);
-            if ($script_data == @file_get_contents($src))
-                return;
+        if ($this->objectcache_installed()) {
+            if ($this->is_objectcache_add_in()) {
+                $script_data = @file_get_contents($dst);
+                if ($script_data == @file_get_contents($src))
+                    return;
+            } elseif (!$this->objectcache_check_old_add_in()){
+                $remove_url = is_network_admin() ?
+                    network_admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=objectcache') :
+                    admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=objectcache');
+                throw new FilesystemOperationException(
+                    sprintf(__('The Object Cache add-in file object-cache.php is not a W3 Total Cache drop-in.
+                    Remove it or disable Object Caching. %s', 'w3-total-cache'),
+                    w3tc_button_link(__('Yes, remove it for me', 'w3-total-cache'), wp_nonce_url($remove_url,'w3tc'))));
+            }
         }
 
         w3_wp_copy_file($src, $dst);
@@ -108,6 +119,37 @@ class W3_ObjectCacheAdminEnvironment {
      * @throws FilesystemOperationException
      */
     private function delete_addin() {
-        w3_wp_delete_file(W3TC_ADDIN_FILE_OBJECT_CACHE);
+        if ($this->is_objectcache_add_in())
+            w3_wp_delete_file(W3TC_ADDIN_FILE_OBJECT_CACHE);
+    }
+
+    /**
+     * Returns true if object-cache.php is installed
+     *
+     * @return boolean
+     */
+    public function objectcache_installed() {
+        return file_exists(W3TC_ADDIN_FILE_OBJECT_CACHE);
+    }
+
+    /**
+     * Returns true if object-cache.php is old version.
+     *
+     * @return boolean
+     */
+    public function objectcache_check_old_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_OBJECT_CACHE))
+            && strstr($script_data, '& w3_instance') !== false
+            || strstr($script_data, "'W3_ObjectCache'") !== false);
+    }
+
+    /**
+     * Checks if object-cache.php is latest version
+     *
+     * @return boolean
+     */
+    public function is_objectcache_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_OBJECT_CACHE))
+            && strstr($script_data, '//ObjectCache Version: 1.1') !== false);
     }
 }

@@ -271,7 +271,13 @@ EOB
 	}
 }
 
-WP_CLI::addCommand('w3-total-cache', 'W3TotalCache_Command');
-WP_CLI::addCommand('total-cache', 'W3TotalCache_Command');
+if (method_exists('WP_CLI','add_command')) {
+  WP_CLI::add_command('w3-total-cache', 'W3TotalCache_Command');
+  WP_CLI::add_command('total-cache', 'W3TotalCache_Command');
+} else {
+  // backward compatibility
+  WP_CLI::addCommand('w3-total-cache', 'W3TotalCache_Command');
+  WP_CLI::addCommand('total-cache', 'W3TotalCache_Command');
+}
 
 

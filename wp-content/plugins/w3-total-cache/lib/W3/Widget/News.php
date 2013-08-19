@@ -117,7 +117,7 @@ class W3_Widget_News extends W3_Plugin {
         }
 
         ob_start();
-        include W3TC_INC_DIR . '/widget/latest_ajax.php';
+        include W3TC_INC_DIR . '/widget/latest_news_ajax.php';
 
         // Default lifetime in cache of 12 hours (same as the feeds)
         set_transient($this->_widget_latest_cache_key(), ob_get_flush(), 43200);

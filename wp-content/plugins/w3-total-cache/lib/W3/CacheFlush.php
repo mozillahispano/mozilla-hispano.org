@@ -217,7 +217,7 @@ class W3_CacheFlush {
     function flush_url($url) {
         static $flushed_urls = array();
 
-        if (!in_array($url, $url)) {
+        if (!in_array($url, $flushed_urls)) {
             $flushed_urls[] = $url;
             return $this->_executor->flush_url($url);
         }

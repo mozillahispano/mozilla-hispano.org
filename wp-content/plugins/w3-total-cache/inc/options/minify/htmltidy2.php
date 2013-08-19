@@ -3,6 +3,6 @@
     <th><label for="minify_htmltidy_options_wrap"><?php _e('Wrap after:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="minify_htmltidy_options_wrap" class="html_enabled" type="text"
-            <?php $this->sealing_disabled('minify') ?> name="minify.htmltidy.options.wrap" value="<?php echo htmlspecialchars($this->_config->get_integer('minify.htmltidy.options.wrap')); ?>" size="8" style="text-align: right;" /> _e('symbols (set to 0 to disable)', 'w3-total-cache'); ?>
+            <?php $this->sealing_disabled('minify') ?> name="minify.htmltidy.options.wrap" value="<?php echo esc_attr($this->_config->get_integer('minify.htmltidy.options.wrap')); ?>" size="8" style="text-align: right;" /> _e('symbols (set to 0 to disable)', 'w3-total-cache'); ?>
     </td>
 </tr>

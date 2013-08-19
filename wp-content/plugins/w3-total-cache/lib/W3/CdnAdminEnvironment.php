@@ -141,6 +141,21 @@ class W3_CdnAdminEnvironment {
     }
 
     /**
+     * @param W3_Config $config
+     * @return array|null
+     */
+    function get_instructions($config) {
+        if (!$config->get_boolean('cdn.enabled'))
+            return null;
+
+        $instructions = array();
+        $instructions[] = array('title'=>__('CDN module: Required Database SQL', 'w3-total-cache'),
+            'content' => $this->generate_table_sql(), 'area' => 'database');
+
+        return $instructions;
+    }
+
+    /**
      * Generate rules for FTP
      **/
     public function rules_generate_for_ftp($config) {
@@ -199,7 +214,23 @@ class W3_CdnAdminEnvironment {
         $wpdb->query($sql);
     }
 
+    private function generate_table_sql() {
+        global $wpdb;
 
+        $sql = sprintf('DROP TABLE IF EXISTS `%s%s`', $wpdb->prefix, W3TC_CDN_TABLE_QUEUE);
+        $sql .= "\n" . sprintf("CREATE TABLE IF NOT EXISTS `%s%s` (
+            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+            `local_path` varchar(500) NOT NULL DEFAULT '',
+            `remote_path` varchar(500) NOT NULL DEFAULT '',
+            `command` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '1 - Upload, 2 - Delete, 3 - Purge',
+            `last_error` varchar(150) NOT NULL DEFAULT '',
+            `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `path` (`local_path`, `remote_path`),
+            KEY `date` (`date`)
+        ) /*!40100 CHARACTER SET latin1 */", $wpdb->prefix, W3TC_CDN_TABLE_QUEUE);
+        return $sql;
+    }
 
     /**
      * schedules

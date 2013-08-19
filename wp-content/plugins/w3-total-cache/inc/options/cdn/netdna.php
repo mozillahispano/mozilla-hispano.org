@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var bool $authorized
+ * @var array $pull_zones
+ */
+?>
 <?php if (!defined('W3TC')) die(); ?>
 <?php if ($authorized && $pull_zones): ?>
 <tr>
@@ -13,6 +19,17 @@
     </td>
 </tr>
 <?php endif ?>
+<?php if (!$authorized): ?>
+    <tr>
+        <th style="width: 300px;"><label><?php _e('Create account:', 'w3-total-cache')?></label></th>
+        <td>
+            <a href="<?php esc_attr_e(MAXCDN_SIGNUP_URL)?>" target="_blank" id="netdna-maxcdn-create-account" class="button-primary"><?php _e('Create Account', 'w3-total-cache') ?></a>
+            <br />
+            <span class="description"><?php _e('Are you a new customer? Click the Create Account button to receive a discount on a new MaxCDN account.', 'w3-total-cache')?></span>
+        </td>
+    </tr>
+<?php endif ?>
+
 <?php if ($authorized): ?>
 <tr>
     <th style="width: 300px;"><label><?php !$pull_zones ? _e('Create pull zone:', 'w3-total-cache') : _e('Create new pull zone:', 'w3-total-cache')?></label></th>
@@ -36,7 +53,7 @@
     <th style="width: 300px;"><label for="cdn_netdna_authorization_key"><?php _e('Authorization key', 'w3-total-cache')?>:</label></th>
     <td>
         <input id="cdn_netdna_authorization_key" class="w3tc-ignore-change" type="text"
-           <?php $this->sealing_disabled('cdn') ?> name="cdn.netdna.authorization_key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.netdna.authorization_key')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> name="cdn.netdna.authorization_key" value="<?php echo esc_attr($this->_config->get_string('cdn.netdna.authorization_key')); ?>" size="60" />
         <br /><span class="description"><?php _e('Consists of alias+key+secret . Example: bluewidgets+asd897asd98a7sd+798a7sd9 . If you use "Authorize" its already formatted correctly.', 'w3-total-cache')?></span>
     </td>
 </tr>

@@ -11,9 +11,9 @@
         </td>
     </tr>
     <tr>
-        <th><label for="url"><?php _e('Url used:', 'w3-total-cache') ?></label></th>
+        <th><label for="url"><?php _e('Origin <acronym title="Uniform Resource Indicator">URL</acronym>:', 'w3-total-cache') ?></label></th>
         <td><?php echo w3_get_home_url() ?>
-        <p><span class="description"><?php _e('Origin URL', 'w3-total-cache') ?></span></p>
+        <p><span class="description"><?php _e('Your server\'s hostname or domain', 'w3-total-cache') ?></span></p>
         </td>
     </tr>
     <tr>

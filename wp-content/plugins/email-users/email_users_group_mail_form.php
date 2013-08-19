@@ -26,8 +26,8 @@
             __('You are not allowed to send emails to user groups.', MAILUSERS_I18N_DOMAIN)));
 	}
 
-	if (!isset($send_roles)) {
-		$send_roles = array();
+	if (!isset($send_targets)) {
+		$send_targets = array();
 	}
 
 	if (!isset($mail_format)) {
@@ -61,7 +61,7 @@
 
 <div class="wrap">
 	<div id="icon-users" class="icon32"><br/></div>
-	<h2><?php if ($group_mode == 'meta') _e('Send an Email to User Groups Filtered by User Meta Data', MAILUSERS_I18N_DOMAIN); else _e('Send an Email to User Groups', MAILUSERS_I18N_DOMAIN); ?></h2>
+	<h2><?php if ($group_mode == 'meta') _e('Send an Email to User Groups Filtered by User Meta Data', MAILUSERS_I18N_DOMAIN); else _e('Send an Email to a Group of Users', MAILUSERS_I18N_DOMAIN); ?></h2>
 
 	<?php 	if (isset($err_msg) && $err_msg!='') { ?>
 			<div class="error fade"><p><?php echo $err_msg; ?><p></div>
@@ -92,27 +92,75 @@
             <?php }?>
 		</tr>
 		<tr>
-			<th scope="row" valign="top"><label for="send_roles"><?php _e('Recipients', MAILUSERS_I18N_DOMAIN); ?>
+			<th scope="row" valign="top"><label for="send_targets"><?php _e('Recipients', MAILUSERS_I18N_DOMAIN); ?>
 			<br/><br/>
 			<small><?php _e('You can select multiple groups by pressing the CTRL key.', MAILUSERS_I18N_DOMAIN); ?></small>
 			<br/><br/>
 			<small><?php _e('Only the groups having at least one user that accepts group mails appear here.', MAILUSERS_I18N_DOMAIN); ?></small></label></th>
 			<td>
-				<select id="send_roles" name="send_roles[]" multiple="multiple" size="8" style="width: 654px; height: 250px;">
-				<?php
-                    if ($group_mode == 'meta')
-					    $roles = mailusers_get_group_meta_filters($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
-                    else
-					    $roles = mailusers_get_roles($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
-					foreach ($roles as $key => $value) {
-				?>
-					<option value="<?php echo $key; ?>"	<?php
-						echo (in_array($key, $send_roles) ? ' selected="yes"' : '');?>>
-                		<?php printf('%s - %s', ($group_mode == 'meta') ? __('Filter', MAILUSERS_I18N_DOMAIN) : __('Role', MAILUSERS_I18N_DOMAIN), $value); ?>
-					</option>
-				<?php
-					}
-				?>
+				<select id="send_targets" name="send_targets[]" multiple="multiple" size="8" style="width: 654px; height: 250px;">
+                <?php 
+
+                    $prefix = __('Filter', MAILUSERS_I18N_DOMAIN) ;
+                    $targets = mailusers_get_group_meta_filters($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                    foreach ($targets as $key => $value)
+                    {
+                        $index = strtolower($prefix . '-' . $key); ?>
+                        <option value="<?php echo $index; ?>"
+                        <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                       <?php printf('%s - %s', $prefix, $value); ?>
+                        </option>
+                        <?php
+                    }
+
+                    $prefix = __('Role', MAILUSERS_I18N_DOMAIN) ;
+                    $targets = mailusers_get_roles($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                    foreach ($targets as $key => $value)
+                    {
+                        $index = strtolower($prefix . '-' . $key); ?>
+                        <option value="<?php echo $index; ?>"
+                        <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                        <?php printf('%s - %s', $prefix, $value); ?>
+                        </option>
+                        <?php 
+                    }
+
+                    //  Is the User Groups plugin active?
+                    if (class_exists(MAILUSERS_USER_GROUPS_CLASS))
+                    {
+                        $prefix = __('User Group', MAILUSERS_I18N_DOMAIN) ;
+                        $targets = mailusers_get_user_groups($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                        foreach ($targets as $key => $value)
+                        {
+                            $index = strtolower($prefix . '-' . $key); ?>
+                            <option value="<?php echo $index; ?>"
+                            <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                            <?php printf('%s - %s', $prefix, $value); ?>
+                            </option>
+                            <?php
+                        }
+                    }
+
+                    //  Is the User Access Manager plugin active?
+                    if (class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS))
+                    {
+                        $prefix = __('UAM', MAILUSERS_I18N_DOMAIN) ;
+                        $targets = mailusers_get_uam_groups($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                        foreach ($targets as $key => $value)
+                        {
+                            $index = strtolower($prefix . '-' . $key); ?>
+                            <option value="<?php echo $index; ?>"
+                            <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                            <?php printf('%s - %s', $prefix, $value); ?>
+                            </option>
+                            <?php
+                        }
+                    }
+                ?>
 				</select>
 			</td>
 		</tr>

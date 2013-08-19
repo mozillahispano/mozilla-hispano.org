@@ -3,7 +3,7 @@ Contributors: stomlinson, Marcel Bokhorst, M66B
 Tags: security, admin, authentication, access, widget, login, shortcode, comment, comments, discussion, bbPress, bbPress 2.0, browserid, mozilla, persona
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 0.43
+Stable tag: 0.45
 
 Implementation of Mozilla Persona (BrowserID) for WordPress
 
@@ -48,23 +48,13 @@ Please report any issues on [GitHub](https://github.com/shane-tomlinson/browseri
 
 Try putting the following into this option:
 
-`<img src="https://login.persona.org/i/browserid_logo_sm.png" />`
+`<img src="https://login.persona.org/i/persona_sign_in_red.png" />`
 
-Now you will see the Mozilla Persona logo instead of the login button.
+Now you will see a red 'Sign in with Persona' button instead of the traditional CSS button.
 
 = Which server verifies the assertion? =
 
 The assertion is verified by the server at https://login.persona.org/verify.
-
-= I get 'SSL certificate problem, verify that the CA cert is OK' =
-
-Your hosting provider should take a look at the SSL certificates.
-You can check the option *Do not verify SSL certificate*, but please realize this isn't entirely safe.
-
-= I get 'Bad Gateway' =
-
-The login.persona.org service is still in testing phase.
-Trying again may help.
 
 = I get 'Login failed' =
 
@@ -118,6 +108,36 @@ Follow these steps to install the development version:
 * Click *Upload* (a link at the top)
 * Click *Choose file* and select the file you downloaded before
 * Click *Install*, then *Activate Plugin*
+
+= 0.45 =
+* New Feature: Russian Translations - Thanks Ruslan Bekenev (@KryDos)!
+* New Feature: French (CA and FR) - Thanks Fabian Rodriguez (@MagicFab)!
+* New Feature: backgroundColor support!
+* New Feature: termsOfService and privacyPolicy support!
+* New Feature: Select one of 3 Persona button styles
+* Improvement: Localize widget buttons
+* Improvement: Updated Dutch translation - Thanks @janw-oostendorp!
+* Bug Fix: Prevent comments being accepted without assertion
+* Bug Fix: Admins can add new users
+* Bug Fix: Use Persona button for comments
+* Bug Fix: Fix live events not working with jQuery 1.9+ - Thanks @davidmurdoch!
+* Bug Fix: Get rid of the warning on the Persona settings page - Thanks @KryDos
+
+= 0.44 =
+* Improvement: Commenting for new Persona users is simpler
+* Improvement: New member registration with new Persona users is simpler
+* Improvement: Separate CSS into its own file for maintainability
+* Improvement: Replace .png signin buttons with localizable CSS buttons
+* Improvement: Pre-fill input fields with default values in configuration screen
+* Improvement: Do not show the lost password link if "Disable non-Persona auth" is selected
+* Improvement: Do not show the "default password nag" if "Disable non-Persona auth" is selected
+* Improvement: Code Cleanup.
+* New feature: A .PO file with all strings has been created for localization
+* New Feature: Spanish translations. Thanks Guillermo Movia!
+* Bug Fix: site name can now contain ' and &
+* Bug Fix: no more static warnings in strict PHP mode
+* Bug Fix: remove plugin options from database when de-activated
+* Bug Fix: incorrect button link for example button link in the FAQ
 
 = 0.43 =
 * Continue with 0.41
@@ -395,6 +415,7 @@ First public release
 
 == Acknowledgments ==
 [Marcel Bokhorst](http://blog.bokhorst.biz/) is the original author of this plugin. His awesome work has allowed me to continue.
+[Guillermo Movia](mailto://deimidis@mozilla-hispano.org) for Spanish translations.
 
 
 This plugin uses:

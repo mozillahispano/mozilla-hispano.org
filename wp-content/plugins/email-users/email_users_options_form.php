@@ -60,7 +60,7 @@
 <div class="postbox-container" style="width:65%; border: 0px dashed blue;"><!-- 65% Postbox Container -->
 <div class="metabox-holder">
 <div class="meta-box-sortables">
-<div class="postbox">
+<div id="email-users-plugin-settings" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Plugin Settings', MAILUSERS_I18N_DOMAIN);?></span></h3>
 <div class="inside">
@@ -126,7 +126,7 @@
 		</td>
 	</tr>
 	<tr>
-		<th scope="row" valign="top">
+ 		<th scope="row" valign="top">
             <label for="from_sender_name_override"><?php _e('From Sender<br/>Name Override', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
 			<input type="text" name="mailusers_from_sender_name_override" style="width: 235px;" 
@@ -209,7 +209,7 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
-<div class="postbox">
+<div id="email-users-defaults" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Defaults', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside">
@@ -247,7 +247,7 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
-<div class="postbox">
+<div id="email-users-test-notification" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Test Notification Mail', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside">
@@ -320,7 +320,7 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
-<div class="postbox">
+<div id="email-users-variables" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Variables', MAILUSERS_I18N_DOMAIN);?></span></h3>
 <div class="inside">
@@ -364,7 +364,7 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
-<div class="postbox">
+<div id="email-users-capabilities" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Capabilities', MAILUSERS_I18N_DOMAIN);?></span></h3>
 <div class="inside">
@@ -411,13 +411,47 @@
 <br/>
 </div><!-- inside -->
 </div><!-- postbox -->
+
+<div id="email-users-integration" class="postbox email-users-postbox">
+<div class="handlediv" title="Click to toggle"><br /></div>
+<h3 class="hndle"><span><?php _e('Email-Users Integration', MAILUSERS_I18N_DOMAIN);?></span></h3>
+<div class="inside">
+
+<p><?php _e('Email Users provides integration hooks with several WordPress "Group" plugins.', MAILUSERS_I18N_DOMAIN); ?></p>
+
+<table class="widefat">
+	<thead>
+	<tr>
+		<th><?php _e('Plugin', MAILUSERS_I18N_DOMAIN); ?></th>
+		<th><?php _e('Description <small><i>(from the plugin web site)</i></small>', MAILUSERS_I18N_DOMAIN); ?></th>
+		<th><?php _e('Status', MAILUSERS_I18N_DOMAIN); ?></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><b><a href="http://wordpress.org/plugins/user-groups/">User Groups</a></b></td>
+		<td><?php _e('This plugin does one thing, and does it well: create groups and organize your users by that group.', MAILUSERS_I18N_DOMAIN); ?></td>
+		<td><?php _e((class_exists(MAILUSERS_USER_GROUPS_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
+		<td><b><a href="http://wordpress.org/plugins/user-access-manager/">User Access Manager</a></b></td>
+		<td><?php _e('With the "User Access Manager"-plugin you can manage the access to your posts, pages and files.', MAILUSERS_I18N_DOMAIN); ?></td>
+		<td><?php _e((class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+</div><!-- inside -->
+</div><!-- postbox -->
+
 </div><!-- meta-box-sortables -->
 </div><!-- metabox-holder -->
 </div><!-- 65% Postbox Container -->
 <div class="postbox-container side" style="margin-left: 10px; min-width: 225px; width:25%; border: 0px dashed red;"><!-- 25% Postbox Container -->
 <div class="metabox-holder">
 <div class="meta-box-sortables">
-<div class="postbox">
+<div id="email-users-donation" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Make a Donation', MAILUSERS_I18N_DOMAIN);?></span></h3>
 <div class="inside">
@@ -437,7 +471,7 @@
 
 </div><!-- inside -->
 </div><!-- postbox -->
-<div class="postbox">
+<div id="email-users-mw-plugins" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('More Plugins from Mike Walsh', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside" style="">
@@ -451,7 +485,7 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
-<div class="postbox">
+<div id="email-users-ml-plugins" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Discover other Plugins by MarvinLabs', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside" style="">

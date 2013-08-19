@@ -1,0 +1,752 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor v. 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-17 11:12+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
+"Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: user-role-editor\n"
+
+# @ ure
+#: ../user-role-editor.php:34
+#, php-format
+msgid "User Role Editor requires PHP %s or newer."
+msgstr "User Role Editor requereix PHP %s o mes"
+
+# @ ure
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:107
+msgid "Please update!"
+msgstr "Si us plau actualitza!"
+
+# @ ure
+#: ../user-role-editor.php:80
+msgid "Only"
+msgstr "Només"
+
+# @ ure
+#: ../user-role-editor.php:80
+msgid "is allowed to use"
+msgstr "se li permet utilitzar"
+
+# @ ure
+# @ default
+#: ../user-role-editor.php:86
+#: ../user-role-editor.php:312
+#: ../user-role-editor.php:368
+msgid "User Role Editor"
+msgstr "User Role Editor"
+
+# @ ure
+#: ../user-role-editor.php:106
+#, php-format
+msgid "User Role Editor requires WordPress %s or newer."
+msgstr "User Role Editor requereix Wordpress %s o més"
+
+# @ ure
+#: ../user-role-editor.php:139
+msgid "Select All"
+msgstr "Seleccionar-ho tot"
+
+#: ../user-role-editor.php:140
+msgid "Unselect All"
+msgstr "De-selecciona-ho tot"
+
+#: ../user-role-editor.php:141
+msgid "Reverse"
+msgstr "Invertir"
+
+# @ ure
+#: ../user-role-editor.php:142
+msgid "Update"
+msgstr "Actualitzar"
+
+# @ ure
+#: ../user-role-editor.php:143
+msgid "Please confirm permissions update"
+msgstr "Si us plau confirmeu l'actualització de permisos "
+
+# @ ure
+#: ../user-role-editor.php:144
+msgid "Add New Role"
+msgstr "Afegir nou Rol"
+
+# @ ure
+#: ../user-role-editor.php:145
+msgid " Role name (ID) can not be empty!"
+msgstr "El nom de rol (ID) no pot estar buit!"
+
+# @ ure
+#: ../user-role-editor.php:146
+msgid " Role name (ID) must contain latin characters, digits, hyphens or underscore only!"
+msgstr "Error: nom del rol (ID) ha de tenir només lletres llatines i dígits!"
+
+# @ ure
+#: ../user-role-editor.php:147
+msgid "Add Role"
+msgstr "Afegir nou Rol"
+
+# @ ure
+#: ../user-role-editor.php:148
+msgid "Delete Role"
+msgstr "Eliminar Rol"
+
+# @ ure
+#: ../user-role-editor.php:149
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+# @ ure
+#: ../user-role-editor.php:150
+msgid "Add Capability"
+msgstr "Afegir nou privilegi"
+
+# @ ure
+#: ../user-role-editor.php:151
+#: ../user-role-editor.php:156
+msgid "Delete Capability"
+msgstr "Eliminar privilegi"
+
+# @ ure
+#: ../user-role-editor.php:152
+msgid "Reset"
+msgstr "Reiniciar"
+
+#: ../user-role-editor.php:153
+msgid "Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?"
+msgstr "Restableix funcions als valors per defecte de WordPress. Aneu amb compte, tots els canvis realitzats per vostè o per connectors es perdran. Alguns connectors, per exemple, S2Member, WooCommerce, podrian necessitar una reactivació. Continuar?"
+
+# @ ure
+#: ../user-role-editor.php:154
+msgid "Default Role"
+msgstr "Rol predeterminat"
+
+# @ ure
+#: ../user-role-editor.php:155
+msgid "Set New Default Role"
+msgstr "Assignar com a rol predeterminat"
+
+# @ ure
+#: ../user-role-editor.php:157
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "Advertència! Vés amb compte - Remoure privilegis crítics podria inutilitzar algun connector o algun altre codi personalitzat."
+
+# @ ure
+#: ../user-role-editor.php:158
+msgid " Capability name (ID) can not be empty!"
+msgstr "El nom de priviliegi (ID) no pot estar buit!"
+
+# @ ure
+#: ../user-role-editor.php:159
+msgid " Capability name (ID) must contain latin characters, digits, hyphens or underscore only!"
+msgstr "Error: el nom del privilegi (ID) només ha de contenir caràcters llatins i dígits."
+
+# @ ure
+#: ../user-role-editor.php:284
+msgid "Settings"
+msgstr "Opcions"
+
+# @ ure
+#: ../user-role-editor.php:294
+#: ../includes/ure-options.php:209
+msgid "Changelog"
+msgstr "Registre de canvis"
+
+# @ ure
+#: ../user-role-editor.php:342
+msgid "Capabilities"
+msgstr "Capacitats"
+
+# @ ure
+#: ../user-role-editor.php:371
+#: ../user-role-editor.php:407
+msgid "Other Roles"
+msgstr "Altres rols"
+
+# @ ure
+#: ../user-role-editor.php:381
+msgid "Edit"
+msgstr "Editar"
+
+#  ure
+#: ../includes/ure-lib.php:35
+msgid "Error is occur. Please check the log file."
+msgstr "Ha ocorregut un error. Si us plau revisa l'arxiu de registres."
+
+# @ ure
+#: ../includes/ure-lib.php:364
+msgid "Backup record is created for the current role capabilities"
+msgstr "Ha estat creada una còpia de seguretat per a aquest Rol i els seus privilegis"
+
+# @ ure
+#: ../includes/ure-lib.php:481
+msgid "Error: Role ID must contain latin characters, digits, hyphens or underscore only!"
+msgstr "Error: nom del rol (ID) ha de tenir només lletres llatines i dígits!"
+
+# @ ure
+#: ../includes/ure-lib.php:496
+#, php-format
+msgid "Role %s exists already"
+msgstr "Rol %s ja existeix"
+
+# @ ure
+#: ../includes/ure-lib.php:511
+msgid "Error is encountered during new role create operation"
+msgstr "Error trobat durant la creació d'un nou Rol"
+
+# @ ure
+#: ../includes/ure-lib.php:513
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "Rol %s s'ha creat correctament"
+
+# @ ure
+#: ../includes/ure-lib.php:597
+msgid "Error encountered during role delete operation"
+msgstr "Error trobat durant l'eliminació del Rol"
+
+# @ ure
+#: ../includes/ure-lib.php:599
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "Rol %s s'elimina amb èxit"
+
+# @ ure
+#: ../includes/ure-lib.php:619
+msgid "Error encountered during default role change operation"
+msgstr "Error trobat durant el canvi de Rol per defecte"
+
+# @ ure
+#: ../includes/ure-lib.php:625
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "Rol predeterminat per a nous usuaris està establert en %s amb èxit"
+
+# @ ure
+#: ../includes/ure-lib.php:652
+msgid "Editor"
+msgstr "Editor"
+
+# @ ure
+#: ../includes/ure-lib.php:653
+msgid "Author"
+msgstr "Autor"
+
+# @ ure
+#: ../includes/ure-lib.php:654
+msgid "Contributor"
+msgstr "Col·laborador"
+
+# @ ure
+#: ../includes/ure-lib.php:655
+msgid "Subscriber"
+msgstr "Subscriptor"
+
+# @ ure
+#: ../includes/ure-lib.php:657
+msgid "Switch themes"
+msgstr "Canviar plantilles"
+
+# @ ure
+#: ../includes/ure-lib.php:658
+msgid "Edit themes"
+msgstr "Editar plantilles"
+
+# @ ure
+#: ../includes/ure-lib.php:659
+msgid "Activate plugins"
+msgstr "Activar connectors"
+
+# @ ure
+#: ../includes/ure-lib.php:660
+msgid "Edit plugins"
+msgstr "Editar connectors"
+
+# @ ure
+#: ../includes/ure-lib.php:661
+msgid "Edit users"
+msgstr "Editar usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:662
+msgid "Edit files"
+msgstr "Editar arxius"
+
+# @ ure
+#: ../includes/ure-lib.php:663
+msgid "Manage options"
+msgstr "Administrar opcions"
+
+# @ ure
+#: ../includes/ure-lib.php:664
+msgid "Moderate comments"
+msgstr "Moderar comentaris"
+
+# @ ure
+#: ../includes/ure-lib.php:665
+msgid "Manage categories"
+msgstr "Administrar categories"
+
+# @ ure
+#: ../includes/ure-lib.php:666
+msgid "Manage links"
+msgstr "Administrar enllaços"
+
+# @ ure
+#: ../includes/ure-lib.php:667
+msgid "Upload files"
+msgstr "Pujar arxius"
+
+# @ ure
+#: ../includes/ure-lib.php:668
+msgid "Import"
+msgstr "Importar"
+
+# @ ure
+#: ../includes/ure-lib.php:669
+msgid "Unfiltered html"
+msgstr "Ometre Filtrat d'HTML"
+
+# @ ure
+#: ../includes/ure-lib.php:670
+msgid "Edit posts"
+msgstr "Editar missatges"
+
+# @ ure
+#: ../includes/ure-lib.php:671
+msgid "Edit others posts"
+msgstr "Editar missatges de altres"
+
+# @ ure
+#: ../includes/ure-lib.php:672
+msgid "Edit published posts"
+msgstr "Editar els missatges publicats"
+
+# @ ure
+#: ../includes/ure-lib.php:673
+msgid "Publish posts"
+msgstr "Publicar missatges"
+
+# @ ure
+#: ../includes/ure-lib.php:674
+msgid "Edit pages"
+msgstr "Editar pàgines"
+
+# @ ure
+#: ../includes/ure-lib.php:675
+msgid "Read"
+msgstr "Llegir"
+
+# @ ure
+#: ../includes/ure-lib.php:676
+msgid "Level 10"
+msgstr "Nivell 10"
+
+# @ ure
+#: ../includes/ure-lib.php:677
+msgid "Level 9"
+msgstr "Nivell 9"
+
+# @ ure
+#: ../includes/ure-lib.php:678
+msgid "Level 8"
+msgstr "Nivell 8"
+
+# @ ure
+#: ../includes/ure-lib.php:679
+msgid "Level 7"
+msgstr "Nivell 7"
+
+# @ ure
+#: ../includes/ure-lib.php:680
+msgid "Level 6"
+msgstr "Nivell 6"
+
+# @ ure
+#: ../includes/ure-lib.php:681
+msgid "Level 5"
+msgstr "Nivell 5"
+
+# @ ure
+#: ../includes/ure-lib.php:682
+msgid "Level 4"
+msgstr "Nivell 4"
+
+# @ ure
+#: ../includes/ure-lib.php:683
+msgid "Level 3"
+msgstr "Nivell 3"
+
+# @ ure
+#: ../includes/ure-lib.php:684
+msgid "Level 2"
+msgstr "Nivell 2"
+
+# @ ure
+#: ../includes/ure-lib.php:685
+msgid "Level 1"
+msgstr "Nivell 1"
+
+# @ ure
+#: ../includes/ure-lib.php:686
+msgid "Level 0"
+msgstr "Nivell 0"
+
+# @ ure
+#: ../includes/ure-lib.php:687
+msgid "Edit others pages"
+msgstr "Editar pàgines de altres"
+
+# @ ure
+#: ../includes/ure-lib.php:688
+msgid "Edit published pages"
+msgstr "Editar pàgines publicades"
+
+# @ ure
+#: ../includes/ure-lib.php:689
+msgid "Publish pages"
+msgstr "Publicar pàgines"
+
+# @ ure
+#: ../includes/ure-lib.php:690
+msgid "Delete pages"
+msgstr "Eliminar pàgines"
+
+#  ure
+#: ../includes/ure-lib.php:691
+msgid "Delete others pages"
+msgstr "Eliminar pàgines de altres"
+
+# @ ure
+#: ../includes/ure-lib.php:692
+msgid "Delete published pages"
+msgstr "Eliminar pàgines publicades"
+
+#  ure
+#: ../includes/ure-lib.php:693
+msgid "Delete posts"
+msgstr "Eliminar missatges"
+
+# @ ure
+#: ../includes/ure-lib.php:694
+msgid "Delete others posts"
+msgstr "Eliminar missatges de altres"
+
+#  ure
+#: ../includes/ure-lib.php:695
+msgid "Delete published posts"
+msgstr "Eliminar missatges publicats"
+
+#  ure
+#: ../includes/ure-lib.php:696
+msgid "Delete private posts"
+msgstr "Eliminar missatges privats"
+
+# @ ure
+#: ../includes/ure-lib.php:697
+msgid "Edit private posts"
+msgstr "Editar missatges privats"
+
+# @ ure
+#: ../includes/ure-lib.php:698
+msgid "Read private posts"
+msgstr "Llegir missatges privats"
+
+# @ ure
+#: ../includes/ure-lib.php:699
+msgid "Delete private pages"
+msgstr "Eliminar pàgines privades"
+
+# @ ure
+#: ../includes/ure-lib.php:700
+msgid "Edit private pages"
+msgstr "Editar pàgines privades"
+
+# @ ure
+#: ../includes/ure-lib.php:701
+msgid "Read private pages"
+msgstr "Llegir pàgines privades"
+
+# @ ure
+#: ../includes/ure-lib.php:702
+msgid "Delete users"
+msgstr "Eliminar usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:703
+msgid "Create users"
+msgstr "Crear usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:704
+msgid "Unfiltered upload"
+msgstr "Sense filtre de càrrega"
+
+# @ ure
+#: ../includes/ure-lib.php:705
+msgid "Edit dashboard"
+msgstr "Editar taulell"
+
+# @ ure
+#: ../includes/ure-lib.php:706
+msgid "Update plugins"
+msgstr "Actualitzar connectors"
+
+# @ ure
+#: ../includes/ure-lib.php:707
+msgid "Delete plugins"
+msgstr "Eliminar connectors"
+
+# @ ure
+#: ../includes/ure-lib.php:708
+msgid "Install plugins"
+msgstr "Instal·lar connectors"
+
+# @ ure
+#: ../includes/ure-lib.php:709
+msgid "Update themes"
+msgstr "Actualitzar plantilles"
+
+# @ ure
+#: ../includes/ure-lib.php:710
+msgid "Install themes"
+msgstr "Instal·lar plantilles"
+
+# @ ure
+#: ../includes/ure-lib.php:711
+msgid "Update core"
+msgstr "Actualitzar nucli"
+
+# @ ure
+#: ../includes/ure-lib.php:712
+msgid "List users"
+msgstr "Llistar usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:713
+msgid "Remove users"
+msgstr "Eliminar usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:714
+msgid "Add users"
+msgstr "Afegir usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:715
+msgid "Promote users"
+msgstr "Promoure usuaris"
+
+# @ ure
+#: ../includes/ure-lib.php:716
+msgid "Edit theme options"
+msgstr "Editar opcions de plantilla"
+
+# @ ure
+#: ../includes/ure-lib.php:717
+msgid "Delete themes"
+msgstr "Eliminar plantilles"
+
+# @ ure
+#: ../includes/ure-lib.php:718
+msgid "Export"
+msgstr "Exportar"
+
+# @ ure
+#: ../includes/ure-lib.php:834
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "Error: el nom del Privilegi només ha de contenir caràcters llatins i dígits."
+
+# @ ure
+#: ../includes/ure-lib.php:846
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "Privilegi %s s'ha afegit correctament"
+
+# @ ure
+#: ../includes/ure-lib.php:848
+#, php-format
+msgid "Capability %s exists already"
+msgstr "Ja existeix el privilegi %s"
+
+# @ ure
+#: ../includes/ure-lib.php:997
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "¡Error! No tens permisos per esborrar aquest privilegi: %s !"
+
+# @ ure
+#: ../includes/ure-lib.php:1016
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "El privilegi %s s'ha eliminat amb èxit"
+
+# @ ure
+#: ../includes/ure-lib.php:1083
+msgid "Help"
+msgstr "Ajuda"
+
+# @ ure
+#: ../includes/ure-role-edit.php:29
+msgid "None"
+msgstr "Cap"
+
+# @ ure
+#: ../includes/ure-role-edit.php:67
+msgid "Select Role and change its capabilities list"
+msgstr "Selecciona el Rol per canviar la seva llista de privilegis"
+
+# @ ure
+#: ../includes/ure-role-edit.php:69
+#: ../includes/ure-role-edit.php:166
+msgid "Select Role:"
+msgstr "Selecciona el Rol:"
+
+# @ ure
+#: ../includes/ure-role-edit.php:79
+#: ../includes/ure-user-edit.php:38
+msgid "Show capabilities in human readable form"
+msgstr "Mostra privilegis de forma llegible"
+
+# @ ure
+#: ../includes/ure-role-edit.php:88
+#: ../includes/ure-user-edit.php:47
+msgid "Show deprecated capabilities"
+msgstr "Mostrar privilegis obsolets"
+
+# @ default
+#: ../includes/ure-role-edit.php:92
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "Si està marcat s'aplica l'acció a TOTS els llocs d'aquesta xarxa"
+
+# @ ure
+#: ../includes/ure-role-edit.php:102
+msgid "Apply to All Sites"
+msgstr "Aplicar a tot arreu"
+
+# @ ure
+#: ../includes/ure-role-edit.php:109
+#: ../includes/ure-user-edit.php:88
+msgid "Core capabilities:"
+msgstr "Privilegis"
+
+# @ ure
+#: ../includes/ure-role-edit.php:124
+#: ../includes/ure-user-edit.php:103
+msgid "Custom capabilities:"
+msgstr "Privilegis personalitzats"
+
+#: ../includes/ure-role-edit.php:155
+msgid "Role name (ID): "
+msgstr "Nom de rol (ID):"
+
+#: ../includes/ure-role-edit.php:157
+msgid "Display Role Name: "
+msgstr "Visualització de nom de rol:"
+
+# @ ure
+#: ../includes/ure-role-edit.php:159
+msgid "Make copy of: "
+msgstr "Fer còpia de:"
+
+# @ ure
+#: ../includes/ure-role-edit.php:181
+msgid "Delete:"
+msgstr "Eliminar:"
+
+#: ../includes/ure-role-edit.php:188
+msgid "Capability name (ID): "
+msgstr "Nom provolegi (ID):"
+
+# @ ure
+#: ../includes/ure-user-edit.php:22
+msgid "Change capabilities for user"
+msgstr "Canviar privilegis d'usuari"
+
+#: ../includes/ure-user-edit.php:52
+msgid "Primary Role:"
+msgstr "Rol principal:"
+
+#: ../includes/ure-user-edit.php:62
+msgid "bbPress Role:"
+msgstr "Rol bbPress:"
+
+# @ ure
+#: ../includes/ure-user-edit.php:72
+msgid "Other Roles:"
+msgstr "Altres rols:"
+
+# @ ure
+#: ../includes/ure-options.php:65
+msgid "User Roles are restored to WordPress default values. "
+msgstr "Els rols d'usuari es restableixen als valors predeterminats de WordPress."
+
+# @ ure
+#: ../includes/ure-options.php:136
+msgid "Error: "
+msgstr "Error:"
+
+# @ ure
+#: ../includes/ure-options.php:136
+#: ../includes/ure-options.php:156
+msgid "Role"
+msgstr "Rol"
+
+# @ ure
+#: ../includes/ure-options.php:136
+msgid "does not exist"
+msgstr "no existeix"
+
+# @ ure
+#: ../includes/ure-options.php:156
+msgid "is updated successfully"
+msgstr "s'actualitzat correctament"
+
+# @ ure
+#: ../includes/ure-options.php:161
+#: ../includes/ure-options.php:174
+msgid "Error occured during role update"
+msgstr "Error trobat durant l'actualització del rol"
+
+# @ ure
+#: ../includes/ure-options.php:169
+msgid "User"
+msgstr "Usuari"
+
+# @ ure
+#: ../includes/ure-options.php:169
+msgid "capabilities are updated successfully"
+msgstr "privilegis s'han actualitzat amb èxit"
+
+# @ ure
+#: ../includes/ure-options.php:206
+msgid "About this Plugin:"
+msgstr "Sobre aquest connector:"
+
+# @ ure
+#: ../includes/ure-options.php:207
+msgid "Author's website"
+msgstr "Lloc web del autor"
+
+# @ ure
+#: ../includes/ure-options.php:208
+msgid "Plugin webpage"
+msgstr "Pàgina web del connector"
+
+# @ ure
+#: ../includes/ure-options.php:210
+msgid "FAQ"
+msgstr "FAQ"
+

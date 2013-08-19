@@ -163,6 +163,7 @@ class W3_Plugin_Minify extends W3_Plugin {
                                     continue;
                                 }
                                 $handled_scripts[] = $file;
+                                $this->replaced_scripts[] = $file;
                                 if (in_array($file, $ignore_js_files)) {
                                     if ($tag_pos > $embed_pos) {
                                         if ($files_to_minify) {
@@ -217,6 +218,7 @@ class W3_Plugin_Minify extends W3_Plugin {
                                     continue;
                                 }
                                 $handled_styles[] = $file;
+                                $this->replaced_styles[] = $file;
                                 if (in_array($file, $ignore_css_files)) {
                                     if ($tag_pos > $embed_pos) {
                                         if ($files_to_minify) {
@@ -459,6 +461,9 @@ class W3_Plugin_Minify extends W3_Plugin {
                 $regexps[] = w3_preg_quote($file);
             } else {
                 // local CSS files
+                $file = ltrim($file, '/');
+                if (ltrim(w3_get_site_path(),'/') && strpos($file, ltrim(w3_get_site_path(),'/')) === 0)
+                    $file = str_replace(ltrim(w3_get_site_path(),'/'), '', $file);
                 $file = ltrim(preg_replace('~' . $home_url_regexp . '~i', '', $file), '/\\');
                 $regexps[] = '(' . $home_url_regexp . ')?/?' . w3_preg_quote($file);
             }
@@ -498,6 +503,9 @@ class W3_Plugin_Minify extends W3_Plugin {
                 $regexps[] = w3_preg_quote($file);
             } else {
                 // local JS files
+                $file = ltrim($file, '/');
+                if (ltrim(w3_get_site_path(),'/') && strpos($file, ltrim(w3_get_site_path(),'/')) === 0)
+                    $file = str_replace(ltrim(w3_get_site_path(),'/'), '', $file);
                 $file = ltrim(preg_replace('~' . $home_url_regexp . '~i', '', $file), '/\\');
                 $regexps[] = '(' . $home_url_regexp . ')?/?' . w3_preg_quote($file);
             }

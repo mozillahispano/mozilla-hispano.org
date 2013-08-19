@@ -97,32 +97,37 @@ class W3_Cache_File_Generic extends W3_Cache_File {
      *
      * @param string $key
 	 * @param string $group Used to differentiate between groups of cache values
-     * @return string
+     * @return array
      */
-    function get($key, $group = '') {
+    function get_with_old($key, $group = '') {
+        $has_old_data = false;
         $key = $this->get_item_key($key);
         $path = $this->_cache_dir . '/' . $this->_get_path($key);
 
         $data = $this->_read($path);
         if ($data != null)
-            return $data;
+            return array($data, $has_old_data);
+
 
         $path_old = $path . '.old';
         $too_old_time = time() - 30;
 
-        if ( file_exists( $path_old ) ) {
-            $file_time = @filemtime( $path_old );
-            if ( $file_time ) {
-                if ( $file_time > $too_old_time ) {
+        if ($exists = file_exists($path_old) ) {
+            $file_time = @filemtime($path_old);
+            if ($file_time) {
+                if ($file_time > $too_old_time) {
                     // return old data
-                    return $this->_read( $path_old );
+                    $has_old_data = true;
+                    return array($this->_read($path_old), $has_old_data);
+
                 }
 
-                @touch( $path_old );
+                @touch($path_old);
             }
         }
+        $has_old_data = $exists;
 
-        return null;
+        return array(null, $has_old_data);
     }
 
     /**
@@ -188,6 +193,23 @@ class W3_Cache_File_Generic extends W3_Cache_File {
     }
 
     /**
+     * Key to delete, deletes .old and primary if exists.
+     * @param $key
+     * @return bool
+     */
+    function hard_delete($key) {
+        $key = $this->get_item_key($key);
+        $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $this->_get_path($key);
+        $old_entry_path = $path . '.old';
+        @unlink($old_entry_path);
+
+        if (!file_exists($path))
+            return true;
+        @unlink($path);
+        return true;
+    }
+
+    /**
      * Flushes all data
      *
      * @param string $group Used to differentiate between groups of cache values
@@ -238,8 +260,8 @@ class W3_Cache_File_Generic extends W3_Cache_File {
             $domain = w3_get_home_url();
             $parsed = parse_url($domain);
             $host = $parsed['host'];
-            $path = trim($parsed['path'], '/');
-            $flush_dir = W3TC_CACHE_PAGE_ENHANCED_DIR . '/' . $host . '/' . $path;
+            $path = isset($parsed['path']) ? '/' . trim($parsed['path'], '/') : '';
+            $flush_dir = W3TC_CACHE_PAGE_ENHANCED_DIR . '/' . $host . $path;
         } else
             $flush_dir = W3TC_CACHE_PAGE_ENHANCED_DIR . '/' . w3_get_domain(w3_get_host());
 

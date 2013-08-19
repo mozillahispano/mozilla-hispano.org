@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-20 19:19+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: browserid.php:92
+msgid "Logout"
+msgstr "Disconnettiti"
+
+#: browserid.php:121 browserid.php:243 browserid.php:429
+msgid "Verification failed"
+msgstr "Convalida fallita"
+
+#: browserid.php:204
+msgid "Verification void"
+msgstr "Convalida nulla"
+
+#: browserid.php:229
+msgid "Verification invalid"
+msgstr "Convalida non valida"
+
+#: browserid.php:302
+msgid "Login failed"
+msgstr "Errore di connessione"
+
+#: browserid.php:476
+msgid "What is Persona?"
+msgstr "Che cos'è Persona?"
+
+#: browserid.php:504 browserid.php:505 browserid.php:639
+msgid "Mozilla Persona"
+msgstr "Mozilla Persona"
+
+#: browserid.php:504
+msgid "Administration"
+msgstr "Amministrazione"
+
+#: browserid.php:515
+msgid "Site name:"
+msgstr "Nome del sito:"
+
+#: browserid.php:516
+msgid "Site logo:"
+msgstr "Logo del sito:"
+
+#: browserid.php:517
+msgid "Custom login HTML:"
+msgstr "HTML personalizzato per la connessione:"
+
+#: browserid.php:518
+msgid "Custom logout HTML:"
+msgstr "HTML personalizzato per la disconnessione:"
+
+#: browserid.php:519
+msgid "Login redirection URL:"
+msgstr "URL di reindirizzamento dopo la connessione:"
+
+#: browserid.php:520
+msgid "Enable for comments:"
+msgstr "Attiva per i commenti:"
+
+#: browserid.php:521
+msgid "Enable bbPress integration:"
+msgstr "Attiva l'integrazione bbPress"
+
+#: browserid.php:522
+msgid "Custom comment HTML:"
+msgstr "HTML personalizzato per i commenti:"
+
+#: browserid.php:523
+msgid "Verification server:"
+msgstr "Server di convalida:"
+
+#: browserid.php:524
+msgid "Do not check valid until time:"
+msgstr "Non controllare la scadenza di validità:"
+
+#: browserid.php:525
+msgid "Do not verify SSL certificate:"
+msgstr "Non controllare il certificato SSL:"
+
+#: browserid.php:526
+msgid "Debug mode:"
+msgstr "Modalità di debug:"
+
+#: browserid.php:540
+msgid "Default the WordPress site name"
+msgstr "Predefinito Nome del sito di Wordpress"
+
+#: browserid.php:549
+msgid "Absolute path, works only with SSL"
+msgstr "Percorso assoluto, necessario per SSL"
+
+#: browserid.php:574
+msgid "Default WordPress dashboard"
+msgstr "Predefinito Bacheca Wordpress"
+
+#: browserid.php:591
+msgid "Enables anonymous posting implicitly"
+msgstr "Attiva implicitamente i commenti anonimi"
+
+#: browserid.php:608
+msgid "Default https://verifier.login.persona.org/verify"
+msgstr "Predefinito https://verifier.login.persona.org/verify"
+
+#: browserid.php:616 browserid.php:624 browserid.php:632
+msgid "Security risk!"
+msgstr "Rischio di sicurezza!"
+
+#: browserid.php:644
+msgid "Save Changes"
+msgstr "Salva le Modifiche"
+
+#: browserid.php:722
+msgid "Mozilla Persona login button"
+msgstr "Pulsante di accesso di Mozilla Persona"
+
+#: browserid.php:745
+msgid "Title:"
+msgstr "Titolo:"
+
+msgid "BrowserID"
+msgstr "Persona"

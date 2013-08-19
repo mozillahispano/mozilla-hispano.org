@@ -4,7 +4,7 @@ Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 4.4.4
+Stable tag: 4.5.0
 
 A plugin for WordPress which allows you to send an email to the registered blog users. Users can send personal emails to each other. Power users can email groups of users and even notify group of users of posts.
 
@@ -96,7 +96,65 @@ function send_to_departments_label($mk, $mv)
 }
 `
 
+New in v4.5.0 is an action, *mailusers_update_custom_meta_filters*, which can be used to dynamically update Meta Filters before they're used for recipient selection or email address retrieval.  The example below leverages the Meta Key *Department* and its various values to define and update a new Meta Key called *publicworks*.  Anytime a Group Email is sent or Post/Page notification is initiated, this action will fire and rebuild the *publicworks* meta key based on the values of the *department* meta key.  This sort of action could be used to create more complex meta value relationships or to integrate other plugins.
+
+`
+add_action( 'mailusers_group_custom_meta_filter', 'send_to_public_works', 5 );
+
+function send_to_public_works()
+{
+    mailusers_register_group_custom_meta_filter('Public Works', 'publicworks', true);
+}
+
+add_action( 'mailusers_update_custom_meta_filters', 'update_publicworks_meta_filter', 5 );
+
+function update_publicworks_meta_filter()
+{
+    $pw_mk = 'publicworks' ;
+    $dept_mk = 'department' ;
+
+    //  Define the valid matches - the array keys match user
+    //  meta keys and the array values match the user meta values.
+    //
+    //  The array could contain a mixed set of meta keys and values
+    //  in order to group users based on an arbitrary collection of
+    //  user meta data.
+
+    $publicworks = array(
+        array($dept_mk => 'fire'),
+        array($dept_mk => 'police'),
+        array($dept_mk => 'water and sewer'),
+        array($dept_mk => 'parks and recreation'),
+    ) ;
+
+    //  Remove all instances of the Public Works meta key
+    //  to account for employees no longer with Public Works
+	$uq = new WP_User_Query(array('meta_key' => $pw_mk)) ;
+
+    foreach ($uq->get_results() as $u)
+        delete_user_meta($u->ID, $pw_mk) ;
+
+    //  Loop through the departs and select Users accordingly
+    foreach  ($publicworks as $pw)
+    {
+    	$uq = new WP_User_Query(array('meta_key' => $dept_mk, 'meta_value' => $pw[$dept_mk])) ;
+
+        //  Loop through the users in the department and tag them as Public Works employees
+        foreach ($uq->get_results() as $u)
+            update_user_meta($u->ID, $pw_mk, true) ;
+    }
+}
+`
+
 == Changelog ==
+
+= Version 4.5.0
+* Added CSS class and ID to Post and Page Notification post boxes so they can be styled or easily hidden via CSS.
+* Added integration with User Groups plugin.
+* Added integration with User Access Manager Plugin.
+* Cleaned up recipient selection for Group Email and Post/Page Notifications so it includes Filters, Roles, and groups from integrated plugins (when enabled).
+* Added integration pane to Settings page to note which plugins Email-Users recorgnizes and enables integration with.
+* Added *mailusers_update_custom_meta_filters* action to update of dynamic meta filters prior to their use.  Useful to creating and updating meta values based on other meta data or plugins.
 
 = Version 4.4.4
 * Bumped version because the tag wasn't done correctly.

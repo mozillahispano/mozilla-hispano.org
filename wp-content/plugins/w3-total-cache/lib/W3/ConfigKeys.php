@@ -760,7 +760,7 @@ $keys = array(
     ),
     'cdn.engine' => array(
         'type' => 'string',
-        'default' => 'ftp'
+        'default' => 'maxcdn'
     ),
     'cdn.uploads.enable' => array(
         'type' => 'boolean',
@@ -1317,6 +1317,10 @@ $keys = array(
         'type' => 'string',
         'default' => ''
     ),
+    'browsercache.replace.exceptions' => array (
+        'type' => 'array',
+        'default' => array()
+    ),
 
     'mobile.enabled' => array(
         'type' => 'boolean',
@@ -1334,6 +1338,7 @@ $keys = array(
                     'android',
                     'archos5',
                     'bada',
+                    'bb10',
                     'blackberry9500',
                     'blackberry9530',
                     'blackberry9550',
@@ -1359,6 +1364,7 @@ $keys = array(
                     'mot\-mb200',
                     'mot\-mb300',
                     'nexus\ one',
+                    'nexus\ 7',
                     'opera\ mini',
                     's8000',
                     'samsung\-s8000',
@@ -1370,6 +1376,7 @@ $keys = array(
                     't\-mobile\ mytouch\ 3g',
                     't\-mobile\ opal',
                     'tattoo',
+                    'touch',
                     'webmate',
                     'webos'
                 )
@@ -1387,6 +1394,7 @@ $keys = array(
                     'au\-mic',
                     'audiovox',
                     'avantgo',
+                    'bb10',
                     'benq',
                     'bird',
                     'blackberry',
@@ -1408,6 +1416,8 @@ $keys = array(
                     'huawei',
                     'i\-mobile',
                     'iemobile',
+                    'iemobile/7',
+                    'iemobile/9',
                     'j\-phone',
                     'kddi',
                     'konka',
@@ -1424,6 +1434,7 @@ $keys = array(
                     'mobilephone',
                     'mot\-v',
                     'motorola',
+                    'msie\ 10\.0',
                     'netfront',
                     'newgen',
                     'newt',
@@ -1436,6 +1447,7 @@ $keys = array(
                     'openweb',
                     'opera\ mobi',
                     'opera\.mobi',
+                    'p160u',
                     'palm',
                     'panasonic',
                     'pantech',
@@ -1443,6 +1455,7 @@ $keys = array(
                     'pg',
                     'philips',
                     'phone',
+                    'playbook',
                     'playstation\ portable',
                     'portalmmm',
                     '\bppc\b',
@@ -1453,6 +1466,7 @@ $keys = array(
                     'samsung',
                     'sanyo',
                     'sch',
+                    'sch\-i800',
                     'sec',
                     'sendo',
                     'sgh',
@@ -1480,6 +1494,7 @@ $keys = array(
                     'windows\.ce',
                     'winwap',
                     'xda',
+                    'xoom',
                     'zte'
                 )
             )
@@ -1764,6 +1779,49 @@ $keys = array(
     'newrelic.include_rum' => array(
         'type' => 'boolean',
         'default' => true,
+    ),
+    'extensions.settings' => array(
+        'type' => 'array',
+        'default' => array(
+            'genesis.theme' => array(
+                'wp_head' => '0',
+                'genesis_header' => '1',
+                'genesis_do_nav' => '1',
+                'genesis_do_subnav' => '1',
+                'loop_front_page' => '1',
+                'loop_single' => '1',
+                'loop_single_excluded' => '',
+                'loop_single_genesis_comments' => '0',
+                'loop_single_genesis_pings' => '0',
+                'sidebar' => '0',
+                'sidebar_excluded' => '',
+                'genesis_footer' => '1',
+                'wp_footer' => '0',
+                'fragment_reject_logged_roles' => '1',
+                'fragment_reject_logged_roles_on_actions' => array(
+                    0 => 'genesis_loop',
+                    1 => 'wp_head',
+                    2 => 'wp_footer',
+                ),
+                'fragment_reject_roles' => array(
+                    0 => 'administrator',
+                ),
+            ),
+        )
+    ),
+    'extensions.active' => array(
+        'type' => 'array',
+        'default' => array()
+    ),
+    'plugin.license_key' => array(
+        'type' => 'string',
+        'default' => '',
+        'master_only' => true
+    ),
+    'plugin.type' => array(
+        'type' => 'string',
+        'default' => '',
+        'master_only' => true
     )
 );
 
@@ -1838,6 +1896,11 @@ $keys_admin = array(
         'default' => false,
         'master_only' => 'true'
     )
+    ,'extensions.configuration_sealed' => array(
+        'type' => 'array',
+        'default' => array(),
+        'master_only' => 'true'
+    )
     ,'notes.minify_error' => array(
         'type' => 'boolean',
         'default' => false
@@ -1907,6 +1970,14 @@ $sealing_keys_scope = array(
     array(
         'key' => 'varnish.configuration_sealed',
         'prefix' => 'varnish.'
+    ),
+    array(
+        'key' => 'extensions.active.configuration_sealed',
+        'prefix' => 'extensions.active'
+    ),
+    array(
+        'key' => 'extensions.configuration_sealed',
+        'prefix' => 'extensions.'
     )
 );
 

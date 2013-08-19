@@ -79,6 +79,15 @@
                 </th>
             </tr>
             <tr>
+                <th><label for="browsercache_replace_exceptions"><?php _e('Prevent caching exception list:', 'w3-total-cache'); ?></label></th>
+                <td>
+                    <textarea id="browsercache_replace_exceptions"
+                        <?php $this->sealing_disabled('browsercache') ?>
+                              name="browsercache.replace.exceptions" cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('browsercache.replace.exceptions'))); ?></textarea><br />
+                    <span class="description"><?php _e('Do not add the prevent caching query string to the specified files. Supports regular expression.', 'w3-total-cache'); ?></span>
+                </td>
+            </tr>
+            <tr>
                 <th colspan="2">
                     <label><input id="browsercache_nocookies" type="checkbox"
                         <?php $this->sealing_disabled('browsercache') ?>
@@ -97,7 +106,7 @@
                 <td>
                     <textarea id="browsercache_no404wp_exceptions"
                         <?php $this->sealing_disabled('browsercache') ?>
-                        name="browsercache.no404wp.exceptions" cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('browsercache.no404wp.exceptions'))); ?></textarea><br />
+                        name="browsercache.no404wp.exceptions" cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('browsercache.no404wp.exceptions'))); ?></textarea><br />
                     <span class="description"><?php _e('Never process 404 (not found) events for the specified files.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -134,7 +143,7 @@
                 <td>
                     <input id="browsercache_cssjs_lifetime" type="text"
                        <?php $this->sealing_disabled('browsercache') ?>
-                       name="browsercache.cssjs.lifetime" value="<?php echo $this->_config->get_integer('browsercache.cssjs.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                       name="browsercache.cssjs.lifetime" value="<?php echo esc_attr($this->_config->get_integer('browsercache.cssjs.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                 </td>
             </tr>
             <tr>
@@ -225,7 +234,7 @@
                     <input id="browsercache_html_lifetime" type="text" 
                        name="browsercache.html.lifetime"
                        <?php $this->sealing_disabled('browsercache') ?>
-                       value="<?php echo $this->_config->get_integer('browsercache.html.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                       value="<?php echo esc_attr($this->_config->get_integer('browsercache.html.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                 </td>
             </tr>
             <tr>
@@ -300,7 +309,7 @@
                 <td>
                     <input id="browsercache_other_lifetime" type="text"
                        <?php $this->sealing_disabled('browsercache') ?>
-                       name="browsercache.other.lifetime" value="<?php echo $this->_config->get_integer('browsercache.other.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                       name="browsercache.other.lifetime" value="<?php echo esc_attr($this->_config->get_integer('browsercache.other.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                 </td>
             </tr>
             <tr>

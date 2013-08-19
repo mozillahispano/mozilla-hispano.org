@@ -60,7 +60,7 @@ jQuery(function() {
 jQuery("#ure_add_role").button({
     label: ure_data.add_role
   }).click(function(event){
-		event.preventDefault();
+    event.preventDefault();
     jQuery(function($) {
       $info = $('#ure_add_role_dialog');
       $info.dialog({                   
@@ -68,12 +68,12 @@ jQuery("#ure_add_role").button({
         modal: true,
         autoOpen: true, 
         closeOnEscape: true,      
-        width: 320,
-        height: 190,
+        width: 350,
+        height: 200,
         resizable: false,
         title: ure_data.add_new_role_title,
         'buttons'       : {
-            'Add Role': function () {
+            'Add Role': function () {              
               var role_id = $('#user_role_id').val();
               if (role_id == '') {
                 alert( ure_data.role_name_required );
@@ -93,6 +93,7 @@ jQuery("#ure_add_role").button({
             },
             'Cancel': function() {
                 $(this).dialog('close');
+                return false;
             }
           }
       });    
@@ -152,7 +153,7 @@ jQuery("#ure_add_role").button({
         modal: true,
         autoOpen: true, 
         closeOnEscape: true,      
-        width: 320,
+        width: 350,
         height: 190,
         resizable: false,
         title: ure_data.add_capability,
@@ -259,6 +260,7 @@ jQuery("#ure_add_role").button({
   jQuery("#ure_reset_roles").button({
     label: ure_data.reset
   }).click(function(){
+    event.preventDefault();
     if (!confirm( ure_data.reset_warning )) {
       return false;
     }
@@ -296,21 +298,27 @@ function turn_it_back(control) {
  */
 function ure_select_all(selected) {
 
+	var qfilter = jQuery('#quick_filter').val();
   var form = document.getElementById('ure_form');
   for (i = 0; i < form.elements.length; i++) {
     el = form.elements[i];
     if (el.type !== 'checkbox') {
       continue;
     }
-    if (el.name === 'ure_caps_readable' || el.name === 'ure_show_deprecated_caps' || el.disabled ||
-				el.name.substr(0, 8) === 'wp_role_')  {
+    if (el.name === 'ure_caps_readable' || el.name === 'ure_show_deprecated_caps' || 
+		el.name === 'ure_apply_to_all' || el.disabled ||
+		el.name.substr(0, 8) === 'wp_role_')  {
       continue;
     }
-    if (selected >= 0) {
-      form.elements[i].checked = selected;
-    } else {
-      form.elements[i].checked = !form.elements[i].checked;
-    }
+		if (qfilter!=='' && !form.elements[i].parentNode.ure_tag) {
+			continue;
+		}
+		if (selected >= 0) {
+			form.elements[i].checked = selected;
+		} else {
+			form.elements[i].checked = !form.elements[i].checked;
+		}
+		
   }
 
 }
@@ -333,10 +341,11 @@ function ure_turn_caps_readable(user_id) {
 
 function ure_turn_deprecated_caps(user_id) {
 	
+	var ure_object = '';
 	if (user_id === 0) {
-		var ure_object = 'role';
+		ure_object = 'role';
 	} else {
-		var ure_object = 'user';
+		ure_object = 'user';
 	}
 	jQuery.ure_postGo(ure_data.page_url, {action: 'show-deprecated-caps', object: ure_object, user_id: user_id, ure_nonce: ure_data.wp_nonce});
 	
@@ -350,3 +359,27 @@ function ure_role_change(role_name) {
 	
 }
 // end of ure_role_change()
+
+
+function ure_filter_capabilities(cap_id) {
+	var div_list = jQuery("div[id^='ure_div_cap_']");
+	for (i=0; i<div_list.length; i++) {		 
+		if (cap_id!=='' && div_list[i].id.substr(11).indexOf(cap_id)!==-1) {
+			div_list[i].ure_tag = true;
+			div_list[i].style.color = '#27CF27';
+		} else {
+			div_list[i].style.color = '#000000';
+			div_list[i].ure_tag = false;
+		}
+	};
+		
+}
+// end of ure_filter_capabilities()
+
+
+function ure_hide_pro_banner() {
+	
+		jQuery.ure_postGo(ure_data.page_url, {action: 'hide-pro-banner', ure_nonce: ure_data.wp_nonce});
+		
+}
+// end of ure_hide_this_banner()

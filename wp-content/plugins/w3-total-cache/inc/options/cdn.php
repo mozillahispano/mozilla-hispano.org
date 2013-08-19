@@ -183,7 +183,7 @@
                 <td>
                     <textarea id="cdn_reject_uri" name="cdn.reject.uri"
                         <?php $this->sealing_disabled('cdn') ?>
-                              cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.reject.uri'))); ?></textarea><br />
+                              cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.uri'))); ?></textarea><br />
                     <span class="description">Always ignore the specified pages / directories. Supports regular expression (See <a href="<?php echo network_admin_url('admin.php?page=w3tc_faq#q82')?>">FAQ</a>)</span>
                 </td>
             </tr>
@@ -205,7 +205,7 @@
                     <input id="cdn_autoupload_interval" type="text" 
                        name="cdn.autoupload.interval"
                        <?php $this->sealing_disabled('cdn') ?>
-                       value="<?php echo $this->_config->get_integer('cdn.autoupload.interval'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache') ?><br />
+                       value="<?php esc_attr_e($this->_config->get_integer('cdn.autoupload.interval')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache') ?><br />
                     <span class="description"><?php _e('Specify the interval between upload of changed files.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -214,7 +214,7 @@
                 <td>
                     <input id="cdn_limit_interval" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
-                       name="cdn.queue.interval" value="<?php echo htmlspecialchars($this->_config->get_integer('cdn.queue.interval')); ?>" size="10" /> <?php _e('seconds', 'w3-total-cache') ?><br />
+                       name="cdn.queue.interval" value="<?php esc_attr_e($this->_config->get_integer('cdn.queue.interval')); ?>" size="10" /> <?php _e('seconds', 'w3-total-cache') ?><br />
                     <span class="description"><?php _e('The number of seconds to wait before upload attempt.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -223,7 +223,7 @@
                 <td>
                     <input id="cdn_limit_queue" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
-                       name="cdn.queue.limit" value="<?php echo htmlspecialchars($this->_config->get_integer('cdn.queue.limit')); ?>" size="10" /><br />
+                       name="cdn.queue.limit" value="<?php esc_attr_e($this->_config->get_integer('cdn.queue.limit')); ?>" size="10" /><br />
                     <span class="description"><?php _e('Number of files processed per upload attempt.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -233,7 +233,7 @@
                 <td>
                     <input id="cdn_includes_files" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
-                       name="cdn.includes.files" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.includes.files')); ?>" size="100" /><br />
+                       name="cdn.includes.files" value="<?php esc_attr_e($this->_config->get_string('cdn.includes.files')); ?>" size="100" /><br />
                     <span class="description"><?php _e('Specify the file types within the WordPress core to host with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -242,7 +242,7 @@
                 <td>
                     <input id="cdn_theme_files" type="text" name="cdn.theme.files"
                        <?php $this->sealing_disabled('cdn') ?>
-                       value="<?php echo htmlspecialchars($this->_config->get_string('cdn.theme.files')); ?>" size="100" /><br />
+                       value="<?php esc_attr_e($this->_config->get_string('cdn.theme.files')); ?>" size="100" /><br />
                     <span class="description"><?php _e('Specify the file types in the active theme to host with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -251,7 +251,7 @@
                 <td>
                     <input id="cdn_import_files" type="text" name="cdn.import.files"
                        <?php $this->sealing_disabled('cdn') ?>
-                       value="<?php echo htmlspecialchars($this->_config->get_string('cdn.import.files')); ?>" size="100" /><br />
+                       value="<?php esc_attr_e($this->_config->get_string('cdn.import.files')); ?>" size="100" /><br />
                     <span class="description"><?php _e('Automatically import files hosted with 3rd parties of these types (if used in your posts / pages) to your media library.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -260,7 +260,7 @@
                 <td>
                     <textarea id="cdn_custom_files" name="cdn.custom.files" 
                         <?php $this->sealing_disabled('cdn') ?> cols="40"
-                        rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.custom.files'))); ?></textarea><br />
+                        rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.custom.files'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify any files outside of theme or other common directories to host with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?>
                         <?php if (w3_is_network()): ?>
                         <br />
@@ -273,7 +273,7 @@
                 <th><label for="cdn_reject_ua"><?php _e('Rejected user agents:', 'w3-total-cache') ?></label></th>
                 <td>
                     <textarea id="cdn_reject_ua" name="cdn.reject.ua" cols="40"
-                        <?php $this->sealing_disabled('cdn') ?> rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.reject.ua'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('cdn') ?> rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.ua'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify user agents that should not access files hosted with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </td>
             </tr>
@@ -281,7 +281,7 @@
                 <th><label for="cdn_reject_files"><?php _e('Rejected files:', 'w3-total-cache') ?></label></th>
                 <td>
                     <textarea id="cdn_reject_files" name="cdn.reject.files"
-                        <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.reject.files'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.files'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify the path of files that should not use the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </td>
             </tr>

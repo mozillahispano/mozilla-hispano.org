@@ -23,7 +23,7 @@ $css_level = $this->_config->get_string('minify.csstidy.options.css_level');
 <select class="css_enabled" name="minify.csstidy.options.css_level" 
     <?php $this->sealing_disabled('minify') ?>>
     <?php foreach($css_levels as $_css_level): ?>
-        <option value="<?php echo $_css_level; ?>"<?php selected($css_level, $_css_level); ?>><?php echo $_css_level; ?></option>
+        <option value="<?php echo esc_attr($_css_level); ?>"  <?php selected($css_level, $_css_level); ?>><?php echo $_css_level; ?></option>
     <?php endforeach; ?>
 </select><br />
 <?php $this->checkbox('minify.csstidy.options.preserve_css', false, 'css_') ?> <?php _e('Preserve CSS', 'w3-total-cache'); ?></label><br />

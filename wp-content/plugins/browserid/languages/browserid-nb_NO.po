@@ -1,0 +1,80 @@
+# Copyright (C) 2010 Marcel Bokhorst
+# This file is distributed under the same license as the Add Link to Facebook package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BrowserID\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/add-link-to-facebook\n"
+"POT-Creation-Date: 2011-07-16 12:26:46+00:00\n"
+"PO-Revision-Date: 2012-07-27 11:56+0100\n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: Marcel Bokhorst\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: BELGIUM\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Verification void"
+msgstr "Verifisering tom"
+
+msgid "Login failed"
+msgstr "Logg inn feilet"
+
+msgid "Verification failed"
+msgstr "Verifisering feilet"
+
+msgid "Verification invalid"
+msgstr "Verifisering ugyldig"
+
+msgid "BrowserID"
+msgstr "BrowserID"
+
+msgid "Administration"
+msgstr "Administrasjon"
+
+msgid "Logout"
+msgstr "Logg ut"
+
+msgid "Custom login HTML:"
+msgstr "Tilpasset logg inn HTML:"
+
+msgid "Custom logout HTML:"
+msgstr "Tilpasset logg ut HTML:"
+
+msgid "Verification server:"
+msgstr "Verifisering server:"
+
+msgid "Default https://verifier.login.persona.org/verify"
+msgstr "Standard https://verifier.login.persona.org/verify"
+
+msgid "Do not check valid until time:"
+msgstr "Ikke sjekk gyldig til tid:"
+
+msgid "Do not verify SSL certificate:"
+msgstr "Ikke kontroller SSL-sertifikat:"
+
+msgid "Security risk!"
+msgstr "Sikkerhetsrisiko!"
+
+msgid "Debug mode:"
+msgstr "Debug modus:"
+
+msgid "Login redirection URL:"
+msgstr "Logg inn omdirigering URL:"
+
+msgid "Default WordPress dashboard"
+msgstr "Standard WordPress kontrollpanel"
+
+msgid "What is BrowserID?"
+msgstr "Hva er BrowserID?"
+
+msgid "Enable for comments:"
+msgstr "Aktiver for kommentarer:"
+
+msgid "Enable bbPress integration:"
+msgstr "Aktiver bbPress integrasjon:"
+
+msgid "Enables anonymous posting implicitly"
+msgstr "Aktiverer anonym postering ubetinget"

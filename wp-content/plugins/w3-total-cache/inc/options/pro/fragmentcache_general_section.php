@@ -14,7 +14,7 @@
         <td>
             <select name="fragmentcache.engine" <?php $this->sealing_disabled('fragmentcache'); ?>>
                 <optgroup label="Shared Server:">
-                    <option value="file"<?php selected($this->_config->get_string('fragmentcache.engine'), 'file'); ?>>Disk</option>
+                    <option value="file" <?php selected($this->_config->get_string('fragmentcache.engine'), 'file'); ?>>Disk</option>
                 </optgroup>
                 <optgroup label="Dedicated / Virtual Server:">
                     <option value="apc"<?php selected($this->_config->get_string('fragmentcache.engine'), 'apc'); ?><?php if (! $check_apc): ?> disabled="disabled"<?php endif; ?>>Opcode: Alternative PHP Cache (APC)</option>
@@ -28,7 +28,7 @@
             </select>
         </td>
     </tr>
-    <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+    <?php if (is_network_admin() && !w3_force_master()): ?>
     <tr>
         <th>Network policy:</th>
         <td>

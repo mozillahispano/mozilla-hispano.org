@@ -175,7 +175,7 @@ class HTTP_ConditionalGet
                     break;
                 
                 case 'cache_noproxy':
-                    $this->_headers['Cache-Control'] = 'public, must-revalidate';
+                    $this->_headers['Cache-Control'] = 'private, must-revalidate';
                     break;
                 
                 case 'cache_maxage':

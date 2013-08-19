@@ -62,25 +62,26 @@ class W3_Cache_Apc extends W3_Cache_Base {
      * @param string $group Used to differentiate between groups of cache values
      * @return mixed
      */
-    function get($key, $group = '0') {
+    function get_with_old($key, $group = '0') {
+        $has_old_data = false;
         $key = $this->get_item_key($key);
 
         $v = @unserialize(apc_fetch($key . '_' . $this->_blog_id));
         if (!is_array($v) || !isset($v['key_version']))
-            return null;
+            return array(null, $has_old_data);
 
         $key_version = $this->_get_key_version($group);
         if ($v['key_version'] == $key_version)
-            return $v;
+            return array($v, $has_old_data);
 
         if ($v['key_version'] > $key_version) {
             $this->_set_key_version($v['key_version'], $group);
-            return $v;
+            return array($v, $has_old_data);
         }
 
         // key version is old
         if (!$this->_use_expired_data)
-            return null;
+            return array(null, $has_old_data);
 
         // if we have expired data - update it for future use and let
         // current process recalculate it
@@ -88,13 +89,15 @@ class W3_Cache_Apc extends W3_Cache_Base {
         if ($expires_at == null || time() > $expires_at) {
             $v['expires_at'] = time() + 30;
             apc_store($key . '_' . $this->_blog_id, serialize($v), 0);
+            $has_old_data = true;
 
-            return null;
+            return array(null, $has_old_data);
         }
 
         // return old version
-        return $v;
+        return array($v, $has_old_data);
     }
+
 
     /**
      * Replaces data
@@ -131,6 +134,16 @@ class W3_Cache_Apc extends W3_Cache_Base {
             }
         }
 
+        return apc_delete($key . '_' . $this->_blog_id);
+    }
+
+    /**
+     * Key to delete, deletes .old and primary if exists.
+     * @param $key
+     * @return bool
+     */
+    function hard_delete($key) {
+        $key = $this->get_item_key($key);
         return apc_delete($key . '_' . $this->_blog_id);
     }
 

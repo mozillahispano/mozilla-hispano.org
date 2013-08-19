@@ -3,21 +3,21 @@
     <th style="width: 300px;"><label for="cdn_akamai_username"><?php _e('Username:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="cdn_akamai_username" class="w3tc-ignore-change" type="text"
-           <?php $this->sealing_disabled('cdn') ?> name="cdn.akamai.username" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.akamai.username')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> name="cdn.akamai.username" value="<?php echo esc_attr($this->_config->get_string('cdn.akamai.username')); ?>" size="60" />
     </td>
 </tr>
 <tr>
     <th><label for="cdn_akamai_password"><?php _e('Password:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="cdn_akamai_password" class="w3tc-ignore-change"
-           <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.akamai.password" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.akamai.password')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.akamai.password" value="<?php echo esc_attr($this->_config->get_string('cdn.akamai.password')); ?>" size="60" />
     </td>
 </tr>
 <tr>
     <th><label for="cdn_akamai_email_notification"><?php _e('Email notification:', 'w3-total-cache'); ?></label></th>
     <td>
         <textarea id="cdn_akamai_email_notification" name="cdn.akamai.email_notification"
-            <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.akamai.email_notification'))); ?></textarea>
+            <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.akamai.email_notification'))); ?></textarea>
         <br />
         <span class="description"><?php _e('Specify email addresses for completed removal notifications. One email per line.', 'w3-total-cache'); ?></span>
     </td>

@@ -53,7 +53,7 @@ class W3_Cache_File_Cleaner {
     function clean() {
         @set_time_limit($this->_clean_timelimit);
 
-        return $this->_clean($this->_cache_dir, false);
+        $this->_clean($this->_cache_dir, false);
     }
 
     /**

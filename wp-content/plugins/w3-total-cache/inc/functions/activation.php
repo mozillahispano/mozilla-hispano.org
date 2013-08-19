@@ -51,7 +51,8 @@ function w3_activate_error($error) {
  */
 function w3_activation_error_on_exception($e) {
     $reactivate_url = wp_nonce_url('plugins.php?action=activate&plugin=' . W3TC_FILE, 'activate-plugin_' . W3TC_FILE);
-    $reactivate_button = sprintf('%1$sre-activate plugin', '<input type="button" value="') . sprintf('" onclick="top.location.href = \'%s\'" />', addslashes($reactivate_url));
+    $reactivate_button = sprintf('%1$sre-activate plugin', '<input type="button" value="') .
+        sprintf('" onclick="top.location.href = \'%s\'" />', addslashes($reactivate_url));
 
     w3_activate_error(sprintf(__('%s<br />then %s.', 'w3-total-cache'), $e->getMessage(), $reactivate_button));
 }
@@ -66,10 +67,13 @@ function w3_throw_on_read_error($path) {
     w3_require_once(W3TC_INC_DIR . '/functions/file.php');
 
     if (w3_check_open_basedir($path)) {
-        $error = sprintf(__('<strong>%s</strong> could not be read, please run following command:<br /><strong style="color: #f00;">chmod 777 %s</strong>', 'w3-total-cache'), $path,
+        $error = sprintf(__('<strong>%s</strong> could not be read, please run following command:<br />
+        <strong style="color: #f00;">chmod 777 %s</strong>', 'w3-total-cache'), $path,
             (file_exists($path) ? $path : dirname($path)));
     } else {
-        $error = sprintf(__('<strong>%s</strong> could not be read, <strong>open_basedir</strong> restriction in effect, please check your php.ini settings:<br /><strong style="color: #f00;">open_basedir = "%s"</strong>', 'w3-total-cache'), $path,
+        $error = sprintf(__('<strong>%s</strong> could not be read, <strong>open_basedir</strong> restriction in effect,
+        please check your php.ini settings:<br /><strong style="color: #f00;">open_basedir = "%s"</strong>',
+                'w3-total-cache'), $path,
             ini_get('open_basedir'));
     }
 
@@ -96,7 +100,8 @@ function w3_throw_on_write_error($path, $chmod_dirs = array()) {
                          (file_exists($path) ? $path : dirname($path)));
     }
     if (w3_check_open_basedir($path)) {
-        $error = sprintf(__('<strong>%s</strong> could not be created, please run following command:<br />%s', 'w3-total-cache'), $path,
+        $error = sprintf(__('<strong>%s</strong> could not be created, please run following command:<br />%s',
+                'w3-total-cache'), $path,
             $chmods);
     } else {
         $error = sprintf(__('<strong>%s</strong> could not be created, <strong>open_basedir
@@ -349,7 +354,8 @@ function w3_wp_delete_file($filename) {
  * Get WordPress filesystems credentials. Required for WP filesystem usage.
  * @param string $method Which method to use when creating
  * @param string $url Where to redirect after creation
- * @param bool|string $context path to folder that should be have filesystem credentials. If false WP_CONTENT_DIR is assumed
+ * @param bool|string $context path to folder that should be have filesystem credentials.
+ * If false WP_CONTENT_DIR is assumed
  * @throws FilesystemOperationException with S/FTP form if it can't get the required filesystem credentials
  */
 function w3_wp_request_filesystem_credentials($method = '', $url = '', $context = false) {
@@ -429,7 +435,7 @@ function w3_disable_maintenance_mode() {
 
 /**
  * Used to display SelfTestExceptions in UI
- * @param SelfTestExceptions
+ * @param SelfTestExceptions $exs
  * @return array(before_errors = [], required_changes =>, later_errors => [])
  **/
 function w3_parse_selftest_exceptions($exs) {
@@ -442,56 +448,56 @@ function w3_parse_selftest_exceptions($exs) {
     $operation_error_already_shown = false;
 
     foreach ($exceptions as $ex) {
-        if (!$operation_error_already_shown &&
-                $ex instanceof FilesystemOperationException) {
-            $m = $ex->getMessage();
-            if (strlen($m) > 0) {
-                $before_errors[] = $m;
-                // if multiple operations failed when
-                // they tried to fix environment - show only first
-                // otherwise can duplication information about
-                // absense of permissions
-                $operation_error_already_shown = true; 
+        if ($ex instanceof FilesystemOperationException) {
+            if (!$operation_error_already_shown) {
+                $m = $ex->getMessage();
+                if (strlen($m) > 0) {
+                    $before_errors[] = $m;
+                    // if multiple operations failed when
+                    // they tried to fix environment - show only first
+                    // otherwise can duplication information about
+                    // absense of permissions
+                    $operation_error_already_shown = true;
+                }
+                if ($ex instanceof FilesystemWriteException) {
+                    $required_changes .=
+                        sprintf(__('Create the <strong>%s</strong> file and paste the following text into it:
+                    <textarea>%s</textarea> <br />', 'w3-total-cache'), $ex->filename(), esc_textarea($ex->file_contents()));
+                } else if ($ex instanceof FilesystemModifyException) {
+                    $modification_content = $ex->file_contents();
+                    if (strlen($modification_content) > 0)
+                        $modification_content =
+                            '<textarea style="height: 100px; width: 100%;">' .
+                            esc_textarea($modification_content) . '</textarea>';
+                    $required_changes .=
+                        $ex->modification_description() .
+                        $modification_content .
+                        '<br />';
+                } else if ($ex instanceof FilesystemCopyException) {
+                    $commands .= 'cp ' . $ex->source_filename() . ' ' .
+                        $ex->destination_filename() . '<br />';
+                } else if ($ex instanceof FilesystemMkdirException) {
+                    $commands .= 'mkdir ' . $ex->folder() . '<br />';
+                    $commands .= 'chmod 777 ' . $ex->folder() . '<br />';
+                } else if ($ex instanceof FilesystemRmException) {
+                    $commands .= 'rm ' . $ex->filename() . '<br />';
+                } else if ($ex instanceof FilesystemRmdirException) {
+                    $commands .= 'rm -rf ' . $ex->folder() . '<br />';
+                } else if ($ex instanceof FilesystemChmodException) {
+                    $commands .= 'chmod 777 ' . $ex->filename() . '<br />';
+                }
             }
-        }
-
-        if ($ex instanceof FilesystemWriteException) {
-            $required_changes .= 
-				sprintf(__('Create the <strong>%s</strong> file and paste the following text into it: <textarea>%s</textarea> <br />', 'w3-total-cache'), $ex->filename(), $ex->file_contents());
-        } else if ($ex instanceof FilesystemModifyException) {
-            $modification_content = $ex->file_contents();
-            if (strlen($modification_content) > 0)
-                $modification_content = 
-                    '<textarea style="height: 100px; width: 100%;">' . 
-                    $modification_content . '</textarea>';
-            $required_changes .= 
-                $ex->modification_description() .
-                $modification_content .
-                '<br />';
-        } else if ($ex instanceof FilesystemCopyException) {
-            $commands .= 'cp ' . $ex->source_filename() . ' ' . 
-                $ex->destination_filename() . '<br />';
-        } else if ($ex instanceof FilesystemMkdirException) {
-            $commands .= 'mkdir ' . $ex->folder() . '<br />';
-            $commands .= 'chmod 777 ' . $ex->folder() . '<br />';
-        } else if ($ex instanceof FilesystemRmException) {
-            $commands .= 'rm ' . $ex->filename() . '<br />';
-        } else if ($ex instanceof FilesystemRmdirException) {
-            $commands .= 'rm -rf ' . $ex->folder() . '<br />';
-        } else if ($ex instanceof FilesystemChmodException) {
-            $commands .= 'chmod 777 ' . $ex->filename() . '<br />';
         } else if ($ex instanceof SelfTestFailedException) {
             $t = $ex->technical_message();
             if (strlen($t) > 0) {
-                $t = '<br />' . 
-                    '<a class="w3tc_read_technical_info" href="#">' . 
-                    __('Technical info', 'w3-total-cache').'</a>' . 
-                    '<div class="w3tc_technical_info" style="display: none">' . 
+                $t = '<br />' .
+                    '<a class="w3tc_read_technical_info" href="#">' .
+                    __('Technical info', 'w3-total-cache').'</a>' .
+                    '<div class="w3tc_technical_info" style="display: none">' .
                     $t . '</div>';
             }
 
-            $later_errors[] = 
-                $ex->getMessage() . $t;
+            $later_errors[] = $ex->getMessage() . $t;
         } else {
             // unknown command
             $later_errors[] = $ex->getMessage();
@@ -696,6 +702,9 @@ class SelfTestExceptions extends Exception {
         }
     }
 
+    /**
+     * @return Exception[]
+     */
     public function exceptions() {
         return $this->exceptions;
     }
@@ -732,5 +741,65 @@ class FileOperationException extends Exception {
     public function getOperation()
     {
         return $this->operation;
+    }
+}
+
+/**
+ * @return string[] error messages
+ */
+function w3_deactivate_plugin() {
+    $errors = array();
+    try {
+        $environment = w3_instance('W3_AdminEnvironment');
+        $environment->fix_after_deactivation();
+        deactivate_plugins(plugin_basename(W3TC_FILE));
+    } catch (SelfTestExceptions $exs) {
+        $r = w3_parse_selftest_exceptions($exs);
+
+        foreach ($r['before_errors'] as $e)
+            $errors[] = $e;
+
+        if (strlen($r['required_changes']) > 0) {
+            $changes_style = 'border: 1px solid black; ' .
+                'background: white; ' .
+                'margin: 10px 30px 10px 30px; ' .
+                'padding: 10px; display: none';
+            $ftp_style = 'border: 1px solid black; background: white; ' .
+                'margin: 10px 30px 10px 30px; ' .
+                'padding: 10px; display: none';
+            $ftp_form = str_replace('class="wrap"', '',
+                $exs->credentials_form());
+            $ftp_form = str_replace('<fieldset>', '', $ftp_form);
+            $ftp_form = str_replace('</fieldset>', '', $ftp_form);
+            $ftp_form = str_replace('id="upgrade" class="button"',
+                'id="upgrade" class="button w3tc-button-save"', $ftp_form);
+            $error = sprintf( __('<strong>W3 Total Cache Error:</strong>
+		                    Files and directories could not be automatically
+		                    deleted.
+		                    <table>
+		                    <tr>
+		                    <td>Please execute commands manually</td>
+		                    <td>
+								%s
+		                    </td>
+		                    </tr>
+		                    <tr>
+		                    <td>or use FTP form to allow
+		                    <strong>W3 Total Cache</strong> make it automatically.
+		                    </td>
+		                    <td>
+								%s
+		                    </td>
+		                    </tr></table>', 'w3-total-cache'),
+                    w3_button(__('View required changes', 'w3-total-cache'), '', 'w3tc-show-required-changes'),
+                    w3_button(__('Update via FTP', 'w3-total-cache'), '', 'w3tc-show-ftp-form')
+                ) . '<div class="w3tc-required-changes" style="' .
+                $changes_style . '">' . $r['required_changes'] . '</div>' .
+                '<div class="w3tc-ftp-form" style="' . $ftp_style . '">' .
+                $ftp_form . '</div>';
+
+            $errors[] = $error;
+        }
+        return $errors;
     }
 }

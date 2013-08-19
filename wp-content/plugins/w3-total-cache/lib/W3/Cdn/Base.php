@@ -407,7 +407,7 @@ class W3_Cdn_Base {
                 case 'cache_noproxy':
                     $headers = array_merge($headers, array(
                         'Pragma' => 'public',
-                        'Cache-Control' => 'public, must-revalidate'
+                        'Cache-Control' => 'private, must-revalidate'
                     ));
                     break;
 

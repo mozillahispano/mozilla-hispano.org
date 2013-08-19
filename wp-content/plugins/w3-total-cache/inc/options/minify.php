@@ -13,19 +13,13 @@
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <p>
-        <?php sprintf(__('%s is currently %s.', 'w3-total-cache'), 
-		'<strong>' . w3_get_engine_name($this->_config->get_string('minify.engine')) . '</strong>',
-		($minify_enabled ? 'enabled">' . __('enabled', 'w3-total-cache') : 'disabled">' . __('disabled', 'w3-total-cache') . '</span>' )); ?>
+        <?php echo sprintf(__('Minify via %s is currently %s.', 'w3-total-cache'), w3_get_engine_name($this->_config->get_string('minify.engine')) ,'<span class="w3tc-' . ($minify_enabled ? 'enabled">' . __('enabled', 'w3-total-cache') : 'disabled">' . __('disabled', 'w3-total-cache')) . '</span>'); ?>
     </p>
     <p>
 		<?php
-			sprintf( __('To rebuild the minify cache use the %s operation.', 'w3-total-cache'),
+			echo sprintf( __('To rebuild the minify cache use the %s operation.', 'w3-total-cache'),
 				$this->nonce_field('w3tc') . '<input type="submit" name="w3tc_flush_minify" value="' . __('empty cache','w3-total-cache') . '"' . disabled($minify_enabled, false, false) . ' class="button" />');
 		?>
-        <?php _e('To rebuild the minify cache use the', 'w3-total-cache'); ?>
-        <?php echo $this->nonce_field('w3tc'); ?>
-        <input type="submit" name="w3tc_flush_minify" value="<?php _e('empty cache', 'w3-total-cache'); ?>" <?php if (! $minify_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
-        operation.
         <?php if (!$auto): ?>
             <?php _e('Get minify hints using the', 'w3-total-cache'); ?>
             <input type="button" class="button button-minify-recommendations {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" value="<?php _e('help', 'w3-total-cache'); ?>" />
@@ -107,7 +101,7 @@
                 <td>
                     <textarea id="minify_html_comments_ignore" 
                         <?php $this->sealing_disabled('minify') ?>
-                        name="minify.html.comments.ignore" class="html_enabled" cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.html.comments.ignore'))); ?></textarea><br />
+                        name="minify.html.comments.ignore" class="html_enabled" cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.html.comments.ignore'))); ?></textarea><br />
                     <span class="description"><?php _e('Do not remove comments that contain these terms.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -222,7 +216,7 @@
                             <select id="js_themes" class="js_enabled" name="js_theme"
                                 <?php $this->sealing_disabled('minify') ?>>
                                 <?php foreach ($themes as $theme_key => $theme_name): ?>
-                                <option value="<?php echo htmlspecialchars($theme_key); ?>"<?php selected($theme_key, $js_theme); ?>><?php echo htmlspecialchars($theme_name); ?><?php if ($theme_key == $js_theme): ?> (active)<?php endif; ?></option>
+                                <option value="<?php echo esc_attr($theme_key); ?>"<?php selected($theme_key, $js_theme); ?>><?php echo htmlspecialchars($theme_name); ?><?php if ($theme_key == $js_theme): ?> (active)<?php endif; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </label>
@@ -246,12 +240,12 @@
                                             <td>
                                                 <input class="js_enabled" type="text"
                                                      <?php $this->sealing_disabled('minify') ?>
-                                                     name="js_files[<?php echo htmlspecialchars($js_theme); ?>][<?php echo htmlspecialchars($js_template); ?>][<?php echo htmlspecialchars($js_location); ?>][]" value="<?php echo htmlspecialchars($js_file); ?>" size="70" />
+                                                     name="js_files[<?php echo esc_attr($js_theme); ?>][<?php echo esc_attr($js_template); ?>][<?php echo esc_attr($js_location); ?>][]" value="<?php echo esc_attr($js_file); ?>" size="70" />
                                             </td>
                                             <td>
                                                 <select class="js_file_template js_enabled" <?php $this->sealing_disabled('minify') ?>>
                                                     <?php foreach ($templates[$js_theme] as $theme_template_key => $theme_template_name): ?>
-                                                    <option value="<?php echo htmlspecialchars($theme_template_key); ?>"<?php selected($theme_template_key, $js_template); ?>><?php echo htmlspecialchars($theme_template_name); ?></option>
+                                                    <option value="<?php echo esc_attr($theme_template_key); ?>"<?php selected($theme_template_key, $js_template); ?>><?php echo esc_attr($theme_template_name); ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </td>
@@ -317,7 +311,7 @@
                     <select id="minify_css_import" class="css_enabled" name="minify.css.imports"
                         <?php $this->sealing_disabled('minify') ?>>
                         <?php foreach ($css_imports_values as $css_imports_key => $css_imports_value): ?>
-                        <option value="<?php echo $css_imports_key; ?>"<?php selected($css_imports, $css_imports_key); ?>><?php echo $css_imports_value; ?></option>
+                        <option value="<?php echo esc_attr($css_imports_key); ?>"<?php selected($css_imports, $css_imports_key); ?>><?php echo $css_imports_value; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
@@ -347,7 +341,7 @@
                             <select id="css_themes" class="css_enabled" name="css_theme"
                                 <?php $this->sealing_disabled('minify') ?>>
                                 <?php foreach ($themes as $theme_key => $theme_name): ?>
-                                <option value="<?php echo htmlspecialchars($theme_key); ?>"<?php selected($theme_key, $css_theme); ?>><?php echo htmlspecialchars($theme_name); ?><?php if ($theme_key == $css_theme): ?> (active)<?php endif; ?></option>
+                                <option value="<?php echo esc_attr($theme_key); ?>"<?php selected($theme_key, $css_theme); ?>><?php echo htmlspecialchars($theme_name); ?><?php if ($theme_key == $css_theme): ?> (active)<?php endif; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </label>
@@ -370,12 +364,12 @@
                                             <td>
                                                 <input class="css_enabled" type="text"
                                                     <?php $this->sealing_disabled('minify') ?>
-                                                    name="css_files[<?php echo htmlspecialchars($css_theme); ?>][<?php echo htmlspecialchars($css_template); ?>][<?php echo htmlspecialchars($css_location); ?>][]" value="<?php echo htmlspecialchars($css_file); ?>" size="70" /><br />
+                                                    name="css_files[<?php echo esc_attr($css_theme); ?>][<?php echo esc_attr($css_template); ?>][<?php echo esc_attr($css_location); ?>][]" value="<?php echo esc_attr($css_file); ?>" size="70" /><br />
                                             </td>
                                             <td>
                                                 <select class="css_file_template css_enabled" <?php $this->sealing_disabled('minify') ?>>
                                                 <?php foreach ($templates[$css_theme] as $theme_template_key => $theme_template_name): ?>
-                                                    <option value="<?php echo htmlspecialchars($theme_template_key); ?>"<?php selected($theme_template_key, $css_template); ?>><?php echo htmlspecialchars($theme_template_name); ?></option>
+                                                    <option value="<?php echo esc_attr($theme_template_key); ?>"<?php selected($theme_template_key, $css_template); ?>><?php echo esc_attr($theme_template_name); ?></option>
                                                 <?php endforeach; ?>
                                                 </select>
                                             </td>
@@ -408,15 +402,14 @@
         <table class="form-table">
         <?php if ($auto):?>
         <tr>
-            <th colspan="2"><?php $this->checkbox('minify.auto.disable_filename_length_test')?> <?php _e('Disable Minify Auto automatic filename test', 'w3-total-cache') ?></label><br />
-                <span class="description"><?php _e('Disables functionality that tries to find optimal filename length for Minify Auto files. Needs to be checked to be able to set manual filename length below.', 'w3-total-cache')?></span><br />
+            <th colspan="2"><?php $this->checkbox('minify.auto.disable_filename_length_test')?> <?php _e('Disable minify automatic file name length test', 'w3-total-cache') ?></label><br />
+                <span class="description"><?php _e('Do not automatically attempt to find the optimal file name length minify files created in auto mode.', 'w3-total-cache')?></span><br />
                 <br />
                 <label for="minify_auto_filename_length">Filename length:</label>
                 <input id="minify_auto_filename_length" name="minify.auto.filename_length" type="text" size="4" <?php disabled($this->_config->get_boolean('minify.auto.disable_filename_length_test'), false) ?> value="<?php echo $this->_config->get_integer('minify.auto.filename_length')?>" />
-                <br /><span class="description"><?php _e('Maximum filename length to enter is 246. Change this value to decrease or
-                increase the number of minified files that are generated.
-                The more JS/CSS files you have the more files will be generated since the filenames are combined in
-                the filename. This is only applicable when using Minify Auto.', 'w3-total-cache') ?>
+                <br /><span class="description"><?php _e('Change this value to decrease or determine the number of minified files that are generated.
+                The more <acronym title="Cascading Style Sheet">CSS</acronym> / <acronym title="JavaScript">JS</acronym> files you have the more files will be generated because their file names are combined in
+                the final <acronym title="Uniform Resource Locator">URL</acronym> of the minified file name. File name length is only applicable when minify is in auto mode and file name length testing is enabled. The maximum file name length value is 246.', 'w3-total-cache') ?>
             </span>
             </th>
         </tr>
@@ -427,7 +420,7 @@
                 <td>
                     <input id="memcached_servers" type="text"
                         <?php $this->sealing_disabled('minify') ?>
-                        name="minify.memcached.servers" value="<?php echo htmlspecialchars(implode(',', $this->_config->get_array('minify.memcached.servers'))); ?>" size="100" />
+                        name="minify.memcached.servers" value="<?php echo esc_attr(implode(',', $this->_config->get_array('minify.memcached.servers'))); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}"
                         type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>
@@ -440,7 +433,7 @@
                 <td>
                     <input id="minify_lifetime" type="text" name="minify.lifetime"
                         <?php $this->sealing_disabled('minify') ?>
-                        value="<?php echo $this->_config->get_integer('minify.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?><br />
+                        value="<?php echo esc_attr($this->_config->get_integer('minify.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?><br />
                     <span class="description"><?php _e('Specify the interval between download and update of external files in the minify cache. Hint: 6 hours is 21600 seconds. 12 hours is 43200 seconds. 24 hours is 86400 seconds.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -449,7 +442,7 @@
                 <td>
                     <input id="minify_file_gc" type="text" name="minify.file.gc"
                         <?php $this->sealing_disabled('minify') ?>
-                        value="<?php echo $this->_config->get_integer('minify.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('minify.engine') != 'file'): ?> disabled="disabled"<?php endif; ?> /> <?php _e('seconds', 'w3-total-cache'); ?>
+                        value="<?php echo esc_attr( $this->_config->get_integer('minify.file.gc')); ?>" size="8"<?php if ($this->_config->get_string('minify.engine') != 'file'): ?> disabled="disabled"<?php endif; ?> /> <?php _e('seconds', 'w3-total-cache'); ?>
                     <br /><span class="description"><?php _e('If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -457,7 +450,7 @@
                 <th><label for="minify_reject_uri"><?php _e('Never minify the following pages:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_uri" name="minify.reject.uri" 
-                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.uri'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.uri'))); ?></textarea><br />
                     <span class="description"><?php _e('Always ignore the specified pages / directories.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -465,7 +458,7 @@
                 <th><label for="minify_reject_files_js"><?php _e('Never minify the following JS files:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_js" name="minify.reject.files.js"
-                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.files.js'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.files.js'))); ?></textarea><br />
                     <span class="description"><?php _e('Always ignore the specified JS files.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -473,7 +466,7 @@
                 <th><label for="minify_reject_files_css"><?php _e('Never minify the following CSS files:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_css" name="minify.reject.files.css"
-                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.files.css'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.files.css'))); ?></textarea><br />
                     <span class="description"><?php _e('Always ignore the specified CSS files.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -482,7 +475,7 @@
                 <td>
                     <textarea id="minify_reject_ua" name="minify.reject.ua"
                         <?php $this->sealing_disabled('minify') ?>
-                        cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.reject.ua'))); ?></textarea><br />
+                        cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.ua'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify user agents that will never receive minified content.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -492,7 +485,7 @@
                 <td>
                     <textarea id="minify_cache_files" name="minify.cache.files"
                         <?php $this->sealing_disabled('minify') ?>
-                              cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('minify.cache.files'))); ?></textarea><br />
+                              cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.cache.files'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify external files/libraries that should be combined.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>

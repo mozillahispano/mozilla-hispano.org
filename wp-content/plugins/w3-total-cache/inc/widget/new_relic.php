@@ -4,7 +4,7 @@
 <?php _e('You have not configured API key and Account Id.', 'w3-total-cache')?>
 <?php else: ?>
     <?php if ($new_relic_configured && $new_relic_enabled): ?>
-    <iframe width="100%" height="100px" scrolling="no" src="<?php echo wp_nonce_url(admin_url('admin.php?page=w3tc_general&w3tc_view_new_relic_app&view_application=' . $view_application. '&timestamp=' . time()),'w3tc')?>">
+    <iframe width="100%" height="100px" scrolling="no" src="<?php echo wp_nonce_url(admin_url('admin.php?page=w3tc_general&w3tc_new_relic_view_new_relic_app&view_application=' . $view_application. '&timestamp=' . time()),'w3tc')?>">
     </iframe>
     <?php endif ?>
     <div id="new-relic-summary">

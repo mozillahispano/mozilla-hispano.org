@@ -36,7 +36,7 @@ foreach ($cnames as $index => $cname):
 ?>
 	<li>
 		<input type="text" name="cdn_cnames[]"
-                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($cname); ?>" size="60" />
+                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($cname); ?>" size="60" />
 		<input class="button cdn_cname_delete" type="button"
                        <?php $this->sealing_disabled('cdn') ?> value="<?php _e('Delete', 'w3-total-cache'); ?>"<?php if (!$index): ?> style="display: none;"<?php endif; ?> />
 		<span><?php echo htmlspecialchars($label); ?></span>

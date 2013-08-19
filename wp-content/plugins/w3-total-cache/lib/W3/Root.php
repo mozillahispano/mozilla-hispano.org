@@ -6,6 +6,11 @@ class W3_Root {
      * @var W3_Plugin[]
      */
     private $_loaded_plugins = array();
+    /**
+     * Enabled extensions that has been run
+     * @var W3_Plugin[]
+     */
+    private $_loaded_extensions = array();
 
     /**
      * List of plugins and criterias to be met for them to run
@@ -36,10 +41,11 @@ class W3_Root {
         if (is_admin()) {
             $this->_plugins[] = array('class_name' => 'W3_Plugin_CloudFlareAdmin', 'enable_options' => 'cloudflare.enabled');
             $this->_plugins[] = array('class_name' => 'W3_Plugin_TotalCacheAdmin', 'enable_options' => null);
+            $this->_plugins[] = array('class_name' => 'W3_Plugin_PgCacheAdmin', 'enable_options' => 'pgcache.enabled');
             $this->_plugins[] = array('class_name' => 'W3_Plugin_MinifyAdmin', 'enable_options' => array('minify.enabled', 'minify.auto'));
             $this->_plugins[] = array('class_name' => 'W3_Plugin_NewRelicAdmin', 'enable_options' => null);
-            $this->_plugins[] = array('class_name' => 'W3_Widget_SpreadTheWord', 'enable_options' => null);
             $this->_plugins[] = array('class_name' => 'W3_Widget_Services', 'enable_options' => null);
+            $this->_plugins[] = array('class_name' => 'W3_Widget_SpreadTheWord', 'enable_options' => null);
             $this->_plugins[] = array('class_name' => 'W3_Widget_News', 'enable_options' => null);
             $this->_plugins[] = array('class_name' => 'W3_Widget_Forum', 'enable_options' => null);
             $this->_plugins[] = array('class_name' => 'W3_Widget_MaxCDN', 'enable_options' => array(array('cdn.engine', '==', 'maxcdn'),'||', array('cdn.engine', '!=', 'netdna')));
@@ -47,6 +53,9 @@ class W3_Root {
             $this->_plugins[] = array('class_name' => 'W3_Widget_NewRelic', 'enable_options' => null);
             $this->_plugins[] = array('class_name' => 'W3_Widget_PageSpeed', 'enable_options' => 'widget.pagespeed.enabled');
             $this->_plugins[] = array('class_name' => 'W3_AdminCompatibility', 'enable_options' => null);
+            $this->_plugins[] = array('class_name' => 'W3_Licensing', 'enable_options' => null);
+            $this->_plugins[] = array('class_name' => 'W3_GeneralActions', 'enable_options' => array('pgcache.enabled','||', 'varnish.enabled','||', array('cdn.enabled', 'cdncache.enabled')));
+            $this->_plugins[] = array('class_name' => 'W3_Plugin_ExtensionsAdmin', 'enable_options' => null);
         }
 
         $this->_config = w3_instance('W3_Config');
@@ -70,6 +79,7 @@ class W3_Root {
         foreach ($this->_loaded_plugins as $plugin) {
             $plugin->run();
         }
+        add_action('init', array($this, 'load_extensions'));
     }
 
     /**
@@ -120,10 +130,12 @@ class W3_Root {
                         $enabled = $this->_compare_criteria_values($enabled, $this->_config->get_string($val[0]) != $val[2], $compare);
                     } elseif ($val[1] == '==') {
                         $enabled = $this->_compare_criteria_values($enabled, $this->_config->get_string($val[0]) == $val[2], $compare);
+                    } else {
+                        $enabled = $enabled || $this->_criteria_matched($val);
                     }
-                } elseif ($val != '||' && $val != '&&'  )
-                    $enabled = $enabled && $this->_config->get_boolean($val);
-                else
+                } elseif ($val != '||' && $val != '&&'  ) {
+                    $enabled = $this->_compare_criteria_values($enabled, $this->_config->get_boolean($val), $compare);
+                } else
                     $compare = $val;
             }
         } else {
@@ -137,5 +149,16 @@ class W3_Root {
             return $val1 || $val2;
         }
         return $val1 && $val2;
+    }
+
+
+    /**
+     * Loads extensions stored in config
+     */
+    function load_extensions() {
+        $extensions = $this->_config->get_array('extensions.active');
+        foreach($extensions as $extension => $path) {
+            include W3TC_EXTENSION_DIR . '/' . trim($path, '/');
+        }
     }
 }

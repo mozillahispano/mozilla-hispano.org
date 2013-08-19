@@ -129,7 +129,7 @@ class W3_Dispatcher {
             return '';
 
         $rules_generator = w3_instance('W3_SharedRules');
-        return $rules_generator->canonical_without_location();
+        return $rules_generator->canonical_without_location($cdnftp);
     }
 
     /**

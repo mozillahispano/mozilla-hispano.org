@@ -28,6 +28,9 @@
 <?php
 	global $user_identity, $user_email, $user_ID, $mailusers_send_to_group_mode;
 
+    // Update Custom Meta Filters
+    do_action('mailusers_update_custom_meta_filters') ;
+
 	$err_msg = '';
 	$from_sender = 0;
 
@@ -54,10 +57,10 @@
 			$mail_format = $_POST['mail_format'];
 		}
 	
-		if ( !isset($_POST['send_roles']) || !is_array($_POST['send_roles']) || empty($_POST['send_roles']) ) {
+		if ( !isset($_POST['send_targets']) || !is_array($_POST['send_targets']) || empty($_POST['send_targets']) ) {
 			$err_msg = $err_msg . __('You must select at least a role.', MAILUSERS_I18N_DOMAIN) . '<br/>';
 		} else {
-			$send_roles = $_POST['send_roles'];
+			$send_targets = $_POST['send_targets'];
 		}
 	
 		if ( !isset( $_POST['subject'] ) || trim($_POST['subject'])=='' ) {
@@ -84,11 +87,9 @@
 			$group_mode = $_POST['group_mode'];
 		}
 	}
-	if (!isset($send_roles)) {
-		$send_roles = array();
+	if (!isset($send_targets)) {
+		$send_targets = array();
 	}
-
-    $send_filters = &$send_roles ;
 
 	if (!isset($mail_format)) {
 		$mail_format = mailusers_get_default_mail_format();
@@ -126,10 +127,63 @@
 	<?php
 		// Fetch users
 		// --
-        if ($group_mode == 'meta')
-		    $recipients = mailusers_get_recipients_from_custom_meta_filters($send_filters, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
-        else
-		    $recipients = mailusers_get_recipients_from_roles($send_roles, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
+        //error_log(print_r($send_targets, true)) ;
+        //error_log(print_r($_POST, true)) ;
+        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
+
+        $recipients = array() ;
+
+        $send_ug = array() ;
+        $send_filters = array() ;
+        $send_uam = array() ;
+
+        //  Loop through the various types of potential recipients
+        //  and extract the 
+        foreach ($send_targets as $target)
+        {
+            //  Decompose the target value so we know what we're dealing with
+            list($key, $value) = explode('-', $target, 2) ;
+
+            //  Once known, put the target value in the proper pile
+            switch ($key)
+            {
+                case 'filter':
+                    $send_filters[] = $value ;
+                    break ;
+
+                case 'user group':
+                    $send_ug[] = $value ;
+                    break ;
+
+                case 'uam':
+                    $send_uam[] = $value ;
+                    break ;
+
+                default:
+                    $send_roles[] = $value ;
+                    break ;
+            }
+        }
+
+        //  Extract the recipinents from the various target sources
+        $recipients = array() ;
+
+        if (!empty($send_filters))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_custom_meta_filters($send_filters, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
+        if (class_exists(MAILUSERS_USER_GROUPS_CLASS) && !empty($send_ug))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_user_groups($send_ug, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
+        if (class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS) && !empty($send_uam))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_uam_group($send_uam, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
+        if (!empty($send_roles))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_roles($send_roles, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
+        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
+        //error_log(print_r($recipients, true)) ;
+        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
 
 		if (empty($recipients)) {
 	?>

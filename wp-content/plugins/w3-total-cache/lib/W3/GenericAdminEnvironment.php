@@ -53,6 +53,7 @@ class W3_GenericAdminEnvironment {
 
     /**
      * Fixes environment after plugin deactivation
+     * @throws SelfTestExceptions
      * @return array
      */
     public function fix_after_deactivation() {
@@ -68,6 +69,7 @@ class W3_GenericAdminEnvironment {
 
     /**
      * Returns required rules for module
+     * @var W3_Config $config
      * @return array
      */
     function get_required_rules($config) {
@@ -82,10 +84,21 @@ class W3_GenericAdminEnvironment {
         $src = W3TC_INSTALL_FILE_ADVANCED_CACHE;
         $dst = W3TC_ADDIN_FILE_ADVANCED_CACHE;
 
-        if (file_exists($dst)) {
-            $script_data = @file_get_contents($dst);
-            if ($script_data == @file_get_contents($src))
+        if ($this->advanced_cache_installed()) {
+            if ($this->is_advanced_cache_add_in()) {
+                $script_data = @file_get_contents($dst);
+                if ($script_data == @file_get_contents($src))
+                    return;
+            } else {
+                $remove_url = is_network_admin() ?
+                              network_admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=pgcache') :
+                    admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=pgcache');
+                $exs->push(new FilesystemOperationException(
+                    sprintf(__('The Page Cache add-in file advanced-cache.php is not a W3 Total Cache drop-in.
+                    It should be removed. %s', 'w3-total-cache'),
+                    w3tc_button_link(__('Yes, remove it for me', 'w3-total-cache'), wp_nonce_url($remove_url,'w3tc')))));
                 return;
+            }
         }
 
         try {
@@ -101,7 +114,8 @@ class W3_GenericAdminEnvironment {
      */
     private function delete_required_files($exs) {
         try {
-            w3_wp_delete_file(W3TC_ADDIN_FILE_ADVANCED_CACHE);
+            if ($this->is_advanced_cache_add_in())
+                w3_wp_delete_file(W3TC_ADDIN_FILE_ADVANCED_CACHE);
         } catch (FilesystemOperationException $ex) {
             $exs->push($ex);
         }
@@ -198,5 +212,34 @@ class W3_GenericAdminEnvironment {
                     $ex->getMessage()));
             }
         }
+    }
+
+
+    /**
+     * Returns true if advanced-cache.php is installed
+     *
+     * @return boolean
+     */
+    public function advanced_cache_installed() {
+        return file_exists(W3TC_ADDIN_FILE_ADVANCED_CACHE);
+    }
+
+    /**
+     * Returns true if advanced-cache.php is old version.
+     * @return boolean
+     */
+    public function advanced_cache_check_old_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_ADVANCED_CACHE))
+            && strstr($script_data, '& w3_instance') !== false);
+    }
+
+    /**
+     * Checks if advanced-cache.php exists
+     *
+     * @return boolean
+     */
+    public function is_advanced_cache_add_in() {
+        return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_ADVANCED_CACHE))
+            && strstr($script_data, 'W3_PgCache') !== false);
     }
 }

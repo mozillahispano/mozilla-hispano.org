@@ -176,6 +176,9 @@ class W3_Config extends W3_ConfigBase {
     function validate_cache_actual() {
         $filename = $this->_get_config_filename();
 
+        if (!file_exists($filename))
+            return;
+
         $data = $this->_read($filename);
         if (is_null($data))
             throw new Exception('Can\'t read file <strong>' .

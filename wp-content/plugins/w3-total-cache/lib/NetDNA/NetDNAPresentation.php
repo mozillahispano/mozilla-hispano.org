@@ -5,7 +5,9 @@ class NetDNAPresentation {
     public static function format_popular($popular_files) {
         $formatted = array();
         foreach ($popular_files as $file) {
-            $formatted[] = array('file' => basename($file['uri']), 'title' => $file['uri'],
+            // basename cannot be used, kills chinese chars and similar characters
+            $filename = substr($file['uri'], strrpos($file['uri'], '/')+1);
+            $formatted[] = array('file' => $filename, 'title' => $file['uri'],
                 'group' => self::get_file_group($file['uri']), 'hit' => $file['hit']);
         }
 

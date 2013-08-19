@@ -34,7 +34,14 @@ class NetDNA {
 		
 	}
 
-	private function execute($selected_call, $method_type, $params) {
+    /**
+     * @param $selected_call
+     * @param $method_type
+     * @param $params
+     * @return string
+     * @throws CurlException
+     */
+    private function execute($selected_call, $method_type, $params) {
 		$consumer = new W3tcOAuthConsumer($this->key, $this->secret, NULL);
 
 		// the endpoint for your request
@@ -96,28 +103,53 @@ class NetDNA {
 
 		return $json_output;
 	}
-	
-	public function get($selected_call, $params = array()){
+
+    /**
+     * @param $selected_call
+     * @param array $params
+     * @return string
+     * @throws CurlException
+     */
+    public function get($selected_call, $params = array()){
 		 
 		return $this->execute($selected_call, 'GET', $params);
 	}
-	
-	public function post($selected_call, $params = array()){
+
+    /**
+     * @param $selected_call
+     * @param array $params
+     * @return string
+     * @throws CurlException
+     */
+    public function post($selected_call, $params = array()){
 		return $this->execute($selected_call, 'POST', $params);
 	}
-	
-	public function put($selected_call, $params = array()){
+
+    /**
+     * @param $selected_call
+     * @param array $params
+     * @return string
+     * @throws CurlException
+     */
+    public function put($selected_call, $params = array()){
 		return $this->execute($selected_call, 'PUT', $params);
 	}
-	
-	public function delete($selected_call, $params = array()){
+
+    /**
+     * @param $selected_call
+     * @param array $params
+     * @return string
+     * @throws CurlException
+     */
+    public function delete($selected_call, $params = array()){
 		return $this->execute($selected_call, 'DELETE', $params);
 	}
 
     /**
      * Finds the zone id that matches the provided url.
      * @param $url
-     * @return null
+     * @return null|int
+     * @throws CurlException
      */
     public function get_zone_id($url) {
         $zone_id = null;
@@ -137,6 +169,11 @@ class NetDNA {
         return $zone_id;
     }
 
+    /**
+     * @param $zone_id
+     * @return null|array
+     * @throws CurlException
+     */
     public function get_stats_per_zone($zone_id) {
         $api_stats = json_decode($this->get("/reports/{$zone_id}/stats.json"), true);
         if (preg_match("(200|201)", $api_stats['code'])) {
@@ -146,6 +183,11 @@ class NetDNA {
             return null;
     }
 
+    /**
+     * @param $zone_id
+     * @return null|array
+     * @throws CurlException
+     */
     public function get_list_of_file_types_per_zone($zone_id) {
         $api_list = json_decode($this->get("/reports/pull/{$zone_id}/filetypes.json"), true);
         if (preg_match("(200|201)", $api_list['code'])) {
@@ -160,6 +202,11 @@ class NetDNA {
             return null;
     }
 
+    /**
+     * @param $zone_id
+     * @return null|array
+     * @throws CurlException
+     */
     public function get_list_of_popularfiles_per_zone($zone_id) {
         $api_popularfiles = json_decode($this->get("/reports/{$zone_id}/popularfiles.json"), true);
         if (preg_match("(200|201)", $api_popularfiles['code'])) {
@@ -169,6 +216,10 @@ class NetDNA {
             return null;
     }
 
+    /**
+     * @return null|string
+     * @throws CurlException
+     */
     public function get_account() {
         $api_account = json_decode($this->get("/account.json"), true);
         if (preg_match("(200|201)", $api_account['code'])) {
@@ -178,6 +229,11 @@ class NetDNA {
             return null;
     }
 
+    /**
+     * @param $zone_id
+     * @return null|string
+     * @throws CurlException
+     */
     public function get_pull_zone($zone_id) {
         $api_pull_zone = json_decode($this->get("/zones/pull.json/{$zone_id}"), true);
         if (preg_match("(200|201)", $api_pull_zone['code'])) {
@@ -200,6 +256,11 @@ class NetDNA {
             throw new Exception($zone_data['error']['message']);
     }
 
+    /**
+     * @param $url
+     * @return array|null
+     * @throws CurlException
+     */
     public function get_zones_by_url($url) {
         $zone_id = null;
         $pull_zones =  json_decode($this->get('/zones/pull.json'), true);
@@ -211,6 +272,23 @@ class NetDNA {
                 else {
                     $zones[] = $zone;
                 }
+            }
+        } else
+            return null;
+        return $zones;
+    }
+
+    /**
+     * @return array|null
+     * @throws CurlException
+     */
+    public function get_zones() {
+        $zone_id = null;
+        $pull_zones =  json_decode($this->get('/zones/pull.json'), true);
+        $zones = array();
+        if (preg_match("(200|201)", $pull_zones['code'])) {
+            foreach ($pull_zones ['data']['pullzones'] as $zone) {
+                $zones[] = $zone;
             }
         } else
             return null;

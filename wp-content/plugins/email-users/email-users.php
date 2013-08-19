@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.4.4
+Version: 4.5.0
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.4.4' );
+define( 'MAILUSERS_CURRENT_VERSION', '4.5.0');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -44,6 +44,17 @@ define( 'MAILUSERS_ACCEPT_MASS_EMAIL_USER_META', 'email_users_accept_mass_emails
 
 // Debug
 define( 'MAILUSERS_DEBUG', true);
+
+//  Enable integration with User Groups plugin?
+//  @see http://wordpress.org/plugins/user-groups/
+
+define( 'MAILUSERS_USER_GROUPS_CLASS', 'KWS_User_Groups' );
+define( 'MAILUSERS_USER_GROUPS_TAXONOMY', 'user-group' );
+
+//  Enable integration with User Access Manager plugin?
+//  @see http://wordpress.org/plugins/user-access-manager/
+
+define( 'MAILUSERS_USER_ACCESS_MANAGER_CLASS', 'UserAccessManager' );
 
 $mailusers_user_custom_meta_filters = array() ;
 $mailusers_group_custom_meta_filters = array() ;
@@ -96,13 +107,14 @@ function mailusers_get_default_plugin_settings($option = null)
 		// Mail User - Default setting for Short Code Processing
 		'mailusers_shortcode_processing' => 'false',
 		// Mail User - Default setting for Short Code Processing
-		'mailusers_from_sender_exclude' => 'true'
+		'mailusers_from_sender_exclude' => 'true',
 	) ;
 
     if (array_key_exists($option, $default_plugin_settings))
         return $default_plugin_settings[$option] ;
     else
 	    return $default_plugin_settings ;
+
 }
 
 /**
@@ -266,7 +278,7 @@ function mailusers_post_relatedlink() {
 	global $post_ID;
 	if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
 ?>
-<div class="postbox">
+<div id="email-users-notify-post" class="postbox email-users-notify-postbox">
 <h3 class='hndle'><span><?php _e('Email Users', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside">
 <p><img style="padding: 5px; vertical-align: middle;" src="<?php echo plugins_url('images/email.png' , __FILE__); ?>"</img><a href="admin.php?page=mailusers-send-notify-mail-post&post_id=<?php echo $post_ID; ?>"><?php _e('Notify Users About this Post', MAILUSERS_I18N_DOMAIN); ?></a></p>
@@ -281,7 +293,7 @@ function mailusers_page_relatedlink() {
 	global $post_ID;
 	if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
 ?>
-<div class="postbox">
+<div id="email-users-notify-page" class="postbox email-users-notify-postbox">
 <h3 class='hndle'><span><?php _e('Email Users', MAILUSERS_I18N_DOMAIN); ?></span></h3>
 <div class="inside">
 <p><img style="padding: 5px; vertical-align: middle;" src="<?php echo plugins_url('images/email.png' , __FILE__); ?>"</img><a href="admin.php?page=mailusers-send-notify-mail-page&post_id=<?php echo $post_ID; ?>"><?php _e('Notify Users About this Page', MAILUSERS_I18N_DOMAIN); ?></a></p>
@@ -388,6 +400,7 @@ function mailusers_add_pages() {
     //  Load any custom meta filters
     do_action('mailusers_group_custom_meta_filter') ;
 
+    /**
     if (!empty($mailusers_group_custom_meta_filters))
     {
         //  Send to Group(s) Menu
@@ -398,6 +411,7 @@ function mailusers_add_pages() {
             'mailusers-send-to-group-custom-meta-page',
    	        'mailusers_send_to_group_custom_meta_page') ;
     }
+    **/
 
     //  User Settings Menu
     add_submenu_page(plugin_basename(__FILE__),
@@ -437,7 +451,7 @@ function mailusers_send_to_user_page()
 function mailusers_send_to_group_page()
 {
     global $mailusers_send_to_group_mode ;
-    $mailusers_send_to_group_mode = 'role' ;
+	$mailusers_send_to_group_mode = 'role' ;
     require_once('email_users_send_group_mail.php') ;
 }
 
@@ -618,6 +632,7 @@ function mailusers_admin_init() {
     register_setting('email_users', 'mailusers_shortcode_processing') ;
     register_setting('email_users', 'mailusers_from_sender_exclude') ;
     register_setting('email_users', 'mailusers_from_sender_name_override') ;
+    register_setting('email_users', 'mailusers_group_taxonomy') ;
     register_setting('email_users',
         'mailusers_from_sender_address_override', 'mailusers_from_sender_address_override_validate') ;
     register_setting('email_users',
@@ -728,6 +743,13 @@ function mailusers_update_user_settings_table_rows( $user_settings_table_rows ) 
  */
 function mailusers_get_from_sender_name_override() {
 	return get_option( 'mailusers_from_sender_name_override' );
+}
+
+/**
+ * Wrapper for the group taxonomy option
+ */
+function mailusers_get_group_taxonomy() {
+	return get_option( 'mailusers_group_taxonomy' );
 }
 
 /**
@@ -1002,6 +1024,96 @@ function mailusers_get_roles( $exclude_id='', $meta_filter = '') {
 	return $roles;
 }
 
+
+/**
+ * Get the users based on groups from the User Groups plugin
+ * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
+ */
+function mailusers_get_user_groups($exclude_id='', $meta_filter = '') {
+	$ug = array();
+
+	$terms = get_terms(MAILUSERS_USER_GROUPS_TAXONOMY, array('hide_empty' => false));
+	foreach ( $terms as $term ) {
+		$users_in_group = mailusers_get_recipients_from_user_groups(array($term->term_id), $exclude_id, $meta_filter);
+		if (!empty($users_in_group)) {
+			$ug[$term->term_id]=$term->name;
+		}
+	}
+	return $ug;
+}
+
+/**
+ * Get the users given a term or an array of terms
+ * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
+ */
+function mailusers_get_recipients_from_user_groups($terms, $exclude_id='', $meta_filter = '') {
+	
+	$ids = get_objects_in_term($terms, MAILUSERS_USER_GROUPS_TAXONOMY);
+	
+	return mailusers_get_recipients_from_ids($ids, $exclude_id, $meta_filter);
+}
+
+/**
+ * Get the users based on groups from the User Access Manager plugin
+ * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
+ */
+function mailusers_get_uam_groups($exclude_id='', $meta_filter = '') {
+    global $wpdb ;
+
+    $groups = $wpdb->get_results("
+        SELECT DISTINCT a.id, a.groupname FROM {$wpdb->prefix}uam_accessgroups a
+		INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.group_id
+		WHERE b.object_type != 'role' ") ;
+
+    foreach ($groups as $group)
+    {
+        $ids = mailusers_get_recipients_from_uam_group($group->id, $exclude_id, $meta_filter) ;
+
+        if (!empty($ids)) $uam[$group->id] = $group->groupname ;
+    }
+
+    return $uam ;
+}
+
+/**
+ * Get the users based on groups from the User Access Manager plugin
+ * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
+ */
+function mailusers_get_recipients_from_uam_group($uam_ids, $exclude_id='', $meta_filter = '') {
+    global $wpdb ;
+
+    //  Make sure we have an array
+    if (!is_array($uam_ids)) $uam_ids = array($uam_ids) ;
+
+    //  No groups?  Return an empty array
+    if (empty($uam_ids)) return array() ;
+
+    //  Prepare tends to wrap stuff in quotes so we need to build up the IN construct
+    //  based on the number of UAM IDs that are provided by the caller.
+
+    $in = '' ;
+
+    foreach ($uam_ids as $id)
+        $in .= '%d' . ($id == end($uam_ids) ? '' : ',') ;
+
+    $ids = array() ;
+
+    $query = $wpdb->prepare("
+		SELECT DISTINCT a.ID FROM $wpdb->users a
+		INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.object_id
+		WHERE b.object_type != 'role' AND b.group_id IN (" . $in . ")", $uam_ids) ;
+
+    //  Get the IDs and put them in the proper format as
+    //  the Query will return an array of Standard Objects
+    foreach ($wpdb->get_results($query) as $id)
+        $ids[] = $id->ID ;
+
+    //  Make sure the list of IDs accounts for the Email Users settings for email
+    $ids = mailusers_get_recipients_from_ids($ids, $exclude_id, $meta_filter) ;
+
+    return $ids ;
+}    
+
 /**
  * Get the users based on group custom meta filters
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
@@ -1051,6 +1163,7 @@ function mailusers_get_recipients_from_roles($roles, $exclude_id='', $meta_filte
 
     return $users ;
 }
+
 
 /**
  * Get the users given the existance of a custom meta filter
@@ -1319,7 +1432,8 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
 			mailusers_preprint_r($newheaders);
 		}
 				
-		@wp_mail($sender_email, $subject, $mailtext, $newheaders);
+		//@wp_mail($sender_email, $subject, $mailtext, $newheaders);
+		@wp_mail(null, $subject, $mailtext, $newheaders);
 	}
 
 	return $num_sent;

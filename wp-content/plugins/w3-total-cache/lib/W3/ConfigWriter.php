@@ -215,14 +215,24 @@ class W3_ConfigWriter {
      * @param mixed $value
      * @return bool
      */
-    private function _key_sealed($key, &$config_data, $config_admin, $value) {
+    private function _key_sealed($key, &$config_data, $config_admin, &$value) {
         // skip finalized values by confif sealing options
         foreach ($this->_sealing_keys_scope as $i) {
             if (substr($key, 0, strlen($i['prefix'])) == $i['prefix']) {
-                if ($config_admin->get_boolean($i['key']))
+                if (strpos($key, 'extensions') === false && $config_admin->get_boolean($i['key'])) {
                     return true;
+                } elseif (strpos($key, 'extensions') !== false) {
+                    $sealed = $config_admin->get_array($i['key']);
+                    $master_data = $config_data[$key];
+                    foreach ($sealed as $extension => $sealed_state) {
+                        if ($sealed_state && isset($master_data[$extension]))
+                            $value[$extension] = $master_data[$extension];
+                    }
+                    return false;
+                }
             }
         }
+
         if ($key == 'minify.enabled' && !$config_data['minify.enabled'] && $value)
             return true;
 

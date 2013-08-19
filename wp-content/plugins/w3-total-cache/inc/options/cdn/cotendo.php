@@ -3,21 +3,21 @@
     <th style="width: 300px;"><label for="cdn_cotendo_username"><?php _e('Username:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="cdn_cotendo_username" class="w3tc-ignore-change" type="text"
-           <?php $this->sealing_disabled('cdn') ?> name="cdn.cotendo.username" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cotendo.username')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> name="cdn.cotendo.username" value="<?php echo esc_attr($this->_config->get_string('cdn.cotendo.username')); ?>" size="60" />
     </td>
 </tr>
 <tr>
     <th><label for="cdn_cotendo_password"><?php _e('Password:', 'w3-total-cache'); ?></label></th>
     <td>
         <input id="cdn_cotendo_password" class="w3tc-ignore-change"
-           <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.cotendo.password" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cotendo.password')); ?>" size="60" />
+           <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.cotendo.password" value="<?php echo esc_attr($this->_config->get_string('cdn.cotendo.password')); ?>" size="60" />
     </td>
 </tr>
 <tr>
     <th><label for="cdn_cotendo_zones"><?php _e('Zones to purge:', 'w3-total-cache'); ?></label></th>
     <td>
         <textarea id="cdn_cotendo_zones" name="cdn.cotendo.zones"
-            <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('cdn.cotendo.zones'))); ?></textarea>
+            <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.cotendo.zones'))); ?></textarea>
     </td>
 </tr>
 <tr>

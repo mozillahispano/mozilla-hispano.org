@@ -8,14 +8,14 @@
 	<th style="width: 300px;"><label for="cdn_cf2_key"><?php _e('Access key ID:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf2_key" class="w3tc-ignore-change" type="text"
-                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf2.key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf2.key')); ?>" size="30" />
+                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf2.key" value="<?php echo esc_attr($this->_config->get_string('cdn.cf2.key')); ?>" size="30" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_cf2_secret"><?php _e('Secret key:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf2_secret" class="w3tc-ignore-change"
-                       <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.cf2.secret" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf2.secret')); ?>" size="60" />
+                       <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.cf2.secret" value="<?php echo esc_attr($this->_config->get_string('cdn.cf2.secret')); ?>" size="60" />
 	</td>
 </tr>
 <tr>
@@ -42,7 +42,7 @@
 	<th><label for="cdn_cf2_id"><?php _e('Replace site\'s hostname with:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf2_id" type="text" name="cdn.cf2.id"
-                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf2.id')); ?>" size="18" style="text-align: right;" />.cloudfront.net or CNAME:
+                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($this->_config->get_string('cdn.cf2.id')); ?>" size="18" style="text-align: right;" />.cloudfront.net or CNAME:
 		<?php $cnames = $this->_config->get_array('cdn.cf2.cname'); include W3TC_INC_DIR . '/options/cdn/common/cnames.php'; ?>
 		<br /><span class="description"><?php _e('If you have already added a <a href="http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/index.html?CNAMEs.html" target="_blank">CNAME</a> to your <acronym title="Domain Name System">DNS</acronym> Zone, enter it here.', 'w3-total-cache'); ?></span>
 	</td>

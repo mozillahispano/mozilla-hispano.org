@@ -4,9 +4,9 @@
     <li><label><?php _e('Rate:', 'w3-total-cache')?> </label><input type="button" class="button button-rating" value="Vote &amp; Rate Now" /></li>
     <li><label><?php _e('Link:', 'w3-total-cache') ?></label>
         <select id="common_support" name="common.support" class="w3tc-ignore-change">
-            <option value=""><?php _e('select one', 'w3-total-cache')?></option>
+            <option value=""><?php esc_attr_e('select one', 'w3-total-cache')?></option>
             <?php foreach ($supports as $support_id => $support_name): ?>
-            <option value="<?php echo $support_id; ?>"<?php selected($support, $support_id); ?>><?php echo htmlspecialchars($support_name); ?></option>
+            <option value="<?php echo esc_attr($support_id); ?>" <?php selected($support, $support_id); ?>><?php echo esc_attr($support_name); ?></option>
             <?php endforeach; ?>
         </select>
     </li>

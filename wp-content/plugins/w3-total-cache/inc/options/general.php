@@ -4,13 +4,13 @@
 
 <p>
 	<?php 
-		echo sprintf('The plugin is currently %1$s . If an option is disabled it means that either your current installation is not compatible or software installation is required.','<span class="w3tc-'.($enabled ? 'enabled">' . __('enabled', 'w3-total-cache') : 'disabled">' . __('disabled', 'w3-total-cache')) . '</span>.')
+		echo sprintf('The plugin is currently %1$s If an option is disabled it means that either your current installation is not compatible or software installation is required.','<span class="w3tc-'.($enabled ? 'enabled">' . __('enabled', 'w3-total-cache') : 'disabled">' . __('disabled', 'w3-total-cache')) . '</span>.')
 	?>
 </p>
 
 <?php if (!$this->_config_admin->get_boolean('common.visible_by_master_only') ||
     (is_super_admin() && (!w3_force_master() || is_network_admin()))): ?>
-<form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
+<form id="w3tc_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
         <?php echo $this->postbox_header(__('General', 'w3-total-cache'), '', 'general'); ?>
         <table class="form-table">
@@ -27,11 +27,11 @@
                 <td>
                     <?php echo $this->nonce_field('w3tc'); ?>
                     <?php if ($this->_config->is_preview()): ?>
-                        <input type="submit" name="w3tc_preview_disable" class="button-primary" value="<?php _e('Disable', 'w3-total-cache'); ?>" />
-                        <?php echo $this->button_link(__('Preview', 'w3-total-cache'), w3_get_home_url() . '/?w3tc_preview=1', true); ?>
-                        <?php echo $this->button_link(__('Deploy', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_preview_deploy', $this->_page), 'w3tc') ); ?>
+                        <input type="submit" name="w3tc_config_preview_disable" class="button-primary" value="<?php _e('Disable', 'w3-total-cache'); ?>" />
+                        <?php echo w3_button_link(__('Preview', 'w3-total-cache'), w3_get_home_url() . '/?w3tc_preview=1', true); ?>
+                        <?php echo w3_button_link(__('Deploy', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_config_preview_deploy', $this->_page), 'w3tc') ); ?>
                     <?php else: ?>
-                        <input type="submit" name="w3tc_preview_enable" class="button-primary" value="<?php _e('Enable', 'w3-total-cache'); ?>" />
+                        <input type="submit" name="w3tc_config_preview_enable" class="button-primary" value="<?php _e('Enable', 'w3-total-cache'); ?>" />
                     <?php endif; ?>
                     <br /><span class="description"><?php _e('Use preview mode to test configuration scenarios prior to releasing them (deploy) on the actual site. Preview mode remains active even after deploying settings until the feature is disabled.', 'w3-total-cache'); ?></span>
                 </td>
@@ -75,14 +75,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>
-                <th colspan="2">
-                    <input type="hidden" name="pgcache.late_init" value="0" />
-                    <label><input id="pgcache_late_init" type="checkbox" name="pgcache.late_init" value="1"<?php checked($this->_config->get_boolean('pgcache.late_init'), true); ?> <?php disabled($this->_config->get_string('pgcache.engine'), 'file_generic') ?> /><?php _e('Use late "init"', 'w3-total-cache')?></label>
-                    <br /><span class="description"><?php _e('Adds support for use of WordPress functionality in fragment caching calls. Usage of this option will increase response times.', 'w3-total-cache')?></span>
-                </th>
-            </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -169,7 +162,7 @@
                     </select>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -216,7 +209,7 @@
                     </select>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -225,7 +218,7 @@
                 </tr>
             <?php endif; ?>
 
-            <?php if (w3_is_enterprise() && $this->is_network_and_master()): ?>
+            <?php if (w3_is_enterprise() && is_network_admin()): ?>
              <?php include W3TC_INC_OPTIONS_DIR . '/enterprise/dbcluster_general_section.php' ?>
             <?php endif; ?>
         </table>
@@ -267,7 +260,7 @@
                     </select>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -283,7 +276,7 @@
             <input type="submit" name="w3tc_flush_objectcache" value="<?php _e('Empty cache', 'w3-total-cache'); ?>"<?php if (! $objectcache_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
         </p>
         <?php echo $this->postbox_footer(); ?>
-        <?php if (w3_is_pro() || w3_is_enterprise()): ?>
+        <?php if (w3_is_pro($this->_config) || w3_is_enterprise($this->_config)): ?>
         <?php include W3TC_INC_OPTIONS_DIR . '/pro/fragmentcache_general_section.php' ?>
         <?php endif ?>
         <?php echo $this->postbox_header(__('Browser Cache', 'w3-total-cache'), '', 'browser_cache'); ?>
@@ -297,7 +290,7 @@
                     <br /><span class="description"><?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> compression and add headers to reduce server load and decrease file load time.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -349,7 +342,7 @@
                     <span class="description"><?php _e('Select the <acronym title="Content Delivery Network">CDN</acronym> type you wish to use.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -380,11 +373,11 @@
                  <th><label for="pgcache_varnish_servers"><?php _e('Varnish servers:', 'w3-total-cache'); ?></label></th>
                  <td>
                     <textarea id="pgcache_varnish_servers" name="varnish.servers"
-                          cols="40" rows="5" <?php $this->sealing_disabled('varnish'); ?>><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('varnish.servers'))); ?></textarea><br />
+                          cols="40" rows="5" <?php $this->sealing_disabled('varnish'); ?>><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('varnish.servers'))); ?></textarea><br />
                     <span class="description"><?php _e('Specify the IP addresses of your varnish instances above. The <acronym title="Varnish Configuration Language">VCL</acronym>\'s <acronym title="Access Control List">ACL</acronym> must allow this request.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -416,7 +409,7 @@
                     <input id="cluster_messagebus_sns_region"
                         class="w3tc-ignore-change" type="text"
                         name="cluster.messagebus.sns.region"
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cluster.messagebus.sns.region')); ?>" size="60" /><br />
+                        value="<?php echo esc_attr($this->_config->get_string('cluster.messagebus.sns.region')); ?>" size="60" /><br />
                     <span class="description"><?php _e('Specify the Amazon SNS service endpoint hostname. If empty, then default "sns.us-east-1.amazonaws.com" will be used.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -426,7 +419,7 @@
                     <input id="cluster_messagebus_sns_api_key"
                         class="w3tc-ignore-change" type="text"
                         name="cluster.messagebus.sns.api_key"
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cluster.messagebus.sns.api_key')); ?>" size="60" /><br />
+                        value="<?php echo esc_attr($this->_config->get_string('cluster.messagebus.sns.api_key')); ?>" size="60" /><br />
                     <span class="description"><?php _e('Specify the <acronym title="Application Programming Interface">API</acronym> Key.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -436,7 +429,7 @@
                     <input id="cluster_messagebus_sns_api_secret"
                         class="w3tc-ignore-change" type="text"
                         name="cluster.messagebus.sns.api_secret"
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cluster.messagebus.sns.api_secret')); ?>" size="60" /><br />
+                        value="<?php echo esc_attr($this->_config->get_string('cluster.messagebus.sns.api_secret')); ?>" size="60" /><br />
                     <span class="description"><?php _e('Specify the <acronym title="Application Programming Interface">API</acronym> secret.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -489,7 +482,7 @@
                     <input id="cloudflare_email" class="w3tc-ignore-change"
                         type="text" name="cloudflare.email"
                         <?php $this->sealing_disabled('cloudflare'); ?>
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cloudflare.email')); ?>" size="60" />
+                        value="<?php echo esc_attr($this->_config->get_string('cloudflare.email')); ?>" size="60" />
                 </td>
             </tr>
             <tr>
@@ -498,7 +491,7 @@
                     <input id="cloudflare_key" class="w3tc-ignore-change"
                         type="password" name="cloudflare.key"
                         <?php $this->sealing_disabled('cloudflare'); ?>
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cloudflare.key')); ?>" size="60" /> (<a href="https://www.cloudflare.com/my-account.html"><?php _e('find it here', 'w3-total-cache'); ?></a>)
+                        value="<?php echo esc_attr($this->_config->get_string('cloudflare.key')); ?>" size="60" /> (<a href="https://www.cloudflare.com/my-account.html"><?php _e('find it here', 'w3-total-cache'); ?></a>)
                 </td>
             </tr>
             <tr>
@@ -506,7 +499,7 @@
                 <td>
                     <input id="cloudflare_zone" type="text" name="cloudflare.zone"
                         <?php $this->sealing_disabled('cloudflare'); ?>
-                        value="<?php echo htmlspecialchars($this->_config->get_string('cloudflare.zone', w3_get_host())); ?>" size="40" />
+                        value="<?php echo esc_attr($this->_config->get_string('cloudflare.zone', w3_get_host())); ?>" size="40" />
                 </td>
             </tr>
             <tr>
@@ -517,7 +510,7 @@
                         class="w3tc-ignore-change"
                         <?php $this->sealing_disabled('cloudflare'); ?>>
                         <?php foreach ($cloudflare_seclvls as $cloudflare_seclvl_key => $cloudflare_seclvl_label): ?>
-                        <option value="<?php echo $cloudflare_seclvl_key; ?>"<?php selected($cloudflare_seclvl, $cloudflare_seclvl_key); ?>><?php echo $cloudflare_seclvl_label; ?></option>
+                        <option value="<?php echo esc_attr($cloudflare_seclvl_key); ?>"<?php selected($cloudflare_seclvl, $cloudflare_seclvl_key); ?>><?php echo $cloudflare_seclvl_label; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
@@ -543,7 +536,7 @@
                             class="w3tc-ignore-change"
                         <?php $this->sealing_disabled('cloudflare'); ?>>
                         <?php foreach ($cloudflare_minifications as $cloudflare_minify_key => $cloudflare_minify_label): ?>
-                        <option value="<?php echo $cloudflare_minify_key; ?>"<?php selected($cloudflare_minify, $cloudflare_minify_key); ?>><?php echo $cloudflare_minify_label; ?></option>
+                        <option value="<?php echo esc_attr($cloudflare_minify_key); ?>"<?php selected($cloudflare_minify, $cloudflare_minify_key); ?>><?php echo $cloudflare_minify_label; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
@@ -556,7 +549,7 @@
                         class="w3tc-ignore-change"
                         <?php $this->sealing_disabled('cloudflare'); ?>>
                         <?php foreach ($cloudflare_devmodes as $cloudflare_devmode_key => $cloudflare_devmode_label): ?>
-                        <option value="<?php echo $cloudflare_devmode_key; ?>"<?php selected($cloudflare_devmode, $cloudflare_devmode_key); ?>><?php echo $cloudflare_devmode_label; ?></option>
+                        <option value="<?php echo esc_attr($cloudflare_devmode_key); ?>"<?php selected($cloudflare_devmode, $cloudflare_devmode_key); ?>><?php echo $cloudflare_devmode_label; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <?php if ($cloudflare_devmode_expire): ?>
@@ -564,7 +557,7 @@
                     <?php endif; ?>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master() && !w3_force_master()): ?>
+            <?php if (is_network_admin() && !w3_force_master()): ?>
                 <tr>
                     <th><?php _e('Network policy:', 'w3-total-cache'); ?></th>
                     <td>
@@ -609,8 +602,8 @@
             </th>
             <td>
                 <input id ="newrelic_api_key" name="newrelic.api_key" type="text" value="<?php echo esc_attr($this->_config->get_string('newrelic.api_key'))?>" size="45"/>
-                <input id ="newrelic_account_id" name="newrelic.account_id" type="hidden" value="<?php echo esc_attr($this->_config->get_string('newrelic.account_id'))?>"/>
-                <input id="newrelic_verify_api_key" type="button" value="<?php echo sprintf(__('Verify %s', 'w3-total-cache'), 'API Key') ?>"/>
+                <input id ="newrelic_account_id" name="newrelic.account_id" type="hidden" value="<?php esc_attr_e($this->_config->get_string('newrelic.account_id'))?>"/>
+                <input id="newrelic_verify_api_key" type="button" value="<?php echo esc_attr(sprintf(__('Verify %s', 'w3-total-cache'), 'API key')) ?>"/>
             </td>
         </tr>
         <?php endif ?>
@@ -633,7 +626,7 @@
                     <select id="newrelic_application_id_dropdown" name="newrelic.application_id" <?php disabled($this->_config->get_boolean('newrelic.use_network_wide_id') && !$this->is_master()) ?>>
                         <option value=""><?php _e('-- Select Application --', 'w3-total-cache')?></option>
                         <?php foreach($newrelic_applications as $id => $name): ?>
-                        <option value="<?php echo esc_attr($id)?>" <?php echo ($id == $newrelic_application)?'selected="selected"' : '' ?>><?php echo esc_textarea($name) ?></option>
+                        <option value="<?php echo esc_attr($id)?>" <?php echo ($id == $newrelic_application)?'selected="selected"' : '' ?>><?php echo esc_html($name) ?></option>
                         <?php endforeach; ?>
                     </select>
                     <?php if (!$this->is_master()): ?>
@@ -645,7 +638,7 @@
         <?php endif;?>
             </td>
         </tr>
-        <?php if ($this->is_network_and_master()): ?>
+        <?php if (is_network_admin()): ?>
         <tr>
             <th><?php _e('Use above application name and ID for all sites in network:', 'w3-total-cache')?></th>
             <td><?php $this->checkbox('newrelic.use_network_wide_id'); ?></label></td>
@@ -666,7 +659,29 @@
     </p>
         <?php endif ?>
         <?php echo $this->postbox_footer(); ?>
-    
+
+        <?php if ($licensing_visible): ?>
+            <?php echo $this->postbox_header(__('Licensing', 'w3-total-cache'), '', 'licensing'); ?>
+            <table class="form-table">
+                    <tr>
+                        <th>
+                            <label for="plugin_license_key"><?php _e('License', 'w3-total-cache')?></label>
+                        </th>
+                        <td>
+                            <input id ="plugin_license_key" name="plugin.license_key" type="text" value="<?php echo esc_attr($this->_config->get_string('plugin.license_key'))?>" size="45"/>
+                            <input id="plugin_license_key_verify" type="button" value="<?php _e('Verify license key', 'w3-total-cache') ?>"/><br />
+                            <span class="description"><?php printf(__('Please enter the license key provided you received after %s.', 'w3-total-cache'), '<a class="button-buy-plugin" href="' . EDD_W3EDGE_STORE_URL_PLUGIN .'">' . __('upgrading', 'w3-total-cache') . '</a>')?></span>
+                        </td>
+                    </tr>
+                
+            </table>
+            <p class="submit">
+                <?php echo $this->nonce_field('w3tc'); ?>
+                <input type="submit" id="w3tc_save_options_licensing" name="w3tc_save_options" class="w3tc-button-save button-primary" value="Save all settings" />
+            </p>
+            <?php echo $this->postbox_footer(); ?>
+        <?php endif ?>
+        
         <?php echo $this->postbox_header(__('Miscellaneous', 'w3-total-cache'), '', 'miscellaneous'); ?>
         <table class="form-table">
             <tr>
@@ -679,12 +694,12 @@
             <tr>
                 <th><label for="widget_pagespeed_key"><?php _e('Page Speed <acronym title="Application Programming Interface">API</acronym> Key:', 'w3-total-cache'); ?></label></th>
                 <td>
-                    <input id="widget_pagespeed_key" type="text" name="widget.pagespeed.key" value="<?php echo $this->_config->get_string('widget.pagespeed.key'); ?>" size="60" /><br />
+                    <input id="widget_pagespeed_key" type="text" name="widget.pagespeed.key" value="<?php echo esc_attr($this->_config->get_string('widget.pagespeed.key')); ?>" size="60" /><br />
                     <span class="description"><?php _e('To acquire an <acronym title="Application Programming Interface">API</acronym> key, visit the <a href="https://code.google.com/apis/console" target="_blank"><acronym title="Application Programming Interface">API</acronym>s Console</a>. Go to the Project Home tab, activate the Page Speed Online <acronym title="Application Programming Interface">API</acronym>, and accept the Terms of Service.
                     Then go to the <acronym title="Application Programming Interface">API</acronym> Access tab. The <acronym title="Application Programming Interface">API</acronym> key is in the Simple <acronym title="Application Programming Interface">API</acronym> Access section.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
-            <?php if ($this->is_network_and_master()): ?>
+            <?php if (is_network_admin()): ?>
             <tr>
                 <th colspan="2">
                     <?php $this->checkbox('common.force_master') ?> <?php _e('Use single network configuration file for all sites.', 'w3-total-cache'); ?></label>
@@ -702,7 +717,7 @@
             <tr>
                 <th><?php _e('Nginx server configuration file path', 'w3-total-cache'); ?></th>
                 <td>
-                    <input type="text" name="config.path" value="<?php echo htmlspecialchars($this->_config->get_string('config.path')); ?>" size="80" />
+                    <input type="text" name="config.path" value="<?php echo esc_attr($this->_config->get_string('config.path')); ?>" size="80" />
                     <br /><span class="description"><?php _e('If empty the default path will be used..', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -747,7 +762,7 @@
                     <?php $this->checkbox_debug('minify.debug') ?> <?php _e('Minify', 'w3-total-cache'); ?></label><br />
                     <?php $this->checkbox_debug('dbcache.debug') ?> <?php _e('Database Cache', 'w3-total-cache'); ?></label><br />
                     <?php $this->checkbox_debug('objectcache.debug') ?> <?php _e('Object Cache', 'w3-total-cache'); ?></label><br />
-                    <?php if (w3_is_pro() || w3_is_enterprise()): ?>
+                    <?php if (w3_is_pro($this->_config) || w3_is_enterprise($this->_config)): ?>
                     <?php $this->checkbox_debug('fragmentcache.debug') ?> <?php _e('Fragment Cache', 'w3-total-cache'); ?></label><br />
                     <?php endif; ?>
                     <?php $this->checkbox_debug('cdn.debug') ?> <?php _e('<acronym title="Content Delivery Network">CDN</acronym>', 'w3-total-cache'); ?></label><br />

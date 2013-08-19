@@ -1,7 +1,7 @@
 jQuery(function() {
     var ajaxurl = window.ajaxurl;
     jQuery('.w3tc-widget-ps-view-all').click(function() {
-        window.open('admin.php?page=w3tc_dashboard&w3tc_pagespeed_results&_wpnonce=' + jQuery(this).metadata().nonce, 'pagespeed_results', 'width=800,height=600,status=no,toolbar=no,menubar=no,scrollbars=yes');
+        window.open('admin.php?page=w3tc_dashboard&w3tc_test_pagespeed_results&_wpnonce=' + jQuery(this).metadata().nonce, 'pagespeed_results', 'width=800,height=600,status=no,toolbar=no,menubar=no,scrollbars=yes');
 
         return false;
     });

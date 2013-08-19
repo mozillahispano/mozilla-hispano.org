@@ -32,12 +32,12 @@
             			</td>
             			<td><?php echo $index; ?>.</td>
             			<td>
-    	                    <input type="text" name="recom_js_file" value="<?php echo htmlspecialchars($js_file); ?>" size="70" />
+    	                    <input type="text" name="recom_js_file" value="<?php echo esc_attr($js_file); ?>" size="70" />
             			</td>
             			<td>
                             <select name="recom_js_template">
                             <?php foreach ($templates as $template_key => $template_name): ?>
-                                <option value="<?php echo htmlspecialchars($template_key); ?>"<?php selected($template_key, $js_group); ?>><?php echo htmlspecialchars($template_name); ?></option>
+                                <option value="<?php echo esc_attr($template_key); ?>"<?php selected($template_key, $js_group); ?>><?php echo htmlspecialchars($template_name); ?></option>
                             <?php endforeach; ?>
                             </select>
             			</td>
@@ -85,12 +85,12 @@
                         </td>
             			<td><?php echo $index; ?>.</td>
                         <td>
-                            <input type="text" name="recom_css_file" value="<?php echo htmlspecialchars($css_file); ?>" size="70" />
+                            <input type="text" name="recom_css_file" value="<?php echo esc_attr($css_file); ?>" size="70" />
 						</td>
 						<td>
                             <select name="recom_css_template">
                             <?php foreach ($templates as $template_key => $template_name): ?>
-                            <option value="<?php echo htmlspecialchars($template_key); ?>"<?php selected($template_key, $css_group); ?>><?php echo htmlspecialchars($template_name); ?></option>
+                            <option value="<?php echo esc_attr($template_key); ?>"<?php selected($template_key, $css_group); ?>><?php echo htmlspecialchars($template_name); ?></option>
                             <?php endforeach; ?>
                             </select>
 						</td>

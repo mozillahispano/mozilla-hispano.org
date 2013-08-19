@@ -759,6 +759,6 @@ jQuery(function() {
 
     jQuery('.ps-refresh').click(function() {
         var nonce = jQuery('.w3tc-widget-ps-nonce').val();
-        document.location.href = 'admin.php?page=w3tc_dashboard&w3tc_pagespeed_results&force=1&_wpnonce=' + nonce;
+        document.location.href = 'admin.php?page=w3tc_dashboard&w3tc_test_pagespeed_results&force=1&_wpnonce=' + nonce;
     });
 });

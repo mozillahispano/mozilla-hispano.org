@@ -5,7 +5,7 @@
     <label>Location:
         <select id="cdn_<?php echo $type; ?>_bucket_location">
             <?php foreach ($locations as $location => $name): ?>
-            <option value="<?php echo $location; ?>"><?php echo $name; ?></option>
+            <option value="<?php echo esc_attr($location); ?>"><?php echo $name; ?></option>
             <?php endforeach; ?>
         </select>
     </label>

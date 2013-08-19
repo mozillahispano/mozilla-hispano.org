@@ -8,21 +8,21 @@
 	<th style="width: 300px;"><label for="cdn_s3_key"><?php _e('Access key ID:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_s3_key" class="w3tc-ignore-change" type="text"
-                   <?php $this->sealing_disabled('cdn') ?> name="cdn.s3.key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.s3.key')); ?>" size="30" />
+                   <?php $this->sealing_disabled('cdn') ?> name="cdn.s3.key" value="<?php echo esc_attr($this->_config->get_string('cdn.s3.key')); ?>" size="30" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_s3_secret"><?php _e('Secret key:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_s3_secret" class="w3tc-ignore-change"
-                   <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.s3.secret" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.s3.secret')); ?>" size="60" />
+                   <?php $this->sealing_disabled('cdn') ?> type="password" name="cdn.s3.secret" value="<?php echo esc_attr($this->_config->get_string('cdn.s3.secret')); ?>" size="60" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_s3_bucket"><?php _e('Bucket:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_s3_bucket" type="text" name="cdn.s3.bucket"
-                   <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($this->_config->get_string('cdn.s3.bucket')); ?>" size="30" />
+                   <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($this->_config->get_string('cdn.s3.bucket')); ?>" size="30" />
 		<input class="button button-cdn-s3-bucket-location cdn_s3 {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Create bucket', 'w3-total-cache'); ?>" />
 	</td>
 </tr>

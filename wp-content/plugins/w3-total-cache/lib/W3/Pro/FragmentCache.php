@@ -148,7 +148,8 @@ class W3_Pro_FragmentCache {
         }
 
         $key = $this->_get_cache_key($id, $group);
-        $fragment_group = $this->_fragment_group($id);
+        list($fragment_group, $fragment_group_expiration) = 
+            $this->_fragment_group($id);
         $internal = isset($this->cache[$fragment_group . $group][$key]);
 
         if ($internal) {
@@ -223,7 +224,11 @@ class W3_Pro_FragmentCache {
         if (is_object($data)) {
             $data = clone( $data );
         }
-        $fragment_group = $this->_fragment_group($id);
+        list($fragment_group, $fragment_group_expiration) = 
+            $this->_fragment_group($id);
+        if (!is_null($fragment_group_expiration))
+            $expire = $fragment_group_expiration;
+
         $this->cache[$fragment_group . $group][$key] = $data;
 
         if ($this->_caching &&
@@ -250,7 +255,7 @@ class W3_Pro_FragmentCache {
         if (!$force && $this->get($id, $group) === false) {
             return false;
         }
-        $fragment_group = $this->_fragment_group($id);
+        list($fragment_group, $fragment_group_expiration) = $this->_fragment_group($id);
 
         $key = $this->_get_cache_key($id, $group);
 
@@ -323,14 +328,14 @@ class W3_Pro_FragmentCache {
             $cache1 = $this->_get_cache(null,'transient');
             $groups = $this->_fragmentcache->get_registered_fragment_groups();
             $cache1->flush('nogroup');
-            foreach ($groups as $group =>  $actions)
+            foreach ($groups as $group => $descriptor)
                 $cache1->flush($group);
 
             if (is_network_admin()) {
                 $cache2 = $this->_get_cache(null,'site-transient');
                 $cache2->flush('nogroup');
                 $global_groups = $this->_fragmentcache->get_registered_global_fragment_groups();
-                foreach ($global_groups as $group =>  $actions)
+                foreach ($global_groups as $group => $descriptor)
                     $cache2->flush($group);
             }
             return true;
@@ -618,13 +623,15 @@ class W3_Pro_FragmentCache {
             'Transient ID');
 
         foreach ($this->debug_info as $index => $debug) {
+            list($fragment_group, $fragment_group_expiration) = 
+                $this->_fragment_group($debug['id']);
             $debug_info .= sprintf("%s | %s | %s | %s | %s | %s| %s| %s\r\n",
                 str_pad($index + 1, 5, ' ', STR_PAD_LEFT),
                 str_pad(($debug['cached'] ? 'cached' : 'not cached'), 15, ' ', STR_PAD_BOTH),
                 str_pad(($debug['internal'] ? 'internal' : 'persistent'), 15, ' ', STR_PAD_BOTH),
                 str_pad($debug['data_size'], 13, ' ', STR_PAD_LEFT),
                 str_pad(round($debug['time'], 4), 14, ' ', STR_PAD_LEFT),
-                str_pad($this->_fragment_group($debug['id']), 14, ' ', STR_PAD_LEFT),
+                str_pad($fragment_group, 14, ' ', STR_PAD_LEFT),
                 str_pad(($debug['group'] == 'transient' ? 'site' : 'network'), 10, ' ', STR_PAD_LEFT),
                 $debug['id']);
         }
@@ -647,11 +654,11 @@ class W3_Pro_FragmentCache {
         $groups = $this->_fragmentcache->get_registered_fragment_groups();
         $use_group = '';
         $length = 0;
-        foreach ($groups as $group =>  $actions)
+        foreach ($groups as $group => $descriptor)
             if (strpos($id, $group) !== false) {
                 if (strlen($group)>$length) {
                     $length = strlen($group);
-                    $use_group = $group;
+                    $use_group = array($group, $descriptor['expiration']);
                 }
             }
         if ($use_group)
@@ -660,11 +667,11 @@ class W3_Pro_FragmentCache {
         $global_groups = $this->_fragmentcache->get_registered_global_fragment_groups();
         $use_group = '';
         $length = 0;
-        foreach ($global_groups as $group =>  $actions)
+        foreach ($global_groups as $group => $descriptor)
             if (strpos($id, $group) !== false) {
                 if (strlen($group)>$length) {
                     $length = strlen($group);
-                    $use_group = $group;
+                    $use_group = array($group, $descriptor['expiration']);
                 }
             }
         if ($use_group)

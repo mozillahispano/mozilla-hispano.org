@@ -84,13 +84,25 @@ class W3_Cache_Base {
     /**
      * Returns data
      *
-     * @abstract
      * @param string $key
      * @param string $group Used to differentiate between groups of cache values
      * @return mixed
      */
     function get($key, $group = '') {
-        return false;
+        list($data, $has_old) = $this->get_with_old($key, $group);
+        return $data;
+    }
+
+    /**
+     * Return primary data and if old exists
+     *
+     * @abstract
+     * @param string $key
+     * @param string $group Used to differentiate between groups of cache values
+     * @return array|mixed
+     */
+    function get_with_old($key, $group = '') {
+        return array(null, false);
     }
 
     /**
@@ -127,6 +139,17 @@ class W3_Cache_Base {
      * @return boolean
      */
     function delete($key, $group = '') {
+        return false;
+    }
+
+    /**
+     * Deletes primary data and old data
+     *
+     * @abstract
+     * @param string $key
+     * @return boolean
+     */
+    function hard_delete($key) {
         return false;
     }
 

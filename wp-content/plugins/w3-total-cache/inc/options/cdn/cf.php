@@ -8,21 +8,21 @@
 	<th style="width: 300px;"><label for="cdn_cf_key"><?php _e('Access key ID:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf_key" class="w3tc-ignore-change" type="text"
-                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf.key" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf.key')); ?>" size="30" />
+                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf.key" value="<?php echo esc_attr($this->_config->get_string('cdn.cf.key')); ?>" size="30" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_cf_secret"><?php _e('Secret key:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf_secret" class="w3tc-ignore-change" type="password"
-                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf.secret" value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf.secret')); ?>" size="60" />
+                       <?php $this->sealing_disabled('cdn') ?> name="cdn.cf.secret" value="<?php echo esc_attr($this->_config->get_string('cdn.cf.secret')); ?>" size="60" />
 	</td>
 </tr>
 <tr>
 	<th><label for="cdn_cf_bucket"><?php _e('Bucket:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf_bucket" type="text" name="cdn.cf.bucket"
-                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf.bucket')); ?>" size="30" />
+                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($this->_config->get_string('cdn.cf.bucket')); ?>" size="30" />
 		<input class="button button-cdn-cf-bucket-location cdn_cf {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}"
                        <?php $this->sealing_disabled('cdn') ?> type="button" value="<?php _e('Create bucket &amp; distribution', 'w3-total-cache'); ?>" />
 	</td>
@@ -42,7 +42,7 @@
 	<th><label for="cdn_cf_id"><?php _e('Replace site\'s hostname with:', 'w3-total-cache'); ?></label></th>
 	<td>
 		<input id="cdn_cf_id" type="text" name="cdn.cf.id"
-                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo htmlspecialchars($this->_config->get_string('cdn.cf.id')); ?>" size="18" style="text-align: right;" />.cloudfront.net or CNAME:
+                       <?php $this->sealing_disabled('cdn') ?> value="<?php echo esc_attr($this->_config->get_string('cdn.cf.id')); ?>" size="18" style="text-align: right;" />.cloudfront.net or CNAME:
 		<?php $cnames = $this->_config->get_array('cdn.cf.cname'); include W3TC_INC_DIR . '/options/cdn/common/cnames.php'; ?>
 		<br /><span class="description"><?php _e('If you have already added a <a href="http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/index.html?CNAMEs.html" target="_blank">CNAME</a> to your <acronym title="Domain Name System">DNS</acronym> Zone, enter it here.', 'w3-total-cache'); ?></span>
 	</td>

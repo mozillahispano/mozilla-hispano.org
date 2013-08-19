@@ -60,8 +60,8 @@ class W3_RootAdminActivation {
                 try {
                     $config_admin = w3_instance('W3_ConfigAdmin');
                     $config->import_legacy_config();
-                    $a = w3_instance('W3_Plugin_TotalCacheAdmin');
-                    $a->config_save($config, $config_admin);
+                    w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+                    w3_config_save(w3_instance('W3_Config'), $config, $config_admin);
                 } catch (Exception $ex) {
                 }
             }
@@ -84,7 +84,7 @@ class W3_RootAdminActivation {
         try {
             $e = w3_instance('W3_AdminEnvironment');
             $config = w3_instance('W3_Config');
-            $e->fix_after_deactivation();
+            $e->fix_after_deactivation($config);
 
             w3_instance('W3_AdminLinks')->link_delete();
         } catch (SelfTestExceptions $exs) {

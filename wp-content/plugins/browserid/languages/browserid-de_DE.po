@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Verification void"
+msgstr "&Uuml;berpr&uuml;fung ung&uuml;ltig"
+
+msgid "Login failed"
+msgstr "Anmeldung fehlgeschlagen"
+
+msgid "Verification failed"
+msgstr "&Uuml;berpr&uuml;fung fehlgeschlagen"
+
+msgid "Verification invalid"
+msgstr "&Uuml;berpr&uuml;fung ung&uuml;ltig"
+
+msgid "BrowserID"
+msgstr "BrowserID"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Custom login HTML:"
+msgstr "Benutzerdefiniertes Anmelde HTML:"
+
+msgid "Custom logout HTML:"
+msgstr "Benutzerdefiniertes Abmelde HTML:"
+
+msgid "Login redirection URL:"
+msgstr "Anmeldeweiterleitungs URL:"
+
+msgid "Default WordPress dashboard"
+msgstr "Standard WordPress Dashboard"
+
+msgid "Enable for comments:"
+msgstr "F&uuml;r Kommentare aktivierenr:"
+
+msgid "Enable bbPress integration:"
+msgstr "F&uuml;r bbPress aktivieren:"
+
+msgid "Enables anonymous posting implicitly"
+msgstr "Indirekt anonymes Kommentieren erlauben"
+
+msgid "Custom comment HTML:"
+msgstr "Benutzerdefiniertes Kommentar HTML:"
+
+msgid "Verification server:"
+msgstr "Best&auml;tigungs Server:"
+
+msgid "Default https://verifier.login.persona.org/verify"
+msgstr "Standard https://verifier.login.persona.org/verify"
+
+msgid "Do not check valid until time:"
+msgstr "Nicht kontrollieren Ablaufzeit:"
+
+msgid "Do not verify SSL certificate:"
+msgstr "SSL Zertifikat nicht &uuml;berpr&uuml;fen:"
+
+msgid "Security risk!"
+msgstr "Sicherheitsrisiko!"
+
+msgid "What is BrowserID?"
+msgstr "Was ist BrowserID?"
+
+msgid "Debug mode:"
+msgstr "Debug Modus:"

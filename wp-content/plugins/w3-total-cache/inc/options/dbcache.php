@@ -38,7 +38,7 @@
                 <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="memcached_servers" type="text"
-                        <?php $this->sealing_disabled('dbcache') ?> name="dbcache.memcached.servers" value="<?php echo htmlspecialchars(implode(',', $this->_config->get_array('dbcache.memcached.servers'))); ?>" size="100" />
+                        <?php $this->sealing_disabled('dbcache') ?> name="dbcache.memcached.servers" value="<?php echo esc_attr(implode(',', $this->_config->get_array('dbcache.memcached.servers'))); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>
                     <br /><span class="description"><?php _e('Multiple servers may be used and seperated by a comma; e.g. 192.168.1.100:11211, domain.com:22122', 'w3-total-cache'); ?></span>
@@ -50,7 +50,7 @@
                 <td>
                     <input id="dbcache_lifetime" type="text" name="dbcache.lifetime"
                         <?php $this->sealing_disabled('dbcache') ?>
-                        value="<?php echo $this->_config->get_integer('dbcache.lifetime'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+                        value="<?php echo esc_attr($this->_config->get_integer('dbcache.lifetime')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                     <br /><span class="description"><?php _e('Determines the natural expiration time of unchanged cache items. The higher the value, the larger the cache.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
                 <th><label for="dbcache_file_gc"><?php _e('Garbage collection interval:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <input id="dbcache_file_gc" type="text" name="dbcache.file.gc"
-					<?php $this->sealing_disabled('dbcache') ?> value="<?php echo $this->_config->get_integer('dbcache.file.gc'); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
+					<?php $this->sealing_disabled('dbcache') ?> value="<?php echo esc_attr($this->_config->get_integer('dbcache.file.gc')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
                     <br /><span class="description"><?php _e('If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -66,7 +66,7 @@
                 <th><label for="dbcache_reject_uri"><?php _e('Never cache the following pages:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_uri" name="dbcache.reject.uri"
-                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('dbcache.reject.uri'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.uri'))); ?></textarea><br />
 						<span class="description">
 							<?php echo sprintf( __('Always ignore the specified pages / directories. Supports regular expression (See <a href="%s">FAQ</a>).', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?>
 						</span>
@@ -76,7 +76,7 @@
                 <th><label for="dbcache_reject_sql"><?php _e('Ignored query stems:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_sql" name="dbcache.reject.sql"
-                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('dbcache.reject.sql'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.sql'))); ?></textarea><br />
                     <span class="description"><?php _e('Do not cache queries that contain these terms. Any entered prefix (set in wp-config.php) will be replaced with current database prefix (default: wp_). Query stems can be identified using debug mode.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
@@ -84,7 +84,7 @@
                 <th><label for="dbcache_reject_words"><?php _e('Reject query words:', 'w3-total-cache'); ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_words" name="dbcache.reject.words"
-                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('dbcache.reject.words'))); ?></textarea><br />
+                        <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.words'))); ?></textarea><br />
                     <span class="description"><?php _e('Do not cache queries that contain these words or regular expressions.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>

@@ -102,7 +102,7 @@ class W3_ObjectCache {
      *
      * @var string
      */
-    var $cache_reject_reason = '';
+    private $cache_reject_reason = '';
 
     /**
      * Lifetime
@@ -450,7 +450,7 @@ class W3_ObjectCache {
         echo '<strong>Caching</strong>: ' . ($this->_caching ? 'enabled' : 'disabled') . '<br />';
 
         if (!$this->_caching) {
-            echo '<strong>Reject reason</strong>: ' . $this->cache_reject_reason . '<br />';
+            echo '<strong>Reject reason</strong>: ' . $this->get_reject_reason() . '<br />';
         }
 
         echo '<strong>Total calls</strong>: ' . $this->cache_total . '<br />';
@@ -580,10 +580,7 @@ class W3_ObjectCache {
          * Skip if disabled
          */
         if (!$this->_config->get_boolean('objectcache.enabled')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Object caching is disabled', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'Object caching is disabled';
+            $this->cache_reject_reason = 'objectcache.disabled';
 
             return false;
         }
@@ -592,10 +589,7 @@ class W3_ObjectCache {
          * Check for DONOTCACHEOBJECT constant
          */
         if (defined('DONOTCACHEOBJECT') && DONOTCACHEOBJECT) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('DONOTCACHEOBJECT constant is defined', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'DONOTCACHEOBJECT constant is defined';
+            $this->cache_reject_reason = 'DONOTCACHEOBJECT';
 
             return false;
         }
@@ -669,5 +663,28 @@ class W3_ObjectCache {
         $debug_info .= '-->';
 
         return $debug_info;
+    }
+    public function get_reject_reason() {
+        if (is_null($this->cache_reject_reason))
+            return '';
+        return $this->_get_reject_reason_message($this->cache_reject_reason);
+    }
+
+    /**
+     * @param $key
+     * @return string|void
+     */
+    private function _get_reject_reason_message($key) {
+        if (!function_exists('__'))
+            return $key;
+
+        switch ($key) {
+            case 'objectcache.disabled':
+                return __('Object caching is disabled', 'w3-total-cache');
+            case 'DONOTCACHEOBJECT':
+                return __('DONOTCACHEOBJECT constant is defined', 'w3-total-cache');
+            default:
+                return '';
+        }
     }
 }

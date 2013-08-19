@@ -388,6 +388,9 @@ class W3_Minify {
                             $this->error(sprintf('Unable to cache remote file: "%s"', $file));
                         }
                     } else {
+                        if (!w3_is_multisite() && strpos(WP_CONTENT_DIR, w3_get_site_root()) !== false)
+                            $file = ltrim(w3_get_site_path(), '/') . str_replace(ltrim(w3_get_site_path(), '/'), '', $file);
+
                         $path = w3_get_document_root() . '/' . $file;
 
                         if (file_exists($path)) {
@@ -1099,10 +1102,7 @@ class W3_Minify {
      * @return array
      */
     private function _minify_path_replacements() {
-        if (w3_is_network())
-            $theme = get_theme_root();
-        else
-            $theme = get_stylesheet_directory();
+        $theme = get_theme_root();
 
         return array(
             ltrim(str_replace(w3_get_document_root(), '', w3_path($theme)), '/'),

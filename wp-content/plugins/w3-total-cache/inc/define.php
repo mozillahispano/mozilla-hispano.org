@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('W3TC', true);
-define('W3TC_VERSION', '0.9.2.11');
+define('W3TC_VERSION', '0.9.3');
 define('W3TC_POWERED_BY', 'W3 Total Cache/' . W3TC_VERSION);
 define('W3TC_EMAIL', 'w3tc@w3-edge.com');
 define('W3TC_TEXT_DOMAIN', 'w3-total-cache');
@@ -14,12 +14,18 @@ define('W3TC_PAYPAL_BUSINESS', 'w3tc-team@w3-edge.com');
 define('W3TC_LINK_URL', 'http://www.w3-edge.com/wordpress-plugins/');
 define('W3TC_LINK_NAME', 'WordPress Plugins');
 define('W3TC_FEED_URL', 'http://feeds.feedburner.com/W3TOTALCACHE');
-define('W3TC_NEWS_FEED_URL', 'http://feeds.w3-edge.com/W3EDGE');
+define('W3TC_NEWS_FEED_URL', 'http://feeds.feedburner.com/W3EDGE');
 define('W3TC_README_URL', 'http://plugins.svn.wordpress.org/w3-total-cache/trunk/readme.txt');
 define('W3TC_SUPPORT_US_TIMEOUT', 2592000);
 define('W3TC_SUPPORT_REQUEST_URL', 'http://www.w3-edge.com/?w3tc_support_request=1');
-define('NEWRELIC_SIGNUP_URL', 'https://rpm.newrelic.com/signup?product%5Blevel%5D=Standard&product%5Bcommitment%5D=Monthly&subscription%5Bnumber_of_hosts%5D=1&partnership_id=295');
-define('MAXCDN_SIGNUP_URL', 'http://bit.ly/pXZ4t1');
+define('NEWRELIC_SIGNUP_URL', 'http://newrelic.com/w3edge');
+define('MAXCDN_SIGNUP_URL', 'http://tracking.maxcdn.com/c/15753/3982/378?u=https%3A%2F%2Fsecure.maxcdn.com%2F%3Fpackage%3Dstarter%26coupon%3Dw3tc');
+// this is the URL our updater / license checker pings. This should be the URL of the site with EDD installed
+if (!defined('EDD_W3EDGE_STORE_URL')) define('EDD_W3EDGE_STORE_URL', 'http://www.w3-edge.com/' );
+if (!defined('EDD_W3EDGE_STORE_URL_PLUGIN')) define('EDD_W3EDGE_STORE_URL_PLUGIN', 'http://www.w3-edge.com/?w3tc_buy_pro_plugin' );
+
+// the name of your product. This should match the download name in EDD exactly
+define('EDD_W3EDGE_W3TC_NAME', 'W3 Total Cache Pro: Annual Subscription');
 
 define('W3TC_WIN', (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'));
 
@@ -29,6 +35,8 @@ define('W3TC_INC_DIR', W3TC_DIR . '/inc');
 define('W3TC_INC_WIDGET_DIR', W3TC_INC_DIR. '/widget');
 define('W3TC_INC_FUNCTIONS_DIR', W3TC_INC_DIR . '/functions');
 define('W3TC_INC_OPTIONS_DIR', W3TC_INC_DIR . '/options');
+define('W3TC_INC_LIGHTBOX_DIR', W3TC_INC_DIR . '/lightbox');
+define('W3TC_INC_POPUP_DIR', W3TC_INC_DIR . '/popup');
 define('W3TC_LIB_DIR', W3TC_DIR . '/lib');
 define('W3TC_LIB_W3_DIR', W3TC_LIB_DIR . '/W3');
 define('W3TC_LIB_MINIFY_DIR', W3TC_LIB_DIR . '/Minify');
@@ -70,6 +78,8 @@ define('W3TC_ADDIN_FILE_OBJECT_CACHE', WP_CONTENT_DIR . '/object-cache.php');
 
 
 define('W3TC_WP_LOADER', (defined('WP_PLUGIN_DIR') ? WP_PLUGIN_DIR : WP_CONTENT_DIR . '/plugins') . '/w3tc-wp-loader.php');
+if (!defined('W3TC_EXTENSION_DIR'))
+    define('W3TC_EXTENSION_DIR', (defined('WP_PLUGIN_DIR') ? WP_PLUGIN_DIR : WP_CONTENT_DIR . '/plugins'));
 
 w3_require_once(W3TC_INC_DIR . '/functions/compat.php');
 w3_require_once(W3TC_INC_DIR . '/functions/plugin.php');
@@ -116,7 +126,9 @@ function w3_is_xml($content) {
  * @return bool
  */
 function w3_can_print_comment(&$buffer) {
-    return apply_filters('w3tc_can_print_comment', w3_is_xml($buffer) && !defined('DOING_AJAX'));
+    if (function_exists('apply_filters'))
+        return apply_filters('w3tc_can_print_comment', w3_is_xml($buffer) && !defined('DOING_AJAX'));
+    return w3_is_xml($buffer) && !defined('DOING_AJAX');
 }
 
 /*
@@ -136,13 +148,13 @@ function w3_filename_to_url($filename) {
     $dir = '';
     if (substr(WP_CONTENT_DIR, 0, strlen(w3_get_site_root())) == w3_get_site_root()) {
         $dir = str_replace($site_url_ssl, '', w3_get_url_ssl(w3_get_site_url()));
-        $dir = trim($dir, '/');
+        $dir = trim($dir, '/\\');
         if ($dir)
             $dir = '/' . $dir;
-        $content_path = trim(substr(WP_CONTENT_DIR, strlen(w3_get_site_root())), '/');
+        $content_path = trim(substr(WP_CONTENT_DIR, strlen(w3_get_site_root())), '/\\');
     }
     else
-        $content_path = trim(substr(WP_CONTENT_DIR, strlen(w3_get_document_root())), '/');
+        $content_path = trim(substr(WP_CONTENT_DIR, strlen(w3_get_document_root())), '/\\');
 
     $url = $site_url_ssl . $dir . '/' . $content_path . $uri_from_wp_content;
 
@@ -626,7 +638,7 @@ function w3_get_home_url() {
     
     if ($home_url === null) {
         $config = w3_instance('W3_Config');
-        if ($config->get_boolean('common.force_master')) {
+        if (w3_is_multisite() && $config->get_boolean('common.force_master')) {
             $home_url = get_home_url();
         } else {
             // get_option is unusable here, it can cause problem when objCache isn't yet initialized
@@ -1221,6 +1233,8 @@ function w3_redirect_temp( $url = '', $params = array() ) {
  * Returns caching engine name
  *
  * @param $engine
+ * @param $module
+ *
  * @return string
  */
 function w3_get_engine_name($engine, $module = '') {
@@ -1533,18 +1547,32 @@ function w3_convert_secs_to_time($input, $string = true) {
 /**
  * @return string
  */
-function w3_w3tc_release_version() {
-    if (defined('W3TC_ENTERPRISE') && W3TC_ENTERPRISE)
+function w3_w3tc_release_version($config = null) {
+    if (w3_is_enterprise($config))
         return 'enterprise';
-    if (defined('W3TC_PRO') && W3TC_PRO)
+    if (w3_is_pro($config))
         return 'pro';
     return 'community';
 }
 
-function w3_is_pro() {
-    return defined('W3TC_PRO') && W3TC_PRO;
+/**
+ * @param W3_Config $config
+ * @return bool
+ */
+function w3_is_pro($config = null) {
+    $result = false;
+    if ($config)
+        $result = $config->get_string('plugin.type') == 'pro';
+    return $result || defined('W3TC_PRO') && W3TC_PRO;
 }
 
-function w3_is_enterprise() {
-    return defined('W3TC_ENTERPRISE') && W3TC_ENTERPRISE;
+/**
+ * @param W3_Config $config
+ * @return bool
+ */
+function w3_is_enterprise($config = null) {
+    $result = false;
+    if ($config)
+        $result = $config->get_string('plugin.type') == 'enterprise';
+    return $result || defined('W3TC_ENTERPRISE') && W3TC_ENTERPRISE;
 }

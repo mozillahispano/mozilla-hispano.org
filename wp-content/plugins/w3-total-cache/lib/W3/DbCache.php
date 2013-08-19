@@ -64,7 +64,14 @@ class W3_DbCache extends W3_DbProcessor {
      *
      * @var string
      */
-    var $cache_reject_reason = null;
+    private $cache_reject_reason = null;
+
+    /**
+     * Request-global check reject scope
+     * false until set
+     * @var bool
+     */
+    private $cache_reject_request_wide = false;
 
     /**
      * Result of check if caching is possible at the level of current http request
@@ -289,11 +296,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Note - as a result requedt-wide checks are done only once per request
          */
         if (!is_null($this->cache_reject_reason)) {
-            if (function_exists('__'))
-                $cache_reject_reason = __('Request-wide ', 'w3-total-cache') . $this->cache_reject_reason;
-            else
-                $cache_reject_reason = 'Request-wide ' . $this->cache_reject_reason;
-
+            $this->cache_reject_request_wide = true;
             return false;
         }
        
@@ -303,10 +306,7 @@ class W3_DbCache extends W3_DbProcessor {
         if (is_null($this->_can_cache_once_per_request_result)) {
             $this->_can_cache_once_per_request_result = $this->_can_cache_once_per_request();
             if (!$this->_can_cache_once_per_request_result) {
-                if (function_exists('__'))
-                    $cache_reject_reason = __('Request-wide ', 'w3-total-cache') . $this->cache_reject_reason;
-                else    
-                    $cache_reject_reason = 'Request-wide ' . $this->cache_reject_reason;
+                $this->cache_reject_request_wide = true;
                 return false;
             }
         }
@@ -315,10 +315,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Check for DONOTCACHEDB constant
          */
         if (defined('DONOTCACHEDB') && DONOTCACHEDB) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('DONOTCACHEDB constant is defined', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'DONOTCACHEDB constant is defined';
+            $this->cache_reject_reason = 'DONOTCACHEDB';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -328,11 +325,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if doint AJAX
          */
         if (defined('DOING_AJAX')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Doing AJAX', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'Doing AJAX';
-            
+            $this->cache_reject_reason = 'DOING_AJAX';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -342,10 +335,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if doing cron
          */
         if (defined('DOING_CRON')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Doing cron', 'w3-total-cache');
-            else    
-                $this->cache_reject_reason = 'Doing cron';
+            $this->cache_reject_reason = 'DOING_CRON';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -355,10 +345,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if APP request
          */
         if (defined('APP_REQUEST')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Application request', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'Application request';
+            $this->cache_reject_reason = 'APP_REQUEST';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -368,10 +355,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if XMLRPC request
          */
         if (defined('XMLRPC_REQUEST')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('XMLRPC request', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'XMLRPC request';
+            $this->cache_reject_reason = 'XMLRPC_REQUEST';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -381,10 +365,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if admin
          */
         if (defined('WP_ADMIN')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('wp-admin', 'w3-total-cache');
-            else    
-                $this->cache_reject_reason = 'wp-admin';
+            $this->cache_reject_reason = 'WP_ADMIN';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -394,10 +375,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Check for WPMU's and WP's 3.0 short init
          */
         if (defined('SHORTINIT') && SHORTINIT) {
-            if (function_exists('__'))
-                $cache_reject_reason = __('Short init', 'w3-total-cache');
-            else
-                $cache_reject_reason = 'Short init';
+            $cache_reject_reason = 'SHORTINIT';
 
             return false;
         }
@@ -406,10 +384,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if SQL is rejected
          */
         if (!$this->_check_sql($sql)) {
-            if (function_exists('__'))
-                $cache_reject_reason = __('Query is rejected', 'w3-total-cache');
-            else    
-                $cache_reject_reason = 'Query is rejected';
+            $cache_reject_reason = 'query';
 
             return false;
         }
@@ -418,10 +393,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if user is logged in
          */
         if ($this->_config->get_boolean('dbcache.reject.logged') && !$this->_check_logged_in()) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('User is logged in', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'User is logged in';
+            $this->cache_reject_reason = 'user.logged_in';
             $cache_reject_reason = $this->cache_reject_reason;
 
             return false;
@@ -440,10 +412,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if disabled
          */
         if (!$this->_config->get_boolean('dbcache.enabled')) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Database caching is disabled', 'w3-total-cache');
-            else    
-                $this->cache_reject_reason = 'Database caching is disabled';
+                $this->cache_reject_reason = 'dbcache.disabled';
 
             return false;
         }
@@ -452,11 +421,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if request URI is rejected
          */
         if (!$this->_check_request_uri()) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Request URI is rejected', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'Request URI is rejected';
-
+            $this->cache_reject_reason = 'request';
             return false;
         }
 
@@ -464,11 +429,7 @@ class W3_DbCache extends W3_DbProcessor {
          * Skip if cookie is rejected
          */
         if (!$this->_check_cookies()) {
-            if (function_exists('__'))
-                $this->cache_reject_reason = __('Cookie is rejected', 'w3-total-cache');
-            else
-                $this->cache_reject_reason = 'Cookie is rejected';
-
+            $this->cache_reject_reason = 'cookie';
             return false;
         }
 
@@ -639,6 +600,52 @@ class W3_DbCache extends W3_DbProcessor {
                 break;
             default:
                 return array($group);
+        }
+    }
+
+
+    public function get_reject_reason() {
+        if (is_null($this->cache_reject_reason))
+            return '';
+        $request_wide_string = $this->cache_reject_request_wide ?
+                                  (function_exists('__') ? __('Request-wide', 'w3-total-cache').' ' : 'Request ') : '';
+        return $request_wide_string . $this->_get_reject_reason_message($this->cache_reject_reason);
+    }
+
+    /**
+     * @param $key
+     * @return string|void
+     */
+    private function _get_reject_reason_message($key) {
+        if (!function_exists('__'))
+            return $key;
+        switch ($key) {
+            case 'dbcache.disabled':
+                return __('Database caching is disabled', 'w3-total-cache');
+            case 'DONOTCACHEDB':
+                return __('DONOTCACHEDB constant is defined', 'w3-total-cache');
+            case 'DOING_AJAX':
+                return __('Doing AJAX', 'w3-total-cache');
+            case 'request':
+                return __('Request URI is rejected', 'w3-total-cache');
+            case 'cookie':
+                return __('Cookie is rejected', 'w3-total-cache');
+            case 'DOING_CRONG':
+                return __('Doing cron', 'w3-total-cache');
+            case 'APP_REQUEST':
+                return __('Application request', 'w3-total-cache');
+            case 'XMLRPC_REQUEST':
+                return __('XMLRPC request', 'w3-total-cache');
+            case 'WP_ADMIN':
+                return __('wp-admin', 'w3-total-cache');
+            case 'SHORTINIT':
+                return __('Short init', 'w3-total-cache');
+            case 'query':
+                return __('Query is rejected', 'w3-total-cache');
+            case 'user.logged_in':
+                return __('User is logged in', 'w3-total-cache');
+            default:
+                return $key;
         }
     }
 }

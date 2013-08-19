@@ -21,7 +21,7 @@ mobile_themes['<?php echo addslashes($theme_key); ?>'] = '<?php echo addslashes(
 
         <ul id="mobile_groups">
             <?php $index = 0; foreach ($groups as $group => $group_config): $index++; ?>
-            <li id="mobile_group_<?php echo htmlspecialchars($group); ?>">
+            <li id="mobile_group_<?php echo esc_attr($group); ?>">
                 <table class="form-table">
                     <tr>
                         <th>
@@ -33,22 +33,22 @@ mobile_themes['<?php echo addslashes($theme_key); ?>'] = '<?php echo addslashes(
                     </tr>
                     <tr>
                         <th>
-                            <label for="mobile_groups_<?php echo htmlspecialchars($group); ?>_enabled"><?php _e('Enabled:', 'w3-total-cache'); ?></label>
+                            <label for="mobile_groups_<?php echo esc_attr($group); ?>_enabled"><?php _e('Enabled:', 'w3-total-cache'); ?></label>
                         </th>
                         <td>
-                            <input type="hidden" name="mobile_groups[<?php echo htmlspecialchars($group); ?>][enabled]" value="0" />
-                            <input id="mobile_groups_<?php echo htmlspecialchars($group); ?>_enabled" type="checkbox" name="mobile_groups[<?php echo htmlspecialchars($group); ?>][enabled]" value="1"<?php checked($group_config['enabled'], true); ?> />
+                            <input type="hidden" name="mobile_groups[<?php echo esc_attr($group); ?>][enabled]" value="0" />
+                            <input id="mobile_groups_<?php echo esc_attr($group); ?>_enabled" type="checkbox" name="mobile_groups[<?php echo esc_attr($group); ?>][enabled]" value="1"<?php checked($group_config['enabled'], true); ?> />
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            <label for="mobile_groups_<?php echo htmlspecialchars($group); ?>_theme"><?php _e('Theme:', 'w3-total-cache'); ?></label>
+                            <label for="mobile_groups_<?php echo esc_attr($group); ?>_theme"><?php _e('Theme:', 'w3-total-cache'); ?></label>
                         </th>
                         <td>
-                            <select id="mobile_groups_<?php echo htmlspecialchars($group); ?>_theme" name="mobile_groups[<?php echo htmlspecialchars($group); ?>][theme]">
+                            <select id="mobile_groups_<?php echo esc_attr($group); ?>_theme" name="mobile_groups[<?php echo esc_attr($group); ?>][theme]">
                                 <option value="">-- Pass-through --</option>
                                 <?php foreach ($themes as $theme_key => $theme_name): ?>
-                                <option value="<?php echo htmlspecialchars($theme_key); ?>"<?php selected($theme_key, $group_config['theme']); ?>><?php echo htmlspecialchars($theme_name); ?></option>
+                                <option value="<?php echo esc_attr($theme_key); ?>"<?php selected($theme_key, $group_config['theme']); ?>><?php echo htmlspecialchars($theme_name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <br /><span class="description"><?php _e('Assign this group of user agents to a specific theme. Selecting "Pass-through" allows any plugin(s) (e.g. mobile plugins) to properly handle requests for these user agents. If the "redirect users to" field is not empty, this setting is ignored.', 'w3-total-cache'); ?></span>
@@ -56,19 +56,19 @@ mobile_themes['<?php echo addslashes($theme_key); ?>'] = '<?php echo addslashes(
                     </tr>
                     <tr>
                         <th>
-                            <label for="mobile_groups_<?php echo htmlspecialchars($group); ?>_redirect"><?php _e('Redirect users to:', 'w3-total-cache') ?></label>
+                            <label for="mobile_groups_<?php echo esc_attr($group); ?>_redirect"><?php _e('Redirect users to:', 'w3-total-cache') ?></label>
                         </th>
                         <td>
-                            <input id="mobile_groups_<?php echo htmlspecialchars($group); ?>_redirect" type="text" name="mobile_groups[<?php echo htmlspecialchars($group); ?>][redirect]" value="<?php echo htmlspecialchars($group_config['redirect']); ?>" size="60" />
+                            <input id="mobile_groups_<?php echo esc_attr($group); ?>_redirect" type="text" name="mobile_groups[<?php echo esc_attr($group); ?>][redirect]" value="<?php echo esc_attr($group_config['redirect']); ?>" size="60" />
                             <br /><span class="description"><?php _e('A 302 redirect is used to send this group of users to another hostname (domain); recommended if a 3rd party service provides a mobile version of your site.', 'w3-total-cache'); ?></span>
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            <label for="mobile_groups_<?php echo htmlspecialchars($group); ?>_agents"><?php _e('User agents:', 'w3-total-cache'); ?></label>
+                            <label for="mobile_groups_<?php echo esc_attr($group); ?>_agents"><?php _e('User agents:', 'w3-total-cache'); ?></label>
                         </th>
                         <td>
-                            <textarea id="mobile_groups_<?php echo htmlspecialchars($group); ?>_agents" name="mobile_groups[<?php echo htmlspecialchars($group); ?>][agents]" rows="10" cols="50"><?php echo htmlspecialchars(implode("\r\n", (array) $group_config['agents'])); ?></textarea>
+                            <textarea id="mobile_groups_<?php echo esc_attr($group); ?>_agents" name="mobile_groups[<?php echo esc_attr($group); ?>][agents]" rows="10" cols="50"><?php echo esc_textarea(implode("\r\n", (array) $group_config['agents'])); ?></textarea>
                             <br /><span class="description"><?php _e('Specify the user agents for this group. Remember to escape special characters like spaces, dots or dashes with a backslash. Regular expressions are also supported.', 'w3-total-cache'); ?></span>
                         </td>
                     </tr>
