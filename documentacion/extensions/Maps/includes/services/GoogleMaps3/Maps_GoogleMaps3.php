@@ -211,7 +211,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
 		
 		return array(
-			Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" )
+			Html::linkedScript( "https://maps.google.com/maps/api/js?sensor=false&language=$languageCode" )
 		);			
 	}
 	
