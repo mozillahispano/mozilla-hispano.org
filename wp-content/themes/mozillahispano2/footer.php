@@ -9,5 +9,6 @@
 	</div><!-- tullido -->
 </div><!-- lienzo -->
 <?php echo pintaPie(); ?>
+<?php echo pintaJs(); ?>
 </body>
 </html>
