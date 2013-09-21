@@ -23,28 +23,6 @@
   }
 }
 
-@media screen and (max-width: 750px) {
-  #contenido #main-content {
-    float: left;
-    width: 100%;
-  }
-  #barra {
-    float: left;
-    padding: 0 5px 0 13px;
-    width: 100%;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  #menu {
-    display: inline;
-    font-size: 12px;
-    height: 80px;
-    width: 100%;
-  }
-}
-
 @media screen and (max-width: 330px) {
   #tullido {
     margin: 0 5px;
