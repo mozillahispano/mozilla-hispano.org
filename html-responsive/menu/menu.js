@@ -242,6 +242,8 @@ window.OnReady (
 		}
 		/* Dar funcionalidad al manejador de menús para resoluciones pequeñas */
 		var navMainMenu = document.getElementById("nav-main-menu");
-		xb.addEvent(navMainMenu, "click", toggleMenu, false);
+		if (navMainMenu) {
+			xb.addEvent(navMainMenu, "click", toggleMenu, false);
+		}
 	}
 );
