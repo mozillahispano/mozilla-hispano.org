@@ -102,12 +102,6 @@ msgstr "ter em conta"
 msgid "consider with extra weight"
 msgstr "ter especialmente em conta"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Fazer uma doação via PayPal a mitcho (Michael Yoshitaka Erlewine) pelo desenvolvimento do plugin"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

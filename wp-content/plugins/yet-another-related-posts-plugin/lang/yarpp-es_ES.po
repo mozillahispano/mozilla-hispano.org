@@ -204,17 +204,6 @@ msgstr "considerar con peso extra"
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin Opciones"
 
-#@ default
-#@ yarpp
-#: options.php:252
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Hacer Donación a mitcho (Michael Yoshitaka Erlewine) por este plugin via PayPal"
-
-#@ yarpp
-#: options.php:255
-msgid "by <a href=\"http://mitcho.com/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "por <a href=\"http://mitcho.com/\">mitcho (Michael 芳貴 Erlewine)</a>"
-
 #@ yarpp
 #: options.php:255
 msgid "Follow <a href=\"http://twitter.com/yarpp/\">Yet Another Related Posts Plugin on Twitter</a>"

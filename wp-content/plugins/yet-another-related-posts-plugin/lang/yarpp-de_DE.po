@@ -101,12 +101,6 @@ msgstr "berücksichtigen"
 msgid "consider with extra weight"
 msgstr "besonders berücksichtigen"
 
-#: options.php:252
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "An mitcho (Michael Yoshitaka Erlewine) für die Entwicklung des Plugins via PayPal spenden"
-
 #: options.php:240
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
@@ -556,11 +550,6 @@ msgstr ""
 #@ yarpp
 msgid "Related entries may be displayed once you save your entry"
 msgstr "Ähnliche Beiträge werden nach dem Speichern angezeigt"
-
-#: options.php:255
-#@ yarpp
-msgid "by <a href=\"http://mitcho.com/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "von <a href=\"http://mitcho.com/\">mitcho (Michael 芳貴 Erlewine)</a>"
 
 #: options.php:272
 #: options.php:305

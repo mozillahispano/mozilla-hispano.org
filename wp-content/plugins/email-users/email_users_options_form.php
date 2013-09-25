@@ -41,6 +41,33 @@
 	</div>		
 <?php
 	}
+
+    //  Check the number of users who accept notifications and mass emails
+
+    $massemails = mailusers_get_users('', MAILUSERS_ACCEPT_MASS_EMAIL_USER_META) ;
+    $notifications = mailusers_get_users('', MAILUSERS_ACCEPT_NOTIFICATION_USER_META) ;
+
+    if (count($massemails) == 0 || count($notifications) == 0)
+    {
+?>
+	<div class="updated fade">
+    <div class="table table_content">
+    <p class="sub"><?php _e('Current settings show post or page notification and/or mass email may not be received by any users.', MAILUSERS_I18N_DOMAIN); ?></p>
+    <table style="text-align: left; width: auto;">
+   	<tr>
+    <th><?php _e('Number of Users who accept post or page notification emails:', MAILUSERS_I18N_DOMAIN); ?></th>
+	<td<?php if ( count($notifications) == 0) echo ' style="color: red;"' ; ?>><?php echo count($notifications) ; ?></td>
+	</tr>
+   	<tr>
+    <th><?php _e('Number of Users who accept emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></th>
+	<td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
+	</tr>
+	</table>
+    </div>
+    </div>
+<?php
+    }
+
 ?>
 
 <div class="wrap"><!-- wrap -->
@@ -350,6 +377,10 @@
 		<td><?php _e('the title of the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
 	<tr>
+		<td><b>%POST_AUTHOR%</b></td>
+		<td><?php _e('the author of the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
 		<td><b>%POST_EXCERPT%</b></td>
 		<td><?php _e('the excerpt of the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
@@ -451,6 +482,30 @@
 <div class="postbox-container side" style="margin-left: 10px; min-width: 225px; width:25%; border: 0px dashed red;"><!-- 25% Postbox Container -->
 <div class="metabox-holder">
 <div class="meta-box-sortables">
+
+<div id="email-users-info" class="postbox email-users-postbox">
+<div class="handlediv" title="Click to toggle"><br /></div>
+<h3 class="hndle"><span><?php _e('Email-Users Information', MAILUSERS_I18N_DOMAIN);?></span></h3>
+<div class="inside">
+
+<div><!-- Email Users info box-->
+<div class="table table_content">
+<table style="text-align: left; width: 90%;">
+<tr>
+<th><?php _e('Number of Users who accept<br/>post or page notification emails:', MAILUSERS_I18N_DOMAIN); ?></th>
+<td<?php if ( count($notifications) == 0) echo ' style="color: red;"' ; ?>><?php echo count($notifications) ; ?></td>
+</tr>
+<tr>
+<th><?php _e('Number of Users who accept<br/>emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></th>
+<td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
+</tr>
+</table>
+</div>
+</div>
+
+</div><!-- inside -->
+</div><!-- postbox -->
+
 <div id="email-users-donation" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Make a Donation', MAILUSERS_I18N_DOMAIN);?></span></h3>

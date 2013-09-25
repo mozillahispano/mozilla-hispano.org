@@ -102,12 +102,6 @@ msgstr "विचार"
 msgid "consider with extra weight"
 msgstr "अतिरिक्त वजन के साथ विचार"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "दान mitcho को (Michael Yoshitaka Erlewine) पेपैल द्वारा इस प्लगइन के लिए"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

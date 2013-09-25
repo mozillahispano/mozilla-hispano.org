@@ -24,6 +24,20 @@ function aioseop_get_field_value( field ) {
 	return cur.val();
 }
 
+function aioseop_get_field_values( field ) {
+	arr = [];
+	cur = jQuery('[name=' + field + ']');
+	if ( cur.length == 0 ) return field;
+	type = cur.attr('type');
+	if ( type == "checkbox" || type == "radio" )
+		jQuery('input[name=' + field + ']:checked').each(function() {
+			arr.push(jQuery(this).val());
+		});
+	if ( arr.length <= 0 )
+		arr.push(cur.val());
+	return arr;
+}
+
 function aioseop_eval_condshow_logic( statement ) {
 	var lhs, rhs;
 	if ( ( typeof statement ) == 'object' ) {
@@ -58,9 +72,16 @@ function aioseop_do_condshow_match( index, value ) {
 					matches = false;
 				}				
 			} else {
-				cur = aioseop_get_field_value( subopt );
-				if ( cur != setting ) {
-					matches = false;
+				if ( subopt.match(/aiosp_cpostactive/) ) { // special case for this one -- pdb
+					cur = aioseop_get_field_values( subopt );
+					if ( jQuery.inArray( setting, cur, 0 ) < 0 ) {
+						matches = false;
+					}
+				} else {
+					cur = aioseop_get_field_value( subopt );
+					if ( cur != setting ) {
+						matches = false;
+					}
 				}
 			}
 		});
@@ -160,19 +181,27 @@ if(typeof reclick_radio != 'function') {
 	}
 }
 
-function aioseop_handle_post_url( action, settings, options) {
+function aioseop_handle_ajax_call( action, settings, options, success) {
+	var aioseop_sack = new sack(ajaxurl);
+	aioseop_sack.execute = 1; 
+	aioseop_sack.method = 'POST';
+	aioseop_sack.setVar( "action", action );
+	aioseop_sack.setVar( "settings", settings );
+	aioseop_sack.setVar( "options", options );
+	if ( typeof success != 'undefined' ) {
+		aioseop_sack.onCompletion = success;
+	}
+	aioseop_sack.setVar( "nonce-aioseop", jQuery('input[name="nonce-aioseop"]').val() );
+	
+	aioseop_sack.onError = function() {alert('Ajax error on saving.'); };
+	aioseop_sack.runAJAX();	
+}
+
+function aioseop_handle_post_url( action, settings, options, success) {
 	jQuery("div#aiosp_"+settings).fadeOut('fast', function() {
 		var loading = '<label class="aioseop_loading aioseop_'+settings+'_loading"></label> Please wait...';
 		jQuery("div#aiosp_"+settings).fadeIn('fast', function() {
-			var aioseop_sack = new sack(ajaxurl);
-			aioseop_sack.execute = 1; 
-			aioseop_sack.method = 'POST';
-			aioseop_sack.setVar( "action", action );
-			aioseop_sack.setVar( "settings", settings );
-			aioseop_sack.setVar( "options", options );
-			aioseop_sack.setVar( "nonce-aioseop", jQuery('input[name="nonce-aioseop"]').val() );
-			aioseop_sack.onError = function() {alert('Ajax error on saving.'); };
-			aioseop_sack.runAJAX();
+			aioseop_handle_ajax_call( action, settings, options, success);
 		});
 		jQuery("div#aiosp_"+settings).html(loading);
 	})
@@ -198,7 +227,28 @@ jQuery(document).ready(function() {
 			}
 		});
 	}
-	var selectors = "div.aioseop_multicheckbox_type div.aioseop_option_div, #aiosp_performance_status div.aioseop_option_div";
+	/*
+	jQuery("#aiosp_settings_form").delegate("input[name='Submit']", "click", function() {
+		aioseop_handle_post_url('aioseop_ajax_save_settings', 'ajax_settings_message', jQuery('form#aiosp_settings_form').serialize() );
+		return false;
+	});
+	*/
+	jQuery(".all-in-one-seo_page_all-in-one-seo-pack-aioseop_feature_manager #aiosp_settings_form .aioseop_settings_left").delegate("input[name='Submit']", "click", function(e) {
+		e.preventDefault();
+		return false;
+	});
+	jQuery(".all-in-one-seo_page_all-in-one-seo-pack-aioseop_feature_manager #aiosp_settings_form").delegate("input[name='Submit']", "click", function(e) {
+		e.preventDefault();
+		aioseop_handle_post_url('aioseop_ajax_save_settings', 'ajax_settings_message', jQuery('form#aiosp_settings_form').serialize(),
+			function() {
+				jQuery('.wp-has-current-submenu').fadeIn('fast', function() {
+					aioseop_handle_ajax_call('aioseop_ajax_get_menu_links', 'ajax_settings_message', jQuery.param( {target: '.wp-has-current-submenu > ul'} ) );
+				});
+			} );
+		return false;
+	});
+	var selectors = "div.aioseop_multicheckbox_type div.aioseop_option_div, #aiosp_sitemap_debug div.aioseop_option_div, #aiosp_performance_status div.aioseop_option_div";
+	/*
 	jQuery(selectors).each(function() {
 		aioseop_overflow_border(this);
 	});
@@ -209,6 +259,36 @@ jQuery(document).ready(function() {
 			aioseop_overflow_border(this);
 		}), 250);
 	});
+	*/
+	jQuery("div#aiosp_sitemap_addl_pages_metabox").delegate("input[name='Submit']", "click", function() {
+		aioseop_handle_post_url('aioseop_ajax_save_url', 'sitemap_addl_pages', jQuery('div#aiosp_sitemap_addl_pages_metabox input, div#aiosp_sitemap_addl_pages_metabox select').serialize() );
+		return false;
+	});
+	jQuery("div#aiosp_sitemap_addl_pages_metabox").delegate("a.aiosp_delete_url", "click", function(e) {
+		e.preventDefault();
+		aioseop_handle_post_url('aioseop_ajax_delete_url', 'sitemap_addl_pages', jQuery(this).attr("title") );
+		return false;
+	});
+	jQuery("div#aiosp_opengraph_scan_header").delegate("input[name='aiosp_opengraph_scan_header']", "click", function(e) {
+		e.preventDefault();
+		aioseop_handle_post_url('aioseop_ajax_scan_header', 'opengraph_scan_header', jQuery('div#aiosp_opengraph_scan_header').serialize() );
+		return false;
+	});
+
+	jQuery('input[name="aiosp_sitemap_posttypes[]"][value="all"]').click(function () {
+		jQuery(this).parents('div:eq(0)').find(':checkbox').attr('checked', this.checked);
+    });
+	jQuery('input[name="aiosp_sitemap_taxonomies[]"][value="all"]').click(function () {
+		jQuery(this).parents('div:eq(0)').find(':checkbox').attr('checked', this.checked);
+    });
+	jQuery('input[name="aiosp_sitemap_posttypes[]"][value!="all"]').click(function () {
+		if ( !this.checked )
+			jQuery(this).parents('div:eq(0)').find('input[value="all"]:checkbox').attr('checked', this.checked);
+    });
+	jQuery('input[name="aiosp_sitemap_taxonomies[]"][value!="all"]').click(function () {
+		if ( !this.checked )
+			jQuery(this).parents('div:eq(0)').find('input[value="all"]:checkbox').attr('checked', this.checked);
+    });
 	jQuery(".aioseop_tab:not(:first)").hide();
     jQuery(".aioseop_tab:first").show();
     jQuery("a.aioseop_header_tab").click(function(){

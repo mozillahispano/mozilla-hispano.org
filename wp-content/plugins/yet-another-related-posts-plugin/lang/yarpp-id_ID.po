@@ -105,12 +105,6 @@ msgstr "mengharuskan lebih dari satu persamaan dalam %s"
 msgid "consider with extra weight"
 msgstr "pertimbangkan dengan berat ekstra"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Donasi ke mitcho (Michael Yoshitaka Erlewine) untuk plugin ini melalui PayPal"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

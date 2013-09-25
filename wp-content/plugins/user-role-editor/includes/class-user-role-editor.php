@@ -80,7 +80,7 @@ class User_Role_Editor {
     }
 
     // these filters and actions should prevent editing users with administrator role
-    // by other users with URE_KEY_CAPABILITY capability    
+    // by other users with 'edit_users' capability
     if (!$this->lib->user_is_admin($user_id)) {
       // Exclude administrator role from edit list.
       add_filter('editable_roles', array( &$this, 'exclude_admin_role' ) );      
@@ -98,10 +98,9 @@ class User_Role_Editor {
     add_filter( 'manage_users_columns', array(&$this, 'user_role_column'), 10, 5 );
     add_filter( 'manage_users_custom_column', array(&$this, 'user_role_row'), 10, 3 );
     add_action( 'profile_update', array(&$this, 'user_profile_update'), 10 );
-
+    add_filter( 'all_plugins', array( &$this, 'exclude_from_plugins_list' ) );
     
-    if ($this->lib->multisite) {
-      add_filter( 'all_plugins', array( &$this, 'exclude_from_plugins_list' ) );    
+    if ($this->lib->multisite) {          
       $allow_edit_users_to_not_super_admin = $this->lib->get_option('allow_edit_users_to_not_super_admin', 0);
       if ($allow_edit_users_to_not_super_admin) {
           add_filter( 'map_meta_cap', array($this, 'restore_users_edit_caps'), 1, 4 );
@@ -358,24 +357,26 @@ class User_Role_Editor {
    * @param type array $plugins plugins list
    * @return type array $plugins updated plugins list
    */
-  public function exclude_from_plugins_list($plugins) 
-  {
-    
-    // if multi-site, then allow plugin activation for network superadmins and, if that's specially defined, - for single site administrators too    
-    if (is_super_admin() || (defined('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE') && URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE==1)) {    
-      return $plugins;
-    }
+  public function exclude_from_plugins_list($plugins) {
+        global $current_user;
 
-    // exclude URE from plugins list
-    foreach ($plugins as $key => $value) {
-      if ($key == 'user-role-editor/'.URE_PLUGIN_FILE) {
-        unset($plugins[$key]);
-      }
-    }
+        $ure_key_capability = $this->lib->get_key_capability();
+        // if multi-site, then allow plugin activation for network superadmins and, if that's specially defined, - for single site administrators too    
+        if ($this->lib->user_has_capability($current_user, $ure_key_capability)) {
+            return $plugins;
+        }
 
-    return $plugins;
-  }
-  // end of exclude_from_plugins_list()
+        // exclude URE from plugins list
+        foreach ($plugins as $key => $value) {
+            if ($key == 'user-role-editor/' . URE_PLUGIN_FILE) {
+                unset($plugins[$key]);
+                break;
+            }
+        }
+
+        return $plugins;
+    }
+    // end of exclude_from_plugins_list()
 
   
     /**
@@ -459,11 +460,11 @@ class User_Role_Editor {
                 wp_die('Security check');
             }
 
-			if (defined('URE_SHOW_ADMIN_ROLE') && (URE_SHOW_ADMIN_ROLE==1) ) {
+            if (defined('URE_SHOW_ADMIN_ROLE') && (URE_SHOW_ADMIN_ROLE == 1)) {
                 $show_admin_role = 1;
-			} else {
-				$show_admin_role = $this->lib->get_request_var('show_admin_role', 'checkbox');
-			}
+            } else {
+                $show_admin_role = $this->lib->get_request_var('show_admin_role', 'checkbox');
+            }
             $this->lib->put_option('show_admin_role', $show_admin_role);
             
             $caps_readable = $this->lib->get_request_var('caps_readable', 'checkbox');
@@ -525,13 +526,9 @@ class User_Role_Editor {
         } else {
             $user_id = false;
         }
-        if (!$this->lib->user_is_admin($user_id)) {
-            if (is_multisite()) {
-                $admin = 'SuperAdministrator';
-            } else {
-                $admin = 'Administrator';
-            }
-            die(__('Only', 'ure') . ' ' . $admin . ' ' . __('is allowed to use', 'ure') . ' ' . 'User Role Editor');
+        $ure_key_capability = $this->lib->get_key_capability();
+        if (!$this->lib->user_has_capability($current_user, $ure_key_capability)) {
+            die(__('Insufficient permissions to work with User Role Editor', 'ure'));
         }
 
         $this->lib->editor();

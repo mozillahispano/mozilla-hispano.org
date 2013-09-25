@@ -43,7 +43,8 @@ class YARPP_Admin {
 			add_action( 'wp_ajax_yarpp_display_demo', array( $this, 'ajax_display_demo' ) );
 			add_action( 'wp_ajax_yarpp_display', array( $this, 'ajax_display' ) );
 			add_action( 'wp_ajax_yarpp_optin_data', array( $this, 'ajax_optin_data' ) );
-			add_action( 'wp_ajax_yarpp_optin', array( $this, 'ajax_optin' ) );
+            add_action( 'wp_ajax_yarpp_optin_enable', array( $this,'ajax_optin_enable'));
+			add_action( 'wp_ajax_yarpp_optin_disable', array( $this,'ajax_optin_disable'));
 			add_action( 'wp_ajax_yarpp_set_display_code', array( $this, 'ajax_set_display_code' ) );
 		}
 	}
@@ -51,22 +52,32 @@ class YARPP_Admin {
 	function ui_register() {
 		global $wp_version;
 
-		if ( get_option( 'yarpp_activated' ) ) {
-			delete_option( 'yarpp_activated' );
- 			delete_option( 'yarpp_upgraded' );
- 			if ( !$this->core->get_option('optin') )
-				add_action( 'admin_notices', array( $this, 'install_notice' ) );
-		} elseif ( !$this->core->get_option('optin') &&
+		if (get_option('yarpp_activated')) {
+
+			delete_option('yarpp_activated');
+ 			delete_option('yarpp_upgraded');
+
+ 			if ( $this->core->get_option('optin') ){
+				add_action('admin_notices', array($this, 'install_notice_disable'));
+            }else{
+				add_action('admin_notices', array($this, 'install_notice_enable'));
+            }
+
+		} elseif ( $this->core->get_option('optin') &&
  			current_user_can('manage_options') &&
  			get_option( 'yarpp_upgraded' )
  			) {
+
 			add_action( 'admin_notices', array( $this, 'upgrade_notice' ) );
-		} elseif ( !$this->core->get_option('optin') &&
+
+		} elseif ( $this->core->get_option('optin') &&
  			current_user_can('manage_options') &&
 			!get_user_option( 'yarpp_saw_optin' )
 			) {
+
 			add_action( 'admin_notices', array( $this, 'optin_notice' ) );
-		}
+
+		}/*end get_optin if*/
 		
 		if ( $this->core->get_option('optin') )
 			delete_option( 'yarpp_upgraded' );
@@ -88,7 +99,7 @@ class YARPP_Admin {
 		
 		// new in 3.3: properly enqueue scripts for admin:
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-	}
+	}/*end ui_register*/
 
 	// 3.5.4: only load metabox code if we're going to be on the settings page
 	function settings_screen( $current_screen ) {
@@ -148,88 +159,130 @@ class YARPP_Admin {
 
 	public function help_optin() {
 		// todo: i18n
-		echo '<p>' . sprintf( __( "With your permission, YARPP will send information about YARPP's settings, usage, and environment back to a central server at %s.", 'yarpp' ), '<code>yarpp.org</code>') . ' ';
-		echo __( "This information will be used to improve YARPP in the future and help decide future development decisions for YARPP.", 'yarpp' ) . ' ';
-		echo '<strong>' . __( "Contributing this data will help make YARPP better for you and for other YARPP users.", 'yarpp' ) . '</strong></p>';
+		echo(
+            '<p>'.
+                __("With your permission, YARPP will send information about YARPP's settings, usage, and environment
+                    back to a central server at ", 'yarpp').'<code>yarpp.org</code>'.'.&nbsp;'.
+		        __("This information will be used to improve YARPP in the future and help decide future development
+		            decisions for YARPP.",
+                    'yarpp'
+                ).' '.
+		        '<strong>'.
+                __("Contributing this data will help make YARPP better for you and for other YARPP users.",
+                    'yarpp' ).'</strong>'.
+            '</p>'
+        );
 
-		if ( !$this->core->get_option( 'optin' ) ) {
+		if(!$this->core->get_option('optin')) {
 			echo '<p>';
-			$this->print_optin_button();
-			$this->optin_button_script();
+			$this->print_optin_button('Enable');
+			$this->optin_button_script('enable');
 			echo '</p>';
 		}
 		
-		echo '<p>' . __( "If you opt-in, the following information is sent back to YARPP:", 'yarpp' ) . '</p>';
-		echo '<div id="optin_data_frame"></div>';
-		echo '<p>' . __( "In addition, YARPP also loads an invisible pixel image with your YARPP results to know how often YARPP is being used.", 'yarpp' ) . '</p>';
-	}
-	
-	function the_optin_button() {
-		return '<a id="yarpp-optin-button" class="button">' . __('Send settings and usage data back to YARPP', 'yarpp') . '</a><span class="yarpp-thankyou" style="display:none; margin-right: 10px;"><strong>' . __('Thank you!', 'yarpp') . '</strong></span>';
-	}
-
-	function optin_button_script() {
-		wp_nonce_field( 'yarpp_optin', 'yarpp_optin-nonce', false );
-		echo "<script type='text/javascript'>
-			jQuery(function($){
-				$(document.body).on('click', '#yarpp-optin-button', function() {
-					console.log(this);
-					$(this)
-						.hide()
-						.siblings('.yarpp-thankyou').show('slow');
-					$('#yarpp-optin').attr('checked', true);
-					$.ajax({type:'POST',
-						url: ajaxurl,
-						data: {
-							action: 'yarpp_optin',
-							'_ajax_nonce': $('#yarpp_optin-nonce').val()
-						}
-					});
-				});
-			});
-		</script>\n";
-	}
-	
-	function print_optin_button() {
-		echo $this->the_optin_button();
+		echo(
+            '<p>'.
+                __("The following information is sent back to YARPP:", 'yarpp').
+            '</p>'.
+		    '<div id="optin_data_frame"></div>'.
+            '<p>'.
+                __("In addition, YARPP also loads an invisible pixel image with your YARPP results to know how often YARPP is being used.", 'yarpp').
+            '</p>'
+        );
 	}
 
-	function optin_notice( $type = false ) {
+    function print_optin_button($action = 'Disable') {
+        echo $this->the_optin_button($action);
+    }
+	
+	function the_optin_button($action = 'Disable') {
+        $out =  '<a id="yarpp-optin-button" class="button">'.
+                    __($action.' sending usage data back to YARPP', 'yarpp').
+                '</a>'.
+                '<span class="yarpp-thankyou" style="display:none; margin-right: 10px;">'.
+                    '<strong>'.__('Thank you!', 'yarpp').'</strong>'.
+                '</span>';
+        return $out;
+	}
+
+	function optin_button_script($action = 'disable') {
+		wp_nonce_field('yarpp_optin_'.$action, 'yarpp_optin-nonce', false);
+
+		echo(
+            "<script type='text/javascript'>
+                jQuery(function($){
+                    $(document.body).on('click', '#yarpp-optin-button', function(){
+                        $(this).hide().siblings('.yarpp-thankyou').show('slow');
+                        $('#yarpp-optin').attr('checked', true);
+                        $.ajax({
+                            type:'POST',
+                            url : ajaxurl,
+                            data: {
+                                action: 'yarpp_optin_".$action."',
+                                '_ajax_nonce': $('#yarpp_optin-nonce').val()
+                                }
+                        });
+                    });
+                });
+            </script>\n"
+        );
+	}
+
+    function upgrade_notice() {
+        $this->optin_notice('upgrade');
+    }
+
+    function install_notice_enable() {
+        $this->optin_notice('install','Enable');
+    }
+
+    function install_notice_disable() {
+        $this->optin_notice('install');
+    }
+
+	function optin_notice($type = false, $action = 'Disable') {
 		$screen = get_current_screen();
-		if ( is_null($screen) || $screen->id == 'settings_page_yarpp' )
-			return;
+		if(is_null($screen) || $screen->id == 'settings_page_yarpp') return;
 
-		switch ( $type ) {
+		switch($type) {
 			case 'upgrade':
-				delete_option( 'yarpp_upgraded' );
+				delete_option('yarpp_upgraded');
 				break;
 			case 'install':
 				break;
 			default:
 				$user = get_current_user_id();
-				update_user_option( $user, 'yarpp_saw_optin', true );
+				update_user_option($user, 'yarpp_saw_optin', true);
 		}
 
 		echo '<div class="updated fade"><p>';
-		if ( $type == 'upgrade' )
-			echo '<strong>' . sprintf( __('%1$s updated successfully.'), 'Yet Another Related Posts Plugin' ) . '</strong> ';
-		if ( $type == 'install' )
-			echo '<strong>' . str_replace('<span>', '<span style="font-style:italic; font-weight: inherit;">', __('Thank you for installing <span>Yet Another Related Posts Plugin</span>!', 'yarpp') ) . '</strong> ';
-		_e( "<strong>Help make YARPP better</strong> by sending information about YARPP's settings and usage statistics.", 'yarpp' );
+
+		if($type === 'upgrade'){
+			echo '<strong>'.sprintf(__('%1$s updated successfully.'), 'Yet Another Related Posts Plugin' ).'</strong>';
+        }
+
+		if ( $type == 'install' ){
+            /* TODO: Why translate YARPP and use str_replace. Performance??? --Eli */
+			echo(
+                '<strong>'.
+                    str_replace('<span>','<span style="font-style:italic; font-weight: inherit;">',
+                        __('Thank you for installing <span>Yet Another Related Posts Plugin</span>!', 'yarpp')).
+                '</strong>'
+            );
+        }
+
+		_e(
+            "<p>".
+            "YARPP would like to use your site&#39;s usage statistics to make more informed decisions about future development. ".
+            "Optionally, this can be disabled by clicking on the button below.".
+            "</p>"
+        ,'yarpp' );
 
 		echo '</p><p>';
-		$this->print_optin_button();
-		$this->optin_button_script();
-		echo '<a class="button" href="options-general.php?page=yarpp#help-optin">' . __( 'Learn More', 'yarpp' ) . '</a>';
+		$this->print_optin_button($action);
+		$this->optin_button_script(strtolower($action));
+		echo '<a class="button" href="options-general.php?page=yarpp#help-optin">'.__('Learn More', 'yarpp').'</a>';
 		echo '</p></div>';
-	}
-
-	function upgrade_notice() {
-		$this->optin_notice( 'upgrade' );
-	}
-
-	function install_notice() {
-		$this->optin_notice( 'install' );
 	}
 	
 	// faux-markdown, required for the help text rendering
@@ -454,7 +507,7 @@ class YARPP_Admin {
 	}
 	
 	function ajax_optin_data() {
-		check_ajax_referer( 'yarpp_optin_data' );
+		check_ajax_referer('yarpp_optin_data');
 
 		header("HTTP/1.1 200");
 		header("Content-Type: text/html; charset=UTF-8");
@@ -464,13 +517,26 @@ class YARPP_Admin {
 		exit;
 	}
 
-	function ajax_optin() {
-		check_ajax_referer( 'yarpp_optin' );
+    function ajax_optin_disable() {
+		check_ajax_referer('yarpp_optin_disable');
 
 		header("HTTP/1.1 200");
 		header("Content-Type: text; charset=UTF-8");
-		
-		$data = $this->core->set_option('optin', true);
+
+        $data = $this->core->set_option('optin', false);
+
+		echo 'ok';
+		exit;
+    }
+
+	function ajax_optin_enable() {
+		check_ajax_referer('yarpp_optin_enable');
+
+		header("HTTP/1.1 200");
+		header("Content-Type: text; charset=UTF-8");
+
+        $data = $this->core->set_option('optin', true);
+
 		$this->core->optin_ping();
 		echo 'ok';
 		exit;

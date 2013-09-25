@@ -281,13 +281,16 @@ input[type=radio].persona-button--select-color-radio {
   display: inline-block;
 }
 
-/**
- * Admin screen.
- *
- * Do not display the ugly password nag in persona only auth
- */
-.persona--persona-only-auth .default-password-nag {
-  display: none;
+.persona__warning {
+  padding: 12px;
+  background-color: #ffebe8;
+  color: #333;
+  border: 1px solid #cc0000;
+  font-size: 12px;
+}
+
+.persona__warning-heading {
+  display: inline-block;
 }
 
 /**
@@ -397,4 +400,7 @@ input[type=radio].persona-button--select-color-radio {
 }
 
 
+.persona__widget-button-container {
+  list-style-type: none;
+}
 

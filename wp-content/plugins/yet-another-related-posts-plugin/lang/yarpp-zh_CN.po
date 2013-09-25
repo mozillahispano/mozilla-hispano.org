@@ -102,12 +102,6 @@ msgstr "参考"
 msgid "consider with extra weight"
 msgstr "作为主要参考指标"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "通过 PayPal 给插件作者 mitcho (Michael Yoshitaka Erlewine) 捐赠"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

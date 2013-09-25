@@ -102,12 +102,6 @@ msgstr "rassmatrivat'"
 msgid "consider with extra weight"
 msgstr "rassmatrivat' s dopolnitel'nym vesom"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Pojertvovat' razrabotchiku  mitcho (Michael Yoshitaka Erlewine), cherez PayPal"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

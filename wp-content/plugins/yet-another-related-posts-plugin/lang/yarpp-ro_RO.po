@@ -101,12 +101,6 @@ msgstr "a lua în considerare"
 msgid "consider with extra weight"
 msgstr " a lua în considerare cu greutate suplimentară "
 
-#@ default
-#@ yarpp
-#: options-meta-boxes.php:286
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "A dona producătorului  mitcho (Michael Yoshitaka Erlewine), prin PayPal"
-
 #@ yarpp
 #: options.php:178
 msgid "Yet Another Related Posts Plugin Options"

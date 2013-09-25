@@ -1,0 +1,617 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-03-30 21:27+0100\n"
+"Last-Translator: Diana <diana@wpdiscounts.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural= n==1 || n%10==1 ? 0 : 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Language: mk_MK\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ yarpp
+#: class-admin.php:55 class-widget.php:7 class-widget.php:59
+msgid "Related Posts (YARPP)"
+msgstr "Povrzani postovi (YARPP)"
+
+# @ yarpp
+#: class-admin.php:63
+msgid "Related Posts"
+msgstr "Povrzani postovi"
+
+# @ yarpp
+#: class-cache.php:522
+msgid "Example post "
+msgstr "Primeren post"
+
+# @ yarpp
+#: class-core.php:586 class-core.php:701 options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+msgid ""
+"Related posts brought to you by <a href='%s'>Yet Another Related Posts "
+"Plugin</a>."
+msgstr ""
+"Povrzani postovi doneseni za vas od <a href='%s'>Yet Another Related Posts "
+"Plugin</a>."
+
+# @ yarpp
+#: options.php:46
+msgid ""
+"The MyISAM check has been overridden. You may now use the \"consider titles"
+"\" and \"consider bodies\" relatedness criteria."
+msgstr ""
+"Proverata na  MyISAM e prepisana. Sega mozete da koristite kriteriite "
+"povrzani so \"smetaj gi naslovite\" and \"smetaj gi tekstovite\""
+
+# @ yarpp
+#: options.php:54
+#, php-format
+msgid ""
+"YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
+"require your <code>%s</code> table to use the <a href='http://dev.mysql.com/"
+"doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the "
+"table seems to be using the <code>%s</code> engine. These two options have "
+"been disabled."
+msgstr ""
+" Povrzanosta na \"smetaj gi naslovite\" i \"smetaj gi tekstovite\" na YARPP "
+"barrat vasata<code>%s</code> tabla da gi upotrebuva <a href='http://dev."
+"mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, "
+"no tablate izgleda go upotrebuva <code>%s</code> engine. Ovie dve opcii se "
+"onevozmozeni."
+
+# @ yarpp
+#: options.php:56
+#, php-format
+msgid ""
+"To restore these features, please update your <code>%s</code> table by "
+"executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = "
+"MyISAM;</code> . No data will be erased by altering the table's engine, "
+"although there are performance implications."
+msgstr ""
+"Za da gi povratite ovie funkcii, ve molime azurirajte ja vasata <code>%s</"
+"code> tabla taka sto kje ja izvrsite slednata SQL direktiva: <code>ALTER "
+"TABLE `%s` ENGINE = MyISAM;</code>. Nikakva data nema da bide izbrisana so "
+"izmenuvanjeto na prebaruvanjeto, iako kje ima implikacii na performans."
+
+# @ yarpp
+#: options.php:58
+#, php-format
+msgid ""
+"If, despite this check, you are sure that <code>%s</code> is using the "
+"MyISAM engine, press this magic button:"
+msgstr ""
+"Dokolku i pokraj ovaa provera ste sigurni deka <code>%s</code> go koristi "
+"MyISAM engine, kliknete go magicnoto kopce:"
+
+# @ yarpp
+#: options.php:61
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Veruvaj mi. Dozvoli mi da gi koristam MyISAM funkciite."
+
+# @ yarpp
+#: options.php:76
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPP bazata na podatoci imase greska, ama e ispravena."
+
+# @ yarpp
+#: options.php:78
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPP bazata na podatoci ima greska koja sto ne moze da se ispravi."
+
+# @ yarpp
+#: options.php:135
+msgid "Options saved!"
+msgstr "Opciite se socuvani!"
+
+# @ yarpp
+#: options-meta-boxes.php:47 options-meta-boxes.php:59
+msgid "do not consider"
+msgstr "ne smetaj"
+
+# @ yarpp
+#: options-meta-boxes.php:48 options-meta-boxes.php:60
+msgid "consider"
+msgstr "smetaj"
+
+# @ yarpp
+#: options-meta-boxes.php:50
+#, php-format
+msgid "require at least one %s in common"
+msgstr "baraj barem edna zaednicka %s"
+
+# @ yarpp
+#: options-meta-boxes.php:51
+#, php-format
+msgid "require more than one %s in common"
+msgstr "baraj poveke od edna zaednicka %s"
+
+# @ yarpp
+#: options-meta-boxes.php:49 options-meta-boxes.php:61
+msgid "consider with extra weight"
+msgstr "smetaj so ekstra tezina"
+
+# @ yarpp
+#: options.php:141
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Yet Another Related Posts Plugin Options"
+
+# @ yarpp
+#: options-meta-boxes.php:147
+msgid "\"The Pool\""
+msgstr "\"Listata\""
+
+# @ yarpp
+#: options-meta-boxes.php:109
+msgid ""
+"\"The Pool\" refers to the pool of posts and pages that are candidates for "
+"display as related to the current entry."
+msgstr ""
+"\"Listata\" se odnesuva na lista na postovi i stranici koi se kandidati za "
+"prikazuvanje kako povrzani so momentalnoto vnesuvanje."
+
+# @ yarpp
+#: options-meta-boxes.php:118
+msgid "Show password protected posts?"
+msgstr "Prikazi gi postovite zastiteni so sifra?"
+
+# @ yarpp
+#: options-meta-boxes.php:170
+msgid "Show only previous posts?"
+msgstr "Prikazi gi samo prethodnite postovi?"
+
+# @ yarpp
+#: options-meta-boxes.php:129
+msgid "day(s)"
+msgstr "den(ovi)"
+
+# @ yarpp
+#: options-meta-boxes.php:130
+msgid "week(s)"
+msgstr "nedela/i"
+
+# @ yarpp
+#: options-meta-boxes.php:131
+msgid "month(s)"
+msgstr "mesec/i"
+
+# @ yarpp
+#: options-meta-boxes.php:137
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Prikazi gi samo postovite od prethodnite NUMERICKI EDINICI "
+
+# @ yarpp
+#: options-meta-boxes.php:178
+msgid "\"Relatedness\" options"
+msgstr "\"Povrzanost\" opcii"
+
+# @ yarpp
+#: options-meta-boxes.php:17 options-meta-boxes.php:113
+#: options-meta-boxes.php:153 options-meta-boxes.php:169
+#: options-meta-boxes.php:187 options-meta-boxes.php:228
+#: options-meta-boxes.php:245 options-meta-boxes.php:247
+#: options-meta-boxes.php:283
+msgid "more&gt;"
+msgstr "poveke&gt;"
+
+# @ yarpp
+#: options-meta-boxes.php:153
+msgid ""
+"The higher the match threshold, the more restrictive, and you get less "
+"related posts overall. The default match threshold is 5. If you want to find "
+"an appropriate match threshhold, take a look at some post's related posts "
+"display and their scores. You can see what kinds of related posts are being "
+"picked up and with what kind of match scores, and determine an appropriate "
+"threshold for your site."
+msgstr ""
+"Sto poveke podudaranja, toa porestriktivni ke bidat, i dobivate pomalku "
+"srodni temi vo celina. Standardnoto podudaranje e 5. Ako sakate da najdete "
+"soodvetno podudaranje, poglednete gi prikazanite postovi na nekoi od "
+"prethodnite postovi i nivnite rezultati. Ke vidite kakvi vrsti na povrzani "
+"postovi se izbrani i kakva im e podudarnosta, i ke mozete da odredite "
+"soodvetno podudaranje za vasiot sajt. "
+
+# @ yarpp
+#: options-meta-boxes.php:159
+msgid "Match threshold:"
+msgstr "Podudarna vrednost"
+
+# @ yarpp
+#: options-meta-boxes.php:160
+msgid "Titles: "
+msgstr "Naslovi:"
+
+# @ yarpp
+#: options-meta-boxes.php:162
+msgid "Bodies: "
+msgstr "Tekstovi:"
+
+# @ yarpp
+#: options.php:38
+#, php-format
+msgid ""
+"There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
+"href=\"%s\">download it here</a> at your own risk."
+msgstr ""
+"Postoi nova beta (%s) na Yet Another Related Posts Plugin. Mozete da go <a "
+"href=\"%s\"> prezemete tuka na sopstvena odgovornost. "
+
+# @ yarpp
+#: options-meta-boxes.php:236
+msgid "Display options <small>for your website</small>"
+msgstr "Prikazi gi opciite <small>za vasiot websajt</small> "
+
+# @ yarpp
+#: options-meta-boxes.php:187
+msgid "Automatically display related posts?"
+msgstr "Avtomatsko prikazuvanje na povrzani postovi?"
+
+# @ yarpp
+#: options-meta-boxes.php:187
+msgid ""
+"This option automatically displays related posts right after the content on "
+"single entry pages. If this option is off, you will need to manually insert "
+"<code>related_posts()</code> or variants (<code>related_pages()</code> and "
+"<code>related_entries()</code>) into your theme files."
+msgstr ""
+"Ovaa opcija avotmatski gi prikazuva povrzanite postovi odma posle sodrzajot "
+"na sekoja vnesena strana. Dokolku ovaa opcija e isklucena, ke morate racno "
+"da gi vnesete <code>povrzani_postovi()</code> ili varijantite "
+"(<code>povrzani_stranici()</code> i <code>povrzani_vnesuvanja()</code>) vo "
+"vasite fajlovi na tema."
+
+# @ yarpp
+#: options-meta-boxes.php:188
+msgid "Website display code example"
+msgstr "Primer na prikazot na websajt kodot"
+
+# @ yarpp
+#: options-meta-boxes.php:188 options-meta-boxes.php:245
+msgid "(Update options to reload.)"
+msgstr "(Azurirajte gi opciite za da ja vcitate stranata povtorno)"
+
+# @ yarpp
+#: options-meta-boxes.php:190 options-meta-boxes.php:250
+msgid "Maximum number of related posts:"
+msgstr "Maksimalen broj na povrzani postovi:"
+
+# @ yarpp
+#: class-widget.php:75 options-meta-boxes.php:17
+msgid "Display using a custom template file"
+msgstr "Prikazi koristejki prilagodena definirana datoteka"
+
+# @ yarpp
+#: options-meta-boxes.php:17
+msgid ""
+"This advanced option gives you full power to customize how your related "
+"posts are displayed. Templates (stored in your theme folder) are written in "
+"PHP."
+msgstr ""
+"Ovaa napredna opcija vi dava polnomok da prilagodite kako ke bidat prikazani "
+"vasite povrzani postovi. Definiciite (socuvani vo vasiot folder od tema) se "
+"napisani vo PHP."
+
+# @ yarpp
+#: class-widget.php:76 options-meta-boxes.php:196 options-meta-boxes.php:258
+msgid "Template file:"
+msgstr "Datoteka na definicija:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:271
+msgid "Before / after related entries:"
+msgstr "Pred/Posle povrzani vnesuvanja:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:209
+#: options-meta-boxes.php:217 options-meta-boxes.php:271
+#: options-meta-boxes.php:272 options-meta-boxes.php:277
+msgid "For example:"
+msgstr "Na primer:"
+
+# @ yarpp
+#: options-meta-boxes.php:209 options-meta-boxes.php:272
+msgid "Before / after each related entry:"
+msgstr "Pred/Posle sekoe povrzano vnesuvanje:"
+
+# @ yarpp
+#: options-meta-boxes.php:211 options-meta-boxes.php:274
+msgid "Show excerpt?"
+msgstr "Prikazi  go izvodot?"
+
+# @ yarpp
+#: options-meta-boxes.php:212 options-meta-boxes.php:275
+msgid "Excerpt length (No. of words):"
+msgstr "Dolzina na izvodot (borj na zborovi):"
+
+# @ yarpp
+#: options-meta-boxes.php:216
+msgid "Before / after (Excerpt):"
+msgstr "Pred/Posle (Izvod):"
+
+# @ yarpp
+#: options-meta-boxes.php:68
+msgid "Order results:"
+msgstr "Poredi gi rezultatite:"
+
+# @ yarpp
+#: options-meta-boxes.php:71
+msgid "score (high relevance to low)"
+msgstr "rezultat (od visoka naprema niska vaznost)"
+
+# @ yarpp
+#: options-meta-boxes.php:72
+msgid "score (low relevance to high)"
+msgstr "rezultat (od niska naprema visoka vaznost)"
+
+# @ yarpp
+#: options-meta-boxes.php:73
+msgid "date (new to old)"
+msgstr "data (od novo naprema staro)"
+
+# @ yarpp
+#: options-meta-boxes.php:74
+msgid "date (old to new)"
+msgstr "data (stao naprema novo)"
+
+# @ yarpp
+#: options-meta-boxes.php:75
+msgid "title (alphabetical)"
+msgstr "naslov (alfabetski)"
+
+# @ yarpp
+#: options-meta-boxes.php:76
+msgid "title (reverse alphabetical)"
+msgstr "naslov (obratno alfabetski)"
+
+# @ yarpp
+#: options-meta-boxes.php:224 options-meta-boxes.php:281
+msgid "Default display if no results:"
+msgstr "Podrazbirano prikazuvanje dokolku nema rezultati:"
+
+# @ yarpp
+#: class-widget.php:98 options-meta-boxes.php:227 options-meta-boxes.php:283
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Pomogni vo promocija na Yet Another Related Posts Plugin?"
+
+# @ yarpp
+#: options-meta-boxes.php:229 options-meta-boxes.php:284
+#, php-format
+msgid ""
+"This option will add the code %s. Try turning it on, updating your options, "
+"and see the code in the code example to the right. These links and donations "
+"are greatly appreciated."
+msgstr ""
+"Ovaa opcija ke go dodate kodot %s. Probajte da ja ukljucite taka sto ke gi "
+"azurirate vasite opcii, i poglednete go kodot vo primerok na kodot na desna "
+"strana. Ovie linkovi i donacii se mnogu ceneti. "
+
+# @ yarpp
+#: options-meta-boxes.php:291
+msgid "Display options <small>for RSS</small>"
+msgstr "Prikazi opcii za <small>za RSS</small>"
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid "Display related posts in feeds?"
+msgstr "Prikazi g povrzanite postovi vo novostite?"
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid ""
+"This option displays related posts at the end of each item in your RSS and "
+"Atom feeds. No template changes are needed."
+msgstr ""
+"Ovaa opcija gi prikazuva povrzanite postovi na kraj na sekoja stavka vo "
+"vasite RSS i Atom novosti (kolumni). Ne se potrebni nikakvi izmeni na "
+"definicii. "
+
+# @ yarpp
+#: options-meta-boxes.php:247
+msgid "Display related posts in the descriptions?"
+msgstr "Prikazi gi povrzanite postovi vo opisite?"
+
+# @ yarpp
+#: options-meta-boxes.php:247
+msgid ""
+"This option displays the related posts in the RSS description fields, not "
+"just the content. If your feeds are set up to only display excerpts, "
+"however, only the description field is used, so this option is required for "
+"any display at all."
+msgstr ""
+"Ovaa opcija gi prikazuva povrzanite postovi vo RSS polinjata za deskripcija, "
+"ne samo vo sodrzajot. Dokolku vasite polinja se podeseni da prikazuvaat "
+"izvodi, vrpocem, samo poleto za opis (deskripcija) se koristi, taka ovaa "
+"opcija e potrebna za bilo koe prikazuvanje."
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid "RSS display code example"
+msgstr "Primer na RSS prikazuvanje na kodot"
+
+# @ yarpp
+#: options-meta-boxes.php:277
+msgid "Before / after (excerpt):"
+msgstr "Pred/Posle (izvod)"
+
+# @ yarpp
+#: template-builtin.php:21
+#, php-format
+msgid ""
+"%f is the YARPP match score between the current entry and this related "
+"entry. You are seeing this value because you are logged in to WordPress as "
+"an administrator. It is not shown to regular visitors."
+msgstr ""
+"%f e YARPP rezultat na podudaranje pomegu momentalniot vnes i ovoj povrzan "
+"vnes. Ja gledate ovaa vrednost zatoa sto ste logirani na WordPress kako "
+"administrator. Ne e prikazana na regularni posetiteli."
+
+# @ yarpp
+#: template-metabox.php:12
+msgid ""
+"These are the related entries for this entry. Updating this post may change "
+"these related posts."
+msgstr ""
+"Ova se povrzanite vnesuvanja so ova vnesuvanje. Azuriranje na ovoj post moze "
+"da gi izmeni ovie povrzani postovi. "
+
+# @ yarpp
+#: template-metabox.php:28
+msgid ""
+"Whether all of these related entries are actually displayed and how they are "
+"displayed depends on your YARPP display options."
+msgstr ""
+"Da li ovie povrzani postovi ke bidat prikazani i kako ke bidat prikazani "
+"zavisi od vasite YARPP opcii za prikazuvanje."
+
+# @ yarpp
+#: class-core.php:73 class-core.php:83 class-core.php:273 class-core.php:284
+#: template-metabox.php:30 template-widget.php:13
+msgid "No related posts."
+msgstr "Nema povrzani postovi."
+
+# @ yarpp
+#: class-core.php:71 class-core.php:81 class-core.php:271 class-core.php:282
+msgid "Related posts:"
+msgstr "Povrzani postovi:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:209
+#: options-meta-boxes.php:217 options-meta-boxes.php:271
+#: options-meta-boxes.php:272 options-meta-boxes.php:277
+msgid " or "
+msgstr "ili"
+
+# @ default
+#: class-admin.php:136
+msgid "Settings"
+msgstr "Podesuvanja"
+
+# @ default
+#: class-widget.php:69
+msgid "Title:"
+msgstr "Naslov:"
+
+# @ yarpp
+#: class-admin.php:162
+msgid "Related entries may be displayed once you save your entry"
+msgstr ""
+"Povrzani postovi moze da bidat prikazani koga ke go socivate svoeto "
+"vnesuvanje."
+
+# @ yarpp
+#: options-meta-boxes.php:153
+msgid ""
+"YARPP limits the related posts list by (1) a maximum number and (2) a "
+"<em>match threshold</em>."
+msgstr ""
+"YARPP ja ogranicuva listata na povrzani postovi so (1) maksimum broj i (2) "
+"na <em>podudarna vrednost</em>."
+
+# @ yarpp
+#: options-meta-boxes.php:298
+msgid "YARPP Forum"
+msgstr "YARPP Forum"
+
+# @ yarpp
+#: options-meta-boxes.php:299
+msgid "YARPP on Twitter"
+msgstr "YARPP na Twitter"
+
+# @ yarpp
+#: options-meta-boxes.php:300
+msgid "YARPP on the Web"
+msgstr "YARPP na Web"
+
+# @ yarpp
+#: options-meta-boxes.php:337
+msgid "Contact YARPP"
+msgstr "YARPP kontakt"
+
+# @ default
+#: options.php:34
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update "
+"automatically</a>."
+msgstr ""
+"Postoi nova verzija na %1$s. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s"
+"\">View version %4$s details</a> ili <a href=\"%5$s\">update automatically</"
+"a>."
+
+# @ yarpp
+#: options.php:79
+#, php-format
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr "Molam probajte <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+
+# @ yarpp
+#: options.php:149
+#, php-format
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+
+# @ default
+#: class-admin.php:63
+msgid "Configure"
+msgstr "Konfiguriraj"
+
+# @ yarpp
+#: class-admin.php:89
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr "Fala za instaliranje na <span>Yet Another Related Posts Plugin</span>!"
+
+# @ yarpp
+#: class-admin.php:90
+msgid ""
+"Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr ""
+"Posetete <a>Povrzani Postovi stranica za podesuvanja</a> za da go podesite "
+"YARPP."
+
+# @ yarpp
+#: options-meta-boxes.php:113
+msgid "Post types considered:"
+msgstr "Vrsti na postovi zemeni vo obzir:"
+
+# @ yarpp
+#: options-meta-boxes.php:116
+#, php-format
+msgid "Disallow by %s:"
+msgstr "Onevozmozi za %s:"
+
+# @ yarpp
+#: options-meta-boxes.php:169
+msgid "Display results from all post types"
+msgstr "Prikazi gi rezultati za site tipovi na postovi "
+
+# @ yarpp
+#: options-meta-boxes.php:169
+msgid ""
+"When \"display results from all post types\" is off, only posts will be "
+"displayed as related to a post, only pages will be displayed as related to a "
+"page, etc."
+msgstr ""
+"Koga \"prikazi gi rezultati za site tipovi na postovi\" e isklucena, samo "
+"postovi ke bidat prkazani povrzani so post, samo stranici ke bidat prikazani "
+"povrzani so stranica, itd. "
+
+# @ yarpp
+#: options-meta-boxes.php:301
+msgid "Rate YARPP on WordPress.org"
+msgstr "Oceni go YARPP na WordPress.org"
+
+# @ default
+#: options.php:178
+msgid "Save Changes"
+msgstr "Socuvaj gi izmenite"

@@ -155,12 +155,6 @@ msgstr "xem xét với mức độ quan trọng đặc biệt"
 msgid "Yet Another Related Posts Plugin Options"
 msgstr " Tùy chọn của Yet Another Related Posts Plugin"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Tài trợ cho mitcho (Michael Yoshitaka Erlewine) qua PayPal cho việc phát triển plugin này "
-
 #: options-meta-boxes.php:118
 #@ yarpp
 msgid "\"The Pool\""

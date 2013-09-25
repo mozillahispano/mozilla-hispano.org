@@ -42,6 +42,7 @@ if ( current_user_can('update_plugins' ) ) {
 	}
 }
 
+/* MARK: MyIsam message */
 if (isset($_POST['myisam_override'])) {
 	yarpp_set_option( 'myisam_override', 1 );
 	echo "<div class='updated'>"
@@ -52,29 +53,49 @@ if (isset($_POST['myisam_override'])) {
 }
 
 $table_type = $yarpp->diagnostic_myisam_posts();
-if ( $table_type !== true )
-	$yarpp->disable_fulltext();
 
-if ( !yarpp_get_option('myisam_override') && $yarpp->diagnostic_fulltext_disabled() ) {
-	echo "<div class='updated'>"
-	.sprintf(__("YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled.",'yarpp'), $wpdb->posts, $table_type)
-	."<br />"
-	.sprintf(__("To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications.",'yarpp'), $wpdb->posts, $wpdb->posts)
-	."<br />"
-	.sprintf(__("If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:",'yarpp'), $wpdb->posts)
-	."<br />"
-	."<form method='post'><input type='submit' class='button' name='myisam_override' value='"
-	.__("Trust me. Let me use MyISAM features.",'yarpp')
-	."'></input></form>"
-	."</div>";
+if ( $table_type !== true ) $yarpp->disable_fulltext();
+
+if (!yarpp_get_option('myisam_override') && $yarpp->diagnostic_fulltext_disabled()) {
+	echo(
+        "<div class='updated'>".
+            sprintf(
+                __("YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code>
+                    table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>,
+                    but the table seems to be using the <code>%s</code> engine. These two options have been disabled.",'yarpp'),
+                $wpdb->posts,
+                $table_type
+            ).
+            "<br />".
+            sprintf(
+                __("To restore these features, please update your <code>%s</code> table by executing the following SQL
+                    directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the
+                    table's engine, although there are performance implications.",'yarpp'),
+                $wpdb->posts,
+                $wpdb->posts
+            ).
+            "<br />".
+            sprintf(
+                __("If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic
+                    button:",'yarpp'),
+                $wpdb->posts
+            ).
+            "<br />".
+            "<form method='post'>".
+                "<input type='submit' class='button' name='myisam_override' value='".__("Trust me. Let me use MyISAM features.",'yarpp')."'/>".
+            "</form>"
+	    ."</div>"
+    );
 }
 
-if ( !$yarpp->enabled() && !$yarpp->activate() ) {
-	echo '<div class="updated">';
-	_e('The YARPP database has an error which could not be fixed.','yarpp');
-	echo ' ';
-	printf(__('Please try <a href="%s" target="_blank">manual SQL setup</a>.','yarpp'), 'http://mitcho.com/code/yarpp/sql.php?prefix='.urlencode($wpdb->prefix));
-	echo '</div>';
+if(!$yarpp->enabled() && !$yarpp->activate()) {
+	echo '<div class="updated">'.__('The YARPP database has an error which could not be fixed.','yarpp').'</div>';
+	/* TODO: SQL Error */
+    //	printf(
+    //        __('Please try <a href="%s" target="_blank">manual SQL setup</a>.','yarpp'),
+    //           'http://--/code/yarpp/sql.php?prefix='.urlencode($wpdb->prefix)
+    //    );
+	//  echo '</div>';
 }
 
 if (isset($_POST['update_yarpp'])) {
@@ -149,7 +170,8 @@ if (isset($_POST['update_yarpp'])) {
 	<form method="post">
 
 	<div id="yarpp_author_text">
-	<small><?php printf(__('by <a href="%s" target="_blank">mitcho (Michael 芳貴 Erlewine)</a>','yarpp'), 'http://mitcho.com/');?></small>
+        <!-- TODO: Author -->
+        <!-- <small><?php printf(__('by <a href="%s" target="_blank">-- (Michael 芳貴 Erlewine)</a>','yarpp'), 'http://--/');?></small> -->
 	</div>
 
 <?php

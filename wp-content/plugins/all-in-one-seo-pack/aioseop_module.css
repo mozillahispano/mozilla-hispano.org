@@ -16,7 +16,8 @@
 	float: left;
 	width: 100%;
 	max-width: 300px;
-	background: url('images/question.png') no-repeat;
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABpElEQVR42u3WTU8TURSAYf+CO7407kgKBmkVwR1RS1qjfMQVG01sYimpQltoZ+60IL/cJ6bupmnLTGEzb/LsbjInM7mZ86SoqKioKJdec0KDS7r84oRtHqUl6lwRExhxxy0RAyJ67LPKg7TOOQktqmymnCtxSIeYH7xhoVVICNR4xrTWqDMYe7vINxfoUWHeynSJeEWurdEiYof7VqZPmyVya58RVSZ1TDTW4AVpHRDzgdzqwMQuCAzHIhI2Us6u0oF82iOhTlpHRHT53ykJbdKqMuIdmTsiZpO0Rgx5j+TBDEhIq0TMIZlrEZin7/zhG5MKnJG5axJmrUHEBc+nDDggcz0Cs3RKwhVSpgHz/8S3BJ7OOGCTzJ2QsMm0ImKmVSLmC5nbIaZGXn0iZo/MLXHJb6YVE5hWkx65VSfM8Hvqc4MmVmPIZ3JrmRYDKhmXhRHn5F6JiP4916VduvR5uciFtT92wMoclyJwzRYLrcxP7jijyvqEBbdGm4gmGzxIK3xkSDyWMCRwQ0TgmirLPEq7fKVFhy5tjtn+N1hRUVFR0b36C7aDUPHJvmrWAAAAAElFTkSuQmCC);
 	min-width: 1px;
 	min-height: 22px;
 	padding-top: 10px;
@@ -38,6 +39,7 @@
 }
 .aioseop_option_div {
 	max-height: 150px;
+	min-height: 34px;
 	width: 95%;
 	overflow-y: auto;
 }
@@ -142,6 +144,7 @@
 	line-height: 1;
 }
 #aiosp_feature_manager_metabox.postbox {
+	margin-top: 20px;
 	float: left;
 }
 .aioseop_advert p {
@@ -232,8 +235,12 @@
 .aioseop_settings_left {
 	float: left;
 	padding: 0px;
-	margin: 0px 0 0 0;
+	margin: 0px;
 	width: 100%;
+}
+
+body.all-in-one-seo_page_all-in-one-seo-pack-aioseop_feature_manager .aioseop_settings_left {
+	margin-top: 20px;
 }
 
 #aioseop_top_button {
@@ -339,6 +346,12 @@ div.aioseop_feature .aioseop_featured_image {
 div.aioseop_feature .aioseop_featured_image.active {
 	background-image: url(images/Default-Color-Standard.png);
 }
+div.aioseop_feature#aioseop_sitemap .aioseop_featured_image {
+	background-image: url(images/XMLSitemaps-BW-Standard.png);
+}
+div.aioseop_feature#aioseop_sitemap .aioseop_featured_image.active {
+	background-image: url(images/XMLSitemaps-Color-Standard.png);
+}
 div.aioseop_feature#aioseop_performance .aioseop_featured_image {
 	background-image: url(images/Performance-BW-Standard.png);
 }
@@ -350,6 +363,10 @@ div.aioseop_feature#aioseop_coming_soon .aioseop_featured_image {
 }
 div.aioseop_feature#aioseop_coming_soon2 .aioseop_featured_image {
 	background-image: url(images/Default-Color-Standard.png);
+}
+.All_in_One_SEO_Pack_Sitemap > form > .wrap > .form-table {
+	max-width: 500px;
+	clear: none;
 }
 .aioseop_follow_button {
 	min-height: 50px;
@@ -455,6 +472,33 @@ div#aioseop_snippet > div > span {
 	margin: 0px;
     padding: 0px;
     border: 0px;
+}
+#aiosp_sitemap_addl_pages {
+	clear: left;
+	margin-left: 20px;
+	max-width: 1072px;
+}
+#aiosp_sitemap_addl_pages_metabox .aioseop_wrapper {
+	width: 23%;
+	min-width: 165px;
+	display: inline-block;
+	max-width: 265px;
+}
+#aiosp_sitemap_addl_pages_metabox .aioseop_help_text_div {
+	position: absolute;
+	margin: 5px 0px 10px 0px;
+}
+#aiosp_sitemap_addl_pages_metabox .aioseop_option_input {
+	width: 94%;
+	min-width: 94%;
+}
+#aiosp_sitemap_addl_pages_metabox table.aioseop_table {
+	width: 96%;
+	border: 1px solid #CCC;
+	margin: 5px 0px 10px 0px;
+}
+table.aioseop_table tr:nth-child(odd) {
+	background-color: #EEE;
 }
 .aioseop_top_label .aioseop_option_input,
 .aioseop_no_label .aioseop_option_input {
@@ -622,6 +666,15 @@ div.wrap > div#message.error {
 	max-width: 540px;
 }
 */
+#aioseop-hosting {
+	width: 445px;
+}
+#aioseop-hosting.postbox .inside {
+	margin: -3px 0;
+}
+#aioseop-hosting.postbox .inside {
+	padding: 0px;
+}
 #aiosp_settings_form ul.sfwd_debug_settings li strong {
 	display: block;
 	float: left;

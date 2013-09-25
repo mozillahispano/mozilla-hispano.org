@@ -1,0 +1,89 @@
+<h2>0.48</h2>
+<ul>
+<li><em>Bug Fix</em> - Allow signed in users to comment without using Persona. Allow comments from admin panel.</li>
+</ul>
+
+<h2>0.47</h2>
+<ul>
+<li><em>Bug Fix</em> - Disable error reportign - thanks @jonchang!</li>
+</ul>
+
+<h2>0.46</h2>
+<ul>
+<li><em>New Feature</em> - Use the WordPress color picker when selecting a background color - Thanks @janw-oostendorp!</li>
+<li><em>New Feature</em> - Use the WordPress media picker when selecting the site logo, terms of service and privacy policy.</li>
+<li><em>New Feature</em> - Automatically convert site logo's into dataURIs so that any site can specify a logo.</li>
+<li><em>New Feature</em> - Japanese Translations - Thanks @makotokato!</li>
+<li><em>Improvement</em> - Separate general and advanced settings.</li>
+<li><em>Improvement</em> - Serve minified Javascript and CSS by default.</li>
+<li><em>Improvement</em> - massive refactor to make code easier to browse.</li>
+<li><em>Bug Fix</em> - Fix typo in Privacy Policy description - Thanks @KryDos!</li>
+<li><em>Bug Fix</em> - Make sure URLs are written to browserid_common.js unescaped.</li>
+</ul>
+
+<h2>0.45</h2>
+<ul>
+<li><em>New Feature</em> - Russian Translations - Thanks Ruslan Bekenev (@KryDos)!</li>
+<li><em>New Feature</em> - French (CA and FR) - Thanks Fabian Rodriguez (@MagicFab)!</li>
+<li><em>New Feature</em> - backgroundColor support!</li>
+<li><em>New Feature</em> - termsOfService and privacyPolicy support!</li>
+<li><em>New Feature</em> - Select one of 3 Persona button styles</li>
+<li><em>Improvement</em> - Localize widget buttons</li>
+<li><em>Improvement</em> - Updated Dutch translation - Thanks @janw-oostendorp!</li>
+<li><em>Bug Fix</em> - Prevent comments being accepted without assertion</li>
+<li><em>Bug Fix</em> - Admins can add new users</li>
+<li><em>Bug Fix</em> - Use Persona button for comments</li>
+<li><em>Bug Fix</em> - Fix live events not working with jQuery 1.9+ - Thanks @davidmurdoch!</li>
+<li><em>Bug Fix</em> - Get rid of the warning on the Persona settings page - Thanks @KryDos</li>
+</ul>
+
+<h2>0.44</h2>
+<ul>
+<li><em>Improvement</em> - Commenting for new Persona users is simpler
+<li><em>Improvement</em> - New member registration with new Persona users is simpler
+<li><em>Improvement</em> - Separate CSS into its own file for maintainability
+<li><em>Improvement</em> - Replace .png signin buttons with localizable CSS buttons
+<li><em>Improvement</em> - Pre-fill input fields with default values in configuration screen
+<li><em>Improvement</em> - Do not show the lost password link if "Disable non-Persona auth" is selected
+<li><em>Improvement</em> - Do not show the "default password nag" if "Disable non-Persona auth" is selected
+<li><em>Improvement</em> - Code Cleanup.
+<li><em>New feature</em> - A .PO file with all strings has been created for localization
+<li><em>New Feature</em> - Spanish translations. Thanks Guillermo Movia!
+<li><em>Bug Fix</em> - site name can now contain ' and &
+<li><em>Bug Fix</em> - no more static warnings in strict PHP mode
+<li><em>Bug Fix</em> - remove plugin options from database when de-activated
+<li><em>Bug Fix</em> - incorrect button link for example button link in the FAQ
+</ul>
+
+<h2>0.43</h2>
+<ul>
+<li>Continue with 0.41</li>
+<li><em>Bug Fix</em> - Fix the missing arguments errors</li>
+<li><em>Bug Fix</em> - HTML Escape the hostname when printing debug information</li>
+<li><em>Bug Fix</em> - Logout link from the widget signs the user out of Persona</li>
+<li><em>Security Improvement</em> - Remove the "Noverify SSL Certificate" option</li>
+</ul>
+
+<h2>0.42</h2>
+<ul>
+<li><em>Revert to 0.37</em></li>
+</ul>
+
+<h2>0.41</h2>
+<ul>
+<li><em>Bug Fix</em> - Fix the "missing arguments" error due to not declaring the number of expected variables to Set_auth_cookie_action.</li>
+</ul>
+
+<h2>0.40</h2>
+<ul>
+<li><em>New Feature</em> - Add option to disable normal username/password auth.</li>
+<li><em>Improvement</em> - Convert from navigator.id.get to navigator.id.watch/.request API.</li>
+<li><em>New Feature</em> - If user signs out of Persona, they are signed out of the Wordpress site as well.</li>
+<li><em>New Feature</em> - Easier user signup when using Persona - no email verification required.</li>
+<li><em>Improvement</em> - Better comment integration, especially for new users.</li>
+<li><em>Improvement</em> - Update the login/logout widget to match styling of other Wordpress widgets.</li>
+<li><em>Improvement</em> - Add a "Settings" link to the BrowserID list item in the plugins list.</li>
+<li><em>Bug Fix</em> - Fix a bug where server clock skew from the Persona servers could prevent users from signing in.</li>
+<li><em>Improvement</em> - Update "Sign in" buttons to use the new Persona button style.</li>
+<li><em>Improvement</em> - Unify signin and comment Javascript.</li>
+</ul>

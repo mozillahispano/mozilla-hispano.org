@@ -58,9 +58,6 @@ body.rtl .icon {
 .icon-star {
 	background-position: -66px 0;
 }
-.icon-paypal {
-	background-position: -88px 0;
-}
 
 .icon.spin, .icon-star:hover {
 	transform-origin: 11px 12px;

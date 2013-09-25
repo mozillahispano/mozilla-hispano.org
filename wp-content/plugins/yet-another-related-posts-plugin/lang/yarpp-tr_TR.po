@@ -159,12 +159,6 @@ msgstr "daha çok göz önünde bulundur"
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Ayarları"
 
-#@ default
-#@ yarpp
-#: options-meta-boxes.php:286
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Bu eklentinin yazarına (Michael Yoshitaka Erlewine) PayPal ile bağış yap"
-
 #@ yarpp
 #: options-meta-boxes.php:118
 msgid "\"The Pool\""

@@ -119,9 +119,10 @@ abstract class YARPP_Cache {
 	
 	function set_score_override_flag( $q ) {
 		if ( $this->is_yarpp_time() ) {
-			$this->score_override = ($q->query_vars['orderby'] == 'score');
+			$this->score_override = ( isset($q->query_vars['orderby']) && 
+				$q->query_vars['orderby'] == 'score' );
 	
-			if (!empty($q->query_vars['showposts'])) {
+			if ( !empty($q->query_vars['showposts']) ) {
 				$this->online_limit = $q->query_vars['showposts'];
 			} else {
 				$this->online_limit = false;

@@ -186,12 +186,6 @@ msgstr "vurder med ekstra vekt"
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin innstillinger"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Donèr til mitcho (Michael Yoshitaka Erlewine) for denne utvidelsen via PayPal"
-
 #: options-meta-boxes.php:118
 #@ yarpp
 msgid "\"The Pool\""

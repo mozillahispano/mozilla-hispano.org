@@ -39,6 +39,16 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module_Manager' ) ) {
 				if ( $class == get_class( $m ) )	return $m;
 			return false;
 		}
+		
+		function get_loaded_module_list() {
+			$module_list = Array();
+			if ( !empty( $this->modules ) ) {
+				foreach( $this->modules as $k => $v )
+					if ( !empty( $v ) )
+						$module_list[$k] = get_class( $v );
+			}
+			return $module_list;
+		}
 
 		// Module name is used for these automatic settings:
 		// The aiosp_enable_$module settings - whether each plugin is active or not

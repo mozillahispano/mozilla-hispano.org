@@ -575,13 +575,6 @@ msgstr "ウェブサイト"
 msgid "Review YARPP on WordPress.org"
 msgstr "WordPress.org で YARPP の感想を書く"
 
-# @ default
-# @ yarpp
-#: options-meta-boxes.php:372
-msgid ""
-"Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "YARPPの作成者（ミッチョ）にPayPalで寄付をする"
-
 # @ yarpp
 #: options-meta-boxes.php:405
 msgid "Help Improve YARPP"

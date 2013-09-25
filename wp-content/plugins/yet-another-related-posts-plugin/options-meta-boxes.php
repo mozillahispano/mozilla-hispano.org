@@ -357,52 +357,57 @@ class YARPP_Meta_Box_Display_Feed extends YARPP_Meta_Box {
 	}
 }
 
-add_meta_box( 'yarpp_display_rss', __( 'Display options <small>for RSS</small>', 'yarpp' ), array( new YARPP_Meta_Box_Display_Feed, 'display' ), 'settings_page_yarpp', 'normal', 'core' );
+add_meta_box('yarpp_display_rss', __('Display options <small>for RSS</small>', 'yarpp'), array( new YARPP_Meta_Box_Display_Feed, 'display'), 'settings_page_yarpp', 'normal', 'core');
 
 class YARPP_Meta_Box_Contact extends YARPP_Meta_Box {
 	function display() {
 		global $yarpp;
-		$pluginurl = plugin_dir_url( __FILE__ );
-		?>
-		<ul class='yarpp_contacts'>
-		<li><a href="http://wordpress.org/support/plugin/yet-another-related-posts-plugin" target="_blank"><span class='icon icon-wordpress'></span> <?php _e( 'YARPP Forum', 'yarpp' ); ?></a></li>
-		<li><a href="http://twitter.com/yarpp" target="_blank"><span class='icon icon-twitter'></span> <?php _e( 'YARPP on Twitter', 'yarpp' ); ?></a></li>
-		<li><a href="http://yarpp.org" target="_blank"><span class='icon icon-plugin'></span> <?php _e( 'YARPP on the Web', 'yarpp' ); ?></a></li>
-		<li><a href="http://wordpress.org/support/view/plugin-reviews/yet-another-related-posts-plugin" target="_blank"><span class='icon icon-star <?php if ( $yarpp->diagnostic_happy() ) echo 'spin'; ?>'></span> <?php _e( 'Review YARPP on WordPress.org', 'yarpp' ); ?></a></li>
-		<li><a href='http://tinyurl.com/donatetomitcho' target='_new'><span class='icon icon-paypal'></span> <img src="https://www.paypal.com/<?php echo $this->paypal_lang(); ?>i/btn/btn_donate_SM.gif" name="submit" alt="<?php _e( 'Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal' ); ?>" title="<?php _e( 'Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal', 'yarpp' ); ?>"/></a></li>
-	 </ul>
-<?php
-	}
-	
-	function paypal_lang() {
-		if ( !defined( 'WPLANG' ) )
-			return 'en_US/';
-		switch ( substr( WPLANG, 0, 2 ) ) {
-			case 'fr':
-				return 'fr_FR/';
-			case 'de':
-				return 'de_DE/';
-			case 'it':
-				return 'it_IT/';
-			case 'ja':
-				return 'ja_JP/';
-			case 'es':
-				return 'es_XC/';
-			case 'nl':
-				return 'nl_NL/';
-			case 'pl':
-				return 'pl_PL/';
-			case 'zh':
-				if ( preg_match( "/^zh_(HK|TW)/i", WPLANG ) )
-					return 'zh_HK/';
-				// actually zh_CN, but interpret as default zh:
-				return 'zh_XC/';
-			default:
-				return 'en_US/';
-		}
-	}
-}
-add_meta_box( 'yarpp_display_optin', __( 'Help Improve YARPP', 'yarpp' ), array( new YARPP_Meta_Box_Optin, 'display' ), 'settings_page_yarpp', 'side', 'core' );
+
+        /* TODO: Remove */
+//		$pluginurl = plugin_dir_url( __FILE__ );
+
+        $happy = ($yarpp->diagnostic_happy()) ? 'spin' : null;
+
+		$out =
+		'<ul class="yarpp_contacts">'.
+            '<li>'.
+                '<a href="http://wordpress.org/support/plugin/yet-another-related-posts-plugin" target="_blank">'.
+                    '<span class="icon icon-wordpress"></span> '.__('YARPP Forum', 'yarpp').
+                '</a>'.
+            '</li>'.
+            '<li>'.
+                '<a href="http://twitter.com/yarpp" target="_blank">'.
+                    '<span class="icon icon-twitter"></span> '.__('YARPP on Twitter', 'yarpp').
+                '</a>'.
+            '</li>'.
+            '<li>'.
+                '<a href="http://yarpp.org" target="_blank">'.
+                    '<span class="icon icon-plugin"></span> '.__('YARPP on the Web', 'yarpp').
+                '</a>'.
+            '</li>'.
+            '<li>'.
+                '<a href="http://wordpress.org/support/view/plugin-reviews/yet-another-related-posts-plugin" target="_blank">'.
+                    '<span class="icon icon-star '.$happy.'"></span> '.__('Review YARPP on WordPress.org', 'yarpp').
+                '</a>'.
+            '</li>'.
+         '</ul>';
+
+        echo $out;
+	}/*end display*/
+
+}/*end class yarpp_matabox_contact*/
+
+add_meta_box(
+    'yarpp_display_optin',
+    __( 'Help Improve YARPP', 'yarpp' ),
+    array(
+        new YARPP_Meta_Box_Optin,
+        'display'
+    ),
+    'settings_page_yarpp',
+    'side',
+    'core'
+);
 
 // longest filter name ever
 add_filter( "postbox_classes_settings_page_yarpp_yarpp_display_optin", 'yarpp_make_optin_classy' );
@@ -416,18 +421,26 @@ class YARPP_Meta_Box_Optin extends YARPP_Meta_Box {
 	function display() {
 		global $yarpp;
 		
-		// TODO: fix this text and i18nize it
-		echo "<input type='checkbox' id='yarpp-optin' name='optin' value='true'";
-		checked( yarpp_get_option( 'optin' ) == 1 );
-		echo " /> ";
+		/* TODO: fix this text and i18nize it */
+		echo "<input type='checkbox' id='yarpp-optin' name='optin' value='true' ";
+        checked(yarpp_get_option('optin') == 1);
+        echo " /> ";
 		
-		echo '<label for="yarpp-optin">' . __( 'Send settings and usage data back to YARPP', 'yarpp' ) . '</label>';
+		echo(
+            '<label for="yarpp-optin">'.
+                __( 'Send usage data back to YARPP!', 'yarpp' ).
+            '</label>'
+        );
 		
-		echo '<p style="overflow:auto;">';
-		echo __( 'This is entirely optional, but will help improve future versions of YARPP.', 'yarpp' );
-		echo ' <input type="button" value="' . esc_attr( __( 'Learn More', 'yarpp' ) ) . '" id="yarpp-optin-learnmore" class="button button-small"/></p>';
-	}
-}
+		echo(
+            '<p style="overflow:auto;">'.
+                __( 'This is entirely optional, but will help improve future versions of YARPP.', 'yarpp' ).
+                '<br/>'.
+                '<input type="button" value="'.esc_attr(__('Learn More', 'yarpp')).'" id="yarpp-optin-learnmore" class="button button-small"/>'.
+            '</p>'
+        );
+	}/*end display*/
+}/*YARPP_Meta_Box_Optin*/
 
 add_meta_box( 'yarpp_display_contact', __( 'Contact YARPP', 'yarpp' ), array( new YARPP_Meta_Box_Contact, 'display' ), 'settings_page_yarpp', 'side', 'core' );
 

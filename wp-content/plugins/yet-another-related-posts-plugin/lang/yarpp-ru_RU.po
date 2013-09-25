@@ -102,12 +102,6 @@ msgstr "рассматривать"
 msgid "consider with extra weight"
 msgstr "рассматривать с дополнительным весом"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Пожертвовать разработчику  mitcho (Michael Yoshitaka Erlewine), через PayPal"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

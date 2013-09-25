@@ -119,7 +119,7 @@ class YARPP {
 				)
 			),
 			'require_tax' => array(), // new in 3.5
-			'optin' => false, // new in 4
+			'optin' => true, // new in 4, default on 4.0.7
 			'thumbnails_heading' => __('Related posts:','yarpp'), // new in 4
 			'thumbnails_default' => plugins_url( 'default.png', __FILE__ ), // new in 4
 			'rss_thumbnails_heading' => __('Related posts:','yarpp'), // new in 4
@@ -163,6 +163,7 @@ class YARPP {
 	// 3.4b8: $option can be a path, of the query_str variety, i.e. "option[suboption][subsuboption]"
 	function get_option( $option = null ) {
 		$options = (array) get_option( 'yarpp', array() );
+
 		// ensure defaults if not set:
 		$options = array_merge( $this->default_options, $options );
 
@@ -791,7 +792,8 @@ class YARPP {
 		$comments = wp_count_comments();
 		$users = count_users();
 
-		$settings = get_option( 'yarpp' );
+		$settings = $this->get_option();
+
 		$collect = array_flip(array(
 			'threshold', 'limit', 'excerpt_length', 'recent', 'rss_limit',
 			'rss_excerpt_length', 'past_only', 'show_excerpt', 'rss_show_excerpt',
@@ -799,6 +801,7 @@ class YARPP {
 			'rss_display', 'rss_excerpt_display', 'promote_yarpp', 'rss_promote_yarpp',
 			'myisam_override', 'weight', 'require_tax', 'auto_display_archive'
 		));
+
 		$check_changed = array(
 			'before_title', 'after_title', 'before_post', 'after_post',
 			'after_related', 'no_results', 'order', 'rss_before_title',
@@ -890,7 +893,8 @@ class YARPP {
 				'sites' => get_blog_count()
 			);
 		}
-		
+
+//        $this->pretty_echo($data);
 		return $data;
 	}
 	
@@ -1007,18 +1011,24 @@ class YARPP {
 		unset( $related_query );
 		$this->restore_post_context();
 	
-		if ( $related_count > 0 && $promote_yarpp && $domain != 'metabox' )
-			$output .= "<p>".sprintf(__("Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.",'yarpp'), 'http://yarpp.org')."</p>\n";
-	
-		if ( $optin )
-			$output .= "<img src='http://yarpp.org/pixels/" . md5(get_bloginfo('url')) . "'/>\n";
+		if ($related_count > 0 && $promote_yarpp && $domain != 'metabox') {
+			$output .=
+                "<p>".
+                    sprintf(
+                        __("Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.",'yarpp'),
+                        'http://yarpp.org'
+                    ).
+                "</p>\n";
+        }
+
+		if ( $optin ) $output .= "<img src='http://yarpp.org/pixels/".md5(get_bloginfo('url'))."'/>\n";
 
 		$output .= "</div>\n";
 			
-		if ($echo)
-			echo $output;
+		if ($echo) echo $output;
+
 		return $output;
-	}
+	}/*end display_related*/
 	
 	/* 
 	 * @param (int) $reference_ID
@@ -1194,6 +1204,9 @@ class YARPP {
 			} else {
 				$r[$option] = $default;
 			}
+			
+			if ( $option == 'weight' && !isset( $r[$option]['tax'] ) )
+				$r[$option]['tax'] = array();
 		}
 		return $r;
 	}
@@ -1322,7 +1335,7 @@ class YARPP {
 		
 		if ( is_wp_error($remote) ||
 			 wp_remote_retrieve_response_code( $remote ) != 200 ||
-			 !isset($remote['body']) ) {
+			 !isset($remote['body'])) {
 			// try again later
 			$this->set_transient('yarpp_version_info', null, 60 * 60);
 			return false;
@@ -1339,7 +1352,8 @@ class YARPP {
 		if ( $this->get_transient( 'yarpp_optin' ) )
 			return true;
 
-		$remote = wp_remote_post( 'http://yarpp.org/optin/2/', array( 'body' => $this->optin_data() ) );
+		$remote = wp_remote_post('http://yarpp.org/optin/2/', array('body' => $this->optin_data()));
+
 		if ( is_wp_error($remote) ||
 			 wp_remote_retrieve_response_code( $remote ) != 200 ||
 			 !isset($remote['body']) ||
@@ -1365,15 +1379,23 @@ class YARPP {
 
 	private function set_transient( $transient, $data = null, $expiration = 0 ) {
 		$transient_timeout = $transient . '_timeout';
+
 		if ( false === get_option( $transient_timeout ) ) {
+
 			add_option( $transient_timeout, time() + $expiration, '', 'no' );
+
 			if ( !is_null( $data ) )
 				add_option( $transient, $data, '', 'no' );
+
 		} else {
+
 			update_option( $transient_timeout, time() + $expiration );
+
 			if ( !is_null( $data ) )
 				update_option( $transient, $data );
+
 		}
+
 		$this->kick_other_caches();
 	}
 	

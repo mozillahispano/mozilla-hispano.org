@@ -26,6 +26,8 @@
   // effect if the user types "enter" into one of the commentor info fields.
   var enableCommentSubmit = browserid_common.loggedInUser || false;
 
+  var state;
+
   $(".js-persona__login").click(function(event) {
     event.preventDefault();
 
@@ -118,7 +120,7 @@
 
     // load the state into the form to reduce flicker. The form data may not be
     // needed, but load it anyways.
-    var state = loadCommentState();
+    state = loadCommentState();
 
     // If there is no state, the other window has already submitted the comment.
     // navigator.id.logout has already been called and no assertion will be
@@ -141,7 +143,7 @@
 
     // load the state into the form to reduce flicker. The form data may not be
     // needed, but load it anyways.
-    var state = loadRegistrationState();
+    state = loadRegistrationState();
 
     // If there is no state, the other window has already submitted the registration.
     // Wait for the signal from the other window which causes a refresh. When
@@ -274,6 +276,7 @@
       rememberme: rememberme
     };
 
+    // XXX is this necessary? Won't it be fetched from options?
     if (browserid_common.urlLoginRedirect !== null)
       fields.redirect_to = browserid_common.urlLoginRedirect;
 

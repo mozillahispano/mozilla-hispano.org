@@ -547,12 +547,6 @@ msgstr "YARPP sur le web"
 msgid "Review YARPP on WordPress.org"
 msgstr "Avis d’utilisateurs YARPP chez WordPress.org"
 
-#: options-meta-boxes.php:372
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Faire un don à mitcho (Michael Yoshitaka Erlewine), via PayPal, pour cette extension"
-
 #: options-meta-boxes.php:405
 #@ yarpp
 msgid "Help Improve YARPP"

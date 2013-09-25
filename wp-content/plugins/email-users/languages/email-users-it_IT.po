@@ -1,0 +1,983 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-08-01 19:40-0000\n"
+"PO-Revision-Date: 2013-08-14 18:49+0100\n"
+"Last-Translator: Andrea Starz <info@work-on-web.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../email-users.php:84
+msgid "[%BLOG_NAME%] A post of interest: \"%POST_TITLE%\""
+msgstr "[%BLOG_NAME%] Un articolo che ti può interessare: \"%POST_TITLE%\""
+
+#: ../email-users.php:86
+msgid ""
+"<p>Hello, </p><p>I would like to bring your attention on a new post "
+"published on the blog. Details of the post follow; I hope you will find it "
+"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>"
+"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a "
+"href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="
+"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgstr ""
+"<p>Salve, </p><p>Voglio portare alla tua attenzione un nuovo articolo "
+"pubblicato sul sito. Di seguito i dettagli; Spero ti possa interessare.</"
+"p><p>Un cordiale saluto, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</"
+"strong></p><p>%POST_EXCERPT%</p><ul><li>Link all'articolo: <a href="
+"\"%POST_URL%\">%POST_URL%</a></li><li>Link a %BLOG_NAME%: <a href=\"%BLOG_URL"
+"%\">%BLOG_URL%</a></li></ul>"
+
+#: ../email-users.php:282 ../email-users.php:297 ../email-users.php:331
+#: ../email-users.php:332 ../email-users.php:338 ../email-users.php:339
+#: ../email_users_overview.php:33
+msgid "Email Users"
+msgstr "Email Users"
+
+#: ../email-users.php:284
+msgid "Notify Users About this Post"
+msgstr "Notifica agli Iscritti su questo Articolo"
+
+#: ../email-users.php:299
+msgid "Notify Users About this Page"
+msgstr "Notifica agli Iscritti su questa Pagina"
+
+#: ../email-users.php:317 ../email-users.php:318 ../email-users.php:324
+#: ../email-users.php:325
+msgid "Notify Users"
+msgstr "Notifica agli Iscritti"
+
+#: ../email-users.php:347 ../email-users.php:348
+msgid "Send to User(s)"
+msgstr "Invia agli Iscritti"
+
+#: ../email-users.php:377 ../email-users.php:378
+#, php-format
+msgid "Send to %s"
+msgstr "Invia a %s"
+
+#: ../email-users.php:386 ../email-users.php:387
+msgid "Send to Group(s)"
+msgstr "Invia al/i Gruppo/i"
+
+#: ../email-users.php:418 ../email-users.php:419
+msgid "User Settings"
+msgstr "Impostazioni Utente"
+
+#: ../email-users.php:535
+msgid "Email Preferences"
+msgstr "Preferenze Email"
+
+#: ../email-users.php:548
+msgid "Accept to receive post or page notification emails"
+msgstr "Accetto di ricevere email di notifica di pagine o articoli"
+
+#: ../email-users.php:556
+msgid ""
+"Accept to receive emails sent to multiple recipients (but still accept "
+"emails sent only to me)"
+msgstr ""
+"Accetto di ricevere email inviate a indirizzari multipli (accetto inoltre di "
+"ricevere email inviate solo a me)"
+
+#: ../email-users.php:1345
+#, php-format
+msgid ""
+"The email address (%s) of the user you are trying to send mail to is not a "
+"valid email address format."
+msgstr ""
+"L'indirizzo email (%s) dell'utente a cui stai spedendo non è un formato di "
+"indirizzo email valido."
+
+#: ../email-users.php:1416
+#, php-format
+msgid "Invalid email address (\"%s\") found."
+msgstr "Trovato indirizzo email non valido (\"%s\")."
+
+#: ../email_users_credits.php:23 ../email_users_options_form.php:456
+msgid "Make a Donation"
+msgstr "Fai una Donazione"
+
+#: ../email_users_credits.php:29 ../email_users_options_form.php:462
+msgid "Plugin's Home Page"
+msgstr "Pagina Web del Plugin"
+
+#: ../email_users_credits.php:38
+msgid "EN"
+msgstr "EN"
+
+#: ../email_users_credits.php:51 ../email_users_options_form.php:490
+msgid "Discover other Plugins by MarvinLabs"
+msgstr "Scopri gli altri Plugin di MarvinLabs"
+
+#: ../email_users_credits.php:56 ../email_users_options_form.php:495
+msgid ""
+"If Email-Users is not robust enough or if you want to allow your users to "
+"communicate with each other, try: "
+msgstr ""
+"Se Email-Users non è abbastanza potente o se desideri che gli iscritti "
+"possano comunicare tra loro, prova: "
+
+#: ../email_users_credits.php:57 ../email_users_options_form.php:496
+msgid "If you lose time copy/pasting the same post structure every time, try: "
+msgstr ""
+"Se perdi tempi a copiare/incollare sempre un articolo con la stessa "
+"struttura, prova: "
+
+#: ../email_users_credits.php:65 ../email_users_options_form.php:476
+msgid "More Plugins from Mike Walsh"
+msgstr "Altri Plugin da Mike Walsh"
+
+#: ../email_users_credits.php:70
+msgid ""
+"If you use Google Forms and want to integrate them with your WordPress site, "
+"try: "
+msgstr "Se usi Google Forms e vuoi integrarli nel tuo sito Wordpress, prova:"
+
+#: ../email_users_custom_filter_mail_form.php:28
+#: ../email_users_send_user_mail.php:25 ../email_users_user_mail_form.php:27
+msgid "You are not allowed to send emails to users."
+msgstr "Non sei autorizzato ad inviare email agli iscritti."
+
+#: ../email_users_custom_filter_mail_form.php:57
+msgid "Send an Email to a Custom Filtered list of Users"
+msgstr "Invia un'email a una lista personalizzata di iscritti"
+
+#: ../email_users_custom_filter_mail_form.php:61
+#: ../email_users_group_mail_form.php:68 ../email_users_notify_form.php:128
+#: ../email_users_options_form.php:55 ../email_users_user_mail_form.php:59
+msgid "Please correct the errors displayed above and try again."
+msgstr "Prego correggi gli errori mostrati sotto e riprova."
+
+#: ../email_users_custom_filter_mail_form.php:71
+#: ../email_users_group_mail_form.php:80 ../email_users_user_mail_form.php:69
+msgid "Mail format"
+msgstr "Formato della mail"
+
+#: ../email_users_custom_filter_mail_form.php:73
+#: ../email_users_group_mail_form.php:82 ../email_users_notify_form.php:78
+#: ../email_users_options_form.php:77 ../email_users_user_mail_form.php:71
+msgid "HTML"
+msgstr "HTML"
+
+#: ../email_users_custom_filter_mail_form.php:74
+#: ../email_users_group_mail_form.php:83 ../email_users_notify_form.php:78
+#: ../email_users_options_form.php:78 ../email_users_user_mail_form.php:72
+msgid "Plain text"
+msgstr "Solo Testo"
+
+#: ../email_users_custom_filter_mail_form.php:78
+#: ../email_users_group_mail_form.php:87 ../email_users_notify_form.php:147
+#: ../email_users_user_mail_form.php:76
+msgid "Sender"
+msgstr "Mittente"
+
+#: ../email_users_custom_filter_mail_form.php:86
+#: ../email_users_group_mail_form.php:95 ../email_users_notify_form.php:155
+#: ../email_users_user_mail_form.php:84
+msgid "Recipients"
+msgstr "Destinatari"
+
+#: ../email_users_custom_filter_mail_form.php:90
+#: ../email_users_user_mail_form.php:88
+msgid "You are only allowed to select one user at a time."
+msgstr "Sei abilitato a selezionare solo un utente alla volta."
+
+#: ../email_users_custom_filter_mail_form.php:92
+#: ../email_users_user_mail_form.php:90
+msgid ""
+"You can select multiple users by pressing the CTRL key.  When selecting "
+"multiple users, any user who should not receive Mass Email will be filtered "
+"from the recipient list."
+msgstr ""
+"Puoi selezionate più utenti premendo il tasto CTRL. Quando vengono "
+"selezionati destinatari multipli, tutti gli utenti che non possono ricevere "
+"email massive sono rimossi dall'elenco dei destinatari."
+
+#: ../email_users_custom_filter_mail_form.php:99
+#: ../email_users_notify_form.php:243 ../email_users_user_mail_form.php:97
+msgid "N/A"
+msgstr "N/A"
+
+#: ../email_users_custom_filter_mail_form.php:169
+#: ../email_users_notify_form.php:311 ../email_users_user_mail_form.php:165
+msgid "User"
+msgstr "Utente"
+
+#: ../email_users_custom_filter_mail_form.php:178
+#: ../email_users_group_mail_form.php:168 ../email_users_notify_form.php:320
+#: ../email_users_options_form.php:300 ../email_users_user_mail_form.php:174
+msgid "Subject"
+msgstr "Oggetto"
+
+#: ../email_users_custom_filter_mail_form.php:182
+#: ../email_users_group_mail_form.php:172 ../email_users_notify_form.php:324
+#: ../email_users_options_form.php:304 ../email_users_user_mail_form.php:178
+msgid "Message"
+msgstr "Messaggio"
+
+#: ../email_users_custom_filter_mail_form.php:200
+#: ../email_users_group_mail_form.php:191 ../email_users_notify_form.php:332
+#: ../email_users_user_mail_form.php:196
+msgid "Send Email"
+msgstr "Invio Email"
+
+#: ../email_users_group_mail_form.php:26
+#: ../email_users_send_custom_filter_mail.php:24
+#: ../email_users_send_group_mail.php:24
+msgid "You are not allowed to send emails to user groups."
+msgstr "Non sei abilitato all'invio di email a gruppi di utenti."
+
+#: ../email_users_group_mail_form.php:64
+msgid "Send an Email to User Groups Filtered by User Meta Data"
+msgstr "Invio email a gruppi di utenti filtrati tramite i dati utente "
+
+#: ../email_users_group_mail_form.php:64
+msgid "Send an Email to a Group of Users"
+msgstr "Invia una Email a Gruppi di Utenti"
+
+#: ../email_users_group_mail_form.php:97
+msgid "You can select multiple groups by pressing the CTRL key."
+msgstr "Puoi selezionare più gruppi tenendo premuto il tasto CTRL. "
+
+#: ../email_users_group_mail_form.php:99
+msgid ""
+"Only the groups having at least one user that accepts group mails appear "
+"here."
+msgstr ""
+"Compaiono solo i gruppi che hanno almeno un utente che accetta email di "
+"gruppo."
+
+#: ../email_users_group_mail_form.php:104 ../email_users_notify_form.php:178
+msgid "Filter"
+msgstr "Filtra"
+
+#: ../email_users_group_mail_form.php:117 ../email_users_notify_form.php:191
+msgid "Role"
+msgstr "Ruolo"
+
+#: ../email_users_group_mail_form.php:133 ../email_users_notify_form.php:207
+msgid "User Group"
+msgstr "Gruppo Utente"
+
+#: ../email_users_group_mail_form.php:150 ../email_users_notify_form.php:224
+msgid "UAM"
+msgstr "UAM"
+
+#: ../email_users_notify_form.php:26 ../email_users_send_notify_mail.php:24
+msgid "You are not allowed to notify users about posts and pages."
+msgstr "Non sei abilitato a notificare gli utenti su pagine ed articoli."
+
+#: ../email_users_notify_form.php:39
+#, php-format
+msgid "Trying to notify users of a %s without passing the %s id!"
+msgstr "Provo a notificare gli utenti su %s senza passare l'id %s!"
+
+#: ../email_users_notify_form.php:50 ../email_users_notify_form.php:124
+#, php-format
+msgid "Notify Users of a %s"
+msgstr "Notifica agli Utenti su %s"
+
+#: ../email_users_notify_form.php:52
+#, php-format
+msgid "Please select the %s that you wish to notify users about."
+msgstr "Seleziona il %s di cui vuoi notificare gli utenti."
+
+#: ../email_users_notify_form.php:65
+#, php-format
+msgid "Select %s"
+msgstr "Seleziona %s"
+
+#: ../email_users_notify_form.php:144
+msgid "Mail will be sent as:"
+msgstr "La mail viene inviata come:"
+
+#: ../email_users_notify_form.php:157
+msgid "Use CTRL key to select/deselect multiple items"
+msgstr "Usa il tasto CTRL per selezionare/deselezionare elementi multipli"
+
+#: ../email_users_notify_form.php:159
+msgid ""
+"The users that did not agree to receive notifications do not appear here."
+msgstr ""
+"Gli utenti che non hanno acconsentito a ricevere notifiche non compaiono."
+
+#: ../email_users_options_form.php:28 ../email_users_send_test_mail.php:24
+#: ../email_users_set_options.php:24
+msgid "You are not allowed to change the options of this plugin."
+msgstr "Non sei abilitato a cambiare le impostazioni di questo plugin."
+
+#: ../email_users_options_form.php:35
+msgid ""
+"It looks like you have an old version of the plugin activated. Please "
+"deactivate the plugin and activate it again to complete the installation of "
+"the new version."
+msgstr ""
+"Sembra tu abbia una vecchia versione del plugin ancora attiva. Disattivare "
+"il plugin e riattivarlo di nuovo per completare l'installazione della nuova "
+"versione."
+
+#: ../email_users_options_form.php:38
+msgid "Installed Version:"
+msgstr "Versione Installata:"
+
+#: ../email_users_options_form.php:39
+msgid "Current Version:"
+msgstr "Versione Corrente:"
+
+#: ../email_users_options_form.php:50
+msgid "Email Users Settings"
+msgstr "Impostazioni Email Users"
+
+#: ../email_users_options_form.php:65
+msgid "Email-Users Plugin Settings"
+msgstr "Impostazioni Plugin Email-Users"
+
+#: ../email_users_options_form.php:74
+msgid "Mail Format"
+msgstr "Formato Mail"
+
+#: ../email_users_options_form.php:79
+msgid "Send mail as plain text or HTML by default?"
+msgstr "Normalmente invio mail di solo testo o in HTML?"
+
+#: ../email_users_options_form.php:83
+msgid "Sort Users By"
+msgstr "Ordina Utenti per"
+
+#: ../email_users_options_form.php:86 ../email_users_options_form.php:104
+msgid "None"
+msgstr "Nessuno"
+
+#: ../email_users_options_form.php:87
+msgid "Display Name"
+msgstr "Nome Visualizzato"
+
+#: ../email_users_options_form.php:88
+msgid "Display Name (User Login)"
+msgstr "Nome Visualizzato (Login Utente)"
+
+#: ../email_users_options_form.php:89
+msgid "First Name Last Name"
+msgstr "Nome Cognome"
+
+#: ../email_users_options_form.php:90
+msgid "First Name Last Name (User Login)"
+msgstr "Noem Cognome (Login Utente)"
+
+#: ../email_users_options_form.php:91
+msgid "Last Name, First Name"
+msgstr "Cognome, Nome"
+
+#: ../email_users_options_form.php:92
+msgid "Last Name, First Name (User Login)"
+msgstr "Cognome, Nome (Login Utente)"
+
+#: ../email_users_options_form.php:93
+msgid "User Login"
+msgstr "Login Utente"
+
+#: ../email_users_options_form.php:94
+msgid "User Login (Display Name)"
+msgstr "Login Utente (Nome Visualizzato)"
+
+#: ../email_users_options_form.php:95
+msgid "User Login (First Name Last Name)"
+msgstr "Login Utente (Nome Cognome)"
+
+#: ../email_users_options_form.php:96
+msgid "User Login (Last Name, First Name)"
+msgstr "Login Utente (Cognome, Nome)"
+
+#: ../email_users_options_form.php:97
+msgid "Determine how to sort and display names in the User selection list?"
+msgstr ""
+"Permetti di ordinare e visualizzare i nomi nella Lista di selezione Utenti?"
+
+#: ../email_users_options_form.php:101
+msgid "BCC Limit"
+msgstr "Limite BCC"
+
+#: ../email_users_options_form.php:109
+msgid ""
+"Try 30 if you have problems sending emails to many users (some providers "
+"forbid too many recipients in BCC field)."
+msgstr ""
+"Imposta a 30 se ci sono problemi ad inviare email a molti utenti (alcuni "
+"provider impediscono troppi destinatari nel campo BCC)."
+
+#: ../email_users_options_form.php:114
+msgid "Default<br/>Notification Subject"
+msgstr "Oggetto Notifica<br/>Predefinito"
+
+#: ../email_users_options_form.php:121
+msgid "From Sender<br/>Exclude"
+msgstr "Escludi<br/>Mittente"
+
+#: ../email_users_options_form.php:125
+msgid "Exclude sender from email recipient list."
+msgstr "Escludi il mittente dall'elenco dei destinatari."
+
+#: ../email_users_options_form.php:130
+msgid "From Sender<br/>Name Override"
+msgstr "Sovrascrivi il<br/>Nome del Mittente"
+
+#: ../email_users_options_form.php:134
+msgid ""
+"A name that can be used in place of the logged in user's name when sending "
+"email or notifications."
+msgstr ""
+"Nome che verrà usato al posto del login dell'utente loggato quando viene "
+"inviata una mail o una notifica."
+
+#: ../email_users_options_form.php:138
+msgid "From Sender Email<br/>Address Override"
+msgstr "Sovrascrivi l'indirizzo Email<br/>del Mittente"
+
+#: ../email_users_options_form.php:142
+msgid ""
+"An email address that can be used in place of the logged in user's email "
+"address when sending email or notifications."
+msgstr ""
+"Indirizzo email che verrà usato al posto della mail dell'utente loggato "
+"quando viene inviata una mail o una notifica."
+
+#: ../email_users_options_form.php:142 ../email_users_options_form.php:150
+msgid "Note:  Invalid email addresses are not saved."
+msgstr "Nota: Indirizzi email non validi non sono salvati."
+
+#: ../email_users_options_form.php:146
+msgid "Send Bounces To Email<br/>Address Override"
+msgstr "Sovrascrivi l'indirizzo Email<br/>di ritorno"
+
+#: ../email_users_options_form.php:150
+msgid ""
+"An email address that can be used in place of the logged in user's email "
+"address to receive bounced email notifications."
+msgstr ""
+"Indirizzo email che verrà usato al posto della mail dell'utente loggato dove "
+"ricevere  la notifica di ritorno."
+
+#: ../email_users_options_form.php:154
+msgid "Default<br/>Notification Body"
+msgstr "Testo Notifica<br/>Predefinito"
+
+#: ../email_users_options_form.php:161
+msgid "Short Code<br/>Processing"
+msgstr "Elaborazione<br/>Campi Codice"
+
+#: ../email_users_options_form.php:165
+msgid "Process short codes embedded in posts or pages."
+msgstr "Elabora i campi codice inclusi negli articoli o nelle pagine."
+
+#: ../email_users_options_form.php:170
+msgid "User Settings<br/>Table Rows"
+msgstr "Impostazioni Utente<br/>Righe Tabella"
+
+#: ../email_users_options_form.php:173
+msgid "10"
+msgstr "10"
+
+#: ../email_users_options_form.php:174
+msgid "20"
+msgstr "20"
+
+#: ../email_users_options_form.php:175
+msgid "40"
+msgstr "40"
+
+#: ../email_users_options_form.php:176
+msgid "50"
+msgstr "50"
+
+#: ../email_users_options_form.php:177
+msgid "75"
+msgstr "75"
+
+#: ../email_users_options_form.php:178
+msgid "100"
+msgstr "100"
+
+#: ../email_users_options_form.php:179
+msgid "200"
+msgstr "200"
+
+#: ../email_users_options_form.php:180
+msgid "500"
+msgstr "500"
+
+#: ../email_users_options_form.php:181
+msgid "By default the table will display 20 rows."
+msgstr "Normalmente la tabella mostra 20 righe."
+
+#: ../email_users_options_form.php:185
+msgid "Default<br/>User Settings"
+msgstr "Impostazioni Utente<br/>Predefinite"
+
+#: ../email_users_options_form.php:189
+msgid "Receive post or page notification emails."
+msgstr "Ricezione email di notifica di articoli e pagine."
+
+#: ../email_users_options_form.php:193
+msgid "Receive emails sent to multiple recipients."
+msgstr "Ricezione email inviate a destinatari multipli."
+
+#: ../email_users_options_form.php:197
+msgid "Allow Users to control their own Email Users settings."
+msgstr ""
+"Permetti agli utenti di gestire le proprie impostazioni di Email Users."
+
+#: ../email_users_options_form.php:203
+msgid "Save Changes"
+msgstr "Salva Modifiche"
+
+#: ../email_users_options_form.php:214
+msgid "Email-Users Defaults"
+msgstr "Impostazioni Predefinite di Email-Users"
+
+#: ../email_users_options_form.php:216
+msgid ""
+"Email-Users has default values for all settings.  When reset, the following "
+"values are used."
+msgstr ""
+"Email-Users ha dei valori predefiniti per tutti le impostazioni. In caso di "
+"ripristino, i seguenti valori vengono usati."
+
+#: ../email_users_options_form.php:220
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../email_users_options_form.php:221
+msgid "Default Value"
+msgstr "Valore Predefinito"
+
+#: ../email_users_options_form.php:241
+msgid "Apply Default Settings"
+msgstr "Imposta Valori Predefiniti"
+
+#: ../email_users_options_form.php:252
+msgid "Email-Users Test Notification Mail"
+msgstr "Email-Users Invio Mail di Notifica di Prova"
+
+#: ../email_users_options_form.php:254
+msgid "Use this Test Notification to verify proper operation of Email-Users."
+msgstr ""
+"Utilizzare questa Notifica di prova per verificare la correttezza delle "
+"operazioni di Email-Users."
+
+#: ../email_users_options_form.php:258
+msgid "Notification Mail Preview (updated when the options are saved)"
+msgstr ""
+"Anteprima Mail di Notifica (aggiornata con il salvataggio delle impostazioni)"
+
+#: ../email_users_options_form.php:268 ../email_users_send_test_mail.php:61
+msgid "No post found in the blog in order to build a notification preview."
+msgstr ""
+"Nessun articolo trovato nel sito per creare l'anteprima della notifica."
+
+#: ../email_users_options_form.php:315
+msgid "Send Test Notification to Yourself"
+msgstr "Invia la Notifica di Prova a te stesso"
+
+#: ../email_users_options_form.php:325
+msgid "Email-Users Variables"
+msgstr "Variabili Email-Users"
+
+#: ../email_users_options_form.php:327
+msgid "Variables you can include in the subject or body templates"
+msgstr "Variabili che puoi inserire nell'oggetto o nel corpo del messaggio"
+
+#: ../email_users_options_form.php:331
+msgid "Variable"
+msgstr "Variabile"
+
+#: ../email_users_options_form.php:332 ../email_users_options_form.php:378
+msgid "Description"
+msgstr "Descrizione"
+
+#: ../email_users_options_form.php:338
+msgid "the link to the blog"
+msgstr "collegamento al sito/blog"
+
+#: ../email_users_options_form.php:342
+msgid "the blog's name"
+msgstr "nome del blog"
+
+#: ../email_users_options_form.php:346
+msgid "the WordPress user name of the person sending the mail"
+msgstr "nome utente di Wordpress di chi invia la mail"
+
+#: ../email_users_options_form.php:350
+msgid "the title of the post you want to highlight"
+msgstr "titolo dell'articolo che vuoi evidenziare"
+
+#: ../email_users_options_form.php:354
+msgid "the excerpt of the post you want to highlight"
+msgstr "riassunto dell'articolo che vuoi evidenziare"
+
+#: ../email_users_options_form.php:358
+msgid "the link to the post you want to highlight"
+msgstr "collegamento all'articolo che vuoi evidenziare"
+
+#: ../email_users_options_form.php:369
+msgid "Email-Users Capabilities"
+msgstr "Funzionalità Email-Users"
+
+#: ../email_users_options_form.php:372
+msgid ""
+"Email Users uses capabilities to define what users are allowed to do. Below "
+"is a list of the capabilities used by the plugin and the default user role "
+"allowed to make these actions."
+msgstr ""
+"Email Users utilizza le funzionalità per determinare quello che gli utenti "
+"possono fare. Sotto c'è una lista delle funzionalità usati dal plugin e del "
+"ruolo a cui normalmente è permessa questa azione."
+
+#: ../email_users_options_form.php:372
+msgid ""
+"If you want to change the roles having those capabilities, you should use "
+"the plugin:"
+msgstr ""
+"Se vuoi modificare il ruolo abilitato a queste funzionalità, puoi utilizzare "
+"il plugin:"
+
+#: ../email_users_options_form.php:377
+msgid "Capability"
+msgstr "Funzionalità"
+
+#: ../email_users_options_form.php:379
+msgid "Default Roles"
+msgstr "Ruolo Predefinito"
+
+#: ../email_users_options_form.php:385
+msgid "Access this options page."
+msgstr "Accesso a questa pagina di impostazioni."
+
+#: ../email_users_options_form.php:386
+msgid "Administrators only."
+msgstr "Solo Amministratore."
+
+#: ../email_users_options_form.php:390
+msgid "Send an email to a single user."
+msgstr "Invio email a singolo utente."
+
+#: ../email_users_options_form.php:391
+msgid "Administrators, editors, authors and contributors."
+msgstr "Amministratori, Editori, Autori e Collaboratori."
+
+#: ../email_users_options_form.php:395
+msgid "Send an email to various users at the same time."
+msgstr "Invio email a più utenti nello stesso momento."
+
+#: ../email_users_options_form.php:396
+msgid "Administrators, editors and authors."
+msgstr "Amministratori, Editori ed Autori."
+
+#: ../email_users_options_form.php:400
+msgid "Notify users of new posts."
+msgstr "Notifica agli utenti di nuovio articoli."
+
+#: ../email_users_options_form.php:401 ../email_users_options_form.php:406
+msgid "Administrators and editors."
+msgstr "Amministratori ed Editori."
+
+#: ../email_users_options_form.php:405
+msgid "Send an email to user groups."
+msgstr "Invio email a gruppi di utenti"
+
+#: ../email_users_options_form.php:417
+msgid "Email-Users Integration"
+msgstr "Integrazioni per Email-Users"
+
+#: ../email_users_options_form.php:420
+msgid ""
+"Email Users provides integration hooks with several WordPress \"Group\" "
+"plugins."
+msgstr ""
+"Email Users mette a disposizione agganci per integrazioni con vari plugin di "
+"Wordpress per \"Gruppi\"."
+
+#: ../email_users_options_form.php:425
+msgid "Plugin"
+msgstr "Plugin"
+
+#: ../email_users_options_form.php:426
+msgid "Description <small><i>(from the plugin web site)</i></small>"
+msgstr "Descrizione <small><i>(dalla pagina web del plugin)</i></small>"
+
+#: ../email_users_options_form.php:427
+msgid "Status"
+msgstr "Stato"
+
+#: ../email_users_options_form.php:433
+msgid ""
+"This plugin does one thing, and does it well: create groups and organize "
+"your users by that group."
+msgstr ""
+"Questo plugin fa una cosa e la fa bene: creare gruppi ed organizzare i "
+"vostri utenti con questi gruppi."
+
+#: ../email_users_options_form.php:438
+msgid ""
+"With the \"User Access Manager\"-plugin you can manage the access to your "
+"posts, pages and files."
+msgstr ""
+"Con il plugin \"User Access Manager\"- potete gestire l'accesso ai vostri "
+"articoli, pagine e files."
+
+#: ../email_users_options_form.php:481
+msgid ""
+"if you use Google Forms and want to integrate them with your WordPress site, "
+"try: "
+msgstr ""
+"se usate Google Forms e volete integrarlo nel vostro sito Wordpress, prova:"
+
+#: ../email_users_overview.php:26
+msgid "You are not allowed to send emails."
+msgstr "Non sei abilitato ad inviare email."
+
+#: ../email_users_overview.php:45 ../email_users_overview.php:51
+msgid "Send Individual Message"
+msgstr "Invio Messaggio Individuale"
+
+#: ../email_users_overview.php:48
+msgid "Send an email to one or more individual users"
+msgstr "Invia una mail a uno o più utenti singoli"
+
+#: ../email_users_overview.php:50
+msgid ""
+"You can send an email to one or more users by selecting them individually."
+msgstr ""
+"Puoi inviare una mail a uno o più utenti selezionandoli individualmente."
+
+#: ../email_users_overview.php:63
+msgid "Send a Group Message"
+msgstr "Invia Messaggio ad un Gruppo"
+
+#: ../email_users_overview.php:66
+msgid "Send an email to one or more user groups"
+msgstr "Invia una mail a uno o più gruppi di utenti"
+
+#: ../email_users_overview.php:68
+msgid ""
+"You can send an email to one or more user groups (i.e. users belonging to "
+"the same WordPress role)."
+msgstr ""
+"Puoi inviare una mail a uno o più gruppi di utenti (cioè utenti appartenenti "
+"allo stesso ruolo in Wordpress)."
+
+#: ../email_users_overview.php:69
+msgid "Send Group Message"
+msgstr "Invia Messaggio di Gruppo"
+
+#: ../email_users_send_custom_filter_mail.php:53
+#: ../email_users_send_group_mail.php:55 ../email_users_send_user_mail.php:47
+msgid "You must specify the mail format."
+msgstr "Devi specificare il formato della mail."
+
+#: ../email_users_send_custom_filter_mail.php:59
+#: ../email_users_send_user_mail.php:53
+msgid "You must enter at least a recipient."
+msgstr "Devi inserire almeno un destinatario."
+
+#: ../email_users_send_custom_filter_mail.php:73
+#: ../email_users_send_group_mail.php:67
+#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:59
+msgid "You must enter a subject."
+msgstr "Devi inserire un oggetto."
+
+#: ../email_users_send_custom_filter_mail.php:79
+#: ../email_users_send_group_mail.php:73
+#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:65
+msgid "You must enter some content."
+msgstr "Devi inserire qualcosa come contenuto."
+
+#: ../email_users_send_custom_filter_mail.php:144
+#: ../email_users_send_group_mail.php:190
+#: ../email_users_send_notify_mail.php:208
+#: ../email_users_send_test_mail.php:86 ../email_users_send_user_mail.php:130
+msgid "No recipients were found."
+msgstr "Nessun destinatario trovato."
+
+#: ../email_users_send_custom_filter_mail.php:149
+#: ../email_users_send_group_mail.php:195
+msgid ""
+"<div class=\"error fade\"><p>There was a problem trying to send email to "
+"users.</p></div>"
+msgstr ""
+"<div class=\"error fade\"><p>Problemi nel tentativo di inviare la mail agli "
+"utenti.</p></div>"
+
+#: ../email_users_send_custom_filter_mail.php:151
+#: ../email_users_send_group_mail.php:197
+msgid ""
+"<div class=\"error fade\"><p>No email has been sent to other users. This may "
+"be because no valid email addresses were found.</p></div>"
+msgstr ""
+"<div class=\"error fade\"><p>Nessuan mail è stata inviata ad altri utenti. "
+"Probabilmente non sono stati trovati indirizzi email validi.</p></div>"
+
+#: ../email_users_send_custom_filter_mail.php:155
+#: ../email_users_send_group_mail.php:201
+#: ../email_users_send_user_mail.php:142
+#, php-format
+msgid "Email sent to %s user(s)."
+msgstr "Email inviata a %s utente(i)."
+
+#: ../email_users_send_custom_filter_mail.php:159
+#: ../email_users_send_group_mail.php:205
+msgid ""
+"<div class=\"error fade\"><p>WARNING: More email has been sent than the "
+"number of recipients found.</p></div>"
+msgstr ""
+"<div class=\"error fade\"><p>ATTENZIONE: Sono state inviate più mail del "
+"numero dei destinatari trovati.</p></div>"
+
+#: ../email_users_send_custom_filter_mail.php:161
+#: ../email_users_send_group_mail.php:207
+#, php-format
+msgid ""
+"Email has been sent to %s users, but %s recipients were originally found. "
+"Perhaps some users don't have valid email addresses?"
+msgstr ""
+"Mail inviata a %s utenti, ma %s destinatari sono stati originariamente "
+"trovati. Forse alcuni utenti non hanno un indirizzo email valido?"
+
+#: ../email_users_send_group_mail.php:61
+msgid "You must select at least a role."
+msgstr "Devi selezionare almeno un ruolo."
+
+#: ../email_users_send_notify_mail.php:54
+msgid "You must select at least a recipient."
+msgstr "Devi selezionare almeno un destinatario."
+
+#: ../email_users_send_notify_mail.php:214
+#, php-format
+msgid "Notification sent to %s user(s)."
+msgstr "Notifica inviata a %s utente(i)."
+
+#: ../email_users_send_test_mail.php:92
+#, php-format
+msgid "Test email sent to %s."
+msgstr "Mail di prova inviata a %s."
+
+#: ../email_users_send_user_mail.php:124
+#, php-format
+msgid ""
+"<br/>%d users who should not to receive Mass Email were filtered from the "
+"recipient list."
+msgstr ""
+"<br/>%d utenti che non dovrebbero ricevere mail massive sono stati filtrati "
+"dall'elenco dei destinatari."
+
+#: ../email_users_send_user_mail.php:136
+msgid "There was a problem trying to send email to users."
+msgstr "Problemi nel tentativo di inviare la mail agli utenti. "
+
+#: ../email_users_send_user_mail.php:138
+msgid ""
+"No email has been sent to other users. This may be because no valid email "
+"addresses were found."
+msgstr ""
+"Nessuna mail è stata inviata agli utenti. Probabilmente non sono stati "
+"trovati indirizzi email validi."
+
+#: ../email_users_send_user_mail.php:146
+msgid "WARNING: More email has been sent than the number of recipients found."
+msgstr ""
+"ATTENZIONE: Sono state inviate più mail del numero dei destinatari trovati."
+
+#: ../email_users_send_user_mail.php:148
+#, php-format
+msgid ""
+"Email has been sent to %d users, but %d recipients were originally found. "
+"Perhaps some users don't have valid email addresses?"
+msgstr ""
+"La mail è stata inviata a %d utenti, ma %d destinatari sono stati "
+"originariamente trovati. Forse alcuni utenti non hanno un indirizzo mail "
+"valido?"
+
+#: ../email_users_set_options.php:37
+msgid "Plugin settings have been restored to the defaults."
+msgstr "Le impostazioni del plugin sono state ripristinate al valore iniziale."
+
+#: ../email_users_user_mail_form.php:55
+msgid "Send an Email to Individual Users"
+msgstr "Invio Mail a Utenti Individuali "
+
+#: ../email_users_user_settings.php:30
+msgid "You are not allowed to view the user settings."
+msgstr "Non sei abilitato a vedere le impostazioni utente."
+
+#: ../email_users_user_settings.php:104
+msgid "On"
+msgstr "Attivo"
+
+#: ../email_users_user_settings.php:104
+msgid "Off"
+msgstr "Disattivo"
+
+#: ../email_users_user_settings.php:177
+msgid "Last Name"
+msgstr "Cognome"
+
+#: ../email_users_user_settings.php:178
+msgid "First Name"
+msgstr "Nome"
+
+#: ../email_users_user_settings.php:179
+msgid "Username"
+msgstr "Username"
+
+#: ../email_users_user_settings.php:180
+msgid "E-Mail Address"
+msgstr "Indirizzo E-Mail"
+
+#: ../email_users_user_settings.php:181
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: ../email_users_user_settings.php:182
+msgid "Mass Email"
+msgstr "Email Massive"
+
+#: ../email_users_user_settings.php:230
+msgid "Notifications On"
+msgstr "Attiva Notifiche"
+
+#: ../email_users_user_settings.php:231
+msgid "Notifications Off"
+msgstr "Disattiva Notifiche"
+
+#: ../email_users_user_settings.php:232
+msgid "Mass Email On"
+msgstr "Attiva Email Massive"
+
+#: ../email_users_user_settings.php:233
+msgid "Mass Email Off"
+msgstr "Dissattiva Email Massive"
+
+#: ../email_users_user_settings.php:234
+msgid "Notifications On & Mass Email On"
+msgstr "Attiva Notifiche & Attiva Email Massive"
+
+#: ../email_users_user_settings.php:235
+msgid "Notifications On & Mass Email Off"
+msgstr "Disattiva Notifiche & Disattiva Email Massive"
+
+#: ../email_users_user_settings.php:236
+msgid "Notifications Off & Mass Email On"
+msgstr "Disattiva Notifiche & Attiva Email Massive"
+
+#: ../email_users_user_settings.php:237
+msgid "Notifications Off & Mass Email Off"
+msgstr "Disattiva Notifiche & Disattiva Email Massive"
+
+#: ../email_users_user_settings.php:315
+msgid "No users selected"
+msgstr "Nessun utente selezionato"

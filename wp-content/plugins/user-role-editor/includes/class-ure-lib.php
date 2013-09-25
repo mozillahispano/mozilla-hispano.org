@@ -37,6 +37,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	protected $integrate_with_gravity_forms = false;
 	protected $advert = null;
 	protected $main_blog_id = 0; 
+ protected $hidden_built_in_wp_caps_quant = 0;
   
   
     /** class constructor
@@ -584,6 +585,14 @@ class Ure_Lib extends Garvs_WP_Lib {
     {
         global $current_user;
 
+        $ure_key_capability = $this->get_key_capability();
+        if (empty($user_id)) {                    
+            $user_id = $current_user->ID;
+        }
+        $result = user_can($user_id, $ure_key_capability);
+        
+        return $result;
+/*        
         if (!$user_id) {
             if (empty($current_user) && function_exists('get_currentuserinfo')) {
                 get_currentuserinfo();
@@ -607,6 +616,8 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
 
         return $simple_admin || $super_admin;
+ * 
+ */
     }
     // end of user_is_admin()
 
@@ -889,7 +900,13 @@ class Ure_Lib extends Garvs_WP_Lib {
         $caps['export'] = 1;
         $caps['delete_users'] = 1;
         $caps['create_users'] = 1;
-
+        $caps['manage_network'] = 1;        
+        $caps['manage_network_users'] = 1;
+        $caps['manage_network_themes'] = 1;
+        $caps['manage_network_plugins'] = 1;
+        $caps['manage_network_options'] = 1;
+        $caps['manage_network'] = 1;
+        
         return $caps;
     }
     // end of get_built_in_wp_caps()
@@ -1010,10 +1027,10 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
 
         if ($core) {
-            $quant = count($this->get_built_in_wp_caps());
+            $quant = count($this->get_built_in_wp_caps()) - $this->hidden_built_in_wp_caps_quant;
             $deprecated_caps = $this->get_deprecated_caps();
         } else {
-            $quant = count($this->full_capabilities) - count($this->get_built_in_wp_caps());
+            $quant = count($this->full_capabilities) - count($this->get_built_in_wp_caps()) + $this->hidden_built_in_wp_caps_quant;
             $deprecated_caps = array();
         }
         $quant_in_column = (int) $quant / 3;
@@ -1280,22 +1297,22 @@ class Ure_Lib extends Garvs_WP_Lib {
 
         
     protected function add_capability_to_full_caps_list($cap_id) {
-        $cap = array();
-        $cap['inner'] = $cap_id;
-        $cap['human'] = __($this->convert_caps_to_readable($cap_id), 'ure');
-        if (isset($this->built_in_wp_caps[$cap_id])) {
-            $cap['wp_core'] = true;
-        } else {
-            $cap['wp_core'] = false;
-        }
         if (!isset($this->full_capabilities[$cap_id])) {
+            $cap = array();
+            $cap['inner'] = $cap_id;
+            $cap['human'] = __($this->convert_caps_to_readable($cap_id), 'ure');
+            if (isset($this->built_in_wp_caps[$cap_id])) {
+                $cap['wp_core'] = true;
+            } else {
+                $cap['wp_core'] = false;
+            }
+
             $this->full_capabilities[$cap_id] = $cap;
         }
-        
     }
-    // end of build_capability()
-    
-            
+    // end of add_capability_to_full_caps_list()
+
+
     protected function init_full_capabilities() {
         $this->built_in_wp_caps = $this->get_built_in_wp_caps();
         $this->full_capabilities = array();
@@ -1314,6 +1331,22 @@ class Ure_Lib extends Garvs_WP_Lib {
                 $this->add_capability_to_full_caps_list($gf_cap);
             }
         }
+        
+        if ($this->ure_object=='user') {
+            foreach($this->user_to_edit->caps as $key=>$value)  {
+                if (!isset($this->roles[$key])) {   // it is the user capability, not role
+                    $this->add_capability_to_full_caps_list($key);
+                }
+            }
+        }
+        
+        $this->hidden_built_in_wp_caps_quant = 0;
+        foreach ($this->built_in_wp_caps as $cap=>$val) {
+            if (!isset($this->full_capabilities[$cap])) {
+                $this->hidden_built_in_wp_caps_quant++;
+            }
+        }
+        
         unset($this->built_in_wp_caps);
         asort($this->full_capabilities);
     }
@@ -1782,7 +1815,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         // add individual capabilities to user
         if (count($this->capabilities_to_save) > 0) {
             foreach ($this->capabilities_to_save as $key => $value) {
-				$user->add_cap($key);
+                $user->add_cap($key);
             }
         }
         $user->update_user_level_from_caps();
@@ -2063,8 +2096,34 @@ class Ure_Lib extends Garvs_WP_Lib {
                 
         return false;        
     }
-    // end of user_can()
+    // end of user_can()           
     
     
+    // returns true if current user has $capability assigned through the roles or directly
+    // returns true if current user has role with name equal $capability
+    public function user_has_capability($user, $cap) {    
+        
+        global $wp_roles;
+        
+		if (is_multisite() && is_super_admin()) {
+			return true;
+		}
+		
+        if (isset($user->caps[$cap])) {
+            return true;
+        }
+        foreach ($user->roles as $role) {
+            if ($role===$cap) {
+                return true;
+            }
+            if (!empty($wp_roles->roles[$role]['capabilities'][$cap])) {
+                return true;
+            }
+        }
+                
+        return false;        
+    }
+    // end of user_has_capability()           
+
 }
 // end of URE_Lib class

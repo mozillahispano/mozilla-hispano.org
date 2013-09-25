@@ -123,12 +123,6 @@ msgstr "overweeg met extra gewicht"
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin opties"
 
-#: options-meta-boxes.php:302
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Doneer mitcho (Michael Yoshitaka Erlewine) voor deze plugin via PayPal"
-
 #: options-meta-boxes.php:147
 #@ yarpp
 msgid "\"The Pool\""

@@ -1,0 +1,239 @@
+# This file is public domain
+msgid ""
+msgstr ""
+"Project-Id-Version: browserid-wordpress v0.45\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-19 18:23+0100\n"
+"PO-Revision-Date: 2013-08-30 10:34+0900\n"
+"Last-Translator: Makoto Kato <m_kato@ga2.so-net.ne.jp>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../lib/browserid.php:132 ../lib/browserid.php:919
+#: scripts/../lib/browserid.php:132 scripts/../lib/browserid.php:919
+#: ../lib/browserid.php:132 ../lib/browserid.php:919
+msgid "Sign in with your email"
+msgstr "あなたのメールアドレスでサインインする"
+
+#: ../lib/browserid.php:136 ../lib/browserid.php:928
+#: scripts/../lib/browserid.php:136 scripts/../lib/browserid.php:928
+#: ../lib/browserid.php:136 ../lib/browserid.php:928
+msgid "Logout"
+msgstr "ログアウト"
+
+#: ../lib/browserid.php:162 scripts/../lib/browserid.php:162
+#: ../lib/browserid.php:162
+msgid "Settings"
+msgstr "設定"
+
+#: ../lib/browserid.php:267 ../lib/browserid.php:393
+#: scripts/../lib/browserid.php:267 scripts/../lib/browserid.php:393
+#: ../lib/browserid.php:267 ../lib/browserid.php:393
+msgid "Verification failed"
+msgstr "認証が失敗しました"
+
+#: ../lib/browserid.php:386 scripts/../lib/browserid.php:386
+#: ../lib/browserid.php:386
+msgid "Verification response invalid"
+msgstr "認証のレスポンスが正しくありません"
+
+#: ../lib/browserid.php:460 scripts/../lib/browserid.php:460
+#: ../lib/browserid.php:460
+msgid "You must already have an account to log in with Persona."
+msgstr "あなたは既にPersonaでログインするためのアカウントを持っています。"
+
+#: ../lib/browserid.php:489 scripts/../lib/browserid.php:489
+#: ../lib/browserid.php:489
+msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
+msgstr "<strong>エラー</strong>: あなたのアカウントはスパマーとしてマークされています。"
+
+#: ../lib/browserid.php:495 scripts/../lib/browserid.php:495
+#: ../lib/browserid.php:495
+msgid "Site Suspended."
+msgstr "サイトは休止中です。"
+
+#: ../lib/browserid.php:592 scripts/../lib/browserid.php:592
+#: ../lib/browserid.php:592
+msgid "Register"
+msgstr "登録"
+
+#: ../lib/browserid.php:624 scripts/../lib/browserid.php:624
+#: ../lib/browserid.php:624
+#, php-format
+msgid ""
+"<strong>ERROR</strong>:  %s uses Mozilla Persona for registration. Please "
+"register using Persona."
+msgstr "<strong>エラー</strong>: %sは登録にMozilla Personaを使用しています。Personaを使った登録してください。"
+
+#: ../lib/browserid.php:652 scripts/../lib/browserid.php:652
+#: ../lib/browserid.php:652
+msgid "Password reset disabled"
+msgstr "パスワードリセットは無効です"
+
+#: ../lib/browserid.php:653 scripts/../lib/browserid.php:653
+#: ../lib/browserid.php:653
+#, php-format
+msgid ""
+"%s uses Mozilla Persona to sign in and does not use passwords. Password "
+"reset is disabled."
+msgstr "%sはサインインにMozilla Personaを利用していますが、パスワードを使用していません。パスワードリセットは無効です。"
+
+#: ../lib/browserid.php:715 ../lib/browserid.php:717
+#: scripts/../lib/browserid.php:715 scripts/../lib/browserid.php:717
+#: ../lib/browserid.php:715 ../lib/browserid.php:717
+msgid "Comment must be submitted using Persona"
+msgstr "コメントを投稿するにはPersonaを利用する必要があります"
+
+#: ../lib/browserid.php:803 scripts/../lib/browserid.php:803
+#: ../lib/browserid.php:803
+msgid "What is Persona?"
+msgstr "Personaとは何ですか?"
+
+#: ../lib/browserid.php:855 ../lib/browserid.php:856
+#: scripts/../lib/browserid.php:855 scripts/../lib/browserid.php:856
+#: ../lib/browserid.php:855 ../lib/browserid.php:856
+msgid "Mozilla Persona"
+msgstr "Mozilla Persona"
+
+#: ../lib/browserid.php:855 scripts/../lib/browserid.php:855
+#: ../lib/browserid.php:855
+msgid "Administration"
+msgstr "管理"
+
+#: ../lib/browserid.php:866 scripts/../lib/browserid.php:866
+#: ../lib/browserid.php:866
+msgid "Site name:"
+msgstr "サイト名:"
+
+#: ../lib/browserid.php:867 scripts/../lib/browserid.php:867
+#: ../lib/browserid.php:867
+msgid "Site logo:"
+msgstr "サイトロゴ:"
+
+#: ../lib/browserid.php:868 scripts/../lib/browserid.php:868
+#: ../lib/browserid.php:868
+msgid "Disable non-Persona logins:"
+msgstr "Personaではないログインを無効にする:"
+
+#: ../lib/browserid.php:869 scripts/../lib/browserid.php:869
+#: ../lib/browserid.php:869
+msgid "Login button HTML:"
+msgstr "ログインボタンのHTML:"
+
+#: ../lib/browserid.php:870 scripts/../lib/browserid.php:870
+#: ../lib/browserid.php:870
+msgid "Logout button HTML:"
+msgstr "ログアウトボタンのHMTL:"
+
+#: ../lib/browserid.php:872 scripts/../lib/browserid.php:872
+#: ../lib/browserid.php:872
+msgid "Login redirection URL:"
+msgstr "ログインの際のリダイレクトURL:"
+
+#: ../lib/browserid.php:873 scripts/../lib/browserid.php:873
+#: ../lib/browserid.php:873
+msgid "Enable for comments:"
+msgstr "コメントを有効にする:"
+
+#: ../lib/browserid.php:874 scripts/../lib/browserid.php:874
+#: ../lib/browserid.php:874
+msgid "Enable bbPress integration:"
+msgstr "bbPressとの統合を有効にする:"
+
+#: ../lib/browserid.php:875 scripts/../lib/browserid.php:875
+#: ../lib/browserid.php:875
+msgid "Persona source:"
+msgstr "Personaソース:"
+
+#: ../lib/browserid.php:876 scripts/../lib/browserid.php:876
+#: ../lib/browserid.php:876
+msgid "Verification server:"
+msgstr "認証サーバー:"
+
+#: ../lib/browserid.php:877 scripts/../lib/browserid.php:877
+#: ../lib/browserid.php:877
+msgid "Debug mode:"
+msgstr "デバッグモード:"
+
+#: ../lib/browserid.php:911 scripts/../lib/browserid.php:911
+#: ../lib/browserid.php:911
+msgid "Absolute path, works only with SSL"
+msgstr "絶対パス。SSLでのみ有効"
+
+#: ../lib/browserid.php:938 scripts/../lib/browserid.php:938
+#: ../lib/browserid.php:938
+msgid "Default WordPress dashboard"
+msgstr "デフォルトWordPressダッシュボード"
+
+#: ../lib/browserid.php:968 scripts/../lib/browserid.php:968
+#: ../lib/browserid.php:968
+msgid "Enables anonymous posting implicitly"
+msgstr "匿名投稿を暗黙で有効にする"
+
+#: ../lib/browserid.php:984 ../lib/browserid.php:1005
+#: scripts/../lib/browserid.php:984 scripts/../lib/browserid.php:1005
+#: ../lib/browserid.php:984 ../lib/browserid.php:1005
+msgid "Default"
+msgstr "デフォルト"
+
+#: ../lib/browserid.php:1028 scripts/../lib/browserid.php:1028
+#: ../lib/browserid.php:1028
+msgid "Security risk!"
+msgstr "セキュリティリスク!"
+
+#: ../lib/browserid.php:1133 scripts/../lib/browserid.php:1133
+#: ../lib/browserid.php:1133
+msgid "Mozilla Persona login button"
+msgstr "Mozilla Personaログインボタン"
+
+#: ../lib/browserid.php:1208 scripts/../lib/browserid.php:1208
+#: ../lib/browserid.php:1208
+#, php-format
+msgid "New user registration on your site %s:"
+msgstr "あなたのサイト %s での新しいユーザーの登録:"
+
+#: ../lib/browserid.php:1209 ../lib/browserid.php:1217
+#: scripts/../lib/browserid.php:1209 scripts/../lib/browserid.php:1217
+#: ../lib/browserid.php:1209 ../lib/browserid.php:1217
+#, php-format
+msgid "Username: %s"
+msgstr "ユーザー名: %s"
+
+#: ../lib/browserid.php:1210 scripts/../lib/browserid.php:1210
+#: ../lib/browserid.php:1210
+#, php-format
+msgid "E-mail: %s"
+msgstr "メールアドレス: %s"
+
+#: ../lib/browserid.php:1212 scripts/../lib/browserid.php:1212
+#: ../lib/browserid.php:1212
+#, php-format
+msgid "[%s] New User Registration"
+msgstr "[%s] 新しいユーザーの登録"
+
+#: ../lib/browserid.php:1226 scripts/../lib/browserid.php:1226
+#: ../lib/browserid.php:1226
+#, php-format
+msgid "%s uses Mozilla Persona to sign in and does not use passwords"
+msgstr "%sはサインインにMozilla Personaを使用していますが、パスワードを使用していません"
+
+#: ../lib/browserid.php:1227 scripts/../lib/browserid.php:1227
+#: ../lib/browserid.php:1227
+#, php-format
+msgid "[%s] Your username"
+msgstr "[%s] あなたのユーザ名"
+
+#: ../lib/browserid.php:1229 scripts/../lib/browserid.php:1229
+#: ../lib/browserid.php:1229
+#, php-format
+msgid "Password: %s"
+msgstr "パスワード: %s"
+
+#: ../lib/browserid.php:1230 scripts/../lib/browserid.php:1230
+#: ../lib/browserid.php:1230
+#, php-format
+msgid "[%s] Your username and password"
+msgstr "[%s] あなたのユーザー名とパスワード"

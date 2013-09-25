@@ -129,13 +129,6 @@ msgstr "arvestama"
 msgid "consider with extra weight"
 msgstr "ravitud lisaraskusega"
 
-# @ default
-# @ yarpp
-#: options-meta-boxes.php:286
-msgid ""
-"Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Anneta arendaja mitcho (Michael Yoshitaka Erlewine), kaudu PayPal"
-
 # @ yarpp
 #: options.php:178
 msgid "Yet Another Related Posts Plugin Options"

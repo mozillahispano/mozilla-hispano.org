@@ -140,7 +140,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 		        else $memory_limit = __('N/A', 'all_in_one_seo_pack' );
 		        if (function_exists('memory_get_usage')) $memory_usage = round(memory_get_usage() / 1024 / 1024, 2) . __(' MByte', 'all_in_one_seo_pack' );
 		        else $memory_usage = __('N/A', 'all_in_one_seo_pack' );
-		        if (is_callable('exif_read_data')) $exif = __('Yes', 'all_in_one_seo_pack' ). " ( V" . substr(phpversion('exif'),0,4) . ")" ;
+		        if (is_callable('exif_read_data')) $exif = __('Yes', 'all_in_one_seo_pack' ). " ( V" . $this->substr(phpversion('exif'),0,4) . ")" ;
 		        else $exif = __('No', 'all_in_one_seo_pack' );
 		        if (is_callable('iptcparse')) $iptc = __('Yes', 'all_in_one_seo_pack' );
 		        else $iptc = __('No', 'all_in_one_seo_pack' );

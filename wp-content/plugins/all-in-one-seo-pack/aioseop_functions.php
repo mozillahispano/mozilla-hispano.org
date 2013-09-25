@@ -30,29 +30,18 @@ if ( !function_exists( 'aioseop_activate' ) ) {
 if ( !function_exists( 'aioseop_update_settings_check' ) ) {
 	function aioseop_update_settings_check() {
 		global $aioseop_options;
-		if ( isset( $_POST['aioseop_migrate'] ) ) aioseop_mrt_fix_meta();
 		if ( ( isset( $_POST['aioseop_migrate_options'] ) )  ||
-			 ( empty( $aioseop_options ) ) ) {
+			 ( empty( $aioseop_options ) ) )
 			aioseop_mrt_mkarry();
-		}
+
 		// WPML has now attached to filters, read settings again so they can be translated
 		$aioseop_options = get_option( 'aioseop_options' );
-	}
-}
 
-/**
- * Update old settings to current format.
- */
-if ( !function_exists( 'aioseop_mrt_fix_meta' ) ) {
-	function aioseop_mrt_fix_meta() {
-		global $wpdb, $aiosp_activation;
-		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_aioseop_keywords' WHERE meta_key = 'keywords'" );
-		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_aioseop_title' WHERE meta_key = 'title'" );
-		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_aioseop_description' WHERE meta_key = 'description'" );
-		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_aioseop_meta' WHERE meta_key = 'aiosp_meta'" );
-		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_aioseop_disable' WHERE meta_key = 'aiosp_disable'" );
-		if ( !$aiosp_activation ) // don't echo on initial plugin activation
-			echo "<div class='updated fade' style='background-color:green;border-color:green;'><p><strong>" . __( "Updating SEO post meta in database.", 'all_in_one_seo_pack' ) . "</strong></p></div>";
+		if ( !empty( $aioseop_options['aiosp_archive_noindex'] ) ) { // migrate setting for noindex archives
+			$aioseop_options['aiosp_archive_date_noindex'] = $aioseop_options['aiosp_archive_author_noindex'] = $aioseop_options['aiosp_archive_noindex'];
+			unset( $aioseop_options['aiosp_archive_noindex'] );
+			update_option( 'aioseop_options', $aioseop_options );
+		}
 	}
 }
 
@@ -141,8 +130,9 @@ if ( !function_exists( 'aioseop_mrt_pcolumns' ) ) {
 	function aioseop_mrt_pcolumns( $aioseopc ) {
 		global $aioseop_options;
 	    $aioseopc['seotitle'] = __( 'SEO Title', 'all_in_one_seo_pack' );
-	    if ( !empty( $aioseop_options['aiosp_togglekeywords'] ) ) $aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
 	    $aioseopc['seodesc'] = __( 'SEO Description', 'all_in_one_seo_pack' );
+	    if ( empty( $aioseop_options['aiosp_togglekeywords'] ) )
+			$aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
 	    return $aioseopc;
 	}
 }
@@ -192,7 +182,10 @@ if ( !function_exists( 'aioseop_admin_head' ) ) {
 
 if ( !function_exists( 'aioseop_ajax_save_meta' ) ) {
 	function aioseop_ajax_save_meta() {
-		check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
+		if ( !empty( $_POST['_inline_edit'] ) && ( $_POST['_inline_edit'] != 'undefined' ) )
+			check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
+		else
+			check_ajax_referer( 'screen-options-nonce', 'screenoptionnonce' );
 		$post_id = intval( $_POST['post_id'] );
 		$new_meta = $_POST['new_meta'];
 		$target = $_POST['target_meta'];
@@ -220,6 +213,143 @@ if ( !function_exists( 'aioseop_ajax_init' ) ) {
 		} else {
 			die(0);
 		}
+	}
+}
+
+if ( !function_exists( 'aioseop_ajax_save_url' ) ) {
+	function aioseop_ajax_save_url() {
+		aioseop_ajax_init();
+		$options = Array();
+		parse_str( $_POST['options'], $options );
+		foreach( $options as $k => $v ) $_POST[$k] = $v;
+		$_POST['action'] = 'aiosp_update_module';
+		global $aiosp, $aioseop_module_list, $aioseop_modules;
+		aioseop_load_modules( $aioseop_module_list );
+		$aiosp->admin_menu();
+		$module = $aioseop_modules->return_module( "All_in_One_SEO_Pack_Sitemap" );
+		$_POST['location'] = null;
+		$_POST['Submit'] = 'ajax';
+		$module->add_page_hooks();
+		$_POST = $module->get_current_options( $_POST, null );
+		$module->handle_settings_updates( null );
+		$options = $module->get_current_options( Array(), null );			
+		$output = $module->display_custom_options( '', Array( 'name' => 'aiosp_sitemap_addl_pages', 'type' => 'custom', 'save' => true, 'value' => $options['aiosp_sitemap_addl_pages'], 'attr' => '' ) );
+		$output = str_replace( "'", "\'", $output );
+		$output = str_replace( "\n", '\n', $output );
+		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
+	}
+}
+
+if ( !function_exists( 'aioseop_ajax_delete_url' ) ) {
+	function aioseop_ajax_delete_url() {
+		aioseop_ajax_init();
+		$options = Array();
+		$options = esc_attr( $_POST['options'] );
+		$_POST['action'] = 'aiosp_update_module';
+		global $aiosp, $aioseop_module_list, $aioseop_modules;
+		aioseop_load_modules( $aioseop_module_list );
+		$aiosp->admin_menu();
+		$module = $aioseop_modules->return_module( "All_in_One_SEO_Pack_Sitemap" );
+		$_POST['location'] = null;
+		$_POST['Submit'] = 'ajax';
+		$module->add_page_hooks();
+		$_POST = $module->get_current_options( $_POST, null );
+		if ( !empty( $_POST['aiosp_sitemap_addl_pages'] ) && ( !empty( $_POST['aiosp_sitemap_addl_pages'][ $options ] ) ) ) {
+			unset( $_POST['aiosp_sitemap_addl_pages'][ $options ] );
+			if ( empty( $_POST['aiosp_sitemap_addl_pages'] ) )
+				$_POST['aiosp_sitemap_addl_pages'] = '';
+			else
+				$_POST['aiosp_sitemap_addl_pages'] = serialize( $_POST['aiosp_sitemap_addl_pages'] );
+			$module->handle_settings_updates( null );
+			$options = $module->get_current_options( Array(), null );
+			$output = $module->display_custom_options( '', Array( 'name' => 'aiosp_sitemap_addl_pages', 'type' => 'custom', 'save' => true, 'value' => $options['aiosp_sitemap_addl_pages'], 'attr' => '' ) );
+			$output = str_replace( "'", "\'", $output );
+			$output = str_replace( "\n", '\n', $output );
+		} else {
+			$output = sprintf( __( "Row %s not found; no rows were deleted.", 'all_in_one_seo_pack' ), esc_attr( $options ) );
+		}
+		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
+	}
+}
+
+if (!function_exists('aioseop_ajax_save_settings')) {
+	function aioseop_ajax_save_settings() {
+		aioseop_ajax_init();
+		$options = Array();
+		parse_str( $_POST['options'], $options );
+		$_POST = $options;
+		$_POST['action'] = 'aiosp_update_module';
+		global $aiosp, $aioseop_module_list, $aioseop_modules;
+		aioseop_load_modules( $aioseop_module_list );
+		$aiosp->admin_menu();
+		$module = $aioseop_modules->return_module( $_POST['module'] );
+		unset( $_POST['module'] );
+		if ( empty( $_POST['location'] ) ) $_POST['location'] = null;
+		$_POST['Submit'] = 'ajax';
+		$module->add_page_hooks();
+//		$_POST = $module->get_current_options( $_POST, $_POST['location'] );
+		$output = $module->handle_settings_updates( $_POST['location'] );
+		$output = '<div id="aioseop_settings_header"><div id="message" class="updated fade"><p>' . $output . '</p></div></div><style>body.all-in-one-seo_page_all-in-one-seo-pack-aioseop_feature_manager .aioseop_settings_left { margin-top: 45px !important; }</style>';
+		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
+	}
+}
+
+if (!function_exists('aioseop_ajax_get_menu_links')) {
+	function aioseop_ajax_get_menu_links() {
+		aioseop_ajax_init();
+		$options = Array();
+		parse_str( $_POST['options'], $options );
+		$_POST = $options;
+		$_POST['action'] = 'aiosp_update_module';
+		global $aiosp, $aioseop_module_list, $aioseop_modules;
+		aioseop_load_modules( $aioseop_module_list );
+		$aiosp->admin_menu();
+		if ( empty( $_POST['location'] ) ) $_POST['location'] = null;
+		$_POST['Submit'] = 'ajax';
+//		$module->add_page_hooks();
+		
+//		include_once( ABSPATH . "/wp-admin/admin.php" );
+		
+		$modlist = $aioseop_modules->get_loaded_module_list();
+		$links = Array();
+		$link_list = Array();
+		$link = $aiosp->get_admin_links();
+		if ( !empty( $link ) )
+			foreach( $link as $l )
+				if ( !empty( $l ) ) {
+					if ( empty( $link_list[$l['order']] ) ) $link_list[$l['order']] = Array();
+					$link_list[$l['order']][$l['title']] = $l['href'];							
+				}
+		if ( !empty( $modlist ) )
+			foreach( $modlist as $k => $v ) {
+				$mod = $aioseop_modules->return_module( $v );
+				if ( is_object( $mod ) ) {
+					$mod->add_page_hooks();
+					$link = $mod->get_admin_links();
+					foreach( $link as $l )
+						if ( !empty( $l ) ) {
+							if ( empty( $link_list[$l['order']] ) ) $link_list[$l['order']] = Array();
+							$link_list[$l['order']][$l['title']] = $l['href'];							
+						}
+				}
+			}
+		if ( !empty( $link_list ) ) {
+			ksort( $link_list );
+			foreach( $link_list as $ll )
+				foreach( $ll as $k => $v )
+					$links[$k] = $v;
+		}
+		$output = "<ul>";
+		if ( !empty( $links ) )
+			foreach( $links as $k => $v ) {
+				if ( $k == "Feature Manager" )
+					$current = ' class="current"';
+				else
+					$current = '';
+				$output .= "<li{$current}><a href='" . esc_url($v) . "'>" . esc_attr( $k ) . "</a></li>";
+			}
+		$output .= "</ul>";
+		die( sprintf( "jQuery('{$_POST['target']}').fadeOut('fast', function(){jQuery('{$_POST['target']}').html('%s').fadeIn('fast');});", addslashes( $output ) ));
 	}
 }
 

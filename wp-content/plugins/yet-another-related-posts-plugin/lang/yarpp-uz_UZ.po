@@ -102,12 +102,6 @@ msgstr "hisobga olinsin"
 msgid "consider with extra weight"
 msgstr "qo'shimchalar bilan hisobga olmoq"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Plagin uchun mitcho (Michael Yoshitaka Erlewine)ga PayPal orqali pul hadya qilmoq"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

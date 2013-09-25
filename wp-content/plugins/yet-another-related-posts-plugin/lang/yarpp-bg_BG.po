@@ -209,16 +209,6 @@ msgstr "Yet Another Related Posts Plugin история на версиите (R
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin Настройки"
 
-#: options.php:253
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Донирай на mitcho (Michael Yoshitaka Erlewine) за това разширение чрез PayPal"
-
-#: options.php:255
-#@ yarpp
-msgid "by <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "от <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
-
 #: options.php:255
 #@ yarpp
 msgid "Follow <a href=\"http://twitter.com/yarpp/\">Yet Another Related Posts Plugin on Twitter</a>"

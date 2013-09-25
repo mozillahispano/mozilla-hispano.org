@@ -219,16 +219,6 @@ msgstr "Yet Another Related Posts Plugin ιστορικό εκδόσεων (RSS 
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Ρυθμίσεις του Yet Another Related Posts Plugin"
 
-#: options.php:274
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Δωρεά στον Μήτσο (mitcho - Michael Yoshitaka Erlewine) για το plugin αυτό μέσω PayPal"
-
-#: options.php:276
-#@ yarpp
-msgid "by <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "Aπό τον <a href=\"http://mitcho.com/code/\">Μήτσο (mitcho - Michael 芳貴 Erlewine)</a>"
-
 #: options.php:276
 #@ yarpp
 msgid "Follow <a href=\"http://twitter.com/yarpp/\">Yet Another Related Posts Plugin on Twitter</a>"

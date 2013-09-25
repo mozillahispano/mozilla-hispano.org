@@ -116,11 +116,6 @@ msgstr "النظر مع الوزن الزائد"
 msgid "Yet Another Related Posts Plugin version history (RSS 2.0)"
 msgstr "بعد إصدار آخر ذات الوظائف البرنامج المساعد التاريخ (RSS 2.0)"
 
-#: options.php:253
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "التبرع لmitcho (مايكل يوشيتاكا Erlewine) عن طريق هذا البرنامج المساعد PayPal"
-
 #: options.php:242
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
@@ -450,11 +445,6 @@ msgstr " MySQL خطأ في إنشاء جدول yarpp_keyword_cache"
 #@ yarpp
 msgid "Example post "
 msgstr "سبيل المثال وظيفة"
-
-#: options.php:255
-#@ yarpp
-msgid "by <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "من قبل <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
 
 #: options.php:255
 #@ yarpp

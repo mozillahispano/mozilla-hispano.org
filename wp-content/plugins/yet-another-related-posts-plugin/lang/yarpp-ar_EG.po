@@ -209,16 +209,6 @@ msgstr "تاريخ إصدار إضافة المحتويات ذات الصلة YA
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "إعدادات إضافة المحتويات ذات الصلة YARPP"
 
-#: options.php:253
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "تبرع لmitcho (مايكل يوشيتاكا إرلوين) لدعم هذه الإضافة عن طريق باي بال"
-
-#: options.php:255
-#@ yarpp
-msgid "by <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
-msgstr "من <a href=\\\"http://mitcho.com/code/\\\">mitcho (مايكل芳贵Erlewine)</a>"
-
 #: options.php:255
 #@ yarpp
 msgid "Follow <a href=\"http://twitter.com/yarpp/\">Yet Another Related Posts Plugin on Twitter</a>"

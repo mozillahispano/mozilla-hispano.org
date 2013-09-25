@@ -102,12 +102,6 @@ msgstr "검토함"
 msgid "consider with extra weight"
 msgstr "신중히 검토함"
 
-#: options-meta-boxes.php:301
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "이 플러그인을 위해 mitcho (Michael Yoshitaka Erlewine) 에게 페이팔을 통한 기부"
-
 #: options.php:139
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"

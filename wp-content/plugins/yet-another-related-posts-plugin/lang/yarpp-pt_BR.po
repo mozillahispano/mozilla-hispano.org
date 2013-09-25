@@ -136,12 +136,6 @@ msgstr "requerer mais de uma %s em comum"
 msgid "consider with extra weight"
 msgstr "considerar com peso extra"
 
-#: options-meta-boxes.php:286
-#@ default
-#@ yarpp
-msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
-msgstr "Doar ao mitcho (Michael Yoshitaka Erlewine) via PayPal para este plugin"
-
 #: options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
