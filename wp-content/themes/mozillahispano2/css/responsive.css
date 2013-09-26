@@ -12,6 +12,23 @@
 
 }*/
 
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media screen and (max-width: 795px) {
+  #pie #pie-contenido .c2 {
+    width: 100%;
+    background-position: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  #tullido {
+    margin: 0 5px;
+  }
+}
+
 /* Mobile Layout: 320px */
 @media only screen and (max-width: 760px) {
 
@@ -19,14 +36,10 @@
     width: auto !important;
   }
 
-  #lienzo, #tullido {
+  /*#lienzo, #tullido {
     width: 320px;
     min-width: 320px;
-  }
-
-  #lienzo {
-    width: 100%;
-  }
+  }*/
 
 /* CSS RESPONSIVE ANTIGUO */
 
@@ -39,7 +52,6 @@
 
   img {
     max-width: 100%; }
-
 
 /* ==========================================================================
   General
@@ -489,9 +501,6 @@ ul.topiclist dt {
   /* --------------------------------------------------------------------------
      Footer
      -------------------------------------------------------------------------- */
-  #cuerpo {
-    margin-bottom: 400px;
-  }
 
   #pie {
     margin-top: 30px;
@@ -550,7 +559,7 @@ ul.topiclist dt {
 }
 
 .home .portada-individual .texto-portada-individual, .archive .portada-individual .texto-portada-individual, .tag .portada-individual .texto-portada-individual, .page-template-labs-index-php .texto-portada-individual, .page-template-pais-php .portada-individual .texto-portada-individual {
-  padding: 0 0 0 0px;
+  padding: 2px !important;
   text-align: justify;
 }
 
@@ -625,10 +634,10 @@ p.postmetadata {
   General
   ========================================================================== */
 
-#lienzo, #tullido {
+/*#lienzo, #tullido {
   width: 480px;
   min-width: 480px;
-}
+}*/
 
 
   /* ==========================================================================
