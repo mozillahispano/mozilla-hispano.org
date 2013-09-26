@@ -64,7 +64,6 @@ video {
 
 #lienzo {
     overflow: hidden;
-	/*min-width: 980px; */
 	margin: 0px auto;
 	max-width: 1000px;
 }
@@ -132,19 +131,10 @@ input.text {
 	#social {
 		margin-top: -20px;
 		width: 228px;
-		/*position: absolute;
-		right: 0;*/
 		float: right;
 	}
 
 	#social li {
-		/*
-		display: block;
-		float: right;
-		font-size: 1px;
-		height: 29px;
-		text-indent: -10000em;
-		*/
 		float: left;
 		width: 28px;
 		height: 29px;
@@ -335,8 +325,6 @@ input.text {
 	font-size: 1.2em;
 	padding: 2em 0;
 	overflow: hidden;
-    /*position: absolute;
-    bottom: 0;*/
     width: 100%;
 }
 #pie a {
@@ -348,7 +336,6 @@ input.text {
 }
 
 #pie #pie-contenido {
-	/*width: 960px; */
 	margin: auto;
 }
 
