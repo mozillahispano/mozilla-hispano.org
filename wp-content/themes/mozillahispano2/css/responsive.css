@@ -373,7 +373,7 @@ ul.topiclist dt {
     width: 32px;
     height: 32px;
     margin: 5px;
-    margin: -3px 0 0 -3px;
+    margin: -3px 0 0 -15px;
     background: no-repeat center top url("../img/icn-menu.png");
     cursor: pointer;
     position: relative;
@@ -385,9 +385,9 @@ ul.topiclist dt {
 
   #menu {
     font-size: 12px;
-    padding-top: 10px;
-    margin-left: 18px;
+    padding-top: 20px;
     display: block;
+    position: absolute;
  }
 
   #menu .clearfix {
