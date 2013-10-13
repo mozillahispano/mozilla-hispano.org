@@ -1,0 +1,216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanciest Author Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-29 08:11+0100\n"
+"PO-Revision-Date: 2012-11-25 05:06+0900\n"
+"Last-Translator: K.Okamoto <kohichi.okamoto@gmail.com>\n"
+"Language-Team: K.Okamoto\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;"
+"_ex;esc_attr_x;esc_html_x;_n;_nx;_n_loop;_nx_loop\n"
+"X-Poedit-Basepath: ../\n"
+"Language: ja\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ts-fab.php:53
+msgid "Settings"
+msgstr "設定"
+
+#: includes/ts-fab-construct-tabs.php:25
+msgid "My Twitter profile"
+msgstr "Twitter のプロフィール"
+
+#: includes/ts-fab-construct-tabs.php:27
+msgid "My Facebook profile"
+msgstr "Facebook のプロフィール"
+
+#: includes/ts-fab-construct-tabs.php:29
+msgid "My Google+ profile"
+msgstr "Google+ のプロフィール"
+
+#: includes/ts-fab-construct-tabs.php:48 includes/ts-fab-construct-tabs.php:52
+msgid "at"
+msgstr "："
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "Latest posts by "
+msgstr "最新記事 by "
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "see all"
+msgstr "全て見る"
+
+#: includes/ts-fab-construct-tabs.php:161
+msgid "Bio"
+msgstr "この記事を書いた人"
+
+#: includes/ts-fab-construct-tabs.php:163
+msgid "Latest Posts"
+msgstr "最新の記事"
+
+#: includes/ts-fab-settings.php:71
+msgid "Display Settings"
+msgstr "表示設定"
+
+#: includes/ts-fab-settings.php:79
+msgid "Show in posts"
+msgstr "投稿画面で表示する"
+
+#: includes/ts-fab-settings.php:84
+msgid "Toggle displaying Fancier Author Box in posts"
+msgstr "記事画面の Fancier Author Box 表示を切り替える "
+
+#: includes/ts-fab-settings.php:90
+msgid "Show in pages"
+msgstr "固定ページで表示する"
+
+#: includes/ts-fab-settings.php:95
+msgid "Toggle displaying Fancier Author Box in pages."
+msgstr "固定ページの Fancier Author Box 表示を切り替える "
+
+#: includes/ts-fab-settings.php:112
+msgid "Show in"
+msgstr "表示 in"
+
+#: includes/ts-fab-settings.php:117
+msgid "Toggle displaying Fancier Author Box in "
+msgstr "Fancier Author Box 表示を切り替える in"
+
+#: includes/ts-fab-settings.php:126
+msgid "Latest posts"
+msgstr "最新の記事"
+
+#: includes/ts-fab-settings.php:131
+msgid "Toggle displaying latest posts tab"
+msgstr "最新記事タブの Fancier Author Box 表示を切り替える "
+
+#: includes/ts-fab-settings.php:132
+msgid "Number of latest posts to show:"
+msgstr "表示される最新記事の数："
+
+#: includes/ts-fab-settings.php:139
+msgid "Color Settings"
+msgstr "色の設定"
+
+#: includes/ts-fab-settings.php:146
+msgid "Inactive tab colors"
+msgstr "アクティブでないタブの色(Inactive tab colors)"
+
+#: includes/ts-fab-settings.php:153 includes/ts-fab-settings.php:169
+#: includes/ts-fab-settings.php:185
+msgid "Background"
+msgstr "背景色(Background)"
+
+#: includes/ts-fab-settings.php:154 includes/ts-fab-settings.php:170
+#: includes/ts-fab-settings.php:186
+msgid "Border"
+msgstr "ボーダー(Border)"
+
+#: includes/ts-fab-settings.php:155 includes/ts-fab-settings.php:171
+#: includes/ts-fab-settings.php:187
+msgid "Color"
+msgstr "色(Color)"
+
+#: includes/ts-fab-settings.php:162
+msgid "Active tab colors"
+msgstr "アクティブなタブの色(Active tab colors)"
+
+#: includes/ts-fab-settings.php:178
+msgid "Tab content colors"
+msgstr "タブ(tab)内記載内容の色"
+
+#: includes/ts-fab-settings.php:211
+msgid ""
+"Select where and how Fancier Author Box appears in your posts, pages and "
+"custom posts."
+msgstr ""
+"投稿、固定ページ、カスタム記事におけるFancier Author Boxの表示を選択する"
+
+#: includes/ts-fab-settings.php:240 includes/ts-fab-settings.php:260
+#: includes/ts-fab-settings.php:281
+msgid "Above"
+msgstr "上部(above)"
+
+#: includes/ts-fab-settings.php:241 includes/ts-fab-settings.php:261
+#: includes/ts-fab-settings.php:282
+msgid "Below"
+msgstr "下部(Below)"
+
+#: includes/ts-fab-settings.php:242 includes/ts-fab-settings.php:262
+#: includes/ts-fab-settings.php:283
+msgid "Both"
+msgstr "両方(Both)"
+
+#: includes/ts-fab-settings.php:243 includes/ts-fab-settings.php:263
+#: includes/ts-fab-settings.php:284
+msgid "No"
+msgstr "なし"
+
+#: includes/ts-fab-settings.php:354
+msgid ""
+"The only author box plugin you'll ever need. Unless you need something "
+"fancier, like <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+msgstr ""
+"<a href=\"http://codecanyon.net/item/fanciest-author-box/2504522?"
+"ref=ThematoSoup\">Fanciest Author Box</a>のように、fancierが必要でないなら"
+"ば、author box plugin 以外は不要です。(The only author box plugin you'll "
+"ever need. Unless you need something fancier, like <a href=\"http://"
+"codecanyon.net/item/fanciest-author-box/2504522?ref=ThematoSoup\">Fanciest "
+"Author Box</a>.)"
+
+#: includes/ts-fab-settings.php:366
+msgid "Reset all color settings"
+msgstr "全ての色設定をリセットする"
+
+#: includes/ts-fab-user-settings.php:12
+msgid "User Details"
+msgstr "ユーザの詳細情報"
+
+#: includes/ts-fab-user-settings.php:21
+msgid "Display Fancier Author Box"
+msgstr "Fancier Author Box を表示する"
+
+#: includes/ts-fab-user-settings.php:25
+msgid "Do not show Fancier Author Box in your posts, pages and custom posts"
+msgstr "Fancier Author Box を投稿、固定ページ、カスタム投稿画面に表示しない。"
+
+#: includes/ts-fab-user-settings.php:35
+msgid "Your Twitter username."
+msgstr "Twitter の ユーザー名 または ID"
+
+#: includes/ts-fab-user-settings.php:43
+msgid "Your Facebook username or ID."
+msgstr "Facebook の ユーザー名 または ID"
+
+#: includes/ts-fab-user-settings.php:51
+msgid "Your Google+ ID."
+msgstr "Google+ の ID"
+
+#: includes/ts-fab-user-settings.php:56
+msgid "Position"
+msgstr "役職"
+
+#: includes/ts-fab-user-settings.php:60
+msgid "Your position."
+msgstr "所属会社の役職"
+
+#: includes/ts-fab-user-settings.php:65
+msgid "Company"
+msgstr "会社"
+
+#: includes/ts-fab-user-settings.php:69
+msgid "Your company."
+msgstr "所属会社名"
+
+#: includes/ts-fab-user-settings.php:74
+msgid "Company URL"
+msgstr "会社のURL"
+
+#: includes/ts-fab-user-settings.php:78
+msgid "Your company URL."
+msgstr "所属会社のURL"

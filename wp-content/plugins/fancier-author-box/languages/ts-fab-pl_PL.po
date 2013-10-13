@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanciest Author Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-29 08:11+0100\n"
+"PO-Revision-Date: 2013-06-06 10:17+0100\n"
+"Last-Translator: Mirosław Lach <m.wordpress@lach.waw.pl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;_ex;esc_attr_x;esc_html_x;_n;_nx;_n_loop;_nx_loop\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ts-fab.php:53
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: includes/ts-fab-construct-tabs.php:25
+msgid "My Twitter profile"
+msgstr "Profil na Twitterze"
+
+#: includes/ts-fab-construct-tabs.php:27
+msgid "My Facebook profile"
+msgstr "Profil na Facebooku"
+
+#: includes/ts-fab-construct-tabs.php:29
+msgid "My Google+ profile"
+msgstr "Profil na Google+"
+
+#: includes/ts-fab-construct-tabs.php:48
+#: includes/ts-fab-construct-tabs.php:52
+msgid "at"
+msgstr "w"
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "Latest posts by "
+msgstr "Ostatnie wpisy "
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "see all"
+msgstr "zobacz wszystkie"
+
+#: includes/ts-fab-construct-tabs.php:161
+msgid "Bio"
+msgstr "Bio"
+
+#: includes/ts-fab-construct-tabs.php:163
+msgid "Latest Posts"
+msgstr "Ostatnie wpisy"
+
+#: includes/ts-fab-settings.php:71
+msgid "Display Settings"
+msgstr "Wyświetl ustawienia"
+
+#: includes/ts-fab-settings.php:79
+msgid "Show in posts"
+msgstr "Wyświetlaj we wpisach"
+
+#: includes/ts-fab-settings.php:84
+msgid "Toggle displaying Fancier Author Box in posts"
+msgstr "Włącza wyświetlanie Fancier Author Box we wpisach"
+
+#: includes/ts-fab-settings.php:90
+msgid "Show in pages"
+msgstr "Wyświetlaj na stronach"
+
+#: includes/ts-fab-settings.php:95
+msgid "Toggle displaying Fancier Author Box in pages."
+msgstr "Włącza wyświetlania Fancier Author Box na stronach."
+
+#: includes/ts-fab-settings.php:112
+msgid "Show in"
+msgstr "Wyświetl w"
+
+#: includes/ts-fab-settings.php:117
+msgid "Toggle displaying Fancier Author Box in "
+msgstr "Włącza wyświetlania Fancier Author Box w"
+
+#: includes/ts-fab-settings.php:126
+msgid "Latest posts"
+msgstr "Ostatnie wpisy"
+
+#: includes/ts-fab-settings.php:131
+msgid "Toggle displaying latest posts tab"
+msgstr "Włącza wyświetlanie zakładki z ostatnimi wpisami użytkownika"
+
+#: includes/ts-fab-settings.php:132
+msgid "Number of latest posts to show:"
+msgstr "Ilość ostatnich wpisów do wyświetlania:"
+
+#: includes/ts-fab-settings.php:139
+msgid "Color Settings"
+msgstr "Ustawienia kolorów"
+
+#: includes/ts-fab-settings.php:146
+msgid "Inactive tab colors"
+msgstr "Kolory nieaktywnej zakładki"
+
+#: includes/ts-fab-settings.php:153
+#: includes/ts-fab-settings.php:169
+#: includes/ts-fab-settings.php:185
+msgid "Background"
+msgstr "Kolor tła"
+
+#: includes/ts-fab-settings.php:154
+#: includes/ts-fab-settings.php:170
+#: includes/ts-fab-settings.php:186
+msgid "Border"
+msgstr "Krawędź"
+
+#: includes/ts-fab-settings.php:155
+#: includes/ts-fab-settings.php:171
+#: includes/ts-fab-settings.php:187
+msgid "Color"
+msgstr "Kolor"
+
+#: includes/ts-fab-settings.php:162
+msgid "Active tab colors"
+msgstr "Kolory aktywnej zakładki"
+
+#: includes/ts-fab-settings.php:178
+msgid "Tab content colors"
+msgstr "Kolor zawartości zakładki"
+
+#: includes/ts-fab-settings.php:211
+msgid "Select where and how Fancier Author Box appears in your posts, pages and custom posts."
+msgstr "Wybierz gdzie i w jaki sposób Fancier Author Box będzie wyświetlany we wpisach, na stronach itp"
+
+#: includes/ts-fab-settings.php:240
+#: includes/ts-fab-settings.php:260
+#: includes/ts-fab-settings.php:281
+msgid "Above"
+msgstr "Powyżej"
+
+#: includes/ts-fab-settings.php:241
+#: includes/ts-fab-settings.php:261
+#: includes/ts-fab-settings.php:282
+msgid "Below"
+msgstr "Poniżej"
+
+#: includes/ts-fab-settings.php:242
+#: includes/ts-fab-settings.php:262
+#: includes/ts-fab-settings.php:283
+msgid "Both"
+msgstr "Powyżej i poniżej"
+
+#: includes/ts-fab-settings.php:243
+#: includes/ts-fab-settings.php:263
+#: includes/ts-fab-settings.php:284
+msgid "No"
+msgstr "Nie"
+
+#: includes/ts-fab-settings.php:354
+msgid "The only author box plugin you'll ever need. Unless you need something fancier, like <a href=\"http://codecanyon.net/item/fanciest-author-box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+msgstr "Jedyna wtyczka prezentująca informacje o autorach, którą będziesz potrzebował. Chyba że potrzebujesz czegoś bardziej ozdobnego, jak na przykład <a href=\"http://codecanyon.net/item/fanciest-author-box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+
+#: includes/ts-fab-settings.php:366
+msgid "Reset all color settings"
+msgstr "Zresetuj ustawienia kolorów"
+
+#: includes/ts-fab-user-settings.php:12
+msgid "User Details"
+msgstr "Szczegóły użytkownika"
+
+#: includes/ts-fab-user-settings.php:21
+msgid "Display Fancier Author Box"
+msgstr "Wyświetlaj Fancier Author Box"
+
+#: includes/ts-fab-user-settings.php:25
+msgid "Do not show Fancier Author Box in your posts, pages and custom posts"
+msgstr "Nie wyświetlaj Fancier Author Box we wpisach na stronach itp."
+
+#: includes/ts-fab-user-settings.php:35
+msgid "Your Twitter username."
+msgstr "Nazwa użytkownika Twittera."
+
+#: includes/ts-fab-user-settings.php:43
+msgid "Your Facebook username or ID."
+msgstr "Nazwa lub ID konta na Facebooku."
+
+#: includes/ts-fab-user-settings.php:51
+msgid "Your Google+ ID."
+msgstr "Twój ID Google+."
+
+#: includes/ts-fab-user-settings.php:56
+msgid "Position"
+msgstr "Pozycja"
+
+#: includes/ts-fab-user-settings.php:60
+msgid "Your position."
+msgstr "Twoje stanowisko."
+
+#: includes/ts-fab-user-settings.php:65
+msgid "Company"
+msgstr "Firma"
+
+#: includes/ts-fab-user-settings.php:69
+msgid "Your company."
+msgstr "Twoja firma"
+
+#: includes/ts-fab-user-settings.php:74
+msgid "Company URL"
+msgstr "Strona firmowa"
+
+#: includes/ts-fab-user-settings.php:78
+msgid "Your company URL."
+msgstr "Adres firmowej strony internetowej"
+

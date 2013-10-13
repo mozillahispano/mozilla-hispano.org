@@ -15,16 +15,19 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 			$this->prefix = 'aiosp_performance_';						// option prefix
 			$this->file = __FILE__;									// the current file
 			parent::__construct();
+			
+			$help_text = Array(
+				"memory_limit"		=> __( "This setting allows you to raise your PHP memory limit to a reasonable value. Note: WordPress core and other WordPress plugins may also change the value of the memory limit.<br /><a href='http://semperplugins.com/documentation/performance-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+				"execution_time"	=> __( "This setting allows you to raise your PHP execution time to a reasonable value.<br /><a href='http://semperplugins.com/documentation/performance-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+				"force_rewrites"	=> __( "Use output buffering to ensure that the title gets rewritten. Enable this option if you run into issues with the title tag being set by your theme or another plugin.<br /><a href='http://semperplugins.com/documentation/performance-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' )
+			);
+						
 			$this->default_options = array(
 					'memory_limit'		=> Array(	'name'	  => __( 'Raise memory limit',  'all_in_one_seo_pack' ),
-													'help_text' => __( 'Allows you to raise your PHP memory limit to a reasonable value. Note: WordPress core and other WordPress plugins may also change the value of the memory limit.', 'all_in_one_seo_pack' ),
-				 						  			'default'	  => '256M',
-										  			'type' => 'select',
+				 						  			'default'	  => '256M', 'type' => 'select',
 										  			'initial_options' => Array( 0 => __( "Use the system default", 'all_in_one_seo_pack' ), '32M' => '32MB', '64M' => '64MB', '128M' => '128MB', '256M' => '256MB' ) ),
 					'execution_time'	=> Array(	'name'	  => __( 'Raise execution time',  'all_in_one_seo_pack' ),
-										  			'help_text' => __( 'Allows you to raise your PHP execution time to a reasonable value.', 'all_in_one_seo_pack' ),
-				 						  			'default'	  => '',
-										  			'type' => 'select',
+				 						  			'default'	  => '', 'type' => 'select',
 										  			'initial_options' => Array( '' => __( "Use the system default", 'all_in_one_seo_pack' ), 30 => '30s', 60 => '1m', 120 => '2m', 300 => '5m', 0 => __( 'No limit', 'all_in_one_seo_pack' ) ) )
 				 );
 			
@@ -32,9 +35,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 			if ( aioseop_option_isset( 'aiosp_rewrite_titles' ) && $aioseop_options['aiosp_rewrite_titles'] ) {
 				$this->default_options['force_rewrites']	= Array(
 								'name' => __( 'Force Rewrites:', 'all_in_one_seo_pack' ), 
-								'help_text' => __( "Use output buffering to ensure that the title gets rewritten.", 'all_in_one_seo_pack' ),
-								'default' => 1,
-								'type' => 'radio',
+								'default' => 1, 'type' => 'radio',
 								'initial_options' => Array( 1 => __( 'Enabled', 'all_in_one_seo_pack' ),
 															0 => __( 'Disabled', 'all_in_one_seo_pack' ) )
 								);
@@ -43,6 +44,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 			$this->layout = Array(
 				'default' => Array(
 						'name' => $this->name,
+						'help_link' => 'http://semperplugins.com/documentation/performance-settings/',
 						'options' => array_keys( $this->default_options )
 					)
 			);
@@ -53,10 +55,15 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 			
 			$this->layout['system_status'] = Array(
 					'name' => __( 'System Status', 'all_in_one_seo_pack' ),
+					'help_link' => 'http://semperplugins.com/documentation/performance-settings/',
 					'options' => array_keys( $system_status )
 				);
 				
 			$this->default_options = array_merge( $this->default_options, $system_status );
+			
+			if ( !empty( $help_text ) )
+				foreach( $help_text as $k => $v )
+					$this->default_options[$k]['help_text'] = $v;
 			
 			add_filter( $this->prefix . 'display_options', Array( $this, 'display_options_filter' ), 10, 2 );
 			add_filter( $this->prefix . 'update_options', Array( $this, 'update_options_filter' ), 10, 2 );
@@ -111,7 +118,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Performance' ) ) {
 		}
 		
 		function settings_page_init() {
-			$this->default_options['status']['default'] = $this->get_serverinfo();			
+			$this->default_options['status']['default'] = $this->get_serverinfo();
 		}
 		
 		function menu_order() {

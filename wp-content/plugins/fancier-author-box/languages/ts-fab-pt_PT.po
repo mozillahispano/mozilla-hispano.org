@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanciest Author Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-29 08:11+0100\n"
+"PO-Revision-Date: 2013-06-05 13:47+0100\n"
+"Last-Translator: traducteurs <info@traducteurs.com>\n"
+"Language-Team: traducteurs.com <info@traducteurs.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;"
+"_ex;esc_attr_x;esc_html_x;_n;_nx;_n_loop;_nx_loop\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.5\n"
+"Language: pt_PT\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ts-fab.php:53
+msgid "Settings"
+msgstr "Configurações"
+
+#: includes/ts-fab-construct-tabs.php:25
+msgid "My Twitter profile"
+msgstr "O meu perfil Twitter"
+
+#: includes/ts-fab-construct-tabs.php:27
+msgid "My Facebook profile"
+msgstr "O meu perfil Facebook"
+
+#: includes/ts-fab-construct-tabs.php:29
+msgid "My Google+ profile"
+msgstr "O meu perfil Google+"
+
+#: includes/ts-fab-construct-tabs.php:48 includes/ts-fab-construct-tabs.php:52
+msgid "at"
+msgstr "no"
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "Latest posts by "
+msgstr "Últimos posts de "
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "see all"
+msgstr "ver todos"
+
+#: includes/ts-fab-construct-tabs.php:161
+msgid "Bio"
+msgstr "Bio"
+
+#: includes/ts-fab-construct-tabs.php:163
+msgid "Latest Posts"
+msgstr "Últimos posts"
+
+#: includes/ts-fab-settings.php:71
+msgid "Display Settings"
+msgstr "Configurações de exibição"
+
+#: includes/ts-fab-settings.php:79
+msgid "Show in posts"
+msgstr "Mostrar nos posts"
+
+#: includes/ts-fab-settings.php:84
+msgid "Toggle displaying Fancier Author Box in posts"
+msgstr "Alternar a exibição de Fancier Author Box nos posts"
+
+#: includes/ts-fab-settings.php:90
+msgid "Show in pages"
+msgstr "Mostrar nas páginas"
+
+#: includes/ts-fab-settings.php:95
+msgid "Toggle displaying Fancier Author Box in pages."
+msgstr "Alternar a exibição de Fancier Author Box nas páginas."
+
+#: includes/ts-fab-settings.php:112
+msgid "Show in"
+msgstr "Mostrar no"
+
+#: includes/ts-fab-settings.php:117
+msgid "Toggle displaying Fancier Author Box in "
+msgstr "Alternar a exibição de Fancier Author Box no "
+
+#: includes/ts-fab-settings.php:126
+msgid "Latest posts"
+msgstr "Últimos posts"
+
+#: includes/ts-fab-settings.php:131
+msgid "Toggle displaying latest posts tab"
+msgstr "Alternar a exibição da janela dos últimos posts"
+
+#: includes/ts-fab-settings.php:132
+msgid "Number of latest posts to show:"
+msgstr "Número dos últimos posts "
+
+#: includes/ts-fab-settings.php:139
+msgid "Color Settings"
+msgstr "Configurações da cor"
+
+#: includes/ts-fab-settings.php:146
+msgid "Inactive tab colors"
+msgstr "Cores da guia inativas"
+
+#: includes/ts-fab-settings.php:153 includes/ts-fab-settings.php:169
+#: includes/ts-fab-settings.php:185
+msgid "Background"
+msgstr "Fundo"
+
+#: includes/ts-fab-settings.php:154 includes/ts-fab-settings.php:170
+#: includes/ts-fab-settings.php:186
+msgid "Border"
+msgstr "Margem"
+
+#: includes/ts-fab-settings.php:155 includes/ts-fab-settings.php:171
+#: includes/ts-fab-settings.php:187
+msgid "Color"
+msgstr "Cor"
+
+#: includes/ts-fab-settings.php:162
+msgid "Active tab colors"
+msgstr "Cores da guia ativas"
+
+#: includes/ts-fab-settings.php:178
+msgid "Tab content colors"
+msgstr "Cores do conteúdo da janela"
+
+#: includes/ts-fab-settings.php:211
+msgid ""
+"Select where and how Fancier Author Box appears in your posts, pages and "
+"custom posts."
+msgstr "Selecionar onde e como  Fancier Author Box appareçe nos seus posts e páginas. "
+
+#: includes/ts-fab-settings.php:240 includes/ts-fab-settings.php:260
+#: includes/ts-fab-settings.php:281
+msgid "Above"
+msgstr "Acima"
+
+#: includes/ts-fab-settings.php:241 includes/ts-fab-settings.php:261
+#: includes/ts-fab-settings.php:282
+msgid "Below"
+msgstr "Abaixo"
+
+#: includes/ts-fab-settings.php:242 includes/ts-fab-settings.php:262
+#: includes/ts-fab-settings.php:283
+msgid "Both"
+msgstr "Ambos"
+
+#: includes/ts-fab-settings.php:243 includes/ts-fab-settings.php:263
+#: includes/ts-fab-settings.php:284
+msgid "No"
+msgstr "No"
+
+#: includes/ts-fab-settings.php:354
+msgid ""
+"The only author box plugin you'll ever need. Unless you need something "
+"fancier, like <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+msgstr ""
+"O único plugin de author box que necessitará. A não ser que necessite algo de mais sofisticado, como <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+
+#: includes/ts-fab-settings.php:366
+msgid "Reset all color settings"
+msgstr "Anular todas as configurações da cor"
+
+#: includes/ts-fab-user-settings.php:12
+msgid "User Details"
+msgstr "Detalhes do usuário"
+
+#: includes/ts-fab-user-settings.php:21
+msgid "Display Fancier Author Box"
+msgstr "Exibição de Fancier Author Box"
+
+#: includes/ts-fab-user-settings.php:25
+msgid "Do not show Fancier Author Box in your posts, pages and custom posts"
+msgstr "Não mostrar Fancier Author Box nos seus posts e páginas"
+
+#: includes/ts-fab-user-settings.php:35
+msgid "Your Twitter username."
+msgstr "O seu nome de usuário no Twitter. "
+
+#: includes/ts-fab-user-settings.php:43
+msgid "Your Facebook username or ID."
+msgstr "O seu nome de usuário no Facebook."
+
+#: includes/ts-fab-user-settings.php:51
+msgid "Your Google+ ID."
+msgstr "O seu nome de usuário no Google+."
+
+#: includes/ts-fab-user-settings.php:56
+msgid "Position"
+msgstr "Posição"
+
+#: includes/ts-fab-user-settings.php:60
+msgid "Your position."
+msgstr "A sua posição."
+
+#: includes/ts-fab-user-settings.php:65
+msgid "Company"
+msgstr "Empresa"
+
+#: includes/ts-fab-user-settings.php:69
+msgid "Your company."
+msgstr "A sua empresa. "
+
+#: includes/ts-fab-user-settings.php:74
+msgid "Company URL"
+msgstr "URL da empresa"
+
+#: includes/ts-fab-user-settings.php:78
+msgid "Your company URL."
+msgstr "URL da sua empresa. "

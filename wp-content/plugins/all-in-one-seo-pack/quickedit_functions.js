@@ -1,7 +1,7 @@
 function aioseop_ajax_edit_meta_form( post_id, post_title, meta ) {
 	var uform = jQuery('#aioseop_'+meta+'_' + post_id);
 	var element = uform.html(); var input;
-	input = '<input type="text" id="aioseop_new_'+meta+'_' + post_id + '" value="' + post_title + '" style="font-size:10px;width:65%;float:left" />';
+	input = '<textarea id="aioseop_new_'+meta+'_' + post_id + '" style="font-size:10px;width:65%;float:left" rows=2 cols=16>'  + post_title + '</textarea>';
 	input += '<label style="float:left">';
 	input += '<a class="aioseop_mpc_SEO_admin_options_edit" href="javascript:void(0);" id="aioseop_'+meta+'_save_' + post_id + '" >';
 	input += '<img src="' + aioseopadmin.imgUrl+'accept.png" border="0" alt="" title="'+meta+'" /></a>';
@@ -13,7 +13,7 @@ function aioseop_ajax_edit_meta_form( post_id, post_title, meta ) {
 		uform.html( element );
 	});
 	jQuery('#aioseop_'+meta+'_save_' + post_id).click(function() {
-		var new_meta = jQuery( 'input#aioseop_new_'+meta+'_' + post_id ).val();
+		var new_meta = jQuery( '#aioseop_new_'+meta+'_' + post_id ).val();
 		handle_post_meta( post_id, new_meta, meta );
 	});
 }

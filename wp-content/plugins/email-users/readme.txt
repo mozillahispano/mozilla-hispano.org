@@ -148,6 +148,10 @@ function update_publicworks_meta_filter()
 
 == Changelog ==
 
+= Version 4.5.3
+* Fixed bug in Test Notification which failed to incorporate %POST_AUTHOR% keyword.
+* Replaced bold font in Email-Users Info meta box on settings page.
+
 = Version 4.5.2
 * Added Dashboard Widget to report number of users who accept each type of email and default settings.
 * Added Message to Settings page to warn Admin when no users will not receive emails.

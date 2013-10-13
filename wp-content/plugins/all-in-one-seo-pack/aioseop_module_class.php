@@ -229,6 +229,12 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		  * @author Adrien aka Gaarf & contributors
 		  * @see http://gaarf.info/2009/08/13/xml-string-to-php-array/
 		*/
+		function html_string_to_array( $xmlstr ) {
+		  $doc = new DOMDocument();
+		  $doc->loadHTML( $xmlstr );
+		  return $this->domnode_to_array( $doc->documentElement );
+		}
+
 		function xml_string_to_array( $xmlstr ) {
 		  $doc = new DOMDocument();
 		  $doc->loadXML( $xmlstr );
@@ -250,7 +256,8 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		          $t = $child->tagName;
 		          if(!isset($output[$t]))
 		            $output[$t] = array();
-		          $output[$t][] = $v;
+				  if ( is_array($output) )
+		          	$output[$t][] = $v;
 		        }
 		        elseif($v || $v === '0')
 		          $output = (string) $v;
@@ -269,6 +276,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		            $output[$t] = $v[0];
 		      }
 		  }
+		  if ( empty( $output ) ) return '';
 		  return $output;
 		}
 		
@@ -386,7 +394,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			wp_reset_postdata();
 			return $buf;
 		}
-
+		
 		/**
 		 * Handles exporting settings data for a module.
 		 */
@@ -439,10 +447,10 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		 * Print a basic error message.
 		 */
 		function output_error( $error ) {
-			echo "<div class='aioseop_module error' style='text-align:center;'>$error</div>";
+			echo "<div class='aioseop_module error'>$error</div>";
 			return FALSE;
 		}
-				
+		
 		/***
 		 * Backwards compatibility - see http://php.net/manual/en/function.str-getcsv.php
 		 */
@@ -850,6 +858,8 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 							} else {
 								$title = $v['name'];
 								if ( $title != $this->plugin_name ) $title = $this->plugin_name . ' - ' . $title;
+								if ( !empty( $v['help_link'] ) )
+									$title .= "<a class='aioseop_help_text_link aioseop_meta_box_help' target='_blank' href='" . $lopts['help_link'] . "'>" . __( 'Help', 'all_in_one_seo_pack' ) . "</a>";
 								add_meta_box( $v['prefix'] . $k, $title, Array( $this, 'display_metabox' ), $posttype, $v['context'], $v['priority'], $v );
 							}
 						}
@@ -862,6 +872,8 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		 * Update postmeta for metabox.
 		 */
 		function save_post_data( $post_id ) {
+			static $update = false;
+			if ( $update ) return;
 			if ( $this->locations !== null ) {
 				foreach( $this->locations as $k => $v ) {
 					if ( isset($v['type']) && ( $v['type'] === 'metabox' ) ) {
@@ -875,7 +887,11 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 								$update = true;
 							}
 						}
-						if ( $update ) update_post_meta( $post_id, '_' . $this->get_prefix($k) . $k, $options );
+						if ( $update ) {
+							$prefix = $this->get_prefix( $k );
+							$options = apply_filters( $prefix . 'filter_metabox_options', $options, $k, $post_id );
+							update_post_meta( $post_id, '_' . $prefix . $k, $options );
+						}
 					}
 				}
 			}
@@ -919,7 +935,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 								$cmp = !strcmp( $v, $value );
 							else
 								$cmp = !strcmp( $v, "" );
-						//	$cmp = !strcmp( (string)$v, (string)$value );						
+						//	$cmp = !strcmp( (string)$v, (string)$value );							
 						} else
 							$cmp = ( $value == $v );
 						if ( ( !$is_arr && $cmp ) || ( $is_arr && in_array( $v, $value ) ) )
@@ -966,7 +982,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 									  $buf .= "<input name='$name' type='{$options['type']}' $attr>\n"; break;
 				case 'textarea':	  $buf .= "<textarea name='$name' $attr>$value</textarea>"; break;
 				case 'image':		  $buf .= "<input class='aioseop_upload_image_button button-primary' type='button' value='Upload Image' style='float:left;' />" .
-											  "<input class='aioseop_upload_image_label' name='$name' type='text' readonly $attr value='$value' size=57 style='float:left;clear:left;'>\n";
+											  "<input class='aioseop_upload_image_label' name='$name' type='text' $attr value='$value' size=57 style='float:left;clear:left;'>\n";
 									  break;
 				case 'html':		  $buf .= $value; break;
 				default:			  $buf .= "<input name='$name' type='{$options['type']}' $attr value='$value'>\n";
@@ -1016,11 +1032,22 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 				static $location_settings = Array();
 				$defaults = null;
 				$prefix = $this->get_prefix( $location );
-				if ( is_array( $meta_args['args'] ) && !empty( $meta_args['args']['default_options'] ) )
+				$help_link = '';
+				if ( is_array( $meta_args['args'] ) && !empty( $meta_args['args']['default_options'] ) ) {
 					$defaults = $meta_args['args']['default_options'];
+				}
+				if ( !empty( $meta_args['callback_args'] ) ) {
+					if ( !empty( $meta_args['callback_args']['help_link'] ) ) {
+						$help_link = $meta_args['callback_args']['help_link'];
+					}
+				}
+				if ( !empty( $help_link ) )
+					echo "<a class='aioseop_help_text_link aioseop_meta_box_help' target='_blank' href='" . $help_link . "'>" . __( 'Help', 'all_in_one_seo_pack' ) . "</a>";
+				
 				if ( !isset( $location_settings[$prefix] ) ) {
 					$current_options = apply_filters( "{$this->prefix}display_options",  $this->get_current_options( Array(), $location, $defaults ), $location );
 					$settings		 = apply_filters( "{$this->prefix}display_settings", $this->setting_options( $location, $defaults ), $location, $current_options );
+					$current_options = apply_filters( "{$this->prefix}override_options", $current_options, $location, $settings );
 					$location_settings[$prefix]['current_options'] = $current_options;
 					$location_settings[$prefix]['settings']		   = $settings;
 				} else {
@@ -1175,9 +1202,10 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		<div id="aioseop_top_button">
 			<div id="aiosp_ajax_settings_message"></div>
 <?php
+
 			$submit_options = Array('action'		=> Array( 'type' => 'hidden', 'value' => 'aiosp_update_module' ),
 									'module'		=> Array( 'type' => 'hidden', 'value' => get_class( $this ) ), 
-									'location'		=> Array( 'type' => 'hidden', 'value' => $location ),
+									'location'		=> Array( 'type' => 'hidden', 'value' => $location ), 
 									'nonce-aioseop'	=> Array( 'type' => 'hidden', 'value' => wp_create_nonce('aioseop-nonce') ),
 									'page_options'	=> Array( 'type' => 'hidden', 'value' => 'aiosp_home_description' ),
 									'Submit'		=> Array( 'type' => 'submit', 'class' => 'button-primary', 'value' => __('Update Options', 'all_in_one_seo_pack') . ' &raquo;' ),
@@ -1197,9 +1225,13 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 						  if ($opts !== FALSE) $this->options = $opts;						
 						if ( is_array( $this->layout ) ) {
 							foreach( $this->layout as $l => $lopts ) {
-								if ( !isset( $lopts['tab'] ) || ( $this->current_tab == $lopts['tab'] ) )
-									add_meta_box( $this->get_prefix( $location ) . $l . "_metabox", $lopts['name'], array($this, 'display_options' ),
-												  "{$this->prefix}settings", 'advanced', 'default', $lopts );
+								if ( !isset( $lopts['tab'] ) || ( $this->current_tab == $lopts['tab'] ) ) {
+									$title = $lopts['name'];
+									if ( !empty( $lopts['help_link'] ) )
+										$title .= "<a class='aioseop_help_text_link aioseop_meta_box_help' target='_blank' href='" . $lopts['help_link'] . "'>" . __( 'Help', 'all_in_one_seo_pack' ) . "</a>";
+									add_meta_box( $this->get_prefix( $location ) . $l . "_metabox", $title, array($this, 'display_options' ),
+												"{$this->prefix}settings", 'advanced', 'default', $lopts );									
+								}
 							}
 						} else add_meta_box( $this->get_prefix( $location ) . "metabox", $name, array($this, 'display_options'), "{$this->prefix}settings", 'advanced');
 						do_meta_boxes( "{$this->prefix}settings", 'advanced', $location );

@@ -72,7 +72,7 @@ function aioseop_do_condshow_match( index, value ) {
 					matches = false;
 				}				
 			} else {
-				if ( subopt.match(/aiosp_cpostactive/) ) { // special case for this one -- pdb
+				if ( subopt.match(/\\\[\\\]/) ) { // special case for these -- pdb
 					cur = aioseop_get_field_values( subopt );
 					if ( jQuery.inArray( setting, cur, 0 ) < 0 ) {
 						matches = false;

@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanciest Author Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-11 10:29-0000\n"
+"PO-Revision-Date: 2013-08-11 10:29-0000\n"
+"Last-Translator: Slobodan Manic <slobodan.manic@gmail.com>\n"
+"Language-Team: ThematoSoup\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;"
+"_ex;esc_attr_x;esc_html_x;_n;_nx;_n_loop;_nx_loop\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ts-fab.php:53
+msgid "Settings"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:26
+#: includes/ts-fab-construct-tabs.php:134
+msgid "My Twitter profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:30
+#: includes/ts-fab-construct-tabs.php:138
+msgid "My Facebook profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:34
+#: includes/ts-fab-construct-tabs.php:142
+msgid "My Google+ profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:38
+#: includes/ts-fab-construct-tabs.php:146
+msgid "My LinkedIn profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:42
+#: includes/ts-fab-construct-tabs.php:150
+msgid "My Instagram profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:46
+#: includes/ts-fab-construct-tabs.php:154
+msgid "My Flickr profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:50
+#: includes/ts-fab-construct-tabs.php:158
+msgid "My Pinterest profile"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:54
+#: includes/ts-fab-construct-tabs.php:162
+msgid "My Tumblr blog"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:58
+#: includes/ts-fab-construct-tabs.php:166
+msgid "My YouTube channel"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:62
+#: includes/ts-fab-construct-tabs.php:170
+msgid "My Vimeo channel"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:81 includes/ts-fab-construct-tabs.php:85
+msgid "at"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:176
+msgid "Latest posts by "
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:176
+msgid "see all"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:227
+msgid "Bio"
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:229
+msgid "Latest Posts"
+msgstr ""
+
+#: includes/ts-fab-settings.php:71
+msgid "Display Settings"
+msgstr ""
+
+#: includes/ts-fab-settings.php:79
+msgid "Show in posts"
+msgstr ""
+
+#: includes/ts-fab-settings.php:84
+msgid "Toggle displaying Fancier Author Box in posts"
+msgstr ""
+
+#: includes/ts-fab-settings.php:90
+msgid "Show in pages"
+msgstr ""
+
+#: includes/ts-fab-settings.php:95
+msgid "Toggle displaying Fancier Author Box in pages."
+msgstr ""
+
+#: includes/ts-fab-settings.php:112
+msgid "Show in"
+msgstr ""
+
+#: includes/ts-fab-settings.php:117
+msgid "Toggle displaying Fancier Author Box in "
+msgstr ""
+
+#: includes/ts-fab-settings.php:126
+msgid "Latest posts"
+msgstr ""
+
+#: includes/ts-fab-settings.php:131
+msgid "Toggle displaying latest posts tab"
+msgstr ""
+
+#: includes/ts-fab-settings.php:132
+msgid "Number of latest posts to show:"
+msgstr ""
+
+#: includes/ts-fab-settings.php:139
+msgid "Color Settings"
+msgstr ""
+
+#: includes/ts-fab-settings.php:146
+msgid "Inactive tab colors"
+msgstr ""
+
+#: includes/ts-fab-settings.php:153 includes/ts-fab-settings.php:169
+#: includes/ts-fab-settings.php:185
+msgid "Background"
+msgstr ""
+
+#: includes/ts-fab-settings.php:154 includes/ts-fab-settings.php:170
+#: includes/ts-fab-settings.php:186
+msgid "Border"
+msgstr ""
+
+#: includes/ts-fab-settings.php:155 includes/ts-fab-settings.php:171
+#: includes/ts-fab-settings.php:187
+msgid "Color"
+msgstr ""
+
+#: includes/ts-fab-settings.php:162
+msgid "Active tab colors"
+msgstr ""
+
+#: includes/ts-fab-settings.php:178
+msgid "Tab content colors"
+msgstr ""
+
+#: includes/ts-fab-settings.php:211
+msgid ""
+"Select where and how Fancier Author Box appears in your posts, pages and "
+"custom posts."
+msgstr ""
+
+#: includes/ts-fab-settings.php:240 includes/ts-fab-settings.php:260
+#: includes/ts-fab-settings.php:281
+msgid "Above"
+msgstr ""
+
+#: includes/ts-fab-settings.php:241 includes/ts-fab-settings.php:261
+#: includes/ts-fab-settings.php:282
+msgid "Below"
+msgstr ""
+
+#: includes/ts-fab-settings.php:242 includes/ts-fab-settings.php:262
+#: includes/ts-fab-settings.php:283
+msgid "Both"
+msgstr ""
+
+#: includes/ts-fab-settings.php:243 includes/ts-fab-settings.php:263
+#: includes/ts-fab-settings.php:284
+msgid "No"
+msgstr ""
+
+#: includes/ts-fab-settings.php:354
+msgid ""
+"The only author box plugin you'll ever need. Unless you need something "
+"fancier, like <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+msgstr ""
+
+#: includes/ts-fab-settings.php:366
+msgid "Reset all color settings"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:12
+msgid "User Details"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:21
+msgid "Display Fancier Author Box"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:25
+msgid "Do not show Fancier Author Box in your posts, pages and custom posts"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:35
+msgid "Your Twitter username."
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:43
+msgid "Your Facebook username or ID."
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:51
+msgid "Your Google+ ID."
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:59
+msgid "Your LinkedIn username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:67
+msgid "Your Instagram username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:75
+msgid "Your Flickr username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:83
+msgid "Your Pinterest username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:91
+msgid "Your Tumblr username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:99
+msgid "Your YouTube username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:107
+msgid "Your Vimeo username"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:112
+msgid "Position"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:116
+msgid "Your position."
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:121
+msgid "Company"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:125
+msgid "Your company."
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:130
+msgid "Company URL"
+msgstr ""
+
+#: includes/ts-fab-user-settings.php:134
+msgid "Your company URL."
+msgstr ""

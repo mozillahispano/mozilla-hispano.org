@@ -54,7 +54,13 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Feature_Manager' ) ) {
 						if ( isset( $this->module_info[$m][$option] ) )
 							$this->default_options["enable_$m"][$option] = $this->module_info[$m][$option];
 			}
-			
+			$this->layout = Array(
+				'default' => Array(
+						'name' => $this->name,
+						'help_link' => 'http://semperplugins.com/documentation/feature-manager/',
+						'options' => array_keys( $this->default_options )
+					)
+			);
 			// load initial options / set defaults
 			$this->update_options( );
 			add_filter( $this->prefix . 'output_option', Array( $this, 'display_option_div' ), 10, 2 );

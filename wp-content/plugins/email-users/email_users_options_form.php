@@ -307,7 +307,7 @@
 		// Replace the template variables concerning the sender details
 		// --	
 		get_currentuserinfo();
-		global $user_identity, $user_email ;
+		global $post, $user_identity, $user_email ;
 
 		$from_name = $user_identity;
 		$from_address = $user_email;
@@ -318,10 +318,11 @@
 		$post_title = $post->post_title;
 		$post_url = get_permalink( $post_id );			
 		$post_content = explode( '<!--more-->', $post->post_content, 2 );
-		$post_excerpt = $post_content[0];
+		$post_excerpt = get_the_excerpt();
+        $post_author = get_userdata( $post->post_author )->display_name;
 		
-		$subject = mailusers_replace_post_templates($subject, $post_title, $post_excerpt, $post_url);
-		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_excerpt, $post_url);
+		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_url);
+		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_url);
 ?>
 	<tr>
 		<td><b><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></b></td>
@@ -492,11 +493,11 @@
 <div class="table table_content">
 <table style="text-align: left; width: 90%;">
 <tr>
-<th><?php _e('Number of Users who accept<br/>post or page notification emails:', MAILUSERS_I18N_DOMAIN); ?></th>
+<td><?php _e('Number of Users who accept<br/>post or page notification emails:', MAILUSERS_I18N_DOMAIN); ?></td>
 <td<?php if ( count($notifications) == 0) echo ' style="color: red;"' ; ?>><?php echo count($notifications) ; ?></td>
 </tr>
 <tr>
-<th><?php _e('Number of Users who accept<br/>emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></th>
+<td><?php _e('Number of Users who accept<br/>emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></td>
 <td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
 </tr>
 </table>
@@ -533,7 +534,7 @@
 <div style="padding:0px 5px;">
 <div>
 	<ul style="list-style-type: square;margin-left: 7px;">
-		<li><?php _e('if you use Google Forms and want to integrate them with your WordPress site, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://michaelwalsh.org/wordpress/wordpress-plugins/wpgform/">WordPress Google Form</a></li>
+		<li><?php _e('If you use Google Forms and want to integrate them with your WordPress site, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://michaelwalsh.org/wordpress/wordpress-plugins/wpgform/">WordPress Google Form</a></li>
 	</ul>
 </div>
 </div>

@@ -100,7 +100,10 @@ if ( !function_exists( 'aioseop_option_isset' ) ) {
 if ( !function_exists( 'aioseop_addmycolumns' ) ) {
 	function aioseop_addmycolumns() {
 		global $aioseop_options, $pagenow;
-		$aiosp_posttypecolumns = $aioseop_options['aiosp_posttypecolumns'];
+		$aiosp_posttypecolumns = Array();
+		if ( !empty( $aioseop_options) && !empty( $aioseop_options['aiosp_posttypecolumns'] ) ) {
+			$aiosp_posttypecolumns = $aioseop_options['aiosp_posttypecolumns'];			
+		}
 		if ( !empty( $pagenow ) && ( $pagenow == 'upload.php' ) )
 			$post_type = 'attachment';
 		elseif ( !isset( $_GET['post_type'] ) )
@@ -194,10 +197,10 @@ if ( !function_exists( 'aioseop_ajax_save_meta' ) ) {
 		if( $result != '' ): $label = $result;  
 		else: $label = ''; $result = '<strong><i>' . __( 'No', 'all_in_one_seo_pack' ) . ' ' . $target . '</i></strong>' ; endif;
 		$output = $result . '<a id="' . $target . 'editlink' . $post_id . '" href="javascript:void(0);"'; 
-		$output .= 'onclick="aioseop_ajax_edit_meta_form(' . $post_id . ', \'' . $label . '\', \'' . $target . '\');return false;" title="' . __('Edit') . '">';
+		$output .= 'onclick=\'aioseop_ajax_edit_meta_form(' . $post_id . ', ' . json_encode( $label ) . ', "' . $target . '");return false;\' title="' . __('Edit') . '">';
 		$output .= '<img class="aioseop_edit_button" id="aioseop_edit_id" src="' . AIOSEOP_PLUGIN_IMAGES_URL . '/cog_edit.png" /></a>';
 		die( "jQuery('div#aioseop_" . $target . "_" . $post_id . "').fadeOut('fast', function() {
-			  jQuery('div#aioseop_" . $target . "_" . $post_id . "').html('" . addslashes_gpc($output) . "').fadeIn('fast');
+			  jQuery('div#aioseop_" . $target . "_" . $post_id . "').html(" . json_encode( $output ) . ").fadeIn('fast');
 		});" );
 	}
 }
@@ -366,11 +369,11 @@ if ( !function_exists( 'aioseop_mrt_pccolumn' ) ) {
 				<div 	class="aioseop_mpc_admin_meta_options" 
 						id="aioseop_<?php print $target; ?>_<?php echo $id; ?>" 
 						style="float:left;">
-					<?php $content = htmlspecialchars( stripcslashes( get_post_meta( $id, "_aioseop_" . $target,	TRUE ) ) ); 
-					if( !empty($content) ): $label = str_replace( "'", "\'", $content );  
+					<?php $content = htmlspecialchars( stripslashes( get_post_meta( $id, "_aioseop_" . $target,	TRUE ) ) ); 
+					if( !empty($content) ): $label = esc_js( $content );  
 					else: $label = ''; $content = '<strong><i>No ' . $target . '</i></strong>' ; endif;
-						print $content . '<a id="' . $target . 'editlink' . $id . '" href="javascript:void(0);" onclick="aioseop_ajax_edit_meta_form(' .
-						$id . ', \'' . $label . '\', \'' . $target . '\');return false;" title="' . __('Edit') . '">';
+						print $content . '<a id="' . $target . 'editlink' . $id . '" href="javascript:void(0);" onclick=\'aioseop_ajax_edit_meta_form(' .
+						$id . ', "' . str_replace( Array( '"', '&quot;' ), Array( '\x22', '\x22' ), esc_js( $label ) ) . '", "' . $target . '");return false;\' title="' . __('Edit') . '">';
 						print "<img class='aioseop_edit_button' 
 											id='aioseop_edit_id' 
 											src='" . AIOSEOP_PLUGIN_IMAGES_URL . "cog_edit.png' /></a>";

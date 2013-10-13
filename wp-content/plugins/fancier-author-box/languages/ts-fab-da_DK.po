@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fanciest Author Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-29 08:11+0100\n"
+"PO-Revision-Date: 2012-12-30 10:48+0100\n"
+"Last-Translator: Torben Bendxien <info@freelancekonsulenten.dk>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;"
+"_ex;esc_attr_x;esc_html_x;_n;_nx;_n_loop;_nx_loop\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ts-fab.php:53
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: includes/ts-fab-construct-tabs.php:25
+msgid "My Twitter profile"
+msgstr "Min Twitter profil"
+
+#: includes/ts-fab-construct-tabs.php:27
+msgid "My Facebook profile"
+msgstr "Min Facebook profil"
+
+#: includes/ts-fab-construct-tabs.php:29
+msgid "My Google+ profile"
+msgstr "Min Google+ profil"
+
+#: includes/ts-fab-construct-tabs.php:48 includes/ts-fab-construct-tabs.php:52
+msgid "at"
+msgstr "af"
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "Latest posts by "
+msgstr "Nyeste indlæg af "
+
+#: includes/ts-fab-construct-tabs.php:110
+msgid "see all"
+msgstr "se alle"
+
+#: includes/ts-fab-construct-tabs.php:161
+msgid "Bio"
+msgstr "Profil"
+
+#: includes/ts-fab-construct-tabs.php:163
+msgid "Latest Posts"
+msgstr "Nyeste indlæg"
+
+#: includes/ts-fab-settings.php:71
+msgid "Display Settings"
+msgstr "Visnings indstillinger"
+
+#: includes/ts-fab-settings.php:79
+msgid "Show in posts"
+msgstr "Vis i indlæg"
+
+#: includes/ts-fab-settings.php:84
+msgid "Toggle displaying Fancier Author Box in posts"
+msgstr "Skift visning af Fancier Author Box i indlæg"
+
+#: includes/ts-fab-settings.php:90
+msgid "Show in pages"
+msgstr "Vis på sider"
+
+#: includes/ts-fab-settings.php:95
+msgid "Toggle displaying Fancier Author Box in pages."
+msgstr "Skift visning af Fancier Author Box på sider"
+
+#: includes/ts-fab-settings.php:112
+msgid "Show in"
+msgstr "Vis i"
+
+#: includes/ts-fab-settings.php:117
+msgid "Toggle displaying Fancier Author Box in "
+msgstr "Skift visning af Fancier Author Box i"
+
+#: includes/ts-fab-settings.php:126
+msgid "Latest posts"
+msgstr "Nyeste indlæg"
+
+#: includes/ts-fab-settings.php:131
+msgid "Toggle displaying latest posts tab"
+msgstr "Skift visning af nyeste indlæg tab"
+
+#: includes/ts-fab-settings.php:132
+msgid "Number of latest posts to show:"
+msgstr "Antal af nyeste indlæg der vises"
+
+#: includes/ts-fab-settings.php:139
+msgid "Color Settings"
+msgstr "Farve indstillinger"
+
+#: includes/ts-fab-settings.php:146
+msgid "Inactive tab colors"
+msgstr "Inaktiv tab farve"
+
+#: includes/ts-fab-settings.php:153 includes/ts-fab-settings.php:169
+#: includes/ts-fab-settings.php:185
+msgid "Background"
+msgstr "Baggrund"
+
+#: includes/ts-fab-settings.php:154 includes/ts-fab-settings.php:170
+#: includes/ts-fab-settings.php:186
+msgid "Border"
+msgstr "Ramme"
+
+#: includes/ts-fab-settings.php:155 includes/ts-fab-settings.php:171
+#: includes/ts-fab-settings.php:187
+msgid "Color"
+msgstr "Farve"
+
+#: includes/ts-fab-settings.php:162
+msgid "Active tab colors"
+msgstr "Aktiv tab farve"
+
+#: includes/ts-fab-settings.php:178
+msgid "Tab content colors"
+msgstr "Indholds tab farve"
+
+#: includes/ts-fab-settings.php:211
+msgid ""
+"Select where and how Fancier Author Box appears in your posts, pages and "
+"custom posts."
+msgstr ""
+"Vælg hvor og hvordan Fancier Author Box vises i dine indlæg, på dine sider "
+"og i custom indlæg"
+
+#: includes/ts-fab-settings.php:240 includes/ts-fab-settings.php:260
+#: includes/ts-fab-settings.php:281
+msgid "Above"
+msgstr "Ovenfor"
+
+#: includes/ts-fab-settings.php:241 includes/ts-fab-settings.php:261
+#: includes/ts-fab-settings.php:282
+msgid "Below"
+msgstr "Nedenfor"
+
+#: includes/ts-fab-settings.php:242 includes/ts-fab-settings.php:262
+#: includes/ts-fab-settings.php:283
+msgid "Both"
+msgstr "Begge"
+
+#: includes/ts-fab-settings.php:243 includes/ts-fab-settings.php:263
+#: includes/ts-fab-settings.php:284
+msgid "No"
+msgstr "Nej"
+
+#: includes/ts-fab-settings.php:354
+msgid ""
+"The only author box plugin you'll ever need. Unless you need something "
+"fancier, like <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+msgstr ""
+"Det eneste forfatter boks plugin du behøver. Medmindre du har behov for "
+"noget smartere, som <a href=\"http://codecanyon.net/item/fanciest-author-"
+"box/2504522?ref=ThematoSoup\">Fanciest Author Box</a>."
+
+#: includes/ts-fab-settings.php:366
+msgid "Reset all color settings"
+msgstr "Reset alle farve indstillinger"
+
+#: includes/ts-fab-user-settings.php:12
+msgid "User Details"
+msgstr "Bruger detaljer"
+
+#: includes/ts-fab-user-settings.php:21
+msgid "Display Fancier Author Box"
+msgstr "Vis Fancier Authoer Box"
+
+#: includes/ts-fab-user-settings.php:25
+msgid "Do not show Fancier Author Box in your posts, pages and custom posts"
+msgstr "Vis ikke Fancier Author Box i indlæg, på sider og i custom indlæg"
+
+#: includes/ts-fab-user-settings.php:35
+msgid "Your Twitter username."
+msgstr "Dit Twitter brugernavn"
+
+#: includes/ts-fab-user-settings.php:43
+msgid "Your Facebook username or ID."
+msgstr "Dit Facebook brugernavn eller ID"
+
+#: includes/ts-fab-user-settings.php:51
+msgid "Your Google+ ID."
+msgstr "Dit Google+ ID"
+
+#: includes/ts-fab-user-settings.php:56
+msgid "Position"
+msgstr "Stilling"
+
+#: includes/ts-fab-user-settings.php:60
+msgid "Your position."
+msgstr "Din stilling"
+
+#: includes/ts-fab-user-settings.php:65
+msgid "Company"
+msgstr "Firma"
+
+#: includes/ts-fab-user-settings.php:69
+msgid "Your company."
+msgstr "Dit firma"
+
+#: includes/ts-fab-user-settings.php:74
+msgid "Company URL"
+msgstr "Firma URL"
+
+#: includes/ts-fab-user-settings.php:78
+msgid "Your company URL."
+msgstr "Dit firma URL"
