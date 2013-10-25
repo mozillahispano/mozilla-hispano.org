@@ -16,8 +16,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	public $roles = null;     
 	public $notification = '';   // notification message to show on page
 	public $apply_to_all = 0; 
-	public $user_to_check = array();  // cached list of user IDs, who has Administrator role     
-	public $multisite = false;
+	public $user_to_check = array();  // cached list of user IDs, who has Administrator role     	 
   
 	protected $capabilities_to_save = null; 
 	protected $current_role = '';
@@ -35,9 +34,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	protected $role_delete_html = '';
 	protected $capability_remove_html = '';
 	protected $integrate_with_gravity_forms = false;
-	protected $advert = null;
-	protected $main_blog_id = 0; 
- protected $hidden_built_in_wp_caps_quant = 0;
+	protected $advert = null; 	
   
   
     /** class constructor
@@ -45,25 +42,16 @@ class Ure_Lib extends Garvs_WP_Lib {
      * @param string $option_name
      * 
      */
-    function __construct() {
-
-        global $wpdb;
-        
-        $this->multisite = function_exists('is_multisite') && is_multisite();
-        if ($this->multisite) {
-            // get Id of 1st (main) blog
-            $this->main_blog_id = $wpdb->get_var("SELECT blog_id FROM $wpdb->blogs order by blog_id asc limit 0, 1");
-        }
-        
-        $this->init_options('user_role_editor');
+    public function __construct($options_id) {
+                                           
+        parent::__construct($options_id);        
         
         $this->integrate_with_gravity_forms = class_exists('GFForms');
- 
-        
+         
         
     }
     // end of __construct()
-
+        
     
     /**
      * get options for User Role Editor plugin
@@ -73,22 +61,22 @@ class Ure_Lib extends Garvs_WP_Lib {
     protected function init_options($options_id) {
         
         global $wpdb;
-        
-        if ($this->multisite) {
-            $current_blog = $wpdb->blogid;
+
+        $current_blog = $wpdb->blogid;
+        if ($this->multisite && $current_blog!=$this->main_blog_id) {            
             switch_to_blog($this->main_blog_id);  // in order to get URE options from the main blog
         }
         
         $this->options_id = $options_id;
         $this->options = get_option($options_id);
         
-        if ($this->multisite) {
+        if ($this->multisite && $current_blog!=$this->main_blog_id) {
             // return back to the current blog
             switch_to_blog($current_blog);
         }
 
     }
-    // end of init_options
+    // end of init_options()
     
     
     /**
@@ -431,18 +419,18 @@ class Ure_Lib extends Garvs_WP_Lib {
                 } else {
                     $this->caps_readable = 1;
                 }
-				set_site_transient( 'ure_caps_readable', $this->caps_readable, 600 );
+                set_site_transient( 'ure_caps_readable', $this->caps_readable, 600 );
             } else if ($action == 'show-deprecated-caps') {
                 if ($this->show_deprecated_caps) {
                     $this->show_deprecated_caps = 0;
                 } else {
                     $this->show_deprecated_caps = 1;
                 }
-				set_site_transient( 'ure_show_deprecated_caps', $this->show_deprecated_caps, 600 );
-			} else if ($action == 'hide-pro-banner') {
+                set_site_transient( 'ure_show_deprecated_caps', $this->show_deprecated_caps, 600 );
+            } else if ($action == 'hide-pro-banner') {
                 $this->hide_pro_banner = 1;
-				$this->put_option('ure_hide_pro_banner', 1);	
-				$this->flush_options();				
+                $this->put_option('ure_hide_pro_banner', 1);	
+                $this->flush_options();				
             } else if ($action == 'add-new-capability') {
                 $this->notification = $this->add_new_capability();
             } else if ($action == 'delete-user-capability') {
@@ -900,12 +888,13 @@ class Ure_Lib extends Garvs_WP_Lib {
         $caps['export'] = 1;
         $caps['delete_users'] = 1;
         $caps['create_users'] = 1;
-        $caps['manage_network'] = 1;        
-        $caps['manage_network_users'] = 1;
-        $caps['manage_network_themes'] = 1;
-        $caps['manage_network_plugins'] = 1;
-        $caps['manage_network_options'] = 1;
-        $caps['manage_network'] = 1;
+        if ($this->multisite) {
+            $caps['manage_network'] = 1;        
+            $caps['manage_network_users'] = 1;
+            $caps['manage_network_themes'] = 1;
+            $caps['manage_network_plugins'] = 1;
+            $caps['manage_network_options'] = 1;
+        }
         
         return $caps;
     }
@@ -1006,6 +995,9 @@ class Ure_Lib extends Garvs_WP_Lib {
             'level_9' => 0,
             'level_10' => 0,
             'edit_files' => 0);
+        if ($this->multisite) {
+            $dep_caps['unfiltered_html'] = 0;
+        }
 
         return $dep_caps;
     }
@@ -1027,10 +1019,10 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
 
         if ($core) {
-            $quant = count($this->get_built_in_wp_caps()) - $this->hidden_built_in_wp_caps_quant;
+            $quant = count($this->get_built_in_wp_caps());
             $deprecated_caps = $this->get_deprecated_caps();
         } else {
-            $quant = count($this->full_capabilities) - count($this->get_built_in_wp_caps()) + $this->hidden_built_in_wp_caps_quant;
+            $quant = count($this->full_capabilities) - count($this->get_built_in_wp_caps());
             $deprecated_caps = array();
         }
         $quant_in_column = (int) $quant / 3;
@@ -1092,7 +1084,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             } // if (empty($hidden_class
         }
     }
-    // end of ure_show_capabilities()
+    // end of show_capabilities()
 
 
     /**
@@ -1163,6 +1155,10 @@ class Ure_Lib extends Garvs_WP_Lib {
                <hr />
             	 <div id="ure_update_user">
                 <button id="ure_update_role" class="ure_toolbar_button button-primary">Update</button> 
+<?php
+    do_action('ure_user_edit_toolbar_update');
+?>                   
+                
             	 </div>	 
             <?php
         }
@@ -1340,10 +1336,9 @@ class Ure_Lib extends Garvs_WP_Lib {
             }
         }
         
-        $this->hidden_built_in_wp_caps_quant = 0;
         foreach ($this->built_in_wp_caps as $cap=>$val) {
             if (!isset($this->full_capabilities[$cap])) {
-                $this->hidden_built_in_wp_caps_quant++;
+                $this->add_capability_to_full_caps_list($cap);
             }
         }
         
@@ -1414,10 +1409,23 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of is_full_network_synch()
     
     
+    protected function last_check_before_update() {
+        if (empty($this->roles) || !is_array($this->roles) || count($this->roles)==0) { // Nothing to save - something goes wrong - stop ...
+            return false;
+        }
+        
+        return true;
+    }
+    // end of last_check_before_update()
+    
+    
     // Save Roles to database
     protected function save_roles() {
         global $wpdb;
 
+        if (!$this->last_check_before_update()) {
+            return false;
+        }
         if (!isset($this->roles[$this->current_role])) {
             return false;
         }
@@ -1435,20 +1443,23 @@ class Ure_Lib extends Garvs_WP_Lib {
      * Update roles for all network using direct database access - quicker in several times
      * 
      * @global wpdb $wpdb
-     * @param type $blog_ids
      * @return boolean
      */
-    function direct_network_roles_update($blog_ids) {
+    function direct_network_roles_update() {
         global $wpdb;
 
+        if (!$this->last_check_before_update()) {
+            return false;
+        }
         if (!empty($this->current_role)) {
             if (!isset($this->roles[$this->current_role])) {
                 $this->roles[$this->current_role]['name'] = $this->current_role_name;
             }
             $this->roles[$this->current_role]['capabilities'] = $this->capabilities_to_save;
-        }
+        }        
+
         $serialized_roles = serialize($this->roles);
-        foreach ($blog_ids as $blog_id) {
+        foreach ($this->blog_ids as $blog_id) {
             $prefix = $wpdb->get_blog_prefix($blog_id);
             $options_table_name = $prefix . 'options';
             $option_name = $prefix . 'user_roles';
@@ -1462,9 +1473,35 @@ class Ure_Lib extends Garvs_WP_Lib {
                 return false;
             }
         }
+        
+        return true;
     }
     // end of direct_network_roles_update()
 
+    
+    protected function wp_api_network_roles_update() {
+        global $wpdb;
+        
+        $result = true;
+        $old_blog = $wpdb->blogid;
+        foreach ($this->blog_ids as $blog_id) {
+            switch_to_blog($blog_id);
+            $this->roles = $this->get_user_roles();
+            if (!isset($this->roles[$this->current_role])) { // add new role to this blog
+                $this->roles[$this->current_role] = array('name' => $this->current_role_name, 'capabilities' => array('read' => 1));
+            }
+            if (!$this->save_roles()) {
+                $result = false;
+                break;
+            }
+        }
+        switch_to_blog($old_blog);
+        $this->roles = $this->get_user_roles();
+        
+        return $result;
+    }
+    // end of wp_api_network_roles_update()
+    
         
     /**
      * Update role for all network using WordPress API
@@ -1472,42 +1509,22 @@ class Ure_Lib extends Garvs_WP_Lib {
      * @return boolean
      */
     protected function multisite_update_roles() {
-
-        global $wpdb;
         
         if (defined('URE_DEBUG') && URE_DEBUG) {
             $time_shot = microtime();
         }
-
-        $old_blog = $wpdb->blogid;
-        // Get all blog ids
-        $blogIds = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+        
         if ($this->is_full_network_synch()) {
-            $this->direct_network_roles_update($blogIds);
+            $result = $this->direct_network_roles_update();
         } else {
-            foreach ($blogIds as $blog_id) {
-                switch_to_blog($blog_id);
-                $this->roles = $this->get_user_roles();
-                if (!$this->roles) {
-                    echo '<div class="error fade below-h2">' . URE_ERROR . '</div>';
-                    switch_to_blog($old_blog);
-                    $this->roles = $this->get_user_roles();
-                    return false;
-                }
-                if (!isset($this->roles[$this->current_role])) { // add new role to this blog
-                    $this->roles[$this->current_role] = array('name' => $this->current_role_name, 'capabilities' => array('read' => 1));
-                }
-                $this->save_roles();
-            }
-            switch_to_blog($old_blog);
-            $this->roles = $this->get_user_roles();
+            $result = $this->wp_api_network_roles_update();            
         }
 
         if (defined('URE_DEBUG') && URE_DEBUG) {
             echo '<div class="updated fade below-h2">Roles updated for ' . ( microtime() - $time_shot ) . ' milliseconds</div>';
         }
 
-        return true;
+        return $result;
     }
     // end of multisite_update_roles()
 
@@ -1767,6 +1784,25 @@ class Ure_Lib extends Garvs_WP_Lib {
 
     
     /**
+     * placeholder - realized at the Pro version
+     */
+    protected function check_blog_user($user) {
+        
+        return true;
+    }
+    // end of check_blog_user()
+    
+    /**
+     * placeholder - realized at the Pro version
+     */    
+    protected function network_update_user($user) {
+        
+        return true;
+    }
+    // end of network_update_user()
+    
+    
+    /**
      * Update user roles and capabilities
      * 
      * @global WP_Roles $wp_roles
@@ -1775,10 +1811,15 @@ class Ure_Lib extends Garvs_WP_Lib {
      */
     protected function update_user($user) {
         global $wp_roles;
-
-        $values = array_values($user->roles);
-        $primary_role = array_shift($values);  // get 1st element from roles array as user primary role
-        if (empty($primary_role) || !isset($this->roles[$primary_role])) {
+                
+        if ($this->multisite) {
+            if (!$this->check_blog_user($user)) {
+                return false;
+            }
+        }
+        
+        $primary_role = $_POST['primary_role'];  
+        if (empty($primary_role) || !isset($wp_roles->roles[$primary_role])) {
             $primary_role = '';
         }
         if (function_exists('bbp_filter_blog_editable_roles')) {  // bbPress plugin is active
@@ -1819,10 +1860,16 @@ class Ure_Lib extends Garvs_WP_Lib {
             }
         }
         $user->update_user_level_from_caps();
-
+        
+        if ($this->apply_to_all) { // apply update to the all network
+            if (!$this->network_update_user($user)) {
+                return false;
+            }
+        }
+        
         return true;
     }
-    // end of ure_update_user()
+    // end of update_user()
 
     
     /**
@@ -2078,6 +2125,27 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of role_edit_prepare_html()
     
     
+    public function user_primary_role_dropdown_list($user_roles) {
+?>        
+        <select name="primary_role" id="primary_role">
+<?php
+        // Compare user role against currently editable roles
+        $user_roles = array_intersect( array_values( $user_roles ), array_keys( get_editable_roles() ) );
+        $user_primary_role  = array_shift( $user_roles );
+
+        // print the full list of roles with the primary one selected.
+        wp_dropdown_roles($user_primary_role);
+
+        // print the 'no role' option. Make it selected if the user has no role yet.        
+        $selected = ( empty($user_primary_role) ) ? 'selected="selected"' : '';
+        echo '<option value="" '. $selected.'>' . __('&mdash; No role for this site &mdash;') . '</option>';
+?>
+        </select>
+<?php        
+    }
+    // end of user_primary_role_dropdown_list()
+    
+    
     // returns true if $user has $capability assigned through the roles or directly
     // returns true if user has role with name equal $capability
     protected function user_can($capability) {
@@ -2101,29 +2169,29 @@ class Ure_Lib extends Garvs_WP_Lib {
     
     // returns true if current user has $capability assigned through the roles or directly
     // returns true if current user has role with name equal $capability
-    public function user_has_capability($user, $cap) {    
-        
+    public function user_has_capability($user, $cap) {
+
         global $wp_roles;
-        
-		if (is_multisite() && is_super_admin()) {
-			return true;
-		}
-		
+
+        if (is_multisite() && is_super_admin()) {
+            return true;
+        }
+
         if (isset($user->caps[$cap])) {
             return true;
         }
         foreach ($user->roles as $role) {
-            if ($role===$cap) {
+            if ($role === $cap) {
                 return true;
             }
             if (!empty($wp_roles->roles[$role]['capabilities'][$cap])) {
                 return true;
             }
         }
-                
-        return false;        
+
+        return false;
     }
     // end of user_has_capability()           
-
+        
 }
 // end of URE_Lib class

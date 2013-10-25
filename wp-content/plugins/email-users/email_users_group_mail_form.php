@@ -122,7 +122,7 @@
                         $index = strtolower($prefix . '-' . $key); ?>
                         <option value="<?php echo $index; ?>"
                         <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                        <?php printf('%s - %s', $prefix, $value); ?>
+                        <?php printf('%s - %s', $prefix, __($value)); ?>
                         </option>
                         <?php 
                     }
@@ -138,7 +138,7 @@
                             $index = strtolower($prefix . '-' . $key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                            <?php printf('%s - %s', $prefix, $value); ?>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
                             </option>
                             <?php
                         }
@@ -155,7 +155,7 @@
                             $index = strtolower($prefix . '-' . $key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                            <?php printf('%s - %s', $prefix, $value); ?>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
                             </option>
                             <?php
                         }

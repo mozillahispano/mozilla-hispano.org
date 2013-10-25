@@ -127,10 +127,6 @@
 	<?php
 		// Fetch users
 		// --
-        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
-        //error_log(print_r($send_targets, true)) ;
-        //error_log(print_r($_POST, true)) ;
-        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
 
         $recipients = array() ;
 
@@ -180,10 +176,6 @@
 
         if (!empty($send_roles))
             $recipients = array_merge($recipients, mailusers_get_recipients_from_roles($send_roles, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
-
-        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
-        //error_log(print_r($recipients, true)) ;
-        //error_log(sprintf('%s::%s', basename(__FILE__), __LINE__)) ;
 
 		if (empty($recipients)) {
 	?>

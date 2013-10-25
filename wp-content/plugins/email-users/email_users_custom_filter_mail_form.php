@@ -99,9 +99,7 @@
 					$na = __('N/A', MAILUSERS_I18N_DOMAIN);
 					$sortby = mailusers_get_default_sort_users_by();
 	
-					//$users = mailusers_get_users($user_ID);
                     $users = mailusers_get_recipients_from_custom_meta_filter(null, '', $mailusers_mf, $mailusers_mv, $mailusers_mc);
-                    //error_log(print_r($users, true)) ;
                     
 					foreach ($users as $user) {
 						switch ($sortby) {

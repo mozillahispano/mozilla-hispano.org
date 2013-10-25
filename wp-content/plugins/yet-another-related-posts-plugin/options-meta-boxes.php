@@ -432,14 +432,25 @@ class YARPP_Meta_Box_Optin extends YARPP_Meta_Box {
             '</label>'
         );
 		
-		echo(
-            '<p style="overflow:auto;">'.
-                __( 'This is entirely optional, but will help improve future versions of YARPP.', 'yarpp' ).
-                '<br/>'.
+        echo (
+            '<p>'.
+                'We would really appreciate your input to help us continue to improve the product. We are primarily looking '.
+                'for country, domain, and date installed information.'.
+            '</p>'.
+            '<p>'.
+                'Please help us make YARPP better providing this information and by filling out our quick, '.
+                '5 question survey: '.
+                '<a href="http://www.surveymonkey.com/s/Z278L88" target="_blank">'.
+                    'http://www.surveymonkey.com/s/Z278L88'.
+                '</a>'.
+                '<br/><br/>'.
                 '<input type="button" value="'.esc_attr(__('Learn More', 'yarpp')).'" id="yarpp-optin-learnmore" class="button button-small"/>'.
+                '<br/>'.
             '</p>'
         );
+
 	}/*end display*/
+
 }/*YARPP_Meta_Box_Optin*/
 
 add_meta_box( 'yarpp_display_contact', __( 'Contact YARPP', 'yarpp' ), array( new YARPP_Meta_Box_Contact, 'display' ), 'settings_page_yarpp', 'side', 'core' );

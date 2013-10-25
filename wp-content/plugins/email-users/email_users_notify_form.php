@@ -53,7 +53,7 @@
         <select style="width:300px;" name="post_id">
         <?php
          global $post ;
-         $lastposts = get_posts(array('numberposts' => 0, 'post_type' => $post_type));
+         $lastposts = get_posts(array('numberposts' => -1, 'post_type' => $post_type));
          foreach($lastposts as $post) :
             setup_postdata($post);
          ?>
@@ -116,8 +116,11 @@
         $post_excerpt = do_shortcode($post_excerpt) ;
     }
     
-    $subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_url);
-    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_url);
+    //  Deal with post content in array form
+    if (is_array($post_content)) $post_content = $post_content[0] ;
+
+    $subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 ?>
 
 <div class="wrap">
@@ -183,7 +186,7 @@
                         $index = strtolower($prefix . '-' . $key); ?>
                         <option value="<?php echo $index; ?>"
                         <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                        <?php printf('%s - %s', $prefix, $value); ?>
+                        <?php printf('%s - %s', $prefix, __($value)); ?>
                         </option>
                         <?php 
                     }
@@ -199,7 +202,7 @@
                             $index = strtolower($prefix . '-' . $key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                            <?php printf('%s - %s', $prefix, $value); ?>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
                             </option>
                             <?php
                         }
@@ -216,7 +219,7 @@
                             $index = strtolower($prefix . '-' . $key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
-                            <?php printf('%s - %s', $prefix, $value); ?>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
                             </option>
                             <?php
                         }

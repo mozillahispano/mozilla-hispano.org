@@ -163,10 +163,18 @@ class YARPP_Admin {
             '<p>'.
                 __("With your permission, YARPP will send information about YARPP's settings, usage, and environment
                     back to a central server at ", 'yarpp').'<code>yarpp.org</code>'.'.&nbsp;'.
+            '</p>'.
+            '<p>'.
+                'We would really appreciate your input to help us continue to improve the product. We are primarily looking '.
+                'for country, domain, and date installed information.'.
+            '</p>'.
+            '<p>'.
 		        __("This information will be used to improve YARPP in the future and help decide future development
 		            decisions for YARPP.",
                     'yarpp'
                 ).' '.
+            '</p>'.
+            '<p>'.
 		        '<strong>'.
                 __("Contributing this data will help make YARPP better for you and for other YARPP users.",
                     'yarpp' ).'</strong>'.
@@ -271,12 +279,19 @@ class YARPP_Admin {
             );
         }
 
-		_e(
-            "<p>".
-            "YARPP would like to use your site&#39;s usage statistics to make more informed decisions about future development. ".
-            "Optionally, this can be disabled by clicking on the button below.".
-            "</p>"
-        ,'yarpp' );
+        echo (
+            '<p>'.
+                'We would really appreciate your input to help us continue to improve the product. We are primarily looking '.
+                'for country, domain, and date installed information.'.
+            '</p>'.
+            '<p>'.
+                'Please help us make YARPP better providing this information and by filling out our quick, '.
+                '5 question survey: '.
+                '<a href="http://www.surveymonkey.com/s/Z278L88" target="_blank">'.
+                    'http://www.surveymonkey.com/s/Z278L88'.
+                '</a>'.
+            '</p>'
+        );
 
 		echo '</p><p>';
 		$this->print_optin_button($action);

@@ -6,7 +6,7 @@ Plugin URI: http://yarpp.org/
 Tags: related, posts, post, pages, page, RSS, feed, feeds, YARPP
 Requires at least: 3.3
 Tested up to: 3.6.1
-Stable tag: 4.0.7
+Stable tag: 4.0.8
 License: GPLv2 or later
 
 Display a list of related entries on your site and feeds based on a unique algorithm. Now with thumbnail support built-in!
@@ -78,7 +78,7 @@ YARPP allows the advanced user with knowledge of PHP to customize the display of
 
 == Frequently Asked Questions ==
 
-If your question isn't here, ask your own question at [the WordPress.org forums](http://wordpress.org/support/plugin/yet-another-related-posts-plugin). *Please do not email with questions.* I'd also appreciate if you would tell me how you found out about YARPP, by taking [this simple three-question survey](http://www.surveymonkey.com/s/Z278L88). Thanks for your feedback!
+If your question isn't here, ask your own question at [the WordPress.org forums](http://wordpress.org/support/plugin/yet-another-related-posts-plugin). *Please do not email with questions.* I'd also appreciate if you would tell me how you found out about YARPP, by taking [this quick five-question survey](http://www.surveymonkey.com/s/Z278L88). Thanks for your feedback!
 
 = Many pages list "no related posts." =
 
@@ -196,35 +196,72 @@ Before upgrading to a new WordPress version, you should first deactivate all plu
 
 The official [YARPP Experiments](http://wordpress.org/extend/plugins/yarpp-experiments/) plugin adds manual cache controls, letting you flush the cache and build it up manually.
 
-= I removed the YARPP plugin but I still see YARPP-related database tables. Shouldn't those be removed, too? = 
+= I removed the YARPP plugin but I still see YARPP-related database tables. Shouldn't those be removed, too? =
 
 Beginning with version 4.0.7, YARPP includes clean uninstall functionality. If you no longer wish to use YARPP, first deactivate YARPP using the "Plugins" page in WordPress, then click the "Delete" link found on the same page. This process will automatically remove all YARPP-related files, including temp tables. If you manually try to remove YARPP files instead of going through WordPress, some files or temp tables could remain.
 
-== Developing with YARPP ==
+= Does YARPP support custom post types? =
 
-= Custom post types =
+Yes. To make YARPP support your custom post type, the attribute `yarpp_support` must be set to true on the custom post type when it is registered. It will then be available on options on the YARPP settings page.
 
-To make YARPP support your custom post type, the attribute `yarpp_support` must be set to true on the custom post type when it is registered. It will then be available on options on the YARPP settings page.
+`
+'yarpp_support' => true
+`
 
 If you would like to programmatically control which post types are considered in an automatically-displayed related posts display, use the `yarpp_map_post_types` filter.
 
-= Custom displays =
+= Can I customize how YARPP displays? =
 
-Developers can call YARPP's powerful relatedness algorithm from anywhere in their own code. Some examples and more details are in my slides from my [WordCamp Birmingham talk](http://www.slideshare.net/mitcho/relate-all-the-things).
+Yes. Developers can call YARPP's powerful relatedness algorithm from anywhere in their own code. Some examples and more details are in my slides from my [WordCamp Birmingham talk](http://www.slideshare.net/mitcho/relate-all-the-things).
 
-Options which are not specified will default to those specified in the YARPP settings page. Additionally, if you are using the builtin template rather than specifying a custom template file in `template`, the following arguments can be used to override the various parts of the builtin template: `before_title`, `after_title`, `before_post`, `after_post`, `before_related`, `after_related`, `no_results`, `excerpt_length`.
+`
+yarpp_related(array(
+	// Pool options: these determine the "pool" of entities which are considered
+	'post_type' => array('post', 'page', ...),
+	'show_pass_post' => false, // show password-protected posts
+	'past_only' => false, // show only posts which were published before the reference post
+	'exclude' => array(), // a list of term_taxonomy_ids. entities with any of these terms will be excluded from consideration.
+	'recent' => false, // to limit to entries published recently, set to something like '15 day', '20 week', or '12 month'.
 
-If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related($args, $reference_ID)` and `yarpp_related_exist($args, $reference_ID)`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
+	// Relatedness options: these determine how "relatedness" is computed
+	// Weights are used to construct the "match score" between candidates and the reference post
+	'weight' => array(
+		'body' => 1,
+		'title' => 2, // larger weights mean this criteria will be weighted more heavily
+		'tax' => array(
+			'post_tag' => 1,
+			... // put any taxonomies you want to consider here with their weights
+		)
+	),
+	// Specify taxonomies and a number here to require that a certain number be shared:
+	'require_tax' => array(
+		'post_tag' => 1 // for example, this requires all results to have at least one 'post_tag' in common.
+	),
+	// The threshold which must be met by the "match score"
+	'threshold' => 5,
+
+	// Display options:
+	'template' => , // either the name of a file in your active theme or the boolean false to use the builtin template
+	'limit' => 5, // maximum number of results
+	'order' => 'score DESC'
+),
+$reference_ID, // second argument: (optional) the post ID. If not included, it will use the current post.
+true); // third argument: (optional) true to echo the HTML block; false to return it
+`
+
+Options which are not specified will default to those specified in the YARPP settings page. Additionally, if you are using the built-in template rather than specifying a custom template file in `template`, the following arguments can be used to override the various parts of the builtin template: `before_title`, `after_title`, `before_post`, `after_post`, `before_related`, `after_related`, `no_results`, `excerpt_length`.
+
+If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related($args, $reference_ID)`  and  `yarpp_related_exist($args, $reference_ID)`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
 
 Note that custom YARPP queries using the functions mentioned here are *not* cached in the built-in YARPP caching system. Thus, if you notice any performance hits, you may need to write your own code to cache the results.
 
-= Custom taxonomy support =
+= Does YARPP support custom taxonomies? =
 
-Any taxonomy, including custom taxonomies, may be specified in the `weight` or `require_tax` arguments in a custom display as above. `term_taxonomy_id`s specified in the `exclude` argument may be of any taxonomy.
+Yes. Any taxonomy, including custom taxonomies, may be specified in the `weight` or `require_tax` arguments in a custom display as above. `term_taxonomy_id`s specified in the `exclude` argument may be of any taxonomy.
 
 If you would like to choose custom taxonomies to choose in the YARPP settings UI, either to exclude certain terms or to consider them in the relatedness formula via the UI, the taxonomy must (a) have either the `show_ui` or `yarpp_support` attribute set to true and (b) must apply to either the post types `post` or `page` or both.
 
-== Localizations ==
+= Which languages does YARPP support? =
 
 YARPP is currently localized in the following languages:
 
@@ -254,7 +291,7 @@ YARPP is currently localized in the following languages:
 * Kazakh (`kk_KZ`) by [DachaDecor](http://DachaDecor.ru)
 * Korean (`ko_KR`) by [Jong-In Kim](http://incommunity.codex.kr)
 * Latvian (`lv_LV`) by [Mike](http://antsar.info)
-* Lithuanian (`lt_LT`) by [Karolis Vyčius](http://vycius.co.cc) and [Mantas Malcius](http://mantas.malcius.lt)
+* Lithuanian (`lt_LT`) by [Karolis Vycius](http://vycius.co.cc) and [Mantas Malcius](http://mantas.malcius.lt)
 * Macedonian (`mk_MK`) by [WPdiscounts](http://wpdiscounts.com)
 * Norwegian (`nb_NO`) by [Tom Arne Sundtjønn](http://www.datanerden.no)
 * Polish (`pl_PL`) by [Perfecta](http://perfecta.pro/wp-pl/)
@@ -262,17 +299,20 @@ YARPP is currently localized in the following languages:
 * Brazilian Portuguese (`pt_BR`) by Rafael Fischmann of [macmagazine.br](http://macmagazine.com.br/)
 * Romanian (`ro_RO`) by [Uhren Shop](http://uhrenstore.de/)
 * Russian (`ru_RU`) by Marat Latypov of [blogocms.ru](http://blogocms.ru)
-* Serbian (`sr_RS`) by [Zarko Zivkovic](http://www.zarkozivkovic.com/) 
+* Serbian (`sr_RS`) by [Zarko Zivkovic](http://www.zarkozivkovic.com/)
 * Slovak (`sk_SK`) by [Forex](http://www.eforex.sk/)
-* Slovenian (`sl_SI`) by [Silvo Katalenić](http://www.twitter.com/silvoslaf)
+* Slovenian (`sl_SI`) by [Silvo Katalenic](http://www.twitter.com/silvoslaf)
 * Spanish (`es_ES`) by Rene of [WordPress Webshop](http://wpwebshop.com)
 * Swedish (`sv_SE`) by Max Elander
-* Turkish (`tr_TR`) by [Nurullah](http://www.ndemir.com) and [Barış Ünver](http://beyn.org/)
+* Turkish (`tr_TR`) by [Nurullah](http://www.ndemir.com) and [Baris Ünver](http://beyn.org/)
 * Vietnamese (`vi_VN`) by Vu Nguyen of [Rubik Integration](http://rubikintegration.com/)
 * Ukrainian (`uk_UA`) by [Onore(Alexander Musevich)](http://Onore.kiev.ua)
 * Uzbek (`uz_UZ`) by Ali Safarov of [comfi.com](http://www.comfi.com/)
 
 == Changelog ==
+
+= 4.0.8 =
+* The recent 4.0.7 YARPP update included a settings modification to opt in users to our tracking pixel by default. By doing so, our intent was to use this expanded information to better understand the geographic reach of the popular plugin. We have been made aware that this change infringed upon the WordPress guidelines. We apologize for the issue and have remedied the situation in update 4.0.8. Going forward, we would really appreciate your input to help us continue to improve the product. We are primarily looking for country, domain, and date installed information. Please help us make YARPP better by opting in to this information and by filling out our quick, [5 question survey](http://www.surveymonkey.com/s/Z278L88). Thank you.
 
 = 4.0.7 =
 * [Bugfix](https://wordpress.org/support/topic/orderby-error): Now more robust against certain custom options.

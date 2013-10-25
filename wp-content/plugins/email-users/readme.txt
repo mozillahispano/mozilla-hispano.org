@@ -3,8 +3,8 @@ Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.3
-Tested up to: 3.5.1
-Stable tag: 4.5.2
+Tested up to: 3.6.1
+Stable tag: 4.6.1
 
 A plugin for WordPress which allows you to send an email to the registered blog users. Users can send personal emails to each other. Power users can email groups of users and even notify group of users of posts.
 
@@ -148,21 +148,53 @@ function update_publicworks_meta_filter()
 
 == Changelog ==
 
-= Version 4.5.3
+= Version 4.6.1 =
+* Updated Spanish language translation files. (thank you Ponç J. Llaneras)
+* New Bulgarian language translation files.  (thank you Borisa Djuraskovic)
+* Fixed formatting issue in the plugin README file.
+
+= Version 4.6.0 =
+* Significantly improved debug functionality to chase down mail header issues.
+* Check added to determine if wp_mail() has been overloaded by a theme or plugin.
+* Rewrite of mailusers_send_mail() fucntion to construct headers as arrays insyead of as string.  The string would sometimes not break correctly and recognize the Bcc: field.
+* Implemented new email footer option.
+* Cleaned up presentation of Options page.
+* Implemented new omit display names option.
+* Updated language translation files.
+
+= Version 4.5.5 =
+* Forgot to register settings for new MIME-Type and X-Mailer settings.
+
+= Version 4.5.4 =
+* Version bump due to bad tagging in WordPress plugin repository.
+
+= Version 4.5.3 =
 * Fixed bug in Test Notification which failed to incorporate %POST_AUTHOR% keyword.
 * Replaced bold font in Email-Users Info meta box on settings page.
+* Added %POST_CONTENT% substitution keyword.
+* Refactored construction of email headers.
+* Added option to specifically CC sender.
+* Fixed sorting problems on User Settings page.
+* Added Search to User Settings page.
+* Replaced First/Last Names on User Settings page with Display Name - needed to eliminate complex query.
+* Replaced complex SQL query with proper call to get_users() for User Settings page, facilitated fixing several bugs on User Settings page.
+* Fixed bug which preventing showing all posts and/or pages in Notify dropdown.
+* Added translation for value of Role when used in select boxes.
+* Resolved duplicate MIME-Version and X-Mailer header problem.
+* Added new options to optionally add MIME-Version and X-Mailer headers as by default, they are added by WordPress and shouldn't be added by Email Users.
+* Improved Information Panel on Email Users settings page, now shows status of any filters which could affect Email Users.
 
-= Version 4.5.2
+= Version 4.5.2 =
 * Added Dashboard Widget to report number of users who accept each type of email and default settings.
 * Added Message to Settings page to warn Admin when no users will not receive emails.
 * Added Meta Box to Settings page to report number of users who accept each type of email.
 
-= Version 4.5.1
+= Version 4.5.1 =
 * Fixed Post Excerpt to use WordPress API to allow usage of filters.
 * Added support for %POST_AUTHOR% keyword replacement.
 * Added Italian language translation.
 
-= Version 4.5.0
+= Version 4.5.0 =
 * Added CSS class and ID to Post and Page Notification post boxes so they can be styled or easily hidden via CSS.
 * Added integration with User Groups plugin.
 * Added integration with User Access Manager Plugin.
@@ -170,10 +202,10 @@ function update_publicworks_meta_filter()
 * Added integration pane to Settings page to note which plugins Email-Users recorgnizes and enables integration with.
 * Added *mailusers_update_custom_meta_filters* action to update of dynamic meta filters prior to their use.  Useful to creating and updating meta values based on other meta data or plugins.
 
-= Version 4.4.4
+= Version 4.4.4 =
 * Bumped version because the tag wasn't done correctly.
 
-= Version 4.4.3
+= Version 4.4.3 =
 * Fixed typo which prevented saving Sender Exclude option.
 * Fixed bug with User Meta filters.
 * Fixed bug with duplicate emails being sent in some instances when both Roles and Users selected.

@@ -78,7 +78,7 @@ if (is_multisite() && !is_network_admin() && is_main_site( get_current_blog_id()
           </tr>
        </table>
 <?php 
-	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() ) + $this->hidden_built_in_wp_caps_quant;
+	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() );
 	if ($quant>0) {
 		echo '<hr />';
 		_e('Custom capabilities:', 'ure'); 

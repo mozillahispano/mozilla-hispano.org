@@ -31,7 +31,7 @@ if (!defined('URE_PLUGIN_URL')) {
    $user_info .= '  <span style="font-weight: bold; color:red;">'. esc_html__('Network Super Admin', 'ure') .'</span>';
  }
   
-	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:850px;');
+	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:900px;');
  
 ?>
 <table cellpadding="0" cellspacing="0">
@@ -65,13 +65,11 @@ if (!defined('URE_PLUGIN_URL')) {
 		<td class="ure-user-roles">
 			<div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
 <?php 
+// output primary role selection dropdown list
+$this->user_primary_role_dropdown_list($this->user_to_edit->roles);
+
 $values = array_values($this->user_to_edit->roles);
 $primary_role = array_shift($values);  // get 1st element from roles array
-if (!empty($primary_role) && isset($this->roles[$primary_role])) {
-	echo $this->roles[$primary_role]['name']; 
-} else {
-	echo 'None';
-}
 if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
 ?>	
 	<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('bbPress Role:', 'ure'); ?></div>
@@ -120,7 +118,7 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
     </tr>
   </table>
 <?php 
-	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() ) + $this->hidden_built_in_wp_caps_quant;
+	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() );
 	if ($quant>0) {		
      echo '<hr />';
 ?> 

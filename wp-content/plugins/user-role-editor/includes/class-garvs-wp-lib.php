@@ -16,24 +16,47 @@ class Garvs_WP_Lib {
   private static $instance = null; // object exemplar reference  
   protected $options_id = ''; // identifire to save/retrieve plugin options to/from wp_option DB table
   protected $options = array(); // plugin options data
-  
+  public $multisite = false;
+  public $blog_ids = null;
+  protected $main_blog_id = 0; 
   public $log_to_file = false;  // set to true in order to record data about critical actions to log file
   private $log_file_name = '';  // file name to write log messages
   
-  /**
-   * class constructor
-   * @param string $option_name   identifire to save/retrieve plugin options to/from wp_option DB table
-   */
-  public function __construct($option_name) {
-    
-    $this->init_options($option_name);
+    /**
+     * class constructor
+     * @param string $option_name   identifire to save/retrieve plugin options to/from wp_option DB table
+     */
+    public function __construct($options_id) {
 
-    add_action('admin_notices', array(&$this, 'show_message'));
-    
-  }
-  // end of __construct()
+        $this->multisite = function_exists('is_multisite') && is_multisite();
+        if ($this->multisite) {
+            $this->blog_ids = $this->get_blog_ids();
+            // get Id of 1st (main) blog
+            $this->main_blog_id = $this->blog_ids[0][0];
+        }
+        
+        $this->init_options($options_id);
 
-  
+        add_action('admin_notices', array(&$this, 'show_message'));
+    }
+    // end of __construct()
+
+    
+    /**
+     * Returns the array of multisite WP blogs IDs
+     * @global wpdb $wpdb
+     * @return array
+     */
+    protected function get_blog_ids() {
+        global $wpdb;
+        
+        $blog_ids = $wpdb->get_col("select blog_id from $wpdb->blogs order by blog_id asc");
+        
+        return $blog_ids;
+    }
+    // end of get_blog_ids()
+    
+    
   /**
    * get current options for this plugin
    */
@@ -41,6 +64,7 @@ class Garvs_WP_Lib {
     $this->options_id = $options_id;
     $this->options = get_option($options_id);
   }
+  // end of init_options()
 
   /**
    * Return HTML formatted message
@@ -103,7 +127,7 @@ class Garvs_WP_Lib {
     
     return $result;
   }
-  // end of get_request_var
+  // end of get_request_var()
  
 
   /**
@@ -189,5 +213,3 @@ class Garvs_WP_Lib {
 //
 }
 // end of Garvs_WP_Lib class
-
-?>

@@ -3,10 +3,12 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.6.1
+Tested up to: 3.7
 Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role.
+User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any WordPress user role.
 
 == Description ==
 
@@ -19,21 +21,20 @@ Capabilities could be assigned on per user basis. Multiple roles could be assign
 You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
 Multi-site support is provided.
 
-Do you need more functionality with quality support in real time? Do you not like advertisement at User Role Editor pages? 
+To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
+Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
+
+Do you need more functionality with quality support in real time? Do you wish remove advertisements from User Role Editor pages? 
 Buy [Pro version](htpp://role-editor.com). 
 Pro version is advertisement free. Pro version includes extra modules:
 <ul>
-<li>"Export/Import" module. You can export user roles to the local file and import them then</li>
-to any WordPress site or other sites of the multi-site WordPress network. 
+<li>"Export/Import" module. You can export user roles to the local file and import them then to any WordPress site or other sites of the multi-site WordPress network.</li> 
 <li>Roles management via Network Admin  for multisite configuration.</li>
+<li>Users permissions management via Network Admin for multisite configuration.</li>
+<li>Per plugin users access management for plugins activate/deactivate operations.</li>
 <li>Per form users access management for Gravity Forms plugin.</li>
 </ul>
-Premium support is included. Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
-
-To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
-
-Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
-
+Premium support is included. It is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
 == Installation ==
 
@@ -60,7 +61,6 @@ To read full FAQ section visit [this page](http://www.shinephp.com/user-role-edi
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
-
 = Translations =
 * Catalan: [Efraim Bayarri](http://replicantsfactory.com/);
 * Spanish: [Dario Ferrer](http://darioferrer.com/);
@@ -75,6 +75,19 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.6 =
+* 21.10.2013
+* Multi-site: 'unfiltered_html' capability marked as deprecated one. Read this post for more information (http://shinephp.com/is-unfiltered_html-capability-deprecated/).
+* Multi-site: 'manage_network%' capabilities were included into WordPress core capabilities list.
+* On screen help was added to the "User Role Editor Options" page - click "Help" at the top right corner to read it.
+* Bug fix: turning off capability at the Administrator role fully removed that capability from capabilities list.
+* Various internal code enhancements.
+* Information about GPLv2 license was added to show apparently - "User Role Editor" is licensed under GPLv2 or later.
+* Pro version only: Multi-site: Assign roles and capabilities to the users from one point at the Network Admin. Add user with his permissions together to all sites of your network with one click.
+* Pro version only: 'wp-content/uploads' folder is used now instead of plugin's own one to process file with importing roles data.
+* Pro version only: Bug fix: Nonexistent method was called to notify user about folder write permission error during roles import.
+
 
 = 4.5.2 = 
 * 23.09.2013
@@ -200,7 +213,7 @@ Read [this post](http://role-editor.com/user-role-editor-version-4-1-is-availabl
 * Compatibility with bbPress 2.2 new user roles model is provided. More details about the reason of such update at http://shinephp.com/bbpress-user-role-editor-conflict-fix/
 * "Reset" button works differently now. It restores WordPress roles data to its 1st, default state, exactly that, what WordPress has just after fresh install/latest version update. Be careful with it, make database backup copy before fulfill this operation. Some plugin could require reactivation to function properly after roles reset. 
 * Arabic translation is added. Thanks to [Yaser](http://www.englize.com/)
-* Slovak translation is added. Thanks to [Branco](http://webhostinggeeks.com/blog/)
+* Slovak translation is added. Thanks to Branco.
 
 = 3.8.3 =
 * 14.12.2012

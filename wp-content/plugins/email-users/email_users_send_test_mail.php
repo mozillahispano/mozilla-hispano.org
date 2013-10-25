@@ -68,9 +68,13 @@
 		$post_url = get_permalink( $post_id );			
 		$post_content = explode( '<!--more-->', $post->post_content, 2 );
 		$post_excerpt = $post_content[0];
+        $post_author = get_userdata( $post->post_author )->display_name;
 	
-		$subject = mailusers_replace_post_templates($subject, $post_title, $post_excerpt, $post_url);
-		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_excerpt, $post_url);
+        //  Deal with post content in array form
+        if (is_array($post_content)) $post_content = $post_content[0] ;
+
+		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 	}
 	
 ?>

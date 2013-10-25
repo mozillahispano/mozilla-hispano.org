@@ -42,6 +42,21 @@
 <?php
 	}
 
+    //  Check to see if wp_mail() has been overloaded
+
+    if (class_exists('ReflectionFunction'))
+    {
+        $wp_mail = new ReflectionFunction('wp_mail') ;
+        $actual = realpath($wp_mail->getFileName()) ;
+        $expected = realpath(sprintf('%s%swp-includes%spluggable.php', ABSPATH, DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR)) ;
+
+        if ($actual != $expected) 
+        {
+            printf('<div class="updated fade"><h3>%s</h3></div>', 
+                __('Warning:  wp_mail() appears to be overloaded.', MAILUSERS_I18N_DOMAIN)) ;
+        }
+    }
+
     //  Check the number of users who accept notifications and mass emails
 
     $massemails = mailusers_get_users('', MAILUSERS_ACCEPT_MASS_EMAIL_USER_META) ;
@@ -62,6 +77,14 @@
     <th><?php _e('Number of Users who accept emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></th>
 	<td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
 	</tr>
+<tr>
+<td colspan="2">
+<?php
+$reflection = new ReflectionFunction( 'wp_mail' );
+print $reflection->getFileName();
+?>        
+</td>
+</tr>
 	</table>
     </div>
     </div>
@@ -103,7 +126,7 @@
 			<select name="mailusers_default_mail_format" style="width: 235px;">
 				<option value="html" <?php if (mailusers_get_default_mail_format()=='html') echo 'selected="true"';?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="plaintext" <?php if (mailusers_get_default_mail_format()=='plaintext') echo 'selected="true"';?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
-			</select><br/>&nbsp;<?php _e('Send mail as plain text or HTML by default?', MAILUSERS_I18N_DOMAIN); ?></td>
+			</select><br/><i><small><?php _e('Send mail as plain text or HTML by default?', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -121,7 +144,7 @@
 				<option value="uldn" <?php if (mailusers_get_default_sort_users_by()=='uldn') echo 'selected="true"';?>><?php _e('User Login (Display Name)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="ulfl" <?php if (mailusers_get_default_sort_users_by()=='ulfl') echo 'selected="true"';?>><?php _e('User Login (First Name Last Name)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="ullf" <?php if (mailusers_get_default_sort_users_by()=='ullf') echo 'selected="true"';?>><?php _e('User Login (Last Name, First Name)', MAILUSERS_I18N_DOMAIN); ?></option>
-			</select><br/>&nbsp;<?php _e('Determine how to sort and display names in the User selection list?', MAILUSERS_I18N_DOMAIN); ?></td>
+			</select><br/><i><small><?php _e('Determine how to sort and display names in the User selection list?', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -133,7 +156,7 @@
 				<option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>>10</option>
 				<option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>>30</option>
 				<option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>>100</option>
-			</select><br/>&nbsp;<?php _e('Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field).', MAILUSERS_I18N_DOMAIN); ?>
+			</select><br/><i><small><?php _e('Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field).', MAILUSERS_I18N_DOMAIN); ?></i></small>
 		</td>
 	</tr>
 	<tr>
@@ -145,9 +168,26 @@
 				size="80" /></td>
 	</tr>
 	<tr>
+        <th><?php _e('Display Names', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" name="mailusers_omit_display_names" id="mailusers_omit_display_names" value="true"
+					<?php if (mailusers_get_omit_display_names()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Omit Display Names when sending email.', MAILUSERS_I18N_DOMAIN); ?><br/>
+            <i><small><?php _e('Use "john.doe@example.com" instead of "John Doe &lt;john.doe@example.com&gt;"')?></small></i>
+		</td>
+	</tr>
+	<tr>
+        <th><?php _e('Copy Sender', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" name="mailusers_copy_sender" id="mailusers_copy_sender" value="true"
+					<?php if (mailusers_get_copy_sender()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Copy sender (add sender email to Cc: header) when sending email.', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
         <th><?php _e('From Sender<br/>Exclude', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<input 	type="checkbox" name="mailusers_from_sender_exclude" id="mailusers_from__sender_exclude" value="true"
+			<input 	type="checkbox" name="mailusers_from_sender_exclude" id="mailusers_from_sender_exclude" value="true"
 					<?php if (mailusers_get_from_sender_exclude()=='true') echo 'checked="checked"';?> ></input>
 			<?php _e('Exclude sender from email recipient list.', MAILUSERS_I18N_DOMAIN); ?><br/>
 		</td>
@@ -158,7 +198,7 @@
 		<td>
 			<input type="text" name="mailusers_from_sender_name_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_from_sender_name_override()); ?>" 
-				size="80" id="from_sender_name_override"/><br/>&nbsp;<?php _e('A name that can be used in place of the logged in user\'s name when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?></td>
+				size="80" id="from_sender_name_override"/><br/><i><small><?php _e('A name that can be used in place of the logged in user\'s name when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -166,7 +206,7 @@
 		<td>
 			<input type="text" name="mailusers_from_sender_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_from_sender_address_override()); ?>" 
-                size="80" id="from_sender_address_override"/><br/>&nbsp;<?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?><br/><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></td>
+                size="80" id="from_sender_address_override"/><br/><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?>&nbsp;<b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -174,13 +214,21 @@
 		<td>
 			<input type="text" name="mailusers_send_bounces_to_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_send_bounces_to_address_override()); ?>" 
-                size="80" id="from_sender_address_override"/><br/>&nbsp;<?php _e('An email address that can be used in place of the logged in user\'s email address to receive bounced email notifications.', MAILUSERS_I18N_DOMAIN); ?><br/><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></td>
+                size="80" id="from_sender_address_override"/><br/><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address to receive bounced email notifications.', MAILUSERS_I18N_DOMAIN); ?>&nbsp;<b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
             <label for="mailusers_default_body"><?php _e('Default<br/>Notification Body', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
             <?php wp_editor(stripslashes(mailusers_get_default_body()), "mailusers_default_body");?>
+
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+            <label for="mailusers_footer"><?php _e('Email Footer', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+            <?php wp_editor(stripslashes(mailusers_get_footer()), "mailusers_footer", array('textarea_rows' => 4));?>
 
 		</td>
 	</tr>
@@ -205,7 +253,7 @@
                 <option value="100" <?php if (mailusers_get_user_settings_table_rows()=='100') echo 'selected="true"'; ?>><?php _e('100', MAILUSERS_I18N_DOMAIN); ?></option>
                 <option value="200" <?php if (mailusers_get_user_settings_table_rows()=='200') echo 'selected="true"'; ?>><?php _e('200', MAILUSERS_I18N_DOMAIN); ?></option>
                 <option value="500" <?php if (mailusers_get_user_settings_table_rows()=='500') echo 'selected="true"'; ?>><?php _e('500', MAILUSERS_I18N_DOMAIN); ?></option>
-			</select><br/>&nbsp;<?php _e('By default the table will display 20 rows.', MAILUSERS_I18N_DOMAIN); ?>
+			</select><br/><i><small><?php _e('By default the table will display 20 rows.', MAILUSERS_I18N_DOMAIN); ?></small></i>
 		</td>
 	</tr>
 	<tr>
@@ -222,6 +270,28 @@
 					name="mailusers_default_user_control" id="mailusers_default_user_control" value="true"
 					<?php if (mailusers_get_default_user_control()=='true') echo 'checked="checked"';?> ></input>
 			<?php _e('Allow Users to control their own Email Users settings.', MAILUSERS_I18N_DOMAIN); ?>
+		</td>
+	</tr>
+	<tr>
+    <th><?php _e('Additional<br/>Mail Headers', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox"
+					name="mailusers_add_x_mailer_header" id="mailusers_add_x_mailer_header" value="true"
+					<?php if (mailusers_get_add_x_mailer_header()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Add <b>X-Mailer</b> mail header record.<br/><small><i>Not recommended for typical WordPress installations.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+			<input 	type="checkbox"
+					name="mailusers_add_mime_version_header" id="mailusers_add_mime_version_header" value="true"
+					<?php if (mailusers_get_add_mime_version_header()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Add <a href="http://en.wikipedia.org/wiki/MIME-Version#MIME-Version">MIME-Version</a> mail header record.<br/><small><i>Not recommended for typical WordPress installations.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
+    <th><?php _e('Debug', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox"
+					name="mailusers_debug" id="mailusers_debug" value="true"
+					<?php if (mailusers_get_debug()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Enable Debug Mode<br/><small><i>Note:  Email is not sent when in debug mode.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
 		</td>
 	</tr>
 	</table>
@@ -298,6 +368,7 @@
 	} else {						
 		$subject = mailusers_get_default_subject();
 		$mail_content = mailusers_get_default_body();
+		$mail_footer = mailusers_get_footer();
 
 		// Replace the template variables concerning the blog details
 		// --
@@ -321,8 +392,11 @@
 		$post_excerpt = get_the_excerpt();
         $post_author = get_userdata( $post->post_author )->display_name;
 		
-		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_url);
-		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_url);
+        //  Deal with post content in array form
+        if (is_array($post_content)) $post_content = $post_content[0] ;
+
+		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 ?>
 	<tr>
 		<td><b><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></b></td>
@@ -386,6 +460,10 @@
 		<td><?php _e('the excerpt of the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
 	<tr>
+		<td><b>%POST_CONTENT%</b></td>
+		<td><?php _e('the content of the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
 		<td><b>%POST_URL%</b></td>
 		<td><?php _e('the link to the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
@@ -444,6 +522,45 @@
 </div><!-- inside -->
 </div><!-- postbox -->
 
+<div id="email-users-wp_mail" class="postbox email-users-postbox">
+<div class="handlediv" title="Click to toggle"><br /></div>
+<h3 class="hndle"><span><?php _e('Email-Users wp_mail() Check', MAILUSERS_I18N_DOMAIN);?></span></h3>
+<div class="inside">
+
+<p><?php _e('Email Users is dependent on the <a href="http://codex.wordpress.org/Function_Reference/wp_mail">wp_mail()</a> function.', MAILUSERS_I18N_DOMAIN); ?></p>
+
+    <table style="width: auto;" class="widefat">
+    <thead>
+    <tr>
+    <th colspan="2"><?php _e('wp_mail() is loaded from:', MAILUSERS_I18N_DOMAIN);?></th>
+    <tr>
+    </thead>
+    <tbody>
+    <th><?php _e('Expected:', MAILUSERS_I18N_DOMAIN) ;?></th>
+    <td><?php print $expected;?></td>
+    </tr>
+    <tr>
+    <th><?php _e('Actual:', MAILUSERS_I18N_DOMAIN) ;?></th>
+    <td<?php if ($actual != $expected) echo ' style="color: red;"' ; ?>><?php print $actual;?></td>
+    </tr>
+    </tbody>
+    </table>
+    <p>
+    The WordPress wp_mail() function is <a href="http://codex.wordpress.org/Pluggable_Functions">pluggable</a>
+    which means the standard WordPress functionality can be overloaded by a Theme or another WordPress plugin.
+    It is important to note that if the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do
+    not match, it does not automatically mean there will be a problem.  However, if Email Users is not producing
+    the expected results AND the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do not match,
+    it is something which should be looked at as a potential source of the problem.
+    </p>
+    <p>
+    The recommended way to eliminate the overloaded version of wp_mail() as the source of a problem is to disable
+    the plugin or theme which has overloaded wp_mail().
+    </p>
+<br/>
+</div><!-- inside -->
+</div><!-- postbox -->
+
 <div id="email-users-integration" class="postbox email-users-postbox">
 <div class="handlediv" title="Click to toggle"><br /></div>
 <h3 class="hndle"><span><?php _e('Email-Users Integration', MAILUSERS_I18N_DOMAIN);?></span></h3>
@@ -491,7 +608,8 @@
 
 <div><!-- Email Users info box-->
 <div class="table table_content">
-<table style="text-align: left; width: 90%;">
+<table class="widefat">
+<tr><th colspan="2"><?php _e('User Settings', MAILUSERS_I18N_DOMAIN) ;?></th></tr>
 <tr>
 <td><?php _e('Number of Users who accept<br/>post or page notification emails:', MAILUSERS_I18N_DOMAIN); ?></td>
 <td<?php if ( count($notifications) == 0) echo ' style="color: red;"' ; ?>><?php echo count($notifications) ; ?></td>
@@ -501,6 +619,23 @@
 <td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
 </tr>
 </table>
+<br/>
+<table class="widefat">
+<tr><th colspan="2"><?php _e('Filters', MAILUSERS_I18N_DOMAIN) ;?></th></tr>
+<?php
+    $filters = array('wp_mail_content_type', 'wp_mail_charset', 'wp_mail_from', 'wp_mail_from_name') ;
+
+    foreach ($filters as $filter) {
+?>
+<tr>
+<td><?php printf('%s:', $filter); ?></td>
+<td<?php if ( has_action($filter)) echo ' style="color: red;"' ; ?>><?php echo has_action($filter) ? __('Yes', MAILUSERS_I18N_DOMAIN) : __('No', MAILUSERS_I18N_DOMAIN) ; ?></td>
+</tr>
+<?php
+    }
+?>
+</table>
+<p><small>There are a number of <a href="http://codex.wordpress.org/Plugin_API/Filter_Reference">WordPress Filters</a> which <strong><i>may</i></strong> affect Email Users.  The presence of these filters does not mean they will adversely affect Email Users but should be examined if email delivery isn't reaching all of the intended recipients or the mail format and/or header detail isn't as expected.</small></p>
 </div>
 </div>
 
@@ -559,4 +694,8 @@
 </div><!-- metabox-holder -->
 </div><!-- 25% Postbox Container -->
 </div><!-- Postbox Containers -->
+<form style="display:none" method="get" action="">
+    <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false ); ?>
+    <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false ); ?>
+</form>
 </div><!-- wrap -->
