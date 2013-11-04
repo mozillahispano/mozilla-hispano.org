@@ -194,6 +194,9 @@ function listar_fecha($atts, $content = null) {
 }
 add_shortcode("listar-fecha", "listar_fecha");
 
+/* Activamos los background updates en directorios con control de versiones */
+add_filter( 'automatic_updates_is_vcs_checkout', '__return_false' );
+
 /* Eliminamos el meta generator del header */
 remove_action('wp_head', 'wp_generator');
 /* Quitamos los enlaces a los feeds, lo meteremos a mano */
