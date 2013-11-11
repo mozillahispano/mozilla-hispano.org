@@ -719,13 +719,10 @@ font-size:1em;
 }
 
 .portada-individual .texto-portada-individual ul li {
-
-padding-left:1.5em;
-
-margin-bottom:0.3em;
-
-list-style: circle inside none;
-
+	font-size: 1.1em;
+	padding-left:1.5em;
+	margin-bottom:0.3em;
+	list-style: circle inside none;
 }
 
 .portada-individual .texto-portada-individual ol {
