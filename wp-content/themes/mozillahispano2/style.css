@@ -181,7 +181,7 @@ ul.listado-podcast li small {
 	width: 160px;
 	height: 30px;
 	background: transparent url("./media/install_now.png") no-repeat 0 0;
-	text-indent:-10000px;	 
+        text-indent:-10000px;
 }
 
 .page-template-labs-page-php #barra .descarga a:hover, .page-template-labs-subpage-php #barra .descarga a:hover ,.page-template-labs-tfox-themes-php #barra .descarga a:hover {
@@ -468,10 +468,10 @@ p.postmetadata, div.sociable {
  * Copyright 2011, Gilbert Pellegrom
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * March 2010
  */
- 
+
 /* The Nivo Slider styles */
 .nivoSlider {
 	position:relative;
@@ -633,11 +633,11 @@ Author URI: http://dev7studios.com
     padding-left:20px;
 }
 
-.theme-orman .nivo-caption a { 
+.theme-orman .nivo-caption a {
     color:#fff;
     border-bottom:1px dotted #fff;
 }
-.theme-orman .nivo-caption a:hover { 
+.theme-orman .nivo-caption a:hover {
     color:#fff;
 }
 
@@ -650,9 +650,9 @@ Author URI: http://dev7studios.com
     left:56px;
     z-index:300;
 }
-#content-bar { 
+#content-bar {
 	clear: both;
-	/*border: 1px solid #e4decf; 
+        /*border: 1px solid #e4decf;
 	background-color: #FFFFFF;*/
 	margin-bottom: 3em;
 }
@@ -711,19 +711,11 @@ font-size:1em;
 }
 
 .portada-individual .texto-portada-individual ul {
-
-list-style-type:none;
-
-margin-top: 1em;
-
-margin-bottom: 1em;
-
-margin-left:0em;
-
-padding-left: 1em;
-
-list-style-type:none;
-
+	list-style-type: none;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-top: 0;
+	padding-left: 0;
 }
 
 .portada-individual .texto-portada-individual ul li {
@@ -939,7 +931,7 @@ PAGE TEMPLATES
     text-align: right;
     width: 100%;
 }
-	
+
 .page-template-difusion-php div#proximos-eventos {
 	float: left;
 }
@@ -1134,7 +1126,7 @@ p.evento-rss {
 }
 
 /*
- Slider 
+ Slider
 */
 
 .orbit-wrapper .orbit-caption {
@@ -1157,7 +1149,7 @@ p.evento-rss {
 	margin-bottom: 24px
 }
 
-.orbit-wrapper .orbit-caption p { 
+.orbit-wrapper .orbit-caption p {
 	color: #FFFFFF;
 	font-family: Georgia,serif;
 	font-size: 16px;
@@ -1202,7 +1194,7 @@ p.evento-rss {
 		background: -ms-linear-gradient(top,  rgba(67,166,226,1) 0%,rgba(39,122,193,1) 100%); /* IE10+ */
 		background: linear-gradient(to bottom,  rgba(67,166,226,1) 0%,rgba(39,122,193,1) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43a6e2', endColorstr='#277ac1',GradientType=0 ); /* IE6-9 */
-		
+
     background-repeat: repeat-x;
     border: 0 none;
     border-radius: 0.25em 0.25em 0.25em 0.25em;
