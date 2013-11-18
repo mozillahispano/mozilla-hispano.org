@@ -66,43 +66,46 @@
 				</form>
 		</div>
 
-	<h3>Herramientas</h3>
-	
-		<ul class="linklist">
-			<li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a></li>
-				<!-- IF not S_IS_BOT -->
-					<!-- IF S_WATCH_FORUM_LINK --><li <!-- IF S_WATCHING_FORUM -->class="icon-unsubscribe"<!-- ELSE -->class="icon-subscribe"<!-- ENDIF -->><a href="{S_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}">{S_WATCH_FORUM_TITLE}</a></li><!-- ENDIF -->
-					<!-- IF U_WATCH_TOPIC --><li <!-- IF S_WATCHING_TOPIC -->class="icon-unsubscribe"<!-- ELSE -->class="icon-subscribe"<!-- ENDIF -->><a href="{U_WATCH_TOPIC}" title="{L_WATCH_TOPIC}">{L_WATCH_TOPIC}</a></li><!-- ENDIF -->
-					<!-- IF S_ENABLE_FEEDS -->
-					<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><li><a  class="icon-subscribe-rss" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}">Este subforo por RSS</a></li><!-- ENDIF -->
-					<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><li><a  class="icon-subscribe-rss" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}">Este tema por RSS</a></li><!-- ENDIF -->
-					<!-- ENDIF -->
-					<!-- IF U_BOOKMARK_TOPIC --><li class="icon-bookmark"><a href="{U_BOOKMARK_TOPIC}" title="{L_BOOKMARK_TOPIC}">{L_BOOKMARK_TOPIC}</a></li><!-- ENDIF -->
-					<!-- IF U_BUMP_TOPIC --><li class="icon-bump"><a href="{U_BUMP_TOPIC}" title="{L_BUMP_TOPIC}">{L_BUMP_TOPIC}</a></li><!-- ENDIF -->
-				<!-- ENDIF -->
-		</ul>
-	
-	<!-- IF S_DISPLAY_SEARCH or (S_USER_LOGGED_IN and not S_IS_BOT) -->
-	<ul class="linklist">
-		<!-- IF S_DISPLAY_SEARCH -->
-			<!-- IF S_USER_LOGGED_IN -->
-				<li><a class="unsolvedlink" href="{U_SEARCH_UNSOLVED_TOPICS}">{L_SEARCH_UNSOLVED}</a></li>
-				<li><a class="unsolvedlink" href="{U_SEARCH_YOUR_UNSOLVED_TOPICS}">{L_SEARCH_YOUR_UNSOLVED}</a></li>
-			<!-- ENDIF -->
-			<li><a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a></li>
-			<!-- IF S_USER_LOGGED_IN -->
-				<li><a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a></li>
-				<li><a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a></li>
-			<!-- ENDIF -->
-			<li><a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a></li>
-		<!-- ENDIF -->
-		<!-- IF not S_IS_BOT and U_MARK_FORUMS -->
-			<li><a href="{U_MARK_FORUMS}" accesskey="m">{L_MARK_FORUMS_READ}</a></li>
-		<!-- ENDIF -->
-	</ul>
-	<!-- ENDIF -->
-	<h3>Usuario</h3>
-	<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
+    <aside class="foro-herramientas">
+      <h3>Herramientas</h3>
+        <ul class="linklist">
+          <li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a></li>
+            <!-- IF not S_IS_BOT -->
+              <!-- IF S_WATCH_FORUM_LINK --><li <!-- IF S_WATCHING_FORUM -->class="icon-unsubscribe"<!-- ELSE -->class="icon-subscribe"<!-- ENDIF -->><a href="{S_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}">{S_WATCH_FORUM_TITLE}</a></li><!-- ENDIF -->
+              <!-- IF U_WATCH_TOPIC --><li <!-- IF S_WATCHING_TOPIC -->class="icon-unsubscribe"<!-- ELSE -->class="icon-subscribe"<!-- ENDIF -->><a href="{U_WATCH_TOPIC}" title="{L_WATCH_TOPIC}">{L_WATCH_TOPIC}</a></li><!-- ENDIF -->
+              <!-- IF S_ENABLE_FEEDS -->
+              <!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><li><a  class="icon-subscribe-rss" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}">Este subforo por RSS</a></li><!-- ENDIF -->
+              <!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><li><a  class="icon-subscribe-rss" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}">Este tema por RSS</a></li><!-- ENDIF -->
+              <!-- ENDIF -->
+              <!-- IF U_BOOKMARK_TOPIC --><li class="icon-bookmark"><a href="{U_BOOKMARK_TOPIC}" title="{L_BOOKMARK_TOPIC}">{L_BOOKMARK_TOPIC}</a></li><!-- ENDIF -->
+              <!-- IF U_BUMP_TOPIC --><li class="icon-bump"><a href="{U_BUMP_TOPIC}" title="{L_BUMP_TOPIC}">{L_BUMP_TOPIC}</a></li><!-- ENDIF -->
+            <!-- ENDIF -->
+        </ul>
+
+      <!-- IF S_DISPLAY_SEARCH or (S_USER_LOGGED_IN and not S_IS_BOT) -->
+      <ul class="linklist">
+        <!-- IF S_DISPLAY_SEARCH -->
+          <!-- IF S_USER_LOGGED_IN -->
+            <li><a class="unsolvedlink" href="{U_SEARCH_UNSOLVED_TOPICS}">{L_SEARCH_UNSOLVED}</a></li>
+            <li><a class="unsolvedlink" href="{U_SEARCH_YOUR_UNSOLVED_TOPICS}">{L_SEARCH_YOUR_UNSOLVED}</a></li>
+          <!-- ENDIF -->
+          <li><a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a></li>
+          <!-- IF S_USER_LOGGED_IN -->
+            <li><a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a></li>
+            <li><a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a></li>
+          <!-- ENDIF -->
+          <li><a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a></li>
+        <!-- ENDIF -->
+        <!-- IF not S_IS_BOT and U_MARK_FORUMS -->
+          <li><a href="{U_MARK_FORUMS}" accesskey="m">{L_MARK_FORUMS_READ}</a></li>
+        <!-- ENDIF -->
+      </ul>
+      <!-- ENDIF -->
+    </aside>
+    <!-- foro-herramientas -->
+    <aside class="registro-usuarios">
+      <h3>Usuario</h3>
+      <!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
 						<ul class="linklist">
 							<li class="icon-ucp">
 								<a href="{U_PROFILE}" title="{L_PROFILE}" accesskey="e">{L_PROFILE}</a>
@@ -125,15 +128,18 @@
 								<li class="icon-logout"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">{L_LOGIN_LOGOUT}</a></li>
 							<!-- ENDIF -->
 						</ul>
-	
-	<h3>Comprueba tus plugins</h3>
-	<p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.cdn.mozilla.net/static/img/promo.plugins.png" alt="Plugins" /></a></p>
-	<p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
-	<p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
-	
-	<h3>Ayúdanos a ayudar</h3>
-	<p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
-	<p><a href="/documentacion/Foros_de_asistencia">Descubre lo fácil que es »</a></p>
+    </aside>
+    <aside class="comprueba-plugins">
+      <h3>Comprueba tus plugins</h3>
+      <p><a href="http://www.mozilla.com/plugincheck/"><img src="https://support.mozilla.org/media/img/promo.plugins.png" alt="Plugins" /></a></p>
+      <p>¿Qué es un plugin? ¿Por qué debo mantenerlos actualizados? Responde a estas preguntas e inicia una verificación instantánea para comprobar su actualización.</p>
+      <p><a href="http://www.mozilla.com/plugincheck/">Más información »</a></p>
+    </aside>
+    <aside class="ayudanos-ayudar">
+      <h3>Ayúdanos a ayudar</h3>
+      <p>Este foro está formado por voluntarios, cualquiera puede ayudar sin conocimientos previos.</p>
+	    <p><a href="/documentacion/Foros_de_asistencia">Descubre lo fácil que es »</a></p>
+    </aside>
 </div>
 
 </div><!-- Cuerpo -->
