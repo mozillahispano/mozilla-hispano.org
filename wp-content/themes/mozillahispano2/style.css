@@ -16,7 +16,8 @@ video {
 }
 
 #searchform input[type='text'] {
-	width: 170px;
+	width: 160px;
+	height: 25px;
 }
 
 #contenido #main-content {
