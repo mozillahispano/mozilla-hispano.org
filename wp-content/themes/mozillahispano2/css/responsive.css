@@ -23,6 +23,20 @@
   }
 }
 
+@media screen and (min-width: 795px) {
+  #page-body {
+    width: 75%;
+  }
+
+  fieldset.quick-login input {
+    width: 15%;
+  }
+
+  #contenido h3 {
+	  font-size: 1.05em;
+  }
+}
+
 @media screen and (max-width: 330px) {
   #tullido {
     margin: 0 5px;

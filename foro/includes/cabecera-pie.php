@@ -8,7 +8,8 @@ $temp= <<<PINTA
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>		
 				</div>			
 				<div id="menu">
-					<ul class="clearfix">
+          <span id="toggle"></span>
+					<ul id="menu-nav" class="clearfix">
 							<li><a href="/">Noticias</a></li>
 							<li><a href="/foro/">Foro</a>
 								<ul class="submenu">
@@ -139,6 +140,7 @@ $temp= <<<PINTA
 
 	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
+	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 
 PINTA;
 return $temp;
@@ -147,6 +149,7 @@ function pintaJs()
 {
 $temp= <<<PINTA
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
 
 PINTA;
 return $temp;
