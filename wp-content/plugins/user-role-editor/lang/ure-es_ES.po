@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 12:12+0700\n"
+"POT-Creation-Date: 2013-11-04 08:40+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -34,20 +34,13 @@ msgid "Settings"
 msgstr "Configuración"
 
 #: ../includes/class-user-role-editor.php:420
-#: ../includes/class-ure-lib.php:2050
+#: ../includes/class-ure-lib.php:2089
 msgid "Changelog"
 msgstr "Registro de cambios"
 
 #: ../includes/class-user-role-editor.php:442
 msgid "Overview"
 msgstr ""
-
-#: ../includes/class-user-role-editor.php:451
-#: ../includes/class-user-role-editor.php:479
-#: ../includes/class-user-role-editor.php:674
-#: ../includes/class-ure-lib.php:223
-msgid "User Role Editor"
-msgstr "Editor de Roles"
 
 #: ../includes/class-user-role-editor.php:497
 msgid ""
@@ -116,7 +109,7 @@ msgid "Add Capability"
 msgstr "Agregar Capacidad"
 
 #: ../includes/class-user-role-editor.php:636
-#: ../includes/class-user-role-editor.php:641
+#: ../includes/class-user-role-editor.php:645
 msgid "Delete Capability"
 msgstr "Eliminar Capacidades"
 
@@ -125,25 +118,34 @@ msgid "Reset"
 msgstr "Reiniciar"
 
 #: ../includes/class-user-role-editor.php:638
-msgid ""
-"Reset Roles to WordPress defaults. Be careful, all changes made by you or "
-"plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation "
-"could be needed. Continue?"
+msgid "DANGER! Resetting will restore default settings from WordPress Core."
 msgstr ""
-"Reiniciar Roles a los predeterminados de WordPress. Ten cuidado, todos los "
-"cambios que tú hayas realizado (o ejecutados por algún plugin) se perderán. "
-"Algunos plugins como S2Member, WooCommerce podrían necesitar una "
-"reactivación ¿Deseas continuar?"
 
 #: ../includes/class-user-role-editor.php:639
+msgid ""
+"If any plugins have changed capabilities in any way upon installation (such "
+"as S2Member, WooCommerce, and many more), those capabilities will be DELETED!"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:640
+msgid ""
+"For more information on how to undo changes and restore plugin capabilities "
+"go to"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:642
+msgid "Continue?"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:643
 msgid "Default Role"
 msgstr "Rol Predeterminado"
 
-#: ../includes/class-user-role-editor.php:640
+#: ../includes/class-user-role-editor.php:644
 msgid "Set New Default Role"
 msgstr "Establecer nuevo Rol"
 
-#: ../includes/class-user-role-editor.php:642
+#: ../includes/class-user-role-editor.php:646
 msgid ""
 "Warning! Be careful - removing critical capability could crash some plugin "
 "or other custom code"
@@ -151,11 +153,11 @@ msgstr ""
 "¡Atención! Ten cuidado - Eliminar Capacidadess esenciales podría inhabilitar "
 "algún plugin o código personalizado"
 
-#: ../includes/class-user-role-editor.php:643
+#: ../includes/class-user-role-editor.php:647
 msgid " Capability name (ID) can not be empty!"
 msgstr "¡El nombre de la Capacidad (ID) no puede estar vacío!"
 
-#: ../includes/class-user-role-editor.php:644
+#: ../includes/class-user-role-editor.php:648
 msgid ""
 " Capability name (ID) must contain latin characters, digits, hyphens or "
 "underscore only!"
@@ -163,12 +165,17 @@ msgstr ""
 "¡El nombre de la Capacidad (ID) sólo debe contener caracteres alfanuméricos, "
 "guiones altos o bajos!"
 
-#: ../includes/class-user-role-editor.php:677
-#: ../includes/class-user-role-editor.php:705
+#: ../includes/class-user-role-editor.php:678
+#: ../includes/class-ure-lib.php:223
+msgid "User Role Editor"
+msgstr "Editor de Roles"
+
+#: ../includes/class-user-role-editor.php:681
+#: ../includes/class-user-role-editor.php:709
 msgid "Other Roles"
 msgstr "Otros Roles"
 
-#: ../includes/class-user-role-editor.php:687
+#: ../includes/class-user-role-editor.php:691
 msgid "Edit"
 msgstr "Editar"
 
@@ -185,7 +192,6 @@ msgid "Show capabilities in human readable form"
 msgstr "Mostrar Capacidades de forma legible"
 
 #: ../includes/ure-role-edit.php:40 ../includes/ure-user-edit.php:61
-#: ../includes/class-ure-screen-help.php:21
 msgid "Show deprecated capabilities"
 msgstr "Mostrar Capacidades obsoletas"
 
@@ -300,340 +306,344 @@ msgstr "Un error fue encontrado durante la creación del nuevo Rol"
 msgid "Role %s is created successfully"
 msgstr "El Rol %s fue creado exitosamente"
 
-#: ../includes/class-ure-lib.php:1662
+#: ../includes/class-ure-lib.php:1699
 msgid "Error encountered during role delete operation"
 msgstr "Un error fue encontrado durante la eliminación del Rol"
 
-#: ../includes/class-ure-lib.php:1664
+#: ../includes/class-ure-lib.php:1701
+msgid "Unused roles are deleted successfully"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:1703
 #, php-format
 msgid "Role %s is deleted successfully"
 msgstr "El Rol %s fue eliminado exitosamente"
 
-#: ../includes/class-ure-lib.php:1689
+#: ../includes/class-ure-lib.php:1728
 msgid "Error encountered during default role change operation"
 msgstr "Un error fue encontrado durante el cambio del Rol predeterminado"
 
-#: ../includes/class-ure-lib.php:1695
+#: ../includes/class-ure-lib.php:1734
 #, php-format
 msgid "Default role for new users is set to %s successfully"
 msgstr "El Rol predeterminado para nuevos usuarios ha sido establecido a %s"
 
-#: ../includes/class-ure-lib.php:1714
+#: ../includes/class-ure-lib.php:1753
 msgid "Editor"
 msgstr "Editor"
 
-#: ../includes/class-ure-lib.php:1715
+#: ../includes/class-ure-lib.php:1754
 msgid "Author"
 msgstr "Autor"
 
-#: ../includes/class-ure-lib.php:1716
+#: ../includes/class-ure-lib.php:1755
 msgid "Contributor"
 msgstr "Contribuyente"
 
-#: ../includes/class-ure-lib.php:1717
+#: ../includes/class-ure-lib.php:1756
 msgid "Subscriber"
 msgstr "Suscriptor"
 
-#: ../includes/class-ure-lib.php:1719
+#: ../includes/class-ure-lib.php:1758
 msgid "Switch themes"
 msgstr "Cambiar temas (plantillas)"
 
-#: ../includes/class-ure-lib.php:1720
+#: ../includes/class-ure-lib.php:1759
 msgid "Edit themes"
 msgstr "Editar temas (plantillas)"
 
-#: ../includes/class-ure-lib.php:1721
+#: ../includes/class-ure-lib.php:1760
 msgid "Activate plugins"
 msgstr "Activar plugins"
 
-#: ../includes/class-ure-lib.php:1722
+#: ../includes/class-ure-lib.php:1761
 msgid "Edit plugins"
 msgstr "Editar plugins"
 
-#: ../includes/class-ure-lib.php:1723
+#: ../includes/class-ure-lib.php:1762
 msgid "Edit users"
 msgstr "Editar usuarios"
 
-#: ../includes/class-ure-lib.php:1724
+#: ../includes/class-ure-lib.php:1763
 msgid "Edit files"
 msgstr "Editar archivos"
 
-#: ../includes/class-ure-lib.php:1725
+#: ../includes/class-ure-lib.php:1764
 msgid "Manage options"
 msgstr "Administrar opciones"
 
-#: ../includes/class-ure-lib.php:1726
+#: ../includes/class-ure-lib.php:1765
 msgid "Moderate comments"
 msgstr "Moderar comentarios"
 
-#: ../includes/class-ure-lib.php:1727
+#: ../includes/class-ure-lib.php:1766
 msgid "Manage categories"
 msgstr "Administrar categorías"
 
-#: ../includes/class-ure-lib.php:1728
+#: ../includes/class-ure-lib.php:1767
 msgid "Manage links"
 msgstr "Administrar enlaces"
 
-#: ../includes/class-ure-lib.php:1729
+#: ../includes/class-ure-lib.php:1768
 msgid "Upload files"
 msgstr "Subir archivos"
 
-#: ../includes/class-ure-lib.php:1730
+#: ../includes/class-ure-lib.php:1769
 msgid "Import"
 msgstr "Importar"
 
-#: ../includes/class-ure-lib.php:1731
+#: ../includes/class-ure-lib.php:1770
 msgid "Unfiltered html"
 msgstr "HTML sin filtrar"
 
-#: ../includes/class-ure-lib.php:1732
+#: ../includes/class-ure-lib.php:1771
 msgid "Edit posts"
 msgstr "Editar entradas"
 
-#: ../includes/class-ure-lib.php:1733
+#: ../includes/class-ure-lib.php:1772
 msgid "Edit others posts"
 msgstr "Editar entradas ajenas"
 
-#: ../includes/class-ure-lib.php:1734
+#: ../includes/class-ure-lib.php:1773
 msgid "Edit published posts"
 msgstr "Editar entradas publicadas"
 
-#: ../includes/class-ure-lib.php:1735
+#: ../includes/class-ure-lib.php:1774
 msgid "Publish posts"
 msgstr "Publicar entradas"
 
-#: ../includes/class-ure-lib.php:1736
+#: ../includes/class-ure-lib.php:1775
 msgid "Edit pages"
 msgstr "Editar páginas"
 
-#: ../includes/class-ure-lib.php:1737
+#: ../includes/class-ure-lib.php:1776
 msgid "Read"
 msgstr "Leer"
 
-#: ../includes/class-ure-lib.php:1738
+#: ../includes/class-ure-lib.php:1777
 msgid "Level 10"
 msgstr "Nivel 10"
 
-#: ../includes/class-ure-lib.php:1739
+#: ../includes/class-ure-lib.php:1778
 msgid "Level 9"
 msgstr "Nivel 9"
 
-#: ../includes/class-ure-lib.php:1740
+#: ../includes/class-ure-lib.php:1779
 msgid "Level 8"
 msgstr "Nivel 8"
 
-#: ../includes/class-ure-lib.php:1741
+#: ../includes/class-ure-lib.php:1780
 msgid "Level 7"
 msgstr "Nivel 7"
 
-#: ../includes/class-ure-lib.php:1742
+#: ../includes/class-ure-lib.php:1781
 msgid "Level 6"
 msgstr "Nivel 6"
 
-#: ../includes/class-ure-lib.php:1743
+#: ../includes/class-ure-lib.php:1782
 msgid "Level 5"
 msgstr "Nivel 5"
 
-#: ../includes/class-ure-lib.php:1744
+#: ../includes/class-ure-lib.php:1783
 msgid "Level 4"
 msgstr "Nivel 4"
 
-#: ../includes/class-ure-lib.php:1745
+#: ../includes/class-ure-lib.php:1784
 msgid "Level 3"
 msgstr "Nivel 3"
 
-#: ../includes/class-ure-lib.php:1746
+#: ../includes/class-ure-lib.php:1785
 msgid "Level 2"
 msgstr "Nivel 2"
 
-#: ../includes/class-ure-lib.php:1747
+#: ../includes/class-ure-lib.php:1786
 msgid "Level 1"
 msgstr "Nivel 1"
 
-#: ../includes/class-ure-lib.php:1748
+#: ../includes/class-ure-lib.php:1787
 msgid "Level 0"
 msgstr "Nivel 0"
 
-#: ../includes/class-ure-lib.php:1749
+#: ../includes/class-ure-lib.php:1788
 msgid "Edit others pages"
 msgstr "Editar páginas ajenas"
 
-#: ../includes/class-ure-lib.php:1750
+#: ../includes/class-ure-lib.php:1789
 msgid "Edit published pages"
 msgstr "Editar páginas publicadas"
 
-#: ../includes/class-ure-lib.php:1751
+#: ../includes/class-ure-lib.php:1790
 msgid "Publish pages"
 msgstr "Publicar páginas"
 
-#: ../includes/class-ure-lib.php:1752
+#: ../includes/class-ure-lib.php:1791
 msgid "Delete pages"
 msgstr "Eliminar páginas"
 
-#: ../includes/class-ure-lib.php:1753
+#: ../includes/class-ure-lib.php:1792
 msgid "Delete others pages"
 msgstr "Eliminar páginas ajenas"
 
-#: ../includes/class-ure-lib.php:1754
+#: ../includes/class-ure-lib.php:1793
 msgid "Delete published pages"
 msgstr "Eliminar páginas publicadas"
 
-#: ../includes/class-ure-lib.php:1755
+#: ../includes/class-ure-lib.php:1794
 msgid "Delete posts"
 msgstr "Eliminar entradas"
 
-#: ../includes/class-ure-lib.php:1756
+#: ../includes/class-ure-lib.php:1795
 msgid "Delete others posts"
 msgstr "Eliminar entradas ajenas"
 
-#: ../includes/class-ure-lib.php:1757
+#: ../includes/class-ure-lib.php:1796
 msgid "Delete published posts"
 msgstr "Eliminar entradas publicadas"
 
-#: ../includes/class-ure-lib.php:1758
+#: ../includes/class-ure-lib.php:1797
 msgid "Delete private posts"
 msgstr "Eliminar entradas privadas"
 
-#: ../includes/class-ure-lib.php:1759
+#: ../includes/class-ure-lib.php:1798
 msgid "Edit private posts"
 msgstr "Editar entradas privadas"
 
-#: ../includes/class-ure-lib.php:1760
+#: ../includes/class-ure-lib.php:1799
 msgid "Read private posts"
 msgstr "Leer entradas privadas"
 
-#: ../includes/class-ure-lib.php:1761
+#: ../includes/class-ure-lib.php:1800
 msgid "Delete private pages"
 msgstr "Eliminar páginas privadas"
 
-#: ../includes/class-ure-lib.php:1762
+#: ../includes/class-ure-lib.php:1801
 msgid "Edit private pages"
 msgstr "Editar páginas privadas"
 
-#: ../includes/class-ure-lib.php:1763
+#: ../includes/class-ure-lib.php:1802
 msgid "Read private pages"
 msgstr "Leer páginas privadas"
 
-#: ../includes/class-ure-lib.php:1764
+#: ../includes/class-ure-lib.php:1803
 msgid "Delete users"
 msgstr "Eliminar usuarios"
 
-#: ../includes/class-ure-lib.php:1765
+#: ../includes/class-ure-lib.php:1804
 msgid "Create users"
 msgstr "Crear usuarios"
 
-#: ../includes/class-ure-lib.php:1766
+#: ../includes/class-ure-lib.php:1805
 msgid "Unfiltered upload"
 msgstr "Subir sin filtrado"
 
-#: ../includes/class-ure-lib.php:1767
+#: ../includes/class-ure-lib.php:1806
 msgid "Edit dashboard"
 msgstr "Editar escritorio"
 
-#: ../includes/class-ure-lib.php:1768
+#: ../includes/class-ure-lib.php:1807
 msgid "Update plugins"
 msgstr "Actualizar plugins"
 
-#: ../includes/class-ure-lib.php:1769
+#: ../includes/class-ure-lib.php:1808
 msgid "Delete plugins"
 msgstr "Eliminar plugins"
 
-#: ../includes/class-ure-lib.php:1770
+#: ../includes/class-ure-lib.php:1809
 msgid "Install plugins"
 msgstr "Instalar plugins"
 
-#: ../includes/class-ure-lib.php:1771
+#: ../includes/class-ure-lib.php:1810
 msgid "Update themes"
 msgstr "Actualizar temas (plantillas)"
 
-#: ../includes/class-ure-lib.php:1772
+#: ../includes/class-ure-lib.php:1811
 msgid "Install themes"
 msgstr "Instalar temas (plantillas)"
 
-#: ../includes/class-ure-lib.php:1773
+#: ../includes/class-ure-lib.php:1812
 msgid "Update core"
 msgstr "Actualizar núcleo"
 
-#: ../includes/class-ure-lib.php:1774
+#: ../includes/class-ure-lib.php:1813
 msgid "List users"
 msgstr "Listar usuarios"
 
-#: ../includes/class-ure-lib.php:1775
+#: ../includes/class-ure-lib.php:1814
 msgid "Remove users"
 msgstr "Eliminar usuarios"
 
-#: ../includes/class-ure-lib.php:1776
+#: ../includes/class-ure-lib.php:1815
 msgid "Add users"
 msgstr "Agregar usuarios"
 
-#: ../includes/class-ure-lib.php:1777
+#: ../includes/class-ure-lib.php:1816
 msgid "Promote users"
 msgstr "Promover usuarios"
 
-#: ../includes/class-ure-lib.php:1778
+#: ../includes/class-ure-lib.php:1817
 msgid "Edit theme options"
 msgstr "Editar opciones del tema (plantilla)"
 
-#: ../includes/class-ure-lib.php:1779
+#: ../includes/class-ure-lib.php:1818
 msgid "Delete themes"
 msgstr "Eliminar temas (plantillas)"
 
-#: ../includes/class-ure-lib.php:1780
+#: ../includes/class-ure-lib.php:1819
 msgid "Export"
 msgstr "Exportar"
 
-#: ../includes/class-ure-lib.php:1890
+#: ../includes/class-ure-lib.php:1929
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr ""
 "Error: El nombre de la Capacidad sólo debe contener caracteres alfanuméricos!"
 
-#: ../includes/class-ure-lib.php:1903
+#: ../includes/class-ure-lib.php:1942
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr "La Capacidad %s fue agregada exitosamente"
 
-#: ../includes/class-ure-lib.php:1905
+#: ../includes/class-ure-lib.php:1944
 #, php-format
 msgid "Capability %s exists already"
 msgstr "La Capacidad %s ya existe"
 
-#: ../includes/class-ure-lib.php:1930
+#: ../includes/class-ure-lib.php:1969
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr ""
 "¡Error! No cuentas con suficientes permisos para eliminar esta Capacidad: %s!"
 
-#: ../includes/class-ure-lib.php:1949
+#: ../includes/class-ure-lib.php:1988
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr "La Capacidad %s fue eliminada exitosamente"
 
-#: ../includes/class-ure-lib.php:2046
+#: ../includes/class-ure-lib.php:2085
 msgid "About this Plugin:"
 msgstr "Acerca de este Plugin:"
 
-#: ../includes/class-ure-lib.php:2048
+#: ../includes/class-ure-lib.php:2087
 msgid "Author's website"
 msgstr "Sitio web del Autor"
 
-#: ../includes/class-ure-lib.php:2049
+#: ../includes/class-ure-lib.php:2088
 msgid "Plugin webpage"
 msgstr "Página web del Plugin"
 
-#: ../includes/class-ure-lib.php:2051
+#: ../includes/class-ure-lib.php:2090
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../includes/class-ure-lib.php:2092
+#: ../includes/class-ure-lib.php:2131
 msgid "None"
 msgstr "Ninguno"
 
-#: ../includes/class-ure-lib.php:2141
-msgid "&mdash; No role for this site &mdash;"
+#: ../includes/class-ure-lib.php:2157
+msgid "Delete All Unused Roles"
 msgstr ""
 
-#: ../includes/ure-user-edit.php:31
-msgid "Network Super Admin"
+#: ../includes/class-ure-lib.php:2181
+msgid "&mdash; No role for this site &mdash;"
 msgstr ""
 
 #: ../includes/ure-user-edit.php:34
@@ -652,45 +662,15 @@ msgstr "Rol de bbPress:"
 msgid "Other Roles:"
 msgstr "Otros Roles:"
 
-#: ../includes/class-ure-screen-help.php:15
-msgid "Show Administrator role at User Role Editor"
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:16
-msgid ""
-"turn this option on in order to make the \"Administrator\" role available at "
-"the User Role Editor roles selection drop-down list. It is hidden by default "
-"for security reasons."
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:18
-msgid "Show capabilities in the human readable form"
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:19
-msgid ""
-"automatically converts capability names from the technical form for internal "
-"use like \"edit_others_posts\" to more user friendly form, e.g. \"Edit "
-"others posts\"."
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:22
-msgid ""
-"Capabilities like \"level_0\", \"level_1\" are deprecated and are not used "
-"by WordPress. They are left at the user roles for the compatibility purpose "
-"with the old themes and plugins code. Turning on this option will show those "
-"deprecated capabilities."
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:27
-msgid "Allow create, edit and delete users to not super-admininstrators"
-msgstr ""
-
-#: ../includes/class-ure-screen-help.php:28
-msgid ""
-"Super administrator only may create, edit and delete users under WordPress "
-"multi-site. Turn this option on in order to remove this limitation."
-msgstr ""
+#~ msgid ""
+#~ "Reset Roles to WordPress defaults. Be careful, all changes made by you or "
+#~ "plugins will be lost. Some plugins, e.g. S2Member, WooCommerce "
+#~ "reactivation could be needed. Continue?"
+#~ msgstr ""
+#~ "Reiniciar Roles a los predeterminados de WordPress. Ten cuidado, todos "
+#~ "los cambios que tú hayas realizado (o ejecutados por algún plugin) se "
+#~ "perderán. Algunos plugins como S2Member, WooCommerce podrían necesitar "
+#~ "una reactivación ¿Deseas continuar?"
 
 #~ msgid "Only"
 #~ msgstr "Solamente"

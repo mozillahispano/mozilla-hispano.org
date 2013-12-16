@@ -173,7 +173,7 @@ print $reflection->getFileName();
 			<input 	type="checkbox" name="mailusers_omit_display_names" id="mailusers_omit_display_names" value="true"
 					<?php if (mailusers_get_omit_display_names()=='true') echo 'checked="checked"';?> ></input>
 			<?php _e('Omit Display Names when sending email.', MAILUSERS_I18N_DOMAIN); ?><br/>
-            <i><small><?php _e('Use "john.doe@example.com" instead of "John Doe &lt;john.doe@example.com&gt;"')?></small></i>
+            <i><small><?php _e('Use "john.doe@example.com" instead of "John Doe &lt;john.doe@example.com&gt;"', MAILUSERS_I18N_DOMAIN)?></small></i>
 		</td>
 	</tr>
 	<tr>
@@ -546,16 +546,16 @@ print $reflection->getFileName();
     </tbody>
     </table>
     <p>
-    The WordPress wp_mail() function is <a href="http://codex.wordpress.org/Pluggable_Functions">pluggable</a>
+<?php _e('The WordPress wp_mail() function is <a href="http://codex.wordpress.org/Pluggable_Functions">pluggable</a>
     which means the standard WordPress functionality can be overloaded by a Theme or another WordPress plugin.
     It is important to note that if the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do
     not match, it does not automatically mean there will be a problem.  However, if Email Users is not producing
     the expected results AND the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do not match,
-    it is something which should be looked at as a potential source of the problem.
+    it is something which should be looked at as a potential source of the problem.', MAILUSERS_I18_DOMAIN) ; ?>
     </p>
     <p>
-    The recommended way to eliminate the overloaded version of wp_mail() as the source of a problem is to disable
-    the plugin or theme which has overloaded wp_mail().
+<?php _e('The recommended way to eliminate the overloaded version of wp_mail() as the source of a problem is to disable
+    the plugin or theme which has overloaded wp_mail().', MAILUSERS_I18_DOMAIN) ; ?>
     </p>
 <br/>
 </div><!-- inside -->
@@ -586,6 +586,11 @@ print $reflection->getFileName();
 		<td><b><a href="http://wordpress.org/plugins/user-access-manager/">User Access Manager</a></b></td>
 		<td><?php _e('With the "User Access Manager"-plugin you can manage the access to your posts, pages and files.', MAILUSERS_I18N_DOMAIN); ?></td>
 		<td><?php _e((class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
+		<td><b><a href="http://wordpress.org/plugins/groups/">Groups</a></b></td>
+		<td><?php _e('Groups provides group-based user membership management, group-based capabilities and content access control.', MAILUSERS_I18N_DOMAIN); ?></td>
+		<td><?php _e((class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
 	</tbody>
 </table>
@@ -635,7 +640,7 @@ print $reflection->getFileName();
     }
 ?>
 </table>
-<p><small>There are a number of <a href="http://codex.wordpress.org/Plugin_API/Filter_Reference">WordPress Filters</a> which <strong><i>may</i></strong> affect Email Users.  The presence of these filters does not mean they will adversely affect Email Users but should be examined if email delivery isn't reaching all of the intended recipients or the mail format and/or header detail isn't as expected.</small></p>
+<p><small><?php _e('There are a number of <a href="http://codex.wordpress.org/Plugin_API/Filter_Reference">WordPress Filters</a> which <strong><i>may</i></strong> affect Email Users.  The presence of these filters does not mean they will adversely affect Email Users but should be examined if email delivery isn\'t reaching all of the intended recipients or the mail format and/or header detail isn\'t as expected.', MAILUSERS_I18N_DOMAIN) ; ?></small></p>
 </div>
 </div>
 

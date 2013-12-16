@@ -1,0 +1,90 @@
+nbr {
+    white-space: nowrap;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+}
+
+#yarpp_switch_container{
+    position: relative;
+    top:15px;
+}
+
+#yarpp_switch_tabs{
+    position: relative;
+    list-style: none;
+    margin: 0 0 -7px 0;
+    padding: 0;
+    z-index: 1;
+    color: #000;
+}
+
+#yarpp_switch_tabs li{
+    display: inline-block;
+    background-color: #f8f8f8;
+    padding: 6px 10px;
+    border: 1px solid #dfdfdf;
+    border-bottom-color: #f8f8f8;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.disabled{
+    background: #ededed !important;
+    border-bottom-color: #dfdfdf !important;
+}
+
+#yarpp_switch_tabs a{
+    color: #565656;
+}
+
+.disabled>a:hover{
+    color: #000 !important;
+    text-shadow: 1px 1px 0.1em #aaa !important;
+    margin-top: -1px !important;
+}
+
+.yarpp_switch_content{
+    position: relative;
+    width: 100%;
+    background-color: #f8f8f8;
+    background: -webkit-linear-gradient(#f8f8f8, #ededed);
+    background: -moz-linear-gradient(#f8f8f8, #ededed);
+    background: -ms-linear-gradient(#f8f8f8, #ededed);
+    background: -o-linear-gradient(#f8f8f8, #ededed);
+    background: linear-gradient(#f8f8f8, #ededed);
+    border: 1px solid #dfdfdf;
+    text-align: justify;
+    margin-bottom: 25px;
+    border-radius:  0 3px 3px 3px;
+}
+
+.yarpp_switch_content p,
+.yarpp_switch_content h1 {
+    margin: 15px 25% 15px 45px;
+}
+
+.yarpp_switch_content h1 {
+    font-size: 1.2em;
+}
+
+.yarpp_switch_content p {
+    line-height: 1.5em;
+}
+
+.yarpp_switch_content ul {
+    line-height: 1.5em;
+    padding-left: 75px;
+    list-style: disc;
+}
+
+#yarpp_pro_dashboard{
+    position: relative;
+    width: 100%;
+    height: 1024px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    z-index: 5;
+}

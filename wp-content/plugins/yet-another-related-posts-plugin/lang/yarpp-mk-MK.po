@@ -46,7 +46,7 @@ msgstr ""
 "Plugin</a>."
 
 # @ yarpp
-#: options.php:46
+#: yarpp_options.php:46
 msgid ""
 "The MyISAM check has been overridden. You may now use the \"consider titles"
 "\" and \"consider bodies\" relatedness criteria."
@@ -55,7 +55,7 @@ msgstr ""
 "povrzani so \"smetaj gi naslovite\" and \"smetaj gi tekstovite\""
 
 # @ yarpp
-#: options.php:54
+#: yarpp_options.php:54
 #, php-format
 msgid ""
 "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
@@ -71,7 +71,7 @@ msgstr ""
 "onevozmozeni."
 
 # @ yarpp
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 msgid ""
 "To restore these features, please update your <code>%s</code> table by "
@@ -85,7 +85,7 @@ msgstr ""
 "izmenuvanjeto na prebaruvanjeto, iako kje ima implikacii na performans."
 
 # @ yarpp
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 msgid ""
 "If, despite this check, you are sure that <code>%s</code> is using the "
@@ -95,22 +95,22 @@ msgstr ""
 "MyISAM engine, kliknete go magicnoto kopce:"
 
 # @ yarpp
-#: options.php:61
+#: yarpp_options.php:61
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Veruvaj mi. Dozvoli mi da gi koristam MyISAM funkciite."
 
 # @ yarpp
-#: options.php:76
+#: yarpp_options.php:76
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP bazata na podatoci imase greska, ama e ispravena."
 
 # @ yarpp
-#: options.php:78
+#: yarpp_options.php:78
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP bazata na podatoci ima greska koja sto ne moze da se ispravi."
 
 # @ yarpp
-#: options.php:135
+#: yarpp_options.php:135
 msgid "Options saved!"
 msgstr "Opciite se socuvani!"
 
@@ -142,7 +142,7 @@ msgid "consider with extra weight"
 msgstr "smetaj so ekstra tezina"
 
 # @ yarpp
-#: options.php:141
+#: yarpp_options.php:141
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin Options"
 
@@ -237,7 +237,7 @@ msgid "Bodies: "
 msgstr "Tekstovi:"
 
 # @ yarpp
-#: options.php:38
+#: yarpp_options.php:38
 #, php-format
 msgid ""
 "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
@@ -538,7 +538,7 @@ msgid "Contact YARPP"
 msgstr "YARPP kontakt"
 
 # @ default
-#: options.php:34
+#: yarpp_options.php:34
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
@@ -550,13 +550,13 @@ msgstr ""
 "a>."
 
 # @ yarpp
-#: options.php:79
+#: yarpp_options.php:79
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Molam probajte <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 
 # @ yarpp
-#: options.php:149
+#: yarpp_options.php:149
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
@@ -612,6 +612,6 @@ msgid "Rate YARPP on WordPress.org"
 msgstr "Oceni go YARPP na WordPress.org"
 
 # @ default
-#: options.php:178
+#: yarpp_options.php:178
 msgid "Save Changes"
 msgstr "Socuvaj gi izmenite"

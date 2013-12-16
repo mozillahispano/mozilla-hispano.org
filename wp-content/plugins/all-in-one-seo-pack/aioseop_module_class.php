@@ -990,9 +990,13 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			if ( !empty( $options['count'] ) ) {
 				$size = 60;
 				if ( isset( $options['size'] ) ) $size = $options['size'];
-				elseif ( isset( $options['rows'] ) && isset( $options['cols'] ) ) $size = $options['rows'] * $options['cols'];				
+				elseif ( isset( $options['rows'] ) && isset( $options['cols'] ) ) $size = $options['rows'] * $options['cols'];
+				if ( isset( $options['count_desc'] ) )
+					$count_desc = $options['count_desc'];
+				else
+					$count_desc = __( ' characters. Most search engines use a maximum of %s chars for the %s.', 'all_in_one_seo_pack' );
 				$buf .= "<br /><input readonly type='text' name='{$prefix}length$n' size='3' maxlength='3' style='width:53px;height:23px;margin:0px;padding:0px 0px 0px 10px;' value='" . $this->strlen($value) . "' />"
-					 . sprintf( __(' characters. Most search engines use a maximum of %s chars for the %s.', 'all_in_one_seo_pack'), $size, $this->strtolower( $options['name'] ) );
+					 . sprintf( $count_desc, $size, $this->strtolower( $options['name'] ) );
 			}
 			return $buf;
 		}

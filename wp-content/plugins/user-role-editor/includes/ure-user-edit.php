@@ -31,19 +31,21 @@ if (!defined('URE_PLUGIN_URL')) {
    $user_info .= '  <span style="font-weight: bold; color:red;">'. esc_html__('Network Super Admin', 'ure') .'</span>';
  }
   
-	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:900px;');
+	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:1050px;');
  
 ?>
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
 	<tr>
 		<td>&nbsp;</td>		
 		<td style="padding-left: 10px; padding-bottom: 5px;">
   <?php
-  if ($this->caps_readable) {
-    $checked = 'checked="checked"';
-  } else {
-    $checked = '';
-  }
+    $caps_access_restrict_for_simple_admin = $this->get_option('caps_access_restrict_for_simple_admin', 0);
+    if (is_super_admin() || !$this->multisite || !class_exists('User_Role_Editor_Pro') || !$caps_access_restrict_for_simple_admin) {  
+        if ($this->caps_readable) {
+            $checked = 'checked="checked"';
+        } else {
+            $checked = '';
+        }
 ?>
   
 		<input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" 
@@ -59,12 +61,16 @@ if (!defined('URE_PLUGIN_URL')) {
     <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" 
         <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $this->user_to_edit->ID; ?>);"/>
     <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>      
+<?php
+    }
+?>
 		</td>
 	</tr>	
 	<tr>
 		<td class="ure-user-roles">
 			<div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
 <?php 
+$show_admin_role = $this->show_admin_role_allowed();
 // output primary role selection dropdown list
 $this->user_primary_role_dropdown_list($this->user_to_edit->roles);
 
@@ -83,11 +89,10 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 }
 ?>
 			<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('Other Roles:', 'ure'); ?></div>
-<?php
- $show_admin_role = $this->get_option('show_admin_role', 0);
-	$you_are_admin = ((defined('URE_SHOW_ADMIN_ROLE') && URE_SHOW_ADMIN_ROLE==1) || $show_admin_role==1) && $this->user_is_admin();
+<?php 	
+
 	foreach ($this->roles as $role_id => $role) {
-		if ( ($you_are_admin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
+		if ( ($show_admin_role || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
 			if ( $this->user_can( $role_id ) ) {
 				$checked = 'checked="checked"';
 			} else {

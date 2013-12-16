@@ -442,79 +442,79 @@ msgstr "Ohodnoťte plugin YARPP na stránke WordPress.org"
 msgid "Contact YARPP"
 msgstr "Kontaktovať YARPP"
 
-#: options.php:36
+#: yarpp_options.php:36
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr "Bola vydaná nová verzia %1$s. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">Pozrieť %4$s detaily verzie</a> alebo <a href=\"%5$s\">aktualizovať automaticky</a>."
 
-#: options.php:40
+#: yarpp_options.php:40
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "Bola vydaná nová beta verzia (%s) Yet Another Related Posts Pluginu. Môžete si ju <a href=\"%s\">stiahnuť</a> na vlastné riziko."
 
-#: options.php:48
+#: yarpp_options.php:48
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM kontrola bola prepísaná. Teraz môžte použiť  \"consider titles\" and \"consider bodies\" kritériá podobnosti."
 
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP  \"consider titles\" and \"consider bodies\" kritériá podobnosti vyžadujú Vašu <code>%s</code> tabuľku <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, no zdá sa, že tabuľka používa  <code>%s</code>. Tieto dve možnosti boli vypnuté."
 
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Pre obnovenie týchto funkcií, prosím aktualizujte svoju <code>%s</code> tabuľku, spustením nasledovného SQL príkazu: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . Žiadne dáta nebudú vymazané po vykonaní toho príkazu."
 
-#: options.php:60
+#: yarpp_options.php:60
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Ak ste si aj napriek tejto kontrole istý, že <code>%s</code> používa MyISAM, stlačte toto čarovné tlačidlo:"
 
-#: options.php:63
+#: yarpp_options.php:63
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Verte mi, je lepšie, keď používate funkcie MyISAM."
 
-#: options.php:75
+#: yarpp_options.php:75
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP databáza obsahovala chybu, ktorú sme už stihli opraviť."
 
-#: options.php:77
+#: yarpp_options.php:77
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "V databáze YARPP je závažná chyba, ktorá sa nedá opraviť."
 
-#: options.php:78
+#: yarpp_options.php:78
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Vyskúšajte prosím <a href=\"%s\" target=\"_blank\">manuálne nastaveniť databázu</a>."
 
-#: options.php:109
+#: yarpp_options.php:109
 #@ yarpp
 msgid "Options saved!"
 msgstr "Nastavenia uložené!"
 
-#: options.php:115
+#: yarpp_options.php:115
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Možnost Yet Another Related Posts Pluginu"
 
-#: options.php:123
+#: yarpp_options.php:123
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "plugin od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:152
+#: yarpp_options.php:152
 #@ default
 msgid "Save Changes"
 msgstr "Uložiť zmeny"

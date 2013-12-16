@@ -45,40 +45,40 @@ msgstr "%f - это коэффициэнт \"похожести\" текущго
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "Список похожих постов предоставлен вам плагином <a href='%s'>YARPP</a>."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "Проверка MyISAM была выполнена. Теперь вы можете использовать критерии похожести “Рассматривать заголовки” и “Рассмотривать текст”."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "Использование опций YARPP “Рассматривать заголовки” и “Рассматривать текст” требует, чтобы ваша таблица <code>%s</code> использовала движок <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM</a>, но таблица видимо использует движок <code>%s</code>. Эти две опции отключены."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, fuzzy, php-format, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Для восстановления этих опций, пожалуйста, измените вашу таблицу <code>%s</code>следующей  SQL инструкцией e&nbsp;: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code><br />При изменении таблицы данные не должны пропасть, однако возможны последствия."
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Если, независимо от этой опции, вы уверены что таблица <code>%s</code> использует MyISAM, нажмите на эту волшебную кнопку&nbsp;:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Поверьте мне. Позвольте мне использовать MyISAM."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "База данных YARPP содержала ошибки, но они были исправлены."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "База данных YARPP содержит ошибку, которая не может быть исправлена."
@@ -102,7 +102,7 @@ msgstr "рассматривать"
 msgid "consider with extra weight"
 msgstr "рассматривать с дополнительным весом"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Опции YARPP"
@@ -382,7 +382,7 @@ msgstr "хотя бы один \"%s\"  должен быть общим"
 msgid "require more than one %s in common"
 msgstr "более одного  \"%s\"  должно быть общим"
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "Настройки сохранены!"
@@ -392,17 +392,17 @@ msgstr "Настройки сохранены!"
 msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
 msgstr "Чем выше порог похожести, тем строже выборка, и тем меньше получите записей на выходе. По-умолчанию порог равен 5. Если хотите найти приемлимые пороговые значения, поэкспериментируйте с несколькими сообщениями. Вы сможете увидеть, какие сообщения выходят наверх и какие у них значения схожести, по которым можно определить приемлимый уровень для вашего сайта."
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "Изменить настройки"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "Вы действительно хотите сбросить ваши настройки?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "Сбросить настройки"
@@ -433,7 +433,7 @@ msgstr "лет"
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr "Показывать только посты за последние  NUMBER UNITS"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

@@ -222,6 +222,7 @@ function ts_fab_construct_fab(
 	$ts_fab = '<div id="ts-fab-' . $context . '" class="ts-fab-wrapper">';
 
 		// Construct tabs list
+		$ts_fab .= '<span class="screen-reader-text">' . __( 'The following two tabs change content below.', 'ts-fab' ) . '</span>';
 		$ts_fab .= '<ul class="ts-fab-list">';
 
 			$ts_fab .= '<li class="ts-fab-bio-link"><a href="#ts-fab-bio-' . $context . '">' . __( 'Bio', 'ts-fab' ) . '</a></li>';

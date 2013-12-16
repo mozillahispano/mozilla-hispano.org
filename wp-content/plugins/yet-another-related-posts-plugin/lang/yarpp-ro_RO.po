@@ -45,40 +45,40 @@ msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Pl
 msgstr "Lista de posturi similare este prezentată de plugin-ul <a href='%s'>Yet Another Related Posts Plugin</a>."
 
 #@ yarpp
-#: options.php:54
+#: yarpp_options.php:54
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "Verificarea  MyISAM a fost efectuată. Acum puteți utiliza criteriile de similaritate \"consider titles\" și \"consider bodies\"."
 
 #@ yarpp
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "Utilizarea funcțiilor YARPP \"consider titles\" și \"consider bodies\" necesită, ca tabelul dvs. <code>%s</code> să utilizeze motorul <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM</a>, însă, probabil că tabelul utilizează motorul <code>%s</code>. Aceste două funcții  sunt dezactivate."
 
 #@ yarpp
-#: options.php:65
+#: yarpp_options.php:65
 #, fuzzy, php-format, php-format
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr " Pentru a restabili aceste funcţii, vă rugăm să modificaţi tabelul <code>%s</code> cu următoarea instrucțiune  SQL e&nbsp;: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code>. La schimbarea  tabelului datele nu ar trebui să dispară, dar, cu toate acestea, pot apărea diferite posibile consecințe."
 
 #@ yarpp
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr " În cazul în care, indiferent de această opţiune, sunteţi sigur că tabelul <code>%s</code> utilizează MyISAM, faceţi clic pe acest buton magic:"
 
 #@ yarpp
-#: options.php:70
+#: yarpp_options.php:70
 msgid "Trust me. Let me use MyISAM features."
 msgstr " Aveți  încredere în mine. Permiteţi-mi de a utiliza MyISAM."
 
 #@ yarpp
-#: options.php:83
+#: yarpp_options.php:83
 msgid "The YARPP database had an error but has been fixed."
 msgstr "Baza de date YARPP coonținea erori, dar acestea au fost corectate."
 
 #@ yarpp
-#: options.php:85
+#: yarpp_options.php:85
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "Baza de date  YARPP conține o eroare, care nu poate fi corectată."
 
@@ -102,7 +102,7 @@ msgid "consider with extra weight"
 msgstr " a lua în considerare cu greutate suplimentară "
 
 #@ yarpp
-#: options.php:178
+#: yarpp_options.php:178
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Opțiuni YARPP"
 
@@ -382,7 +382,7 @@ msgid "require more than one %s in common"
 msgstr "mai mult de unul  %s  trebuie să fie comun"
 
 #@ yarpp
-#: options.php:114
+#: yarpp_options.php:114
 msgid "Options saved!"
 msgstr "Opțiuni salvate!"
 
@@ -392,17 +392,17 @@ msgid "The higher the match threshold, the more restrictive, and you get less re
 msgstr "Cu cât e mai mare pragul de similitudine, cu atât e mai strictă proba, și în final vor fi primite mai puține rezultate. Pragul defult este de5.  Dacă doriţi să găsiţi praguri acceptabile, experimentați cu mai multe posturi. Astfel veți putea vedea   ce tipuri de posturi aferente vin ți care sunt valorile similare, care pot determina un nivel acceptabil pentru site-ul dvs."
 
 #@ yarpp
-#: options.php:279
+#: yarpp_options.php:279
 msgid "Update options"
 msgstr "Modificare opțiuni"
 
 #@ yarpp
-#: options.php:280
+#: yarpp_options.php:280
 msgid "Do you really want to reset your configuration?"
 msgstr "Sunteți sigur că doriți să resetați configurațiile dvs.?"
 
 #@ yarpp
-#: options.php:280
+#: yarpp_options.php:280
 msgid "Reset options"
 msgstr "Resetare opțiuni"
 
@@ -433,7 +433,7 @@ msgid "Show only posts from the past NUMBER UNITS"
 msgstr " Afişare posturi doar în ultimul NUMBER UNITS"
 
 #@ yarpp
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "Aceasta este noua beta (%s) plugin YARPP. Puteți să o <a href=\"%s\">descărcați aici</a> pe propriul risc."
@@ -543,19 +543,19 @@ msgid "Contact YARPP"
 msgstr "Contact YARPP "
 
 #@ default
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr " Aceasta e o nouă versiune a %1$s valabilă.<a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">Vezi versiunea %4$s detalii</a> sau<a href=\"%5$s\">actualizare automată</a>."
 
 #@ yarpp
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr " Vă rugăm să încercaţi <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 
 #@ yarpp
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "de <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

@@ -64,45 +64,45 @@ msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Pl
 msgstr "Benzer yazılar <a href='%s'>Yet Another Related Posts Eklentisini</a> ile listelendi."
 
 #@ yarpp
-#: options.php:54
+#: yarpp_options.php:54
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM kontrolü artık geçersiz. Artık \"başlıkları göz önünde bulundur\" ve \"içerikleri göz önünde bulundur\" kriterlerini kullanabilirsiniz."
 
 #@ yarpp
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP'ın \"başlıkları göz önünde bulundur\" ve \"içerikleri göz önünde bulundur\" kriterleri, veritabanındaki <code>%s</code> tablosunun <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM motoruyla</a> çalışmasını gerektirir. Ama tablolar <code>%s</code> motorunu kullanıyor gibi gözüküyor. Bu iki özellik devre dışı bırakıldı."
 
 #@ yarpp
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Bu özellikleri geri getirmek için, <code>%s</code> tablosunu <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> kodunu kullanarak güncelleştirin. Hiçbir veri silinmeyecektir ancak sitenin performansı etkilenebilir."
 
 #@ yarpp
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Eğer <code>%s</code>'in MyISAM motorunu kullandığından eminseniz lütfen bu düğmeyi tıklayın:"
 
 #@ yarpp
-#: options.php:70
+#: yarpp_options.php:70
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Bana güvenebilirsin :). MYISAM özelliklerini kullanmama izin ver."
 
 #@ yarpp
-#: options.php:83
+#: yarpp_options.php:83
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP veritabanında bir hata oluştu ama hata giderildi."
 
 #@ yarpp
-#: options.php:85
+#: yarpp_options.php:85
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP veritabanında bir hata oluştu ve hata giderilemedi."
 
 #@ yarpp
-#: options.php:114
+#: yarpp_options.php:114
 msgid "Options saved!"
 msgstr "Ayarlar kaydedildi!"
 
@@ -155,7 +155,7 @@ msgid "consider with extra weight"
 msgstr "daha çok göz önünde bulundur"
 
 #@ yarpp
-#: options.php:178
+#: yarpp_options.php:178
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Ayarları"
 
@@ -263,7 +263,7 @@ msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>r
 msgstr "\"Sayfa ve yazıları birbiriyle ilişkilendir\" seçeneği seçiliyse, <code>related_posts()</code>, <code>related_pages()</code> ve <code>related_entries()</code> kodları birbirinin aynı sonuçları döndürür; hepsi de benzer yazı ve sayfaları beraber gösterir."
 
 #@ yarpp
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "Bu eklentinin BETA (%s) sürümü mevcut. <a href=\"%s\">Buradan indirebilirsiniz.</a>"
@@ -472,17 +472,17 @@ msgid "Before / after (excerpt):"
 msgstr "Öncesi & sonrası (özet):"
 
 #@ yarpp
-#: options.php:279
+#: yarpp_options.php:279
 msgid "Update options"
 msgstr "Seçenekleri güncelle"
 
 #@ yarpp
-#: options.php:280
+#: yarpp_options.php:280
 msgid "Do you really want to reset your configuration?"
 msgstr "Ayarlarınızı sıfırlamak istediğinizden emin misiniz?"
 
 #@ yarpp
-#: options.php:280
+#: yarpp_options.php:280
 msgid "Reset options"
 msgstr "Ayarları sıfırla"
 
@@ -543,19 +543,19 @@ msgid "Contact YARPP"
 msgstr "YARPP'a ulaşın"
 
 #@ default
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr "%1$s için yeni bir sürüm mevcut. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">%4$s numaralı sürüm değişikliklerini okuyun</a> veya <a href=\"%5$s\">otomatik olarak güncelleyin</a>."
 
 #@ yarpp
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Lütfen <a href=\"%s\" target=\"_blank\">elle SQL kurulumunu</a> deneyin."
 
 #@ yarpp
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "<a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

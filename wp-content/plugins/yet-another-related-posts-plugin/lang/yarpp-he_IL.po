@@ -566,7 +566,7 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr "צרו קשר עם YARPP"
 
-#: options.php:31
+#: yarpp_options.php:31
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
@@ -577,7 +577,7 @@ msgstr ""
 "\">הצג את פרטי גרסה %4$s</a> או <a href=\"%5$s\">עדכן אוטומטית</a>"
 
 # @ yarpp
-#: options.php:35
+#: yarpp_options.php:35
 #, php-format
 msgid ""
 "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
@@ -586,7 +586,7 @@ msgstr ""
 "קיימת גרסא חדשה יותר (%s) של YARPP ותוכלו להוריד אותה <a href=\"%s\">כאן</a>."
 
 # @ yarpp
-#: options.php:43
+#: yarpp_options.php:43
 msgid ""
 "The MyISAM check has been overridden. You may now use the \"consider titles"
 "\" and \"consider bodies\" relatedness criteria."
@@ -595,7 +595,7 @@ msgstr ""
 "bodies\" כמדדים לשייכות לנושא הפרסום."
 
 # @ yarpp
-#: options.php:51
+#: yarpp_options.php:51
 #, php-format
 msgid ""
 "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
@@ -610,7 +610,7 @@ msgstr ""
 "במנוע <code>%s</code>. שתי האפשרויות הללו בוטלו."
 
 # @ yarpp
-#: options.php:53
+#: yarpp_options.php:53
 #, php-format
 msgid ""
 "To restore these features, please update your <code>%s</code> table by "
@@ -623,7 +623,7 @@ msgstr ""
 "על הביצועים, שום מידע לא יימחק כתוצאה משינוי מנועי הטבלאות"
 
 # @ yarpp
-#: options.php:55
+#: yarpp_options.php:55
 #, php-format
 msgid ""
 "If, despite this check, you are sure that <code>%s</code> is using the "
@@ -633,43 +633,43 @@ msgstr ""
 "כפתור הקסמים הזה:"
 
 # @ yarpp
-#: options.php:58
+#: yarpp_options.php:58
 msgid "Trust me. Let me use MyISAM features."
 msgstr "סמוך עלי, תן לי להשתמש באפשרויות של MyISAM."
 
 # @ yarpp
-#: options.php:73
+#: yarpp_options.php:73
 msgid "The YARPP database had an error but has been fixed."
 msgstr "למסד הנתונים של YARPP הייתה בעיה אבל היא תוקנה."
 
 # @ yarpp
-#: options.php:75
+#: yarpp_options.php:75
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "נמצאה בעיה במסד הנתונים של YARPP ולא ניתן לתקנה."
 
 # @ yarpp
-#: options.php:76
+#: yarpp_options.php:76
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "בבקשה תנסו <a href=\"%s\" target=\"_blank\">להתקין SQL ידנית</a>."
 
 # @ yarpp
-#: options.php:139
+#: yarpp_options.php:139
 msgid "Options saved!"
 msgstr "האפשרויות נשמרו!"
 
 # @ yarpp
-#: options.php:145
+#: yarpp_options.php:145
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "אפשרויות תוסף YARPP, פוסטים נוספים בנושא"
 
-#: options.php:153
+#: yarpp_options.php:153
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr ""
 "על ידי <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:194
+#: yarpp_options.php:194
 msgid "Save Changes"
 msgstr "שמור שינויים"
 

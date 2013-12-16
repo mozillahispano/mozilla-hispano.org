@@ -2,8 +2,8 @@
 Contributors: slobodanmanic, nikolicdragan
 Tags: author, author description, author box, author bio, fancier author box, thematosoup author box, author profile, author bio box, multi author
 Requires at least: 3.1
-Tested up to: 3.6
-Stable tag: 1.1.1
+Tested up to: 3.7.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ Give identity to your single or multi-author WordPress website with Fancier Auth
 
 == Description ==
 
-For support requests please use our dedicated support forums at - http://support.thematosoup.com/?forum=fancier-author-box
+For support requests please use our dedicated support forums at - http://support.thematosoup.com/
 
 If you're looking for a way to make your every page a landing page for new contacts and leads, then you will find Fancier Author Box by ThematoSoup invaluable.
 

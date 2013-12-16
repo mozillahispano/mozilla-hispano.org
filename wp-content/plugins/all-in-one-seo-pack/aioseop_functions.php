@@ -21,6 +21,7 @@ if ( !function_exists( 'aioseop_activate' ) ) {
 	function aioseop_activate() {
 	  global $aiosp_activation;
 	  $aiosp_activation = true;
+	  delete_transient( "aioseop_oauth_current" );
 	}
 }
 
@@ -36,7 +37,7 @@ if ( !function_exists( 'aioseop_update_settings_check' ) ) {
 
 		// WPML has now attached to filters, read settings again so they can be translated
 		$aioseop_options = get_option( 'aioseop_options' );
-
+		
 		if ( !empty( $aioseop_options['aiosp_archive_noindex'] ) ) { // migrate setting for noindex archives
 			$aioseop_options['aiosp_archive_date_noindex'] = $aioseop_options['aiosp_archive_author_noindex'] = $aioseop_options['aiosp_archive_noindex'];
 			unset( $aioseop_options['aiosp_archive_noindex'] );
@@ -137,7 +138,7 @@ if ( !function_exists( 'aioseop_mrt_pcolumns' ) ) {
 	    if ( empty( $aioseop_options['aiosp_togglekeywords'] ) )
 			$aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
 	    return $aioseopc;
-	}
+	}	
 }
 
 if ( !function_exists( 'aioseop_admin_head' ) ) {
@@ -200,7 +201,7 @@ if ( !function_exists( 'aioseop_ajax_save_meta' ) ) {
 		$output .= 'onclick=\'aioseop_ajax_edit_meta_form(' . $post_id . ', ' . json_encode( $label ) . ', "' . $target . '");return false;\' title="' . __('Edit') . '">';
 		$output .= '<img class="aioseop_edit_button" id="aioseop_edit_id" src="' . AIOSEOP_PLUGIN_IMAGES_URL . '/cog_edit.png" /></a>';
 		die( "jQuery('div#aioseop_" . $target . "_" . $post_id . "').fadeOut('fast', function() {
-			  jQuery('div#aioseop_" . $target . "_" . $post_id . "').html(" . json_encode( $output ) . ").fadeIn('fast');
+			  jQuery('div#aioseop_" . $target . "_" . $post_id . "').html('" . addslashes_gpc($output) . "').fadeIn('fast');
 		});" );
 	}
 }
@@ -235,8 +236,8 @@ if ( !function_exists( 'aioseop_ajax_save_url' ) ) {
 		$module->add_page_hooks();
 		$_POST = $module->get_current_options( $_POST, null );
 		$module->handle_settings_updates( null );
-		$options = $module->get_current_options( Array(), null );			
-		$output = $module->display_custom_options( '', Array( 'name' => 'aiosp_sitemap_addl_pages', 'type' => 'custom', 'save' => true, 'value' => $options['aiosp_sitemap_addl_pages'], 'attr' => '' ) );
+		$options = $module->get_current_options( Array(), null );
+		$output .= $module->display_custom_options( '', Array( 'name' => 'aiosp_sitemap_addl_pages', 'type' => 'custom', 'save' => true, 'value' => $options['aiosp_sitemap_addl_pages'], 'attr' => '' ) );
 		$output = str_replace( "'", "\'", $output );
 		$output = str_replace( "\n", '\n', $output );
 		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
@@ -256,13 +257,15 @@ if ( !function_exists( 'aioseop_ajax_delete_url' ) ) {
 		$_POST['location'] = null;
 		$_POST['Submit'] = 'ajax';
 		$module->add_page_hooks();
-		$_POST = $module->get_current_options( $_POST, null );
+		$_POST = (Array)$module->get_current_options( $_POST, null );
+		if ( !empty( $_POST['aiosp_sitemap_addl_pages'] ) && ( is_object( $_POST['aiosp_sitemap_addl_pages'] ) ) )
+			$_POST['aiosp_sitemap_addl_pages'] = (Array)$_POST['aiosp_sitemap_addl_pages'];
 		if ( !empty( $_POST['aiosp_sitemap_addl_pages'] ) && ( !empty( $_POST['aiosp_sitemap_addl_pages'][ $options ] ) ) ) {
 			unset( $_POST['aiosp_sitemap_addl_pages'][ $options ] );
 			if ( empty( $_POST['aiosp_sitemap_addl_pages'] ) )
 				$_POST['aiosp_sitemap_addl_pages'] = '';
 			else
-				$_POST['aiosp_sitemap_addl_pages'] = serialize( $_POST['aiosp_sitemap_addl_pages'] );
+				$_POST['aiosp_sitemap_addl_pages'] = json_encode( $_POST['aiosp_sitemap_addl_pages'] );
 			$module->handle_settings_updates( null );
 			$options = $module->get_current_options( Array(), null );
 			$output = $module->display_custom_options( '', Array( 'name' => 'aiosp_sitemap_addl_pages', 'type' => 'custom', 'save' => true, 'value' => $options['aiosp_sitemap_addl_pages'], 'attr' => '' ) );
@@ -271,6 +274,89 @@ if ( !function_exists( 'aioseop_ajax_delete_url' ) ) {
 		} else {
 			$output = sprintf( __( "Row %s not found; no rows were deleted.", 'all_in_one_seo_pack' ), esc_attr( $options ) );
 		}
+		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
+	}
+}
+
+if ( !function_exists( 'aioseop_ajax_scan_header' ) ) {
+	
+	function aioseop_ajax_scan_header() {
+		$_POST["options"] = "foo";
+		aioseop_ajax_init();
+		$options = Array();
+		parse_str( $_POST['options'], $options );
+		foreach( $options as $k => $v ) $_POST[$k] = $v;
+		$_POST['action'] = 'aiosp_update_module';
+		$_POST['location'] = null;
+		$_POST['Submit'] = 'ajax';
+		ob_start();
+		do_action('wp');
+		global $aioseop_modules;
+		$module = $aioseop_modules->return_module( "All_in_One_SEO_Pack_Opengraph" );
+		if ( !empty( $module ) )
+			if ( $module->option_isset( 'disable_jetpack' ) )
+				remove_action( 'wp_head', 'jetpack_og_tags' );
+		wp_head();
+		$output = ob_get_clean();
+		global $aiosp;
+		$output = $aiosp->html_string_to_array( $output );
+		$meta = '';
+		$metatags = Array(
+				'facebook'	=> Array( 'name' => 'property', 'value' => 'content' ),
+				'twitter'	=> Array( 'name' => 'name', 'value' => 'value' ),
+				'google+'	=> Array( 'name' => 'itemprop', 'value' => 'content' )
+		);
+		$metadata = Array(
+			'facebook'	=> Array(
+					'title'			=> 'og:title',
+					'type'			=> 'og:type',
+					'url'			=> 'og:url',
+					'thumbnail'		=> 'og:image',
+					'sitename'		=> 'og:site_name',
+					'key'			=> 'fb:admins',
+					'description'	=> 'og:description'
+				),
+			'google+'	=> Array(
+					'thumbnail'		=> 'image',
+					'title'			=> 'name',
+					'description'	=> 'description'
+				),
+			'twitter'	=> Array(
+					'card'			=> 'twitter:card',
+					'url'			=> 'twitter:url',
+					'title'			=> 'twitter:title',
+					'description'	=> 'twitter:description',
+					'thumbnail'		=> 'twitter:image'
+				)
+		);
+		if ( !empty( $output ) && !empty( $output['head'] ) && !empty( $output['head']['meta'] ) )
+			foreach( $output['head']['meta'] as $v )
+				if ( !empty( $v['@attributes'] ) ) {
+					$m = $v['@attributes'];
+					foreach( $metatags as $type => $tags )
+						if ( !empty( $m[$tags['name']] ) && !empty( $m[$tags['value']] ) )
+							foreach( $metadata[$type] as $tk => $tv )
+								if ( $m[$tags['name']] == $tv )
+									$meta .= "<tr><th style='color:red;'>" . sprintf( __( 'Duplicate %s Meta'), ucwords( $type ) ) . "</th><td>" . ucwords( $tk ) . "</td><td>{$m[$tags['name']]}</td><td>{$m[$tags['value']]}</td></tr>\n";
+				}
+		if ( empty( $meta ) ) $meta = '<span style="color:green;">' . __( 'No duplicate meta tags found.', 'all_in_one_seo_pack' ) . '</span>';
+		else {
+			$meta = "<table cellspacing=0 cellpadding=0 width=80% class='aioseop_table'><tr class='aioseop_table_header'><th>Meta For Site</th><th>Kind of Meta</th><th>Element Name</th><th>Element Value</th></tr>" . $meta . "</table>";
+			$meta .= "<p><div class='aioseop_meta_info'><h3 style='padding:5px;margin-bottom:0px;'>" . __( 'What Does This Mean?', 'all_in_one_seo_pack' ) . "</h3><div style='padding:5px;padding-top:0px;'>"
+					. "<p>" . __( 'All in One SEO Pack has detected that a plugin(s) or theme is also outputting social meta tags on your site.  You can view this social meta in the source code of your site (check your browser help for instructions on how to view source code).',  'all_in_one_seo_pack' )
+					. "</p><p>" . __( 'You may prefer to use the social meta tags that are being output by the other plugin(s) or theme.  If so, then you should deactivate this Social Meta feature in All in One SEO Pack Feature Manager.',  'all_in_one_seo_pack' )
+				 	. "</p><p>" . __( 'You should avoid duplicate social meta tags.  You can use these free tools from Facebook, Google and Twitter to validate your social meta and check for errors:',  'all_in_one_seo_pack' ) . "</p>";
+				
+			foreach( Array( 'https://developers.facebook.com/tools/debug', 'http://www.google.com/webmasters/tools/richsnippets', 'https://dev.twitter.com/docs/cards/validation/validator' ) as $link ) {
+				$meta .= "<a href='{$link}' target='_blank'>{$link}</a><br />";
+			}
+			$meta .= "<p>" . __( 'Please refer to the document for each tool for help in using these to debug your social meta.',  'all_in_one_seo_pack' ) . "</div></div>";
+		}
+		$output = $meta;
+		$output = str_replace( "'", "\'", $output );
+		$output = str_replace( "\n", '\n', $output );
+//		$output = str_replace( "<", '&lt;', $output );
+//		$output = str_replace( ">", '&gt;', $output );
 		die( sprintf( AIOSEOP_AJAX_MSG_TMPL, $output ) );
 	}
 }
@@ -370,10 +456,10 @@ if ( !function_exists( 'aioseop_mrt_pccolumn' ) ) {
 						id="aioseop_<?php print $target; ?>_<?php echo $id; ?>" 
 						style="float:left;">
 					<?php $content = htmlspecialchars( stripslashes( get_post_meta( $id, "_aioseop_" . $target,	TRUE ) ) ); 
-					if( !empty($content) ): $label = esc_js( $content );  
-					else: $label = ''; $content = '<strong><i>No ' . $target . '</i></strong>' ; endif;
-						print $content . '<a id="' . $target . 'editlink' . $id . '" href="javascript:void(0);" onclick=\'aioseop_ajax_edit_meta_form(' .
-						$id . ', "' . str_replace( Array( '"', '&quot;' ), Array( '\x22', '\x22' ), esc_js( $label ) ) . '", "' . $target . '");return false;\' title="' . __('Edit') . '">';
+				if( !empty($content) ): $label = esc_js( $content );  
+				else: $label = ''; $content = '<strong><i>No ' . $target . '</i></strong>' ; endif;
+					print $content . '<a id="' . $target . 'editlink' . $id . '" href="javascript:void(0);" onclick=\'aioseop_ajax_edit_meta_form(' .
+					$id . ', "' . str_replace( Array( '"', '&quot;' ), Array( '\x22', '\x22' ), esc_js( $label ) ) . '", "' . $target . '");return false;\' title="' . __('Edit') . '">';
 						print "<img class='aioseop_edit_button' 
 											id='aioseop_edit_id' 
 											src='" . AIOSEOP_PLUGIN_IMAGES_URL . "cog_edit.png' /></a>";
@@ -514,4 +600,13 @@ if ( !function_exists( 'json_decode' ) ) {
 		$services_json = aioseop_load_json_services();
 		return $services_json->decode( $arg );
 	}
+}
+
+/***
+ * fnmatch() doesn't exist on Windows pre PHP 5.3
+ */
+if( !function_exists( 'fnmatch' ) ) {
+    function fnmatch( $pattern, $string ) {
+        return preg_match( "#^" . strtr( preg_quote( $pattern, '#' ), array( '\*' => '.*', '\?' => '.' ) ) . "$#i", $string );
+    }
 }

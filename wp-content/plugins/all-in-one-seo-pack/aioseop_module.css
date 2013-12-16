@@ -45,7 +45,7 @@
 	text-align: left;
 }
 .aioseop_option_div {
-	max-height: 150px;
+	max-height: 160px;
 	min-height: 34px;
 	width: 95%;
 	overflow-y: auto;
@@ -233,12 +233,6 @@
 	background-color: #EEE;
 	margin: 5px 0 5px 0 !important;
 }
-.aioseop input[type="button"] {
-	border-radius: 5px;
-	padding: 10px;
-	font-size: 15px;
-}
-
 .aioseop_settings_left {
 	float: left;
 	padding: 0px;
@@ -292,6 +286,7 @@ div#aiosp_feature_manager_metabox .inside {
 div.aioseop_feature {
 	position: relative;
 	display: inline-block;
+	float: left;
 	vertical-align: top;
 	width: 240px;
 	height: 288px;
@@ -359,6 +354,12 @@ div.aioseop_feature#aioseop_sitemap .aioseop_featured_image {
 div.aioseop_feature#aioseop_sitemap .aioseop_featured_image.active {
 	background-image: url(images/XMLSitemaps-Color-Standard.png);
 }
+div.aioseop_feature#aioseop_opengraph .aioseop_featured_image {
+	background-image: url(images/SocialMeta-BW-Standard.png);
+}
+div.aioseop_feature#aioseop_opengraph .aioseop_featured_image.active {
+	background-image: url(images/SocialMeta-Color-Standard.png);
+}
 div.aioseop_feature#aioseop_performance .aioseop_featured_image {
 	background-image: url(images/Performance-BW-Standard.png);
 }
@@ -403,6 +404,24 @@ only screen and (                min-resolution: 1.5dppx) {
 	}
 	div.aioseop_feature .aioseop_featured_image {
 		background-image: url(images/Default-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_sitemap .aioseop_featured_image {
+		background-image: url(images/XMLSitemaps-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_sitemap .aioseop_featured_image.active {
+		background-image: url(images/XMLSitemaps-Color-Retina.png);
+	}
+	div.aioseop_feature#aioseop_opengraph .aioseop_featured_image {
+		background-image: url(images/SocialMeta-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_opengraph .aioseop_featured_image.active {
+		background-image: url(images/SocialMeta-Color-Retina.png);
+	}
+	div.aioseop_feature#aioseop_importer_exporter .aioseop_featured_image {
+		background-image: url(images/ImporterExporter-BW-Retina.png);
+	}
+	div.aioseop_feature#aioseop_importer_exporter .aioseop_featured_image.active {
+		background-image: url(images/ImporterExporter-Color-Retina.png);
 	}
 	div.aioseop_feature#aioseop_performance .aioseop_featured_image {
 		background-image: url(images/Performance-BW-Retina.png);
@@ -507,6 +526,54 @@ div#aioseop_snippet > div > span {
 table.aioseop_table tr:nth-child(odd) {
 	background-color: #EEE;
 }
+.All_in_One_SEO_Pack_Opengraph table.aioseop_table tr:nth-child(odd) {
+	background-color: rgba( 238, 238, 238, 0.5 );
+}
+table.aioseop_table td {
+	width: 23%;
+}
+.All_in_One_SEO_Pack_Opengraph table.aioseop_table {
+	width: 80%;
+	max-width: 800px;
+	display: block;
+	border-top: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+}
+.All_in_One_SEO_Pack_Opengraph table.aioseop_table th {
+	width: 18%;
+	border-right: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+.All_in_One_SEO_Pack_Opengraph div.aioseop_meta_info {
+	margin-top:10px;
+	border: 1px solid #dfdfdf;
+	width:80%;
+	max-width:800px;
+}
+.All_in_One_SEO_Pack_Opengraph table.aioseop_table tr.aioseop_table_header th {
+	background: #f1f1f1;
+	background-image: -webkit-gradient(linear,left bottom,left top,from(#ececec),to(#f9f9f9));
+	background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);
+	background-image: -moz-linear-gradient(bottom,#ececec,#f9f9f9);
+	background-image: -o-linear-gradient(bottom,#ececec,#f9f9f9);
+	background-image: linear-gradient(to top,#ececec,#f9f9f9);
+	padding: 5px;
+	border-bottom-color: #dfdfdf;
+	text-shadow: #fff 0 1px 0;
+	-webkit-box-shadow: 0 1px 0 #fff;
+	box-shadow: 0 1px 0 #fff;
+}
+.All_in_One_SEO_Pack_Opengraph table.aioseop_table td {
+	border-right: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+#aiosp_sitemap_addl_pages_metabox table.aioseop_table td {
+	width: 25%;
+	padding-left: 5%;
+}	
+table.aioseop_table td, table.aioseop_table th {
+	padding: 3px;
+}
 .aioseop_top_label .aioseop_option_input,
 .aioseop_no_label .aioseop_option_input {
 	width: 100%;
@@ -553,7 +620,19 @@ table.aioseop_table tr:nth-child(odd) {
 	padding: 5px 0px;
 	margin: 0px 477px 15px 0px !important;
 }
-
+#aioseop_opengraph_settings .inside {
+	margin: 0;
+	padding: 0;
+}
+#aioseop_opengraph_settings_image_wrapper img {
+	width: auto;
+	height: 75px;
+}
+#aioseop_opengraph_settings_image_wrapper .aioseop_option_setting_label {
+	max-width: 160px;
+	min-width: 100px;
+	width: 30%;
+}
 .aioseop_input input[type="checkbox"], 
 .aioseop_input input[type="radio"] {
 	vertical-align: text-bottom;
@@ -593,6 +672,9 @@ table.aioseop_table tr:nth-child(odd) {
 }
 .aioseop_sidebar #side-sortables {
 	width: 98%;
+}
+#aioseop_opengraph_settings .aioseop_option_label {
+	width: 30%;
 }
 .aioseop_tabs {
 	padding-top: 6px;

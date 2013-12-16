@@ -592,7 +592,7 @@ msgid "Contact YARPP"
 msgstr "YARPP 情報"
 
 # @ default
-#: options.php:31
+#: yarpp_options.php:31
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
@@ -603,7 +603,7 @@ msgstr ""
 "\">%4$s の詳細を読む</a>、あるいは<a href=\"%5$s\">インストールする</a>。"
 
 # @ yarpp
-#: options.php:35
+#: yarpp_options.php:35
 #, php-format
 msgid ""
 "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
@@ -613,7 +613,7 @@ msgstr ""
 "\">ダウンロード</a>してみてください。"
 
 # @ yarpp
-#: options.php:43
+#: yarpp_options.php:43
 msgid ""
 "The MyISAM check has been overridden. You may now use the \"consider titles"
 "\" and \"consider bodies\" relatedness criteria."
@@ -622,7 +622,7 @@ msgstr ""
 "能が使えるようになりました。"
 
 # @ yarpp
-#: options.php:51
+#: yarpp_options.php:51
 #, php-format
 msgid ""
 "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
@@ -638,7 +638,7 @@ msgstr ""
 "るので、このふたつのオプションは使えません。"
 
 # @ yarpp
-#: options.php:53
+#: yarpp_options.php:53
 #, php-format
 msgid ""
 "To restore these features, please update your <code>%s</code> table by "
@@ -651,7 +651,7 @@ msgstr ""
 "エリはデータは一切消しません。"
 
 # @ yarpp
-#: options.php:55
+#: yarpp_options.php:55
 #, php-format
 msgid ""
 "If, despite this check, you are sure that <code>%s</code> is using the "
@@ -661,38 +661,38 @@ msgstr ""
 "ンをどうぞ："
 
 # @ yarpp
-#: options.php:58
+#: yarpp_options.php:58
 msgid "Trust me. Let me use MyISAM features."
 msgstr "MyISAM を使ってます。嘘じゃないから。"
 
 # @ yarpp
-#: options.php:73
+#: yarpp_options.php:73
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPPのデータベースは修正されました。"
 
 # @ yarpp
-#: options.php:75
+#: yarpp_options.php:75
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPPのデータベースに修正できないエラーが発生しました。"
 
 # @ yarpp
-#: options.php:76
+#: yarpp_options.php:76
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "<a href=\"%s\" target=\"_blank\">手動 SQL 設定</a>を参考ください。"
 
 # @ yarpp
-#: options.php:139
+#: yarpp_options.php:139
 msgid "Options saved!"
 msgstr "設定の変更は保存されました。"
 
 # @ yarpp
-#: options.php:145
+#: yarpp_options.php:145
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "関連記事 (YARPP) 設定"
 
 # @ yarpp
-#: options.php:153
+#: yarpp_options.php:153
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr ""
@@ -700,7 +700,7 @@ msgstr ""
 "a>"
 
 # @ default
-#: options.php:194
+#: yarpp_options.php:194
 msgid "Save Changes"
 msgstr ""
 

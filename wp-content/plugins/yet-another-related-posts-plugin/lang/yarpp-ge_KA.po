@@ -45,40 +45,40 @@ msgstr "%f არის მიმდინარე და მსგავსი
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "მსგავსი ჩანაწერები შეგიძლიათ ნახოთ <a href='%s'>მსგავსი ჩანაწერებისთვის ჩაშენებული პროგრამით</a>."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM შემოწმდა. ახლა შეგიძლიათ გამოიყენოთ “სათაურების განხილვისა” და “ტექტების განხილვის” შესაბამისი კრიტერიუმები."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP “სათაურების განხილვისა” და “ტექსტის განხილვის” მსგავსების კრიტერიუმების გამოყენებისთვის საჭიროა, რომ თქვენმა <code>%s</code> ცხრილმა გამოიყენოს <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM შემნახავი სისტემა</a>, მაგრამ, როგორც ჩანს, ცხრილი იყენებს <code>%s</code> სისტემას. ეს ორი ოფცია გამორთულია."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "თუ გსურთ აღადგინოთ ეს იფციები, გთხოვთ, შეცვალოთ თქვენი ცხრილი <code>%s</code>შემდეგი SQL ინსტრუქციით: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code><br />ცხრილის შეცვლის დროს მონაცემები არ უნდა დაიკარგის, მაგრამ შესაძლოა გაუთვალისწინებელი რამ მოხდეს."
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "თუ ამ ოფციის მიუხედავად დარწმუნებული ხართ, რომ ცხრილი <code>%s</code> გამოიყენებს MyISAM-ს, დააჭირეთ ამ ჯადოსნურ ღილაკს:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "მენდეთ. ნება მომეცით გამოვიყენო MyISAM."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP მონაცემთა ბაზა შეიცავდა შეცდომას, მაგრამ ის გასწორდა."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP მონაცემთა ბაზა შეიცავდა შეცდომას, რომელიც არ გასწორდა.."
@@ -102,7 +102,7 @@ msgstr "განიხილე"
 msgid "consider with extra weight"
 msgstr "განიხილე დამატებითი წონით"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "YARPP-ის სხვა შესაბამისი ჩანაწერები"
@@ -382,7 +382,7 @@ msgstr "მინიმუმ ერთი %s უნდა იყოს სა�
 msgid "require more than one %s in common"
 msgstr "ერთზე მეტი %s უნდა იყოს საერთო"
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "პარამეტრები შენახულია!"
@@ -392,17 +392,17 @@ msgstr "პარამეტრები შენახულია!"
 msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
 msgstr "რაც მეტია მსგავსების ზღურბლი, მით უფრო მკაცრად ხდება არჩევა და მით უფრო ნაკლები ჩანაწერი იძებნება. ზღურბლის ნაგულისხმევი ზომაა 5. თუ გსურთ მოძებნოთ ზღურბლის დასაშვები მნიშვნელობები, მოსინჯეთ ზოგიერთი შეტყობინებების მაგალითზე. შეძლებთ ნახოთ რომელი ჩანაწერები გამოდის ზემოთ და მსგავსების რა მნიშვნელობა აქვს მათ, რის მიხედვითაც შეგიძლიათ განსაზღვროთ თქვენი საიტისთვის მისაღები დონე."
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "პარამეტრების შეცვლა"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "ნამდვილად გსურთ საწყისი პარამეტრების დაბრუნება?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "საწყისი პარამეტრების დაბრუნება"
@@ -433,7 +433,7 @@ msgstr "თვე"
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr "ნაჩვენები იქნას მხოლოდ შემდეგიდან დაწყებული ჩანაწერები:  NUMBER UNITS"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
