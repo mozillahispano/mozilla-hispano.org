@@ -1,8 +1,9 @@
 <?php
 /*
-Version: 131206
+Version: 140104
 Text Domain: quick-cache
 Plugin Name: Quick Cache
+Network: true
 
 Author: s2Member® / WebSharks, Inc.
 Author URI: http://www.s2member.com

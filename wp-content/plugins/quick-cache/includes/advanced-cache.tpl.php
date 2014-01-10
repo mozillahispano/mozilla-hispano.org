@@ -25,6 +25,7 @@ namespace quick_cache // Root namespace.
 		if(!defined('QUICK_CACHE_DEBUGGING_ENABLE')) define('QUICK_CACHE_DEBUGGING_ENABLE', '%%QUICK_CACHE_DEBUGGING_ENABLE%%');
 		if(!defined('QUICK_CACHE_ALLOW_BROWSER_CACHE')) define('QUICK_CACHE_ALLOW_BROWSER_CACHE', '%%QUICK_CACHE_ALLOW_BROWSER_CACHE%%');
 		if(!defined('QUICK_CACHE_GET_REQUESTS')) define('QUICK_CACHE_GET_REQUESTS', '%%QUICK_CACHE_GET_REQUESTS%%');
+		if(!defined('QUICK_CACHE_FEEDS_ENABLE')) define('QUICK_CACHE_FEEDS_ENABLE', '%%QUICK_CACHE_FEEDS_ENABLE%%');
 
 		/*
 		 * Cache directory. Max age; e.g. `7 days` — anything compatible w/ `strtotime()`.
@@ -105,9 +106,11 @@ namespace quick_cache // Root namespace.
 					if(isset($_SERVER['REMOTE_ADDR'], $_SERVER['SERVER_ADDR']) && $_SERVER['REMOTE_ADDR'] === $_SERVER['SERVER_ADDR'])
 						if(!$this->is_auto_cache_engine() && !$this->is_localhost()) return;
 
-					if(preg_match('/\/(?:wp\-[^\/]+|xmlrpc)\.php[?$]/', $_SERVER['REQUEST_URI'])) return;
-					if(is_admin() || preg_match('/\/wp-admin[\/?$]/', $_SERVER['REQUEST_URI'])) return;
-					if(is_multisite() && preg_match('/\/files[\/?$])/', $_SERVER['REQUEST_URI'])) return;
+					if(!QUICK_CACHE_FEEDS_ENABLE && $this->is_feed()) return;
+
+					if(preg_match('/\/(?:wp\-[^\/]+|xmlrpc)\.php(?:[?]|$)/', $_SERVER['REQUEST_URI'])) return;
+					if(is_admin() || preg_match('/\/wp-admin(?:[\/?]|$)/', $_SERVER['REQUEST_URI'])) return;
+					if(is_multisite() && preg_match('/\/files(?:[\/?]|$)/', $_SERVER['REQUEST_URI'])) return;
 
 					if($this->is_like_user_logged_in()) return; // Lite version cannot enable user caching.
 
@@ -117,10 +120,17 @@ namespace quick_cache // Root namespace.
 					$http_host_nps  = preg_replace('/\:[0-9]+$/', '', $_SERVER['HTTP_HOST']);
 					$host_dir_token = '/'; // Assume NOT multisite; or running it's own domain.
 
-					if(is_multisite() && (!defined('SUBDOMAIN_INSTALL') || !SUBDOMAIN_INSTALL) && (!defined('VHOST') || !VHOST))
-						{ // Multisite w/ sub-directories; need sub-directory. We MUST validate against blog paths too.
+					if(is_multisite() && (!defined('SUBDOMAIN_INSTALL') || !SUBDOMAIN_INSTALL))
+						{ // Multisite w/ sub-directories; need a valid sub-directory token.
 
-							list($host_dir_token) = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+							$base = '/'; // Initial default value.
+							if(defined('PATH_CURRENT_SITE')) $base = PATH_CURRENT_SITE;
+							else if(!empty($GLOBALS['base'])) $base = $GLOBALS['base'];
+
+							$uri_minus_base = // Supports `/sub-dir/child-blog-sub-dir/` also.
+								preg_replace('/^'.preg_quote($base, '/').'/', '', $_SERVER['REQUEST_URI']);
+
+							list($host_dir_token) = explode('/', trim($uri_minus_base, '/'));
 							$host_dir_token = (isset($host_dir_token[0])) ? '/'.$host_dir_token.'/' : '/';
 
 							if($host_dir_token !== '/' // Perhaps NOT the main site?
@@ -295,6 +305,20 @@ namespace quick_cache // Root namespace.
 					if(!empty($_SERVER['HTTP_USER_AGENT']))
 						if(stripos($_SERVER['HTTP_USER_AGENT'], __NAMESPACE__) !== FALSE)
 							return ($is = TRUE);
+
+					return ($is = FALSE);
+				}
+
+			public function is_feed()
+				{
+					static $is; // Cache.
+					if(isset($is)) return $is;
+
+					if(preg_match('/\/feed(?:[\/?]|$)/', $_SERVER['REQUEST_URI']))
+						return ($is = TRUE);
+
+					if(isset($_REQUEST['feed']))
+						return ($is = TRUE);
 
 					return ($is = FALSE);
 				}

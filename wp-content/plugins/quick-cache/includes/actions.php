@@ -13,6 +13,23 @@ namespace quick_cache // Root namespace.
 						if(method_exists($this, $action)) $this->{$action}($args);
 				}
 
+			public function wipe_cache($args)
+				{
+					if(!current_user_can(plugin()->network_cap))
+						return; // Nothing to do.
+
+					if(empty($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce']))
+						return; // Unauthenticated POST data.
+
+					$counter = plugin()->wipe_cache(TRUE); // Counter.
+
+					$redirect_to = self_admin_url('/admin.php'); // Redirect preparations.
+					$query_args  = array('page' => __NAMESPACE__, __NAMESPACE__.'__cache_wiped' => '1');
+					$redirect_to = add_query_arg(urlencode_deep($query_args), $redirect_to);
+
+					wp_redirect($redirect_to).exit(); // All done :-)
+				}
+
 			public function clear_cache($args)
 				{
 					if(!current_user_can(plugin()->cap))
@@ -45,13 +62,13 @@ namespace quick_cache // Root namespace.
 					   || strpos(basename(plugin()->options['cache_dir']), 'wp-') === 0 // Reserved name?
 					) plugin()->options['cache_dir'] = plugin()->default_options['cache_dir'];
 
-					update_option(__NAMESPACE__.'_options', $args); // Blog-specific.
-					if(is_multisite()) update_site_option(__NAMESPACE__.'_options', $args);
+					update_option(__NAMESPACE__.'_options', plugin()->options); // Blog-specific.
+					if(is_multisite()) update_site_option(__NAMESPACE__.'_options', plugin()->options);
 
 					$redirect_to = self_admin_url('/admin.php'); // Redirect preparations.
 					$query_args  = array('page' => __NAMESPACE__, __NAMESPACE__.'__updated' => '1');
 
-					plugin()->auto_clear_cache(); // May produce a notice.
+					plugin()->auto_wipe_cache(); // May produce a notice.
 
 					if(plugin()->options['enable']) // Enable.
 						{
@@ -87,12 +104,14 @@ namespace quick_cache // Root namespace.
 						return; // Unauthenticated POST data.
 
 					delete_option(__NAMESPACE__.'_options'); // Blog-specific.
+					delete_option('ws_plugin__qcache_options'); // Blog-specific.
 					if(is_multisite()) delete_site_option(__NAMESPACE__.'_options');
+					plugin()->options = plugin()->default_options;
 
 					$redirect_to = self_admin_url('/admin.php'); // Redirect preparations.
 					$query_args  = array('page' => __NAMESPACE__, __NAMESPACE__.'__restored' => '1');
 
-					plugin()->auto_clear_cache(); // May produce a notice.
+					plugin()->auto_wipe_cache(); // May produce a notice.
 
 					if(plugin()->options['enable']) // Enable.
 						{
@@ -117,6 +136,42 @@ namespace quick_cache // Root namespace.
 					$redirect_to = add_query_arg(urlencode_deep($query_args), $redirect_to);
 
 					wp_redirect($redirect_to).exit(); // All done :-)
+				}
+
+			public function dismiss_notice($args)
+				{
+					if(!current_user_can(plugin()->cap))
+						return; // Nothing to do.
+
+					if(empty($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce']))
+						return; // Unauthenticated POST data.
+
+					$args = array_map('trim', stripslashes_deep((array)$args));
+					if(empty($args['key'])) return; // Nothing to dismiss.
+
+					$notices = (is_array($notices = get_option(__NAMESPACE__.'_notices'))) ? $notices : array();
+					unset($notices[$args['key']]); // Dismiss this notice.
+					update_option(__NAMESPACE__.'_notices', $notices);
+
+					wp_redirect(remove_query_arg(__NAMESPACE__)).exit();
+				}
+
+			public function dismiss_error($args)
+				{
+					if(!current_user_can(plugin()->cap))
+						return; // Nothing to do.
+
+					if(empty($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce']))
+						return; // Unauthenticated POST data.
+
+					$args = array_map('trim', stripslashes_deep((array)$args));
+					if(empty($args['key'])) return; // Nothing to dismiss.
+
+					$errors = (is_array($errors = get_option(__NAMESPACE__.'_errors'))) ? $errors : array();
+					unset($errors[$args['key']]); // Dismiss this error.
+					update_option(__NAMESPACE__.'_errors', $errors);
+
+					wp_redirect(remove_query_arg(__NAMESPACE__)).exit();
 				}
 		}
 

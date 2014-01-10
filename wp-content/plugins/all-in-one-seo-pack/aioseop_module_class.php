@@ -230,15 +230,23 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 		  * @see http://gaarf.info/2009/08/13/xml-string-to-php-array/
 		*/
 		function html_string_to_array( $xmlstr ) {
-		  $doc = new DOMDocument();
-		  $doc->loadHTML( $xmlstr );
-		  return $this->domnode_to_array( $doc->documentElement );
+		  if ( !class_exists( 'DOMDocument' ) ) {
+			return Array();
+		  } else {
+			  $doc = new DOMDocument();
+			  $doc->loadHTML( $xmlstr );
+			  return $this->domnode_to_array( $doc->documentElement );			
+		  }
 		}
 
 		function xml_string_to_array( $xmlstr ) {
-		  $doc = new DOMDocument();
-		  $doc->loadXML( $xmlstr );
-		  return $this->domnode_to_array( $doc->documentElement );
+		  if ( !class_exists( 'DOMDocument' ) ) {
+			  return Array();
+		  } else {
+			  $doc = new DOMDocument();
+			  $doc->loadXML( $xmlstr );
+			  return $this->domnode_to_array( $doc->documentElement );			
+		  }
 		}
 
 		function domnode_to_array( $node ) {

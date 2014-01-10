@@ -1444,7 +1444,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Sitemap' ) ) {
 				'cache_results' => false,
 				'no_found_rows' => true
 			);
-			if ( defined( 'WPML_TM_VERSION' ) ) $defaults['suppress_filters'] = false;
+			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) $defaults['suppress_filters'] = false;
 			$args = wp_parse_args( $args, $defaults );
 			if ( empty( $args['post_type'] ) )
 				return apply_filters( $this->prefix . 'post_filter', Array(), $args );
