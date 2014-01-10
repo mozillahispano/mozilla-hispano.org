@@ -11,59 +11,111 @@
 
 ?>
 <div class="wrap">
-    <div id="ure-settings-header">
-        <div id="icon-ure-options" style="float: left; margin-right: 20px;"><img src="<?php echo URE_PLUGIN_URL . 'images/user-role-editor-page-icon.png'; ?>" alt="User Role Editor icon" height="64" width="105"/></div>
-            <h2><?php esc_html_e('User Role Editor - Options', 'ure'); ?></h2>    
-        </div>
-    <div id="ure-settings-form" style="clear: left;">
-        <hr/>
-        <form method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE; ?>" >   
-            <table id="ure_settings">
-                <tr>
-                    <td><label for="show_admin_role"><?php esc_html_e('Show Administrator role at User Role Editor:', 'ure'); ?></label></td>
-                    <td><input type="checkbox" name="show_admin_role" id="show_admin_role" value="1" 
-                        <?php echo ($show_admin_role == 1) ? 'checked="checked"' : ''; ?>
-                               <?php echo defined('URE_SHOW_ADMIN_ROLE') ? 'disabled="disabled" title="Predefined by \'URE_SHOW_ADMIN_ROLE\' constant at wp-config.php"' : ''; ?> /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="caps_readable"><?php esc_html_e('Show capabilities in the human readable form:', 'ure'); ?></label></td>
-                    <td>
-                        <input type="checkbox" name="caps_readable" id="caps_readable" value="1" 
-                               <?php echo ($caps_readable == 1) ? 'checked="checked"' : ''; ?> /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="show_deprecated_caps"><?php esc_html_e('Show deprecated capabilities:', 'ure'); ?></label></td>
-                    <td>
-                        <input type="checkbox" name="show_deprecated_caps" id="show_deprecated_caps" value="1" 
-                               <?php echo ($show_deprecated_caps == 1) ? 'checked="checked"' : ''; ?> /> 
-                    </td>
-                </tr>      
+    <a href="http://role-editor.com">
+        <div id="ure-icon" class="icon32"><br></div>        
+    </a>    
+    <h2><?php esc_html_e('User Role Editor - Options', 'ure'); ?></h2>            
+
+    <div id="ure_tabs" style="clear: left;">
+        <ul>
+            <li><a href="#ure_tabs-1"><?php esc_html_e('General', 'ure');?></a></li>
 <?php
     if ($this->lib->multisite) {
 ?>
+            <li><a href="#ure_tabs-2"><?php esc_html_e('Multisite', 'ure');?></a></li>
+<?php            
+    }
+?>
+            <li><a href="#ure_tabs-3"><?php esc_html_e('About', 'ure');?></a></li>
+        </ul>
+    <div id="ure_tabs-1">
+    <div id="ure-settings-form">
+        <form method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE; ?>" >   
+            <table id="ure_settings">
                 <tr>
-                     <td>
-                         <label for="allow_edit_users_to_not_super_admin"><?php esc_html_e('Allow create, edit and delete users to not super-admininstrators:', 'ure'); ?></label>
-                     </td>
-                     <td>
-                         <input type="checkbox" name="allow_edit_users_to_not_super_admin" id="allow_edit_users_to_not_super_admin" value="1" 
-                              <?php echo ($allow_edit_users_to_not_super_admin == 1) ? 'checked="checked"' : ''; ?> /> 
-                     </td>
+                    <td>
+                        <input type="checkbox" name="show_admin_role" id="show_admin_role" value="1" 
+                        <?php echo ($show_admin_role == 1) ? 'checked="checked"' : ''; ?>
+                               <?php echo defined('URE_SHOW_ADMIN_ROLE') ? 'disabled="disabled" title="Predefined by \'URE_SHOW_ADMIN_ROLE\' constant at wp-config.php"' : ''; ?> />
+                        <label for="show_admin_role"><?php esc_html_e('Show Administrator role at User Role Editor', 'ure'); ?></label></td>
+                    <td> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="caps_readable" id="caps_readable" value="1" 
+                               <?php echo ($caps_readable == 1) ? 'checked="checked"' : ''; ?> />
+                        <label for="caps_readable"><?php esc_html_e('Show capabilities in the human readable form', 'ure'); ?></label></td>
+                    <td>                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="show_deprecated_caps" id="show_deprecated_caps" value="1" 
+                               <?php echo ($show_deprecated_caps == 1) ? 'checked="checked"' : ''; ?> /> 
+                        <label for="show_deprecated_caps"><?php esc_html_e('Show deprecated capabilities', 'ure'); ?></label></td>
+                    <td>                        
+                    </td>
                 </tr>      
 <?php      
-    }
-
     do_action('ure_settings_show');
 ?>
             </table>
     <?php wp_nonce_field('user-role-editor'); ?>   
+            <input type="hidden" name="ure_tab_idx" value="0" />
             <p class="submit">
-                <input type="submit" class="button-primary" name="user_role_editor_settings_update" value="<?php _e('Save', 'ure') ?>" />
+                <input type="submit" class="button-primary" name="ure_settings_update" value="<?php _e('Save', 'ure') ?>" />
             </p>  
 
         </form>  
-    </div>      
+    </div>   
+    </div><!-- ure_tabs-1 -->
+<?php
+    if ($this->lib->multisite) {
+?>
+    <div id="ure_tabs-2">
+        <div id="ure-settings-form-ms">
+            <form name="ure_settings_ms" method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE; ?>" >
+                <table id="ure_settings_ms">
+                    <tr>
+                         <td>
+                             <input type="checkbox" name="allow_edit_users_to_not_super_admin" id="allow_edit_users_to_not_super_admin" value="1" 
+                                  <?php echo ($allow_edit_users_to_not_super_admin == 1) ? 'checked="checked"' : ''; ?> /> 
+                             <label for="allow_edit_users_to_not_super_admin"><?php esc_html_e('Allow non super administrators to create, edit, and delete users', 'ure'); ?></label>
+                         </td>
+                         <td>
+                         </td>
+                    </tr>      
+                    
+<?php
+                    do_action('ure_settings_ms_show');                    
+?>                    
+                </table>
+<?php wp_nonce_field('user-role-editor'); ?>   
+                <input type="hidden" name="ure_tab_idx" value="1" />
+            <p class="submit">
+                <input type="submit" class="button-primary" name="ure_settings_ms_update" value="<?php _e('Save', 'ure') ?>" />
+            </p>                  
+            </form>
+        </div>   <!-- ure-settings-form-ms --> 
+    </div>  <!-- ure_tabs-2 -->
+<?php
+    }
+?>
+        <div id="ure_tabs-3">
+            <?php $this->lib->about(); ?>
+        </div>
+    </div> <!-- ure_tabs -->
 </div>
-
+<script>
+    jQuery(function() {
+        jQuery('#ure_tabs').tabs();
+<?php
+    if ($ure_tab_idx>0) {
+?>
+        jQuery("#ure_tabs").tabs("option", "active", <?php echo $ure_tab_idx; ?>);    
+<?php
+    }
+?>
+    });    
+</script>

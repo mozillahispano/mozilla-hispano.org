@@ -83,6 +83,10 @@ jQuery("#ure_add_role").button({
                 alert( ure_data.role_name_valid_chars );
                 return false;
               }
+              if  ((/^[0-9]*$/.test(role_id))) {
+                alert( ure_data.numeric_role_name_prohibited );
+                return false;
+              }
               var role_name = $('#user_role_name').val();
               var role_copy_from = $('#user_role_copy_from').val();
               

@@ -1,34 +1,39 @@
 === Yet Another Related Posts Plugin (YARPP) ===
 Contributors: jeffparker
-Author: mitcho (Michael Yoshitaka Erlewine)
-Author URI: http://mitcho.com/
-Plugin URI: http://yarpp.org/
-Tags: related, posts, post, pages, page, RSS, feed, feeds, YARPP
+Author: Adknowledge
+Author URI: http://yarpp.com/
+Plugin URI: http://yarpp.com/
+Tags: feeds, pages, posts, related, rss, yarpp, ads, multisite, multilingual, thumbnails, related posts, related content
 Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 4.0.8
+Tested up to: 3.7.1
+Stable tag: 4.1.1
 License: GPLv2 or later
 
 Display a list of related entries on your site and feeds based on a unique algorithm. Now with thumbnail support built-in!
 
 == Description ==
 
-Yet Another Related Posts Plugin (YARPP) gives you a list of posts and/or pages related to the current entry, introducing the reader to other relevant content on your site.
+Yet Another Related Posts Plugin (YARPP) displays pages, posts, and custom post types related to the current entry, introducing your readers to other relevant content on your site.
 
-1. **Thumbnails**: a beautiful new thumbnail display, for themes which use post thumbnails (featured images) **New in YARPP 4!**
-2. **Related posts, pages, and custom post types**: [Learn about CPT support](http://wordpress.org/extend/plugins/yet-another-related-posts-plugin/other_notes/).
-3. **Templating**: The YARPP templating system gives you advanced control of how your results are displayed.
-4. **An advanced and versatile algorithm**: Using a customizable algorithm considering post titles, content, tags, categories, and custom taxonomies, YARPP finds related content from across your site. [Learn more](http://wordpress.tv/2011/01/29/michael-%E2%80%9Cmitcho%E2%80%9D-erlewine-the-yet-another-related-posts-plugin-algorithm-explained/).
-5. **Caching**: YARPP is performant, caching related posts data as your site is visited.
-6. **Related posts in feeds**: Display related posts in RSS feeds with custom display options.
+**YARPP Basic Features**
+-----------------------------------------
+* **Thumbnails or list view** of related content.
+* **Related posts, pages, and custom post types**.
+* **Templating**: The YARPP templating system gives you advanced control of how your results are displayed.
+* **An advanced and versatile algorithm**: Using a customizable algorithm considering post titles, content, tags, categories, and custom taxonomies, YARPP finds related content from across your site. [Learn more](http://wordpress.tv/2011/01/29/michael-%E2%80%9Cmitcho%E2%80%9D-erlewine-the-yet-another-related-posts-plugin-algorithm-explained/).
+* **Caching**: YARPP is performant, caching related posts data as your site is visited.
+* **Related posts in feeds**: Display related posts in RSS feeds with custom display options.
 
-This plugin requires PHP 5, MySQL 4.1, and WordPress 3.3 or greater.
+This plugin requires PHP 5, MySQL 4.1, and WordPress 3.3 or greater. See [the FAQ](http://wordpress.org/plugins/yet-another-related-posts-plugin/faq/) for answers to common questions.
 
-= A note on support (June 2010) =
+**Enable YARPP Pro for Powerful Enhancements**
+-------------------------------------------
+* Make money by displaying relevant sponsored ads.
+* Customize thumbnail display through the user interface.
+* Pull related content from multiple domains.
+* Get detailed reporting about your related content list.
 
-I have begun instituting a stricter policy of not responding to support inquiries via email, instead directing senders to the appropriate WordPress.org forum, [here](http://wordpress.org/support/plugin/yet-another-related-posts-plugin).
-
-I try to respond to inquiries on the forums on a regular basis and hope to build a community of users who can learn from each other's questions and experiences and can support one another. I ask for your understanding on this matter.
+[Learn more about the new YARPP Pro enhancements!](http://yarpp.com)
 
 = Testimonials =
 
@@ -70,7 +75,7 @@ Make sure the "display related posts in feeds" option is turned on if you would 
 
 = Widget =
 
-Related posts can also be displayed as a widget. Go to the Design > Widgets options page and add the Related Posts widget. The widget will only be displayed on single entry (permalink) pages. The widget can be used even if the "auto display" option is turned off.
+Related posts can also be displayed as a widget. Go to the Appearance > Widgets options page and add the Related Posts widget. The widget will only be displayed on single entry (permalink) pages. The widget can be used even if the "auto display" option is turned off.
 
 = Custom display through templates =
 
@@ -78,11 +83,15 @@ YARPP allows the advanced user with knowledge of PHP to customize the display of
 
 == Frequently Asked Questions ==
 
-If your question isn't here, ask your own question at [the WordPress.org forums](http://wordpress.org/support/plugin/yet-another-related-posts-plugin). *Please do not email with questions.* I'd also appreciate if you would tell me how you found out about YARPP, by taking [this quick five-question survey](http://www.surveymonkey.com/s/Z278L88). Thanks for your feedback!
+**Common Questions about YARPP Basic**
+
+Below are Frequently Asked Questions about YARPP basic. For questions about the new YARPP Pro enhancements, please visit the [YARPP Pro FAQ](http://www.yarpp.com/faq).
+
+If your question isn't here, ask your own question at [the WordPress.org forums](http://wordpress.org/support/plugin/yet-another-related-posts-plugin). We'd also appreciate if you would tell us how you found out about YARPP, by taking [this quick five-question survey](http://www.surveymonkey.com/s/Z278L88). Thanks for your feedback!
 
 = Many pages list "no related posts." =
 
-Most likely you have "no related posts" right now because the default "match threshold" is too high. Here's what I recommend to find an appropriate match threshold: lower your match threshold in the YARPP options to something very low, like 1. (If you don't see the match threshold, you may need to display the "Relatedness" options via the "Screen Options" tab at the top.) Most likely the really low threshold will pull up many posts that aren't actually related (false positives), so look at some of your posts' related posts and their match scores. This will help you find an appropriate threshold. You want it lower than what you have now, but high enough so it doesn't have many false positives.
+Most likely you have "no related posts" right now because the default "match threshold" is too high. Here's what I recommend to find an appropriate match threshold: lower your match threshold in the YARPP "Relatedness" options to something very low, like 1. (If you don't see the match threshold, you may need to display the "Relatedness" options via the "Screen Options" tab at the top.) Most likely the really low threshold will pull up many posts that aren't actually related (false positives), so look at some of your posts' related posts and their match scores. This will help you find an appropriate threshold. You want it lower than what you have now, but high enough so it doesn't have many false positives.
 
 = How can I move the related posts display? =
 
@@ -131,9 +140,11 @@ Once you save any CSS changes, empty your browser's cache and reload your page t
 
 = I'm using the Thumbnails display. How can I change the thumbnail size? =
 
-The default YARPP thumbnail size is 120px by 120px. The thumbnail size can be specified programmatically by adding `add_image_size( 'yarpp-thumbnail', $width, $height, true );` to your theme's `functions.php` file with appropriate width and height variables. In the future I may add some UI to the settings to also set this. Feedback is requested on whether this is a good idea.
+The default YARPP thumbnail size is 120px by 120px. The thumbnail size can be specified programmatically by adding `add_image_size('yarpp-thumbnail', $width, $height, true);` to your theme's `functions.php` file with appropriate width and height variables. In the future I may add some UI to the settings to also set this. Feedback is requested on whether this is a good idea.
 
-Each time you change YARPP's thumbnail dimensions like this, you will probably want to have WordPress regenerate appropriate sized thumbnails for all of your images. I highly recommend the [Regenerate Thumbnails](http://wordpress.org/extend/plugins/regenerate-thumbnails/) plugin for this purpose. See also the next question.
+Each time you change YARPP's thumbnail dimensions like this, you will probably want to have WordPress regenerate appropriate sized thumbnails for all of your images. I highly recommend the [Regenerate Thumbnails](http://wordpress.org/extend/plugins/regenerate-thumbnails/) plugin for this purpose.
+
+Please note that, by enabling the YARPP Pro enhancements, you can customize the thumbnail display using the admin interface instead of through PHP code.
 
 = I'm using the Thumbnails display. Why aren't the right size thumbnails being served? =
 
@@ -251,13 +262,13 @@ true); // third argument: (optional) true to echo the HTML block; false to retur
 
 Options which are not specified will default to those specified in the YARPP settings page. Additionally, if you are using the built-in template rather than specifying a custom template file in `template`, the following arguments can be used to override the various parts of the builtin template: `before_title`, `after_title`, `before_post`, `after_post`, `before_related`, `after_related`, `no_results`, `excerpt_length`.
 
-If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related($args, $reference_ID)`  and  `yarpp_related_exist($args, $reference_ID)`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
+If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related( $args, $reference_ID )`  and  `yarpp_related_exist( $args, $reference_ID )`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
 
 Note that custom YARPP queries using the functions mentioned here are *not* cached in the built-in YARPP caching system. Thus, if you notice any performance hits, you may need to write your own code to cache the results.
 
 = Does YARPP support custom taxonomies? =
 
-Yes. Any taxonomy, including custom taxonomies, may be specified in the `weight` or `require_tax` arguments in a custom display as above. `term_taxonomy_id`s specified in the `exclude` argument may be of any taxonomy.
+Yes. Any taxonomy, including custom taxonomies, may be specified in the `weight` or `require_tax` arguments in a custom display as above. `term_taxonomy_id` specified in the `exclude` argument may be of any taxonomy.
 
 If you would like to choose custom taxonomies to choose in the YARPP settings UI, either to exclude certain terms or to consider them in the relatedness formula via the UI, the taxonomy must (a) have either the `show_ui` or `yarpp_support` attribute set to true and (b) must apply to either the post types `post` or `page` or both.
 
@@ -310,6 +321,19 @@ YARPP is currently localized in the following languages:
 * Uzbek (`uz_UZ`) by Ali Safarov of [comfi.com](http://www.comfi.com/)
 
 == Changelog ==
+
+= 4.1.1 =
+* Bugfix: Incompatibility with PHP < 5.3.x 
+
+= 4.1 =
+* Added optional YARPP Pro enhancements:
+    + Revenue-generating ad content interspersed with related posts display
+    + Detailed reports for Clicks, Click-Through Rate, and Revenue
+    + Ability to display related content from multiple domains
+    + UI settings for related content display, including thumbnail size and layout
+    + Refined "relatedness" algorithm is now independent of MyISAM or InnoDB engines
+    + "Relatedness" is calculated and stored externally, minimizing server load
+* Based on user feedback, the "Screen Options" section displays all YARPP options panels by default.
 
 = 4.0.8 =
 * The recent 4.0.7 YARPP update included a settings modification to opt in users to our tracking pixel by default. By doing so, our intent was to use this expanded information to better understand the geographic reach of the popular plugin. We have been made aware that this change infringed upon the WordPress guidelines. We apologize for the issue and have remedied the situation in update 4.0.8. Going forward, we would really appreciate your input to help us continue to improve the product. We are primarily looking for country, domain, and date installed information. Please help us make YARPP better by opting in to this information and by filling out our quick, [5 question survey](http://www.surveymonkey.com/s/Z278L88). Thank you.
@@ -817,3 +841,5 @@ Some YARPP options are now hidden by default. You can show them again from the S
 
 = 3.2.2 =
 Requires PHP 5.
+
+

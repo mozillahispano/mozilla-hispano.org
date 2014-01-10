@@ -441,79 +441,79 @@ msgstr "Ocenite YARPP na WordPress.org"
 msgid "Contact YARPP"
 msgstr "Kontaktirajte YARPP"
 
-#: options.php:34
+#: yarpp_options.php:34
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:38
+#: yarpp_options.php:38
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "Postoji nova beta (%s) YARPP-a. Možete je <a href=\"%s\">skinuti ovde</a> na spostveni rizik."
 
-#: options.php:46
+#: yarpp_options.php:46
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM provera je presnimljena. Sada možete korstiti \"razmotri naslove\" and \"razmotri tela\" kriterijume relevantnosti."
 
-#: options.php:54
+#: yarpp_options.php:54
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP-ovi \"razmotri naslove\" and \"razmotri tela\" kriterijumi relevntnosti zahtevaju <code>%s</code> tabelu da bi koristili <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM motoriku skladištenja</a>, ali tabela izgleda da koristi <code>%s</code> motoriku. Ove dve opciju su onemogućene."
 
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Da bi ste povratili ove funkcije, molimo vas ažurirajte <code>%s</code> tabelu pokrećući sledeću SQL direktivu: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . Ništa neće biti obrisano menjanjem motorike tabele, ali može doći do promena u performansi."
 
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Ako, bez obzira na ovu promenu, ste vi sigurni da <code>%s</code> koristi MzISAM motoriku, pritisnite magično dugme:"
 
-#: options.php:61
+#: yarpp_options.php:61
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Veruj mi. Pusti me da koristim MzISAM funkcije."
 
-#: options.php:76
+#: yarpp_options.php:76
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP databaza je imala grešku ali smo je popravili."
 
-#: options.php:78
+#: yarpp_options.php:78
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP databaza ima grešku koju nismo uspeli da ispravimo."
 
-#: options.php:79
+#: yarpp_options.php:79
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Molimo pokušajte <a href=\"%s\" target=\"_blank\">ručno podešavanje SQL-a</a>."
 
-#: options.php:135
+#: yarpp_options.php:135
 #@ yarpp
 msgid "Options saved!"
 msgstr "Opcije snimljene!"
 
-#: options.php:141
+#: yarpp_options.php:141
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "YARPP Opcije"
 
-#: options.php:149
+#: yarpp_options.php:149
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ default
 msgid "Save Changes"
 msgstr ""

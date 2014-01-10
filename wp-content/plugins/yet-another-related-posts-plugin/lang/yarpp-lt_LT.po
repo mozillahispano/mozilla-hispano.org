@@ -57,45 +57,45 @@ msgstr "Panašius įrašus pateikia „<a href='%s'>Yet Another Related Posts Pl
 msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
 msgstr "%f yra panašumo su peržiūrimu įrašu rodiklis. Ši reikšmė yra skirta tik tinklaraščio administratoriui, lankytojai jos nemato."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Trust me. Let me use MyISAM features."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "The YARPP database had an error but has been fixed."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "The YARPP database has an error which could not be fixed."
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "Nuostatos išsaugotos."
@@ -148,7 +148,7 @@ msgstr "Privalo turėti daugiau negu vieną bendrą %s"
 msgid "consider with extra weight"
 msgstr "Turi didelę reikšmę"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "„Yet Another Related Posts Plugin“ įskiepio nuostatos"
@@ -261,7 +261,7 @@ msgstr "When the \"Cross-relate posts and pages\" option is selected, the <code>
 msgid "Show only previous posts?"
 msgstr "Rodyti tik ankstesnius įrašus?"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -470,17 +470,17 @@ msgstr "NAUJIENA!"
 msgid "Before / after (excerpt):"
 msgstr "Prieš / po (ištraukos):"
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "Atnaujinti nuostatas"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "Ar tikrai norite atkurti numatytąsias nuostatas?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "Atkurti nuostatas"
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

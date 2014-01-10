@@ -441,79 +441,79 @@ msgstr "Vota YARPP su WordPress.org"
 msgid "Contact YARPP"
 msgstr "Contatta YARPP"
 
-#: options.php:34
+#: yarpp_options.php:34
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr "E' disponibile una nuova versione di %1$s. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">Versione %4$s nel dettaglio</a> oppure <a href=\"%5$s\">aggiorna automaticamente</a>."
 
-#: options.php:38
+#: yarpp_options.php:38
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "E' disponibile una nuova (%s) beta di Yet Another Related Posts Plugin. Puoi <a href=\"%s\">scaricarla qui</a> a tuo rischio e pericolo."
 
-#: options.php:46
+#: yarpp_options.php:46
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "La verifica MyISAM é stata sovrascritta. Potrai da ora utilizzare \"considera titoli\" e  \"considera contenuti\" come criteri di affinità."
 
-#: options.php:54
+#: yarpp_options.php:54
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "I criteri di affinità YARPP \"considera titoli\" e \"considera contenuti\" necessitano che la tua tabella <code>%s</code> possa utilizzare il <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>. Pare che sia in uso il <code>%s</code> engine. Queste due opzioni sono state disattivate."
 
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Per poter ripristinare queste funzioni dovrai aggiornare la tua tabella <code>%s</code> facendo sì che sia eseguita la seguente direttiva SQL: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . Nessun dato verrà perso modificando la tabella del motore sebbene ne verranno interessate le prestazioni."
 
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Se, nonostante questa nota, fossi certo che <code>%s</code> stia utilizzando il MyISAM engine, premi il pulsante magico:"
 
-#: options.php:61
+#: yarpp_options.php:61
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Abbi fiducia. Lasciami utilizzare le funzioni MyISAM."
 
-#: options.php:76
+#: yarpp_options.php:76
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "Il database di YARPP aveva un errore, ma é stato corretto."
 
-#: options.php:78
+#: yarpp_options.php:78
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "Il database di YARPP ha un errore che non può essere corretto."
 
-#: options.php:79
+#: yarpp_options.php:79
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Prova il <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 
-#: options.php:133
+#: yarpp_options.php:133
 #@ yarpp
 msgid "Options saved!"
 msgstr "Le opzioni sono state salvate!"
 
-#: options.php:139
+#: yarpp_options.php:139
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Opzioni Yet Another Related Posts"
 
-#: options.php:147
+#: yarpp_options.php:147
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "di <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:176
+#: yarpp_options.php:176
 #@ default
 msgid "Save Changes"
 msgstr "Salva le modifiche"

@@ -457,79 +457,79 @@ msgstr "在 WordPress.org 給 YARPP 評分"
 msgid "Contact YARPP"
 msgstr "聯絡 YARPP"
 
-#: options.php:31
+#: yarpp_options.php:31
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:35
+#: yarpp_options.php:35
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "這是 Yet Another Related Posts Plugin 程式的新 beta 版本 (%s)。你可以<a href=\"%s\">點這裡下載</a>。"
 
-#: options.php:43
+#: yarpp_options.php:43
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM 檢查已被重寫。你現在也許可以用 \"consider titles\" 和 \"consider bodies\" 關聯的標準。"
 
-#: options.php:51
+#: yarpp_options.php:51
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr ""
 
-#: options.php:53
+#: yarpp_options.php:53
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "要還原此功能，請執行以下的 SQL 來更新你的 <code>%s</code> 資料表：<code>ALTER TABLE `%s` ENGINE = MyISAM;</code>。不會有任何資料被刪除，但可能會影響到執行效能。"
 
-#: options.php:55
+#: yarpp_options.php:55
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr ""
 
-#: options.php:58
+#: yarpp_options.php:58
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "相信我。讓我使用 MyISAM 功能。"
 
-#: options.php:73
+#: yarpp_options.php:73
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP 資料庫發生錯誤，但已經修復。"
 
-#: options.php:75
+#: yarpp_options.php:75
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP 資料庫發生一個無法修復的錯誤。"
 
-#: options.php:76
+#: yarpp_options.php:76
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "請嘗試<a href=\"%s\" target=\"_blank\">手動 SQL 設定</a>。"
 
-#: options.php:132
+#: yarpp_options.php:132
 #@ yarpp
 msgid "Options saved!"
 msgstr "設定已儲存！"
 
-#: options.php:138
+#: yarpp_options.php:138
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts 設定"
 
-#: options.php:146
+#: yarpp_options.php:146
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:175
+#: yarpp_options.php:175
 #@ default
 msgid "Save Changes"
 msgstr ""

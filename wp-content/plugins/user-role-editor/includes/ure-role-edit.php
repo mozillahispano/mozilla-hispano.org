@@ -13,21 +13,21 @@ if (!defined('URE_PLUGIN_URL')) {
 ?>
 
 <div class="has-sidebar-content">
-<?php
-						$this->display_box_start(__('Select Role and change its capabilities list', 'ure'), 'min-width:820px;');
-?>
-    <div style="float: left;"><?php echo __('Select Role:', 'ure').' '.$this->role_select_html; ?></div>
+  			<div class="postbox" style="float: left; min-width:850px;">
+        	<h3><?php esc_html_e('Select Role and change its capabilities:', 'ure'); ?> <?php echo $this->role_select_html; ?></h3>         
+        	<div class="inside">        
 <?php
   if ($this->caps_readable) {
     $checked = 'checked="checked"';
   } else {
     $checked = '';
   }
-?>
-              <div style="display:inline;float:right;">
-                <input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" 
-                    <?php echo $checked; ?> onclick="ure_turn_caps_readable(0);"/>
-                <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label><br />
+  $caps_access_restrict_for_simple_admin = $this->get_option('caps_access_restrict_for_simple_admin', 0);
+  if (is_super_admin() || !$this->multisite || !class_exists('User_Role_Editor_Pro') || !$caps_access_restrict_for_simple_admin) {
+?>              
+            <input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" 
+                <?php echo $checked; ?> onclick="ure_turn_caps_readable(0);"/>
+            <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label>&nbsp;&nbsp;
 <?php
     if ($this->show_deprecated_caps) {
       $checked = 'checked="checked"';
@@ -35,12 +35,11 @@ if (!defined('URE_PLUGIN_URL')) {
       $checked = '';
     }
 ?>
-                <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" 
-                    <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(0);"/>
-                <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>
-              </div>
-	              
+            <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" 
+                <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(0);"/>
+            <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>              
 <?php
+  }
 if (is_multisite() && !is_network_admin() && is_main_site( get_current_blog_id() ) && is_super_admin()) {
   $hint = __('If checked, then apply action to ALL sites of this Network');
   if ($this->apply_to_all) {

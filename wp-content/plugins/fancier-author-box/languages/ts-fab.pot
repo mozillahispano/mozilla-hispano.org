@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fanciest Author Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-11 10:29-0000\n"
-"PO-Revision-Date: 2013-08-11 10:29-0000\n"
+"POT-Creation-Date: 2013-11-14 09:36+0100\n"
+"PO-Revision-Date: 2013-11-14 09:36+0100\n"
 "Last-Translator: Slobodan Manic <slobodan.manic@gmail.com>\n"
 "Language-Team: ThematoSoup\n"
 "Language: en_US\n"
@@ -82,11 +82,15 @@ msgstr ""
 msgid "see all"
 msgstr ""
 
-#: includes/ts-fab-construct-tabs.php:227
+#: includes/ts-fab-construct-tabs.php:225
+msgid "The following two tabs change content below."
+msgstr ""
+
+#: includes/ts-fab-construct-tabs.php:228
 msgid "Bio"
 msgstr ""
 
-#: includes/ts-fab-construct-tabs.php:229
+#: includes/ts-fab-construct-tabs.php:230
 msgid "Latest Posts"
 msgstr ""
 

@@ -45,40 +45,40 @@ msgstr "%f मौजूदा प्रवेश और इस से संब�
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "संबंधित पोस्ट आप द्वारा लाया <a href='%s'>अभी तक एक अन्य संबंधित प्लगइन डाक</a>."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM जांच अधिरोहित रहा है. अब आप उपयोग कर सकते हैं \"शीर्षकों पर विचार\"और \"शरीर पर विचार\" संबद्धता मानदंड."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPPs \"consider titles\" und \"consider bodies\" Kriterien zur Relevanz verlangen, dass Ihre <code>%s</code> Tabelle die <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM Storage Engine</a> verwendet, die Tabelle scheint aber die <code>%s</code>-Engine zu verwenden. Die zwei Einstellungen wurden deaktiviert."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "इन सुविधाओं को बहाल करने,  कृपया अपने अद्यतन <code>%s</code> निम्नलिखित SQL निर्देश निष्पादित की मेज:<code>ALTER TABLE `%s` ENGINE = MyISAM;</code>. कोई डेटा मिटाया नहीं गया "
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "यदि, इस जांच के बावजूद, तुम्हें यकीन है  <code>%s</code> MyISAM इंजन का उपयोग कर रहा है, यह जादू बटन दबाएँ:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "मेरा विश्वास करो. Lassen Sie mich MyISAM-Features nutzen. झे MyISAM सुविधाओं का उपयोग करने दे ."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP डाटाबेस में एक त्रुटि थी लेकिन तय हो चुकी है."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP डाटाबेस में एक त्रुटि थी लेकिन तय हो चुकी है."
@@ -102,7 +102,7 @@ msgstr "विचार"
 msgid "consider with extra weight"
 msgstr "अतिरिक्त वजन के साथ विचार"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "अभी तक एक अन्य संबंधित पोस्ट प्लगइन विकल्प"
@@ -382,7 +382,7 @@ msgstr "आवश्यकता कम से कम % s"
 msgid "require more than one %s in common"
 msgstr "आवश्यकता से अधिक एक% s"
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "विकल्प बचा लिया!"
@@ -392,17 +392,17 @@ msgstr "विकल्प बचा लिया!"
 msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
 msgstr "मैच सीमा से अधिक, अधिक प्रतिबंधात्मक,  और तुम कम संबंधित पदों पीओगे. डिफ़ॉल्ट मैच दहलीज 5 है. यदि आप एक उचित मैच दहलीज को ढूँढ़ना चाहते हूँ.किसी पद से संबंधित पदों प्रदर्शन और अपने स्कोर पर एक नज़र रखना चाहते हूँ. तुम संबंधित पदों का क्या प्रकार और मैच के स्कोर देख सकते हो और आपकी साइट के लिए एक उचित सीमा निर्धारित सकते हो. "
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "Einstellungen aktualisieren"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "Einstellungen tatsächlich zurücksetzen?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "Einstellungen zurücksetzen"
@@ -447,7 +447,7 @@ msgstr "महीने (s)"
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr "दिखाएँ पिछले NUMBER इकाइयों से ही पोस्ट"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

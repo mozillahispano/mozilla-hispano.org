@@ -90,45 +90,45 @@ msgstr "Eksempel post"
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "Relaterte poster ble vist med <a href='%s'>Yet Another Related Posts Plugin</a>."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "Sjekken av MyISAM har blitt overkjørt. Du kan nå bruke \"vurder titler\" og \"vurder body\" relaterte kriterier."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPPs \"vurder titler\" og \"vurder body\" relaterte kriterier krever din <code>%s</code> tabell for å bruke <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM lagringsmotor</a>, men tabellen ser ut til å bruke <code>%s</code> motoren. Disse to innstillingene har blitt deaktivert."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "For å gjenopprette disse funksjonene, vennligst oppdater din <code>%s</code> tabell ved å kjøre følgende SQL direktiv (kommando): <code>ALTER TABLE `%s` ENGINE = MyISAM;</code>. Ingen data vil bli fjernet ved endringer av tabell-motoren, men det kan være ytelse implikasjoner."
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Dersom, til tross for denne sjekken, du er sikker at <code>%s</code> kjører MyISAM motoren, trykk på denne magiske knappen:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Stol på meg. La meg bruke MyISAM funksjonene."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP databasen hadde en feilmelding, men det har blitt fikset."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP databasen hadde en feilmelding som ikke kunne bli fikset."
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "Innstillingene ble lagret!"
@@ -181,7 +181,7 @@ msgstr "krev at mer enn èn %s er felles"
 msgid "consider with extra weight"
 msgstr "vurder med ekstra vekt"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts Plugin innstillinger"
@@ -294,7 +294,7 @@ msgstr "Når \"Kryss-relatèr poster og sider\" innstillingen er markert, så vi
 msgid "Show only previous posts?"
 msgstr "Vis kun tidligere poster?"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -482,17 +482,17 @@ msgstr "NY!"
 msgid "Before / after (excerpt):"
 msgstr "Før / etter (utdrag):"
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "Oppdater innstillinger"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "Vil du virkelig fjerne alle innstillingene?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "Fjern innstillinger"
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

@@ -45,40 +45,40 @@ msgstr "%f é a concordância determinada pelo YARPP entre este artigo e o artig
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "Artigos parecidos fornecidos por <a href='%s'>Yet Another Related Posts Plugin</a>."
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "O MyISAM-Check foi suspenso. Pode agora utilizar \"consider titles\" e \"consider bodies\" como critério de relevância."
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPPs \"consider titles\" und \"consider bodies\" Os critérios \"consider titles\" und \"consider bodies\" de relevância da YARPP requerem que a sua tabela <code>%s</code> utilize a <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM Storage Engine</a>, mas a tabela parece utilizar a <code>%s</code>-Engine. As duas opções foram desactivadas."
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Para reactivar esta função, execute o código <code>%s</code> com o comando SQL: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code>."
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Se, mesmo depois desta verificação, tiver a certeza de que <code>%s</code> utiliza a MyISAM-Engine, clique no botão mágico:"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Acredite em mim. Deixe-me usar as MyISAM-Features."
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "Ocorreu um erro na base de dados da YARPP que pode contudo ser corrigido."
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "Ocorreu um erro na base de dados da YARPP que não pode ser corrigido."
@@ -102,7 +102,7 @@ msgstr "ter em conta"
 msgid "consider with extra weight"
 msgstr "ter especialmente em conta"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Opções da YARPP"
@@ -382,7 +382,7 @@ msgstr "pelo menos igual a %s"
 msgid "require more than one %s in common"
 msgstr "mais do que igual a %s"
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "Opções gravadas!"
@@ -392,17 +392,17 @@ msgstr "Opções gravadas!"
 msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
 msgstr ""
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "Actualizar opções"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "Deseja mesmo reverter as opções?"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "Reverter opções"
@@ -447,7 +447,7 @@ msgstr ""
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr ""
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

@@ -562,79 +562,79 @@ msgstr "Cette option (facultative) contribuera à l’amélioration des versions
 msgid "Contact YARPP"
 msgstr "Restez en contact avec YARPP"
 
-#: options.php:36
+#: yarpp_options.php:36
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr "Une nouvelle version de %1$s est disponible. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">Afficher les détails de la version %4$s</a> ou <a href=\"%5$s\">lancer la mise à jour automatique</a>."
 
-#: options.php:40
+#: yarpp_options.php:40
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
 msgstr "Une nouvelle version beta (%s) du module d’extension YARPP est disponible. Si vous souhaitez l’essayer, vous pouvez <a href=\"%s\">la télécharger ici</a>."
 
-#: options.php:48
+#: yarpp_options.php:48
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "La vérification MyISAM sera ignorée. Vous pouvez maintenant activer les options “Prendre en compte le titre” et “Prendre en compte le contenu” pour définir le calcul de similarité."
 
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "Les options YARPP “Prendre en compte le titre” et “Prendre en compte le contenu” pour le calcul de similarité requièrent que votre table <code>%s</code> utilise le <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>moteur de classement MyISAM</a>, mais votre table utilise apparemment le moteur <code>%s</code>. Ces deux options ont été désactivées."
 
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "Pour rétablir ces fonctionnalités, mettez à jour votre table <code>%s</code> en exécutant la commande SQL suivante: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code><br />Le changement de moteur de classement n’entraînera pas de perte de données, mais pourra influer sur les performances."
 
-#: options.php:60
+#: yarpp_options.php:60
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "Si, malgré cette vérification, vous êtes certain que <code>%s</code> utilise le moteur MyISAM, cliquez ce bouton magique:"
 
-#: options.php:63
+#: yarpp_options.php:63
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Faites-moi confiance. Laissez-moi utiliser le moteur MyISAM."
 
-#: options.php:78
+#: yarpp_options.php:78
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "La base de données YARPP a rencontré une erreur, mais celle-ci a pu être corrigée."
 
-#: options.php:80
+#: yarpp_options.php:80
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "La base de données YARPP a rencontré une erreur qui n’a pas pu être corrigée."
 
-#: options.php:81
+#: yarpp_options.php:81
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "Essayez <a href=\"%s\" target=\"_blank\">la configuration SQL manuelle</a>."
 
-#: options.php:144
+#: yarpp_options.php:144
 #@ yarpp
 msgid "Options saved!"
 msgstr "Réglages enregistrés."
 
-#: options.php:150
+#: yarpp_options.php:150
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Réglages YARPP"
 
-#: options.php:158
+#: yarpp_options.php:158
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "par <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
-#: options.php:199
+#: yarpp_options.php:199
 #@ default
 msgid "Save Changes"
 msgstr "Enregistrer les réglages"

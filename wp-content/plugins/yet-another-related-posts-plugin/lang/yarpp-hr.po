@@ -482,7 +482,7 @@ msgid "Contact YARPP"
 msgstr "Kontaktiraj YARPP"
 
 # @ default
-#: options.php:31
+#: yarpp_options.php:31
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
@@ -494,7 +494,7 @@ msgstr ""
 "automatski</a>."
 
 # @ yarpp
-#: options.php:35
+#: yarpp_options.php:35
 #, php-format
 msgid ""
 "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
@@ -504,7 +504,7 @@ msgstr ""
 "<a href=\"%s\">preuzeti ovdje</a> na svoj rizik."
 
 # @ yarpp
-#: options.php:43
+#: yarpp_options.php:43
 msgid ""
 "The MyISAM check has been overridden. You may now use the \"consider titles"
 "\" and \"consider bodies\" relatedness criteria."
@@ -513,7 +513,7 @@ msgstr ""
 "\"consider bodies\" kao kriterije za relevantnost."
 
 # @ yarpp
-#: options.php:51
+#: yarpp_options.php:51
 #, php-format
 msgid ""
 "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
@@ -529,7 +529,7 @@ msgstr ""
 "nisu dostupne."
 
 # @ yarpp
-#: options.php:53
+#: yarpp_options.php:53
 #, php-format
 msgid ""
 "To restore these features, please update your <code>%s</code> table by "
@@ -543,7 +543,7 @@ msgstr ""
 "tablice, iako može doći do usporavanja stranice."
 
 # @ yarpp
-#: options.php:55
+#: yarpp_options.php:55
 #, php-format
 msgid ""
 "If, despite this check, you are sure that <code>%s</code> is using the "
@@ -553,45 +553,45 @@ msgstr ""
 "engine, kliknite ovo magično dugme:"
 
 # @ yarpp
-#: options.php:58
+#: yarpp_options.php:58
 msgid "Trust me. Let me use MyISAM features."
 msgstr "Vjeruj mi. Želim koristiti MyISAM značajke."
 
 # @ yarpp
-#: options.php:73
+#: yarpp_options.php:73
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP baza podataka je imala grešku ali je popravljena."
 
 # @ yarpp
-#: options.php:75
+#: yarpp_options.php:75
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP baza podataka je imala grešku koja nije mogla biti popravljena."
 
 # @ yarpp
-#: options.php:76
+#: yarpp_options.php:76
 #, php-format
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 "Molimo pokušajte <a href=\"%s\" target=\"_blank\">ručno podesiti SQL</a>."
 
 # @ yarpp
-#: options.php:132
+#: yarpp_options.php:132
 msgid "Options saved!"
 msgstr "Postavke spremljene!"
 
 # @ yarpp
-#: options.php:138
+#: yarpp_options.php:138
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Postavke Dodatka za Vezane Članke (YARPP)"
 
 # @ yarpp
-#: options.php:146
+#: yarpp_options.php:146
 #, php-format
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 msgstr "od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
 
 # @ default
-#: options.php:175
+#: yarpp_options.php:175
 msgid "Save Changes"
 msgstr "Snimi Promjene"
 

@@ -133,6 +133,7 @@
         $send_ug = array() ;
         $send_filters = array() ;
         $send_uam = array() ;
+        $send_groups = array() ;
 
         //  Loop through the various types of potential recipients
         //  and extract the 
@@ -156,6 +157,10 @@
                     $send_uam[] = $value ;
                     break ;
 
+                case 'groups':
+                    $send_groups[] = $value ;
+                    break ;
+
                 default:
                     $send_roles[] = $value ;
                     break ;
@@ -173,6 +178,9 @@
 
         if (class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS) && !empty($send_uam))
             $recipients = array_merge($recipients, mailusers_get_recipients_from_uam_group($send_uam, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
+        if (class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS) && !empty($send_groups))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_itthinx_groups_group($send_groups, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
 
         if (!empty($send_roles))
             $recipients = array_merge($recipients, mailusers_get_recipients_from_roles($send_roles, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));

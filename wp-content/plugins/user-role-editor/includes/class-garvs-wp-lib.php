@@ -210,6 +210,15 @@ class Garvs_WP_Lib {
   // end of option_selected()
   
   
+  public function get_current_url() {
+      global $wp;
+      $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+      
+      return $current_url;
+  }
+  // end of get_current_url()
+  
+  
 //
 }
 // end of Garvs_WP_Lib class

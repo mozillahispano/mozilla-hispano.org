@@ -220,6 +220,27 @@ function aioseop_overflow_border( el ) {
 }
 
 jQuery(document).ready(function() {
+	jQuery("#poststuff .aioseop_radio_type input[type='radio']").on( 'click', function() {
+		var previousValue = jQuery(this).attr('previousValue');
+		var name = jQuery(this).attr('name');
+		if ( typeof previousValue == 'undefined' ) {
+			if ( jQuery(this).prop( "checked" ) ) {
+				jQuery(this).prop( 'checked', true );
+				jQuery(this).attr('previousValue', 'checked' );
+			} else {
+				jQuery(this).prop( 'checked', false );
+				jQuery(this).attr('previousValue', false );
+			}
+			return;
+		}
+		if (previousValue == 'checked') {
+			jQuery(this).prop('checked', false);
+			jQuery(this).attr('previousValue', false);
+		} else {
+			jQuery("input[name="+name+"]:radio").attr('previousValue', false);
+			jQuery(this).attr('previousValue', 'checked');
+		}
+	});
 	if ( typeof aioseop_data.pointers != 'undefined' ) {
 		jQuery.each(aioseop_data.pointers, function(index, value) {
 			if ( value != 'undefined' && value.pointer_text != '' ) {

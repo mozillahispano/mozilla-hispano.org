@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.6.1
+Version: 4.6.2
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.6.1');
+define( 'MAILUSERS_CURRENT_VERSION', '4.6.2');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -55,6 +55,11 @@ define( 'MAILUSERS_USER_GROUPS_TAXONOMY', 'user-group' );
 //  @see http://wordpress.org/plugins/user-access-manager/
 
 define( 'MAILUSERS_USER_ACCESS_MANAGER_CLASS', 'UserAccessManager' );
+
+//  Enable integration with ItThinx Groups plugin?
+//  @see http://wordpress.org/plugins/groups/
+
+define( 'MAILUSERS_ITTHINX_GROUPS_CLASS', 'Groups_WordPress' );
 
 $mailusers_user_custom_meta_filters = array() ;
 $mailusers_group_custom_meta_filters = array() ;
@@ -1144,96 +1149,6 @@ function mailusers_get_roles( $exclude_id='', $meta_filter = '') {
 	return $roles;
 }
 
-
-/**
- * Get the users based on groups from the User Groups plugin
- * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
- */
-function mailusers_get_user_groups($exclude_id='', $meta_filter = '') {
-	$ug = array();
-
-	$terms = get_terms(MAILUSERS_USER_GROUPS_TAXONOMY, array('hide_empty' => false));
-	foreach ( $terms as $term ) {
-		$users_in_group = mailusers_get_recipients_from_user_groups(array($term->term_id), $exclude_id, $meta_filter);
-		if (!empty($users_in_group)) {
-			$ug[$term->term_id]=$term->name;
-		}
-	}
-	return $ug;
-}
-
-/**
- * Get the users given a term or an array of terms
- * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
- */
-function mailusers_get_recipients_from_user_groups($terms, $exclude_id='', $meta_filter = '') {
-	
-	$ids = get_objects_in_term($terms, MAILUSERS_USER_GROUPS_TAXONOMY);
-	
-	return mailusers_get_recipients_from_ids($ids, $exclude_id, $meta_filter);
-}
-
-/**
- * Get the users based on groups from the User Access Manager plugin
- * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
- */
-function mailusers_get_uam_groups($exclude_id='', $meta_filter = '') {
-    global $wpdb ;
-
-    $groups = $wpdb->get_results("
-        SELECT DISTINCT a.id, a.groupname FROM {$wpdb->prefix}uam_accessgroups a
-		INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.group_id
-		WHERE b.object_type != 'role' ") ;
-
-    foreach ($groups as $group)
-    {
-        $ids = mailusers_get_recipients_from_uam_group($group->id, $exclude_id, $meta_filter) ;
-
-        if (!empty($ids)) $uam[$group->id] = $group->groupname ;
-    }
-
-    return $uam ;
-}
-
-/**
- * Get the users based on groups from the User Access Manager plugin
- * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
- */
-function mailusers_get_recipients_from_uam_group($uam_ids, $exclude_id='', $meta_filter = '') {
-    global $wpdb ;
-
-    //  Make sure we have an array
-    if (!is_array($uam_ids)) $uam_ids = array($uam_ids) ;
-
-    //  No groups?  Return an empty array
-    if (empty($uam_ids)) return array() ;
-
-    //  Prepare tends to wrap stuff in quotes so we need to build up the IN construct
-    //  based on the number of UAM IDs that are provided by the caller.
-
-    $in = '' ;
-
-    foreach ($uam_ids as $id)
-        $in .= '%d' . ($id == end($uam_ids) ? '' : ',') ;
-
-    $ids = array() ;
-
-    $query = $wpdb->prepare("
-		SELECT DISTINCT a.ID FROM $wpdb->users a
-		INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.object_id
-		WHERE b.object_type != 'role' AND b.group_id IN (" . $in . ")", $uam_ids) ;
-
-    //  Get the IDs and put them in the proper format as
-    //  the Query will return an array of Standard Objects
-    foreach ($wpdb->get_results($query) as $id)
-        $ids[] = $id->ID ;
-
-    //  Make sure the list of IDs accounts for the Email Users settings for email
-    $ids = mailusers_get_recipients_from_ids($ids, $exclude_id, $meta_filter) ;
-
-    return $ids ;
-}    
-
 /**
  * Get the users based on group custom meta filters
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
@@ -1633,6 +1548,36 @@ function mailusers_dashboard_widget_function() {
 <?php
 } 
 
+
+/**
+ * Setup Integration with other plugins
+ *
+ */
+add_action( 'plugins_loaded', 'mailusers_plugin_integration' );
+function mailusers_plugin_integration()
+{
+    //  Enable integration with User Groups plugin?
+    //  @see http://wordpress.org/plugins/user-groups/
+
+    if (class_exists(MAILUSERS_USER_GROUPS_CLASS)) :
+        require_once(plugin_dir_path(__FILE__) . 'integration/user-groups.php') ;
+    endif;
+
+    //  Enable integration with User Access Manager plugin?
+    //  @see http://wordpress.org/plugins/user-access-manager/
+
+    if (class_exists(MAILUSERS_USER_ACCESS_MANAGER_CLASS)) :
+        require_once(plugin_dir_path(__FILE__) . 'integration/user-access-manager.php') ;
+    endif;
+
+    //  Enable integration with ItThinx Groups plugin?
+    //  @see http://wordpress.org/plugins/groups/
+
+    if (class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS)) :
+        require_once(plugin_dir_path(__FILE__) . 'integration/itthinx-groups.php') ;
+    endif;
+}
+
 if (MAILUSERS_DEBUG) :
 
 //  Load PHPMailer Class
@@ -1726,7 +1671,6 @@ function mailusers_debug_wp_mail($to, $subject, $mailtext, $headers)
     </form>
 <?php
 }
-
 /**
  * Filter testing functions
  */

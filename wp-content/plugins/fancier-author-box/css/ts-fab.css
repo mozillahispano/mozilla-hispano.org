@@ -30,6 +30,8 @@
 	clear: none;
 	list-style: none !important;
 	margin: 0 5px 0 0 !important;
+	padding: 0 !important;
+	background: none !important;
 }
 .ts-fab-list li:before {
 	display: none !important;
@@ -242,4 +244,12 @@
 }
 .latest-see-all {
 	font-weight: normal;
+}
+
+
+/* Assistive text */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	left: -9999px;
 }

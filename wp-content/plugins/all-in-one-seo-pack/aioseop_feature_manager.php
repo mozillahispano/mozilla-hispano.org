@@ -16,13 +16,15 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Feature_Manager' ) ) {
 			$this->file = __FILE__;									// the current file
 			parent::__construct();
 			$this->module_info = Array( 
-				'sitemap'	  => Array( 'name'			=> __( 'XML Sitemaps', 'all_in_one_seo_pack' ),
+				'sitemap'		=> Array( 'name'		=> __( 'XML Sitemaps', 'all_in_one_seo_pack' ),
 										'description'	=> __( 'Create and manage your XML Sitemaps using this feature and submit your XML Sitemap to Google, Bing/Yahoo and Ask.com.', 'all_in_one_seo_pack' ) ),
+				'opengraph'		=> Array( 'name'		=> __( 'Social Meta', 'all_in_one_seo_pack' ),
+									    'description'	=> __( 'Activate this feature to add Social Meta data to your site to deliver closer integration between your website/blog and Facebook, Twitter, and Google+.', 'all_in_one_seo_pack' ) ),
 				'performance' => Array( 'name'			=> __( 'Performance', 'all_in_one_seo_pack' ),
 										'description'	=> __( 'Optimize performance related to SEO and check your system status.', 'all_in_one_seo_pack' ),
 										'default'	=> 'on' ),
 				'coming_soon' => Array( 'name'			=> __( 'Coming Soon...', 'all_in_one_seo_pack' ),
-										'description'	=> __( 'Social Meta', 'all_in_one_seo_pack' ),
+					 					'description'	=> __( 'File Editor', 'all_in_one_seo_pack' ),
 										'save'		=> false ) );
 
 			// Set up default settings fields

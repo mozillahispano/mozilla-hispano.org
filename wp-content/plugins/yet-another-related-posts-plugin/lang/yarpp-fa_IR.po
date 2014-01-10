@@ -24,35 +24,35 @@ msgstr ""
 msgid "Related Posts"
 msgstr "پست های مرتبط"
 
-#: options.php:63
+#: yarpp_options.php:63
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr ""
 
-#: options.php:65
+#: yarpp_options.php:65
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr ""
 
-#: options.php:67
+#: yarpp_options.php:67
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "اگر فکر می کنید که<code>%s</code> از MyISAM استفاده می کند، روی این تکمه کلیک کنید"
 
-#: options.php:70
+#: yarpp_options.php:70
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "  استفاده کنم MyISAM به من اطمینان کم. اجازه بده از ویژگیهای "
 
-#: options.php:83
+#: yarpp_options.php:83
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr " با یک اشکال مواجه شده که  ترمیم شد  YARPP پایگاه داده"
 
-#: options.php:85
+#: yarpp_options.php:85
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr " با یک اشکال مواجه شده که قابل ترمیم نیست YARPP پایگاه داده   "
@@ -105,7 +105,7 @@ msgstr "بیش از یک %s لازم است"
 msgid "consider with extra weight"
 msgstr "بسیارمهم در نظر گرفته شود"
 
-#: options.php:178
+#: yarpp_options.php:178
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "تـنظیمات افزونه YARPP"
@@ -364,7 +364,7 @@ msgstr "%f امتیاز تطبیق بین پست فعلی و پست مرتبط �
 msgid "Related Posts (YARPP)"
 msgstr "Related Posts (YARPP)"
 
-#: options.php:54
+#: yarpp_options.php:54
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr ""
@@ -382,17 +382,17 @@ msgstr ""
 msgid "more&gt;"
 msgstr "بیشتر&gt;"
 
-#: options.php:114
+#: yarpp_options.php:114
 #@ yarpp
 msgid "Options saved!"
 msgstr "تنظیمات ذخیره شد!"
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Do you really want to reset your configuration?"
 msgstr "آیا واقعا می خواهید تنظیمات را به پیش فرض برگردانید؟"
 
-#: options.php:279
+#: yarpp_options.php:279
 #@ yarpp
 msgid "Update options"
 msgstr "ذخیره تنظیمات"
@@ -402,7 +402,7 @@ msgstr "ذخیره تنظیمات"
 msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
 msgstr "هر چه حداقل تطبیق کمتر شود، نتیجه حساس تر و تعداد پست های مرتبط کمتر می شود. مقدار پیش فرض آن 5 است. برای اینکه مقدار مطلوب آن را بیابید به امتیاز تطبیق برخی از پست ها نگاهی بیاندازید."
 
-#: options.php:280
+#: yarpp_options.php:280
 #@ yarpp
 msgid "Reset options"
 msgstr "تنظیمات از نو"
@@ -451,7 +451,7 @@ msgstr "ماه"
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr "نمایش پست ها از NUMBER UNITS پیش"
 
-#: options.php:46
+#: yarpp_options.php:46
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -543,19 +543,19 @@ msgstr ""
 msgid "Contact YARPP"
 msgstr ""
 
-#: options.php:42
+#: yarpp_options.php:42
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr ""
 
-#: options.php:86
+#: yarpp_options.php:86
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr ""
 
-#: options.php:188
+#: yarpp_options.php:188
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"

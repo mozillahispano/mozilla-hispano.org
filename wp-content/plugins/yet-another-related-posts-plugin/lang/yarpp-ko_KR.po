@@ -46,40 +46,40 @@ msgstr "%f 는 현재 글과 관련 글 사이의 YARPP 매치 점수입니다. 
 msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
 msgstr "관련 글은 <a href='%s'>Yet Another Related Posts 플러그인</a>에 의해 제공됩니다."
 
-#: options.php:46
+#: yarpp_options.php:46
 #@ yarpp
 msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
 msgstr "MyISAM 전용 기능을 강제로 사용했습니다. \"제목을 검토\"와 \"내용을 검토\" 기능을 사용할 수 있습니다."
 
-#: options.php:54
+#: yarpp_options.php:54
 #, php-format
 #@ yarpp
 msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
 msgstr "YARPP의 \"제목을 검토\", \"내용을 검토\" 옵션은 데이터베이스 <code>%s</code> 테이블이 <a href ='http://dev.mysql.com/doc/refman/4.1/ja/myisam.html'>MyISAM</a>이 아닌 경우에 사용할 수 없습니다. 현재 <code>%s</code> 스토레지엔진를 사용하고 있기 때문에,이 두 옵션은 사용할 수 없습니다."
 
-#: options.php:56
+#: yarpp_options.php:56
 #, php-format
 #@ yarpp
 msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
 msgstr "이 기능을 복원하려면, 당신의 <code>%s</code> 테이블을 다음 SQL 지시어를 실행하여 업데이트하세요: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . 성능에 영향을 줄 수 있지만 어떤 데이터도 테이블의 엔진을 변경하여 삭제되진 않습니다."
 
-#: options.php:58
+#: yarpp_options.php:58
 #, php-format
 #@ yarpp
 msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
 msgstr "만약, 이 체크에도 불구하고, 당신은 <code>%s</code> (이)가 MyISAM을 사용하고 있다고 생각한다면, 이 매직 버튼을 누르세요:"
 
-#: options.php:61
+#: yarpp_options.php:61
 #@ yarpp
 msgid "Trust me. Let me use MyISAM features."
 msgstr "믿으세요. 제가 MyISAM 기능을 사용할 수 있게 해주세요."
 
-#: options.php:76
+#: yarpp_options.php:76
 #@ yarpp
 msgid "The YARPP database had an error but has been fixed."
 msgstr "YARPP 데이터베이스에 에러가 있었으나 고쳐졌습니다."
 
-#: options.php:78
+#: yarpp_options.php:78
 #@ yarpp
 msgid "The YARPP database has an error which could not be fixed."
 msgstr "YARPP 데이터베이스에 에러가 있으며 고칠 수가 없습니다."
@@ -102,7 +102,7 @@ msgstr "검토함"
 msgid "consider with extra weight"
 msgstr "신중히 검토함"
 
-#: options.php:139
+#: yarpp_options.php:139
 #@ yarpp
 msgid "Yet Another Related Posts Plugin Options"
 msgstr "Yet Another Related Posts 플러그인 옵션"
@@ -328,7 +328,7 @@ msgstr "최소한 하나의 %s의 공통점이 필요"
 msgid "require more than one %s in common"
 msgstr "하나 이상의 %s의 공통점이 필요"
 
-#: options.php:133
+#: yarpp_options.php:133
 #@ yarpp
 msgid "Options saved!"
 msgstr "옵션이 저장되었습니다!"
@@ -381,7 +381,7 @@ msgstr "월간"
 msgid "Show only posts from the past NUMBER UNITS"
 msgstr "이전 NUMBER UNITS 에서의 글만 보기"
 
-#: options.php:38
+#: yarpp_options.php:38
 #, php-format
 #@ yarpp
 msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
@@ -470,19 +470,19 @@ msgstr "YARPP 웹"
 msgid "Contact YARPP"
 msgstr "YARPP 연락"
 
-#: options.php:34
+#: yarpp_options.php:34
 #, php-format
 #@ default
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
 msgstr "%1$s의 새로운 버전이 사용가능합니다. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">버전 %4$s 세부사항 보기</a> 또는 <a href=\"%5$s\">자동으로 업데이트</a>."
 
-#: options.php:79
+#: yarpp_options.php:79
 #, php-format
 #@ yarpp
 msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
 msgstr "<a href=\"%s\" target=\"_blank\">수동 SQL 설정</a>을 시도해보세요."
 
-#: options.php:147
+#: yarpp_options.php:147
 #, php-format
 #@ yarpp
 msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
@@ -514,7 +514,7 @@ msgstr "%s로부터 비허용:"
 msgid "Rate YARPP on WordPress.org"
 msgstr "WordPress.org에서 YARPP 평가"
 
-#: options.php:176
+#: yarpp_options.php:176
 #@ default
 msgid "Save Changes"
 msgstr "변경 저장"

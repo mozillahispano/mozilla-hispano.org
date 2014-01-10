@@ -224,6 +224,23 @@
                             <?php
                         }
                     }
+
+                    //  Is the ItThinx Groups plugin active?
+                    if (class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS))
+                    {
+                        $prefix = __('Groups', MAILUSERS_I18N_DOMAIN) ;
+                        $targets = mailusers_get_itthinx_groups($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                        foreach ($targets as $key => $value)
+                        {
+                            $index = strtolower($prefix . '-' . $key); ?>
+                            <option value="<?php echo $index; ?>"
+                            <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
+                            </option>
+                            <?php
+                        }
+                    }
                 ?>
                 </select> 
 

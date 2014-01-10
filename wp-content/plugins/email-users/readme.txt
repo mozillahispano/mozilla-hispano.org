@@ -2,19 +2,60 @@
 Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
-Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 4.6.1
-
-A plugin for WordPress which allows you to send an email to the registered blog users. Users can send personal emails to each other. Power users can email groups of users and even notify group of users of posts.
+Requires at least: 3.5.1
+Tested up to: 3.7.1
+Stable tag: 4.6.2
+License: GPL
 
 == Description ==
 
 A plugin for WordPress which allows you to send an email to the registered blog users. Users can send personal emails to each other. Power users can email groups of users and even notify group of users of posts.
 
+== Other ==
+
 All the instructions for installation, the support forums, a FAQ, etc. can be found on the [plugin home page](http://wordpress.org/extend/plugins/email-users/) or on the [plugin overview page](http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/).
 
+= Translation =
+
+Email Users has language translation support for a number of languages.  New languages and updates to existing languages are always welcome.  Thank you to the people who have provided these translations.
+
+1. Spanish (es_ES) - Ponç J. Llaneras (last updated:  4.6.0)
+1. Bulgarian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/) (last update 4.6.2)
+1. Italian (it_IT) - ? (last updated 4.5.1)
+1. German (de_DE) - Tobias Bechtold (last updated 4.4.1)
+1. Persian (fa_IR) - ? (last updated 4.3.6)
+1. French (fr_FR) - Emilie DCCLXI (last updated 4.3.6)
+1. Russian (ru_RU) - ? (last updated 4.3.8)
+1. Chinese (zh_CN) - ? (last updated 4.5.1)
+
+
+== License ==
+
 This plugin is available under the GPL license, which means that it's free. If you use it for a commercial web site, if you appreciate my efforts or if you want to encourage me to develop and maintain it, please consider making a donation using Paypal, a secured payment solution. You just need to click the donate button on the the [plugin overview page](http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/) and follow the instructions.
+
+== Frequently Asked Questions ==
+
+= Does Email Users work with "insert your favorite groups or user management plugin here"? =
+
+Email Users currently supports integration with three (3) groups / user management plugins:
+
+1. [User Groups](http://wordpress.org/plugins/user-groups/)
+1. [User Access Manager](http://wordpress.org/plugins/user-access-manager/)
+1. [ItThinx Groups](http://wordpress.org/plugins/groups/)
+
+If any of these plugins are enabled you see additional group recipients to choose on the Notify and Send to Groups page (assuming there are users in those groups who received mass email and/or notifications).
+
+= Will you add integration with "insert your favorite groups or user management plugin here"? =
+
+Maybe.  If the plugin stores its information as user meta data, you can probably use the Custom Meta Filter functionality to create your own integration.  Other plugins will be considered on a case by case basis and adding integrations tends to be a very low priority.
+
+= My hosting provider limits the number of emails that can be sent.  Does Email Users support this? =
+
+No.  Email Users does not have any "queueing" capability nor is it planned.  Email Users utilizes WordPress' [wp_mail()](http://codex.wordpress.org/Function_Reference/wp_mail) API for sending email.  It is technically possible to develop a plugin that hooks into wp_mail() using [wp_cron()](http://codex.wordpress.org/Function_Reference/wp_cron) that would implement queueing but that is beyond the scope of Email Users.
+
+= How do I know my users are receiving email? =
+
+Unfortunately there is no way to know for sure.  Email Users has a "debug" mode which will allow you to see the composition of the email headers.  Examining this data will allow you to confirm the expected addresses are indeed in the headers.  What happens to the actual email once it is sent using wp_mail() is out of Email Users control and there is no way using WordPress to verify the email was sent and received.
 
 == Custom Filter Usage ==
 
@@ -147,6 +188,12 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.6.2 =
+* Refactored integration with other "Groups" plugins.
+* Added integration support with ItThinx Groups plugin.
+* Fixed language translation issues with several strings on Options page.
+* Updated Bulgarian language translation files.  (thank you Borisa Djuraskovic)
 
 = Version 4.6.1 =
 * Updated Spanish language translation files. (thank you Ponç J. Llaneras)
@@ -337,3 +384,21 @@ function update_publicworks_meta_filter()
 * Code updated to use WordPress Options API for plugin settings.
 * Updated plugin to eliminate WordPress deprecated function notices.
 * Added new User Settings page to the pluin menu where bulk settings can be applied to one or more users.  This page makes reviewing user settings much easier than looking at users one at a time.
+
+== Installation ==
+
+Use the automatic installer from within the WordPress admin, or:
+
+1. Download the .zip file by clicking on the Download button on the right
+1. Unzip the file
+1. Upload the email-users directory to your plugins directory
+1. Go to the Plugins page from within the WordPress administration
+1. Click Activate for Email Users
+1. After activation a new Email Users options menu will appear under Settings.
+1. Visit the Settings page to adjust your Email Users settings as needed.
+
+You can now start sending email or notifications.
+
+== Upgrade Notice ==
+
+After updating Email Users, visit the Plugin Settings page (Dashboard->Settings->Email Users) and check for any new options.  Make any necessary ajustments and save the options.  A notice will appear on the Settings page until the options are saved noting that the plugin version has been updated.
