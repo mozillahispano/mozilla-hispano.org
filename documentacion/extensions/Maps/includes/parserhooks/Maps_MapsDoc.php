@@ -9,7 +9,7 @@
  * @file Maps_MapsDoc.php
  * @ingroup Maps
  *
- * @licence GNU GPL v2+
+ * @licence GNU GPL v3
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsMapsDoc extends ParserHook {
@@ -22,6 +22,15 @@ class MapsMapsDoc extends ParserHook {
 	 * @var string
 	 */
 	protected $language;
+
+	/**
+	 * No LSB in pre-5.3 PHP *sigh*.
+	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
+	 */
+	public static function staticMagic( array &$magicWords, $langCode ) {
+		$instance = new self;
+		return $instance->magic( $magicWords, $langCode );
+	}
 
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
@@ -102,11 +111,11 @@ class MapsMapsDoc extends ParserHook {
 	 * @since 1.0.1
 	 *
 	 * @param string $key
-	 * @param ... $args
+	 * @param array $args
 	 *
 	 * @return string
 	 */
-	protected function msg() {
+	protected function msg( $key ) {
 		$args = func_get_args();
 		$key = array_shift( $args );
 		return wfMsgReal( $key, $args, true, $this->language );
@@ -160,6 +169,9 @@ class MapsMapsDoc extends ParserHook {
 	 * @return string
 	 */
 	protected function getDescriptionRow( Parameter $parameter ) {
+//		$aliases = $parameter->getAliases();
+//		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
+
 		$description = $parameter->getMessage();
 		if ( $description === false ) {
 			$description = $parameter->getDescription();

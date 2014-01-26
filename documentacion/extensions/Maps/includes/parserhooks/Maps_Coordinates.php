@@ -8,11 +8,20 @@
  * 
  * @file Maps_Coordinates.php
  * @ingroup Maps
- *
- * @licence GNU GPL v2+
- * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * 
+ * @author Jeroen De Dauw
  */
 class MapsCoordinates extends ParserHook {
+	
+	/**
+	 * No LSB in pre-5.3 PHP *sigh*.
+	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
+	 */
+	public static function staticMagic( array &$magicWords, $langCode ) {
+		$instance = new self;
+		return $instance->magic( $magicWords, $langCode );
+	}
+	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -43,9 +52,9 @@ class MapsCoordinates extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation;
-		global $egMapsCoordinateDirectional;
+		global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
+		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
+		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
 		
 		$params = array();
 		
@@ -111,7 +120,7 @@ class MapsCoordinates extends ParserHook {
 			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
 		} else {
 			// The coordinates should be valid when this method gets called.
-			throw new MWException( 'Attempt to format an invalid set of coordinates' );
+			throw new Exception( 'Attempt to format an invalid set of coordinates' );
 		}
 		
 		return $output;		
