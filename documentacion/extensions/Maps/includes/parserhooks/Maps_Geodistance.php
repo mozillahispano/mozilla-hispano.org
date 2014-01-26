@@ -8,11 +8,20 @@
  * 
  * @file Maps_Geodistance.php
  * @ingroup Maps
- *
- * @licence GNU GPL v2+
- * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * 
+ * @author Jeroen De Dauw
  */
 class MapsGeodistance extends ParserHook {
+	
+	/**
+	 * No LSB in pre-5.3 PHP *sigh*.
+	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
+	 */
+	public static function staticMagic( array &$magicWords, $langCode ) {
+		$instance = new self;
+		return $instance->magic( $magicWords, $langCode );
+	}
+	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -152,7 +161,7 @@ class MapsGeodistance extends ParserHook {
 			$output = MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
 		} else {
 			// The locations should be valid when this method gets called.
-			throw new MWException( 'Attempt to find the distance between locations of at least one is invalid' );
+			throw new Exception( 'Attempt to find the distance between locations of at least one is invalid' );
 		}
 
 		return $output;
