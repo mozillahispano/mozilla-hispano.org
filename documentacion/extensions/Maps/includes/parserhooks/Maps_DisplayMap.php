@@ -7,20 +7,11 @@
  * 
  * @file Maps_DisplayMap.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsDisplayMap extends ParserHook {
-	
-	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */
-	public static function staticMagic( array &$magicWords, $langCode ) {
-		$instance = new self;
-		return $instance->magic( $magicWords, $langCode );
-	}
-	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -45,33 +36,132 @@ class MapsDisplayMap extends ParserHook {
 	protected function getName() {
 		return 'display_map';
 	}
+
+	/**
+	 * @see ParserHook::getNames()
+	 *
+	 * @since 2.0
+	 *
+	 * @return array
+	 */
+	protected function getNames() {
+		return array( $this->getName(), 'display_point', 'display_points', 'display_line' );
+	}
 	
 	/**
 	 * Returns an array containing the parameter info.
 	 * @see ParserHook::getParameterInfo
+	 *
+	 * TODO: migrate stuff
 	 * 
 	 * @since 0.7
 	 * 
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices;
-		
+		global $egMapsDefaultTitle, $egMapsDefaultLabel;
+
 		$params = MapsMapper::getCommonParameters();
-		
-		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_map'] );
-		$params['mappingservice']->addManipulations( new MapsParamService( 'display_map' ) );
-		$params['mappingservice']->setMessage( 'maps-displaymap-par-mappingservice' );
-		
-		$params['coordinates'] = new Parameter( 'coordinates' );
-		$params['coordinates']->addAliases( 'coords', 'location', 'address' );
-		$params['coordinates']->addCriteria( new CriterionIsLocation() );
-		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['coordinates']->setMessage( 'maps-displaymap-par-coordinates' );
-		$params['coordinates']->setDoManipulationOfDefault( false );
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
-		$params['coordinates']->addManipulations( $manipulation );		
+
+		$params['mappingservice']['feature'] = 'display_map';
+
+		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
+		$params['zoom']['manipulations'] = new MapsParamZoom();
+
+		$params['coordinates'] = array(
+			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
+			'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			'default' => array(),
+			'islist' => true,
+			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
+		);
+
+		$params['title'] = array(
+			'name' => 'title',
+			'default' => $egMapsDefaultTitle,
+		);
+
+		$params['label'] = array(
+			'default' => $egMapsDefaultLabel,
+			'aliases' => 'text',
+		);
+
+		$params['icon'] = array( // TODO: image param
+			'default' => '', // TODO
+		);
+
+		$params['visitedicon'] = array(
+			'default' => '', //TODO: image param
+		);
+
+		$params['lines'] = array(
+			'default' => array(),
+			'criteria' => new CriterionLine( '~' ), // TODO
+			'manipulations' => new MapsParamLine( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['polygons'] = array(
+			'default' => array(),
+			'criteria' => new CriterionPolygon( '~' ), // TODO
+			'manipulations' => new MapsParamPolygon( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['circles'] = array(
+			'default' => array(),
+			'manipulations' => new MapsParamCircle( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['rectangles'] = array(
+			'default' => array(),
+			'manipulations' => new MapsParamRectangle( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['copycoords'] = array(
+			'type' => 'boolean',
+			'default' => false,
+		);
+
+		$params['static'] = array(
+			'type' => 'boolean',
+			'default' => false,
+		);
+
+		$params['wmsoverlay'] = array(
+			'type' => 'string',
+			'default' => false,
+			'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
+			'delimiter' => ';',
+		);
+
+		$params['maxzoom'] = array(
+			'type' => 'integer',
+			'default' => false,
+			'manipulatedefault' => false,
+			'dependencies' => 'minzoom',
+		);
+
+		$params['minzoom'] = array(
+			'type' => 'integer',
+			'default' => false,
+			'manipulatedefault' => false,
+			'lowerbound' => 0,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			if ( !array_key_exists( 'message', $param ) ) {
+				$param['message'] = 'maps-displaymap-par-' . $name;
+			}
+		}
 		
 		return $params;
 	}
@@ -99,7 +189,7 @@ class MapsDisplayMap extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		// Get the instance of the service class. 
+		// Get the instance of the service class.
 		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
 		// Get an instance of the class handling the current parser hook and service. 

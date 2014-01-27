@@ -8,20 +8,11 @@
  * 
  * @file Maps_Finddestination.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsFinddestination extends ParserHook {
-	
-	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */
-	public static function staticMagic( array &$magicWords, $langCode ) {
-		$instance = new self;
-		return $instance->magic( $magicWords, $langCode );
-	}
-	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -52,7 +43,7 @@ class MapsFinddestination extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	 
 		
 		$params = array();
@@ -171,7 +162,7 @@ class MapsFinddestination extends ParserHook {
 			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 		} else {
 			// The location should be valid when this method gets called.
-			throw new Exception( 'Attempt to find a destination from an invalid location' );
+			throw new MWException( 'Attempt to find a destination from an invalid location' );
 		}
 			
 		return $output;
