@@ -1219,3 +1219,10 @@ p.evento-rss {
 	display: none !important;
 }
 
+.social_share_privacy_area.line li div.gplusone {
+	width: 55px !important;
+}
+
+.social_share_privacy_area.line .facebook .fb_like {
+	width: 55px !important;
+}
