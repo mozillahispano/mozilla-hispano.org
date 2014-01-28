@@ -1209,3 +1209,16 @@ p.evento-rss {
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     transition: all 0.25s linear 0s;
 }
+
+/* Social Media buttons */
+.settings_info {
+	display: none !important;
+}
+
+.social_share_privacy_area.line li div.gplusone {
+	width: 55px !important;
+}
+
+.social_share_privacy_area.line .facebook .fb_like {
+	width: 55px !important;
+}

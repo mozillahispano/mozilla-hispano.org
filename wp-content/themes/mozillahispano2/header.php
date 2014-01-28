@@ -49,6 +49,9 @@
 <script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <?php echo pintaJs(); ?>
 
+<!-- Social Media Share config -->
+<script type="application/x-social-share-privacy-settings">{"path_prefix":"http://panzi.github.io/SocialSharePrivacy/","layout":"line","services":{"buffer":{"status":false},"delicious":{"status":false},"disqus":{"status":false},"fbshare":{"status":false},"flattr":{"status":false},"gplus":{"status":true},"hackernews":{"status":false},"linkedin":{"status":false},"mail":{"status":false},"pinterest":{"status":false},"reddit":{"status":false},"stumbleupon":{"status":false},"tumblr":{"status":false},"xing":{"status":false}}}</script>
+
 </head>
 <body <?php body_class(); ?>>
 	<div id="lienzo">
