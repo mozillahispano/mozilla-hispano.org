@@ -5,11 +5,12 @@
  */
 @include_once("cabecera-pie.php");
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <?php echo pintaCss(); ?>
 
@@ -46,8 +47,8 @@
 	}
 ?>
 
-<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
-<?php echo pintaJs(); ?>
+<!-- Social Media Share config -->
+<script type="application/x-social-share-privacy-settings">{"path_prefix":"http://panzi.github.io/SocialSharePrivacy/","layout":"line","services":{"buffer":{"status":false},"delicious":{"status":false},"disqus":{"status":false},"fbshare":{"status":false},"flattr":{"status":false},"gplus":{"status":true},"hackernews":{"status":false},"linkedin":{"status":false},"mail":{"status":false},"pinterest":{"status":false},"reddit":{"status":false},"stumbleupon":{"status":false},"tumblr":{"status":false},"xing":{"status":false}}}</script>
 
 </head>
 <body <?php body_class(); ?>>

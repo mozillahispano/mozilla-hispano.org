@@ -30,7 +30,6 @@
 	text-transform: uppercase;
 	margin-bottom: 3px;
 	padding-bottom: 2px;
-	font-size: 1.05em;
 	color: #989898;
 	margin-top: 20px;
 }
@@ -88,7 +87,6 @@
 
 #page-body {
 	float: left;
-    width: 75%;
 }
 
 #page-footer {
@@ -2329,7 +2327,6 @@ fieldset.quick-login {
 }
 
 fieldset.quick-login input {
-	width: 15%;
 	vertical-align: middle;
 	margin-right: 5px;
 }
