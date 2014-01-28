@@ -13,9 +13,9 @@ get_header();
 
 		<div <?php post_class('portada-individual') ?> id="post-<?php the_ID(); ?>">
 			<h2 class="post-title"><?php the_title(); ?></h2>
-			
+
 			<p class="dia-publicacion"><?php the_time('j F, Y') ?> <?php the_time('G:i');?> por <?php the_author_posts_link(); ?></p>
-			
+
 			<p class="autor-categorias"><span><?php the_tags('', ' ', ''); ?></span></p>
 
 			<div class="texto-portada-individual articulo-single">
@@ -29,7 +29,7 @@ if (is_syndicated() and (get_the_author() !== get_syndication_source())):
     echo '<p><cite class="feed">Publicado por '; the_author(); echo ' en <a href="';  the_syndication_source_link(); echo '">';
     the_syndication_source();
     echo '</a></cite></p>';
-endif; 
+endif;
 ?>
 			</div>
 			<p class="postmetadata alt">
@@ -52,6 +52,9 @@ endif;
 
 						<?php /*}*/ edit_post_link('Editar esta entrada','','.'); ?>
 			</p>
+			<h2>Compartir artículo:</h2>
+				<!-- Social Media buttons -->
+			<div data-social-share-privacy='true'></div>
 		</div>
 
 	<?php comments_template(); ?>
