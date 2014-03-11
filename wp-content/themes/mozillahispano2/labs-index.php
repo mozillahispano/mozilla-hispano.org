@@ -29,27 +29,6 @@ get_header(); ?>
 		<?php endwhile; endif; ?>
 		
 		<div id="labs-sidebar">
-				<h2>Proyectos</h2>
-					<?php 
-							// Vamos a sacar un listado de subpaginas de Labs y con los metadatos de cada una de ellas ;)
-							$parent = $post->ID;
-							
-							query_posts('orderby=date&order=ASC&post_type=page&post_parent='.$parent);
-							
-					 		while (have_posts()) : the_post();
-					?>
-						<div class="col-logo">
-							<a href="<?php the_permalink(); ?>"><img src="<?php echo get_post_meta($post->ID, 'labs_logo', true); ?>" alt="<?php the_title();?>"/></a>
-						</div>
-						
-						<div class="col-proy">
-							<h3><?php echo get_post_meta($post->ID, 'labs_cat', true); ?></h3>
-							<h4><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h4>
-							<p><?php echo get_post_meta($post->ID, 'labs_desc', true); ?></p>
-							<p class="more-info"><a href="<?php the_permalink(); ?>">Más información sobre este proyecto</a></p>
-						</div>
-					<?php endwhile; ?>
-
 				<h2>Colabora en Github</h2>
 
 				<div id="github-block"></div>
