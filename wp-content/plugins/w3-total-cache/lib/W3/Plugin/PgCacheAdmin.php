@@ -146,6 +146,9 @@ class W3_Plugin_PgCacheAdmin extends W3_Plugin {
     function parse_sitemap($url) {
         w3_require_once(W3TC_INC_DIR . '/functions/http.php');
 
+        if (!w3_is_url($url))
+            $url = home_url($url);
+
         $urls = array();
         $response = w3_http_get($url);
 

@@ -225,6 +225,14 @@ class W3_Enterprise_SnsClient extends W3_Enterprise_SnsBase {
     }
 
     /**
+     * Purges/Flushes all enabled caches
+     * @return boolean
+     */
+    function flush_all() {
+        return $this->_prepare_message(array('action' => 'flush_all'));
+    }
+
+    /**
      * Purges/Flushes url from page caches, varnish and cdncache
      * @param string $url
      * @return boolean
@@ -250,7 +258,7 @@ class W3_Enterprise_SnsClient extends W3_Enterprise_SnsBase {
     private function _prepare_message($message) {
         $message_signature = json_encode($message);
         if (isset($this->messages_by_signature[$message_signature]))
-            return;
+            return true;
         $this->messages_by_signature[$message_signature] = '*';
         $this->messages[] = $message;
 
@@ -313,8 +321,13 @@ class W3_Enterprise_SnsClient extends W3_Enterprise_SnsBase {
             
             $backtrace = debug_backtrace();
             $backtrace_optimized = array();
-            foreach ($backtrace as $b)
-                $backtrace_optimized[] = $b['function'] . ' ' . $b['file'] . '#' . $b['line'];
+            foreach ($backtrace as $b) {
+                $opt = isset($b['function']) ? $b['function'] . ' ' : '';
+                $opt .= isset($b['file']) ? $b['file'] . ' ' : '';
+                $opt .= isset($b['line']) ?  '#' . $b['line'] . ' ' : '';
+                $backtrace_optimized[] = $opt;
+
+            }
             $this->_log('Backtrace ', $backtrace_optimized);
             
             $r = $api->publish($this->_topic_arn, $v);

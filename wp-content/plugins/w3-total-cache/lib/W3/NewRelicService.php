@@ -97,10 +97,10 @@ class W3_NewRelicService {
         }
 
         $verified[__('Operating System','w3-total-cache')] = ($os_check) ? $supported_string :
-                                        sprintf(__('Not Supported. %s %s See %s page.', 'w3-total-cache'),
+                                        sprintf(__('Not Supported. (%s %s See %s page.)', 'w3-total-cache'),
                                         $os_name, $os_version,
-                                        '<a href="https://newrelic.com/docs/php/new-relic-for-php#requirements">
-                                        NewRelic requirements</a>'
+                                        '<a href="https://newrelic.com/docs/php/new-relic-for-php#requirements" target="_blank">
+                                        NewRelic Requirements</a>'
                                         );
 
         /**
@@ -108,12 +108,20 @@ class W3_NewRelicService {
          * Or any web server that supports FastCGI using php-fpm
          */
         $server = explode('/', $_SERVER['SERVER_SOFTWARE']);
-        $ws_name = $server[0];
-        $version = explode('.', $server[1]);
-        $ws_version = sprintf('%d.%d', $version[0], $version[1]);
+        $ws_check = false;
+        $ws_name = $_SERVER['SERVER_SOFTWARE'];
+        $ws_version = '';
+
+        if (sizeof($server) > 1) {
+            $ws_name = $server[0];
+            $ws_version = $server[1];
+            if (sizeof($version = explode('.', $ws_version))>1)
+                $ws_version = sprintf('%d.%d', $version[0], $version[1]);
+        }
         switch (true){
             case w3_is_apache():
-                $ws_check = version_compare($ws_version,'2.2','>=') || version_compare($ws_version,'2.4','>=');
+                if ($ws_version)
+                    $ws_check = version_compare($ws_version,'2.2','>=') || version_compare($ws_version,'2.4','>=');
                 break;
             case w3_is_nginx():
                 $ws_check = php_sapi_name() == 'fpm-fcgi';
@@ -125,10 +133,10 @@ class W3_NewRelicService {
                 $ws_version = '';
         }
         $verified[__('Web Server','w3-total-cache')] = $ws_check ? $supported_string :
-                                        sprintf(__('Not Supported. %s %s See %s page.', 'w3-total-cache'),
+                                        sprintf(__('Not Supported. (%s %s See %s page.)', 'w3-total-cache'),
                                         $ws_name, $ws_version,
-                                        '<a href="https://newrelic.com/docs/php/new-relic-for-php#requirements">
-                                        NewRelic requirements</a>'
+                                        '<a href="https://newrelic.com/docs/php/new-relic-for-php#requirements" target="_blank">
+                                        NewRelic Requirements</a>'
                                         );
         return $verified;
     }

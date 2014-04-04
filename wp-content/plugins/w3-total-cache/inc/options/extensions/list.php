@@ -50,7 +50,7 @@
             $cb_id++;
         ?>
             <?php do_action("w3tc_extension_before_row-{$extension}") ?>
-            <tr id="<?php esc_attr($extension)?>" class="<?php echo w3_is_extension_active($extension) ? 'active' : 'inactive'?>">
+            <tr id="<?php echo esc_attr($extension)?>" class="<?php echo w3_is_extension_active($extension) ? 'active' : 'inactive'?>">
             <th scope="row" class="check-column">
                 <label class="screen-reader-text" for="checkbox_<?php echo $cb_id?>"><?php printf(__('Select %s'), $meta['name']) ?></label>
                 <input type="checkbox" name="checked[]" value="<?php echo esc_attr($extension) ?>" id="checkbox_<?php echo $cb_id?>" <?php disabled(!$meta['enabled'])?>>
@@ -59,7 +59,7 @@
                 <strong><?php esc_html_e($meta['name']) ?></strong>
                 <div class="row-actions-visible">
                     <?php if (w3_is_extension_active($extension)):
-                        $activate = '<a class="edit" href="' . esc_attr(w3_admin_url(sprintf('admin.php?page=w3tc_extensions&extension=%s', $extension))).'">'. __('Settings').'</a>';
+                        $activate = '<a class="edit" href="' . esc_attr(w3_admin_url(sprintf('admin.php?page=w3tc_extensions&extension=%s', $extension))).'&action=view">'. __('Settings').'</a>';
                         $extra_links = apply_filters("w3tc_extension_plugin_links-{$extension}", array($activate));
                         $links =  implode(' | ', $extra_links);
                         if ($links) {

@@ -122,7 +122,7 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
                                 }
 
                                 $found_domain = true;
-                            } catch (CurlException $e) {
+                            } catch (W3tcWpHttpException $e) {
                                 $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, sprintf(__('Unable to purge (%s).', 'w3-total-cache'), $e->getMessage()));
                             }
                         } else {
@@ -138,11 +138,11 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
                         $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_ERROR, __('Failed with error code ', 'w3-total-cache') . $pullzone->code);
                     }
                 }
-            } catch (CurlException $e) {
+            } catch (W3tcWpHttpException $e) {
                 $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, sprintf(__('Unable to purge (%s).', 'w3-total-cache'), $e->getMessage()));
             }
 
-        } catch (CurlException $e) {
+        } catch (W3tcWpHttpException $e) {
             $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, __('Failure to pull zone: ', 'w3-total-cache') . $e->getMessage());
         } 
 
@@ -241,7 +241,7 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
                             }
 
                             $found_domain = true;
-                        } catch (CurlException $e) {
+                        } catch (W3tcWpHttpException $e) {
                             $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, sprintf(__('Unable to purge (%s).', 'w3-total-cache'), $e->getMessage()));
                         }
                     } else {
@@ -255,11 +255,11 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
                         $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_ERROR, __('Failed with error code ', 'w3-total-cache') . $pullzone->code);
                     }
                 }
-            } catch (CurlException $e) {
+            } catch (W3tcWpHttpException $e) {
                 $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, sprintf(__('Unable to purge (%s).', 'w3-total-cache'), $e->getMessage()));
             }
 
-        } catch (CurlException $e) {
+        } catch (W3tcWpHttpException $e) {
             $results[] = $this->_get_result($local_path, $remote_path, W3TC_CDN_RESULT_HALT, __('Failure to pull zone: ', 'w3-total-cache') . $e->getMessage());
         }
 

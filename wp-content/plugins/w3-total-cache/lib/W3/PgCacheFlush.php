@@ -263,6 +263,7 @@ class W3_PgCacheFlush extends W3_PgCache {
             }
         }
     }
+
     /**
      * Returns array of mobile groups
      *

@@ -19,14 +19,15 @@
     <div id="ure_tabs" style="clear: left;">
         <ul>
             <li><a href="#ure_tabs-1"><?php esc_html_e('General', 'ure');?></a></li>
+            <li><a href="#ure_tabs-2"><?php esc_html_e('Default Roles', 'ure');?></a></li>
 <?php
     if ($this->lib->multisite) {
 ?>
-            <li><a href="#ure_tabs-2"><?php esc_html_e('Multisite', 'ure');?></a></li>
+            <li><a href="#ure_tabs-3"><?php esc_html_e('Multisite', 'ure');?></a></li>
 <?php            
     }
 ?>
-            <li><a href="#ure_tabs-3"><?php esc_html_e('About', 'ure');?></a></li>
+            <li><a href="#ure_tabs-4"><?php esc_html_e('About', 'ure');?></a></li>
         </ul>
     <div id="ure_tabs-1">
     <div id="ure-settings-form">
@@ -69,11 +70,41 @@
 
         </form>  
     </div>   
-    </div><!-- ure_tabs-1 -->
+    </div> <!-- ure_tabs-1 -->
+    
+    <div id="ure_tabs-2">
+        <form method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE; ?>" >
+<?php 
+    if (!$this->lib->multisite) {
+        esc_html_e('Primary default role: ', 'ure');
+        echo $this->lib->role_default_html;
+?>
+        <hr>
+<?php
+    } 
+?>
+        <?php esc_html_e('Other default roles for new registered user: ', 'ure'); ?>
+        <div id="other_default_roles">
+            <?php $this->lib->show_other_default_roles(); ?>
+        </div>
+<?php 
+    if ($this->lib->multisite) {
+        echo '<p>'. esc_html__('Note for multisite environment: take into account that other default roles should exist at the site, in order to be assigned to the new registered users.', 'ure') .'</p>';
+    }
+?>
+        <hr>
+        <?php wp_nonce_field('user-role-editor'); ?>   
+            <input type="hidden" name="ure_tab_idx" value="1" />
+            <p class="submit">
+                <input type="submit" class="button-primary" name="ure_default_roles_update" value="<?php _e('Save', 'ure') ?>" />
+            </p>
+        </form>      
+    </div> <!-- ure_tabs-2 -->   
+    
 <?php
     if ($this->lib->multisite) {
 ?>
-    <div id="ure_tabs-2">
+    <div id="ure_tabs-3">
         <div id="ure-settings-form-ms">
             <form name="ure_settings_ms" method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE; ?>" >
                 <table id="ure_settings_ms">
@@ -92,19 +123,19 @@
 ?>                    
                 </table>
 <?php wp_nonce_field('user-role-editor'); ?>   
-                <input type="hidden" name="ure_tab_idx" value="1" />
+                <input type="hidden" name="ure_tab_idx" value="2" />
             <p class="submit">
                 <input type="submit" class="button-primary" name="ure_settings_ms_update" value="<?php _e('Save', 'ure') ?>" />
             </p>                  
             </form>
         </div>   <!-- ure-settings-form-ms --> 
-    </div>  <!-- ure_tabs-2 -->
+    </div>  <!-- ure_tabs-3 -->
 <?php
     }
 ?>
-        <div id="ure_tabs-3">
+        <div id="ure_tabs-4">
             <?php $this->lib->about(); ?>
-        </div>
+        </div> <!-- ure_tabs-4 -->
     </div> <!-- ure_tabs -->
 </div>
 <script>

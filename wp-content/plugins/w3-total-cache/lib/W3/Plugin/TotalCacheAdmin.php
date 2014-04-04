@@ -35,13 +35,6 @@ class W3_Plugin_TotalCacheAdmin extends W3_Plugin {
     var $_errors = array();
 
     /**
-     * Show support reminder flag
-     *
-     * @var boolean
-     */
-    var $_support_reminder = false;
-
-    /**
      * Admin configuration
      *
      * @var W3_ConfigAdmin
@@ -129,34 +122,8 @@ class W3_Plugin_TotalCacheAdmin extends W3_Plugin {
      * @return void
      */
     function load() {
-        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
-
-        $this->_page = W3_Request::get_string('page');
-
-        switch (true) {
-            case ($this->_page == 'w3tc_dashboard'):
-            case ($this->_page == 'w3tc_general'):
-            case ($this->_page == 'w3tc_pgcache'):
-            case ($this->_page == 'w3tc_minify'):
-            case ($this->_page == 'w3tc_dbcache'):
-            case ($this->_page == 'w3tc_objectcache'):
-            case ($this->_page == 'w3tc_fragmentcache'):
-            case ($this->_page == 'w3tc_browsercache'):
-            case ($this->_page == 'w3tc_mobile'):
-            case ($this->_page == 'w3tc_referrer'):
-            case ($this->_page == 'w3tc_cdn'):
-            case ($this->_page == 'w3tc_monitoring'):
-            case ($this->_page == 'w3tc_install'):
-            case ($this->_page == 'w3tc_faq'):
-            case ($this->_page == 'w3tc_about'):
-            case ($this->_page == 'w3tc_support'):
-                break;
-
-            default:
-                $this->_page = 'w3tc_dashboard';
-        }
-
-        $this->_support_reminder = ($this->_config->get_boolean('notes.support_us') && $this->_config_admin->get_integer('common.install') < (time() - W3TC_SUPPORT_US_TIMEOUT) && $this->_config->get_string('common.support') == '' && !$this->_config->get_boolean('common.tweeted'));
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
 
         /**
          * Run plugin action
@@ -185,7 +152,6 @@ class W3_Plugin_TotalCacheAdmin extends W3_Plugin {
             try {
                 $action_handler->execute($action);
             } catch (Exception $e) {
-                w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
                 w3_admin_redirect_with_custom_messages(array(), array($e->getMessage()));
             }
 
@@ -234,7 +200,6 @@ class W3_Plugin_TotalCacheAdmin extends W3_Plugin {
 
 // Define icon styles for the custom post type
     function admin_head() {
-
         if (isset($_GET['page']) && $_GET['page'] == 'w3tc_dashboard'): ?>
 <script type="text/javascript">
     jQuery(function() {
@@ -539,13 +504,12 @@ ul.w3tc-incomp-plugins li div{
             'pgcache_purge_page' => __('Unable to purge page.', 'w3-total-cache'),
             'enable_cookie_domain' => sprintf(__('<strong>%swp-config.php</strong> could not be written, please edit config and add:<br /><strong style="color:#f00;">define(\'COOKIE_DOMAIN\', \'%s\');</strong> before <strong style="color:#f00;">require_once(ABSPATH . \'wp-settings.php\');</strong>.', 'w3-total-cache'), ABSPATH, addslashes($cookie_domain)),
             'disable_cookie_domain' => sprintf(__('<strong>%swp-config.php</strong> could not be written, please edit config and add:<br /><strong style="color:#f00;">define(\'COOKIE_DOMAIN\', false);</strong> before <strong style="color:#f00;">require_once(ABSPATH . \'wp-settings.php\');</strong>.', 'w3-total-cache'), ABSPATH),
-            'cloudflare_api_request' => __('Unable to make CloudFlare API request.', 'w3-total-cache'),
+            'pull_zone' => __('Pull Zone could not be automatically created.', 'w3-total-cache')
         );
 
         $note_messages = array(
             'config_save' => __('Plugin configuration successfully updated.', 'w3-total-cache'),
             'flush_all' => __('All caches successfully emptied.', 'w3-total-cache'),
-            'flush_all_except_cf' => __('All caches except CloudFlare successfully emptied.', 'w3-total-cache'),
             'flush_memcached' => __('Memcached cache(s) successfully emptied.', 'w3-total-cache'),
             'flush_opcode' => __('Opcode cache(s) successfully emptied.', 'w3-total-cache'),
             'flush_apc_system' => __('APC system cache successfully emptied', 'w3-total-cache'),
@@ -568,7 +532,12 @@ ul.w3tc-incomp-plugins li div{
             'pgcache_purge_post' => __('Post successfully purged.', 'w3-total-cache'),
             'pgcache_purge_page' => __('Page successfully purged.', 'w3-total-cache'),
             'new_relic_save' => __('New relic settings have been updated.', 'w3-total-cache'),
-            'add_in_removed' => __('The add-in has been removed.', 'w3-total-cache')
+            'add_in_removed' => __('The add-in has been removed.', 'w3-total-cache'),
+            'sns_subscribed' => __('Site has been subscribed.', 'w3-total-cache'),
+            'enabled_edge' => __('Edge mode has been enabled.', 'w3-total-cache'),
+            'disabled_edge' => __('Edge mode has been disabled.', 'w3-total-cache'),
+            'pull_zone' => __('Pull Zone was automatically created.', 'w3-total-cache'),
+            'extension_activated' => __('Extension has been successfully activated.', 'w3-total-cache')
         );
 
         $errors = array();
@@ -670,29 +639,9 @@ ul.w3tc-incomp-plugins li div{
                 $errors[] = $e;
         }
 
-        /**
-        * CloudFlare notifications
-         * @var $w3_cloudflare W3_CloudFlare
-        */
-        $w3_cloudflare = w3_instance('W3_CloudFlare');
-        if ($error = $w3_cloudflare->check_lasterror()) {
-            $this->_errors[] = $error;
-        }
-
         w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
 
-        $error = W3_Request::get_string('w3tc_error');
         $note = W3_Request::get_string('w3tc_note');
-
-        /**
-         * Handle messages from reqeust
-         */
-        if ($error == 'cloudflare_api_request' && $w3_cloudflare->get_fault_signaled()) {
-            // dont complain twice on cloudflare
-        }
-        elseif (isset($error_messages[$error])) {
-            $errors[] = $error_messages[$error];
-        }
 
         if (isset($note_messages[$note])) {
             $notes[] = $note_messages[$note];
@@ -701,13 +650,13 @@ ul.w3tc-incomp-plugins li div{
         /**
          * CDN notifications
          */
-        if ($this->_config->get_boolean('cdn.enabled') && !w3_is_cdn_mirror($this->_config->get_string('cdn.engine'))) {
+        if ($this->_config->get_boolean('cdn.enabled')) {
             /**
              * @var $ui_cdn_notes W3_UI_CdnNotes
              */
             $cdn_notes = w3_instance('W3_UI_CdnNotes');
-            $this->_notes = array_merge($this->_notes, $cdn_notes->notifications($this->_config));
-            $this->_errors = array_merge($this->_errors, $cdn_notes->errors());
+            $this->_notes = array_merge($this->_notes, $cdn_notes->notifications($this->_config, $this->_config_admin));
+            //$this->_errors = array_merge($this->_errors, $cdn_notes->errors());
         }
 
         /**
@@ -790,6 +739,9 @@ ul.w3tc-incomp-plugins li div{
         foreach ($this->_notes as $note)
             $notes[] = $note;
 
+        $errors = apply_filters('w3tc_errors', $errors);
+        $notes = apply_filters('w3tc_notes', $notes);
+
         /**
          * Show messages
          */
@@ -808,5 +760,89 @@ ul.w3tc-incomp-plugins li div{
     function action_deactivate_plugin() {
         w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/activation.php');
         array_merge($this->_errors, w3_deactivate_plugin());
+    }
+
+    /**
+     * Flush all cache
+     *
+     * @param bool $flush_cf
+     * @return void
+     */
+    function flush_all($flush_cf = true) {
+        _doing_it_wrong('flush_all', 'This function is deprecated. Use w3tc_flush_all() instead.', '0.9.3');
+        w3tc_flush_all();
+    }
+
+    /**
+     * Flush page cache
+     *
+     * @return void
+     */
+    function flush_pgcache() {
+        _doing_it_wrong('flush_pgcache', 'This function is deprecated. Use w3tc_flush_all() instead.', '0.9.3');
+        w3tc_pgcache_flush();
+    }
+
+    /**
+     * Flush database cache
+     *
+     * @return void
+     */
+    function flush_dbcache() {
+        _doing_it_wrong('flush_dbcache', 'This function is deprecated. Use w3tc_dbcache_flush() instead.', '0.9.3');
+        w3tc_dbcache_flush();
+    }
+
+    /**
+     * Flush object cache
+     *
+     * @return void
+     */
+    function flush_objectcache() {
+        _doing_it_wrong('flush_objectcache', 'This function is deprecated. Use w3tc_objectcache_flush() instead.', '0.9.3');
+        w3tc_objectcache_flush();
+    }
+
+    /**
+     * Flush fragment cache
+     */
+    function flush_fragmentcache() {
+        _doing_it_wrong('flush_fragmentcache', 'This function is deprecated. Use w3tc_fragmentcache_flush() instead.', '0.9.3');
+        w3tc_fragmentcache_flush();
+    }
+
+    /**
+     * Flush minify cache
+     *
+     * @return void
+     */
+    function flush_minify() {
+        _doing_it_wrong('flush_minify', 'This function is deprecated. Use w3tc_minify_flush() instead.', '0.9.3');
+        w3tc_minify_flush();
+    }
+
+    /**
+     * Flush browsers cache
+     */
+    function flush_browser_cache() {
+        _doing_it_wrong('flush_browser_cache', 'This function is deprecated. Use w3tc_browsercache_flush() instead.', '0.9.3');
+        w3tc_browsercache_flush();
+
+    }
+
+    /**
+     * Flush varnish cache
+     */
+    function flush_varnish() {
+        _doing_it_wrong('flush_varnish', 'This function is deprecated. Use w3tc_varnish_flush() instead.', '0.9.3');
+        w3tc_varnish_flush();
+    }
+
+    /**
+     * Flush CDN mirror
+     */
+    function flush_cdn() {
+        _doing_it_wrong('flush_cdn', 'This function is deprecated. Use w3tc_cdncache_purge() instead.', '0.9.3');
+        w3tc_cdncache_purge();
     }
 }

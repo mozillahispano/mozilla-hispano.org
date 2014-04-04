@@ -235,7 +235,7 @@
 .ts-fab-latest li {
 	list-style: none !important;
 	line-height: 1.2;
-	margin: 0 0 0.6em;
+	margin: 0 0 0.6em !important;
 	clear: none !important;
 }
 .ts-fab-latest li span,

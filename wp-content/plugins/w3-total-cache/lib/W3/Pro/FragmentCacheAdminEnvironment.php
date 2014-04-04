@@ -48,7 +48,7 @@ class W3_Pro_FragmentCacheAdminEnvironment {
         if ($config->get_boolean('fragmentcache.enabled') && 
                 $config->get_string('fragmentcache.engine') == 'file') {
             if (!wp_next_scheduled('w3_fragmentcache_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_fragmentcache_cleanup', 
                     'w3_fragmentcache_cleanup');
             }

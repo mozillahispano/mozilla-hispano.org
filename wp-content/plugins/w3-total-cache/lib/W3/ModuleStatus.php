@@ -30,7 +30,6 @@ class W3_ModuleStatus {
                || $this->is_enabled('objectcache')
                || $this->is_enabled('browsercache')
                || $this->is_enabled('cdn')
-               || $this->is_enabled('cloudflare')
                || $this->is_enabled('varnish')
                || $this->is_enabled('newrelic')
                || $this->is_enabled('fragmentcache');
@@ -45,6 +44,15 @@ class W3_ModuleStatus {
     }
 
     /**
+     * Verifies that the module is actually running and not only enabled.
+     * @param $module
+     * @return mixed|void
+     */
+    public function is_running($module) {
+        return apply_filters("w3tc_module_is_running-{$module}", $this->is_enabled($module));
+    }
+
+    /**
      * @return bool
      */
     public function all_modules_enabled() {
@@ -54,7 +62,6 @@ class W3_ModuleStatus {
             && $this->is_enabled('objectcache')
             && $this->is_enabled('browsercache')
             && $this->is_enabled('cdn')
-            && $this->is_enabled('cloudflare')
             && $this->is_enabled('varnish')
             && $this->is_enabled('fragmentcache');
     }

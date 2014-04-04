@@ -1,65 +1,40 @@
 === Yet Another Related Posts Plugin (YARPP) ===
 Contributors: jeffparker
 Author: Adknowledge
-Author URI: http://yarpp.com/
-Plugin URI: http://yarpp.com/
+Author URI: http://www.yarpp.com/
+Plugin URI: http://www.yarpp.com/
 Tags: feeds, pages, posts, related, rss, yarpp, ads, multisite, multilingual, thumbnails, related posts, related content
 Requires at least: 3.3
-Tested up to: 3.7.1
-Stable tag: 4.1.1
+Tested up to: 3.8
+Stable tag: 4.1.2
 License: GPLv2 or later
 
-Display a list of related entries on your site and feeds based on a unique algorithm. Now with thumbnail support built-in!
+Display a list of related posts on your site based on a powerful unique algorithm. Earn money by including sponsored content!
 
 == Description ==
 
 Yet Another Related Posts Plugin (YARPP) displays pages, posts, and custom post types related to the current entry, introducing your readers to other relevant content on your site.
+[(See current offers and promotions for YARPP Pro users.)](http://www.yarpp.com/offers)
 
-**YARPP Basic Features**
+**Enable YARPP Pro for Powerful Enhancements**
 -----------------------------------------
-* **Thumbnails or list view** of related content.
-* **Related posts, pages, and custom post types**.
+* **Customize thumbnail layout** through the user interface.
+* **Pull related content from multiple sites**.
+* **Make money** by displaying relevant sponsored content.
+* **Easily promote your product or service** on thousands of blogs and websites.
+* **Get detailed reporting** ab out your related content list.
+
+[Learn more about the new YARPP Pro enhancements!](http://www.yarpp.com)
+
+**Keep YARPP Basic for Standard Features**
+-------------------------------------------
+* **Thumbnail or list view** of related content.
+* **Related posts, pages, and custom post types.**
 * **Templating**: The YARPP templating system gives you advanced control of how your results are displayed.
-* **An advanced and versatile algorithm**: Using a customizable algorithm considering post titles, content, tags, categories, and custom taxonomies, YARPP finds related content from across your site. [Learn more](http://wordpress.tv/2011/01/29/michael-%E2%80%9Cmitcho%E2%80%9D-erlewine-the-yet-another-related-posts-plugin-algorithm-explained/).
-* **Caching**: YARPP is performant, caching related posts data as your site is visited.
+* **An advanced and versatile algorithm**: Using a customizable algorithm considering post titles, content, tags, categories, and custom taxonomies, YARPP finds related content from across your site. [Learn More.](http://wordpress.tv/2011/01/29/michael-"mitcho"-erlewine-the-yet-another-related-posts-plugin-algorithm-explained/)
 * **Related posts in feeds**: Display related posts in RSS feeds with custom display options.
 
 This plugin requires PHP 5, MySQL 4.1, and WordPress 3.3 or greater. See [the FAQ](http://wordpress.org/plugins/yet-another-related-posts-plugin/faq/) for answers to common questions.
-
-**Enable YARPP Pro for Powerful Enhancements**
--------------------------------------------
-* Make money by displaying relevant sponsored ads.
-* Customize thumbnail display through the user interface.
-* Pull related content from multiple domains.
-* Get detailed reporting about your related content list.
-
-[Learn more about the new YARPP Pro enhancements!](http://yarpp.com)
-
-= Testimonials =
-
-<blockquote>
-"One of my favorite plugin's I just activated on my blog is called Yet Another Related Posts Plugin... I've been blogging seven or eight years now so I have a lot of archives, and it actually surprises me sometimes when I blog about something and I visit the permalink to see I've written about it before... and it also increases the traffic on your blog because when they come in just to one entry, they'll see this other stuff going on."
-</blockquote>
-
-&mdash; [Matt Mullenweg](http://ma.tt), WordPress creator
-
-<blockquote>
-"The first one I ended up trying was Yet Another Related Posts Plugin (YARPP), and mitcho has really done a fantastic job on it:
-
-<ul>
-<li>It's trivial to install.</li>
-<li>You don't have to edit your WordPress template.</li>
-<li>The relevance is good: the suggested posts are related, and you can tweak thresholds and how things are computed if you want."</li>
-</ul>
-</blockquote>
-
-&mdash; [Matt Cutts](http://www.mattcutts.com/blog/wordpress-plugin-related-posts/), head of Webspam, Google
-
-<blockquote>
-"One way of getting search engines to get to your older content a bit easier, thus increasing your WordPress SEO capabilites a LOT, is by using a related posts plugin. These plugins search through your posts database to find posts with the same subject, and add links to these posts. There are quite a few related posts plugins but I tend to stick with the Yet Another Related Posts Plugin..."
-</blockquote>
-
-&mdash; [Yoast (Joost de Valk)](http://yoast.com/articles/wordpress-seo/)
 
 == Installation ==
 
@@ -215,9 +190,7 @@ Beginning with version 4.0.7, YARPP includes clean uninstall functionality. If y
 
 Yes. To make YARPP support your custom post type, the attribute `yarpp_support` must be set to true on the custom post type when it is registered. It will then be available on options on the YARPP settings page.
 
-`
-'yarpp_support' => true
-`
+`'yarpp_support' => true`
 
 If you would like to programmatically control which post types are considered in an automatically-displayed related posts display, use the `yarpp_map_post_types` filter.
 
@@ -233,7 +206,6 @@ yarpp_related(array(
 	'past_only' => false, // show only posts which were published before the reference post
 	'exclude' => array(), // a list of term_taxonomy_ids. entities with any of these terms will be excluded from consideration.
 	'recent' => false, // to limit to entries published recently, set to something like '15 day', '20 week', or '12 month'.
-
 	// Relatedness options: these determine how "relatedness" is computed
 	// Weights are used to construct the "match score" between candidates and the reference post
 	'weight' => array(
@@ -322,8 +294,17 @@ YARPP is currently localized in the following languages:
 
 == Changelog ==
 
+= 4.1.2 =
+* Tested on Wordpress 3.8.
+* Added field boxes with API Key information to Domain page.
+* MyISAM check notice message was updated to better express what it does and a feedback message was added in case the fulltext index creation fails.
+* Bugfix: MyISAM check overwrite was broken since 4.1.x release.
+* Bugfix: PHP title not defined warning when creating new cache entry.
+* Bugfix: Uninstall script now deletes options with empty, false or 0 values.
+* Bugfix: Scrollbar functionality on YARPP Pro Domain Settings page.
+
 = 4.1.1 =
-* Bugfix: Incompatibility with PHP < 5.3.x 
+* Bugfix: Incompatibility with PHP < 5.3.x
 
 = 4.1 =
 * Added optional YARPP Pro enhancements:
@@ -519,6 +500,7 @@ YARPP is currently localized in the following languages:
 * Strengthen default post ID values for `related_*` functions
 * Added nonce to cache flushing. If you would like to manually flush the cache now, you must use the [YARPP Experiments](http://wordpress.org/extend/plugins/yarpp-experiments/) plugin.
 * Updated `sv_SE`, `ko_KR`, `fr_FR` localizations
+
 = 3.4 =
 * Major optimizations to the main related posts query, in particular with regard to taxonomy lookups
 	* Performance improvements on pages with "no related posts"
@@ -548,6 +530,7 @@ YARPP is currently localized in the following languages:
 * Localizations
 	* Updated `it_IT` localization
 	* Added Portuguese stopwords by Leandro Coelho ([Logística Descomplicada](http://www.logisticadescomplicada.com))
+
 = 3.3.3 =
 * [Bug fix](http://wordpress.org/support/topic/no-related-posts-1): a fix for keyword computation for pages; should improve results on pages. May require flushing of cache: see FAQ for instructions.
 * Init YARPP on the `init` action, [for compatibility with WPML](https://wordpress.org/support/topic/plugin-yet-another-related-posts-plugin-load-sequence-yarpp-starts-before-the-wordpress-init-completes)
@@ -557,11 +540,14 @@ YARPP is currently localized in the following languages:
 	* Fixed fatal error in postmeta keyword caching code
 	* Fewer `glob`s
 	* [Bug fix](http://wordpress.org/support/topic/the-problem-when-publish-a-post): ignore empty `blog_charset`s
+
 = 3.3.2 =
 * [Bugfix](http://wordpress.org/support/topic/missing-translate-strings): removed an unlocalized string
 * Bugfix for users of WordPress 3.0.x.
+
 = 3.3.1 =
 * Quick bugfix to [relatedness options panel bug](http://wordpress.org/support/topic/relatedness-options-for-titles-and-bodies-cant-be-changed)
+
 = 3.3 =
 * Pretty major rewrite to the options page for extensibility and screen options support
 	* By default, the options screen now only show the display options. "The Pool" and "Relatedness" options can be shown in the screen options tab in the top right corner of the screen.
@@ -575,6 +561,7 @@ YARPP is currently localized in the following languages:
 	* Added Hungarian (`hu_HU`) by [daSSad](http://dassad.com)
 	* Added Kazakh (`kk_KZ`) by [DachaDecor](http://DachaDecor.ru)
 	* Added Irish (`gb_IR`) by [Ray Gren](http://letsbefamous.com)
+
 = 3.2.2 =
 * Now [ignores soft hyphens](http://wordpress.org/support/topic/plugin-yet-another-related-posts-plugin-french-overused-words) in keyword construction
 * Minor fix for "cross-relate posts and pages" option and more accurate `related_*()` results across post types
@@ -584,6 +571,7 @@ YARPP is currently localized in the following languages:
 	* Added `es_ES` Spanish localization by Rene of [WordPress Webshop](http://wpwebshop.com)
 	* Added `ge_KA` Georgian by Kasia Ciszewski of [Find My Hosting](www.findmyhosting.com)
 	* Added Czech (`cs_CZ`) overused words list [by berniecz](http://wordpress.org/support/topic/plugin-yet-another-related-posts-plugin-french-overused-words)
+
 = 3.2.1 =
 * Bugfix: [Duplicate results shown for some users](http://wordpress.org/support/topic/plugin-yet-another-related-posts-plugin-yarpp-post-duplicate-related-articles)
 * Bugfix: [With PHP4, the "related posts" would simply show the current post](http://wordpress.org/support/topic/plugin-yet-another-related-posts-plugin-yarpp-showing-same-post)
@@ -600,6 +588,7 @@ YARPP is currently localized in the following languages:
 	* Eliminated a couple globals
 	* Cleaned up some edge case causes for "unexpected output" on plugin activation
 	* Removed WP Help Center badge, as they are closing
+
 = 3.2 =
 * Better caching performance:
   * Previously, the cache would never actually build up properly. This is now fixed. Thanks to Artefact for pointing this out.
@@ -616,6 +605,7 @@ YARPP is currently localized in the following languages:
 * Added [WordPress HelpCenter](http://wphelpcenter.com/) widget for quick access to professional support.
 * Some code cleanup (bug [#1246](http://plugins.trac.wordpress.org/ticket/1246))
 * No longer supporting WordPress versions before 3.0, not because I suddenly started using something that requires 3.0, but in order to simplify testing.
+
 = 3.1.9 =
 * Added Standard Arabic localization (`ar`) by [led](http://led24.de)
 * The Related Posts Widget now can also use custom templates. ([#1143](http://plugins.trac.wordpress.org/ticket/1143))
@@ -625,6 +615,7 @@ YARPP is currently localized in the following languages:
 * Fixed a strict WordPress warning about capabilities.
 * Bugfix: widget now obeys cross-relate posts and pages option
 * For WPMU + Multisite users, reverted 3.1.8's `get_site_option`s to `get_option`s, so that individual site options can be maintained.
+
 = 3.1.8 =
 * Added Turkish localization (`tr_TR`)
 * Bugfix: related pages and "cross-relate posts and pages" functionality is now working again.
@@ -634,22 +625,27 @@ YARPP is currently localized in the following languages:
 * Minor fix which may help reduce [`strip_tags()` errors](http://wordpress.org/support/topic/353588).
 * Updated FAQ.
 * Code cleanup.
+
 = 3.1.7 =
 * Added Egyptian Arabic localization (`ar_EG`)
 * Changed default option for automatic display of related posts in feeds to OFF. May improve performance for new users who use the default settings.
 * "Use template" options are now disabled when templates are not found. Other minor tweaks to options screen.
 * 3.1.7 has been lightly tested with WP 3.0. Multisite (WPMU) compatibility has not been tested yet.
+
 = 3.1.6 =
 * Added Latvian localization (`lv_LV`)
 * Added a template which displays post thumbnails; requires WordPress 2.9 and a theme which has post thumbnail support
+
 = 3.1.5 =
 * Quick bugfix to new widget template (removed extra quote).
+
 = 3.1.4 =
 * Improved widget code
 * Localization improvements - descriptions can now be localized
 * [Compatibility with PageBar](http://wordpress.org/support/topic/346714) - thanks to Latz for the patch!
 * Bugfix: [`related_posts_exist` was giving incorrect values](http://wordpress.org/support/topic/362347)
 * Bugfix: [SQL error for setups with blank DB_CHARSET](http://wordpress.org/support/topic/358757)
+
 = 3.1.3 =
 * Performance improvements:
   * Turning off cache expiration, made possible by smarter caching system of 3.1 - should improve caching database performance over time.
@@ -661,12 +657,15 @@ YARPP is currently localized in the following languages:
 * Bugfix: [`yarpp_clear_cache` bug on empty input](http://wordpress.org/support/topic/343001)
 * Version checking code no longer uses Snoopy.
 * New localization: Hindi by [Outshine Solutions](http://outshinesolutions.com/)
+
 = 3.1.2 =
 * Bugfix: [saving posts would sometimes timeout](http://wordpress.org/support/topic/343001)
+
 = 3.1.1 =
 * [Possible fix for the "no related posts" issue](http://wordpress.org/support/topic/284209/page/2) by [vkovalcik](http://wordpress.org/support/profile/5032111)
 * Bugfix: [slight optimization to keyword function](http://wordpress.org/support/topic/284209/page/2) by [vkovalcik](http://wordpress.org/support/profile/5032111)
 * Bugfix: [regex issue with br-stripping](http://wordpress.org/support/topic/323823)
+
 = 3.1 =
 * New snazzy options screen
 * Smarter, less confusing caching
@@ -679,8 +678,10 @@ YARPP is currently localized in the following languages:
   * Breaks (&lt;br /&gt;) are now stripped out of titles.
   * Added plugin incompatibility info for Pagebar.
   * Faster post saving.
+
 = 3.0.13 =
 * Quick immediate bugfix to 3.0.12
+
 = 3.0.12 =
 * Yet another DISQUS note... sigh.
 * Changed [default markup](http://wordpress.org/support/topic/307890) to be make the output validate better.
@@ -690,15 +691,19 @@ YARPP is currently localized in the following languages:
   * Tweaked a SQL query so that it was WPML compatible
   * Added YARPP template to be used with WPML
 * Added Hebrew localization
+
 = 3.0.11 =
 * Quick fix for `compare_version` code.
+
 = 3.0.10 =
 * Added Ukrainian localization
 * Incorporated a quick update for the widget display [thanks to doodlebee](http://wordpress.org/support/topic/281575).
 * Now properly uses `compare_version` in lieu of old hacky versioning.
+
 = 3.0.9 =
 * Added Uzbek, Greek, Cypriot Greek, and Vietnamese localizations
 * Further bugfixes for the [pagination issue](http://wordpress.org/support/topic/267350)
+
 = 3.0.8 =
 * Bugfix: [a pagination issue](http://wordpress.org/support/topic/267350) (may not be completely fixed yet)
 * Bugfix: a quick bugfix for widgets, thanks to Chris Northwood
@@ -708,6 +713,7 @@ YARPP is currently localized in the following languages:
 * Bugfix: `is_single` and other such flags are now set properly within the related posts Loop (as a result, now [compatible with WP Greet Box](http://wordpress.org/support/topic/288230))
 * Confirmed compatibility with 2.8.2
 * Bugfix: [the Related Posts metabox now respects the Screen Options](http://wordpress.org/support/topic/289290)
+
 = 3.0.7 =
 * Bugfix: additional bugfix for widgets.
 * Reinstating excerpt length by number of words (was switched to letters in 3.0.6 without accompanying documentation)
@@ -715,20 +721,24 @@ YARPP is currently localized in the following languages:
   * Updated Italian
   * Added Belarussian by [Fat Cow](http://www.fatcow.com)
 * Confirmed compatibility with 2.8.1
+
 = 3.0.6 =
 * Bugfix: [updated excerpting to use `wp_html_excerpt`](http://wordpress.org/support/topic/268934) (for WP 2.5+)
 * Bugfix: [fixed broken widget display](http://wordpress.org/support/topic/276031)
 * Added Russian (`ru_RU`) localization by Marat Latypov
 * Confirmed 2.8 compatibility
 * Added note on [incompatibility with SEO Pager plugin](http://wordpress.org/support/topic/267966)
+
 = 3.0.5 =
 * Added link to manual SQL setup information [by request](http://wordpress.org/support/topic/266752)
 * Added Portuguese localization
 * Updated info on "on the fly" caching - it is *strongly recommended* for larger blogs.
 * Updated "incomplete cache" warning message so it is only displayed when the "on the fly" option is off.
+
 = 3.0.4 =
 * A fix to the version checking in the options page - now uses Snoopy
 * Adding Dutch localization
+
 = 3.0.3 =
 * Reinstated the 3.0.1 bugfix for includes
 * Bugfix: Fixed encoding issue in keyword caching algorithm
@@ -737,25 +747,31 @@ YARPP is currently localized in the following languages:
 * Added note on DISQUS in readme
 * Making some extra strings localizable
 * Bugfix: [a problem with the Italian localization](http://wordpress.org/support/topic/265952)
+
 = 3.0.2 =
 * Bugfix: [Templating wasn't working with child templates.](http://wordpress.org/support/topic/265515)
 * Bugfix: In some situations, [SQL errors were printed in the AJAX preview displays](http://wordpress.org/support/topic/265728).
+
 = 3.0.1 =
 * Bugfix: In some situations before YARPP options were updated, an `include` PHP error was displayed.
+
 = 3.0 =
 * Major new release!
 * Caching for better SQL performance
 * A new templating feature for custom related posts displays
 * Cleaned up options page
 * New and updated localizations
+
 = 2.1.6 =
 * Versioning bugfix - same as 2.1.5
+
 = 2.1.5 =
 * Bugfix: In certain scenarios, [related posts would be displayed in RSS feeds even when that option was off](http://wordpress.org/support/topic/216145)
 * Bugfix: The `related_*()` functions were missing the `echo` parameter
 * Some localization bugfixes
 * Localizations:
 	* Japanese (`ja`) by [Michael Yoshitaka Erlewine](http://mitcho.com)
+
 = 2.1.4 =
 * Bugfix: [Settings' sumbmit button took you to PayPal](http://wordpress.org/support/topic/214090)
 * Bugfix: Fixed [keyword algorithm for users without `mbstring`](http://wordpress.org/support/topic/216420)
@@ -770,16 +786,20 @@ YARPP is currently localized in the following languages:
 * Further internationalization:
 	* the donate button! ^^
 	* overused words lists ([by request](http://wordpress.org/support/topic/159359))), with a German word list.
+
 = 2.1.3 =
 * Bugfix: Turned off [the experimental caching](http://wordpress.org/support/topic/216194#post-894440) which shouldn't have been on in this release...
 * Bugfix: an issue with the [keywords algorithm for non-ASCII characters](http://wordpress.org/support/topic/216078)
+
 = 2.1.2 =
 * Bugfix: MyISAM override handling bug
+
 = 2.1.1 =
 * Bugfix: keywords with forward slashes (\) could make the main SQL query ill-formed.
 * Bugfix: Added an override option for the [false MyISAM warnings](http://wordpress.org/support/topic/211043).
 * Preparing for localization! (See note at the bottom of the FAQ.)
 * Adding a debug mode--just try adding `&yarpp_debug=1` to your URL's and look at the HTML source.
+
 = 2.1 - The RSS edition! =
 * RSS feed support!: the option to automagically show related posts in RSS feeds and to customize their display, [by popular request](http://wordpress.org/support/topic/151766).
 * A link to [the Yet Another Related Posts Plugin RSS feed](http://wordpress.org/support/topic/208469).
@@ -789,8 +809,10 @@ YARPP is currently localized in the following languages:
 * Bugfix: `related_*_exist()` functions produced invalid queries
 * A warning for `wp_posts` with non-MyISAM engines and semi-compatibility with non-MyISAM setups.
 * Bugfix: [a better notice for users of Wordpress < 2.5](http://www.mattcutts.com/blog/wordpress-plugin-related-posts/#comment-131194) regarding the "compare tags" and "compare categories" features.
+
 = 2.0.6 =
 * A quick emergency bugfix (In one instance, assumed existence of `wp_posts`)
+
 = 2.0.5 =
 * Further optimized algorithm - should be faster on most systems. Good bye [subqueries](http://dev.mysql.com/doc/refman/5.0/en/unnamed-views.html)!
 * Bugfix: restored MySQL 4.0 support
@@ -799,16 +821,21 @@ YARPP is currently localized in the following languages:
 * Bugfix: [quotes in HTML tag options would get escaped](http://wordpress.org/support/topic/199139)
 * Bugfix: `user_level` was being checked in a deprecated manner
 * A helpful little tooltip for the admin-only threshold display
+
 = 2.0.4 - what 2.0 should have been =
 * Bugfix: new fulltext query for MySQL 5 compatibility
 * Bugfix: updated `apply_filters` to work with WP 2.6
+
 = 2.0.3 =
 * Bugfix: [2.0.2 accidentally required some tags or categories to be disabled](http://wordpress.org/support/topic/188745)
+
 = 2.0.2 =
 * Versioning bugfix (rerelease of 2.0.1)
+
 = 2.0.1 =
 * Bugfix: [`admin_menu` instead of `admin_head`](http://konstruktors.com/blog/wordpress/277-fixing-postpost-and-ozh-absolute-comments-plugins/)
 * Bugfix: [a variable scope issue](http://wordpress.org/support/topic/188550) crucial for 2.0 upgrading
+
 = 2.0 =
 * New algorithm which considers tags and categories, by frequent request
 * Order by score, date, or title, [by request](http://wordpress.org/support/topic/158459)
@@ -821,17 +848,22 @@ YARPP is currently localized in the following languages:
 	- Viper's Video Quicktags
 	- WP-CodeBox
 	- WP shortcodes
+
 = 1.5.1 =
 * Bugfix: standardized directory references to `yet-another-related-posts-plugin`
+
 = 1.5 =
 * Simple installation: automatic display of a basic related posts install
 * code and variable cleanup
 * FAQ in the documentation
+
 = 1.1 =
 * Related pages support!
 * Also, uses `apply_filters` to apply whatever content text transformation you use (Wikipedia link, Markdown, etc.) before computing similarity.
+
 = 1.0.1 =
 * Bugfix: 1.0 assumed you had Markdown installed
+
 = 1.0 =
 * Initial upload
 

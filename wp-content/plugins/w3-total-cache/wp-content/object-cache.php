@@ -1,5 +1,5 @@
 <?php
-//ObjectCache Version: 1.1
+//ObjectCache Version: 1.3
 /**
  * W3 Total Cache Object Cache
  */
@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('W3TC_DIR')) {
-    define('W3TC_DIR', WP_PLUGIN_DIR . '/w3-total-cache');
+    define('W3TC_DIR', (defined('WP_PLUGIN_DIR') ? WP_PLUGIN_DIR : WP_CONTENT_DIR . '/plugins') . '/w3-total-cache');
 }
 
 if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
@@ -63,7 +63,7 @@ if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
     function wp_cache_set($id, $data, $group = 'default', $expire = 0) {
         global $wp_object_cache;
 
-        return $wp_object_cache->set($id, $data, $group, $expire);
+        return $wp_object_cache->set($id, $data, $group, (int)$expire);
     }
 
     /**
@@ -91,7 +91,7 @@ if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
     function wp_cache_add($id, $data, $group = 'default', $expire = 0) {
         global $wp_object_cache;
 
-        return $wp_object_cache->add($id, $data, $group, $expire);
+        return $wp_object_cache->add($id, $data, $group, (int)$expire);
     }
 
     /**
@@ -106,7 +106,7 @@ if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
     function wp_cache_replace($id, $data, $group = 'default', $expire = 0) {
         global $wp_object_cache;
 
-        return $wp_object_cache->replace($id, $data, $group, $expire);
+        return $wp_object_cache->replace($id, $data, $group, (int)$expire);
     }
 
     /**

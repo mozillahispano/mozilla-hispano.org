@@ -72,13 +72,6 @@ abstract class W3_UI_PluginView {
     var $_rule_errors_hide = '';
 
     /**
-     * Show support reminder flag
-     *
-     * @var boolean
-     */
-    var $_support_reminder = false;
-
-    /**
      * Used in PHPMailer init function
      *
      * @var string
@@ -115,6 +108,9 @@ abstract class W3_UI_PluginView {
         $this->_config = w3_instance('W3_Config');
         $this->_config_master = new W3_Config(true);
         $this->_config_admin = w3_instance('W3_ConfigAdmin');
+        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
     }
 
     function options() {
@@ -321,7 +317,7 @@ abstract class W3_UI_PluginView {
                         $fields[] = '"' . __('Replace default hostname with', 'w3-total-cache') . '"';
 
                     if ($fields) {
-                        $error = sprintf(__('The <strong>%s</strong> field cannot be empty.', 'w3-total-cache'),
+                        $error = sprintf(__('The <strong>%s</strong> field(s) cannot be empty.', 'w3-total-cache'),
                             implode(__(' and ', 'w3-total-cache'), $fields));
                     }
 
@@ -341,7 +337,7 @@ abstract class W3_UI_PluginView {
                         $fields[] = '"' . __('Replace default hostname with', 'w3-total-cache') . '"';
 
                     if ($fields) {
-                        $error = sprintf(__('The <strong>%s</strong> field cannot be empty.', 'w3-total-cache'),
+                        $error = sprintf(__('The <strong>%s</strong> field(s) cannot be empty.', 'w3-total-cache'),
                             implode(__(' and ', 'w3-total-cache'), $fields));
                     }
 
@@ -380,7 +376,8 @@ abstract class W3_UI_PluginView {
          * Preview mode
          */
         if ($this->_config->is_preview()) {
-            $this->_notes[] = sprintf(__('Preview mode is active: Changed settings will not take effect until preview mode is %s or %s. %s any changed settings (without deploying), or make additional changes.', 'w3-total-cache'), w3_button_link(__('deploy', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_config_preview_deploy', $this->_page), 'w3tc')), w3_button_link(__('disable', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_config_preview_disable', $this->_page), 'w3tc')), w3_button_link(__('Preview', 'w3-total-cache'), w3_get_home_url() . '/?w3tc_preview=1', true));
+            $this->_notes[] = sprintf(__('Preview mode is active: Changed settings will not take effect until preview mode is %s or %s.', 'w3-total-cache'), w3_button_link(__('deploy', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_config_preview_deploy', $this->_page), 'w3tc')), w3_button_link(__('disable', 'w3-total-cache'), wp_nonce_url(sprintf('admin.php?page=%s&w3tc_config_preview_disable', $this->_page), 'w3tc'))) .
+                                    '<br /><span class="description">'. sprintf(__('To preview any changed settings (without deploying): %s', 'w3-total-cache'), w3tc_get_preview_link()). '</span>';
         }
 
         /**
@@ -633,7 +630,7 @@ abstract class W3_UI_PluginView {
         echo '<label>';
         echo '<input class="enabled" type="checkbox" name="' . $option_id .
             '" value="1" ';
-        checked($this->_config->get_boolean($option_id) && $section_enabled, true);
+        checked($this->_config->get_boolean($option_id), true);
 
         if ($disabled)
             echo 'disabled="disabled" ';

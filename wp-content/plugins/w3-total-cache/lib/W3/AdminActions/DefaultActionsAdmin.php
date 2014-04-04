@@ -33,9 +33,42 @@ class W3_AdminActions_DefaultActionsAdmin {
         $this->_config = w3_instance('W3_Config');
         $this->_config_admin = w3_instance('W3_ConfigAdmin');
         $this->_config_master = new W3_Config(true);
-        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
+    }
 
-        $this->_page = W3_Request::get_string('page');
+    /**
+     * Start previewing
+     */
+    function action_default_previewing() {
+        setcookie('w3tc_preview', true, 0, '/');
+        w3_redirect(w3_get_home_url());
+    }
+
+    /**
+     * Stop previewing the site
+     */
+    function action_default_stop_previewing() {
+        setcookie("w3tc_preview", "", time()-3600, '/');
+        w3_admin_redirect(array(), true);
+    }
+
+    /**
+     * Hide note action
+     *
+     * @return void
+     */
+    function action_default_save_licence_key() {
+        $license = W3_Request::get_string('license_key');
+        try {
+            $this->_config->set('plugin.license_key', $license);
+            $this->_config->save();
+        } catch(Exception $ex){
+            echo json_encode(array('result' => 'failed'));
+            exit;
+        }
+        echo json_encode(array('result' => 'success'));
+        exit;
     }
 
     /**
@@ -54,6 +87,16 @@ class W3_AdminActions_DefaultActionsAdmin {
             $this->_config->set($setting, false);
             $this->_config->save();
         }
+        do_action("w3tc_hide_button-{$note}");
+        w3_admin_redirect(array(), true);
+    }
+
+    /**
+     * Hide note custom action
+     */
+    function action_default_hide_note_custom() {
+        $note = W3_Request::get_string('note');
+        do_action("w3tc_hide_button_custom-{$note}");
         w3_admin_redirect(array(), true);
     }
 
@@ -66,6 +109,11 @@ class W3_AdminActions_DefaultActionsAdmin {
         switch($module) {
             case 'pgcache':
                 w3_wp_delete_file(W3TC_ADDIN_FILE_ADVANCED_CACHE);
+                $src = W3TC_INSTALL_FILE_ADVANCED_CACHE;
+                $dst = W3TC_ADDIN_FILE_ADVANCED_CACHE;
+                try {
+                    w3_wp_copy_file($src, $dst);
+                } catch (FilesystemOperationException $ex) {}
                 break;
             case 'dbcache':
                 w3_wp_delete_file(W3TC_ADDIN_FILE_DB);
@@ -85,6 +133,9 @@ class W3_AdminActions_DefaultActionsAdmin {
      * @return void
      */
     function action_save_options() {
+        if (!current_user_can('manage_options'))
+            wp_die( __('You do not have the rights to perform this action.', 'w3-total-cache'));
+
         /**
          * Redirect params
          */
@@ -100,9 +151,6 @@ class W3_AdminActions_DefaultActionsAdmin {
          * We should use new instance of WP_Config object here
          */
         $config = new W3_Config();
-        if (!$this->_config->own_config_exists()) {
-            $config->import_legacy_config();
-        }
 
         $this->read_request($config);
 
@@ -158,12 +206,6 @@ class W3_AdminActions_DefaultActionsAdmin {
                 $redirect_permalink_error = 'fancy_permalinks_disabled_pgcache';
             }
 
-            $w3_cloudflare = w3_instance('W3_CloudFlare');
-            $w3_cloudflare->reset_settings_cache();
-            if ($config->get_boolean('cloudflare.enabled') && $w3_cloudflare->minify_enabled() && $config->get_boolean('minify.enabled')) {
-                $config->set('minify.enabled',false);
-            }
-
             /**
              * Get New Relic application id
              */
@@ -217,6 +259,8 @@ class W3_AdminActions_DefaultActionsAdmin {
                     $config->get_string('minify.engine') != $this->_config->get_string('minify.engine'))) {
                 delete_transient('w3tc_minify_tested_filename_length');
             }
+            if (!w3_is_pro($this->_config))
+                delete_transient('w3tc_license_status');
         }
 
         /**
@@ -232,7 +276,7 @@ class W3_AdminActions_DefaultActionsAdmin {
             foreach ($js_files as $theme => $templates) {
                 foreach ($templates as $template => $locations) {
                     foreach ((array) $locations as $location => $types) {
-                        foreach ((array) $types as $type => $files) {
+                        foreach ((array) $types as $files) {
                             foreach ((array) $files as $file) {
                                 if (!empty($file)) {
                                     $js_groups[$theme][$template][$location]['files'][] = w3_normalize_file_minify($file);
@@ -283,6 +327,20 @@ class W3_AdminActions_DefaultActionsAdmin {
                 $redirect_permalink_error = 'fancy_permalinks_disabled_browsercache';
             }
             $config->set('browsercache.timestamp', time());
+
+            if (in_array($engine = $this->_config->get_string('cdn.engine'), array('netdna', 'maxcdn'))) {
+                w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
+                $keys = explode('+', $this->_config->get_string('cdn.'.$engine.'.authorization_key'));
+                if (sizeof($keys) == 3) {
+                    list($alias, $consumerkey, $consumersecret) =  $keys;
+                    try {
+                        $api = new NetDNA($alias, $consumerkey, $consumersecret);
+                        $disable_cooker_header = $config->get_boolean('browsercache.other.nocookies') ||
+                            $config->get_boolean('browsercache.cssjs.nocookies');
+                        $api->update_pull_zone($this->_config->get_string('cdn.' . $engine .'.zone_id'), array('ignore_setcookie_header' => $disable_cooker_header));
+                    } catch(Exception $ex) {}
+                }
+            }
         }
 
         /**
@@ -367,7 +425,7 @@ class W3_AdminActions_DefaultActionsAdmin {
                 sort($mobile_groups[$group]['agents']);
             }
             $enable_mobile = false;
-            foreach ($mobile_groups as $group => $group_config) {
+            foreach ($mobile_groups as $group_config) {
                 if ($group_config['enabled']) {
                     $enable_mobile = true;
                     break;
@@ -427,7 +485,7 @@ class W3_AdminActions_DefaultActionsAdmin {
             }
 
             $enable_referrer = false;
-            foreach ($referrer_groups as $group => $group_config) {
+            foreach ($referrer_groups as $group_config) {
                 if ($group_config['enabled']) {
                     $enable_referrer = true;
                     break;
@@ -522,30 +580,43 @@ class W3_AdminActions_DefaultActionsAdmin {
             }
         }
 
-        if ($this->_page == 'w3tc_extensions') {
-            $extension = W3_Request::get_string('extension');
-            $extensions = w3_get_extensions($this->_config);
-            if (array_key_exists($extension, $extensions)) {
-                $extension_values = W3_Request::get_as_array('extensions.settings.');
-                $old_extensions = $this->_config->get_array('extensions.settings');
-                $extension_keys = array();
-                $extension_settings = array();
-                $tmp_grp = str_replace('.', '_', $extension) . '_';
-                foreach($extension_values as $key => $value) {
-                    if(strpos($key, $tmp_grp) !== false) {
-                        $extension_settings[str_replace($tmp_grp, '', $key)] = $value;
-                    }
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/extensions.php');
+
+        w3_extensions_admin_init();
+        $all_extensions = w3_get_extensions($config);
+        $old_extensions = $this->_config->get_array('extensions.settings', array());
+        foreach ($all_extensions as $extension => $descriptor) {
+            $extension_values = W3_Request::get_as_array('extensions.settings.');
+            $extension_keys = array();
+            $extension_settings = array();
+            $tmp_grp = str_replace('.', '_', $extension) . '_';
+            foreach($extension_values as $key => $value) {
+                if(strpos($key, $tmp_grp) !== false) {
+                    $extension_settings[str_replace($tmp_grp, '', $key)] = $value;
                 }
+            }
+            if ($extension_settings) {
                 $old_extension_settings = isset($old_extensions[$extension]) ? $old_extensions[$extension] : array();
+                if (!isset($old_extensions[$extension]))
+                    $old_extensions[$extension] = array();
                 $extension_keys[$extension] = apply_filters("w3tc_save_extension_settings-{$extension}",
                                                     $extension_settings,
                                                     $old_extension_settings);
-                $config->set("extensions.settings", array_merge($old_extensions ,$extension_keys));
+                $new_settings = array_merge($old_extensions ,$extension_keys);
+                $config->set("extensions.settings", $new_settings);
+                $old_extensions = $config->get_array('extensions.settings', array());
             }
-        }
 
+        }
+        //CloudFront does not support expires header. So disable it when its used
+        if ($config->get_string('cdn.engine') == 'cf2') {
+            $config->set('browsercache.cssjs.expires', false);
+            $config->set('browsercache.html.expires', false);
+            $config->set('browsercache.other.expires', false);
+        }
         $config = apply_filters('w3tc_save_options', $config, $this->_config, $config_admin);
         $config = apply_filters("w3tc_save_options-{$this->_page}", $config, $this->_config, $config_admin);
+
         do_action('w3tc_saving_options', $config, $this->_config, $config_admin);
         do_action("w3tc_saving_options-{$this->_page}", $config, $this->_config, $config_admin);
 
@@ -578,25 +649,6 @@ class W3_AdminActions_DefaultActionsAdmin {
                 break;
 
             case 'w3tc_general':
-                /**
-                 * Handle CloudFlare changes
-                 */
-                if ($this->_config->get_boolean('cloudflare.enabled') &&
-                    ((w3_get_blog_id() == 0) ||
-                        (w3_get_blog_id() != 0 && !$this->is_sealed('cloudflare'))
-                    )) {
-                    /**
-                     * @var $w3_cloudflare W3_CloudFlare
-                     */
-                    $w3_cloudflare = w3_instance('W3_CloudFlare');
-                    W3_CloudFlare::clear_last_error('');
-                    $cf_values = W3_Request::get_as_array('cloudflare_');
-                    if (!$w3_cloudflare->save_settings($cf_values)) {
-                        w3_admin_redirect(array_merge($params, array(
-                            'w3tc_error' => 'cloudflare_api_request'
-                        )));
-                    }
-                }
                 break;
         }
 

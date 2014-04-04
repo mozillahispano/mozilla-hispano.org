@@ -103,8 +103,8 @@ input.warning:hover, a.warning:hover {
 }
 
 #ure_update {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #ure_update_user {
@@ -114,7 +114,7 @@ input.warning:hover, a.warning:hover {
 
 
 #ure_service_tools {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .ure-modal-dialog {
@@ -126,7 +126,7 @@ input.warning:hover, a.warning:hover {
   clear: left;  
   float: left;
   display: block;
-  width: 90px;  
+  width: 150px;  
 }
 
 .ure-input {
@@ -166,4 +166,9 @@ input.warning:hover, a.warning:hover {
 #ure-icon {
     background-image: url("../images/user-role-editor-page-icon.png");
     background-position: 0 0;
+}
+
+#other_default_roles {
+    display: block;
+    margin: 10px;
 }

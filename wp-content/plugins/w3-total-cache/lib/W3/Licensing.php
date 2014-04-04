@@ -29,13 +29,13 @@ class W3_Licensing extends W3_Plugin {
             }
             delete_transient('w3tc_license_status');
         } else if($old_config->get_string('plugin.license_key') =='' &&  $config->get_string('plugin.license_key') != '') {
-            $result = edd_w3edge_w3tc_activate_license($config->get_string('plugin.license_key'));
+            $result = edd_w3edge_w3tc_activate_license($config->get_string('plugin.license_key'), W3TC_VERSION);
             if ($result) {
                 $this->site_activated = true;
             }
             delete_transient('w3tc_license_status');
         } else if($old_config->get_string('plugin.license_key') != $config->get_string('plugin.license_key')) {
-            $result = edd_w3edge_w3tc_activate_license($config->get_string('plugin.license_key'));
+            $result = edd_w3edge_w3tc_activate_license($config->get_string('plugin.license_key'), W3TC_VERSION);
             if ($result) {
                 $this->site_activated = true;
             }
@@ -48,7 +48,8 @@ class W3_Licensing extends W3_Plugin {
      */
     function admin_init() {
         if (current_user_can('manage_options')) {
-            if (is_admin() && isset($_GET['page']) && strpos($_GET['page'], 'w3tc_') !== false) {
+            w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+            if (is_admin() && is_w3tc_admin_page()) {
                 /**
                  * Only admin can see W3TC notices and errors
                  */
@@ -103,7 +104,7 @@ class W3_Licensing extends W3_Plugin {
             case 'no_key':
                 break;
             default:
-                $message = __('The W3 Total Cache license key cann\'t be verified.', 'w3-total-cache');
+                $message = __('The W3 Total Cache license key can\'t be verified.', 'w3-total-cache');
                 $transient_timeout = 60;
                 break;
         }
@@ -135,13 +136,19 @@ class W3_Licensing extends W3_Plugin {
         $license_key = $this->get_license_key();
 
         if (!empty($license_key) || defined('W3TC_LICENSE_CHECK')) {
-            $license = edd_w3edge_w3tc_check_license($license_key);
-            $status = $license->license;
-            if (in_array($status, array('valid', 'host_valid'))) {
-                $version = 'pro';
-            } else {
-                $version = '';
+            $license = edd_w3edge_w3tc_check_license($license_key, W3TC_VERSION);
+            $version = '';
+
+            if ($license) {
+                $status = $license->license;
+                if ('host_valid' == $status) {
+                    $version = 'pro';
+                } elseif (in_array($status, array('site_inactive','valid')) && w3tc_is_pro_dev_mode()) {
+                    $status = 'valid';
+                    $version = 'pro_dev';
+                }
             }
+
             $this->_config->set('plugin.type', $version);
         } else {
             $status = 'no_key';
@@ -169,7 +176,7 @@ class W3_Licensing extends W3_Plugin {
         $license = W3_Request::get_string('license_key', '');
 
         if ($license) {
-            $status = edd_w3edge_w3tc_verify_license($license);
+            $status = edd_w3edge_w3tc_verify_license($license, W3TC_VERSION);
             echo $status->license;
         } else {
             echo 'invalid';

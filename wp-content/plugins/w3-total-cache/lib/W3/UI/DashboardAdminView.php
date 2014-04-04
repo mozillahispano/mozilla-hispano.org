@@ -29,7 +29,6 @@ class W3_UI_DashboardAdminView extends W3_UI_PluginView {
         $config_master = $this->_config_master;
 
         $browsercache_enabled = $module_status->is_enabled('browsercache');
-        $cloudflare_enabled = $module_status->is_enabled('cloudflare');
 
         $enabled = $module_status->plugin_is_enabled();
 
@@ -46,11 +45,6 @@ class W3_UI_DashboardAdminView extends W3_UI_PluginView {
         $cdn_enabled = $module_status->is_enabled('cdn');
         $cdn_mirror_purge = w3_cdn_can_purge_all($module_status->get_module_engine('cdn'));
 
-        if ($cloudflare_enabled && $this->_config->get_string('cloudflare.email') && $this->_config->get_string('cloudflare.key')) {
-            $can_empty_cloudflare = true;
-        } else {
-            $can_empty_cloudflare = false;
-        }
 
         // Required for Update Media Query String button
         $browsercache_update_media_qs = ($this->_config->get_boolean('browsercache.cssjs.replace') || $this->_config->get_boolean('browsercache.other.replace'));

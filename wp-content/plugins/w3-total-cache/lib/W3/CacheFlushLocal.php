@@ -275,6 +275,29 @@ class W3_CacheFlushLocal {
     }
 
     /**
+     * Flushes all enabled caches.
+     */
+    function flush_all() {
+        do_action('w3tc_flush_all');
+
+        $config = w3_instance('W3_Config');
+        if ($config->get_boolean('minify.enabled'))
+            $this->minifycache_flush();
+        if ($config->get_boolean('objectcache.enabled'))
+            $this->objectcache_flush();
+        if ($config->get_boolean('dbcache.enabled'))
+            $this->dbcache_flush();
+        if ($config->get_boolean('fragmentcache.enabled'))
+            $this->fragmentcache_flush();
+        if ($config->get_boolean('pgcache.enabled'))
+            $this->pgcache_flush();
+        if ($config->get_boolean('varnish.enabled'))
+            $this->varnish_flush();
+        if ($config->get_boolean('cdn.enabled') && $config->get_boolean('cdncache.enabled'))
+            $this->cdncache_purge();
+    }
+
+    /**
      * Purges/Flushes url from page cache, varnish and cdn cache
      */
     function flush_url($url) {

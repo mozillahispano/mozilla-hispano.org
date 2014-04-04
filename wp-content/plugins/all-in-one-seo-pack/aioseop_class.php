@@ -161,8 +161,12 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			"google_verify" 		=> __( "Enter your verification code here to verify your site with Google Webmaster Tools.<br /><a href='http://semperplugins.com/documentation/google-webmaster-tools-verification/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"bing_verify" 			=> __( "Enter your verification code here to verify your site with Bing Webmaster Tools.<br /><a href='http://semperplugins.com/documentation/bing-webmaster-verification/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"pinterest_verify" 		=> __( "Enter your verification code here to verify your site with Pinterest.<br /><a href='http://semperplugins.com/documentation/pinterest-site-verification/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
-			"google_publisher"		=> __( "Enter your Google Plus Profile URL here to link your site to your Google Plus account for authorship.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+			"google_publisher"		=> __( "Enter your Google+ Profile URL here to add the rel=“author” tag to your site for Google authorship. It is recommended that the URL you enter here should be your personal Google+ profile.  Use the Advanced Authorship Options below if you want greater control over the use of authorship.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"google_disable_profile"=> __( "Check this to remove the Google Plus field from the user profile screen.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+			"google_author_advanced"=> __( "Enable this to display advanced options for controlling Google Plus authorship information on your website.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+			"google_author_location"=> __( "This option allows you to control which types of pages you want to display rel=\"author\" on for Google authorship. The options include the Front Page (the homepage of your site), Posts, Pages, and any Custom Post Types. The Everywhere Else option includes 404, search, categories, tags, custom taxonomies, date archives, author archives and any other page template.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+			"google_enable_publisher"=> __( "This option allows you to control whether rel=\"publisher\" is displayed on the homepage of your site. Google recommends using this if the site is a business website.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+			"google_specify_publisher"=> __( "The Google+ profile you enter here will appear on your homepage only as the rel=\"publisher\" tag. It is recommended that the URL you enter here should be the Google+ profile for your business.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"google_connect"		=> __( "Press the connect button to connect with Google Analytics; or if already connected, press the disconnect button to disable and remove any stored analytics credentials.", 'all_in_one_seo_pack' ),
 			"google_analytics_id"	=> __( "Enter your Google Analytics ID here to track visitor behavior on your site using Google Analytics.<br /><a href='http://semperplugins.com/documentation/google-analytics/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"ga_use_universal_analytics" => __( "Use the new Universal Analytics tracking code for Google Analytics; do this for new analytics accounts.", 'all_in_one_seo_pack' ),
@@ -352,6 +356,28 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			"google_disable_profile"=> Array(
 				'name' => __( 'Disable Google Plus Profile:', 'all_in_one_seo_pack' ), 'default' => 0, 'type' => 'checkbox'
 				),
+			"google_author_advanced" => Array(
+					'name' => __( 'Advanced Authorship Options:', 'all_in_one_seo_pack' ), 
+					'default' => 0, 'type' => 'radio',
+					'initial_options' => Array( 'on' => __( 'Enabled', 'all_in_one_seo_pack' ),
+												0 => __( 'Disabled', 'all_in_one_seo_pack' ) ),
+					'label' => null
+					),
+			"google_author_location"=> Array(
+				'name' => __( 'Display Google Authorship:', 'all_in_one_seo_pack' ), 'default' => array( 'all' ), 'type' => 'multicheckbox',
+				'condshow' => Array( 'aiosp_google_author_advanced' => 'on' )
+				),
+			"google_enable_publisher" => Array(
+				'name' => __( 'Display Publisher Meta on Front Page:', 'all_in_one_seo_pack' ), 
+				'default' => 'on', 'type' => 'radio',
+				'initial_options' => Array( 'on' => __( 'Enabled', 'all_in_one_seo_pack' ),
+											0 => __( 'Disabled', 'all_in_one_seo_pack' ) ),
+				'condshow' => Array( 'aiosp_google_author_advanced' => 'on' )
+				),
+			"google_specify_publisher" => Array(
+					'name' => __( 'Specify Publisher URL:', 'all_in_one_seo_pack' ), 'type' => 'text',
+					'condshow' => Array( 'aiosp_google_author_advanced' => 'on', 'aiosp_google_enable_publisher' => 'on' )
+				),
 			"google_connect"=>Array( 'name' => __( 'Connect With Google Analytics', 'all_in_one_seo_pack' ), 
 				),
 			"google_analytics_id"=> Array(
@@ -525,7 +551,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'google' => Array(
 						'name' => __( 'Google Settings', 'all_in_one_seo_pack' ),
 						'help_link' => 'http://semperplugins.com/documentation/google-settings/',
-						'options' => Array( "google_publisher", "google_disable_profile", "google_connect", "google_analytics_id", "ga_use_universal_analytics", "ga_domain", "ga_multi_domain", "ga_display_advertising", "ga_exclude_users", "ga_track_outbound_links" )
+						'options' => Array( "google_publisher", "google_disable_profile", "google_author_advanced", "google_author_location", "google_enable_publisher" , "google_specify_publisher",						
+											"google_connect", "google_analytics_id", "ga_use_universal_analytics", "ga_domain", "ga_multi_domain", "ga_display_advertising", "ga_exclude_users", "ga_track_outbound_links" )
 					),
 				'noindex' => Array(
 						'name' => __( 'Noindex Settings', 'all_in_one_seo_pack' ),
@@ -727,6 +754,10 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		$this->default_options["cpostactive"]['initial_options'] = $post_types;
 		$this->default_options["cpostnoindex"]['initial_options'] = $post_types;
 		$this->default_options["cpostnofollow"]['initial_options'] = $post_types;
+		$this->default_options["google_author_location"]['initial_options'] = $post_types;
+		$this->default_options['google_author_location' ]['initial_options'] = array_merge( Array( 'front' => __( 'Front Page', 'all_in_one_seo_pack' ) ), $post_types, Array( 'all' => __( 'Everywhere Else', 'all_in_one_seo_pack' ) ) );
+		$this->default_options["google_author_location"]['default'] = array_keys( $this->default_options["google_author_location"]['initial_options'] );
+		
 		foreach ( $post_types as $p => $pt ) {
 			$field = $p . "_title_format";
 			$name = $post_objs[$p]->labels->singular_name;
@@ -902,6 +933,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				$options["{$prefix}enablecpost"] = 0;
 			if ( ( isset( $options["{$prefix}use_original_title"] ) ) && ( $options["{$prefix}use_original_title"] === '' ) )
 				$options["{$prefix}use_original_title"] = 0;
+			//if ( is_array( $options["{$prefix}google_author_location"] ) && in_array( 'all', $options["{$prefix}google_author_location"] ) && is_array( $this->default_options["google_author_location"]['initial_options'] ) )
+			//	$options["{$prefix}google_author_location"] = array_keys( $this->default_options["google_author_location"]['initial_options'] );
 		}
 		return $options;
 	}
@@ -1173,6 +1206,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			else if ( is_single() || is_page() || is_home() || $this->is_static_posts_page() )
 				$description = $this->get_aioseop_description( $post );
 			
+			$description = $this->trim_excerpt_without_filters( $description );
+			
 			$description = apply_filters( 'aioseop_description', $description );
 			
 			/*
@@ -1302,8 +1337,19 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( empty( $googleplus ) && !empty( $aioseop_options['aiosp_google_publisher'] ) )
 				$googleplus = $aioseop_options['aiosp_google_publisher'];
 
-			if ( $is_front_page && !empty( $aioseop_options['aiosp_google_publisher'] ) )
-				$publisher = $aioseop_options['aiosp_google_publisher'];
+
+			if ( $is_front_page ) {
+				if ( !empty( $aioseop_options['aiosp_google_publisher'] ) )
+					$publisher = $aioseop_options['aiosp_google_publisher'];
+
+				if ( !empty( $aioseop_options["aiosp_google_author_advanced"] ) ) {
+					if ( empty( $aioseop_options["aiosp_google_enable_publisher"] ) ) {
+						$publisher = '';
+					} elseif ( !empty( $aioseop_options["aiosp_google_specify_publisher"] ) ) {
+						$publisher = $aioseop_options["aiosp_google_specify_publisher"];
+					}
+				}				
+			}
 			
 			$publisher = apply_filters( 'aioseop_google_publisher', $publisher );
 			
@@ -1314,6 +1360,20 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				$author = $googleplus;
 			else if ( !empty( $aioseop_options['aiosp_google_publisher'] ) )
 				$author = $aioseop_options['aiosp_google_publisher'];
+				
+			if ( !empty( $aioseop_options['aiosp_google_author_advanced'] ) && isset( $aioseop_options['aiosp_google_author_location'] ) ) {
+				if ( $is_front_page && !in_array( 'front', $aioseop_options['aiosp_google_author_location'] ) ) {
+					unset( $author );
+				} else {
+					if ( in_array( 'all', $aioseop_options['aiosp_google_author_location'] ) ) {
+						if ( is_singular() && !is_singular( $aioseop_options['aiosp_google_author_location'] ) )
+								unset( $author );
+					} else {
+						if ( !is_singular( $aioseop_options['aiosp_google_author_location'] ) )
+							unset( $author );
+					}
+				}
+			}
 			
 			$author = apply_filters( 'aioseop_google_author', $author );
 			
@@ -1725,7 +1785,7 @@ function aiosp_google_analytics() {
 		<script type="text/javascript">
 		function recordOutboundLink(link, category, action) {
 		<?php if ( !empty( $aioseop_options['aiosp_ga_use_universal_analytics'] ) ) { ?>
-			ga(category, action);
+			ga('send', 'event', category, action);
 		<?php }
 		 	  if ( empty( $aioseop_options['aiosp_ga_use_universal_analytics'] ) ) {	?>
 			_gat._getTrackerByName()._trackEvent(category, action);

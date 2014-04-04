@@ -8,13 +8,13 @@
  * Class W3_PgCacheFlush
  */
 class W3_CacheFlush {
-
+    private $_config;
     /**
      * PHP5 Constructor
      */
     function __construct() {
-        $config = w3_instance('W3_Config');
-        $sns = $config->get_boolean('cluster.messagebus.enabled');
+        $this->_config = w3_instance('W3_Config');
+        $sns = $this->_config->get_boolean('cluster.messagebus.enabled');
 
         if ($sns)
             $this->_executor = w3_instance('W3_Enterprise_SnsClient');
@@ -26,28 +26,36 @@ class W3_CacheFlush {
      * Flushes database cache
      */
     function dbcache_flush() {
-        $this->_executor->dbcache_flush();
+        if ($this->_config->get_boolean('dbcache.enabled')) {
+            $this->_executor->dbcache_flush();
+        }
     }
     
     /**
      * Flushes minify cache
      */
     function minifycache_flush() {
-        $this->_executor->minifycache_flush();
+        if ($this->_config->get_boolean('minify.enabled')) {
+            $this->_executor->minifycache_flush();
+        }
     }
     
     /**
      * Flushes object cache
      */
     function objectcache_flush() {
-        $this->_executor->objectcache_flush();
+        if ($this->_config->get_boolean('objectcache.enabled')) {
+            $this->_executor->objectcache_flush();
+        }
     }
 
     /**
      * Flushes fragment cache
      */
     function fragmentcache_flush() {
-        $this->_executor->fragmentcache_flush();
+        if ($this->_config->get_boolean('fragmentcache.enabled')) {
+            $this->_executor->fragmentcache_flush();
+        }
     }
 
 
@@ -55,14 +63,18 @@ class W3_CacheFlush {
      * Flushes fragment cache based on group
      */
     function fragmentcache_flush_group($group, $global = false) {
-        $this->_executor->fragmentcache_flush_group($group, $global);
+        if ($this->_config->get_boolean('fragmentcache.enabled')) {
+            $this->_executor->fragmentcache_flush_group($group, $global);
+        }
     }
 
     /**
      * Updates Browser Query String
      */
     function browsercache_flush() {
-        $this->_executor->browsercache_flush();
+        if ($this->_config->get_boolean('browsercache.enabled')) {
+            $this->_executor->browsercache_flush();
+        }
     }  
 
     /**
@@ -78,7 +90,9 @@ class W3_CacheFlush {
      * @return boolean
      */
     function pgcache_flush() {
-        $this->_executor->pgcache_flush();
+        if ($this->_config->get_boolean('pgcache.enabled')) {
+            $this->_executor->pgcache_flush();
+        }
     }
 
     /**
@@ -88,7 +102,10 @@ class W3_CacheFlush {
      * @return boolean
      */
     function pgcache_flush_post($post_id) {
-        return $this->_executor->pgcache_flush_post($post_id);
+        if ($this->_config->get_boolean('pgcache.enabled')) {
+            return $this->_executor->pgcache_flush_post($post_id);
+        }
+        return false;
     }
 
     /**
@@ -98,7 +115,10 @@ class W3_CacheFlush {
      * @return boolean
      */
     function pgcache_flush_url($url) {
-        return $this->_executor->pgcache_flush_url($url);
+        if ($this->_config->get_boolean('pgcache.enabled')) {
+            return $this->_executor->pgcache_flush_url($url);
+        }
+        return false;
     }
 
     /**
@@ -106,7 +126,10 @@ class W3_CacheFlush {
      * @return mixed
      */
     function varnish_flush() {
-        return $this->_executor->varnish_flush();
+        if ($this->_config->get_boolean('varnish.enabled')) {
+            return $this->_executor->varnish_flush();
+        }
+        return false;
     }
 
     /**
@@ -115,7 +138,10 @@ class W3_CacheFlush {
      * @return mixed
      */
     function varnish_flush_post($post_id) {
-        return $this->_executor->varnish_flush_post($post_id);
+        if ($this->_config->get_boolean('varnish.enabled')) {
+            return $this->_executor->varnish_flush_post($post_id);
+        }
+        return true;
     }
 
     /**
@@ -124,14 +150,20 @@ class W3_CacheFlush {
      * @return mixed
      */
     function varnish_flush_url($url) {
-        return $this->_executor->varnish_flush_url($url);
+        if ($this->_config->get_boolean('varnish.enabled')) {
+            return $this->_executor->varnish_flush_url($url);
+        }
+        return false;
     }
 
     /**
      * Purge CDN mirror cache
      */
     function cdncache_purge() {
-        return $this->_executor->cdncache_purge();
+        if ($this->_config->get_boolean('cdn.enabled')) {
+            return $this->_executor->cdncache_purge();
+        }
+        return false;
     }
 
     /**
@@ -140,7 +172,10 @@ class W3_CacheFlush {
      * @return boolean
      */
     function cdncache_purge_post($post_id) {
-        return $this->_executor->cdncache_purge_post($post_id);
+        if ($this->_config->get_boolean('cdncache.enabled')) {
+            return $this->_executor->cdncache_purge_post($post_id);
+        }
+        return false;
     }
 
     /**
@@ -149,7 +184,10 @@ class W3_CacheFlush {
      * @return boolean
      */
     function cdncache_purge_url($url) {
-        return $this->_executor->cdncache_purge_url($url);
+        if ($this->_config->get_boolean('cdn.enabled')) {
+            return $this->_executor->cdncache_purge_url($url);
+        }
+        return false;
     }
 
     /**
@@ -209,6 +247,18 @@ class W3_CacheFlush {
             return $this->_executor->flush();
         }
         return true;
+    }
+
+
+    /**
+     * Purges/Flushes all enabled caches
+     */
+    function flush_all() {
+        static $flushed = false;
+        if (!$flushed) {
+            $flushed = true;
+            $this->_executor->flush_all();
+        }
     }
 
     /**

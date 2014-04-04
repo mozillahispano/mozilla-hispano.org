@@ -146,9 +146,10 @@
 		} else {
 			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
 			if (false === $num_sent) {
-				_e('<div class="error fade"><p>There was a problem trying to send email to users.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p> ' . __('There was a problem trying to send email to users.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
+
 			} else if (0 === $num_sent) {
-				_e('<div class="error fade"><p>No email has been sent to other users. This may be because no valid email addresses were found.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p>' . __('No email has been sent to other users. This may be because no valid email addresses were found.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else if ($num_sent > 0 && $num_sent == count($recipients)){
 	?>
 			<div class="updated fade">
@@ -156,7 +157,7 @@
 			</div>
 	<?php
 			} else if ($num_sent > count($recipients)) {
-				_e('<div class="error fade"><p>WARNING: More email has been sent than the number of recipients found.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p>' . __('WARNING: More email has been sent than the number of recipients found.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else {
 				echo '<div class="updated fade"><p>' . sprintf(__('Email has been sent to %s users, but %s recipients were originally found. Perhaps some users don\'t have valid email addresses?', MAILUSERS_I18N_DOMAIN), $num_sent, count($recipients)) . '</p></div>';
 			}

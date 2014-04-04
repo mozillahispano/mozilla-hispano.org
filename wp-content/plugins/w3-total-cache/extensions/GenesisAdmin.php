@@ -104,7 +104,7 @@ class W3_GenesisAdmin {
         if ($args['type'] != 'custom')
             w3_ui_element($args['type'], $setting, $name, w3tc_get_extension_config('genesis.theme', $setting), w3_extension_is_sealed('genesis.theme'));
         else {
-            if ($setting == 'fragment_reject_roles'):
+            if ($setting == 'reject_roles'):
                 $saved_roles = w3tc_get_extension_config('genesis.theme', $setting);
                 if (!is_array($saved_roles))
                     $saved_roles = array();
@@ -136,11 +136,14 @@ class W3_GenesisAdmin {
 
     /**
      * @param $extensions
+     * @param W3_Config $config
      * @return mixed
      */
     function extension($extensions, $config) {
-        $activation_enabled = $config->get_boolean('fragmentcache.enabled');
-        $activation_enabled = $activation_enabled && defined('PARENT_THEME_NAME') && PARENT_THEME_NAME == 'Genesis' &&
+        $fc_enabled = ((w3_is_pro($config) || w3_is_enterprise($config)) && 
+                $config->get_boolean('fragmentcache.enabled'));
+
+        $activation_enabled = $fc_enabled && defined('PARENT_THEME_NAME') && PARENT_THEME_NAME == 'Genesis' &&
             defined('PARENT_THEME_VERSION') && version_compare(PARENT_THEME_VERSION, '1.9.0') >= 0;
         $message = array();
 
@@ -154,9 +157,10 @@ class W3_GenesisAdmin {
             }
             if (!$exists)
                 $message[] = 'Genesis Framework';
-        }elseif (!(defined('PARENT_THEME_NAME') && PARENT_THEME_NAME == 'Genesis'))
+        } elseif (!(defined('PARENT_THEME_NAME') && PARENT_THEME_NAME == 'Genesis'))
             $message[] = 'Genesis Framework version >= 1.9.0';
-        if (!$config->get_boolean('fragmentcache.enabled'))
+
+        if (!$fc_enabled)
             $message[] = 'Fragment Cache (W3 Total Cache Pro)';
 
         $extensions['genesis.theme'] = array (
@@ -216,6 +220,20 @@ class W3_GenesisAdmin {
                     'label' => __('Cache front page post loop:', 'w3-total-cache'),
                     'description' => __('Caches the front page post loop, pagination is supported.', 'w3-total-cache')
                 ),
+                'loop_terms' =>
+                    array(
+                        'type' => 'checkbox',
+                        'section' => 'content',
+                        'label' => __('Cache author/tag/categories/term post loop:', 'w3-total-cache'),
+                        'description' => __('Caches the posts listed on tag, categories, author and other term pages, pagination is supported.', 'w3-total-cache')
+                 ),
+                'flush_terms' =>
+                    array(
+                        'type' => 'checkbox',
+                        'section' => 'content',
+                        'label' => __('Flush posts loop:', 'w3-total-cache'),
+                        'description' => __('Flushes the posts loop cache on post updates. See setting above for affected loops.', 'w3-total-cache')
+                    ),
                 'loop_single' =>
                 array(
                     'type' => 'checkbox',
@@ -228,7 +246,7 @@ class W3_GenesisAdmin {
                     'type' => 'textarea',
                     'section' => 'content',
                     'label' => __('Excluded single pages / posts:', 'w3-total-cache'),
-                    'description' => __('List of pages / posts that should not have the single post / post loop cached. Specify one page / post per line.', 'w3-total-cache')
+                    'description' => __('List of pages / posts that should not have the single post / post loop cached. Specify one page / post per line. This area supports regular expressions.', 'w3-total-cache')
                 ),
                 'loop_single_genesis_comments' =>
                 array(
@@ -256,7 +274,7 @@ class W3_GenesisAdmin {
                     'type' => 'textarea',
                     'section' => 'sidebar',
                     'label' => __('Exclude pages:', 'w3-total-cache'),
-                    'description' => __('List of pages that should not have sidebar cached. Specify one page / post per line.', 'w3-total-cache')
+                    'description' => __('List of pages that should not have sidebar cached. Specify one page / post per line. This area supports regular expressions.', 'w3-total-cache')
                 ),
                 'genesis_footer' =>
                     array(
@@ -272,19 +290,19 @@ class W3_GenesisAdmin {
                     'label' => __('Cache footer:', 'w3-total-cache'),
                     'description' => __('Caches wp_footer loop.', 'w3-total-cache')
                 ),
-                'fragment_reject_logged_roles' =>
+                'reject_logged_roles' =>
                 array('type' => 'checkbox',
                     'section' => 'exclusions',
                     'label' => __('Disable fragment cache:', 'w3-total-cache'),
                     'description' => 'Don\'t use fragment cache with the following hooks and for the specified user roles.'
                 ),
-                'fragment_reject_logged_roles_on_actions' =>
+                'reject_logged_roles_on_actions' =>
                 array('type' => 'custom',
                     'section' => 'exclusions',
                     'label' => __('Select hooks:', 'w3-total-cache'),
                     'description' => __('Select hooks from the list that should not be cached if user belongs to any of the roles selected below.', 'w3-total-cache')
                 ),
-                'fragment_reject_roles' =>
+                'reject_roles' =>
                     array('type' => 'custom',
                     'section' => 'exclusions',
                     'label' => __('Select roles:', 'w3-total-cache'),

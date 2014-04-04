@@ -203,9 +203,10 @@ function w3tc_do_failure(testUrl,minLength, maxLength, tryLength, minTestedAndSu
             jQuery.get(ajaxurl, {action:'w3tc_minify_disable_filename_test'});
             var url;
             if (w3_use_network_link)
-                url = 'admin.php?page=w3tc_minify#advanced';
-            else
                 url = 'network/admin.php?page=w3tc_minify#advanced';
+            else
+                url = 'admin.php?page=w3tc_minify#advanced';
+
             alert('Plugin could not solve the Minify Auto issue automatically.');
             jQuery('#minify_auto_test_loading').toggleClass('minify_auto_test');
             jQuery('#minify_auto_error').html('<p>Minify Auto does not work properly. Try using Minify Manual instead ' +
@@ -421,6 +422,162 @@ function w3tc_beforeunload() {
     return 'Navigate away from this page without saving your changes?';
 }
 
+var setting_changes = null;
+function w3tc_change_setting(key, state,network) {
+    var class_id = key.replace(/\./g, '_');
+    if (setting_changes == null)
+        setting_changes = jQuery('.setting_changes').length;
+    setting_changes--;
+    jQuery.post(ajaxurl,{action:'w3tc_change_setting', setting:key, state:state, network:network}, function(data) {
+        if (data == 'failure') {
+            alert('Could not change the configuration setting.')
+        } else {
+            if ('done' == data && 'all' == key) {
+                jQuery('#w3tc_new_settings').html('<p>All setting changes have been applied.</p>');
+            } else if ('done' == data) {
+                jQuery('li.'+class_id).html('<span>Action Applied</span>');
+                jQuery('li.'+class_id+' span').fadeOut(2000, function() {
+                    jQuery('li.'+class_id).remove();
+                    jQuery('#w3tc_new_settings').html('<p>All setting changes have been applied.</p>');
+                });
+            } else {
+                jQuery('li.'+class_id).html('<span>Action Applied</span>');
+                jQuery('li.'+class_id+' span').fadeOut(2000, function() {
+                    jQuery('li.'+class_id).remove();
+                });
+                if (setting_changes <= 0)
+                    jQuery('#w3tc_new_settings').html('<p>All setting changes have been applied.</p>');
+            }
+        }
+    });
+}
+
+/**
+ *
+ * @param type
+ * @param nonce
+ */
+function w3tc_validate_cdn_key_result(type, nonce) {
+  var key = jQuery('#cdn_' + type + '_authorization_key').val();
+  jQuery('#cdn_result_message').text('');
+  var result = jQuery('#validate_cdn_key_result');
+  if (key.length == 0) {
+    result.html('').removeClass('w3tc-error').removeClass('w3tc-success').removeClass('w3tc-checking');
+    return;
+  }
+  result.html('Validating ...').addClass('w3tc-checking');
+
+  if (key.split('+').length!=3) {
+    result.removeClass('w3tc-checking');
+    result.html('Key is invalid').addClass('w3tc-error');
+    return;
+  }
+  var params = {
+    w3tc_cdn_validate_authorization_key: 1,
+    type: type,
+    authorization_key: key,
+    _wpnonce: nonce
+  };
+  jQuery('#validate_cdn_key').prop('disabled', true);
+  jQuery.post('admin.php?page=w3tc_dashboard', params, function(data) {
+    result.html('').removeClass('w3tc-error').removeClass('w3tc-success').removeClass('w3tc-checking');
+    var element;
+    if (data.result == 'create') {
+      jQuery('#create_zone_area').show();
+      element = jQuery('#normal-sortables');
+      if (element.length)
+        element.masonry('reload');
+    } else if (data.result == 'single') {
+      var message = data.cnames.join('<br />');
+      jQuery('#cdn_result_message').html('Preexisting zone has been selected and saved for the CDN engine. Hostnames used: <br />' + message);
+      jQuery('#cdn_cnames > :first-child > :first-child').val(data.cnames.shift());
+      for (var i in data.cnames) {
+        jQuery('#cdn_cnames').append('<li><input type="text" name="cdn_cnames[]" value="' + data.cnames[i] + '" size="60" /> <input class="button cdn_cname_delete" type="button" value="Delete" /> <span></span></li>');
+        w3tc_cdn_cnames_assign();
+      }
+    } else if (data.result == 'many') {
+      jQuery('#select_pull_zone').show();
+      var mySelect = jQuery('#cdn_' + type +'_zone_id');
+      mySelect.empty();
+      jQuery.each(data.zones, function(val, zone) {
+        mySelect.append(
+          jQuery('<option></option>').val(zone.id).html(zone.name)
+        );
+      });
+      if (data.data.id) {
+        jQuery("#cdn_maxcdn_zone_id").val(data.data.id);
+        var message = data.data.cnames.join('<br />');
+        jQuery('#cdn_result_message').html('Preexisting zone has been selected and saved for the CDN engine. Hostnames used: <br />' + message);
+        jQuery('#cdn_cnames > :first-child > :first-child').val(data.data.cnames.shift());
+        for (var x in data.data.cnames) {
+          jQuery('#cdn_cnames').append('<li><input type="text" name="cdn_cnames[]" value="' + data.data.cnames[x] + '" size="60" /> <input class="button cdn_cname_delete" type="button" value="Delete" /> <span></span></li>');
+          w3tc_cdn_cnames_assign();
+        }
+      }
+      element = jQuery('#normal-sortables');
+        if (element.length)
+          element.masonry('reload');
+    }
+    result.removeClass('w3tc-checking');
+    if (data.result != 'error' && data.result != 'notsupported')
+      result.html('Key is valid').addClass('w3tc-success');
+    else
+      result.html(data.message).addClass('w3tc-error');
+    jQuery('#validate_cdn_key').prop('disabled', false);
+  }, 'json');
+}
+
+function w3tc_create_zone(type, nonce) {
+  var params = {
+    w3tc_cdn_auto_create_netdna_maxcdn_pull_zone: 1,
+    type: type,
+    authorization_key: jQuery('#cdn_' + type + '_authorization_key').val(),
+    _wpnonce: nonce
+  };
+  var result = jQuery('#create_pull_zone_result');
+  result.html('').removeClass('w3tc-error').removeClass('w3tc-success').removeClass('w3tc-checking');
+  jQuery("#create_default_zone").prop('disabled', true);
+  result.html('Creating ... ').addClass('w3tc-checking');
+
+  jQuery.post('admin.php?page=w3tc_dashboard', params, function(data) {
+    if (data.cnames && data.cnames.length) {
+      jQuery('#cdn_cnames > :first-child > :first-child').val(data.cnames.shift());
+      for (var i in data.cnames) {
+          jQuery('#cdn_cnames').append('<li><input type="text" name="cdn_cnames[]" value="' + data.cnames[i] + '" size="60" /> <input class="button cdn_cname_delete" type="button" value="Delete" /> <span></span></li>');
+        w3tc_cdn_cnames_assign();
+      }
+      result.text('Created ').removeClass('w3tc-checking').addClass('w3tc-success');
+    } else {
+      result.text(data.message).removeClass('w3tc-checking').addClass('w3tc-error');
+      jQuery("#create_default_zone").prop('disabled', false);
+
+    }
+  }, 'json');
+}
+
+function w3tc_use_poll_zone(type, nonce) {
+  var zone_id = jQuery("#cdn_" + type +"_zone_id").val();
+  var params = {
+    w3tc_cdn_use_netdna_maxcdn_pull_zone: 1,
+    type: type,
+    zone_id: zone_id,
+    authorization_key: jQuery('#cdn_' + type + '_authorization_key').val(),
+    _wpnonce: nonce
+  };
+  jQuery.post('admin.php?page=w3tc_dashboard', params, function(data) {
+    if (data.result == 'valid') {
+      var message = data.cnames.join('<br />');
+      jQuery('#cdn_result_message').html('Zone has been selected and saved for the CDN engine. Hostnames used: <br />' + message);
+      jQuery('#cdn_cnames > :first-child > :first-child').val(data.cnames.shift());
+      for (var i in data.cnames) {
+        jQuery('#cdn_cnames').append('<li><input type="text" name="cdn_cnames[]" value="' + data.cnames[i] + '" size="60" /> <input class="button cdn_cname_delete" type="button" value="Delete" /> <span></span></li>');
+        w3tc_cdn_cnames_assign();
+      }
+    } else {
+      alert(data.message);
+    }
+  }, 'json');
+}
 
 jQuery(function() {
     // general page
@@ -534,8 +691,10 @@ jQuery(function() {
             jQuery('#plugin_license_key_verify').val(original_button_value);
             if (data == 'expired') {
                 alert('The license key has expired. Please renew it.');
-            }else if (data == 'valid') {
+            }else if(data == 'host_valid') {
                 alert('License key is correct.');
+            }else if (data == 'valid') {
+                alert('License key is correct but already in use on another site. See the FAQ for how to enable Pro version in development mode.');
             }else {
                 alert('The license key is not valid. Please check it and try again.');
             }
@@ -812,6 +971,18 @@ jQuery(function() {
         w3tc_popup('admin.php?page=w3tc_cdn&w3tc_cdn_export&cdn_export_type=' + metadata.type + '&_wpnonce=' + metadata.nonce, 'cdn_export_' + metadata.type);
     });
 
+    jQuery('#validate_cdn_key').click(function() {
+      var me = jQuery(this);
+      var metadata = me.metadata();
+      w3tc_validate_cdn_key_result(metadata.type, metadata.nonce);
+    });
+
+    jQuery('#use_poll_zone').click(function() {
+      var me = jQuery(this);
+      var metadata = me.metadata();
+      w3tc_use_poll_zone(metadata.type, metadata.nonce);
+    });
+
     jQuery('#cdn_test').click(function() {
         var me = jQuery(this);
         var metadata = me.metadata();
@@ -919,7 +1090,8 @@ jQuery(function() {
             case 'maxcdn':
                 jQuery.extend(params, {
                     engine: 'maxcdn',
-                    'config[authorization_key]': jQuery('#cdn_maxcdn_authorization_key').val()
+                    'config[authorization_key]': jQuery('#cdn_maxcdn_authorization_key').val(),
+                    'config[zone_id]': jQuery('#cdn_maxcdn_zone_id').val()
                 });
 
                 if (cnames.length) {
@@ -929,7 +1101,8 @@ jQuery(function() {
             case 'netdna':
                 jQuery.extend(params, {
                     engine: 'netdna',
-                    'config[authorization_key]': jQuery('#cdn_netdna_authorization_key').val()
+                    'config[authorization_key]': jQuery('#cdn_netdna_authorization_key').val(),
+                    'config[zone_id]': jQuery('#cdn_netdna_zone_id').val()
                 });
 
                 if (cnames.length) {

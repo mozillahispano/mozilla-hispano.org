@@ -33,6 +33,12 @@ class W3_Plugin_BrowserCache extends W3_Plugin {
 
         if ($this->can_ob()) {
             w3tc_add_ob_callback('browsercache', array($this,'ob_callback'));
+
+            // modify CDN urls too
+            add_filter('w3tc_cdn_url', array(
+                &$this,
+                'w3tc_cdn_url')
+                ,0, 2);
         }
     }
 
@@ -127,35 +133,66 @@ class W3_Plugin_BrowserCache extends W3_Plugin {
      * @return string
      */
     function link_replace_callback($matches) {
-        static $id = null, $extensions = null, $exceptions = null;
-
-        if ($id === null) {
-            $id = $this->get_replace_id();
-        }
-
-        if ($extensions === null) {
-            $extensions = $this->get_replace_extensions();
-        }
-
-        if ($exceptions === null) {
-            $exceptions = $this->_config->get_array('browsercache.replace.exceptions');
-        }
-
         list ($match, $attr, $url, , , , , $extension) = $matches;
 
-        if (in_array($extension, $extensions)) {
-            $url = w3_remove_query($url);
-            foreach($exceptions as  $exception)
-                if(preg_match('/' . $exception . '/',$url))
-                    return $match;
-            $url .= (strstr($url, '?') !== false ? '&amp;' : '?') . $id;
+        if (!$this->_url_has_to_be_replaced($url, $extension))
+            return $match;
 
-            if ($attr != 'w3tc_load_js(')
-                return sprintf('%s="%s"', $attr, $url);
-            return sprintf('%s\'%s\'', $attr, $url);
+        static $id = null;
+        if ($id === null)
+            $id = $this->get_replace_id();
+
+        $url = w3_remove_query($url);
+        $url .= (strstr($url, '?') !== false ? '&amp;' : '?') . $id;
+
+        if ($attr != 'w3tc_load_js(')
+            return sprintf('%s="%s"', $attr, $url);
+        return sprintf('%s\'%s\'', $attr, $url);
+    }
+
+    /**
+     * Link replace for CDN url
+     *
+     * @param string $matches
+     * @return string
+     */
+    function w3tc_cdn_url($url, $original_url) {
+        // decouple extension
+        $matches = array();
+        if (!preg_match('/\.([a-zA-Z0-9]+)$/', $original_url, $matches))
+            return $url;
+        $extension = $matches[1];
+
+        if (!$this->_url_has_to_be_replaced($original_url, $extension))
+            return $url;
+
+        static $id = null;
+        if ($id === null)
+            $id = $this->get_replace_id();
+
+        $url .= (strstr($url, '?') !== false ? '&amp;' : '?') . $id;
+        return $url;
+    }
+
+    function _url_has_to_be_replaced($url, $extension) {
+        static $extensions = null;
+        if ($extensions === null)
+            $extensions = $this->get_replace_extensions();
+
+        static $exceptions = null;
+        if ($exceptions === null)
+            $exceptions = $this->_config->get_array('browsercache.replace.exceptions');
+
+        if (!in_array($extension, $extensions))
+            return false;
+
+        $test_url = w3_remove_query($url);
+        foreach ($exceptions as $exception) {
+            if (trim($exception) && preg_match('/' . $exception . '/',$test_url))
+                return false;
         }
 
-        return $match;
+        return true;
     }
 
     /**
@@ -310,19 +347,31 @@ class W3_Plugin_BrowserCache extends W3_Plugin {
         $w3tc = $this->_config->get_boolean('browsercache.' . $section . '.w3tc');
 
         foreach ($mime_types as $mime_type) {
-            $config[$mime_type] = array(
-                'etag' => $etag,
-                'w3tc' => $w3tc,
-                'lifetime' => $lifetime,
-                'expires' => $expires,
-                'cache_control' => ($cache_control ? $cache_policy : false)
-            );
+            if (is_array($mime_type)) {
+                foreach($mime_type as $mime_type2)
+                    $config[$mime_type2] = array(
+                        'etag' => $etag,
+                        'w3tc' => $w3tc,
+                        'lifetime' => $lifetime,
+                        'expires' => $expires,
+                        'cache_control' => ($cache_control ? $cache_policy : false)
+                    );
+            } else
+                $config[$mime_type] = array(
+                    'etag' => $etag,
+                    'w3tc' => $w3tc,
+                    'lifetime' => $lifetime,
+                    'expires' => $expires,
+                    'cache_control' => ($cache_control ? $cache_policy : false)
+                );
         }
     }
 
     /**
      * Filters headers set by WordPress
      * @param $headers
+     * @param $wp
+     * @return
      */
     function filter_wp_headers($headers, $wp) {
         if (!empty($wp->query_vars['feed']))

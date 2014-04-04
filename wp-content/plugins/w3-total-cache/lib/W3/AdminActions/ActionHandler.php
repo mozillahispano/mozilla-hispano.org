@@ -2,7 +2,7 @@
 
 class W3_AdminActions_ActionHandler {
     private $_default = null;
-    private $_handlers = array('flush', 'cdn', 'support', 'config', 'new_relic', 'test', 'licensing', 'default');
+    private $_handlers = array('flush', 'cdn', 'support', 'config', 'new_relic', 'test', 'licensing', 'aws', 'edge_mode', 'extensions', 'default');
     private $_page;
     public function __construct($default_handler = null) {
         $this->_default = $default_handler;
@@ -22,11 +22,11 @@ class W3_AdminActions_ActionHandler {
     }
 
     public function exists($action) {
-        $exists = false;
         if ($this->_default)
             if (method_exists($this->_default, $action))
                 return true;
-        return $this->_get_handler($action) != '';
+        $handler =  $this->_get_handler($action);
+        return $handler != '';
     }
 
     private function _get_handler($action) {

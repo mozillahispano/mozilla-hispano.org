@@ -292,7 +292,7 @@ class W3_PgCache {
          * Send headers
          */
         $this->_send_headers($is_404, $time, $etag, $compression, $headers);
-        if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
+        if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'HEAD')
             return;
 
         /**
@@ -302,7 +302,7 @@ class W3_PgCache {
             /**
              * Append debug info
              */
-            if ($this->_debug && w3_can_print_comment($buffer)) {
+            if ($this->_debug && w3_can_print_comment($content)) {
                 $time_total = w3_microtime() - $this->_time_start;
                 $debug_info = $this->_get_debug_info(true, '', true, $time_total);
                 $content .= "\r\n\r\n" . $debug_info;
@@ -332,8 +332,7 @@ class W3_PgCache {
         if ($buffer != '' && $this->_is_cacheable_content_type()) {
             $compression = false;
             $has_dynamic = $this->_has_dynamic($buffer);
-            $can_cache = $this->_can_cache2($buffer);
-
+            $can_cache = apply_filters('w3tc_can_cache', $this->_can_cache2($buffer), $this);
             if ($can_cache) {
                 list($compression, $buffer) = $this->_can_cache_buffer($buffer, $has_dynamic);
             } else {
@@ -416,7 +415,7 @@ class W3_PgCache {
         /**
          * Skip if posting
          */
-        if (in_array(strtoupper($_SERVER['REQUEST_METHOD']), array('DELETE', 'PUT','OPTIONS','TRACE', 'CONNECT','POST'))) {
+        if (isset($_SERVER['REQUEST_METHOD']) && in_array(strtoupper($_SERVER['REQUEST_METHOD']), array('DELETE', 'PUT','OPTIONS','TRACE', 'CONNECT','POST'))) {
             $this->cache_reject_reason = sprintf('Requested method is %s', $_SERVER['REQUEST_METHOD']);
 
             return false;
@@ -425,7 +424,7 @@ class W3_PgCache {
         /**
          * Skip if HEAD request
          */
-        if (strtoupper($_SERVER['REQUEST_METHOD']) == 'HEAD' &&
+        if (isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'HEAD' &&
             ($this->_enhanced_mode || $this->_config->get_boolean('pgcache.reject.request_head'))) {
             $this->cache_reject_reason = 'Requested method is HEAD';
 
@@ -1016,6 +1015,10 @@ class W3_PgCache {
             $key .= '_' . $encryption;
         }
 
+        if (w3_is_preview_mode()) {
+            $key .= '_preview';
+        }
+
         if ($this->_enhanced_mode) {
             /**
              * Append HTML extension.
@@ -1239,8 +1242,9 @@ class W3_PgCache {
         /**
          * Add vary header
          */
-        $headers = array_merge($headers, array(
-            'Vary' => $vary));
+        if ($vary)
+            $headers = array_merge($headers, array(
+                'Vary' => $vary));
 
         /**
          * Add custom headers

@@ -388,7 +388,7 @@ class W3_Minify {
                             $this->error(sprintf('Unable to cache remote file: "%s"', $file));
                         }
                     } else {
-                        if (!w3_is_multisite() && strpos(WP_CONTENT_DIR, w3_get_site_root()) !== false)
+                        if (!w3_is_multisite() && strpos(trailingslashit(WP_CONTENT_DIR), trailingslashit(w3_get_site_root())) !== false)
                             $file = ltrim(w3_get_site_path(), '/') . str_replace(ltrim(w3_get_site_path(), '/'), '', $file);
 
                         $path = w3_get_document_root() . '/' . $file;

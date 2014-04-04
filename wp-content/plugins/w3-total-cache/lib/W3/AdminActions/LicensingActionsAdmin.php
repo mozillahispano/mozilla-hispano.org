@@ -22,16 +22,24 @@ class W3_AdminActions_LicensingActionsAdmin {
     }
 
     /**
-     * Self test action
+     *  test action
      */
     function action_licensing_buy_plugin() {
         include W3TC_INC_DIR . '/lightbox/purchase.php';
     }
 
+    /**
+     * Self test action
+     */
+    function action_licensing_upgrade() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin_ui.php');
+        include W3TC_INC_DIR . '/lightbox/upgrade.php';
+    }
 
     function action_licensing_check_key() {
         set_transient('w3tc_license_status', false, 1);
-        edd_w3edge_w3tc_activate_license($this->_config->get_string('plugin.license_key'));
+        edd_w3edge_w3tc_activate_license($this->_config->get_string('plugin.license_key'), W3TC_VERSION);
         w3_admin_redirect(array(), true);
     }
 }

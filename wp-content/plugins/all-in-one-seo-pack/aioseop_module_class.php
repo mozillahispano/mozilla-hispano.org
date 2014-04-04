@@ -46,7 +46,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			if ( empty( $this->file ) ) $this->file = __FILE__;
 			$this->plugin_name = AIOSEOP_PLUGIN_NAME;
 			$this->plugin_path = Array();
-			$this->plugin_path['dir'] = plugin_dir_path( $this->file );
+//			$this->plugin_path['dir'] = plugin_dir_path( $this->file );
 			$this->plugin_path['basename'] = plugin_basename( $this->file );
 			$this->plugin_path['dirname'] = dirname( $this->plugin_path['basename'] );
 			$this->plugin_path['url'] = plugin_dir_url( $this->file );

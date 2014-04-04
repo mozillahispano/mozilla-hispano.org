@@ -271,4 +271,19 @@ jQuery(function($) {
 	}
 	$('.yarpp_form_post_types input[type=checkbox]').change(auto_display_archive);
 	auto_display_archive();
+
+    $("#yarpp_fulltext_expand").click(function(e){
+        e.preventDefault();
+        var $details = $("#yarpp_fulltext_details");
+
+        $details.slideToggle();
+
+        if ($details.hasClass('hidden')) {
+            $details.removeClass('hidden');
+            $(this).text('Hide Details [-]');
+        }else{
+            $details.addClass('hidden');
+            $(this).text('Show Details [+]');
+        }
+    });
 });

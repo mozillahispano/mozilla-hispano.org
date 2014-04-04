@@ -29,17 +29,6 @@ class W3_AdminActions_FlushActionsAdmin {
     }
 
     /**
-     * Flsuh all caches except CloudFlare
-     */
-    function action_flush_all_except_cf() {
-        $this->flush_all(false);
-
-        w3_admin_redirect(array(
-            'w3tc_note' => 'flush_all_except_cf'
-        ), true);
-    }
-
-    /**
      * Flush memcache cache action
      *
      * @return void
@@ -328,8 +317,7 @@ class W3_AdminActions_FlushActionsAdmin {
         $this->flush_browser_cache();
         if ($this->_config->get_boolean('varnish.enabled'))
             $this->flush_varnish();
-        if ($flush_cf && $this->_config->get_boolean('cloudflare.enabled'))
-            $this->flush_cloudflare();
+        do_action('w3tc_flush_all');
     }
 
     /**
@@ -405,32 +393,5 @@ class W3_AdminActions_FlushActionsAdmin {
     function flush_cdn() {
         $cacheflush = w3_instance('W3_CacheFlush');
         $cacheflush->cdncache_purge();
-    }
-
-    /**
-     * Purge the CloudFlare cache
-     * @return void
-     */
-    function flush_cloudflare() {
-        $response = null;
-
-        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
-
-        $email = $this->_config->get_string('email');
-        $key = $this->_config->get_string('key');
-        $zone = $this->_config->get_string('zone');
-
-
-        if ($email && $key && $zone) {
-            $config = array(
-                'email' => $email,
-                'key' => $key,
-                'zone' => $zone
-            );
-
-            w3_require_once(W3TC_LIB_W3_DIR . '/CloudFlare.php');
-            @$w3_cloudflare = new W3_CloudFlare($config);
-            $w3_cloudflare->purge();
-        }
     }
 }

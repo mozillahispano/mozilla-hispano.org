@@ -3,14 +3,14 @@
 
 <table class="form-table">
     <tr>
-        <th>Fragment Cache:</th>
+        <th><?php w3_e_config_label('fragmentcache.enabled', 'general') ?></th>
         <td>
             <?php $this->checkbox('fragmentcache.enabled') ?>&nbsp;<strong>Enable</strong></label>
             <br /><span class="description">Fragment caching greatly increases performance for highly themes and plugins that use the <a href="http://codex.wordpress.org/Transients_API" target="_blank">Transient <acronym title="Application Programming Interface">API</acronym></a>.</span>
         </td>
     </tr>
     <tr>
-        <th>Fragment Cache Method:</th>
+        <th><?php w3_e_config_label('fragmentcache.engine', 'general') ?></th>
         <td>
             <select name="fragmentcache.engine" <?php $this->sealing_disabled('fragmentcache'); ?>>
                 <optgroup label="Shared Server:">

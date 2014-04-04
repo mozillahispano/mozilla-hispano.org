@@ -3,6 +3,8 @@
 /*
  * Descriptors of configuration keys
  * for config
+ *
+ * Reminder: The maximum length of keys cannot exceed 64 chars. This is the limit for the name attribute in form fields.
  */
 
 $keys = array(
@@ -77,7 +79,8 @@ $keys = array(
         'type' => 'array',
         'default' => array(
             'gdsr_',
-            'wp_rg_'
+            'wp_rg_',
+            '_wp_session_'
         )
     ),
     'dbcache.reject.uri' => array(
@@ -299,6 +302,7 @@ $keys = array(
         'type' => 'array',
         'default' => array(
             'sitemap(_index)?\.xml(\.gz)?',
+            '([a-z0-9_\-]+)?sitemap\.xsl',
             '[a-z0-9_\-]+-sitemap([0-9]+)?\.xml(\.gz)?'
         )
     ),
@@ -780,7 +784,7 @@ $keys = array(
     ),
     'cdn.theme.files' => array(
         'type' => 'string',
-        'default' => '*.css;*.js;*.gif;*.png;*.jpg;*.ico;*.ttf;*.otf,*.woff'
+        'default' => '*.css;*.js;*.gif;*.png;*.jpg;*.ico;*.ttf;*.otf,*.woff,*.less'
     ),
     'cdn.minify.enable' => array(
         'type' => 'boolean',
@@ -1141,33 +1145,6 @@ $keys = array(
         'type' => 'boolean',
         'default' => false
     ),
-
-
-    'cloudflare.enabled' => array(
-        'type' => 'boolean',
-        'default' => false
-    ),
-    'cloudflare.email' => array(
-        'type' => 'string',
-        'default' => ''
-    ),
-    'cloudflare.key' => array(
-        'type' => 'string',
-        'default' => ''
-    ),
-    'cloudflare.zone' => array(
-        'type' => 'string',
-        'default' => ''
-    ),
-    'cloudflare.ips.ip4' => array(
-        'type' => 'array',
-        'default' => array("204.93.240.0/24", "204.93.177.0/24", "199.27.128.0/21", "173.245.48.0/20", "103.22.200.0/22", "141.101.64.0/18", "108.162.192.0/18","190.93.240.1/20","188.114.96.0/20", "198.41.128.0/17")
-    ),
-    'cloudflare.ips.ip6' => array(
-        'type' => 'array',
-        'default' => array("2400:cb00::/32", "2606:4700::/32", "2803:f800::/32")
-    ),
-
     'varnish.enabled' => array(
         'type' => 'boolean',
         'default' => false
@@ -1193,8 +1170,7 @@ $keys = array(
         'type' => 'array',
         'default' => array(
             'robots\.txt',
-            'sitemap(_index)?\.xml(\.gz)?',
-            '[a-z0-9_\-]+-sitemap([0-9]+)?\.xml(\.gz)?'
+            '[a-z0-9_\-]*sitemap[a-z0-9_\-]*\.(xml|xsl|html)(\.gz)?'
         )
     ),
     'browsercache.cssjs.last_modified' => array(
@@ -1394,7 +1370,6 @@ $keys = array(
                     'au\-mic',
                     'audiovox',
                     'avantgo',
-                    'bb10',
                     'benq',
                     'bird',
                     'blackberry',
@@ -1638,10 +1613,6 @@ $keys = array(
         'type' => 'boolean',
         'default' => true
     ),
-    'notes.cloudflare_plugin' => array(
-        'type' => 'boolean',
-        'default' => true
-    ),
 
     'timelimit.email_send' => array(
         'type' => 'integer',
@@ -1682,10 +1653,6 @@ $keys = array(
     'timelimit.cdn_container_create' => array(
         'type' => 'integer',
         'default' => 300
-    ),
-    'timelimit.cloudflare_api_request' => array(
-        'type' => 'integer',
-        'default' => 180
     ),
     'timelimit.domain_rename' => array(
         'type' => 'integer',
@@ -1786,9 +1753,11 @@ $keys = array(
             'genesis.theme' => array(
                 'wp_head' => '0',
                 'genesis_header' => '1',
-                'genesis_do_nav' => '1',
-                'genesis_do_subnav' => '1',
+                'genesis_do_nav' => '0',
+                'genesis_do_subnav' => '0',
                 'loop_front_page' => '1',
+                'loop_terms' => '1',
+                'flush_terms' => '1',
                 'loop_single' => '1',
                 'loop_single_excluded' => '',
                 'loop_single_genesis_comments' => '0',
@@ -1797,16 +1766,19 @@ $keys = array(
                 'sidebar_excluded' => '',
                 'genesis_footer' => '1',
                 'wp_footer' => '0',
-                'fragment_reject_logged_roles' => '1',
-                'fragment_reject_logged_roles_on_actions' => array(
+                'reject_logged_roles' => '1',
+                'reject_logged_roles_on_actions' => array(
                     0 => 'genesis_loop',
                     1 => 'wp_head',
                     2 => 'wp_footer',
                 ),
-                'fragment_reject_roles' => array(
+                'reject_roles' => array(
                     0 => 'administrator',
                 ),
             ),
+            'feedburner' => array(
+                'urls' => ''
+            )
         )
     ),
     'extensions.active' => array(
@@ -1837,11 +1809,6 @@ $keys_admin = array(
         'master_only' => 'true'
     ),
     'cdn.configuration_sealed' => array(
-        'type' => 'boolean',
-        'default' => false,
-        'master_only' => 'true'
-    ),
-    'cloudflare.configuration_sealed' => array(
         'type' => 'boolean',
         'default' => false,
         'master_only' => 'true'
@@ -1921,9 +1888,34 @@ $keys_admin = array(
         'type' => 'string',
         'default' => ''
     ),
+    'track.maxcdn_signup' => array(
+        'type' => 'int',
+        'default' => 0
+    ),
+    'track.maxcdn_authorize' => array(
+        'type' => 'int',
+        'default' => 0
+    ),
+    'track.maxcdn_validation' => array(
+        'type' => 'int',
+        'default' => 0
+    ),
+    'notes.maxcdn_whitelist_ip' => array (
+        'type' => 'boolean',
+        'default' => true
+    ),
     'notes.remove_w3tc' => array(
         'type' => 'boolean',
         'default' => false
+    ),
+    'notes.hide_extensions' => array(
+        'type' => 'array',
+        'default' => array()
+    ),
+    'evaluation.reminder' => array(
+        'type' => 'int',
+        'default' => 0,
+        'master_only' => 'true'
     )
 );
 
@@ -1942,10 +1934,6 @@ $sealing_keys_scope = array(
     array(
         'key' => 'cdn.configuration_sealed',
         'prefix' => 'cdn.'
-    ),
-    array(
-        'key' => 'cloudflare.configuration_sealed',
-        'prefix' => 'cloudflare.'
     ),
     array(
         'key' => 'dbcache.configuration_sealed',

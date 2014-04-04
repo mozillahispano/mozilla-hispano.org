@@ -24,7 +24,7 @@ return array(
     'mp4|m4v' => 'video/mp4', 
     'mpeg|mpg|mpe' => 'video/mpeg', 
     'mpp' => 'application/vnd.ms-project', 
-    'otf' => 'application/x-font-otf',
+    'otf' => array('application/x-font-otf', 'application/vnd.ms-opentype'),
     'odb' => 'application/vnd.oasis.opendocument.database',
     'odc' => 'application/vnd.oasis.opendocument.chart',
     'odf' => 'application/vnd.oasis.opendocument.formula',
@@ -41,10 +41,11 @@ return array(
     'swf' => 'application/x-shockwave-flash',
     'tar' => 'application/x-tar',
     'tif|tiff' => 'image/tiff', 
-    'ttf|ttc' => 'application/x-font-ttf',
+    'ttf|ttc' => array('application/x-font-ttf', 'application/vnd.ms-opentype'),
     'wav' => 'audio/wav',
     'wma' => 'audio/wma', 
-    'wri' => 'application/vnd.ms-write', 
+    'wri' => 'application/vnd.ms-write',
+    'woff' => 'application/font-woff',
     'xla|xls|xlsx|xlt|xlw' => 'application/vnd.ms-excel', 
     'zip' => 'application/zip'
 );

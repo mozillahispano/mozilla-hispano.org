@@ -43,7 +43,7 @@ body.rtl .icon {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
 	.icon {
 		background-image: url('../images/sprites-2x.png');
-		background-size: 110px 22px;
+		background-size: 132px 22px;
 	}
 }
 
@@ -61,6 +61,9 @@ body.rtl .icon {
 }
 .icon-pro {
 	background-position: -88px 0;
+}
+.icon-facebook {
+	background-position: -110px 0;
 }
 
 .icon.spin, .icon-star:hover {

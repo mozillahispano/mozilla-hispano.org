@@ -197,6 +197,7 @@ class W3_BrowserCacheAdminEnvironment {
     private function rules_cache_generate_apache($config) {
         $mime_types2 = $this->get_mime_types();
         $cssjs_types = $mime_types2['cssjs'];
+        $cssjs_types = array_unique($cssjs_types);
         $html_types = $mime_types2['html'];
         $other_types = $mime_types2['other'];
 
@@ -232,13 +233,15 @@ class W3_BrowserCacheAdminEnvironment {
             foreach ($mime_types as $ext => $mime_type) {
                 $extensions = explode('|', $ext);
 
-                $rules .= "    AddType " . $mime_type;
-
-                foreach ($extensions as $extension) {
-                    $rules .= " ." . $extension;
+                if (!is_array($mime_type))
+                    $mime_type = (array)$mime_type;
+                foreach($mime_type as $mime_type2) {
+                    $rules .= "    AddType " . $mime_type2;
+                    foreach ($extensions as $extension) {
+                        $rules .= " ." . $extension;
+                    }
+                    $rules .= "\n";
                 }
-
-                $rules .= "\n";
             }
 
             $rules .= "</IfModule>\n";
@@ -260,6 +263,10 @@ class W3_BrowserCacheAdminEnvironment {
 
             if ($other_expires && $other_lifetime) {
                 foreach ($other_types as $mime_type) {
+                    if (is_array($mime_type))
+                        foreach ($mime_type as $mime_type2)
+                            $rules .= "    ExpiresByType " . $mime_type2 . " A" . $other_lifetime . "\n";
+                    else
                     $rules .= "    ExpiresByType " . $mime_type . " A" . $other_lifetime . "\n";
                 }
             }
@@ -455,6 +462,7 @@ class W3_BrowserCacheAdminEnvironment {
     private function rules_cache_generate_nginx($config, $cdnftp = false) {
         $mime_types = $this->get_mime_types();
         $cssjs_types = $mime_types['cssjs'];
+        $cssjs_types = array_unique($cssjs_types);
         $html_types = $mime_types['html'];
         $other_types = $mime_types['other'];
 

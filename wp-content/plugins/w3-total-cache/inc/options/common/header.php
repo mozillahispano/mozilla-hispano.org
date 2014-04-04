@@ -1,18 +1,15 @@
 <?php if (!defined('W3TC')) die(); ?>
 
-<?php 
+<?php
+/**
+ * @var array $custom_areas Filter that sets it is located in GeneralAdminVIew
+ */
 $licensing_visible = ((!w3_is_multisite() || is_network_admin()) && 
             !ini_get('w3tc.license_key') && 
             get_transient('w3tc_license_status') != 'host_valid');
 ?>
 
-<?php if ($this->_support_reminder): ?>
-<script type="text/javascript">/*<![CDATA[*/
-jQuery(function() {
-    w3tc_lightbox_support_us('<?php echo wp_create_nonce('w3tc'); ?>');
-});
-/*]]>*/</script>
-<?php endif; ?>
+<?php do_action('w3tc-dashboard-head') ?>
 <div class="wrap" id="w3tc">
     <h2 class="logo"><?php _e('W3 Total Cache <span>by W3 EDGE <sup>&reg;</sup></span>', 'w3-total-cache'); ?></h2>
 <?php if (!(w3_is_pro($this->_config) || w3_is_enterprise($this->_config))): ?>
@@ -80,32 +77,38 @@ jQuery(function() {
     <?php
         switch ($this->_page){
             case 'w3tc_general':
+                $anchors = array(
+                array('id' => 'general', 'text' => __('General', 'w3-total-cache')),
+                array('id' => 'page_cache', 'text' => __('Page Cache', 'w3-total-cache')),
+                array('id' => 'minify', 'text' => 'Minify'),
+                array('id' => 'database_cache', 'text' => __('Database Cache', 'w3-total-cache')),
+                array('id' => 'object_cache', 'text' => __('Object Cache', 'w3-total-cache')));
+                if (w3_is_pro($this->_config) || w3_is_enterprise($this->_config))
+                    $anchors[] = array('id' => 'fragment_cache', 'text' => __('Fragment Cache', 'w3-total-cache'));
+
+                $anchors = array_merge($anchors, array(
+                array('id' => 'browser_cache', 'text' => __('Browser Cache', 'w3-total-cache')),
+                array('id' => 'cdn', 'text' => __('<abbr title="Content Delivery Network">CDN</abbr>', 'w3-total-cache')),
+                array('id' => 'varnish', 'text' => __('Varnish', 'w3-total-cache'))));
+                if (w3_is_enterprise())
+                    $anchors[] = array('id' => 'amazon_sns', 'text' => __('Amazon <abbr title="Simple Notification Service">SNS</abbr>', 'w3-total-cache'));
+                $anchors[] = array('id' => 'monitoring', 'text' => __('Monitoring', 'w3-total-cache'));
+                if ($licensing_visible)
+                    array('id' => 'licensing', 'text' => __('Licensing', 'w3-total-cache'));
+                $link_attrs = array_merge($anchors, $custom_areas, array(
+                    array('id' => 'miscellaneous', 'text' => __('Miscellaneous', 'w3-total-cache')),
+                    array('id' => 'debug', 'text' => __('Debug', 'w3-total-cache')),
+                    array('id' => 'settings', 'text' => __('Import / Export Settings', 'w3-total-cache'))
+                ));
+
+                $links = array();
+                foreach($link_attrs as $link) {
+                    $links[] = "<a href=\"#{$link['id']}\">{$link['text']}</a>";
+                }
+
     ?>
                 <p id="w3tc-options-menu">
-                    <?php _e('Jump to: ', 'w3-total-cache'); ?>
-                    <a href="#toplevel_page_w3tc_general"><?php _e('Main Menu', 'w3-total-cache'); ?></a> |
-                    <a href="#general"><?php _e('General', 'w3-total-cache'); ?></a> |
-                    <a href="#page_cache"><?php _e('Page Cache', 'w3-total-cache'); ?></a> |
-                    <a href="#minify">Minify</a> |
-                    <a href="#database_cache"><?php _e('Database Cache', 'w3-total-cache'); ?></a> |
-                    <a href="#object_cache"><?php _e('Object Cache', 'w3-total-cache'); ?></a> |
-                    <?php if (w3_is_pro($this->_config) || w3_is_enterprise($this->_config)): ?>
-                        <a href="#fragment_cache"><?php _e('Fragment Cache', 'w3-total-cache'); ?></a> |
-                    <?php endif; ?>
-                    <a href="#browser_cache"><?php _e('Browser Cache', 'w3-total-cache'); ?></a> |
-                    <a href="#cdn"><?php _e('<acronym title="Content Delivery Network">CDN</acronym>', 'w3-total-cache'); ?></a> |
-                    <a href="#varnish"><?php _e('Varnish', 'w3-total-cache'); ?></a> |
-                    <?php if (w3_is_enterprise()): ?>
-                        <a href="#amazon_sns"><?php _e('Amazon <acronym title="Simple Notification Service">SNS</acronym>', 'w3-total-cache'); ?></a> |
-                    <?php endif; ?>
-                    <a href="#cloudflare"><?php _e('Cloudflare', 'w3-total-cache'); ?></a> |
-                    <a href="#monitoring"><?php _e('Monitoring', 'w3-total-cache'); ?></a> |
-                    <?php if ($licensing_visible): ?>
-                        <a href="#licensing"><?php _e('Licensing', 'w3-total-cache'); ?></a> |
-                    <?php endif; ?>
-                    <a href="#miscellaneous"><?php _e('Miscellaneous', 'w3-total-cache'); ?></a> |
-                    <a href="#debug"><?php _e('Debug', 'w3-total-cache'); ?></a> |
-                    <a href="#settings"><?php _e('Import / Export Settings', 'w3-total-cache'); ?></a>
+                    <?php echo implode(' | ', $links); ?>
                 </p>
     <?php
                 break;

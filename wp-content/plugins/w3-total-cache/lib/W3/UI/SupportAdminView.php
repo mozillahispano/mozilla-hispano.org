@@ -89,6 +89,17 @@ class W3_UI_SupportAdminView extends W3_UI_PluginView {
      * @return void
      */
     function action_support_select() {
-        include W3TC_INC_DIR . '/options/support/select.php';
+        $admin = w3_instance('W3_AdminActions_SupportActionsAdmin');
+        $admin->action_support_select();
+    }
+
+    /**
+     * Support form action
+     *
+     * @return void
+     */
+    function action_support_form() {
+        $admin = w3_instance('W3_AdminActions_SupportActionsAdmin');
+        $admin->action_support_form();
     }
 }

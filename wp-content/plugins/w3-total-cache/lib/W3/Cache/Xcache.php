@@ -120,9 +120,10 @@ class W3_Cache_Xcache extends W3_Cache_Base {
      * Deletes data
      *
      * @param string $key
+     * @param string $group
      * @return boolean
      */
-    function delete($key) {
+    function delete($key, $group = '') {
         $key = $this->get_item_key($key);
 
         if ($this->_use_expired_data) {
@@ -158,6 +159,14 @@ class W3_Cache_Xcache extends W3_Cache_Base {
         $this->_key_version[$group]++;
         $this->_set_key_version($this->_key_version[$group], $group);
         return true;
+    }
+
+    /**
+     * Checks if engine can function properly in this environment
+     * @return bool
+     */
+    public function available() {
+        return function_exists('xcache_set');
     }
 
     /**

@@ -1,9 +1,9 @@
 === Fancier Author Box by ThematoSoup ===
 Contributors: slobodanmanic, nikolicdragan
-Tags: author, author description, author box, author bio, fancier author box, thematosoup author box, author profile, author bio box, multi author
+Tags: author, author description, author box, author bio, fancier author box, thematosoup author box, author profile, author bio box, multi author, facebook, twitter, google plus, linkedin, vimeo, youtube, instagram, pinterest, tumblr
 Requires at least: 3.1
-Tested up to: 3.7.1
-Stable tag: 1.1.2
+Tested up to: 3.8.1
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,12 @@ Make your every post stand out and attract your readers' eyes. Connect with your
 * Facebook
 * Google+ & automatic Google Authorship verification (rel=author)
 * LinkedIn
+* Instagram
+* Flickr
+* Pinterest
+* Tumblr
+* YouTube
+* Vimeo
 * Job title (position)
 * Company
 * Company URL
@@ -84,10 +90,16 @@ Allow you to change colors of just about any author box element. These elements 
 = User Settings =
 These are settings specific to users. Users have the option to show or hide their author box and enter additional information, such as:
 
-* Twitter profile name
-* Facebook username or id
-* Google+ id
-* LinkedIn id
+* Twitter username or profile URL
+* Facebook username, id or profile URL
+* Google+ id or profile URL
+* LinkedIn id or profile URL
+* Instagram username or profile URL
+* Flickr username or profile URL
+* Pinterest username or profile URL
+* Tumblr username or profile URL
+* YouTube username or profile URL
+* Vimeo username or profile URL
 * Job title (position)
 * Company
 * Company URL
@@ -108,6 +120,27 @@ No, this is not possible in the free version.
 
 == Changelog ==
 
+
+= 1.2.3 =
+
+* Adds is_main_query check, so author box isn’t automatically added elsewhere in the page.
+* Moves settings page to Settings menu.
+
+= 1.2.3 =
+
+* Adds ts_fab_follow_author_link filter that allows nofollow to be removed from authors’ website link.
+
+= 1.2.2 =
+
+* Adds nofollow to authors' website and social links.
+
+= 1.2.1 =
+
+* Fixes social links in Latest Posts tab.
+
+= 1.2 =
+
+* Changed user options so either username or full URL can be used for social profiles. For example, in Facebook field in Fancier Author Box User Details section you can use ‘http://facebook.com/username’ or just ‘username’. If full URL is used it must start with ‘http’.
 
 = 1.1.1 =
 

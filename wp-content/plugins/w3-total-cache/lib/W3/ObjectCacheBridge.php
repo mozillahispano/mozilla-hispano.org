@@ -13,8 +13,11 @@ class W3_ObjectCacheBridge {
     function __construct() {
         $this->_config = w3_instance('W3_Config');
         $this->_caches['objectcache'] = w3_instance('W3_ObjectCache');
-        if ($this->_config->get_boolean('fragmentcache.enabled'))
-            $this->_caches['fragmentcache'] = w3_instance('W3_Pro_FragmentCache');
+        if (w3_is_pro($this->_config) || w3_is_enterprise($this->_config)) {
+            if ($this->_config->get_boolean('fragmentcache.enabled'))
+                $this->_caches['fragmentcache'] = 
+                    w3_instance('W3_Pro_FragmentCache');
+        }
     }
 
     /**

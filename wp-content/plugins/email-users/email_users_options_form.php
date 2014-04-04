@@ -20,8 +20,8 @@
 
 <?php 
 	wp_enqueue_script('postbox');
-    wp_enqueue_style('dashboard');
     wp_enqueue_script('dashboard');
+    wp_enqueue_style('dashboard');
 
 	if (!current_user_can('manage_options')) {
         wp_die(printf('<div class="error fade"><p>%s</p></div>',
@@ -152,10 +152,14 @@ print $reflection->getFileName();
 		<td>
 			<select name="mailusers_max_bcc_recipients" style="width: 235px;">
 				<option value="0" <?php if (mailusers_get_max_bcc_recipients()=='0') echo 'selected="true"';?>><?php _e('None', MAILUSERS_I18N_DOMAIN); ?></option>
-				<option value="1" <?php if (mailusers_get_max_bcc_recipients()=='1') echo 'selected="true"';?>>1</option>
-				<option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>>10</option>
-				<option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>>30</option>
-				<option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>>100</option>
+                <option value="-1" <?php if (mailusers_get_max_bcc_recipients()=='-1') echo 'selected="true"';?>><?php _e('1 (use To: field)', MAILUSERS_I18N_DOMAIN);?></option>
+				<option value="1" <?php if (mailusers_get_max_bcc_recipients()=='1') echo 'selected="true"';?>><?php _e('1 (use Bcc: field)', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>><?php _e('10', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>><?php _e('30', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>><?php _e('100', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="250" <?php if (mailusers_get_max_bcc_recipients()=='250') echo 'selected="true"';?>><?php _e('250', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="500" <?php if (mailusers_get_max_bcc_recipients()=='500') echo 'selected="true"';?>><?php _e('500', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="1000" <?php if (mailusers_get_max_bcc_recipients()=='1000') echo 'selected="true"';?>><?php _e('1000', MAILUSERS_I18N_DOMAIN);?></option>
 			</select><br/><i><small><?php _e('Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field).', MAILUSERS_I18N_DOMAIN); ?></i></small>
 		</td>
 	</tr>
@@ -163,7 +167,7 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
             <label for="default_subject"><?php _e('Default<br/>Notification Subject', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<input type="text" name="mailusers_default_subject" style="width: auto;" 
+			<input type="text" name="mailusers_default_subject" style="width: 100%;" 
 				value="<?php echo format_to_edit(mailusers_get_default_subject()); ?>" 
 				size="80" /></td>
 	</tr>
@@ -206,7 +210,7 @@ print $reflection->getFileName();
 		<td>
 			<input type="text" name="mailusers_from_sender_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_from_sender_address_override()); ?>" 
-                size="80" id="from_sender_address_override"/><br/><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?>&nbsp;<b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></td>
+                size="80" id="from_sender_address_override"/><br/><div style="width: 90%;"><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?><br /><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></div></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -214,13 +218,13 @@ print $reflection->getFileName();
 		<td>
 			<input type="text" name="mailusers_send_bounces_to_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_send_bounces_to_address_override()); ?>" 
-                size="80" id="from_sender_address_override"/><br/><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address to receive bounced email notifications.', MAILUSERS_I18N_DOMAIN); ?>&nbsp;<b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></td>
+                size="80" id="from_sender_address_override"/><br/><div style="width: 90%;"><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address to receive bounced email notifications.', MAILUSERS_I18N_DOMAIN); ?><br /><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></div></td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
             <label for="mailusers_default_body"><?php _e('Default<br/>Notification Body', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-            <?php wp_editor(stripslashes(mailusers_get_default_body()), "mailusers_default_body");?>
+            <?php wp_editor(stripslashes(mailusers_get_default_body()), "mailusers_default_body", array('editor_css' => '<style>div.wp-editor-wrap { width: 90%; }</style>'));?>
 
 		</td>
 	</tr>
@@ -269,7 +273,11 @@ print $reflection->getFileName();
 			<input 	type="checkbox"
 					name="mailusers_default_user_control" id="mailusers_default_user_control" value="true"
 					<?php if (mailusers_get_default_user_control()=='true') echo 'checked="checked"';?> ></input>
-			<?php _e('Allow Users to control their own Email Users settings.', MAILUSERS_I18N_DOMAIN); ?>
+			<?php _e('Allow Users to control their own Email Users settings.', MAILUSERS_I18N_DOMAIN); ?><br />
+			<input 	type="checkbox"
+					name="mailusers_no_role_filter" id="mailusers_no_role_filter" value="true"
+					<?php if (mailusers_get_no_role_filter()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Filter Users with <a href="https://codex.wordpress.org/Roles_and_Capabilities#Roles">no role</a> from Recipient List.', MAILUSERS_I18N_DOMAIN); ?>
 		</td>
 	</tr>
 	<tr>
@@ -551,11 +559,11 @@ print $reflection->getFileName();
     It is important to note that if the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do
     not match, it does not automatically mean there will be a problem.  However, if Email Users is not producing
     the expected results AND the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do not match,
-    it is something which should be looked at as a potential source of the problem.', MAILUSERS_I18_DOMAIN) ; ?>
+    it is something which should be looked at as a potential source of the problem.', MAILUSERS_I18N_DOMAIN) ; ?>
     </p>
     <p>
 <?php _e('The recommended way to eliminate the overloaded version of wp_mail() as the source of a problem is to disable
-    the plugin or theme which has overloaded wp_mail().', MAILUSERS_I18_DOMAIN) ; ?>
+    the plugin or theme which has overloaded wp_mail().', MAILUSERS_I18N_DOMAIN) ; ?>
     </p>
 <br/>
 </div><!-- inside -->
@@ -591,6 +599,11 @@ print $reflection->getFileName();
 		<td><b><a href="http://wordpress.org/plugins/groups/">Groups</a></b></td>
 		<td><?php _e('Groups provides group-based user membership management, group-based capabilities and content access control.', MAILUSERS_I18N_DOMAIN); ?></td>
 		<td><?php _e((class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
+		<td><b><a href="http://wordpress.org/plugins/paid-memberships-pro/">Paid Memberships Pro</a></b></td>
+		<td><?php _e('Paid Memberships Pro:  The easiest way to GET PAID with your WordPress site. Flexible content control by Membership Level, Reports, Affiliates and Discounts.', MAILUSERS_I18N_DOMAIN); ?></td>
+		<td><?php _e((class_exists(MAILUSERS_PMPRO_CLASS) ? 'Enabled' : 'Disabled'), MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
 	</tbody>
 </table>

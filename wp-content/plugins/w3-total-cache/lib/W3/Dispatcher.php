@@ -180,7 +180,7 @@ class W3_Dispatcher {
      * @return string|null
      */
     public function allow_origin_generated_by($config) {
-        if ($this->_config->get_boolean('cdn.enabled'))
+        if ($config->get_boolean('cdn.enabled'))
             return 'cdn';
 
         return null;
@@ -224,9 +224,7 @@ class W3_Dispatcher {
      * @return bool
      */
     public function send_minify_headers($config) {
-        $cf = w3_instance('W3_CloudFlare');
-        return !$config->get_boolean('cloudflare.enabled') ||
-                ($config->get_boolean('cloudflare.enabled') && !$cf->minify_enabled());
+        return apply_filters('w3tc_send_minify_headers', false);
     }
 
     /**

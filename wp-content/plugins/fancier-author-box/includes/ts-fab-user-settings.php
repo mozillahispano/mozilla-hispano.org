@@ -32,7 +32,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_twitter" id="ts_fab_twitter" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_twitter', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Twitter username.', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Twitter username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Twitter -->
 		<tr>
@@ -40,7 +40,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_facebook" id="ts_fab_facebook" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_facebook', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Facebook username or ID.', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Facebook username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Facebook -->
 		<tr>
@@ -48,7 +48,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_googleplus" id="ts_fab_googleplus" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_googleplus', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Google+ ID.', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Google+ ID/username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Google+ -->
 		<tr>
@@ -56,7 +56,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_linkedin" id="ts_fab_linkedin" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_linkedin', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your LinkedIn username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your LinkedIn username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End LinkedIn -->
 		<tr>
@@ -64,7 +64,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_instagram" id="ts_fab_instagram" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_instagram', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Instagram username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Instagram username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Instagram -->
 		<tr>
@@ -72,7 +72,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_flickr" id="ts_fab_flickr" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_flickr', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Flickr username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Flickr username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Flickr -->
 		<tr>
@@ -80,7 +80,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_pinterest" id="ts_fab_pinterest" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_pinterest', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Pinterest username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Pinterest username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Pinterest -->
 		<tr>
@@ -88,7 +88,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_tumblr" id="ts_fab_tumblr" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_tumblr', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Tumblr username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Tumblr username or blog URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Tumblr -->
 		<tr>
@@ -96,7 +96,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_youtube" id="ts_fab_youtube" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_youtube', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your YouTube username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your YouTube username or profile URL.', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End YouTube -->
 		<tr>
@@ -104,7 +104,7 @@ function ts_fab_extra_user_details( $user ) { ?>
 
 			<td>
 				<input type="text" name="ts_fab_vimeo" id="ts_fab_vimeo" value="<?php echo esc_attr( get_the_author_meta( 'ts_fab_vimeo', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description"><?php _e( 'Your Vimeo username', 'ts-fab' ); ?></span>
+				<span class="description"><?php _e( 'Your Vimeo username or profile URL', 'ts-fab' ); ?></span>
 			</td>
 		</tr><!-- End Vimeo -->
 

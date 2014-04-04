@@ -5,9 +5,17 @@
 	<?php foreach ($columns as $entries): ?>
     <ul>
         <?php foreach ($entries as $entry): ?>
-    	<li>
-    		<a href="admin.php?page=w3tc_faq#q<?php echo $entry['index']; ?>"><?php echo $entry['question']; ?></a>
+            <?php if(is_array($entry)): ?>
+                <?php foreach ($entry as $entry2): ?>
+        <li>
+            <a href="admin.php?page=w3tc_faq#q<?php echo $entry2['index']; ?>"><?php echo $entry2['question']; ?></a>
+        </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+        <li>
+            <a href="admin.php?page=w3tc_faq#q<?php echo $entry['index']; ?>"><?php echo $entry['question']; ?></a>
     	</li>
+            <?php endif ?>
         <?php endforeach; ?>
     </ul>
     <?php endforeach; ?>

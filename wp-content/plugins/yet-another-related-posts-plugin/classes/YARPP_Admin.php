@@ -319,7 +319,7 @@ class YARPP_Admin {
 
             $out .=
                 '<p>'.
-                'We would really appreciate your input to help us continue to <a href="http://yarpp.com" target="_blank">improve the product</a>. We are primarily looking '.
+                'We would really appreciate your input to help us continue to <a href="http://www.yarpp.com" target="_blank">improve the product</a>. We are primarily looking '.
                 'for country, domain, and date installed information. Please help us make YARPP better by providing this information and by filling '.
                 'out our quick, 5 question survey: <a href="http://www.surveymonkey.com/s/Z278L88" target="_blank">http://www.surveymonkey.com/s/Z278L88</a>'.
                 '</p>';
@@ -483,7 +483,6 @@ class YARPP_Admin {
 	
 	/*
 	 * AJAX SERVICES
-	 * TODO: Move to its own class.
 	 */
 
 	function ajax_display_exclude_terms() {

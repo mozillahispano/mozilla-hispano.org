@@ -19,7 +19,7 @@
         <table class="form-table">
             <tr>
                 <th>
-                    <?php $this->checkbox('dbcache.reject.logged') ?> <?php _e('Don\'t cache queries for logged in users', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('dbcache.reject.logged') ?> <?php w3_e_config_label('dbcache.reject.logged') ?></label>
                     <br /><span class="description"><?php _e('Enabling this option is recommended to maintain default WordPress behavior.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
@@ -35,7 +35,7 @@
         <table class="form-table">
             <?php if ($this->_config->get_string('dbcache.engine') == 'memcached'): ?>
             <tr>
-                <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
+                <th><label for="memcached_servers"><?php w3_e_config_label('dbcache.memcached.servers') ?></label></th>
                 <td>
                     <input id="memcached_servers" type="text"
                         <?php $this->sealing_disabled('dbcache') ?> name="dbcache.memcached.servers" value="<?php echo esc_attr(implode(',', $this->_config->get_array('dbcache.memcached.servers'))); ?>" size="100" />
@@ -46,7 +46,7 @@
             </tr>
             <?php endif; ?>
             <tr>
-                <th style="width: 250px;"><label for="dbcache_lifetime"><?php _e('Maximum lifetime of cache objects:', 'w3-total-cache'); ?></label></th>
+                <th style="width: 250px;"><label for="dbcache_lifetime"><?php w3_e_config_label('dbcache.lifetime') ?></label></th>
                 <td>
                     <input id="dbcache_lifetime" type="text" name="dbcache.lifetime"
                         <?php $this->sealing_disabled('dbcache') ?>
@@ -55,7 +55,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="dbcache_file_gc"><?php _e('Garbage collection interval:', 'w3-total-cache'); ?></label></th>
+                <th><label for="dbcache_file_gc"><?php w3_e_config_label('dbcache.file.gc') ?></label></th>
                 <td>
                     <input id="dbcache_file_gc" type="text" name="dbcache.file.gc"
 					<?php $this->sealing_disabled('dbcache') ?> value="<?php echo esc_attr($this->_config->get_integer('dbcache.file.gc')); ?>" size="8" /> <?php _e('seconds', 'w3-total-cache'); ?>
@@ -63,17 +63,17 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="dbcache_reject_uri"><?php _e('Never cache the following pages:', 'w3-total-cache'); ?></label></th>
+                <th><label for="dbcache_reject_uri"><?php w3_e_config_label('dbcache.reject.uri') ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_uri" name="dbcache.reject.uri"
                         <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.uri'))); ?></textarea><br />
 						<span class="description">
-							<?php echo sprintf( __('Always ignore the specified pages / directories. Supports regular expression (See <a href="%s">FAQ</a>).', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?>
+							<?php echo sprintf( __('Always ignore the specified pages / directories. Supports regular expressions (See <a href="%s">FAQ</a>).', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?>
 						</span>
                 </td>
             </tr>
             <tr>
-                <th><label for="dbcache_reject_sql"><?php _e('Ignored query stems:', 'w3-total-cache'); ?></label></th>
+                <th><label for="dbcache_reject_sql"><?php w3_e_config_label('dbcache.reject.sql') ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_sql" name="dbcache.reject.sql"
                         <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.sql'))); ?></textarea><br />
@@ -81,7 +81,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="dbcache_reject_words"><?php _e('Reject query words:', 'w3-total-cache'); ?></label></th>
+                <th><label for="dbcache_reject_words"><?php w3_e_config_label('dbcache.reject.words') ?></label></th>
                 <td>
                     <textarea id="dbcache_reject_words" name="dbcache.reject.words"
                         <?php $this->sealing_disabled('dbcache') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('dbcache.reject.words'))); ?></textarea><br />

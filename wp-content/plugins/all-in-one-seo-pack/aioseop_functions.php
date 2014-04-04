@@ -170,7 +170,6 @@ if ( !function_exists( 'aioseop_admin_head' ) ) {
 		//<![CDATA[
 		var aioseopadmin = {
 			blogUrl: "<?php print get_bloginfo( 'url'); ?>", 
-			pluginPath: "<?php print AIOSEOP_PLUGIN_DIR; ?>", 
 			pluginUrl: "<?php print AIOSEOP_PLUGIN_URL; ?>", 
 			requestUrl: "<?php print WP_ADMIN_URL . '/admin-ajax.php' ?>", 
 			imgUrl: "<?php print AIOSEOP_PLUGIN_IMAGES_URL; ?>",

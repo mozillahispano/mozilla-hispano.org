@@ -56,9 +56,8 @@ if(is_multisite()) {
 function clean(Array $opts, $wpdb){
 
     foreach($opts as $opt){
-        /* if option exist... delete it */
-        if(get_option($opt)) delete_option($opt);
-    }/*end foreach*/
+        delete_option($opt);
+    }
  
     /* Truncate, clear and drop yarpp cache */
     $wpdb->query('DELETE FROM `'.$wpdb->prefix.'postmeta` WHERE meta_key LIKE "%yarpp%"');

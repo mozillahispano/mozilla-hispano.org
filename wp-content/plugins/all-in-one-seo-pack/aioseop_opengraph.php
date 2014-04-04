@@ -276,8 +276,10 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 		}
 
 		function add_attributes( $output ) { // avoid having duplicate meta tags
-			if ( !empty( $this->options[ 'aiosp_opengraph_disable_jetpack' ] ) )
+			if ( !empty( $this->options[ 'aiosp_opengraph_disable_jetpack' ] ) ) {
 				remove_action( 'wp_head', 'jetpack_og_tags' );
+				add_filter( 'jetpack_enable_open_graph', '__return_false', 99 );
+			}
 			foreach( Array( 'xmlns="http://www.w3.org/1999/xhtml"', 'xmlns:og="http://ogp.me/ns#"', 'xmlns:fb="http://www.facebook.com/2008/fbml"' ) as $xmlns ) {
 				if ( strpos( $output, $xmlns ) === false ) {
 					$output .= "\n\t$xmlns ";
@@ -303,7 +305,9 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				$first_page = true;
 			}
 			$url = $aiosp->aiosp_mrt_get_url( $wp_query );
-			$url = apply_filters( 'aioseop_canonical_url',$url );			
+			$home_url = get_option( 'home' );
+			if ( $url == $home_url ) $url = trailingslashit( $url );
+			$url = apply_filters( 'aioseop_canonical_url',$url );		
 			$setmeta = $this->options['aiosp_opengraph_setmeta'];
 			if ( is_home( ) || $aiosp->is_static_front_page() ) {
 				$title = $this->options['aiosp_opengraph_hometitle'];
@@ -324,7 +328,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				if( empty($sitename) ) $sitename = get_bloginfo('name');
 				
 				if ( empty( $description ) && $first_page && ( !empty( $this->options['aiosp_opengraph_generate_descriptions'] ) ) )
-					$description = $aiosp->trim_excerpt_without_filters( $aiosp->internationalize( $post->post_content ), 1000 );
+					$description = $aiosp->trim_excerpt_without_filters( $aiosp->internationalize( preg_replace( '/\s+/', ' ', $post->post_content ) ), 1000 );
 				
 				if ( empty($description) && $first_page ) $description = get_bloginfo('description');
 			
@@ -356,7 +360,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 			} else return;
 			
 			if ( !empty( $description ) )
-				$description = $aiosp->trim_excerpt_without_filters( $aiosp->internationalize( $description ), 1000 );
+				$description = $aiosp->trim_excerpt_without_filters( $aiosp->internationalize( preg_replace( '/\s+/', ' ', $description ) ), 1000 );
 			
 			/* Data Validation */
 			$title = strip_tags( esc_attr( $title ) );

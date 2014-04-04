@@ -32,7 +32,7 @@ class W3_Menus {
         $this->_config = w3_instance('W3_Config');
     }
 
-    function generate() {
+    function generate_menu_array() {
         $pages = array(
             'w3tc_dashboard' => array(
                 __('Dashboard', 'w3-total-cache'),
@@ -123,6 +123,10 @@ class W3_Menus {
         );
         $pages = apply_filters('w3tc_menu', $pages, $this->_config, $this->_config_admin);
         $pages = array_merge($pages, $pages_tail);
+        return $pages;
+    }
+    function generate() {
+        $pages = $this->generate_menu_array();
         add_menu_page(__('Performance', 'w3-total-cache'), __('Performance', 'w3-total-cache'), 'manage_options', 'w3tc_dashboard', '', 'div');
 
         $submenu_pages = array();

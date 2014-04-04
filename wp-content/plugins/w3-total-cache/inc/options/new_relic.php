@@ -75,7 +75,7 @@
         <?php echo $this->postbox_header(__('Dashboard Settings', 'w3-total-cache'), '', 'dashboard'); ?>
         <table class="form-table">
             <tr>
-                <th><label for="newrelic_cache_time"><?php _e('Cache time:', 'w3-total-cache')?></label></th>
+                <th><label for="newrelic_cache_time"><?php w3_e_config_label('newrelic.cache_time') ?></label></th>
                 <td><input id="newrelic_cache_time" name="newrelic.cache_time" type="text" value="<?php echo esc_attr($this->_config->get_integer('newrelic.cache_time', 5))?>" />
                     <p><span class="description">
                         <?php _e('How many minutes data retrieved from New Relic should be stored. Minimum is 1 minute.', 'w3-total-cache') ?>
@@ -93,8 +93,8 @@
         <table  class="form-table">
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('newrelic.accept.logged_roles') ?> <?php _e('Use <acronym title="Real User Monitoring">RUM</acronym> only for following user roles', 'w3-total-cache') ?></label><br />
-                    <span class="description"><?php _e('Select user roles that <acronym title="Real User Monitoring">RUM</acronym> should be enabled for:', 'w3-total-cache') ?></span>
+                    <?php $this->checkbox('newrelic.accept.logged_roles') ?> <?php w3_e_config_label('newrelic.accept.logged_roles') ?></label><br />
+                    <span class="description"><?php w3_e_config_label('newrelic.accept.roles') ?></span>
 
                     <div id="newrelic_accept_roles">
                         <?php $saved_roles = $this->_config->get_array('newrelic.accept.roles'); ?>
@@ -109,7 +109,7 @@
             </tr>
             <tr>
                 <th>
-                    <label for="newrelic_include_rum"><?php _e('Include <acronym title="Real User Monitoring">RUM</acronym> in compressed or cached pages', 'w3-total-cache')?></label>
+                    <label for="newrelic_include_rum"><?php w3_e_config_label('newrelic.include_rum') ?></label>
                 </th>
                 <td>
                     <input name="newrelic.include_rum" type="hidden" value="0" />
@@ -122,11 +122,11 @@
             </tr>
             <?php if(w3_is_network() && w3_get_blog_id() == 0): ?>
             <tr>
-                <th><label for="newrelic_appname_prefix"><?php _e('Prefix network sites:', 'w3-total-cache') ?></label></th>
+                <th><label for="newrelic_appname_prefix"><?php w3_e_config_label('newrelic.appname_prefix') ?></label></th>
                 <td><input id="newrelic_appname_prefix" name="newrelic.appname_prefix" type="text" value="<?php echo esc_attr($this->_config->get_string('newrelic.appname_prefix')) ?>" /></td>
             </tr>
             <tr>
-                <th><label for="newrelic_merge_with_network"><?php _e('Include network sites stats in network:', 'w3-total-cache') ?></label></th>
+                <th><label for="newrelic_merge_with_network"><?php w3_e_config_label('newrelic.merge_with_network') ?></label></th>
                 <td>
                     <input name="newrelic.merge_with_network" type="hidden" value="0" />
                     <input id="newrelic_merge_with_network" name="newrelic.merge_with_network" type="checkbox" value="1" <?php checked($this->_config->get_boolean('newrelic.merge_with_network')) ?> />
@@ -138,7 +138,7 @@
             </tr>
             <?php endif ?>
             <tr>
-                <th><label for="newrelic_use_php_function"><?php _e('Use PHP function to set application name:', 'w3-total-cache') ?></label></th>
+                <th><label for="newrelic_use_php_function"><?php w3_e_config_label('newrelic.use_php_function') ?></label></th>
                 <td>
                     <?php if (w3_is_network()): ?>
                     <input id="newrelic_use_php_function" name="newrelic.use_php_function" type="checkbox" value="1" checked="checked" disabled="disabled" />
@@ -154,7 +154,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="newrelic_enable_xmit"><?php _e('Enable XMIT', 'w3-total-cache') ?></label></th>
+                <th><label for="newrelic_enable_xmit"><?php w3_e_config_label('newrelic.enable_xmit') ?></label></th>
                 <td><input name="" type="hidden" value="0" />
                 <input id="newrelic_enable_xmit" name="newrelic.enable_xmit" type="checkbox" value="1" <?php checked($this->_config->get_boolean('newrelic.enable_xmit')) ?> <?php $this->sealing_disabled('newrelic') ?>/>
                     <p><span class="description"><?php _e(sprintf('Enable this if you want to record the metric and transaction data (until the name is changed using PHP function), specify a value of true for this argument to make the agent send the transaction to the daemon. There is a slight performance impact as it takes a few milliseconds for the agent to dump its data. <em>From %s</em>',

@@ -64,7 +64,7 @@ class W3_ConfigWriter {
      * @param string $cache_filename
      * @return config values
      */
-    function create_compiled_config($cache_filename) {
+    function create_compiled_config($cache_filename, $write = true) {
         /**
          * defines $keys with descriptors
          * @var array $keys config keys
@@ -83,7 +83,11 @@ class W3_ConfigWriter {
 
             // try to read legacy master config
             if (!$success) {
-                $data = $this->get_imported_legacy_config_keys(true);
+                /**
+                 * @var W3_ConfigCompatibility $config_comp
+                 */
+                $config_comp = w3_instance('W3_ConfigCompatibility');
+                $data = $config_comp->get_imported_legacy_config_keys($this->_blog_id, true);
                 if (!is_null($data)) {
                     foreach ($data as $key => $value) {
                         $compiled_config->set($key, $value);
@@ -97,9 +101,22 @@ class W3_ConfigWriter {
         // append data from blog config
         $config_admin = w3_instance('W3_ConfigAdmin');
         $data = W3_ConfigData::get_array_from_file($this->_get_config_filename());
-        if (is_null($data)) {
-            $data = $this->get_imported_legacy_config_keys();
+        if (isset($data['version']) && version_compare($data['version'], W3TC_VERSION, '<')) {
+            /**
+             * @var W3_ConfigCompatibility $config_comp
+             */
+            $config_comp = w3_instance('W3_ConfigCompatibility');
+            $config_comp->load_new_settings($data['version']);
         }
+
+        if (is_null($data)) {
+            /**
+             * @var W3_ConfigCompatibility $config_comp
+             */
+            $config_comp = w3_instance('W3_ConfigCompatibility');
+            $data = $config_comp->get_imported_legacy_config_keys($this->_blog_id);
+        }
+
         if (!is_null($data)) {
             foreach ($data as $key => $value) {
                 if (!$this->_key_sealed($key, $compiled_config->data, $config_admin, $value))
@@ -116,13 +133,14 @@ class W3_ConfigWriter {
         $this->_post_process_values($compiled_config);
 
         // write cache
-        try {
-            $compiled_config->write($cache_filename);
-        } catch (Exception $ex) {   // dont care here about file permissions
+        if ($write) {
+            try {
+                $compiled_config->write($cache_filename, true);
+            } catch (Exception $ex) {   // dont care here about file permissions
+            }
+
+            $this->flush_apc($cache_filename, true);
         }
-
-        $this->flush_apc($cache_filename, true);
-
         return $compiled_config->data;
     }
 
@@ -210,7 +228,7 @@ class W3_ConfigWriter {
      * Returns true is key is not modifiable anymore
      *
      * @param string $key
-     * @param object $config_data
+     * @param array $config_data
      * @param object $config_admin
      * @param mixed $value
      * @return bool
@@ -244,10 +262,7 @@ class W3_ConfigWriter {
 
         if ($key == 'minify.rewrite' && !$config_data['minify.rewrite'] && $value)
             return true;
-
-        if ($key == 'cloudflare.ips.ip4' || $key == 'cloudflare.ips.ip6')
-            return true;
-
+//TODO: Add a hook
         return false;
     }
 
@@ -257,8 +272,7 @@ class W3_ConfigWriter {
      * @param bool $master
      * @return string
      */
-    private function _get_config_filename($force_master = false, 
-            $forced_preview = null) {
+    private function _get_config_filename($force_master = false, $forced_preview = null) {
         if (w3_force_master())
             $force_master = true;
         $preview = (!is_null($forced_preview) ? $forced_preview : $this->_preview);
@@ -269,6 +283,18 @@ class W3_ConfigWriter {
 
         return W3TC_CONFIG_DIR . '/' . 
             sprintf('%06d', $this->_blog_id) . $postfix;
+    }
+
+    public static function get_config_filename() {
+        $force_master = false;
+        if (w3_force_master())
+            $force_master = true;
+        $postfix = '.php';
+
+        if (w3_get_blog_id() <= 0 || $force_master)
+            return W3TC_CONFIG_DIR . '/master' . $postfix;
+
+        return W3TC_CONFIG_DIR . '/' . sprintf('%06d', w3_get_blog_id()) . $postfix;
     }
 
     /**
@@ -291,52 +317,6 @@ class W3_ConfigWriter {
             if ($helper->get_string('pgcache.engine') == 'file_generic')
                 $config->data['pgcache.cache.nginx_handle_xml'] = true;
         }
-    }
-
-    /**
-     * Reads legacy config file
-     *
-     * @param bool $force_master
-     * @return array
-     */
-    public function get_imported_legacy_config_keys($force_master = false) {
-        $suffix = '';
-
-        if ($force_master) {
-
-        } else if ($this->_blog_id > 0) {
-            if (w3_is_network()) {
-                if (w3_is_subdomain_install())
-                    $suffix = '-' . w3_get_domain(w3_get_host());
-                else {
-                    // try subdir blog
-                    $request_uri = rtrim($_SERVER['REQUEST_URI'], '/');
-                    $site_home_uri = w3_get_base_path();
-
-                    if (substr($request_uri, 0, strlen($site_home_uri)) == $site_home_uri) {
-                        $request_path_in_wp = '/' . substr($request_uri, strlen($site_home_uri));
-
-                        $n = strpos($request_path_in_wp, '/', 1);
-                        if ($n === false)
-                            $blog_path_in_wp = substr($request_path_in_wp, 1);
-                        else
-                            $blog_path_in_wp = substr($request_path_in_wp, 1, $n - 1);
-
-                        $suffix = '-' . ($blog_path_in_wp != 'wp-admin'? $blog_path_in_wp . '.': '') . w3_get_domain(w3_get_host());
-                    }
-
-                }
-            }
-        }
-
-        $filename = WP_CONTENT_DIR . '/w3-total-cache-config' . $suffix . '.php';
-
-        $legacy_config = W3_ConfigData::get_array_from_file($filename);
-        if (is_array($legacy_config) &&
-            isset($legacy_config['pgcache.engine']) &&
-            $legacy_config['pgcache.engine'] == 'file_pgcache')
-            $legacy_config['pgcache.engine'] = 'file_generic';
-        return $legacy_config;
     }
     
     /**

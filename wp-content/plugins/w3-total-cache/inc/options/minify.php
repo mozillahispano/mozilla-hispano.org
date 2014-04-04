@@ -37,19 +37,19 @@
         <table class="form-table">
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('minify.rewrite', !w3_can_check_rules() || $minify_rewrite_disabled) ?> <?php _e('Rewrite <acronym title="Uniform Resource Locator">URL</acronym> structure', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.rewrite', !w3_can_check_rules() || $minify_rewrite_disabled) ?> <?php w3_e_config_label('minify.rewrite') ?></label><br />
                     <span class="description"><?php _e('If disabled, <acronym title="Cascading Style Sheet">CSS</acronym> and <acronym title="JavaScript">JS</acronym> embeddings will use GET variables instead of "fancy" links.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('minify.reject.logged') ?> <?php _e('Disable minify for logged in users', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.reject.logged') ?> <?php w3_e_config_label('minify.reject.logged') ?></label><br />
                     <span class="description"><?php _e('Authenticated users will not receive minified pages if this option is enabled.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="minify_error_notification"><?php _e('Minify error notification:', 'w3-total-cache'); ?></label>
+                    <label for="minify_error_notification"><?php w3_e_config_label('minify.error.notification') ?></label>
                 </th>
                 <td>
                     <select id="minify_error_notification" name="minify.error.notification"
@@ -76,10 +76,10 @@
             <tr>
                 <th><?php _e('<acronym title="Hypertext Markup Language">HTML</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.html.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
-                    <?php $this->checkbox('minify.html.inline.css', false, 'html_') ?> <?php _e('Inline <acronym title="Cascading Style Sheet">CSS</acronym> minification', 'w3-total-cache'); ?></label><br />
-                    <?php $this->checkbox('minify.html.inline.js', false, 'html_') ?> <?php _e('Inline <acronym title="JavaScript">JS</acronym> minification', 'w3-total-cache'); ?></label><br />
-                    <?php $this->checkbox('minify.html.reject.feed', false, 'html_') ?> <?php _e('Don\'t minify feeds', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.html.enable') ?> <?php w3_e_config_label('minify.html.enable') ?></label><br />
+                    <?php $this->checkbox('minify.html.inline.css', false, 'html_') ?> <?php w3_e_config_label('minify.html.inline.css') ?></label><br />
+                    <?php $this->checkbox('minify.html.inline.js', false, 'html_') ?> <?php w3_e_config_label('minify.html.inline.js') ?></label><br />
+                    <?php $this->checkbox('minify.html.reject.feed', false, 'html_') ?> <?php w3_e_config_label('minify.html.reject.feed') ?></label><br />
                     <?php
                         $html_engine_file = '';
 
@@ -97,7 +97,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_html_comments_ignore"><?php _e('Ignored comment stems:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_html_comments_ignore"><?php w3_e_config_label('minify.html.comments.ignore') ?></label></th>
                 <td>
                     <textarea id="minify_html_comments_ignore" 
                         <?php $this->sealing_disabled('minify') ?>
@@ -132,47 +132,68 @@
             <tr>
                 <th><?php _e('<acronym title="JavaScript">JS</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.js.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.js.enable') ?> <?php w3_e_config_label('minify.js.enable') ?></label><br />
                     <fieldset><legend><?php _e('Operations in areas:', 'w3-total-cache'); ?></legend>
-                        <p>
-                            <span><?php _e('Embed type:', 'w3-total-cache'); ?></span>
-                        </p>
-                        <span class="oia-desc"><?php _e('Before <span class="html-tag">&lt;/head&gt;', 'w3-total-cache'); ?></span></span>
-                        <?php $this->radio('minify.js.combine.header', false, false, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.header', true, false, 'js_') ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
-                        <select id="js_use_type_header" name="minify.js.header.embed_type" class="js_enabled">
-                            <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
-                            <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
-                            <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
-                            <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                        <table id="minify_table">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="options"><?php w3_e_config_label('minify.js.header.embed_type') ?></td>
+                            </tr>
+                            <tr>
+                                <td class="placement">
+                                    <?php _e('Before <span class="html-tag">&lt;/head&gt;', 'w3-total-cache'); ?></span>
+                                </td>
+                                <td class="options">
+                                    <?php $this->radio('minify.js.combine.header', false, false, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.header', true, false, 'js_') ?> <?php w3_e_config_label('minify.js.combine.header') ?></label>
+                                </td>
+                                <td class="options">
+                                    <select id="js_use_type_header" name="minify.js.header.embed_type" class="js_enabled">
+                                        <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                                        <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                                        <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                                        <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                                        <?php if (!$auto): ?>
+            								<option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                                        <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
+                                        <?php endif; ?>
+                                    </select>
+                                </td>
                             <?php if (!$auto): ?>
-								<option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
-                            <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.header.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
+                            <tr>
+                                <td class="placement"><?php w3_e_config_label('minify.js.body.embed_type') ?></td>
+                                <td class="options">
+                                    <?php $this->radio('minify.js.combine.body', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.body', true) ?> <?php w3_e_config_label('minify.js.combine.body') ?></label>
+                                </td>
+                                <td class="options">
+                                    <select id="js_use_type_body" name="minify.js.body.embed_type" class="js_enabled">
+                                        <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                                        <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                                        <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                                        <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                                        <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                                        <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="placement"><?php w3_e_config_label('minify.js.footer.embed_type') ?></td>
+                                <td class="options">
+                                    <?php $this->radio('minify.js.combine.footer', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.footer', true) ?> <?php w3_e_config_label('minify.js.combine.footer') ?></label>
+                                </td>
+                                <td class="options">
+                                    <select id="js_use_type_footer" name="minify.js.footer.embed_type" class="js_enabled">
+                                        <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
+                                        <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
+                                        <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
+                                        <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
+                                        <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
+                                        <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
+                                    </select>
+                                </td>
+                            </tr>
                             <?php endif; ?>
-                        </select>
-                        <?php if (!$auto): ?>
-                        <br />
-                        <span class="oia-desc"><?php _e('After <span class="html-tag">&lt;body&gt;</span>', 'w3-total-cache'); ?></span>
-                        <?php $this->radio('minify.js.combine.body', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.body', true) ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
-                            <select id="js_use_type_body" name="minify.js.body.embed_type" class="js_enabled">
-                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
-                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
-                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
-                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
-                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
-                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.body.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
-                            </select>
-                            <br />
-                        <span class="oia-desc"><?php _e('Before <span class="html-tag">&lt;/body&gt;</span>', 'w3-total-cache'); ?></span>
-                        <?php $this->radio('minify.js.combine.footer', false, $auto, 'js_') ?> <?php _e('Minify', 'w3-total-cache'); ?> </label> <?php $this->radio('minify.js.combine.footer', true) ?> <?php _e('Combine only', 'w3-total-cache'); ?></label>
-                            <select id="js_use_type_footer" name="minify.js.footer.embed_type" class="js_enabled">
-                                <option value="blocking" <?php selected('blocking' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Default (blocking)', 'w3-total-cache'); ?></option>
-                                <option value="nb-js" <?php selected('nb-js' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using JS', 'w3-total-cache'); ?></option>
-                                <option value="nb-async" <?php selected('nb-async' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "async"', 'w3-total-cache'); ?></option>
-                                <option value="nb-defer" <?php selected('nb-defer' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "defer"', 'w3-total-cache'); ?></option>
-                                <option value="extsrc" <?php selected('extsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "extsrc"', 'w3-total-cache'); ?></option>
-                                <option value="asyncsrc" <?php selected('asyncsrc' ,$this->_config->get_string('minify.js.footer.embed_type')) ?>><?php _e('Non-blocking using "asyncsrc"', 'w3-total-cache'); ?></option>
-                            </select>
-                            <?php endif; ?>
+                        </table>
                     </fieldset>
                     <?php
                         $js_engine_file = '';
@@ -286,8 +307,8 @@
             <tr>
                 <th><?php _e('<acronym title="Cascading Style Sheet">CSS</acronym> minify settings:', 'w3-total-cache'); ?></th>
                 <td>
-                    <?php $this->checkbox('minify.css.enable') ?> <?php _e('Enable', 'w3-total-cache'); ?></label><br />
-                    <?php $this->checkbox('minify.css.combine', false, 'css_') ?> <?php _e('Combine only', 'w3-total-cache'); ?></label><br />
+                    <?php $this->checkbox('minify.css.enable') ?> <?php w3_e_config_label('minify.css.enable') ?></label><br />
+                    <?php $this->checkbox('minify.css.combine', false, 'css_') ?> <?php w3_e_config_label('minify.css.combine') ?></label><br />
                     <?php
                         $css_engine_file = '';
 
@@ -306,7 +327,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_css_import"><?php _e('@import handling:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_css_import"><?php w3_e_config_label('minify.css.imports') ?></label></th>
                 <td>
                     <select id="minify_css_import" class="css_enabled" name="minify.css.imports"
                         <?php $this->sealing_disabled('minify') ?>>
@@ -402,10 +423,10 @@
         <table class="form-table">
         <?php if ($auto):?>
         <tr>
-            <th colspan="2"><?php $this->checkbox('minify.auto.disable_filename_length_test')?> <?php _e('Disable minify automatic file name length test', 'w3-total-cache') ?></label><br />
-                <span class="description"><?php _e('Do not automatically attempt to find the optimal file name length minify files created in auto mode.', 'w3-total-cache')?></span><br />
+            <th colspan="2"><?php $this->checkbox('minify.auto.disable_filename_length_test')?> <?php w3_e_config_label('minify.auto.disable_filename_length_test') ?></label><br />
+                <span class="description"><?php _e('Do not automatically attempt to determine the optimal file name length minify files created in auto mode.', 'w3-total-cache')?></span><br />
                 <br />
-                <label for="minify_auto_filename_length">Filename length:</label>
+                <label for="minify_auto_filename_length"><?php w3_e_config_label('minify.auto.filename_length') ?></label>
                 <input id="minify_auto_filename_length" name="minify.auto.filename_length" type="text" size="4" <?php disabled($this->_config->get_boolean('minify.auto.disable_filename_length_test'), false) ?> value="<?php echo $this->_config->get_integer('minify.auto.filename_length')?>" />
                 <br /><span class="description"><?php _e('Change this value to decrease or determine the number of minified files that are generated.
                 The more <acronym title="Cascading Style Sheet">CSS</acronym> / <acronym title="JavaScript">JS</acronym> files you have the more files will be generated because their file names are combined in
@@ -416,7 +437,7 @@
         <?php endif ?>
         <?php if ($this->_config->get_string('minify.engine') == 'memcached'): ?>
             <tr>
-                <th><label for="memcached_servers"><?php _e('Memcached hostname:port / <acronym title="Internet Protocol">IP</acronym>:port:', 'w3-total-cache'); ?></label></th>
+                <th><label for="memcached_servers"><?php w3_e_config_label('minify.memcached.servers') ?></label></th>
                 <td>
                     <input id="memcached_servers" type="text"
                         <?php $this->sealing_disabled('minify') ?>
@@ -429,7 +450,7 @@
             </tr>
             <?php endif; ?>
             <tr>
-                <th><label for="minify_lifetime"><?php _e('Update external files every:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_lifetime"><?php w3_e_config_label('minify.lifetime') ?></label></th>
                 <td>
                     <input id="minify_lifetime" type="text" name="minify.lifetime"
                         <?php $this->sealing_disabled('minify') ?>
@@ -438,7 +459,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_file_gc"><?php _e('Garbage collection interval:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_file_gc"><?php w3_e_config_label('minify.file.gc') ?></label></th>
                 <td>
                     <input id="minify_file_gc" type="text" name="minify.file.gc"
                         <?php $this->sealing_disabled('minify') ?>
@@ -447,7 +468,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_uri"><?php _e('Never minify the following pages:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_reject_uri"><?php w3_e_config_label('minify.reject.uri') ?></label></th>
                 <td>
                     <textarea id="minify_reject_uri" name="minify.reject.uri" 
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.uri'))); ?></textarea><br />
@@ -455,7 +476,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_files_js"><?php _e('Never minify the following JS files:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_reject_files_js"><?php w3_e_config_label('minify.reject.files.js') ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_js" name="minify.reject.files.js"
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.files.js'))); ?></textarea><br />
@@ -463,7 +484,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_files_css"><?php _e('Never minify the following CSS files:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_reject_files_css"><?php w3_e_config_label('minify.reject.files.css') ?></label></th>
                 <td>
                     <textarea id="minify_reject_files_css" name="minify.reject.files.css"
                         <?php $this->sealing_disabled('minify') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('minify.reject.files.css'))); ?></textarea><br />
@@ -471,7 +492,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="minify_reject_ua"><?php _e('Rejected user agents:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_reject_ua"><?php w3_e_config_label('minify.reject.ua') ?></label></th>
                 <td>
                     <textarea id="minify_reject_ua" name="minify.reject.ua"
                         <?php $this->sealing_disabled('minify') ?>
@@ -481,7 +502,7 @@
             </tr>
             <?php if ($auto): ?>
             <tr>
-                <th><label for="minify_cache_files"><?php _e('Include external files/libaries:', 'w3-total-cache'); ?></label></th>
+                <th><label for="minify_cache_files"><?php w3_e_config_label('minify.cache.files') ?></label></th>
                 <td>
                     <textarea id="minify_cache_files" name="minify.cache.files"
                         <?php $this->sealing_disabled('minify') ?>

@@ -100,7 +100,7 @@ class W3_Pro_FragmentCache {
      *
      * @var integer
      */
-    var $_lifetime = null;
+    var $_lifetime = 0;
 
     /**
      * Debug flag
@@ -224,9 +224,10 @@ class W3_Pro_FragmentCache {
         if (is_object($data)) {
             $data = clone( $data );
         }
+
         list($fragment_group, $fragment_group_expiration) = 
             $this->_fragment_group($id);
-        if (!is_null($fragment_group_expiration))
+        if (is_int($fragment_group_expiration))
             $expire = $fragment_group_expiration;
 
         $this->cache[$fragment_group . $group][$key] = $data;

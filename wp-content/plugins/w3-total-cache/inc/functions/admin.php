@@ -155,7 +155,6 @@ function w3_config_save($current_config, $new_config, $new_config_admin) {
             'dbcache.enabled',
             'objectcache.enabled',
             'minify.enabled',
-            'cdn.enabled',
             'mobile.enabled',
             'referrer.enabled'
         ));
@@ -197,9 +196,13 @@ function w3_config_save($current_config, $new_config, $new_config_admin) {
                 'minify.reject.uri'
             ));
         }
-
-        if ($new_config->get_boolean('cdn.enabled')) {
+        /**
+         * @var W3_ModuleStatus $modules
+         */
+        $modules = w3_instance('W3_ModuleStatus');
+        if ($modules->is_running('cdn')) {
             $pgcache_dependencies = array_merge($pgcache_dependencies, array(
+                'cdn.enabled',
                 'cdn.debug',
                 'cdn.engine',
                 'cdn.uploads.enable',
@@ -238,6 +241,8 @@ function w3_config_save($current_config, $new_config, $new_config_admin) {
                 'cdn.reject.uri',
                 'cdn.reject.files'
             ));
+        } elseif ($old_config->get_boolean('cdn.enabled') && !$new_config->get_boolean('cdn.enabled')) {
+            $pgcache_dependencies = array_merge($pgcache_dependencies, array('cdn.enabled'));
         }
 
         if ($new_config->get_boolean('mobile.enabled')) {
@@ -277,15 +282,14 @@ function w3_config_save($current_config, $new_config, $new_config_admin) {
     /**
      * Show need empty minify notification
      */
-    if ($new_config->get_boolean('minify.enabled') && (($new_config->get_boolean('minify.css.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.css.groups')))) || ($new_config->get_boolean('minify.js.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.js.groups')))))) {
+    if ($current_config->get_boolean('minify.enabled') && $new_config->get_boolean('minify.enabled') && (($new_config->get_boolean('minify.css.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.css.groups')))) || ($new_config->get_boolean('minify.js.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.js.groups')))))) {
         $minify_dependencies = array_merge($browsercache_dependencies, array(
             'minify.auto',
             'minify.debug',
             'minify.options',
             'minify.symlinks',
             'minify.css.enable',
-            'minify.js.enable',
-            'cdn.enabled'
+            'minify.js.enable'
         ));
 
         if ($new_config->get_boolean('minify.css.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.css.groups')))) {
@@ -339,10 +343,16 @@ function w3_config_save($current_config, $new_config, $new_config_admin) {
             ));
         }
 
-        if ($new_config->get_boolean('cdn.enabled')) {
+        /**
+         * @var W3_ModuleStatus $modules
+         */
+        $modules = w3_instance('W3_ModuleStatus');
+        if ($modules->is_running('cdn')) {
             $minify_dependencies = array_merge($minify_dependencies, array(
-                'cdn.engine'
+                'cdn.engine','cdn.enabled'
             ));
+        } elseif ($old_config->get_boolean('cdn.enabled') && !$new_config->get_boolean('cdn.enabled')) {
+            $minify_dependencies = array_merge($minify_dependencies, array('cdn.enabled'));
         }
 
         $old_minify_dependencies_values = array();
@@ -640,4 +650,67 @@ function w3_get_cookie_domain() {
     }
 
     return $_SERVER['HTTP_HOST'];
+}
+
+/*
+ * Returns current w3tc admin page
+ */
+function w3tc_get_current_page() {
+    w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+
+    $page = W3_Request::get_string('page');
+
+    switch (true) {
+        case ($page == 'w3tc_dashboard'):
+        case ($page == 'w3tc_general'):
+        case ($page == 'w3tc_pgcache'):
+        case ($page == 'w3tc_minify'):
+        case ($page == 'w3tc_dbcache'):
+        case ($page == 'w3tc_objectcache'):
+        case ($page == 'w3tc_fragmentcache'):
+        case ($page == 'w3tc_browsercache'):
+        case ($page == 'w3tc_mobile'):
+        case ($page == 'w3tc_referrer'):
+        case ($page == 'w3tc_cdn'):
+        case ($page == 'w3tc_monitoring'):
+        case ($page == 'w3tc_extensions'):
+        case ($page == 'w3tc_install'):
+        case ($page == 'w3tc_faq'):
+        case ($page == 'w3tc_about'):
+        case ($page == 'w3tc_support'):
+            break;
+
+        default:
+            $page = 'w3tc_dashboard';
+    }
+
+    return $page;
+}
+
+/**
+ * Check if current page is a W3TC admin page
+ * @return bool
+ */
+function is_w3tc_admin_page() {
+    return isset($_GET['page']) && substr($_GET['page'], 0, 5) == 'w3tc_';
+}
+
+
+function w3tc_make_track_call($params) {
+    wp_remote_post(W3TC_TRACK_URL, array(
+        'timeout' => 45,
+        'redirection' => 5,
+        'blocking' => false,
+        'headers' => array(),
+        'body' => array_merge($params, array('id' => md5(home_url())))
+    ));
+}
+
+/**
+ * Returns current WordPress page
+ * @return string
+ */
+function w3tc_get_current_wp_page() {
+    w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+    return W3_Request::get_string('page');
 }

@@ -41,7 +41,7 @@
         <li>George Schlossnagle</li>
         <li>Daniel Cowgill</li>
         <li><a href="http://toys.lerdorf.com/" target="_blank">Rasmus Lerdorf</a></li>
-        <li><a href="http://t3.dotgnu.info/" target="_blank">Gopal Vijayaraghavan</a></li>
+        <li><a href="http://notmysock.org/" target="_blank">Gopal Vijayaraghavan</a></li>
         <li><a href="http://eaccelerator.net/" target="_blank">Bart Vanbraban</a></li>
         <li><a href="http://xcache.lighttpd.net/" target="_blank">mOo</a></li>
     </ul>

@@ -10,15 +10,15 @@ function w3_parse_faq() {
     if (!file_exists($file)) {
         $file = W3TC_LANGUAGES_DIR . '/faq-en_US.xml';
     }
-    $xml_premium = null;
-    if ((defined('W3TC_ENTERPRISE') && W3TC_ENTERPRISE) || (defined('W3TC_PRO') && W3TC_PRO)) {
-        $file_premium = W3TC_LANGUAGES_DIR . '/faq-premium-en_US.xml';
-        $xml_premium = @file_get_contents($file_premium);
-    }
 
     $xml = @file_get_contents($file);
-
-    if ($xml) {
+    $file2 = W3TC_LANGUAGES_DIR . '/faq-pro-' . get_locale() . '.xml';
+    if (!file_exists($file)) {
+        $file2 = W3TC_LANGUAGES_DIR . '/faq-pro-en_US.xml';
+    }
+    $xml2 = @file_get_contents($file2);
+    $xmls = array('standard' => $xml, 'pro' => $xml2);
+    foreach ($xmls as $state => $xml) {
         if (function_exists('xml_parser_create')) {
             $parser = @xml_parser_create('UTF-8');
 
@@ -32,21 +32,25 @@ function w3_parse_faq() {
 
             if ($result) {
                 $index = 0;
-                $current_section = '';
+                $root_section = $current_section = '';
                 $current_entry = array();
-
+                $lvl = 0;
                 foreach ($values as $value) {
                     switch ($value['type']) {
                         case 'open':
                             if ($value['tag'] === 'section') {
                                 $current_section = $value['attributes']['name'];
+                                if ($root_section == '' || $lvl == 0)
+                                    $root_section = $current_section;
+                                $lvl++;
+
                             }
                             break;
 
                         case 'complete':
                             switch ($value['tag']) {
                                 case 'question':
-                                    $current_entry['question'] = $value['value'];
+                                    $current_entry['question'] = ($state == 'pro' ? '<strong style="color:#000">PRO version: </strong>': '' ) . $value['value'];
                                     break;
 
                                 case 'answer':
@@ -58,61 +62,19 @@ function w3_parse_faq() {
                         case 'close':
                             if ($value['tag'] == 'entry') {
                                 $current_entry['index'] = ++$index;
-                                $faq[$current_section][] = $current_entry;
+                                if ($root_section != $current_section)
+                                    $faq[$root_section][$current_section][] = $current_entry;
+                                else
+                                    $faq[$root_section][] = $current_entry;
+                            }else if ($value['tag'] == 'section') {
+                                $lvl--;
                             }
                             break;
-                    }
-                }
-
-                if ($xml_premium) {
-                    $parser = @xml_parser_create('UTF-8');
-
-                    xml_parser_set_option($parser, XML_OPTION_TARGET_ENCODING, 'UTF-8');
-                    xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
-                    xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, 1);
-                    $values = null;
-
-                    $result = xml_parse_into_struct($parser, $xml_premium, $values);
-                    xml_parser_free($parser);
-
-                    if ($result) {
-                        $current_section = '';
-                        $current_entry = array();
-
-                        foreach ($values as $value) {
-                            switch ($value['type']) {
-                                case 'open':
-                                    if ($value['tag'] === 'section') {
-                                        $current_section = $value['attributes']['name'];
-                                    }
-                                    break;
-
-                                case 'complete':
-                                    switch ($value['tag']) {
-                                        case 'question':
-                                            $current_entry['question'] = $value['value'];
-                                            break;
-
-                                        case 'answer':
-                                            $current_entry['answer'] = $value['value'];
-                                            break;
-                                    }
-                                    break;
-
-                                case 'close':
-                                    if ($value['tag'] == 'entry') {
-                                        $current_entry['index'] = ++$index;
-                                        $faq[$current_section][] = $current_entry;
-                                    }
-                                    break;
-                            }
-                        }
                     }
                 }
             }
         }
     }
-
     return $faq;
 }
 
@@ -143,6 +105,7 @@ function w3tc_button_link($text, $url, $new_window = false) {
  * @param string $note
  * @param string $redirect
  * @param boolean $admin if to use config admin
+ * @param string $page
  * @return string
  */
 function w3tc_button_hide_note($text, $note, $redirect = '', $admin = false, $page ='') {

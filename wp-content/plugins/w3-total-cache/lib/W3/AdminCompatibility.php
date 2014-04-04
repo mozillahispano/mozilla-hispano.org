@@ -17,6 +17,7 @@ class W3_AdminCompatibility extends W3_Plugin {
             add_action('admin_notices', array($this, 'verify'));
             add_action('network_admin_notices', array($this, 'verify'));
         }
+
         $this->_backwards_import();
     }
 
@@ -101,6 +102,9 @@ class W3_AdminCompatibility extends W3_Plugin {
         return sprintf("<p>$message</p><ul class=\"w3tc-incomp-plugins\">%s</ul>", implode('', $plugin_names));
     }
 
+    /**
+     * Handle importing changed configuration from older versions
+     */
     private function _backwards_import() {
         if ($this->_config->get_string('cdn.engine') == 'netdna' && $this->_config->get_string('cdn.netdna.authorization_key') == '') {
 
@@ -120,6 +124,39 @@ class W3_AdminCompatibility extends W3_Plugin {
                     $this->_config->refresh_cache();
                 } catch(Exception $ex) {}
             }
+        }
+
+        if (w3tc_get_extension_config('genesis.theme', 'fragment_reject_logged_roles') != null) {
+            $old_extensions = $this->_config->get_array('extensions.settings');
+            $genesis = $old_extensions['genesis.theme'];
+            $genesis['reject_logged_roles'] = $genesis['fragment_reject_logged_roles'];
+            unset($genesis['fragment_reject_logged_roles']);
+            $genesis['reject_logged_roles_on_actions'] = $genesis['fragment_reject_logged_roles_on_actions'];
+            unset($genesis['fragment_reject_logged_roles_on_actions']);
+            $genesis['reject_roles'] = $genesis['fragment_reject_roles'];
+            unset($genesis['fragment_reject_roles']);
+            $old_extensions['genesis.theme'] = $genesis;
+            $this->_config->set("extensions.settings", $old_extensions);
+            try{
+                $this->_config->save();
+                $this->_config->refresh_cache();
+            } catch(Exception $ex) {}
+        }
+
+        if ($this->_config->get_boolean('cloudflare.enabled') || $this->_config->get_string('cloudflare.email')) {
+            $extensions = $this->_config->get_array('extensions.settings');
+            $cloudflare =  array();
+            $cloudflare['enabled'] = $this->_config->get_string('cloudflare.enabled');
+            $cloudflare['email'] = $this->_config->get_string('cloudflare.email');
+            $cloudflare['key'] = $this->_config->get_string('cloudflare.key');
+            $cloudflare['zone'] = $this->_config->get_string('cloudflare.zone');
+
+            $extensions['cloudflare'] = $cloudflare;
+            $this->_config->set("extensions.settings", $extensions);
+            try{
+                $this->_config->save();
+                $this->_config->refresh_cache();
+            } catch(Exception $ex) {}
         }
     }
 }

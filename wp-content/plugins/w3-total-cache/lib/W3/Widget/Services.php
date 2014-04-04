@@ -48,6 +48,10 @@ class W3_Widget_Services extends W3_Plugin {
     );
 
     function run() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        if(w3tc_get_current_wp_page() == 'w3tc_dashboard')
+            add_action('admin_enqueue_scripts', array($this,'enqueue'));
+
         $this->_json_request_types = array(
             'email_support' => sprintf(__('Less than 15 Minute Email Support Response %s', 'w3-total-cache'), '(M-F 9AM - 5PM EDT): $75 USD'),
             'phone_support' => sprintf(__('Less than 15 Minute Phone Support Response %s', 'w3-total-cache'), '(M-F 9AM - 5PM EDT): $150 USD'),
@@ -82,10 +86,6 @@ class W3_Widget_Services extends W3_Plugin {
      * @return void
      */
     function wp_dashboard_setup() {
-        wp_enqueue_style('w3tc-widget');
-        wp_enqueue_script('w3tc-metadata');
-        wp_enqueue_script('w3tc-widget');
-
         w3tc_add_dashboard_widget('w3tc_services', __('Premium Services', 'w3-total-cache'), array(
             &$this,
             'widget_form'
@@ -118,5 +118,11 @@ class W3_Widget_Services extends W3_Plugin {
             "cancel_return" => esc_attr($cancel_url));
         echo json_encode($form_values);
         die();
+    }
+
+    public function enqueue() {
+        wp_enqueue_style('w3tc-widget');
+        wp_enqueue_script('w3tc-metadata');
+        wp_enqueue_script('w3tc-widget');
     }
 }
