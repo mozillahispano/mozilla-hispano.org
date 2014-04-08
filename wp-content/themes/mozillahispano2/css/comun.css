@@ -25,7 +25,7 @@ body {
 	font-family: 'Open Sans',sans-serif;
 	font-size: 0.62em;
 	text-align: inherit; /* Para evitar conflictos con el css de la documentacion (bookjive/main.css)*/
-    padding-bottom: 24em;
+    /*padding-bottom: 24em;*/
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -64,15 +64,15 @@ video {
 
 #lienzo {
     overflow: hidden;
-	min-width: 980px;
 	margin: 0px auto;
+	max-width: 1000px;
 }
 
 #tullido {
-	margin: auto;
+	margin: 0px 20px;
 	position: relative;
 	text-align: left;
-	width: 980px;
+	max-width: 980px;
 	z-index: 1;
 }
 
@@ -131,18 +131,10 @@ input.text {
 	#social {
 		margin-top: -20px;
 		width: 228px;
-		position: absolute;
-		right: 0;
+		float: right;
 	}
 
 	#social li {
-		/*
-		display: block;
-		float: right;
-		font-size: 1px;
-		height: 29px;
-		text-indent: -10000em;
-		*/
 		float: left;
 		width: 28px;
 		height: 29px;
@@ -204,6 +196,8 @@ input.text {
 	font-size: 1.2em;
 	height: 80px;
 	width: 540px;
+	float: left;
+	margin-right: 100px;
 }
 
 #menu ul {
@@ -331,8 +325,6 @@ input.text {
 	font-size: 1.2em;
 	padding: 2em 0;
 	overflow: hidden;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 #pie a {
@@ -344,7 +336,6 @@ input.text {
 }
 
 #pie #pie-contenido {
-	width: 960px;
 	margin: auto;
 }
 
