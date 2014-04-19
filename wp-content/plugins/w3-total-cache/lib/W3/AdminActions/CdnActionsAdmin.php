@@ -14,7 +14,8 @@ class W3_AdminActions_CdnActionsAdmin {
     function __construct() {
         $this->_config = w3_instance('W3_Config');
         w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
-        $this->_page = W3_Request::get_string('page');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
     }
 
     /**
@@ -367,7 +368,7 @@ class W3_AdminActions_CdnActionsAdmin {
         $config = W3_Request::get_array('config');
 
         //TODO: Workaround to support test case cdn/a04
-        if (!isset($config['host'])) {
+        if ($engine == 'ftp' && !isset($config['host'])) {
             $config = W3_Request::get_string('config');
             $config = json_decode($config, true);
         }
@@ -376,7 +377,7 @@ class W3_AdminActions_CdnActionsAdmin {
             'debug' => false
         ));
 
-        if (!is_array($config['domain'])) {
+        if (!is_array($config['domain']) && isset($config['domain'])) {
             $config['domain'] = explode(',', $config['domain']);
         }
 
@@ -488,6 +489,9 @@ class W3_AdminActions_CdnActionsAdmin {
     }
 
 
+    /**
+     * Includes the manual create pull zone form.
+     */
     function action_cdn_create_netdna_maxcdn_pull_zone_form() {
         w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin_ui.php');
         w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
@@ -502,11 +506,12 @@ class W3_AdminActions_CdnActionsAdmin {
      */
     function action_cdn_create_netdna_maxcdn_pull_zone() {
         w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
         $type = W3_Request::get_string('type');
         $name = W3_Request::get_string('name');
         $label = W3_Request::get_string('label');
-        w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
-        $cdn_engine= $this->_config->get_string('cdn.engine');
+        $cdn_engine= $type;
 
         $authorization_key = $this->_config->get_string("cdn.$cdn_engine.authorization_key");
         $alias = $consumerkey = $consumersecret = '';
@@ -523,18 +528,340 @@ class W3_AdminActions_CdnActionsAdmin {
         $zone['name'] = $name;
         $zone['label'] = $label;
         $zone['url'] = $url;
+        $zone['use_stale'] = 1;
+        $zone['queries'] = 1;
+        $zone['compress'] = 1;
+        $zone['backend_compress'] = 1;
         try {
             $response = $api->create_pull_zone($zone);
             try {
-                $this->_config->set('cdn.enabled', true);
+                $temporary_url = "$name.$alias.netdna-cdn.com";
+                $test_result = -1;
                 if (!$this->_config->get_array("cdn.$cdn_engine.domain")) {
-                    $this->_config->set("cdn.$cdn_engine.domain", array("$name.$alias.netdna-cdn.com"));
+                    $test_result = $this->test_cdn_url($temporary_url) ? 1 : 0;
+                    $this->_config->set("cdn.$cdn_engine.domain", array($temporary_url));
+                    if ($test_result)
+                        $this->_config->set("cdn.enabled", true);
                 }
                 $this->_config->save();
+                $config_admin = w3_instance('W3_ConfigAdmin');
+                $zones = $api->get_pull_zones();
+                $zone_count = sizeof($zones);
+                w3tc_make_track_call(array('type'=>'cdn',
+                    'data'=>array(
+                        'cdn' => $type,'action' => 'zonecreation','creation' => 'manual', 'creationtime' => time()
+                        ,'signupclick' => $config_admin->get_integer('track.maxcdn_signup')
+                        ,'authorizeclick' => $config_admin->get_integer('track.maxcdn_authorize')
+                        ,'validationclick' => $config_admin->get_integer('track.maxcdn_validation')
+                        , 'total_zones' => $zone_count
+                        ,'test' => $test_result
+                )));
             } catch (Exception $ex) {}
             echo json_encode(array('status' => 'success','message' => 'Pull Zone created.', 'temporary_url' => "$name.$alias.netdna-cdn.com", 'data' => $response));
         } catch (Exception $ex) {
             echo json_encode(array('status' => 'error','message' => $ex->getMessage()));
+        }
+    }
+
+    /**
+     * Validates the authorization key and echos json encoded data connected with the key.
+     */
+    function action_cdn_validate_authorization_key() {
+        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
+
+        $cdn_engine = W3_Request::get_string('type');
+        $this->validate_cdnengine_is_netdna_maxcdn($cdn_engine);
+        $authorization_key = W3_Request::get_string('authorization_key');
+        $this->validate_authorization_key($authorization_key);
+        $keys = explode('+', $authorization_key);
+        list($alias, $consumer_key, $consumer_secret) = $keys;
+        $api = new NetDNA($alias, $consumer_key, $consumer_secret);
+        $this->validate_account($api);
+        try {
+            $pull_zones = $api->get_zones_by_url(w3_get_home_url());
+            if (sizeof($pull_zones) == 0) {
+                $result = array('result' => 'create');
+                try {
+                    $this->_config->set("cdn.$cdn_engine.authorization_key", $authorization_key);
+                    $this->_config->save();
+                } catch (Exception $ex) {}
+            } elseif (sizeof($pull_zones) == 1) {
+                $custom_domains = $api->get_custom_domains($pull_zones[0]['id']);
+                if (sizeof($custom_domains) > 0) {
+                    $result = array('result' => 'single', 'cnames' => array($custom_domains));
+                    $this->_config->set("cdn.$cdn_engine.domain", $custom_domains);
+                    $this->_config->set("cdn.enabled", true);
+                } else {
+                    $name = $pull_zones[0]['name'];
+                    $result = array('result' => 'single', 'cnames' => array("$name.$alias.netdna-cdn.com"));
+                }
+                $this->_config->set("cdn.$cdn_engine.zone_id", $pull_zones[0]['id']);
+                $this->_config->set("cdn.$cdn_engine.authorization_key", $authorization_key);
+                $this->_config->set("cdn.$cdn_engine.domain", $result['cnames']);
+                $this->_config->save();
+            } else {
+                $zones = array();
+                $data = array();
+                foreach ($pull_zones as $zone) {
+                    if (empty($data)) {
+                        $domains = $this->test_cdn_pull_zone($api, $zone['id'], $zone['name'], $alias);
+                        if ($domains) {
+                            $data = array('id' => $zone['id'], 'domains' => $domains);
+                            $this->_config->set("cdn.$cdn_engine.zone_id", $zone['id']);
+                            $this->_config->set("cdn.$cdn_engine.domain", $domains);
+                        }
+                    }
+                    $zones[] = array('id' => $zone['id'], 'name' => $zone['name']);
+                }
+                $result = array('result' => 'many', 'zones' => $zones, 'data' => $data);
+                $this->_config->set("cdn.$cdn_engine.authorization_key", $authorization_key);
+                $this->_config->save();
+            }
+            try {
+                $config_admin = w3_instance('W3_ConfigAdmin');
+                if ($config_admin->get_integer('track.maxcdn_validation', 0) == 0) {
+                    $config_admin->set('track.maxcdn_validation', time());
+                    $config_admin->save();
+                }
+            } catch(Exception $ex) {}
+        } catch (Exception $ex) {
+            $result = array('result' => 'error', 'message' => $ex->getMessage());
+        }
+        echo json_encode($result);
+        exit;
+    }
+
+    /**
+     * @param NetDNA $api
+     * @param int $id
+     * @param string $name
+     * @param string $alias
+     * @return array|null
+     */
+    private function test_cdn_pull_zone($api, $id, $name, $alias) {
+        try {
+            $domains = $api->get_custom_domains($id);
+            if ($domains) {
+                $test = true;
+                foreach($domains as $domain)
+                    $test = $test && $this->test_cdn_url($domain);
+            } else {
+                $url = "$name.$alias.netdna-cdn.com";
+                $test = $this->test_cdn_url($url);
+                $domains = array($url);
+            }
+            if ($test)
+                return $domains;
+        } catch (Exception $ex) {}
+        return array();
+    }
+    /**
+     * Validates key and echos encoded message on failure.
+     * @param $authorization_key
+     */
+    private function validate_authorization_key($authorization_key) {
+        if (empty($authorization_key)) {
+            $result = array('result' => 'error', 'message' => __('An authorization key was not provided.', 'w3-total-cache'));
+            echo json_encode($result);
+            exit;
+        }
+        $keys = explode('+', $authorization_key);
+        if (sizeof($keys) != 3) {
+            $result = array('result' => 'error', 'message' => sprintf(__('The provided authorization key is
+                             not in the correct format: %s.', 'w3-total-cache'), $authorization_key));
+            echo json_encode($result);
+            exit;
+
+        }
+    }
+
+    /**
+     * Validates that the API works and echos message and exists if it fails
+     * @param NetDNA $api
+     * @return null|array
+     */
+    private function validate_account($api) {
+        try {
+            return $api->get_account();
+        } catch (Exception $ex) {
+            $result = array('result' => 'error', 'message' => $ex->getMessage());
+            echo json_encode($result);
+            exit;
+        }
+    }
+
+    /**
+     * Create a NetDNA or MaxCDN pull zone automatically
+     */
+    function action_cdn_auto_create_netdna_maxcdn_pull_zone() {
+        w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+
+        $cdn_engine = W3_Request::get_string('type');
+        $this->validate_cdnengine_is_netdna_maxcdn($cdn_engine);
+        $authorization_key = W3_Request::get_string('authorization_key');
+        $this->validate_authorization_key($authorization_key);
+        $keys = explode('+', $authorization_key);
+        list($alias, $consumerkey, $consumersecret) =  $keys;
+        $url = w3_get_home_url();
+        try {
+            $api = new NetDNA($alias, $consumerkey, $consumersecret);
+            $disable_cooker_header = $this->_config->get_boolean('browsercache.other.nocookies') ||
+                                     $this->_config->get_boolean('browsercache.cssjs.nocookies');
+            $zone = $api->create_default_pull_zone($url, null, null,
+                          array('ignore_setcookie_header' => $disable_cooker_header));
+            $name = $zone['name'];
+            $temporary_url = "$name.$alias.netdna-cdn.com";
+            $test_result = -1;
+            if (!$this->_config->get_array("cdn.$cdn_engine.domain")) {
+                $test_result = $this->test_cdn_url($temporary_url) ? 1 : 0;
+                $this->_config->set("cdn.$cdn_engine.zone_id", $zone['id']);
+                if ($test_result)
+                    $this->_config->set("cdn.enabled", true);
+                $this->_config->set("cdn.$cdn_engine.domain", array($temporary_url));
+            }
+            $this->_config->save();
+            $config_admin = w3_instance('W3_ConfigAdmin');
+            $zones = $api->get_pull_zones();
+            $zone_count = sizeof($zones);
+            w3tc_make_track_call(array('type'=>'cdn',
+                'data'=>array(
+                    'cdn' => $cdn_engine,'action' => 'zonecreation'
+                ,'creation' => 'manual', 'creationtime' => time()
+                ,'signupclick' => $config_admin->get_integer('track.maxcdn_signup')
+                ,'authorizeclick' => $config_admin->get_integer('track.maxcdn_authorize')
+                ,'validationclick' => $config_admin->get_integer('track.maxcdn_validation')
+                , 'total_zones' => $zone_count
+                , 'test' => $test_result)));
+            $result = array('result' => 'single', 'cnames' => array($temporary_url));
+        } catch (Exception $ex) {
+            $result = array('result' => 'error', 'message' => sprintf(__('Could not create default zone.' . $ex->getMessage(), 'w3-total-cache')));
+        }
+        echo json_encode($result);
+        exit;
+    }
+
+    private function test_cdn_url($url) {
+        $response = wp_remote_get($url);
+        if (is_wp_error($response))
+            return false;
+        else {
+            $code = wp_remote_retrieve_response_code($response);
+            return 200 == $code;
+        }
+    }
+    /**
+     * Configures the plugin to use the zone id provided in request
+     */
+    function action_cdn_use_netdna_maxcdn_pull_zone() {
+        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+        w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
+
+        $cdn_engine = W3_Request::get_string('type');
+        $this->validate_cdnengine_is_netdna_maxcdn($cdn_engine);
+        $authorization_key = W3_Request::get_string('authorization_key');
+        $this->validate_authorization_key($authorization_key);
+        $zone_id = W3_Request::get_integer('zone_id');
+        $keys = explode('+', $authorization_key);
+        list($alias, $consumer_key, $consumer_secret) = $keys;
+        $api = new NetDNA($alias, $consumer_key, $consumer_secret);
+        $this->validate_account($api);
+        try {
+            $pull_zone = $api->get_zone($zone_id);
+            if ($pull_zone) {
+                $custom_domains = $api->get_custom_domains($pull_zone['id']);
+                if (sizeof($custom_domains) > 0) {
+                    $result = array('result' => 'valid', 'cnames' => array($custom_domains));
+                    $test = true;
+                    foreach($custom_domains as $url)
+                        $test = $test && $this->test_cdn_url($url);
+                    if ($test)
+                        $this->_config->set("cdn.enabled", true);
+                } else {
+                    $name = $pull_zone['name'];
+                    $result = array('result' => 'valid', 'cnames' => array("$name.$alias.netdna-cdn.com"));
+                    $test = $this->test_cdn_url("$name.$alias.netdna-cdn.com");
+                    if ($test)
+                        $this->_config->set("cdn.enabled", true);
+                }
+                $this->_config->set("cdn.enabled", true);
+                $this->_config->set("cdn.$cdn_engine.zone_id", $pull_zone['id']);
+                $this->_config->set("cdn.$cdn_engine.domain", $result['cnames']);
+                $this->_config->save();
+            } else {
+                $result = array('result' => 'error', 'message' => sprintf(__('The provided zone id was not connected to the provided authorization key.', 'w3-total-cache')));
+            }
+        } catch (Exception $ex) {
+            $result = array('result' => 'error', 'message' => $ex->getMessage());
+        }
+
+        echo json_encode($result);
+        exit;
+    }
+
+    function action_cdn_save_activate() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        try {
+            $this->_config->set('cdn.enabled', true);
+            $this->_config->save();
+        } catch(Exception $ex) {}
+        w3_redirect(w3_admin_url(sprintf('admin.php?page=w3tc_cdn#configuration')));
+    }
+
+    function action_cdn_maxcdn_signup() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        try {
+            /**
+             * @var W3_ConfigAdmin $config_admin
+             */
+            $config_admin = w3_instance('W3_ConfigAdmin');
+            $config_admin->set('track.maxcdn_signup', time());
+            $config_admin->save();
+        } catch(Exception $ex) {}
+        w3_redirect(MAXCDN_SIGNUP_URL);
+    }
+
+    function action_cdn_maxcdn_authorize() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        try {
+            /**
+             * @var W3_ConfigAdmin $config_admin
+             */
+            $config_admin = w3_instance('W3_ConfigAdmin');
+            if ($config_admin->get_integer('track.maxcdn_authorize', 0) == 0) {
+                $config_admin->set('track.maxcdn_authorize', time());
+                $config_admin->save();
+            }
+        } catch(Exception $ex) {}
+        w3_redirect(MAXCDN_AUTHORIZE_URL);
+    }
+
+    function action_cdn_netdna_authorize() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        try {
+            /**
+             * @var W3_ConfigAdmin $config_admin
+             */
+            $config_admin = w3_instance('W3_ConfigAdmin');
+            if ($config_admin->get_integer('track.maxcdn_authorize', 0) == 0) {
+                $config_admin->set('track.maxcdn_authorize', time());
+                $config_admin->save();
+            }
+        } catch(Exception $ex) {}
+        w3_redirect(NETDNA_AUTHORIZE_URL);
+    }
+
+    /**
+     * Validates cdn engine and echos message and exists if it fails
+     * @param $cdn_engine
+     */
+    private function validate_cdnengine_is_netdna_maxcdn($cdn_engine) {
+        if (!in_array($cdn_engine, array('netdna', 'maxcdn'))) {
+            $result = array('result' => 'notsupported', 'message' => sprintf(__('%s is not supported for Pull Zone
+            selection.', 'w3-total-cache'), $cdn_engine));
+            echo json_encode($result);
+            exit;
         }
     }
 }

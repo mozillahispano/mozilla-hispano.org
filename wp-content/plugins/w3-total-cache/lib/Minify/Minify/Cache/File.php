@@ -99,23 +99,22 @@ class Minify_Cache_File {
      * Send the cached content to output
      *
      * @param string $id cache id (e.g. a filename)
+     * @return bool
      */
     public function display($id) {
         $path = $this->_path . '/' . $id;
 
-        if ($this->_locking) {
-            $fp = @fopen($path, 'rb');
+        $fp = @fopen($path, 'rb');
 
-            if ($fp) {
+        if ($fp) {
+            if ($this->_locking)
                 @flock($fp, LOCK_SH);
-                @fpassthru($fp);
+            @fpassthru($fp);
+            if ($this->_locking)
                 @flock($fp, LOCK_UN);
-                @fclose($fp);
+            @fclose($fp);
 
-                return true;
-            }
-        } else {
-            return @readfile($path);
+            return true;
         }
 
         return false;

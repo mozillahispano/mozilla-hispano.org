@@ -43,7 +43,7 @@
         <table class="form-table">
             <tr>
                 <th<?php if ($cdn_mirror): ?> colspan="2"<?php else: ?> style="width: 300px;"<?php endif; ?>>
-                    <?php $this->checkbox('cdn.uploads.enable') ?> <?php _e('Host attachments', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.uploads.enable') ?> <?php w3_e_config_label('cdn.uploads.enable') ?></label><br />
                     <span class="description"><?php _e('If checked, all attachments will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </th>
                 <?php if (! $cdn_mirror): ?>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <th<?php if ($cdn_mirror): ?> colspan="2"<?php endif; ?>>
-                    <?php $this->checkbox('cdn.includes.enable') ?> <?php _e('Host wp-includes/ files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.includes.enable') ?> <?php w3_e_config_label('cdn.includes.enable') ?></label><br />
                     <span class="description"><?php _e('If checked, WordPress static core file types specified in the "wp-includes file types to upload" field below will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </th>
                 <?php if (! $cdn_mirror): ?>
@@ -65,7 +65,7 @@
             </tr>
             <tr>
                 <th<?php if ($cdn_mirror): ?> colspan="2"<?php endif; ?>>
-                    <?php $this->checkbox('cdn.theme.enable') ?> <?php _e('Host theme files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.theme.enable') ?> <?php w3_e_config_label('cdn.theme.enable') ?></label><br />
                     <span class="description"><?php _e('If checked, all theme file types specified in the "theme file types to upload" field below will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </th>
                 <?php if (! $cdn_mirror): ?>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <th<?php if ($cdn_mirror): ?> colspan="2"<?php endif; ?>>
-                    <?php $this->checkbox('cdn.minify.enable', !$minify_enabled) ?> <?php _e('Host minified <acronym title="Cascading Style Sheet">CSS</acronym> and <acronym title="JavaScript">JS</acronym> files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.minify.enable', !$minify_enabled) ?> <?php w3_e_config_label('cdn.minify.enable') ?></label><br />
                     <span class="description"><?php _e('If checked, minified <acronym>CSS</acronym> and <acronym>JS</acronym> files will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </th>
                 <?php if (! $cdn_mirror): ?>
@@ -87,9 +87,9 @@
             </tr>
             <tr>
                 <th<?php if ($cdn_mirror): ?> colspan="2"<?php endif; ?>>
-                    <?php $this->checkbox('cdn.custom.enable') ?> <?php _e('Host custom files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.custom.enable') ?> <?php w3_e_config_label('cdn.custom.enable') ?></label><br />
                     <span class="description">
-                    	<?php echo sprintf( __('If checked, any file names or paths specified in the "custom file list" field below will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>. Supports regular expression (See <a href="%s">FAQ</a>)', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?>
+                    	<?php echo sprintf( __('If checked, any file names or paths specified in the "custom file list" field below will be hosted with the <acronym title="Content Delivery Network">CDN</acronym>. Supports regular expressions (See <a href="%s">FAQ</a>)', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_faq#q82') ); ?>
                     </span>
                 </th>
                 <?php if (! $cdn_mirror): ?>
@@ -101,20 +101,21 @@
             <?php if (! $cdn_mirror): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.force.rewrite') ?> <?php _e('Force over-writing of existing files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.force.rewrite') ?> <?php w3_e_config_label('cdn.force.rewrite') ?></label><br />
                     <span class="description"><?php _e('If modified files are not always detected and replaced, use this option to over-write them.', 'w3-total-cache') ?></span>
                 </th>
             </tr>
             <?php endif; ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.import.external') ?> <?php _e('Import external media library attachments', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.import.external') ?> <?php w3_e_config_label('cdn.import.external') ?></label><br />
                     <span class="description"><?php _e('Download attachments hosted elsewhere into your media library and deliver them via <acronym title="Content Delivery Network">CDN</acronym>.', 'w3-total-cache') ?></span>
                 </th>
             </tr>
+            <?php if(w3tc_edge_mode() && (w3_is_pro($this->_config)) || w3_is_enterprise()): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdncache.enabled', !$cdn_supports_full_page_mirroring) ?> <?php _e('Enable mirroring of pages', 'w3-total-cache') ?></label><br/>
+                    <?php $this->checkbox('cdncache.enabled', !$cdn_supports_full_page_mirroring) ?> <?php w3_e_config_label('cdncache.enabled') ?></label><br/>
                     <span class="description">
                     	<?php echo sprintf(
                     		__('Enabling this option allows the <acronym title="Content Delivery Network">CDN</acronym> to handle requests for unauthenticated pages thereby reducing the traffic load on the origin server(s). Purge policies are set on the <a href="%s">Page Cache settings</a> tab.', 'w3-total-cache'), network_admin_url('admin.php?page=w3tc_pgcache#purge_policy')
@@ -122,10 +123,11 @@
                     </span>
                 </th>
             </tr>
+            <?php endif ?>
             <?php if ($cdn_supports_header): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.canonical_header') ?> <?php _e('Add canonical header', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.canonical_header') ?> <?php w3_e_config_label('cdn.canonical_header') ?></label><br />
                     <span class="description"><?php _e('Adds canonical <acronym title="Hypertext Transfer Protocol">HTTP</acronym> header to assets files.', 'w3-total-cache') ?></span>
                 </th>
             </tr>
@@ -158,13 +160,13 @@
         <table class="form-table">
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.reject.ssl') ?> <?php _e('Disable <acronym title="Content Delivery Network">CDN</acronym> on <acronym title="Secure Sockets Layer">SSL</acronym> pages', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.reject.ssl') ?> <?php w3_e_config_label('cdn.reject.ssl') ?></label><br />
                     <span class="description">When <acronym title="Secure Sockets Layer">SSL</acronym> pages are returned no <acronym title="Content Delivery Network">CDN</acronym> <acronym title="Uniform Resource Indicator">URL</acronym>s will appear in HTML pages.</span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.reject.logged_roles') ?> <?php _e('Don\'t replace <acronym title="Uniform Resource Indicator">URL</acronym>s for following user roles', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.reject.logged_roles') ?> <?php w3_e_config_label('cdn.reject.logged_roles') ?></label><br />
                     <span class="description"><?php _e('Select user roles that will use the origin server exclusively:', 'w3-total-cache') ?></span>
 
                     <div id="cdn_reject_roles">
@@ -179,28 +181,28 @@
             </tr>
             <?php if (! $cdn_mirror): ?>
             <tr>
-                <th><label for="cdn_reject_uri">Disable <acronym title="Content Delivery Network">CDN</acronym> on the following pages:</label></th>
+                <th><label for="cdn_reject_uri"><?php w3_e_config_label('cdn.reject.uri') ?></label></th>
                 <td>
                     <textarea id="cdn_reject_uri" name="cdn.reject.uri"
                         <?php $this->sealing_disabled('cdn') ?>
                               cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.uri'))); ?></textarea><br />
-                    <span class="description">Always ignore the specified pages / directories. Supports regular expression (See <a href="<?php echo network_admin_url('admin.php?page=w3tc_faq#q82')?>">FAQ</a>)</span>
+                    <span class="description"><?php echo sprintf(__('Always ignore the specified pages / directories. Supports regular expression (See <a href="%s">FAQ</a>'), network_admin_url('admin.php?page=w3tc_faq#q82')) ?></span>
                 </td>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('minify.upload', $this->_config->get_boolean('minify.auto')) ?> <?php _e('Automatically upload minify files', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('minify.upload', $this->_config->get_boolean('minify.auto')) ?> <?php  _e('Automatically upload minify files', 'w3-total-cache') ?></label><br />
                     <span class="description"><?php _e('If <acronym title="Content Delivery Network">CDN</acronym> is enabled (and not using the origin pull method), your minified files will be automatically uploaded.', 'w3-total-cache') ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('cdn.autoupload.enabled') ?> <?php _e('Export changed files automatically', 'w3-total-cache') ?></label><br />
+                    <?php $this->checkbox('cdn.autoupload.enabled') ?> <?php w3_e_config_label('cdn.autoupload.enabled') ?></label><br />
                     <span class="description"><?php _e('Automatically attempt to find and upload changed files.', 'w3-total-cache') ?></span>
                 </th>
             </tr>
             <tr>
-                <th><label for="cdn_autoupload_interval"><?php _e('Auto upload interval:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_autoupload_interval"><?php w3_e_config_label('cdn.autoupload.interval') ?></label></th>
                 <td>
                     <input id="cdn_autoupload_interval" type="text" 
                        name="cdn.autoupload.interval"
@@ -210,7 +212,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_limit_interval"><?php _e('Re-transfer cycle interval:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_limit_interval"><?php w3_e_config_label('cdn.queue.interval') ?></label></th>
                 <td>
                     <input id="cdn_limit_interval" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
@@ -219,7 +221,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_limit_queue"><?php _e('Re-transfer cycle limit:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_limit_queue"><?php w3_e_config_label('cdn.queue.limit') ?></label></th>
                 <td>
                     <input id="cdn_limit_queue" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
@@ -229,7 +231,7 @@
             </tr>
             <?php endif; ?>
             <tr>
-                <th style="width: 300px;"><label for="cdn_includes_files"><?php _e('wp-includes file types to upload:', 'w3-total-cache') ?></label></th>
+                <th style="width: 300px;"><label for="cdn_includes_files"><?php w3_e_config_label('cdn.includes.files') ?></label></th>
                 <td>
                     <input id="cdn_includes_files" type="text"
                        <?php $this->sealing_disabled('cdn') ?>
@@ -238,7 +240,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_theme_files"><?php _e('Theme file types to upload:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_theme_files"><?php w3_e_config_label('cdn.theme.files') ?></label></th>
                 <td>
                     <input id="cdn_theme_files" type="text" name="cdn.theme.files"
                        <?php $this->sealing_disabled('cdn') ?>
@@ -247,7 +249,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_import_files"><?php _e('File types to import:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_import_files"><?php w3_e_config_label('cdn.import.files') ?></label></th>
                 <td>
                     <input id="cdn_import_files" type="text" name="cdn.import.files"
                        <?php $this->sealing_disabled('cdn') ?>
@@ -256,7 +258,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_custom_files">Custom file list:</label></th>
+                <th><label for="cdn_custom_files"><?php w3_e_config_label('cdn.custom.files') ?></label></th>
                 <td>
                     <textarea id="cdn_custom_files" name="cdn.custom.files" 
                         <?php $this->sealing_disabled('cdn') ?> cols="40"
@@ -270,7 +272,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_reject_ua"><?php _e('Rejected user agents:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_reject_ua"><?php w3_e_config_label('cdn.reject.ua') ?></label></th>
                 <td>
                     <textarea id="cdn_reject_ua" name="cdn.reject.ua" cols="40"
                         <?php $this->sealing_disabled('cdn') ?> rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.ua'))); ?></textarea><br />
@@ -278,7 +280,7 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="cdn_reject_files"><?php _e('Rejected files:', 'w3-total-cache') ?></label></th>
+                <th><label for="cdn_reject_files"><?php w3_e_config_label('cdn.reject.files') ?></label></th>
                 <td>
                     <textarea id="cdn_reject_files" name="cdn.reject.files"
                         <?php $this->sealing_disabled('cdn') ?> cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('cdn.reject.files'))); ?></textarea><br />
@@ -290,7 +292,7 @@
                     <input type="hidden" name="set_cookie_domain_old" value="<?php echo (int) $set_cookie_domain; ?>" />
                     <input type="hidden" name="set_cookie_domain_new" value="0" />
                     <label><input type="checkbox" name="set_cookie_domain_new"
-                        <?php $this->sealing_disabled('cdn') ?> value="1"<?php checked($set_cookie_domain, true); ?> /> Set cookie domain to &quot;<?php echo htmlspecialchars($cookie_domain); ?>&quot;</label>
+                        <?php $this->sealing_disabled('cdn') ?> value="1"<?php checked($set_cookie_domain, true); ?> /> <?php printf(__('Set cookie domain to &quot;%s&quot', 'w3-tota-cachel'),  htmlspecialchars($cookie_domain)) ?></label>
                     <br /><span class="description"><?php _e('If using subdomain for <acronym title="Content Delivery Network">CDN</acronym> functionality, this setting helps prevent new users from sending cookies in requests to the <acronym title="Content Delivery Network">CDN</acronym> subdomain.', 'w3-total-cache') ?></span>
                 </th>
             </tr>

@@ -186,11 +186,11 @@ abstract class YARPP_Cache {
 	
 		$newsql .= 'ROUND(0';
 
-		if (isset($weight['body']) && (int) $weight['body']) {
+		if (isset($weight['body']) && isset($weight['body']) && (int) $weight['body']) {
 			$newsql .= " + (MATCH (post_content) AGAINST ('".esc_sql($keywords['body'])."')) * ".absint($weight['body']);
         }
 
-        if (isset($weight['body']) && (int) $weight['title']) {
+        if (isset($weight['body']) && isset($weight['title']) && (int) $weight['title']) {
 			$newsql .= " + (MATCH (post_title) AGAINST ('".esc_sql($keywords['title'])."')) * ".absint($weight['title']);
         }
 	
@@ -267,7 +267,6 @@ abstract class YARPP_Cache {
 	}
 	
 	private function tax_criteria($reference_ID, $taxonomy) {
-		/* TODO: maybe reinforce the object term cache? */
 		$terms = get_the_terms($reference_ID, $taxonomy);
 
 		// if there are no terms of that tax

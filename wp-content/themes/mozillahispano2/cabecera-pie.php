@@ -4,8 +4,8 @@ function pintaCabecera()
 $temp= <<<PINTA
 <div id="cabecera">
 				<div id="alojaLogo">
-					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>		
-				</div>			
+					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
+				</div>
 				<div id="menu">
           <span id="toggle"></span>
 					<ul id="menu-nav" class="clearfix">
@@ -62,7 +62,7 @@ $temp= <<<PINTA
 							</ul>
 						</li>
 					</ul>
-				</div>	
+                                </div>
 				<div id="social">
 					<ul>
 						<li><a title="Síguenos en Twitter" id="twitter-icon" href="http://twitter.com/mozilla_hispano">Síguenos en Twitter</a></li>
@@ -97,7 +97,7 @@ $temp= <<<PINTA
 				<li><a href="/marca/">Uso de marca y logos</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="c1">
 			<strong>Comunidad</strong>
 			<ul>
@@ -109,7 +109,7 @@ $temp= <<<PINTA
 				<li><a href="/difusion/">Difusión</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="c1">
 			<strong>Webs Mozilla</strong>
 			<ul>
@@ -119,7 +119,7 @@ $temp= <<<PINTA
 				<li><a href="http://input.mozilla.com/es/">Firefox Input</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="c1">
 			<strong>Únete</strong>
 			<ul>
@@ -128,7 +128,7 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Noticias">Noticias</a></li>
 				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
                 <li><a href="/documentacion/Labs">Labs</a></li>
-                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>               
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
 				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
 			</ul>
 		</div>
@@ -164,11 +164,11 @@ function pintaCss()
 {
 $temp= <<<PINTA
 	<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
-	
+
 	<link rel="alternate" type="application/rss+xml" title="Noticias de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano" />
 	<link rel="alternate" type="application/rss+xml" title="Artículos en Planet Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-planet" />
     	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
-	
+
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />

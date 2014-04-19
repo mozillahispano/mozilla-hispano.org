@@ -5,6 +5,8 @@
  */
 
 w3_require_once(W3TC_LIB_W3_DIR . '/Enterprise/SnsBase.php');
+w3_require_once(W3TC_LIB_DIR . '/SNS/services/MessageValidator/Message.php');
+w3_require_once(W3TC_LIB_DIR . '/SNS/services/MessageValidator/MessageValidator.php');
 
 /**
  * Class W3_Sns
@@ -16,46 +18,52 @@ class W3_Enterprise_SnsServer extends W3_Enterprise_SnsBase {
      *
      * @throws Exception
      */
-    function process_message($v) {
-        $this->_log('Received message ' . $v);
-        
+    function process_message() {
+        $this->_log('Received message');
+
         try {
-            $m = json_decode($v);
-            if ($m->Type == 'SubscriptionConfirmation')
-                $this->_subscription_confirmation($m);
-            else if ($m->Type == 'Notification')
-                $this->_notification($m->Message);
+            $message = Message::fromRawPostData();
+            $validator = new MessageValidator();
+            $error = '';
+            if ($validator->isValid($message)) {
+                if ($message->get('Type') == 'SubscriptionConfirmation')
+                    $this->_subscription_confirmation($message);
+                else if ($message->get('Type') == 'Notification')
+                    $this->_notification($message->get('Message'));
+            } else {
+                $this->_log('Error processing message it was not valid.' );
+            }
         } catch (Exception $e) {
             $this->_log('Error processing message: ' . $e->getMessage());
         }
         $this->_log('Message processed');
     }
-    
+
     /**
      * Confirms subscription
-     * 
-     * @param object $m
+     *
+     * @param Message $message
      * @throws Exception
      */
-    private function _subscription_confirmation($m) {
+    private function _subscription_confirmation($message) {
         $topic_arn = $this->_config->get_string('cluster.messagebus.sns.topic_arn');
-        
-        if ($topic_arn != $m->TopicArn)
-            throw new Exception ('Not my Topic. My is ' . 
-                $this->_topic_arn . ' while request came from ' . 
-                $m->TopicArn);
+
+        if ($topic_arn != $message->get('TopicArn'))
+            throw new Exception ('Not my Topic. My is ' .
+                $this->_topic_arn . ' while request came from ' .
+            $message->get('TopicArn'));
 
         $this->_log('Issuing confirm_subscription');
         $response = $this->_get_api()->confirm_subscription(
-            $topic_arn, $m->Token);
-        $this->_log('Subscription confirmed: ' . 
+            $topic_arn, $message->get('Token'));
+        $this->_log('Subscription confirmed: ' .
             ($response->isOK() ? 'OK' : 'Error'));
     }
     
     /**
      * Processes notification
      *
-     * @param object $v 
+     * @param array $v
      */
     private function _notification($v) {
         $m = json_decode($v, true);
@@ -133,6 +141,8 @@ class W3_Enterprise_SnsServer extends W3_Enterprise_SnsBase {
             $executor->apc_delete_files_based_on_regex($m['regex']);
         else if ($action == 'flush')
             $executor->flush();
+        else if ($action == 'flush_all')
+            $executor->flush_all();
         else if ($action == 'flush_post')
             $executor->flush_post($m['post_id']);
         else if ($action == 'flush_url')

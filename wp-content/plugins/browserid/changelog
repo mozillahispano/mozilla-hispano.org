@@ -1,3 +1,8 @@
+<h2>0.49</h2>
+<ul>
+<li><em>Bug Fix</em> - Fix strict errors displayed on admin page. thanks @jasondmoss!
+</ul>
+
 <h2>0.48</h2>
 <ul>
 <li><em>Bug Fix</em> - Allow signed in users to comment without using Persona. Allow comments from admin panel.</li>

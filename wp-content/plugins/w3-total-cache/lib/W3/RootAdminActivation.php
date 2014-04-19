@@ -59,7 +59,6 @@ class W3_RootAdminActivation {
 
                 try {
                     $config_admin = w3_instance('W3_ConfigAdmin');
-                    $config->import_legacy_config();
                     w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
                     w3_config_save(w3_instance('W3_Config'), $config, $config_admin);
                 } catch (Exception $ex) {

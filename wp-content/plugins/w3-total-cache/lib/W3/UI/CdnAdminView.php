@@ -20,6 +20,7 @@ class W3_UI_CdnAdminView extends W3_UI_PluginView {
      * @return void
      */
     function view() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
         $cdn_enabled = $this->_config->get_boolean('cdn.enabled');
         $cdn_engine = $this->_config->get_string('cdn.engine');
         $cdn_mirror = w3_is_cdn_mirror($cdn_engine);
@@ -54,9 +55,14 @@ class W3_UI_CdnAdminView extends W3_UI_PluginView {
             $have_zone = $zone_id != 0;
             if ($authorized) {
                 w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
-
+                try {
                 $api = new NetDNA($alias, $consumerkey, $consumersecret);
                 $pull_zones = $api->get_zones_by_url(w3_get_home_url());
+                } catch (Exception $ex) {
+                    w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+
+                    w3_e_error_box('<p>There is an error with your CDN settings: ' . $ex->getMessage() . '</p>');
+                }
             }
         }
         include W3TC_INC_DIR . '/options/cdn.php';

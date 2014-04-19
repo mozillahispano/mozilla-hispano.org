@@ -15,6 +15,10 @@ w3_require_once(W3TC_INC_DIR . '/functions/widgets.php');
 class W3_Widget_News extends W3_Plugin {
 
     function run() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        if(w3tc_get_current_wp_page() == 'w3tc_dashboard')
+            add_action('admin_enqueue_scripts', array($this,'enqueue'));
+
         add_action('w3tc_dashboard_setup', array(
             &$this,
             'wp_dashboard_setup'
@@ -35,10 +39,6 @@ class W3_Widget_News extends W3_Plugin {
      * @return void
      */
     function wp_dashboard_setup() {
-        wp_enqueue_style('w3tc-widget');
-        wp_enqueue_script('w3tc-metadata');
-        wp_enqueue_script('w3tc-widget');
-
         w3tc_add_dashboard_widget('w3tc_latest_news', __('News', 'w3-total-cache'), array(
             &$this,
             'widget_latest'
@@ -140,5 +140,11 @@ class W3_Widget_News extends W3_Plugin {
             delete_transient($this->_widget_latest_cache_key());
         }
         include W3TC_INC_DIR . '/widget/latest_news_control.php';
+    }
+
+    public function enqueue() {
+        wp_enqueue_style('w3tc-widget');
+        wp_enqueue_script('w3tc-metadata');
+        wp_enqueue_script('w3tc-widget');
     }
 }

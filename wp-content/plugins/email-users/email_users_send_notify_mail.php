@@ -122,6 +122,7 @@
         $send_roles = array() ;
         $send_uam = array() ;
         $send_groups = array() ;
+        $send_pmpro = array() ;
 
         //  Loop through the various types of potential recipients
         //  and extract the 
@@ -147,6 +148,12 @@
 
                 case 'groups':
                     $send_groups[] = $value ;
+                    break ;
+                    
+                case 'pmpro':
+
+                    $send_pmpro[] = $value ;
+
                     break ;
 
                 default:
@@ -176,6 +183,12 @@
         {
             $users_from_roles_and_filters = array_merge($users_from_roles_and_filters,
                 mailusers_get_recipients_from_itthinx_groups_group($send_groups, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+        }
+
+        if (class_exists(MAILUSERS_PMPRO_CLASS) && !empty($send_groups))
+        {
+            $users_from_roles_and_filters = array_merge($users_from_roles_and_filters,
+                mailusers_get_recipients_from_membership_levels($send_pmpro, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
         }
 
         if (!empty($send_roles))

@@ -105,7 +105,6 @@
 
 #w3tc_services  input.w3tc-service {
     float: left;
-    width: 20px;
     line-height: 40px;
 }
 #w3tc_spreadtheword .inside {
@@ -116,10 +115,11 @@
     margin-left: 30px;
 }
 
-#normal-sortables .postbox {
+#w3tc-dashboard-widgets #normal-sortables .postbox {
     width:360px;
 }
-#side-sortables .postbox {
+
+#w3tc-dashboard-widgets #side-sortables .postbox {
     border:none;
     box-shadow:none;
     -webkit-box-shadow: none;

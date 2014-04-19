@@ -11,10 +11,27 @@ class W3_AdminActions_TestActionsAdmin {
      */
     private $_config = null;
 
+    /**
+     * Current page
+     * @var null|string
+     */
+    private $_page = null;
+
     function __construct() {
         $this->_config = w3_instance('W3_Config');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
     }
 
+    /**
+     * Evaluation mode
+     */
+    function action_test_use_edge_mode() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin_ui.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+        $page = $this->_page;
+        include W3TC_INC_LIGHTBOX_DIR . '/edge.php';
+    }
 
     /**
      * Test memcached

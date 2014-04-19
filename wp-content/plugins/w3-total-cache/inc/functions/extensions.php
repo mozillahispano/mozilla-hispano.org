@@ -199,6 +199,7 @@ function w3_is_extension_active($extension) {
 
 /**
  * Get registered extensions
+ * @param $config
  * @return array
  */
 function w3_get_extensions($config) {
@@ -207,6 +208,7 @@ function w3_get_extensions($config) {
 
 /**
  * Returns the inactive extensions
+ * @param $config
  * @return array
  */
 function w3_get_inactive_extensions($config) {
@@ -218,6 +220,7 @@ function w3_get_inactive_extensions($config) {
 
 /**
  * Returns the active extensions
+ * @param $config
  * @return array
  */
 function w3_get_active_extensions($config) {
@@ -239,4 +242,90 @@ function w3_extension_is_sealed($extension) {
     $config_admin = w3_instance('W3_ConfigAdmin');
     $all_checked = $config_admin->get_array('extensions.configuration_sealed');
     return isset($all_checked[$extension]) && $all_checked[$extension];
+}
+
+/**
+ * @param $extension_name
+ * @param $extension_id
+ */
+function w3_e_extension_activation_notification($extension_name, $extension_id) {
+    w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+    $page = w3tc_get_current_page();
+    printf(
+        w3_get_notification_box('<p>' . 
+            __('It appears that activating the <a href="%s">%s</a> extension for W3 Total Cache will be helpful for your site. <a class="button" href="%s">Click here</a> to try it. %s', 'w3-total-cache') . '</p>', $extension_id)
+        , sprintf(w3_admin_url('admin.php?page=w3tc_extensions#%s'), $extension_id)
+        , $extension_name
+        , sprintf(w3_admin_url('admin.php?page='. $page .'&w3tc_extensions_activate=%s'), $extension_id)
+            , w3_button_hide_note(__('Hide this message', 'w3-total-cache'), 'hide-extension-notification', '', true,'','w3tc_default_hide_note_custom='.$extension_id)
+    );
+}
+
+/**
+ * Checks if an extension notification is hidden
+ *
+ * @param $extension_id
+ * @return bool
+ */
+function w3tc_extension_hidden($extension_id) {
+    $w3_config = w3_instance('W3_ConfigAdmin');
+    $extensions = $w3_config->get_array('notes.hide_extensions');
+    return in_array($extension_id, $extensions);
+}
+
+
+/**
+ * @param $extension
+ * @param W3_Config $w3_config
+ * @return bool
+ */
+function w3tc_activate_extension($extension, $w3_config) {
+    $all_extensions = w3_get_extensions($w3_config);
+    $extensions = $w3_config->get_array('extensions.active');
+    if (!w3_is_extension_active($extension)) {
+        $meta = $all_extensions[$extension];
+        $extensions[$extension] = $meta['path'];
+
+        ksort($extensions, SORT_STRING);
+        $w3_config->set('extensions.active', $extensions);
+        try {
+            $w3_config->save();
+            do_action("w3tc_activate_extension-{$extension}");
+            return true;
+        } catch (Exception $ex) {
+        }
+    }
+    return false;
+}
+
+
+/**
+ * @param $extension
+ * @param W3_Config $config
+ * @param bool $dont_save_config
+ * @return bool
+ */
+function w3tc_deactivate_extension($extension, $config, $dont_save_config = false) {
+    $extensions = $config->get_array('extensions.active');
+    if (array_key_exists($extension, $extensions)) {
+        unset($extensions[$extension]);
+        ksort($extensions, SORT_STRING);
+        $config->set('extensions.active', $extensions);
+        try {
+            if (!$dont_save_config)
+                $config->save();
+            do_action("w3tc_deactivate_extension-{$extension}");
+            return true;
+        } catch (Exception $ex) {}
+    }
+    return false;
+}
+
+/**
+ * @param string $extension_id
+ * @param bool $valid if site can handle extension
+ * @return bool
+ */
+function w3tc_show_extension_notification($extension_id, $valid) {
+    return !w3_is_extension_active($extension_id) && $valid && !w3tc_extension_hidden($extension_id);
 }

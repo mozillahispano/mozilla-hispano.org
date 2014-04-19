@@ -19,4 +19,12 @@ class W3_Cdn_S3_Cf_Custom extends W3_Cdn_S3_Cf {
     function headers_support() {
         return W3TC_CDN_HEADER_MIRRORING;
     }
+
+    /**
+     * If the CDN supports full page mirroring
+     * @return bool
+     */
+    function supports_full_page_mirroring() {
+        return true;
+    }
 }

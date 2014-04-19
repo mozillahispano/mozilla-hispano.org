@@ -1,30 +1,33 @@
 === Stealth Publish ===
 Contributors: coffee2code
-Donate link: http://coffee2code.com/donate
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522
 Tags: post, archive, feed, feature, home, stealth, publish, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 2.9
-Tested up to: 3.5
-Stable tag: 2.3
-Version: 2.3
+Requires at least: 3.6
+Tested up to: 3.8
+Stable tag: 2.4
 
 Prevent specified posts from being featured on the front page or in feeds, and from notifying external services of publication.
 
 
 == Description ==
 
-Prevent specified posts from being featured on the front page or in feeds, and from notifying external services of publication.  Beneficial in instances where you want to publish new content without any fanfare and just want the post added to archive and category pages and its own permalink page.
+This plugin allows you to prevent specified posts from being featured on the front page or in feeds, and from notifying external services of publication. Beneficial in instances where you want to publish new content without any fanfare and just want the post added to archive and category pages and its own permalink page.
 
-Posts which are saved with the checkbox "Stealth publish?" checked will no longer be featured on the front page of the blog, nor will the post be included in any feeds.
+A "Stealth publish?" checkbox is added to the "Write Post" admin page. Posts which are saved with that checkbox checked will no longer be featured on the front page of the blog, nor will the post be included in any feeds.
 
-A stealth published post will also not notify any external services about the publication.  This includes not sending out pingbacks, trackbacks, and pings to update services such as pingomatic.com.  This behavior can be overridden via the 'c2c_stealth_publish_silent' filter (see Filters section).
+A stealth published post will also not notify any external services about the publication. This includes not sending out pingbacks, trackbacks, and pings to update services such as pingomatic.com. This behavior can be overridden via the 'c2c_stealth_publish_silent' filter (see Filters section).
 
-NOTE: Use of other plugins making their own queries against the database to find posts will likely allow a post to appear on the front page.  But use of the standard WordPress functions for retrieving posts (as done for the main posts query and the recent posts widget) should not allow stealth published posts to appear on the home page.
+NOTES:
 
-NOTE: If you use this plugin, you do not need to use my [Silent Publish](http://wordpress.org/extend/plugins/silent-publish/) plugin as that functionality is incorporated into this plugin.  Alternatively, if you like the silent publishing feature but want your new posts to appear on your blog's front page and in feeds, then just use the "Silent Publish" plugin.
+* Use of other plugins making their own queries against the database to find posts will possibly allow a post to appear on the front page. But use of the standard WordPress functions for retrieving posts (as done for the main posts query and the recent posts widget) should not allow stealth published posts to appear on the home page.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/stealth-publish/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/stealth-publish/) | [Author Homepage](http://coffee2code.com)
+* If you use this plugin, you do not need to use my [Silent Publish](http://wordpress.org/plugins/silent-publish/) plugin as that functionality is incorporated into this plugin. Alternatively, if you like the silent publishing feature but want your new posts to appear on your blog's front page and in feeds, then just use the "Silent Publish" plugin.
+
+* The plugin records when a post is stealth published, so subsequent edits of the post will have the "Stealth publish?" checkbox checked by default.
+
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/stealth-publish/) | [Plugin Directory Page](http://wordpress.org/plugins/stealth-publish/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -37,7 +40,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/stealth-publish/) | [
 
 == Screenshots ==
 
-1. A screenshot of the 'Publish' sidebar box on the Add New Post admin page.  The 'Stealth publish?' checkbox is integrated alongside the existing fields.
+1. A screenshot of the 'Publish' sidebar box on the Add New Post admin page. The 'Stealth publish?' checkbox is integrated alongside the existing fields.
 2. A screenshot of the 'Stealth publish?' checkbox displaying help text when hovering over the checkbox.
 
 
@@ -45,7 +48,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/stealth-publish/) | [
 
 = Why would I want to stealth publish a post? =
 
-This is probably the kind of thing that you would recognize the need for or you don't.  It's beneficial in instances where you want to publish new content without any fanfare and just want the post added to archive and category pages and its own permalink page.
+This is probably the kind of thing that you would recognize the need for or you don't. It's beneficial in instances where you want to publish new content without any fanfare and just want the post added to archive and category pages and its own permalink page.
 
 = Can I have the checkbox checked by default? =
 
@@ -53,11 +56,15 @@ Yes. See the Filters section (under Other Notes) and look for the example using 
 
 = Why is the checkbox still present when editing a post that has already been published? =
 
-The checkbox is always present since it continues to have an effect on published posts, such as preventing the post from appearing on the front page or in feeds. You may, after publication, decide to not have the post be stealthy.  In such a case, you can do so directly by editing the post without needing to change it back to draft and then republishing it.
+The checkbox is always present since it continues to have an effect on published posts, such as preventing the post from appearing on the front page or in feeds. You may, after publication, decide to not have the post be stealthy. In such a case, you can do so directly by editing the post and unchecking the checkbox; you do not need to change it back to a draft and then republish it.
 
 = How does the plugin know which posts are stealth published? =
 
 (This is a developer-level question that doesn't affect general users.) The plugin assigns a custom field of "_stealth-publish" with a value of "1". Unless, of course, the name of the custom field was changed via use of the 'c2c_stealth_publish_meta_key' filter.
+
+= Does this plugin include unit tests? =
+
+Yes.
 
 
 == Filters ==
@@ -66,11 +73,11 @@ The plugin is further customizable via three filters. Typically, these customiza
 
 = c2c_stealth_publish_meta_key (filter) =
 
-The 'c2c_stealth_publish_meta_key' filter allows you to override the name of the custom field key used by the plugin to store a post's stealth publish status.  This isn't a common need.
+The 'c2c_stealth_publish_meta_key' filter allows you to override the name of the custom field key used by the plugin to store a post's stealth publish status. This isn't a common need.
 
 Arguments:
 
-* $custom_field_key (string): The custom field key to be used by the plugin.  By default this is '_stealth-publish'.
+* $custom_field_key (string): The custom field key to be used by the plugin. By default this is '_stealth-publish'.
 
 Example:
 
@@ -117,6 +124,23 @@ add_filter( 'c2c_stealth_publish_default', '__return_true' );
 
 
 == Changelog ==
+
+= 2.4 (2014-01-23) =
+* Exclude stealth posts from front page (when is_front_page() would be true)
+* Add should_exclude_stealth_posts() to encapsulate logic for determining if stealth posts should be excluded
+* Hook pre_get_posts and try to exclude stealth posts in the original query without using secondary query (when possible)
+* Stop hooking posts_where, unless necessary
+* Add reset() to reset memoized protected variables
+* Add unit tests
+* Minor documentation improvements
+* Minor code reformatting (spacing, bracing)
+* Note compatibility through WP 3.8+
+* Drop compatibility with version of WP older than 3.6
+* Update copyright date (2014)
+* Regenerate .pot
+* Change donate link
+* Update screenshots
+* Add banner
 
 = 2.3 =
 * Deprecate 'stealth_publish_meta_key' filter in favor of 'c2c_stealth_publish_meta_key' (but keep it temporarily for backwards compatibility)
@@ -198,6 +222,9 @@ add_filter( 'c2c_stealth_publish_default', '__return_true' );
 
 == Upgrade Notice ==
 
+= 2.4 =
+Recommended minor update: improved efficiency (when conditions allow for it); omit stealth posts from front page when a page is the front page; added unit tests; compatibility is now WP 3.6-3.8+
+
 = 2.3 =
 Recommended update: renamed and deprecated two filters; noted compatibility through WP 3.5+; and more.
 
@@ -211,7 +238,7 @@ Minor update: fixed bug with losing Stealth Publish status during Quick Edit; ad
 Minor update: implementation changes; noted compatibility with WP 3.1+ and updated copyright date.
 
 = 2.0.2 =
-Recommended bugfix release.  Fixes bug where auto-save can lose value of stealth publish status.
+Recommended bugfix release. Fixes bug where auto-save can lose value of stealth publish status.
 
 = 2.0.1 =
 Bugfix for WP 2.9.2 compatibility.

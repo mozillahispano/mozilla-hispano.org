@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -34,8 +34,9 @@ Pro version includes extra modules:
 <li>Per plugin users access management for plugins activate/deactivate operations.</li>
 <li>Per form users access management for Gravity Forms plugin.</li>
 <li>Shortcode to show enclosed content to the users with selected roles only.</li>
+<li>Posts and pages view restrictions for selected roles.</li>
 </ul>
-Pro version is advertisement free. Premium support is included. It is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
+Pro version is advertisement free. Premium support is included. It is provided by User Role Editor plugin developer Vladimir Garagulya. You will get an answer on your question not once a week, but in 24 hours or quicker.
 
 == Installation ==
 
@@ -77,6 +78,22 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.10 =
+* 15.02.2014
+* Security enhancement: WordPress text translation functions were replaced with more secure esc_html__() and esc_html_e() variants.
+* Pro version: It is possible to restrict access to the post or page content view for selected roles. Activate the option at plugin "Settings" page and use new "Content View Restrictions" metabox at post/page editor to setup content view access restrictions.
+* Pro version: Gravity Forms access management module was updated for compatibility with Gravity Forms version 1.8.3. If you need compatibility with earlier Gravity Forms versions, e.g. 1.7.9, use User Role Editor version 4.9.
+
+
+= 4.9 =
+* 19.01.2014
+* New tab "Default Roles" was added to the User Role Editor settings page. It is possible to select multiple default roles to assign them automatically to the new registered user.
+* CSS and dialog windows layout various enhancements.
+* 'members_get_capabilities' filter was applied to provide better compatibility with themes and plugins which may use it to add its own user capabilities.
+* jQuery UI CSS was updated to version 1.10.4.
+* Pro version: Option was added to download jQuery UI CSS from the jQuery CDN.
+* Pro version: Bug was fixed: Plugins activation assess restriction section was not shown for selected user under multi-site environment.
+
 
 = 4.8 =
 * 10.12.2013

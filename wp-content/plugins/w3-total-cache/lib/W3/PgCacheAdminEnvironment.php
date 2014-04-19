@@ -28,7 +28,7 @@ class W3_PgCacheAdminEnvironment {
 
         if ((!defined('WP_CACHE') || !WP_CACHE)) {
             try {
-                $this->wp_config_add_directive($exs);
+                $this->wp_config_add_directive();
             } catch (FilesystemOperationException $ex) {
                 $exs->push($ex);
             }
@@ -86,7 +86,7 @@ class W3_PgCacheAdminEnvironment {
             }
 
             if (!wp_next_scheduled('w3_pgcache_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_pgcache_cleanup', 'w3_pgcache_cleanup');
             }
         } else {
@@ -103,7 +103,7 @@ class W3_PgCacheAdminEnvironment {
             }
             
             if (!wp_next_scheduled('w3_pgcache_prime')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_pgcache_prime', 'w3_pgcache_prime');
             }
         } else {
@@ -230,6 +230,9 @@ class W3_PgCacheAdminEnvironment {
                 'It appears Page Cache ' . 
                 '<acronym title="Uniform Resource Locator">URL</acronym> ' .
                 'rewriting is not working. ';
+            if (w3_is_preview_mode()) {
+                $error .= ' This could be due to using Preview mode. <a href="' . $url . '">Click here</a> to manually verify its working. It should say OK. <br />';
+            }
 
             if (w3_is_nginx()) {
                 $error .= 'Please verify that all configuration files are ' .
@@ -411,15 +414,11 @@ class W3_PgCacheAdminEnvironment {
 
         $data = $original_data;
 
-        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY,
-            W3TC_MARKER_END_PGCACHE_LEGACY);
-        $has_legacy = strlen($new_data) < strlen($data);
-        $data = $new_data;
+        if ($has_legacy = w3_has_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY, W3TC_MARKER_END_PGCACHE_LEGACY))
+            $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY, W3TC_MARKER_END_PGCACHE_LEGACY);
 
-        $new_data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC,
-            W3TC_MARKER_END_PGCACHE_WPSC);
-        $has_wpsc = strlen($new_data) < strlen($data);
-        $data = $new_data;
+        if ($has_wpsc = w3_has_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC, W3TC_MARKER_END_PGCACHE_WPSC))
+            $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC, W3TC_MARKER_END_PGCACHE_WPSC);
 
         $rules = $this->rules_core_generate($config);
         $rules_missing = (strstr(w3_clean_rules($data), w3_clean_rules($rules)) === false);
@@ -718,6 +717,9 @@ class W3_PgCacheAdminEnvironment {
             $rules .= "    RewriteRule .* - [E=W3TC_ENC:_gzip]\n";
             $env_W3TC_ENC = '%{ENV:W3TC_ENC}';
         }
+        $rules .= "    RewriteCond %{HTTP_COOKIE} w3tc_preview [NC]\n";
+        $rules .= "    RewriteRule .* - [E=W3TC_PREVIEW:_preview]\n";
+        $env_W3TC_PREVIEW = '%{ENV:W3TC_PREVIEW}';
 
         $use_cache_rules = '';
         /**
@@ -753,7 +755,7 @@ class W3_PgCacheAdminEnvironment {
          * Make final rewrites for specific files
          */
         $uri_prefix =  $cache_path . '/%{HTTP_HOST}/%{REQUEST_URI}/' .
-            '_index' . $env_W3TC_UA . $env_W3TC_REF . $env_W3TC_SSL;
+            '_index' . $env_W3TC_UA . $env_W3TC_REF . $env_W3TC_SSL . $env_W3TC_PREVIEW;
         $switch = " -" . ($config->get_boolean('pgcache.file.nfs') ? 'F' : 'f');
 
         // support for GoDaddy servers configuration which uses
@@ -934,6 +936,7 @@ class W3_PgCacheAdminEnvironment {
          */
         if ($config->get_boolean('mobile.enabled')) {
             $mobile_groups = array_reverse($config->get_array('mobile.rgroups'));
+            $set_ua_var = true;
 
             foreach ($mobile_groups as $mobile_group => $mobile_config) {
                 $mobile_enabled = (isset($mobile_config['enabled']) ? (boolean) $mobile_config['enabled'] : false);
@@ -941,8 +944,10 @@ class W3_PgCacheAdminEnvironment {
                 $mobile_redirect = (isset($mobile_config['redirect']) ? $mobile_config['redirect'] : '');
 
                 if ($mobile_enabled && count($mobile_agents) && !$mobile_redirect) {
-                    $rules .= "set \$w3tc_ua \"\";\n";
-
+                    if ($set_ua_var) {
+                        $rules .= "set \$w3tc_ua \"\";\n";
+                        $set_ua_var = false;
+                    }
                     $rules .= "if (\$http_user_agent ~* \"(" . implode('|', $mobile_agents) . ")\") {\n";
                     $rules .= "    set \$w3tc_ua _" . $mobile_group . ";\n";
                     $rules .= "}\n";
@@ -953,19 +958,29 @@ class W3_PgCacheAdminEnvironment {
         }
 
         /**
+         * Check for preview cookie
+         */
+        $rules .= "if (\$http_cookie ~* \"(w3tc_preview)\") {\n";
+        $rules .= "    set \$w3tc_rewrite _preview;\n";
+        $rules .= "}\n";
+        $env_w3tc_preview = "\$w3tc_rewrite";
+
+        /**
          * Check referrer groups
          */
         if ($config->get_boolean('referrer.enabled')) {
             $referrer_groups = array_reverse($config->get_array('referrer.rgroups'));
-
+            $set_ref_var = true;
             foreach ($referrer_groups as $referrer_group => $referrer_config) {
                 $referrer_enabled = (isset($referrer_config['enabled']) ? (boolean) $referrer_config['enabled'] : false);
                 $referrer_referrers = (isset($referrer_config['referrers']) ? (array) $referrer_config['referrers'] : '');
                 $referrer_redirect = (isset($referrer_config['redirect']) ? $referrer_config['redirect'] : '');
 
                 if ($referrer_enabled && count($referrer_referrers) && !$referrer_redirect) {
-                    $rules .= "set \$w3tc_ref \"\";\n";
-
+                    if ($set_ref_var) {
+                        $rules .= "set \$w3tc_ref \"\";\n";
+                        $set_ref_var = false;
+                    }
                     $rules .= "if (\$http_cookie ~* \"w3tc_referrer=.*(" . implode('|', $referrer_referrers) . ")\") {\n";
                     $rules .= "    set \$w3tc_ref _" . $referrer_group . ";\n";
                     $rules .= "}\n";
@@ -997,7 +1012,7 @@ class W3_PgCacheAdminEnvironment {
 
         $cache_path = str_replace(w3_get_document_root(), '', $cache_dir);
         $uri_prefix = $cache_path . "/\$http_host/" .
-            "\$request_uri/_index" . $env_w3tc_ua . $env_w3tc_ref . $env_w3tc_ssl;
+            "\$request_uri/_index" . $env_w3tc_ua . $env_w3tc_ref . $env_w3tc_ssl . $env_w3tc_preview;
 
         if (!$config->get_boolean('pgcache.cache.nginx_handle_xml')) {
             $env_w3tc_ext = '.html';

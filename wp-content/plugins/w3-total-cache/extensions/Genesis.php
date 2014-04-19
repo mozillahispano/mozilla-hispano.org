@@ -14,7 +14,8 @@ class W3_Genesis {
     function run() {
         add_action('w3tc_register_fragment_groups', array($this, 'register_groups'));
         $this->_config = w3_instance('W3_Config');
-        if ($this->_config->get_boolean('fragmentcache.enabled')) {
+        if ((w3_is_pro($this->_config) || w3_is_enterprise($this->_config)) && 
+                $this->_config->get_boolean('fragmentcache.enabled')) {
             if (!is_admin()) {
                 /**
                  * Register the caching of content to specific hooks
@@ -32,7 +33,8 @@ class W3_Genesis {
             /**
              * Since posts pages etc are cached individually need to be able to flush just those and not all fragment
              */
-            add_action('clean_post_cache', array($this, 'flush_post_fragment'), 1);
+            add_action('clean_post_cache', array($this, 'flush_post_fragment'));
+            add_action('clean_post_cache', array($this, 'flush_terms_fragment'), 0, 0);
 
             $this->_request_uri = $_SERVER['REQUEST_URI'];
         }
@@ -104,68 +106,34 @@ class W3_Genesis {
      * @return array|null
      */
     private function _get_id_group($hook, $current_menu = false) {
-        if (is_user_logged_in() && w3tc_get_extension_config('genesis.theme', 'fragment_reject_logged_roles')) {
-
-            $current_user = wp_get_current_user();
-            $roles  = w3tc_get_extension_config('genesis.theme', 'fragment_reject_roles');
-            if (empty($roles))
-                return true;
-
-            $hooks = w3tc_get_extension_config('genesis.theme', 'fragment_reject_logged_roles_on_actions');
-
-            foreach($roles as $role) {
-                if ($hooks && current_user_can($role) && in_array($hook, $hooks)) {
-                    return null ;
-                }
-            }
+        if ($this->cannot_cache_current_hook()) {
+            return null;
         }
-
-        $group = $hook;
-        if (strpos($hook, 'sidebar')) {
-            $genesis_id = $hook;
-            $group = 'sidebar';
-        } elseif ($hook == 'genesis_loop') {
-            if (is_front_page()) {
-                $group = 'loop_front_page';
-                if (is_paged()) {
-                    global $wp_query;
-                    $page = $wp_query->query_vars['paged'];
-                    $genesis_id = "{$page}_$hook";
-                } else
-                    $genesis_id = $hook;
-            } else {
-                $group = 'loop_single';
-
-                if (is_paged()) {
-                    global $wp_query;
-                    $page = $wp_query->query_vars['paged'];
-                    $genesis_id = get_the_ID(). "_{$page}_$hook";
-                } else
-                    $genesis_id = get_the_ID(). "_$hook";
-            }
-        } elseif ($hook == 'genesis_comments' || $hook == 'genesis_pings'){
-            if ($hook == 'genesis_comments' && is_user_logged_in())
-                return null;
-
-            $group = 'loop_single_' . $hook;
-            if (is_paged()) {
-                global $wp_query;
-                $page = $wp_query->query_vars['paged'];
-                $genesis_id = get_the_ID(). "_{$page}_$hook";
-            } else
-                $genesis_id = get_the_ID()."_$hook";
-        } elseif (strpos($hook, '_nav') && $current_menu) {
-            if (is_front_page()) {
-                $genesis_id = 0;
-            } else {
-                $genesis_id = get_the_ID();
-            }
-        } else
-            $genesis_id = $hook;
+        switch (true) {
+            case $keys = $this->generate_sidebar_keys():
+                list($group, $genesis_id) = $keys;
+                break;
+            case $keys = $this->generate_genesis_loop_keys():
+                list($group, $genesis_id) = $keys;
+                break;
+            case $keys = $this->generate_genesis_comments_pings_keys():
+                list($group, $genesis_id) = $keys;
+                break;
+            case $keys = $this->generate_genesis_navigation_keys($current_menu):
+                list($group, $genesis_id) = $keys;
+                break;
+            default:
+                $group = $hook;
+                $genesis_id = $this->get_page_slug();
+                if (is_paged())
+                    $genesis_id .= $this->get_paged_page_key();
+                break;
+        }
 
         if ($this->_cache_group($group) && !$this->_exclude_page($group)) {
             return array($genesis_id, $this->_genesis_group($group, true));
         }
+
         return null;
     }
 
@@ -176,7 +144,7 @@ class W3_Genesis {
      * @return array|bool|int|null|string
      */
     private function _cache_group($group) {
-        return w3tc_get_extension_config('genesis.theme', $group);
+        return  w3tc_get_extension_config('genesis.theme', $group);
     }
 
     /**
@@ -231,7 +199,9 @@ class W3_Genesis {
             $this->_genesis_group('loop_single') => array(
                 'no_action'),
             $this->_genesis_group('loop_front_page') => array(
-                'clean_post_cache')
+                'clean_post_cache'),
+            $this->_genesis_group('loop_terms') => array(
+                'no_action')
         );
         foreach($groups as $group => $actions)
             w3tc_register_fragment_group($group, $actions, 3600);
@@ -246,16 +216,136 @@ class W3_Genesis {
          * @var W3_SharedPageUrls $W3_SharedPageUrls
          */
         $W3_SharedPageUrls = w3_instance('W3_SharedPageUrls');
+        $page_slug = $this->get_page_slug($post_ID);
         $urls = $W3_SharedPageUrls->get_post_urls($post_ID);
         $hooks = array('genesis_loop', 'genesis_comments', 'genesis_pings');
         foreach($hooks as $hook) {
-            w3tc_fragmentcache_flush_fragment("{$post_ID}_$hook", $this->_genesis_group('loop_single_logged_in'));
-            w3tc_fragmentcache_flush_fragment("{$post_ID}_$hook", $this->_genesis_group('loop_single'));
+            $genesis_id = $page_slug;
+            $genesis_id = "{$hook}_{$genesis_id}";
+
+            w3tc_fragmentcache_flush_fragment($genesis_id, $this->_genesis_group('loop_single_logged_in'));
+            w3tc_fragmentcache_flush_fragment($genesis_id, $this->_genesis_group('loop_single'));
             for($page = 0; $page<=sizeof($urls); $page++) {
-                w3tc_fragmentcache_flush_fragment("{$post_ID}_$hook", $this->_genesis_group('loop_single_logged_in'));
-                w3tc_fragmentcache_flush_fragment("{$post_ID}_$hook", $this->_genesis_group('loop_single'));
+                $genesis_id = $page_slug;
+                $genesis_id .= $this->get_paged_page_key($page);
+                $genesis_id = "{$hook}_{$genesis_id}";
+
+                w3tc_fragmentcache_flush_fragment($genesis_id, $this->_genesis_group('loop_single_logged_in'));
+                w3tc_fragmentcache_flush_fragment($genesis_id, $this->_genesis_group('loop_single'));
             }
         }
+    }
+
+    public function flush_terms_fragment() {
+        if (w3tc_get_extension_config('genesis.theme', 'flush_terms')) {
+            w3tc_fragmentcache_flush_group('loop_terms');
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    private function cannot_cache_current_hook() {
+        if (is_user_logged_in() && w3tc_get_extension_config('genesis.theme', 'reject_logged_roles')) {
+            $roles = w3tc_get_extension_config('genesis.theme', 'reject_roles');
+            if ($roles) {
+                $hooks = w3tc_get_extension_config('genesis.theme', 'reject_logged_roles_on_actions');
+                $hook = current_filter();
+                foreach ($roles as $role) {
+                    if ($hooks && current_user_can($role) && in_array($hook, $hooks)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return array
+     */
+    private function generate_genesis_loop_keys() {
+        if (($hook = current_filter()) != 'genesis_loop')
+            return null;
+
+        if (is_front_page()) {
+            $group = 'loop_front_page';
+        } elseif (is_single()) {
+            $group = 'loop_single';
+        } else {
+            $group = 'loop_terms';
+        }
+        $genesis_id = $this->get_page_slug();
+        if (is_paged())
+            $genesis_id .= $this->get_paged_page_key();
+        $genesis_id = "{$hook}_{$genesis_id}";
+
+        return array($group, $genesis_id);
+    }
+
+    /**
+     * @return array
+     */
+    private function generate_sidebar_keys() {
+        if (strpos($hook = current_filter(), 'sidebar') !== true)
+            return null;
+
+        $genesis_id = $hook;
+        $group = 'sidebar';
+        return array($group, $genesis_id);
+    }
+
+    /**
+     * @return array|null
+     */
+    private function generate_genesis_comments_pings_keys() {
+        if (($hook = current_filter()) != 'genesis_comments')
+            return null;
+        $group = 'loop_single';
+
+        $genesis_id = $this->get_page_slug();
+        if (is_paged())
+            $genesis_id .= $this->get_paged_page_key();
+        $genesis_id = "{$hook}_{$genesis_id}";
+
+        return array($group, $genesis_id);
+    }
+
+    /**
+     * @param string $current_menu
+     * @return array|null
+     */
+    private function generate_genesis_navigation_keys($current_menu) {
+        if (!(strpos(($hook = current_filter()), '_nav') && $current_menu))
+            return null;
+
+        $genesis_id = $this->get_page_slug();
+        if (is_paged())
+            $genesis_id .= $this->get_paged_page_key();
+        return array($hook, $genesis_id);
+    }
+
+    private function get_page_slug($post_ID = null) {
+        if ($post_ID) {
+            $purl = get_permalink($post_ID);
+            return str_replace('/','-', trim(str_replace(home_url(), '', $purl),"/"));
+        }
+        if (is_front_page())
+            return 'front_page';
+        return str_replace('/','-', trim($_SERVER['REQUEST_URI'],"/"));
+    }
+
+    /**
+     * @param int|null $page
+     * @return string _pagenumber_
+     */
+    private function get_paged_page_key($page=null) {
+        if (is_null($page)) {
+            global $wp_query;
+            return '_' . $wp_query->query_vars['paged'] . '_';
+        }
+
+        return '_' . $page . '_';
     }
 }
 

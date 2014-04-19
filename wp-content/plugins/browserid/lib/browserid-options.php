@@ -30,7 +30,15 @@ if (!class_exists('MozillaPersonaOptions')) {
 		private $beta = false;
 		private $risky = false;
 
+        	protected $plugin_options_key;
+        	protected $general_settings_key;
+        	protected $advanced_settings_key;
+
 		public function __construct($options) {
+            		$this->plugin_options_key = 'browserid_options';
+            		$this->general_settings_key = c_bid_general_options;
+            		$this->advanced_settings_key = c_bid_advanced_options;
+            
 			$this->name = $options['name'];
 			$this->title = $options['title'];
 
@@ -239,7 +247,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 
 		}
 
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			return trim($value);
 		}
 	}
@@ -280,7 +288,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 			$this->Print_element('input', $attributes);
 		}
 
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			if ($this->Is_on_off($value)) return $value;
 
 			$this->Validation_error(
@@ -314,7 +322,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 			));
 		}
 
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			$value = trim($value);
 			if ($value === '') return '';
 
@@ -347,7 +355,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 			));
 		}
 
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			$value = trim($value);
 			if ($value === '') return '';
 
@@ -506,7 +514,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 			));
 		}
 
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			$value = trim($value);
 			if ($value === '') return $value;
 
@@ -551,7 +559,7 @@ if (!class_exists('MozillaPersonaOptions')) {
 	}
 
 	class MozillaPersonaHttpOrHttpsUrlOption extends MozillaPersonaTextOption {
-		public function Validate($value) {
+		public function Validate($value, $options) {
 			$value = trim($value);
 			if ($value === '') return '';
 
@@ -660,15 +668,16 @@ if (!class_exists('MozillaPersonaOptions')) {
 
 
 	class MozillaPersonaOptions {
-		private $plugin_options_key = 'browserid_options';
-		private $general_settings_key = c_bid_general_options;
-		private $advanced_settings_key = c_bid_advanced_options;
 
 		// fields is a dictionary of fields, the key to each value
 		//		is the field's name as stored in the database.
 		private $fields = array();
 
 		public function  __construct() {
+            		$this->plugin_options_key = 'browserid_options';
+            		$this->general_settings_key = c_bid_general_options;
+            		$this->advanced_settings_key = c_bid_advanced_options;
+
 			$fields = array();
 		}
 

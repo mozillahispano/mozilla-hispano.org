@@ -314,7 +314,7 @@ class YARPP_Meta_Box_Display_Web extends YARPP_Meta_Box {
 		$this->displayorder( 'order' );			
 
 		$this->checkbox( 'promote_yarpp', __( "Help promote Yet Another Related Posts Plugin?", 'yarpp' )
-		." <span class='yarpp_help' data-help='" . esc_attr( sprintf( __( "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.", 'yarpp' ), "<code>" . htmlspecialchars( sprintf( __( "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.", 'yarpp' ), 'http://yarpp.com' ) ) . "</code>" ) ) ."'>&nbsp;</span>" );
+		." <span class='yarpp_help' data-help='" . esc_attr( sprintf( __( "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.", 'yarpp' ), "<code>" . htmlspecialchars( sprintf( __( "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.", 'yarpp' ), 'http://www.yarpp.com' ) ) . "</code>" ) ) ."'>&nbsp;</span>" );
 	}
 }
 
@@ -375,7 +375,7 @@ class YARPP_Meta_Box_Display_Feed extends YARPP_Meta_Box {
 
 		$this->displayorder( 'rss_order', 'rss_displayed' );			
 					
-		$this->checkbox( 'rss_promote_yarpp', __( "Help promote Yet Another Related Posts Plugin?", 'yarpp' ) . " <span class='yarpp_help' data-help='" . esc_attr( sprintf( __( "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.", 'yarpp' ), "<code>" . htmlspecialchars( sprintf( __( "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.", 'yarpp' ), 'http://yarpp.com' ) )."</code>" ) ) . "'>&nbsp;</span>", 'rss_displayed' );
+		$this->checkbox( 'rss_promote_yarpp', __( "Help promote Yet Another Related Posts Plugin?", 'yarpp' ) . " <span class='yarpp_help' data-help='" . esc_attr( sprintf( __( "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.", 'yarpp' ), "<code>" . htmlspecialchars( sprintf( __( "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.", 'yarpp' ), 'http://www.yarpp.com' ) )."</code>" ) ) . "'>&nbsp;</span>", 'rss_displayed' );
 	}
 }
 
@@ -396,11 +396,16 @@ class YARPP_Meta_Box_Contact extends YARPP_Meta_Box {
             '</li>'.
             '<li>'.
                 '<a href="http://twitter.com/yarpp" target="_blank">'.
-                    '<span class="icon icon-twitter"></span> '.__('YARPP on Twitter', 'yarpp').
+        '<span class="icon icon-twitter"></span> '.__('YARPP on Twitter', 'yarpp').
                 '</a>'.
             '</li>'.
             '<li>'.
-                '<a href="http://yarpp.com" target="_blank">'.
+                '<a href="https://www.facebook.com/YARPPRecommendationEngine" target="_blank">'.
+                    '<span class="icon icon-facebook"></span> YARPP on Facebook'.
+                '</a>'.
+            '</li>'.
+            '<li>'.
+                '<a href="http://www.yarpp.com" target="_blank">'.
                     '<span class="icon icon-pro"></span> Learn more about YARPP'.
                 '</a>'.
             '</li>'.
@@ -418,7 +423,7 @@ class YARPP_Meta_Box_Contact extends YARPP_Meta_Box {
 
 add_meta_box(
     'yarpp_display_optin',
-    __('Help Improve YARPP', 'yarpp'),
+    'Get the Most Out of YARPP',
     array(
         new YARPP_Meta_Box_Optin,
         'display'
@@ -440,32 +445,25 @@ class YARPP_Meta_Box_Optin extends YARPP_Meta_Box {
 	function display() {
 		global $yarpp;
 		
-		/* TODO: fix this text and i18nize it */
-		echo "<input type='checkbox' id='yarpp-optin' name='optin' value='true' ";
-        checked(yarpp_get_option('optin') == 1);
-        echo " /> ";
-		
-		echo(
-            '<label for="yarpp-optin">'.
-                __( 'Send usage data back to YARPP!', 'yarpp' ).
-            '</label>'
-        );
-		
         echo (
             '<p>'.
-                'We would really appreciate your input to help us continue to improve the product. We are primarily looking '.
-                'for country, domain, and date installed information.'.
+                'Enable the free <a href="http://www.yarpp.com" target="_blank">YARPP Pro enhancements</a> to add even '.
+                'more power to your blog or website!'.
+                '<br/><br/>'.
+                '<a href="'.plugins_url('/', dirname(__FILE__)).'includes/yarpp_switch.php" style="text-decoration:underline" class="yarpp_switch_button" data-go="pro">Turn them on now</a>&nbsp;&nbsp;'.
+                '<a href="http://www.yarpp.com" target="_blank" style="float:right;text-decoration:underline">Learn more</a>'.
             '</p>'.
             '<p>'.
-                'Please help us make YARPP better providing this information and by filling out our quick, '.
-                '5 question survey: '.
-                '<a href="http://www.surveymonkey.com/s/Z278L88" target="_blank">'.
-                    'http://www.surveymonkey.com/s/Z278L88'.
-                '</a>'.
-                '<br/><br/>'.
-                '<input type="button" value="'.esc_attr(__('Learn More', 'yarpp')).'" id="yarpp-optin-learnmore" class="button button-small"/>'.
+                'We can continue to improve the YARPP product for you if we know how it&#39;s used. Please help us by '.
+                'allowing usage data to be sent back.'.
                 '<br/>'.
             '</p>'
+        );
+
+        echo (
+            '<input type="checkbox" id="yarpp-optin" name="optin" value="true" '.checked(yarpp_get_option('optin') == 1 ,true, false).'/>'.
+            '<label for="yarpp-optin">Send usage data back.</label>'.
+            '<a href="#" id="yarpp-optin-learnmore" style="float:right;text-decoration:underline">Learn More</a>'
         );
 
 	}/*end display*/

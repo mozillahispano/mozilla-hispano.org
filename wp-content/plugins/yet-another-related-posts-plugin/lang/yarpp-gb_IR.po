@@ -518,7 +518,7 @@ msgstr ""
 #: options-meta-boxes.php:205
 #: options-meta-boxes.php:269
 #@ yarpp
-msgid "Related posts brought to you by <a href='http://yarpp.com'>Yet Another Related Posts Plugin</a>."
+msgid "Related posts brought to you by <a href='http://www.yarpp.com'>Yet Another Related Posts Plugin</a>."
 msgstr ""
 
 #: options-meta-boxes.php:283

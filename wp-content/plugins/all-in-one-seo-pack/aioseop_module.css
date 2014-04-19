@@ -679,6 +679,9 @@ table.aioseop_table td, table.aioseop_table th {
 .aioseop_tabs {
 	padding-top: 6px;
 }
+.aioseop_tabs.hide {
+	display: block;
+}
 .aioseop_header_tabs li {
 	display: inline;
 	padding: 0px;

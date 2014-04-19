@@ -221,6 +221,13 @@ input.w3tc-error, textarea.w3tc-error {
     color: #999;
 }
 
+#mobile_groups th,
+#referrer_groups th,
+#mobile_groups td,
+#referrer_groups td {
+    padding: 10px 10px 10px 15px;
+}
+
 #mobile_groups li,
 #referrer_groups li {
     cursor: ns-resize;
@@ -282,7 +289,7 @@ input.w3tc-error, textarea.w3tc-error {
     text-align: left;
 }
 
-#support_loading {
+#support_loading, .w3tc-checking {
     height: 32px;
     background: url(../img/wpspin_light.gif) left center no-repeat;
     padding-left: 38px;
@@ -290,7 +297,6 @@ input.w3tc-error, textarea.w3tc-error {
     margin: 1em 0;
     font-weight: bold;
 }
-
 #w3tc .postbox .inside {
     padding: 0 10px;
 }
@@ -303,38 +309,41 @@ input.w3tc-error, textarea.w3tc-error {
     margin-right: 15px;
 }
 
-#w3tc .html-tag{
-    font-weight: bold;
-    color: #107e0e;
-    float: right;
-    padding-top: 1px;
-}
-
 #minify_form fieldset{
-    width:580px;
     padding-bottom: 10px;
 }
 
-#minify_form fieldset .oia-desc{
-    display: inline-block;
-    width: 100px;
+#minify_form .html-tag{
+    font-weight: bold;
+    color: #107e0e;
+    float: right;
 }
 
 #minify_form fieldset label{
     margin-bottom: 5px;
     margin-right:10px;
 }
-#minify_form fieldset select{
-    margin-left: 32px;
+
+#minify_table td { 
+    padding: 0;
+}
+
+#minify_table table td { 
+    white-space: nowrap;
+    padding: 0;
+}
+
+#minify_table .placement { 
+    width: 110px;
+}
+
+#minify_table .options { 
+    padding-left: 10px;
 }
 
 .recom_js_type {
     width:160px;
 }
-#minify_form fieldset p{
-    padding:0;margin:0 0 0 303px;
-}
-
 .w3tc-missing-files ul {
     margin-left:5px;
 }
@@ -385,6 +394,7 @@ input.w3tc-error, textarea.w3tc-error {
     border:none;
 }
 #w3tc-dashboard-widgets {
+    border-color: #c7c9c8;
     background: url(../img/sidebar-background.png) repeat-y right;
     min-width: 600px;
 }
@@ -402,7 +412,6 @@ input.w3tc-error, textarea.w3tc-error {
 #w3tc-dashboard-widgets #postbox-container-left h3.hndle span:first-child{
     display: inline-block;
     padding-left: 50px;
-    font-size: 0.8em;
 }
 #w3tc_spreadtheword h3.hndle span{
     background: url("../img/w3tc_w3tc-logo.png") 0 0 no-repeat;
@@ -531,7 +540,14 @@ only screen and (                min-resolution: 2dppx)  {
 #w3tc_extensions table.extensions .column-name {
     width:180px;
 }
+#wpbody-content .metabox-holder.extension-settings {
+    padding-top: 0px;
+}
 
 #w3tc .subsubsub {
     margin-left: 0px;
+}
+
+#edge-mode.updated p {
+    line-height: 20px;
 }

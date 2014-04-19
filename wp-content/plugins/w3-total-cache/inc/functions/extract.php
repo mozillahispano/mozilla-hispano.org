@@ -20,20 +20,7 @@ function w3_extract_js($content) {
 
     return $files;
 }
-function w3_extract_js2($content) {
-    $matches = null;
-    $files = array();
 
-    $content = preg_replace('~<!--.*?-->~s', '', $content);
-
-    if (preg_match_all('~(<script\s+[^<>]*src=["\']?([^"\']+)["\']?[^<>]*>\s*</script>)~is', $content, $matches)) {
-        $files = $matches[1];
-    }
-
-    $files = array_values(array_unique($files));
-
-    return $files;
-}
 /**
  * Extract CSS files from content
  *

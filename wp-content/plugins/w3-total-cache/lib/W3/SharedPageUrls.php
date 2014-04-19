@@ -113,9 +113,9 @@ class W3_SharedPageUrls
 
             $full_urls[] = $post_link;
             $uris[] = $post_uri;
-            $post = isset($post)? $post: get_post($post_id);
+            $post = get_post($post_id);
             $matches =array();
-            if (($post_pages_number = preg_match_all('/\<\!\-\-nextpage\-\-\>/', $post->post_content,$matches))>0) {
+            if ($post && ($post_pages_number = preg_match_all('/\<\!\-\-nextpage\-\-\>/', $post->post_content,$matches))>0) {
                 global $wp_rewrite;
                 $post_pages_number++;
                 for ($pagenum = 2; $pagenum <= $post_pages_number; $pagenum++) {

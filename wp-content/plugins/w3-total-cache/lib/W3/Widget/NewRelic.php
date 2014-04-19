@@ -16,6 +16,10 @@ class W3_Widget_NewRelic extends W3_Plugin {
     private $_account_id;
     private $_application_id;
     function run() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        if(w3tc_get_current_wp_page() == 'w3tc_dashboard')
+            add_action('admin_enqueue_scripts', array($this,'enqueue'));
+
         add_action('w3tc_dashboard_setup', array(
             &$this,
             'wp_dashboard_setup'
@@ -33,9 +37,6 @@ class W3_Widget_NewRelic extends W3_Plugin {
      * @return void
      */
     function wp_dashboard_setup() {
-        wp_enqueue_style('w3tc-widget');
-        wp_enqueue_script('w3tc-metadata');
-        wp_enqueue_script('w3tc-widget');
         w3_require_once(W3TC_LIB_NEWRELIC_DIR . '/NewRelicWrapper.php');
         /**
          * @var $nerser W3_NewRelicService
@@ -146,5 +147,11 @@ class W3_Widget_NewRelic extends W3_Plugin {
         }
         $this->_application_id = $view_application;
         $this->_account_id = $this->_config->get_string('newrelic.account_id', 0);
+    }
+
+    public function enqueue() {
+        wp_enqueue_style('w3tc-widget');
+        wp_enqueue_script('w3tc-metadata');
+        wp_enqueue_script('w3tc-widget');
     }
 }

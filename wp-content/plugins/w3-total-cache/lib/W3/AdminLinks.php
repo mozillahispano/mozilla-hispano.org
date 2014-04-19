@@ -30,7 +30,8 @@ class W3_AdminLinks {
                 'link_name' => W3TC_LINK_NAME,
                 'link_category' => array(
                     (int) $matches[1]
-                )
+                ),
+                'link_rel' => 'nofollow'
             ));
         }
     }

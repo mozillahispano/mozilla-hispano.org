@@ -38,7 +38,8 @@ class W3_UI_PgCacheAdminView extends W3_UI_PluginView {
         $varnish_enabled = $this->_config->get_boolean('varnish.enabled');
         $cdn_mirror_purge_enabled = w3_is_cdn_mirror($this->_config->get_string('cdn.engine')) &&
             $this->_config->get_string('cdn.engine') != 'mirror' &&
-            $this->_config->get_boolean('cdncache.enabled');
+            $this->_config->get_boolean('cdncache.enabled') &&
+            w3tc_edge_mode()  && (w3_is_pro($this->_config)) || w3_is_enterprise();
         $disable_check_domain = (w3_is_multisite() && w3_force_master());
         include W3TC_INC_DIR . '/options/pgcache.php';
     }

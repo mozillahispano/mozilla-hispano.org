@@ -34,14 +34,14 @@ class W3_Plugin_CdnCommon extends W3_Plugin {
         global $wpdb;
 
         $table = $wpdb->prefix . W3TC_CDN_TABLE_QUEUE;
-        $sql = sprintf('SELECT id FROM %s WHERE local_path = "%s" AND remote_path = "%s" AND command != %d', $table, $wpdb->escape($local_path), $wpdb->escape($remote_path), $command);
+        $sql = sprintf('SELECT id FROM %s WHERE local_path = "%s" AND remote_path = "%s" AND command != %d', $table, esc_sql($local_path), esc_sql($remote_path), $command);
 
         $row = $wpdb->get_row($sql);
 
         if ($row) {
             $sql = sprintf('DELETE FROM %s WHERE id = %d', $table, $row->id);
         } else {
-            $sql = sprintf('REPLACE INTO %s (local_path, remote_path, command, last_error, date) VALUES ("%s", "%s", %d, "%s", NOW())', $table, $wpdb->escape($local_path), $wpdb->escape($remote_path), $command, $wpdb->escape($last_error));
+            $sql = sprintf('REPLACE INTO %s (local_path, remote_path, command, last_error, date) VALUES ("%s", "%s", %d, "%s", NOW())', $table, esc_sql($local_path), esc_sql($remote_path), $command, esc_sql($last_error));
         }
 
         return $wpdb->query($sql);

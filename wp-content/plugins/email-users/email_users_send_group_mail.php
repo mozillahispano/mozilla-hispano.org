@@ -145,20 +145,24 @@
             //  Once known, put the target value in the proper pile
             switch ($key)
             {
-                case 'filter':
+                case MAILUSERS_CM_FILTER_PREFIX:
                     $send_filters[] = $value ;
                     break ;
 
-                case 'user group':
+                case MAILUSERS_USERS_GROUPS_PREFIX:
                     $send_ug[] = $value ;
                     break ;
 
-                case 'uam':
+                case MAILUSERS_USER_ACCESS_MANAGER_PREFIX:
                     $send_uam[] = $value ;
                     break ;
 
-                case 'groups':
+                case MAILUSERS_ITTHINX_GROUPS_PREFIX:
                     $send_groups[] = $value ;
+                    break ;
+
+                case MAILUSERS_PMPRO_PREFIX:
+                    $send_pmpro[] = $value ;
                     break ;
 
                 default:
@@ -182,6 +186,9 @@
         if (class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS) && !empty($send_groups))
             $recipients = array_merge($recipients, mailusers_get_recipients_from_itthinx_groups_group($send_groups, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
 
+        if (class_exists(MAILUSERS_PMPRO_CLASS) && !empty($send_pmpro))
+            $recipients = array_merge($recipients, mailusers_get_recipients_from_membership_levels($send_pmpro, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
+
         if (!empty($send_roles))
             $recipients = array_merge($recipients, mailusers_get_recipients_from_roles($send_roles, $exclude_id, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META));
 
@@ -192,9 +199,9 @@
 		} else {
 			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
 			if (false === $num_sent) {
-				_e('<div class="error fade"><p>There was a problem trying to send email to users.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p> ' . __('There was a problem trying to send email to users.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else if (0 === $num_sent) {
-				_e('<div class="error fade"><p>No email has been sent to other users. This may be because no valid email addresses were found.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p>' . __('No email has been sent to other users. This may be because no valid email addresses were found.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else if ($num_sent > 0 && $num_sent == count($recipients)){
 	?>
 			<div class="updated fade">
@@ -202,7 +209,7 @@
 			</div>
 	<?php
 			} else if ($num_sent > count($recipients)) {
-				_e('<div class="error fade"><p>WARNING: More email has been sent than the number of recipients found.</p></div>', MAILUSERS_I18N_DOMAIN);
+				print '<div class="error fade"><p>' . __('WARNING: More email has been sent than the number of recipients found.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else {
 				echo '<div class="updated fade"><p>' . sprintf(__('Email has been sent to %s users, but %s recipients were originally found. Perhaps some users don\'t have valid email addresses?', MAILUSERS_I18N_DOMAIN), $num_sent, count($recipients)) . '</p></div>';
 			}

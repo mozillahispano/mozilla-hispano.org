@@ -24,7 +24,7 @@ function w3_blogmap_register_new_item($blog_home_url, $config) {
         return false;
     $data = $config->get_boolean('common.force_master') ? 'm' : 'c';
     $blog_id = $GLOBALS['current_blog']->blog_id;
-
+    $blog_home_url = preg_replace('/[^a-zA-Z0-9\+\.%~!()\/\-\_]/', '', $blog_home_url);
     $blog_ids_strings[] = "'" . $blog_home_url . "' => '" . $data.$blog_id . "'";
     foreach ($blog_ids as $key => $value)
         $blog_ids_strings[] = "'" . $key . "' => '" . $value . "'";

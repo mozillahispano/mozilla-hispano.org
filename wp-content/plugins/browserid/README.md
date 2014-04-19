@@ -52,6 +52,7 @@ Please report any issues on the plugin's [issue tracker](https://github.com/shan
 * [@janw-oostendorp](https://github.com/janw-oostendorp) for updated Dutch translations and backgroundColor color picker.
 * [David Murdoch @davidmurdoch](https://github.com/davidmurdoch/) fixing jQuery 1.9+ compatability
 * [Makoto Kato @makotokato](https://github.com/makotokato) for Japanese translations.
+* [Jason D. Moss](https://github.com/jasondmoss) for fixing the strict errors on the admin page.
 
 This plugin uses:
 

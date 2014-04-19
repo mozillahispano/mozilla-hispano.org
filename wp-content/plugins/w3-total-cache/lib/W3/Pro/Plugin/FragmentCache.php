@@ -140,6 +140,11 @@ class W3_Pro_Plugin_FragmentCache extends W3_Plugin {
         if (empty($group) || empty($actions) || empty($expiration))
             return;
 
+        if (!is_int($expiration)) {
+            $expiration = (int) $expiration;
+            trigger_error(__METHOD__ . ' needs expiration parameter to be an int.', E_USER_WARNING);
+        }
+
         $this->_fragment_groups[$group] = array(
             'actions' => $actions,
             'expiration' => $expiration
@@ -155,13 +160,18 @@ class W3_Pro_Plugin_FragmentCache extends W3_Plugin {
     /**
      * Register site-transients group
      *
-     * @param $group
-     * @param $actions
-     * @param $expiration
+     * @param string $group
+     * @param array $actions
+     * @param int $expiration
      */
     function register_global_group($group, $actions, $expiration) {
         if (empty($group) || empty($actions) || empty($expiration))
             return;
+
+        if (!is_int($expiration)) {
+            $expiration = (int) $expiration;
+            trigger_error(__METHOD__ . ' needs expiration parameter to be an int.', E_USER_WARNING);
+        }
 
         $this->_fragment_groups_global[$group] = array(
             'actions' => $actions,

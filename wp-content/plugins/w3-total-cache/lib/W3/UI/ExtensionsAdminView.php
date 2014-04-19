@@ -40,10 +40,11 @@ class W3_UI_ExtensionsAdminView extends W3_UI_PluginView {
             $extension = $_GET['extension'];
         }
 
+        $view = (isset($_GET['action']) && $_GET['action'] == 'view');
 
         $extensions_active = w3_get_active_extensions($this->_config);
 
-        if($extension) {
+        if($extension && $view) {
             $all_settings = $this->_config->get_array('extensions.settings');
             $extensions_active = w3_get_active_extensions($this->_config);
             $meta = $extensions_active[$extension];

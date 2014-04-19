@@ -41,7 +41,7 @@ class W3_DbCacheAdminEnvironment {
         if ($config->get_boolean('dbcache.enabled') && 
                 $config->get_string('dbcache.engine') == 'file') {
             if (!wp_next_scheduled('w3_dbcache_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_dbcache_cleanup', 'w3_dbcache_cleanup');
             }
         } else {
@@ -102,9 +102,13 @@ class W3_DbCacheAdminEnvironment {
                 if ($script_data == @file_get_contents($src))
                     return;
             } elseif (!$this->db_check_old_add_in()) {
-                $remove_url = is_network_admin() ?
-                    network_admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=dbcache') :
-                    admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=dbcache');
+                w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/other.php');
+                w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+                if (isset($_GET['page']))
+                    $url = 'admin.php?page=' . $_GET['page'] . '&amp;';
+                else
+                    $url = basename(w3_remove_query($_SERVER['REQUEST_URI'])) . '?page=w3tc_dashboard&amp;';
+                $remove_url = w3_admin_url($url . 'w3tc_default_remove_add_in=dbcache');
                 throw new FilesystemOperationException(
                     sprintf(__('The Database add-in file db.php is not a W3 Total Cache drop-in.
                     Remove it or disable Database Caching. %s', 'w3-total-cache'),

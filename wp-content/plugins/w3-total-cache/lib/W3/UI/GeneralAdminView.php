@@ -20,20 +20,19 @@ class W3_UI_GeneralAdminView extends W3_UI_PluginView {
      * @return void
      */
     function view() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
         global $current_user;
         $config_master = $this->_config_master;
         /**
          * @var $modules W3_ModuleStatus
          */
         $modules = w3_instance('W3_ModuleStatus');
-
         $pgcache_enabled = $modules->is_enabled('pgcache');
         $dbcache_enabled = $modules->is_enabled('dbcache');
         $objectcache_enabled = $modules->is_enabled('objectcache');
         $browsercache_enabled = $modules->is_enabled('browsercache');
         $minify_enabled = $modules->is_enabled('minify');
         $cdn_enabled = $modules->is_enabled('cdn');
-        $cloudflare_enabled = $modules->is_enabled('cloudflare');
         $varnish_enabled = $modules->is_enabled('varnish');
         $fragmentcache_enabled = $modules->is_enabled('fragmentcache');
 
@@ -58,47 +57,6 @@ class W3_UI_GeneralAdminView extends W3_UI_PluginView {
 
         $cdn_mirror_purge = w3_cdn_can_purge_all($modules->get_module_engine('cdn'));
 
-        $cloudflare_signup_email = '';
-        $cloudflare_signup_user = '';
-
-        if (is_a($current_user, 'WP_User')) {
-            if ($current_user->user_email) {
-                $cloudflare_signup_email = $current_user->user_email;
-            }
-
-            if ($current_user->user_login && $current_user->user_login != 'admin') {
-                $cloudflare_signup_user = $current_user->user_login;
-            }
-        }
-
-        /**
-         * @var $w3_cloudflare W3_CloudFlare
-         */
-        $w3_cloudflare = w3_instance('W3_CloudFlare');
-        $cf_options = $w3_cloudflare->get_options();
-        $cloudflare_seclvls = $cf_options['sec_lvl'];
-        $cloudflare_devmodes = $cf_options['dev_mode'];
-
-        $cloudflare_rocket_loaders = $cf_options['async'];
-        $cloudflare_minifications = $cf_options['minify'];
-
-        $cloudflare_seclvl = 'med';
-        $cloudflare_devmode_expire = 0;
-        $cloudflare_devmode = 0;
-        $cloudflare_rocket_loader = 0;
-        $cloudflare_minify = 0;
-
-        if ($cloudflare_enabled && $this->_config->get_string('cloudflare.email') && $this->_config->get_string('cloudflare.key')) {
-            $settings = $w3_cloudflare->get_settings();
-            $cloudflare_seclvl = $settings['sec_lvl'];
-            $cloudflare_devmode_expire = $settings['devmode'];
-            $cloudflare_rocket_loader = $settings['async'];
-            $cloudflare_devmode = ($cloudflare_devmode_expire ? 1 : 0);
-            $cloudflare_minify = $settings['minify'];
-            $can_empty_cloudflare = true;
-        } else {
-            $can_empty_cloudflare = false;
-        }
 
         $file_nfs = ($this->_config->get_boolean('pgcache.file.nfs') || $this->_config->get_boolean('minify.file.nfs'));
         $file_locking = ($this->_config->get_boolean('dbcache.file.locking') || $this->_config->get_boolean('objectcache.file.locking') || $this->_config->get_boolean('pgcache.file.locking') || $this->_config->get_boolean('minify.file.locking'));
@@ -133,6 +91,7 @@ class W3_UI_GeneralAdminView extends W3_UI_PluginView {
             !ini_get('w3tc.license_key') && 
             get_transient('w3tc_license_status') != 'host_valid');
 
+        $custom_areas = apply_filters("{$this->_page}_anchors", array());
         include W3TC_INC_DIR . '/options/general.php';
     }
 }

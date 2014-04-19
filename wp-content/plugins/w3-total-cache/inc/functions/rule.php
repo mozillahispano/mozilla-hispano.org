@@ -13,7 +13,6 @@ define('W3TC_MARKER_BEGIN_MINIFY_CORE', '# BEGIN W3TC Minify core');
 define('W3TC_MARKER_BEGIN_MINIFY_CACHE', '# BEGIN W3TC Minify cache');
 define('W3TC_MARKER_BEGIN_MINIFY_LEGACY', '# BEGIN W3TC Minify');
 define('W3TC_MARKER_BEGIN_CDN', '# BEGIN W3TC CDN');
-define('W3TC_MARKER_BEGIN_CLOUDFLARE', '# BEGIN W3TC CloudFlare');
 define('W3TC_MARKER_BEGIN_NEW_RELIC_CORE', '# BEGIN W3TC New Relic core');
 
 
@@ -28,7 +27,6 @@ define('W3TC_MARKER_END_MINIFY_CORE', '# END W3TC Minify core');
 define('W3TC_MARKER_END_MINIFY_CACHE', '# END W3TC Minify cache');
 define('W3TC_MARKER_END_MINIFY_LEGACY', '# END W3TC Minify');
 define('W3TC_MARKER_END_CDN', '# END W3TC CDN');
-define('W3TC_MARKER_END_CLOUDFLARE', '# END W3TC CloudFlare');
 define('W3TC_MARKER_END_NEW_RELIC_CORE', '# END W3TC New Relic core');
 
 

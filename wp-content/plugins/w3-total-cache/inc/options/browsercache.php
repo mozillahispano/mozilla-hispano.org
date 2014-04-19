@@ -36,7 +36,7 @@
                     <label>
                         <input id="browsercache_expires" type="checkbox" name="expires"
                             <?php $this->sealing_disabled('browsercache') ?>
-                            value="1"<?php checked($browsercache_expires, true); ?> /> <?php _e('Set expires header', 'w3-total-cache'); ?></label>
+                            value="1"<?php checked($browsercache_expires && $this->_config->get_string('cdn.engine') != 'cf2', true); ?> <?php disabled($this->_config->get_string('cdn.engine') == 'cf2' ) ?> /> <?php _e('Set expires header', 'w3-total-cache'); ?></label>
                     <br /><span class="description"><?php _e('Set the expires header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
@@ -79,30 +79,31 @@
                 </th>
             </tr>
             <tr>
-                <th><label for="browsercache_replace_exceptions"><?php _e('Prevent caching exception list:', 'w3-total-cache'); ?></label></th>
+                <th><label for="browsercache_replace_exceptions"><?php w3_e_config_label('browsercache.replace.exceptions') ?></label></th>
                 <td>
                     <textarea id="browsercache_replace_exceptions"
                         <?php $this->sealing_disabled('browsercache') ?>
                               name="browsercache.replace.exceptions" cols="40" rows="5"><?php echo esc_textarea(implode("\r\n", $this->_config->get_array('browsercache.replace.exceptions'))); ?></textarea><br />
-                    <span class="description"><?php _e('Do not add the prevent caching query string to the specified files. Supports regular expression.', 'w3-total-cache'); ?></span>
+                    <span class="description"><?php _e('Do not add the prevent caching query string to the specified files. Supports regular expressions.', 'w3-total-cache'); ?></span>
                 </td>
             </tr>
             <tr>
                 <th colspan="2">
                     <label><input id="browsercache_nocookies" type="checkbox"
                         <?php $this->sealing_disabled('browsercache') ?>
-                        name="nocookies" value="1"<?php checked($browsercache_nocookies, true); ?> /> <?php _e('Disable cookies for static files', 'w3-total-cache'); ?></label>
+                        name="nocookies" value="1"<?php checked($browsercache_nocookies, true); ?> /> <?php _e("Don't set cookies for static files", 'w3-total-cache'); ?></label>
                     <br /><span class="description"><?php _e('Removes Set-Cookie header for responses.'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.no404wp', !w3_can_check_rules()) ?> <?php _e('Do not process 404 errors for static objects with WordPress', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.no404wp', !w3_can_check_rules()) ?> <?php w3_e_config_label('browsercache.no404wp') ?></label>
                     <br /><span class="description"><?php _e('Reduce server load by allowing the web server to handle 404 (not found) errors for static files (images etc).', 'w3-total-cache'); ?></span>
+                    <br /><span class="description"><?php _e('If enabled - tou may get 404 File Not Found response for some files generated on-the-fly by WordPress plugins. You may add those file URIs to 404 error exception list below to avoid that.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
-                <th><label for="browsercache_no404wp_exceptions"><?php _e('404 error exception list:', 'w3-total-cache'); ?></label></th>
+                <th><label for="browsercache_no404wp_exceptions"><?php w3_e_config_label('browsercache.no404wp.exceptions') ?></label></th>
                 <td>
                     <textarea id="browsercache_no404wp_exceptions"
                         <?php $this->sealing_disabled('browsercache') ?>
@@ -125,20 +126,20 @@
             <?php if (!w3_is_nginx()): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.last_modified') ?> <?php _e('Set Last-Modified header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.last_modified') ?> <?php w3_e_config_label('browsercache.cssjs.last_modified') ?></label>
                     <br /><span class="description"><?php _e('Set the Last-Modified header to enable 304 Not Modified response.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <?php endif; ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.expires') ?> <?php _e('Set expires header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.expires', $this->_config->get_string('cdn.engine') == 'cf2') ?> <?php w3_e_config_label('browsercache.cssjs.expires') ?></label>
                     <br /><span class="description"><?php _e('Set the expires header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="browsercache_cssjs_lifetime"><?php _e('Expires header lifetime:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_cssjs_lifetime"><?php w3_e_config_label('browsercache.cssjs.lifetime') ?></label>
                 </th>
                 <td>
                     <input id="browsercache_cssjs_lifetime" type="text"
@@ -148,13 +149,13 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.cache.control') ?> <?php _e('Set cache control header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.cache.control') ?> <?php w3_e_config_label('browsercache.cssjs.cache.control') ?></label>
                     <br /><span class="description"><?php _e('Set pragma and cache-control headers to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="browsercache_cssjs_cache_policy"><?php _e('Cache Control policy:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_cssjs_cache_policy"><?php w3_e_config_label('browsercache.cssjs.cache.policy') ?></label>
                 </th>
                 <td>
                     <select id="browsercache_cssjs_cache_policy"
@@ -172,31 +173,31 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.etag') ?> <?php _e('Set entity tag (eTag)', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.etag') ?> <?php w3_e_config_label('browsercache.cssjs.etag') ?></label>
                     <br /><span class="description"><?php _e('Set the Etag header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.w3tc') ?> <?php _e('Set W3 Total Cache header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.w3tc') ?> <?php w3_e_config_label('browsercache.cssjs.w3tc') ?></label>
                     <br /><span class="description"><?php _e('Set this header to assist in identifying optimized files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.compression') ?> <?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> (gzip) compression', 'w3-total-cache'); ?>  </label>
+                    <?php $this->checkbox('browsercache.cssjs.compression') ?> <?php w3_e_config_label('browsercache.cssjs.compression') ?>  </label>
                     <br /><span class="description"><?php _e('Reduce the download time for text-based files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.replace') ?> <?php _e('Prevent caching of objects after settings change', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.replace') ?> <?php w3_e_config_label('browsercache.cssjs.replace') ?></label>
                     <br /><span class="description"><?php _e('Whenever settings are changed, a new query string will be generated and appended to objects allowing the new policy to be applied.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.cssjs.nocookies') ?> <?php _e('Disable cookies for static files', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.cssjs.nocookies') ?> <?php w3_e_config_label('browsercache.cssjs.nocookies') ?></label>
                     <br /><span class="description"><?php _e('Removes Set-Cookie header for responses.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
@@ -215,20 +216,20 @@
             <?php if (!w3_is_nginx()): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.last_modified') ?> <?php _e('Set Last-Modified header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.last_modified') ?> <?php w3_e_config_label('browsercache.html.last_modified') ?></label>
                     <br /><span class="description"><?php _e('Set the Last-Modified header to enable 304 Not Modified response.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <?php endif; ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.expires') ?> <?php _e('Set expires header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.expires', $this->_config->get_string('cdn.engine') == 'cf2') ?> <?php w3_e_config_label('browsercache.html.expires') ?></label>
                     <br /><span class="description"><?php _e('Set the expires header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th style="width: 250px;">
-                    <label for="browsercache_html_lifetime"><?php _e('Expires header lifetime:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_html_lifetime"><?php w3_e_config_label('browsercache.html.lifetime') ?></label>
                 </th>
                 <td>
                     <input id="browsercache_html_lifetime" type="text" 
@@ -239,13 +240,13 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.cache.control') ?> <?php _e('Set cache control header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.cache.control') ?> <?php w3_e_config_label('browsercache.html.cache.control') ?></label>
                     <br /><span class="description"><?php _e('Set pragma and cache-control headers to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="browsercache_html_cache_policy"><?php _e('Cache Control policy:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_html_cache_policy"><?php w3_e_config_label('browsercache.html.cache.policy') ?></label>
                 </th>
                 <td>
                     <select id="browsercache_html_cache_policy" name="browsercache.html.cache.policy"
@@ -262,19 +263,19 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.etag') ?> <?php _e('Set entity tag (eTag)', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.etag') ?> <?php w3_e_config_label('browsercache.html.etag') ?></label>
                     <br /><span class="description"><?php _e('Set the Etag header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.w3tc') ?> <?php _e('Set W3 Total Cache header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.w3tc') ?> <?php w3_e_config_label('browsercache.html.w3tc') ?></label>
                     <br /><span class="description"><?php _e('Set this header to assist in identifying optimized files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.html.compression') ?> <?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> (gzip) compression', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.html.compression') ?> <?php w3_e_config_label('browsercache.html.compression') ?></label>
                     <br /><span class="description"><?php _e('Reduce the download time for text-based files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
@@ -291,20 +292,20 @@
             <?php if (!w3_is_nginx()): ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.last_modified') ?> <?php _e('Set Last-Modified header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.last_modified') ?> <?php w3_e_config_label('browsercache.other.last_modified') ?></label>
                     <br /><span class="description"><?php _e('Set the Last-Modified header to enable 304 Not Modified response.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <?php endif; ?>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.expires') ?> <?php _e('Set expires header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.expires', $this->_config->get_string('cdn.engine') == 'cf2') ?> <?php w3_e_config_label('browsercache.other.expires') ?></label>
                     <br /><span class="description"><?php _e('Set the expires header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th style="width: 250px;">
-                    <label for="browsercache_other_lifetime"><?php _e('Expires header lifetime:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_other_lifetime"><?php w3_e_config_label('browsercache.other.lifetime') ?></label>
                 </th>
                 <td>
                     <input id="browsercache_other_lifetime" type="text"
@@ -314,13 +315,13 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.cache.control') ?> <?php _e('Set cache control header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.cache.control') ?> <?php w3_e_config_label('browsercache.other.cache.control') ?></label>
                     <br /><span class="description"><?php _e('Set pragma and cache-control headers to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <label for="browsercache_other_cache_policy"><?php _e('Cache Control policy:', 'w3-total-cache'); ?></label>
+                    <label for="browsercache_other_cache_policy"><?php w3_e_config_label('browsercache.other.cache.policy') ?></label>
                 </th>
                 <td>
                     <select id="browsercache_other_cache_policy" 
@@ -338,31 +339,31 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.etag') ?> <?php _e('Set entity tag (eTag)', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.etag') ?> <?php w3_e_config_label('browsercache.other.etag') ?></label>
                     <br /><span class="description"><?php _e('Set the Etag header to encourage browser caching of files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.w3tc') ?> <?php _e('Set W3 Total Cache header', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.w3tc') ?> <?php w3_e_config_label('browsercache.other.w3tc') ?></label>
                     <br /><span class="description"><?php _e('Set this header to assist in identifying optimized files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.compression') ?> <?php _e('Enable <acronym title="Hypertext Transfer Protocol">HTTP</acronym> (gzip) compression</label>', 'w3-total-cache'); ?> 
+                    <?php $this->checkbox('browsercache.other.compression') ?> <?php w3_e_config_label('browsercache.other.compression') ?>
                     <br /><span class="description"><?php _e('Reduce the download time for text-based files.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.replace') ?> <?php _e('Prevent caching of objects after settings change', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.replace') ?> <?php w3_e_config_label('browsercache.other.replace') ?></label>
                     <br /><span class="description"><?php _e('Whenever settings are changed, a new query string will be generated and appended to objects allowing the new policy to be applied.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <?php $this->checkbox('browsercache.other.nocookies') ?> <?php _e('Disable cookies for static files', 'w3-total-cache'); ?></label>
+                    <?php $this->checkbox('browsercache.other.nocookies') ?> <?php w3_e_config_label('browsercache.other.nocookies') ?></label>
                     <br /><span class="description"><?php _e('Removes Set-Cookie header for responses.', 'w3-total-cache'); ?></span>
                 </th>
             </tr>

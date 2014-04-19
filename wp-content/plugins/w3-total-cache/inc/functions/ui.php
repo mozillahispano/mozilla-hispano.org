@@ -1,35 +1,47 @@
 <?php
 /**
  * Returns an notification box
- * @param $message
+ * @param string $message
+ * @param string $id adds an id to the notification box
  * @return string
  */
-function w3_get_notification_box($message) {
-    return sprintf('<div class="updated fade">%s</div>', $message);
+function w3_get_notification_box($message, $id = '') {
+    if (!isset($_GET['page']) || (isset($_GET['page']) && substr($_GET['page'], 0, 5) != 'w3tc_'))
+        $logo = sprintf('<img src="%s" alt="W3 Total Cache" style="height:30px" />"', plugins_url('/pub/img/W3TC_dashboard_logo_title.png', W3TC_FILE) .  '');
+    else
+        $logo = '';
+    return sprintf('<div %s class="updated fade">%s</div>', $id? "id=\"$id\"" : '' ,$logo . $message);
 }
 
 /**
  * Echos an notification box
- * @param $message
+ * @param string $message
+ * @param string $id adds an id to the notification box
  */
-function w3_e_notification_box($message) {
-    echo w3_get_notification_box($message);
+function w3_e_notification_box($message, $id = '') {
+    echo w3_get_notification_box($message, $id);
 }
 
 /**
  * Returns an error box
  * @param $message
+ * @param string $id
  * @return string
  */
-function w3_get_error_box($message) {
-    return sprintf('<div class="error">%s</div>', $message);
+function w3_get_error_box($message, $id = '') {
+    if (!isset($_GET['page']) || (isset($_GET['page']) && substr($_GET['page'], 0, 5) != 'w3tc_'))
+        $logo = sprintf('<img src="%s" alt="W3 Total Cache" style="height:30px" />', plugins_url('/pub/img/W3TC_dashboard_logo_title.png', W3TC_FILE) .  '');
+    else
+        $logo = '';
+    return sprintf('<div %s class="error">%s</div>', $id? "id=\"$id\"" : '' ,$logo . $message);
 }
 
 /**
  * Echos an error box
  * @param $message
+ * @param string $id
  */
-function w3_e_error_box($message) {
+function w3_e_error_box($message, $id = '') {
     echo w3_get_error_box($message);
 }
 
@@ -60,9 +72,24 @@ function w3_format_bytes($bytes, $precision = 2) {
  * @param string $name
  * @param string $value
  * @param bool $disabled
+ * @param int $size
  */
-function w3_ui_textbox($id, $name, $value, $disabled = false) {?>
-    <input class="enabled" type="text" id="<?php echo esc_attr($id)?>" name="<?php echo esc_attr($name)?>" value="<?php echo esc_attr($value)?>" <?php disabled($disabled) ?>>
+function w3_ui_textbox($id, $name, $value, $disabled = false, $size = 40) {?>
+    <input class="enabled" type="text" id="<?php echo esc_attr($id)?>" name="<?php echo esc_attr($name)?>" value="<?php echo esc_attr($value)?>" <?php disabled($disabled) ?> size="<?php esc_attr_e($size)?>">
+    <?php
+}
+
+/**
+ * Echos an input password element
+ *
+ * @param string $id
+ * @param string $name
+ * @param string $value
+ * @param bool $disabled
+ * @param int $size
+ */
+function w3_ui_passwordbox($id, $name, $value, $disabled = false, $size = 40) {?>
+    <input class="enabled" type="password" id="<?php echo esc_attr($id)?>" name="<?php echo esc_attr($name)?>" value="<?php echo esc_attr($value)?>" <?php disabled($disabled) ?> size="<?php esc_attr_e($size)?>">
     <?php
 }
 
@@ -103,6 +130,9 @@ function w3_ui_element($type, $id, $name, $value, $disabled = false) {
     switch ($type) {
         case 'textbox':
             w3_ui_textbox($id, $name, $value, $disabled);
+            break;
+        case 'password':
+            w3_ui_passwordbox($id, $name, $value, $disabled);
             break;
         case 'textarea':
             w3_ui_textarea($id, $name, $value, $disabled);

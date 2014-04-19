@@ -52,7 +52,7 @@ class W3_Config extends W3_ConfigBase {
      *
      * @param string $key
      * @param string $value
-     * @return value set
+     * @return mixed value set
      */
     function set($key, $value) {
         $key = $this->_get_writer()->resolve_http_key($key);
@@ -101,10 +101,10 @@ class W3_Config extends W3_ConfigBase {
     
     /**
      * Loads config
+     * @param bool $generate_admin_cache generates a cached config even in admin
      */
-    function load() {
+    function load($generate_admin_cache = false) {
         $filename = $this->_get_config_filename();
-
         // dont use cache in admin - may load some old cache when real config
         // contains different state (even manually edited)
         if (!defined('WP_ADMIN')) {
@@ -115,7 +115,7 @@ class W3_Config extends W3_ConfigBase {
             }
         }
 
-        $this->_data = $this->_get_writer()->create_compiled_config($filename);
+        $this->_data = $this->_get_writer()->create_compiled_config($filename, $generate_admin_cache || !defined('WP_ADMIN'));
     }
 
     /**
@@ -124,7 +124,13 @@ class W3_Config extends W3_ConfigBase {
      * @return string
      */
     function export() {
-        return file_get_contents($this->_get_config_filename());
+        $this->refresh_cache(true);
+        w3_require_once(W3TC_INC_DIR . '/functions/file.php');
+        $content = file_get_contents($this->_get_config_filename());
+        $content = substr($content,13);
+        $data = unserialize($content);
+        $settings = w3tc_format_data_as_settings_file($data);
+        return $settings;
     }
 
     /**
@@ -152,15 +158,6 @@ class W3_Config extends W3_ConfigBase {
         return false;
     }
 
-    function import_legacy_config() {
-        $data = $this->_get_writer()->get_imported_legacy_config_keys();
-        if (!is_null($data)) {
-            foreach ($data as $key => $value) {
-                $this->set($key, $value);
-            }
-        }
-    }
-
     /**
      * Returns true if we edit master config
      * @return boolean
@@ -184,22 +181,31 @@ class W3_Config extends W3_ConfigBase {
             throw new Exception('Can\'t read file <strong>' .
                 $filename . '</strong>. Remove it manually.');
 
-        foreach ($this->_data as $key => $value) {
-            if (!isset($data[$key]) || $value != $data[$key])
-                throw new Exception('Cache file <strong>' . 
-                    $filename . '</strong> can\'t be actualized. ' .
-                    'Remove it manually.' . $key);
+        $stale_data = array();
+        if (false !== $data) {
+            foreach ($this->_data as $key => $value) {
+                if (!isset($data[$key]) || $value != $data[$key]) {
+                    $stale_data[$key] = $value;
+                }
+            }
+        }
+        if ($stale_data) {
+            set_transient('w3tc_new_settings', $stale_data);
+            throw new SelfTestExceptions('Cache file <strong>' .
+            $filename . '</strong> can\'t be actualized. ' .
+            'Remove it manually.');
         }
     }
-    
+
     /**
      * Flushes the cache and rebuilds it from scratch
      *
+     * @param bool $force_refresh
      * @return void
      */
-    function refresh_cache() {
+    function refresh_cache($force_refresh = false) {
         $this->_flush_cache();
-        $this->load();
+        $this->load($force_refresh);
     }
 
     /**
@@ -257,12 +263,11 @@ class W3_Config extends W3_ConfigBase {
      */
     private function _read($filename) {
         if (file_exists($filename) && is_readable($filename)) {
-            // include errors not hidden by @ since they still terminate
-            // process (code not functonal), but hides reason why
-            $config = include $filename;
-            
+            $content = file_get_contents($filename);
+            $content = substr($content,13);
+            $config = @unserialize($content);
             if (is_array($config)) {
-                if (isset($config['version']) 
+                if (isset($config['version'])
                         && $config['version'] == W3TC_VERSION) {
                     return $config;
                 }
@@ -287,11 +292,11 @@ class W3_Config extends W3_ConfigBase {
      * 
      * @return string
      */
-    private function _get_config_filename($forced_preview = null) {
+    private function _get_config_filename($forced_preview = null, $master = false) {
         $preview = (is_null($forced_preview) ? $this->_preview : $forced_preview);
         $postfix = ($preview ? '-preview' : '') . '.php';
 
-        if ($this->_blog_id <= 0 || w3_force_master())
+        if ($this->_blog_id <= 0 || w3_force_master() || $master)
             return W3TC_CACHE_CONFIG_DIR . '/master' . $postfix;
 
         return W3TC_CACHE_CONFIG_DIR . '/' . 

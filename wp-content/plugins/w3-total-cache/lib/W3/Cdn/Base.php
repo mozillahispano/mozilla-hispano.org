@@ -354,7 +354,7 @@ class W3_Cdn_Base {
      * @param array $file CDN file array
      * @return array
      */
-    function _get_headers($file) {
+    function _get_headers($file, $block_expires = false) {
         w3_require_once(W3TC_INC_DIR . '/functions/mime.php');
         $local_path = $file['local_path'];
         $mime_type = w3_get_mime_type($local_path);
@@ -378,8 +378,12 @@ class W3_Cdn_Base {
                 $headers['X-Powered-By'] = W3TC_POWERED_BY;
             }
 
-            if ($this->cache_config[$mime_type]['expires']) {
-                $headers['Expires'] = w3_http_date(time() + $this->cache_config[$mime_type]['lifetime']);
+            
+            $expires_set = false;
+            if (!$block_expires && $this->cache_config[$mime_type]['expires']) {
+                $headers['Expires'] = w3_http_date(time() + 
+                    $this->cache_config[$mime_type]['lifetime']);
+                $expires_set = true;
             }
 
             switch ($this->cache_config[$mime_type]['cache_control']) {
@@ -393,7 +397,7 @@ class W3_Cdn_Base {
                 case 'cache_public_maxage':
                     $headers = array_merge($headers, array(
                         'Pragma' => 'public',
-                        'Cache-Control' => ($this->cache_config[$mime_type]['expires'] ? '' : 'max-age=' . $this->cache_config[$mime_type]['lifetime'] .', ') . 'public'
+                        'Cache-Control' => ($expires_set ? '' : 'max-age=' . $this->cache_config[$mime_type]['lifetime'] .', ') . 'public'
                     ));
                     break;
 
@@ -414,7 +418,7 @@ class W3_Cdn_Base {
                 case 'cache_maxage':
                     $headers = array_merge($headers, array(
                         'Pragma' => 'public',
-                        'Cache-Control' => ($this->cache_config[$mime_type]['expires'] ? '' : 'max-age=' . $this->cache_config[$mime_type]['lifetime'] .', ') . 'public, must-revalidate, proxy-revalidate'
+                        'Cache-Control' => ($expires_set ? '' : 'max-age=' . $this->cache_config[$mime_type]['lifetime'] .', ') . 'public, must-revalidate, proxy-revalidate'
                     ));
                     break;
 

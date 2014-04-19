@@ -21,7 +21,7 @@
     </td>
 </tr>
 <tr>
-    <th><label for="minify_yuijs_options_line-break"><?php _e('Line break after:', 'w3-total-cache'); ?></label></th>
+    <th><label for="minify_yuijs_options_line-break"><?php w3_e_config_label('minify.yuijs.options.line-break') ?></label></th>
     <td>
         <input id="minify_yuijs_options_line-break" class="js_enabled"
            type="text" <?php $this->sealing_disabled('minify') ?>

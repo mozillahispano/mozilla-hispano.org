@@ -35,7 +35,7 @@ $case_properties = $this->_config->get_integer('minify.csstidy.options.case_prop
 $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_selectors');
 ?>
 <tr>
-    <th><label for="minify_csstidy_options_template"><?php _e('Compression:', 'w3-total-cache'); ?></label></th>
+    <th><label for="minify_csstidy_options_template"><?php w3_e_config_label('minify.csstidy.options.template') ?></label></th>
     <td>
         <select id="minify_csstidy_options_template" class="css_enabled" name="minify.csstidy.options.template"
             <?php $this->sealing_disabled('minify') ?>>
@@ -46,7 +46,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_optimise_shorthands"><?php _e('Optimize shorthands:', 'w3-total-cache'); ?></label></th>
+    <th><label for="minify_csstidy_options_optimise_shorthands"><?php w3_e_config_label('minify.csstidy.options.optimise_shorthands') ?></label></th>
     <td>
         <select id="minify_csstidy_options_optimise_shorthands" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.optimise_shorthands">
@@ -57,7 +57,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_case_properties"><?php _e('Case for properties:', 'w3-total-cache'); ?></label></th>
+    <th><label for="minify_csstidy_options_case_properties"><?php w3_e_config_label('minify.csstidy.options.case_properties') ?></label></th>
     <td>
         <select id="minify_csstidy_options_case_properties" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.case_properties">
@@ -68,7 +68,7 @@ $merge_selectors = $this->_config->get_integer('minify.csstidy.options.merge_sel
     </td>
 </tr>
 <tr>
-    <th><label for="minify_csstidy_options_merge_selectors"><?php _e('Regroup selectors:', 'w3-total-cache'); ?></label></th>
+    <th><label for="minify_csstidy_options_merge_selectors"><?php w3_e_config_label('minify.csstidy.options.merge_selectors') ?></label></th>
     <td>
         <select id="minify_csstidy_options_merge_selectors" class="css_enabled"
             <?php $this->sealing_disabled('minify') ?> name="minify.csstidy.options.merge_selectors">

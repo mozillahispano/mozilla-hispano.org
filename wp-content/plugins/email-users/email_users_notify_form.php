@@ -241,6 +241,22 @@
                             <?php
                         }
                     }
+                    
+                    //  Is the PMPRO plugin active?
+                    if (class_exists(MAILUSERS_PMPRO_CLASS)) {
+                        $prefix = __('PMPro', MAILUSERS_I18N_DOMAIN) ;
+                        $targets = mailusers_get_membership_levels($user_ID, MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+
+                        foreach ($targets as $key => $value) {
+                            $index = strtolower($prefix . '-' . $key); ?>
+                            <option value="<?php echo $index; ?>"
+                            <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
+                            <?php printf('%s - %s', $prefix, __($value)); ?>
+                            </option>
+                            <?php
+                        }
+                    }
+
                 ?>
                 </select> 
 

@@ -19,7 +19,10 @@ function w3_get_mime_type($file) {
 
         foreach ($mime_types as $extension => $type) {
             if (preg_match('~\.(' . $extension . ')$~i', $file)) {
-                $mime_type = $type;
+                if (is_array($type))
+                    $mime_type = array_pop($type);
+                else
+                    $mime_type = $type;
                 break;
             }
         }

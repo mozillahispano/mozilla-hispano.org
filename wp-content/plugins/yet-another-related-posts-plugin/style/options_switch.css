@@ -63,6 +63,7 @@ a{
 
 .yarpp_switch_content p,
 .yarpp_switch_content h1 {
+    position: relative;
     margin: 15px 25% 15px 45px;
 }
 
@@ -75,16 +76,56 @@ a{
 }
 
 .yarpp_switch_content ul {
+    float: left;
     line-height: 1.5em;
     padding-left: 75px;
     list-style: disc;
 }
 
+#yarpp_pro_dashboard_wrapper{
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height:1024px;
+    width:100%;
+    overflow: hidden;
+}
+
 #yarpp_pro_dashboard{
     position: relative;
-    width: 100%;
-    height: 1024px;
+    width: 105%;
+    height: 100%;
     border: 1px solid #dfdfdf;
-    border-radius: 3px;
+    border-radius: 4px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     z-index: 5;
+}
+
+#yarpp_pro_api_settings input[type="text"]{
+    font-family: monospace;
+    border-radius: 3px;
+    width: 280px;
+}
+
+.yarpp_pro_label{
+    display: inline-block;
+    width: 75px;
+}
+
+.yarpp_warning {
+    display: none;
+    color: #F00;
+    background-color: #ffcfd4;
+    border: 1px solid #F00;
+    padding: 2px 6px;
+    margin-left: 1em;
+    border-radius: 3px;
+}
+
+#yarpp_pro_api_settings #yarpp_pro_settings_submit[disabled]{
+    border: none !important;
+    padding: 8px !important;
+    margin: 1px !important;
 }

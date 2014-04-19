@@ -112,10 +112,11 @@ $wpdb_cluster->check_tcp_responsiveness = true;
  * Plugin determines where application is running by checking 
  * $_SERVER['SERVER_NAME'] system variable against defined in zone definition
  * and then connects to servers following defined order:
+ * Value '*' can be used as 'server_names' item to indicate any server.
  * 
  * $wpdb_cluster->add_zone(array(
  *   'name' => 'A',
- *   'SERVER_NAME' => 'host1',
+ *   'server_names' => array('host1', 'host1.1'),
  *   'zone_priorities' => array('A', 'B')
  * ));
  * 

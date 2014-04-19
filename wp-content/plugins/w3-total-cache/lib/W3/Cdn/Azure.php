@@ -440,7 +440,7 @@ class W3_Cdn_Azure extends W3_Cdn_Base {
             'Cache-Control',
         );
 
-        $headers = parent::_get_headers($file);
+        $headers = parent::_get_headers($file, true);
 
         foreach ($headers as $header => $value) {
             if (!in_array($header, $allowed_headers)) {

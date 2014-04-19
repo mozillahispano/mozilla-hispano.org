@@ -21,6 +21,9 @@ class W3_UI_FragmentCacheAdminView extends W3_UI_PluginView {
      */
     function view() {
         $fragmentcache_enabled = $this->_config->get_boolean('fragmentcache.enabled');
+        /**
+         * @var W3_Pro_Plugin_FragmentCache $w3_plugin_fragmentcache
+         */
         $w3_plugin_fragmentcache = w3_instance('W3_Pro_Plugin_FragmentCache');
 
         $registered_groups = $w3_plugin_fragmentcache->get_registered_fragment_groups();

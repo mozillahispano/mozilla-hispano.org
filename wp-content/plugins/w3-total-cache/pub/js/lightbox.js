@@ -6,7 +6,7 @@ var W3tc_Lightbox = {
     create: function() {
         var me = this;
 
-        this.container = jQuery('<div class="lightbox lightbox-loading"><div class="lightbox-close">Close window</div><div class="lightbox-content"></div></div>').css({
+        this.container = jQuery('<div class="' + this.options.id + ' lightbox-loading"><div class="lightbox-close">' + this.options.close + '</div><div class="lightbox-content"></div></div>').css({
             top: 0,
             left: 0,
             width: 0,
@@ -37,6 +37,8 @@ var W3tc_Lightbox = {
 
     open: function(options) {
         this.options = jQuery.extend({
+            id: 'lightbox',
+            close: 'Close window',
             width: 0,
             height: 0,
             maxWidth: 0,
@@ -189,8 +191,10 @@ var W3tc_Overlay = {
 
 function w3tc_lightbox_support_us(nonce) {
     W3tc_Lightbox.open({
-        width: 500,
-        height: 200,
+        id: 'w3tc-overlay',
+        close: '',
+        width: 800,
+        height: 420,
         url: 'admin.php?page=w3tc_dashboard&w3tc_support_us&_wpnonce=' + nonce
     });
 }
@@ -305,6 +309,24 @@ function w3tc_lightbox_minify_recommendations(nonce) {
     });
 }
 
+function w3tc_lightbox_use_edge_mode(nonce) {
+    W3tc_Lightbox.open({
+        id:'w3tc-overlay',
+      close: '',
+      width: 800,
+        height: 210,
+        url: 'admin.php?page=w3tc_dashboard&w3tc_test_use_edge_mode&_wpnonce=' + nonce,
+        callback: function(lightbox) {
+            jQuery('.button-primary', lightbox.container).click(function() {
+                lightbox.close();
+            });
+          jQuery('.button-cancel', lightbox.container).click(function() {
+            lightbox.close();
+          });
+        }
+    });
+}
+
 function w3tc_lightbox_self_test(nonce) {
     W3tc_Lightbox.open({
         width: 800,
@@ -318,23 +340,40 @@ function w3tc_lightbox_self_test(nonce) {
     });
 }
 
+function w3tc_lightbox_upgrade(nonce) {
+  W3tc_Lightbox.open({
+    id: 'w3tc-overlay',
+    close: '',
+    width: 800,
+    height: 350,
+    url: 'admin.php?page=w3tc_dashboard&w3tc_licensing_upgrade&_wpnonce=' + nonce,
+    callback: function(lightbox) {
+      jQuery('.button-primary', lightbox.container).click(function() {
+        lightbox.close();
+      });
+      jQuery('#w3tc-purchase', lightbox.container).click(function() {
+        lightbox.close();
+        w3tc_lightbox_buy_plugin(nonce);
+      });
+    }
+  });
+}
 
 function w3tc_lightbox_buy_plugin(nonce) {
     W3tc_Lightbox.open({
         width: 800,
-        minHeight: 450,
+        minHeight: 350,
         url: 'admin.php?page=w3tc_dashboard&w3tc_licensing_buy_plugin&_wpnonce=' + nonce,
         callback: function(lightbox) {
             var w3tc_license_listener = function(event) {
-                if (event.origin !== "http://www.w3-edge.com")
+                if (event.origin !== "http://www.w3-edge.com" && event.origin !== "https://www.w3-edge.com")
                     return;
                 if (event.data.substr(0, 7) != 'license')
                     return;
 
                 lightbox.close();
-                
-                jQuery('#plugin_license_key').val(event.data.substr(8));
-                jQuery('#w3tc_save_options_licensing').click();
+              var key = event.data.substr(8);
+              w3tc_lightbox_save_licence_key(key, nonce);
             }
 
             if (window.addEventListener) {
@@ -348,6 +387,18 @@ function w3tc_lightbox_buy_plugin(nonce) {
             });
         }
     });
+}
+
+function w3tc_lightbox_save_licence_key(key, nonce) {
+  jQuery('#plugin_license_key').val(key);
+  var params = {
+    w3tc_default_save_licence_key: 1,
+    license_key: key,
+    _wpnonce: nonce
+  };
+
+  jQuery.post('admin.php?page=w3tc_dashboard', params, function(data) {
+  }, 'json');
 }
 
 function w3tc_lightbox_cdn_s3_bucket_location(type, nonce) {
@@ -418,9 +469,17 @@ function w3tc_lightbox_netdna_maxcdn_pull_zone(type, nonce) {
                             } else {
                                 if (jQuery('#cdn_cnames > :first-child > :first-child').val() == '') {
                                     jQuery('#cdn_cnames > :first-child > :first-child').val(data['temporary_url']);
-                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. Following url was added as default "Replace site\'s hostname with:" ' + data['temporary_url'] + '</p>');
+                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. Following url was added as default "Replace site\'s hostname with:" '
+                                      + data['temporary_url']
+                                      + '</p><p><input class="button-primary" onclick="window.location = \'admin.php?page=w3tc_dashboard&w3tc_cdn_save_activate&_wpnonce=' + nonce + '\'" value="Save, Activate & Close" />'
+                                      + '</p>'
+                                    );
                                 } else {
-                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. cnames were already set so "Replace site\'s hostname with:" were not replaced with ' + data['temporary_url'] + '</p>');
+                                    jQuery('.netdna-maxcdn-form').html('<p>Pull zone was successfully created. cnames were already set so "Replace site\'s hostname with:" were not replaced with '
+                                      + data['temporary_url']
+                                      + '</p><p><input class="button-primary" onclick="window.location = \'admin.php?page=w3tc_dashboard&w3tc_cdn_save_activate&_wpnonce=' + nonce + '\'" value="Save, Activate & Close" />'
+                                      + '</p>'
+                                    );
                                 }
                             }
                         },
@@ -436,6 +495,7 @@ function w3tc_lightbox_netdna_maxcdn_pull_zone(type, nonce) {
         }
     });
 }
+
 jQuery(function() {
     jQuery('.button-minify-recommendations').click(function() {
         var nonce = jQuery(this).metadata().nonce;
@@ -451,10 +511,7 @@ jQuery(function() {
 
     jQuery('.button-buy-plugin').click(function() {
         var nonce = jQuery(this).metadata().nonce;
-        w3tc_lightbox_buy_plugin(nonce);
-        var left = (screen.width/2)-(500/2);
-        var top = (screen.height/2)-(600/2);
-
+        w3tc_lightbox_upgrade(nonce);
         jQuery('#w3tc-license-instruction').show();
         return false;
     });

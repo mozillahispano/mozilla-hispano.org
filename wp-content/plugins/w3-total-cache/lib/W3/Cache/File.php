@@ -261,8 +261,7 @@ class W3_Cache_File extends W3_Cache_Base {
 
     /**
      * Key to delete, deletes .old and primary if exists.
-     * @param $key
-     * @param $group
+     * @param string $key
      *
      * @return bool
      */

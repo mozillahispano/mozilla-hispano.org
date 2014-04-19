@@ -52,6 +52,13 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
      */
     public $_config;
 
+    /**
+     * Current page
+     *
+     * @var string
+     */
+    var $_page = 'w3tc_support';
+
     function __construct() {
         $this->_config = w3_instance('W3_Config');
         $this->_request_types = array(
@@ -63,6 +70,8 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
             'theme_config' => __('Theme Performance Optimization & Plugin Configuration: Starting @ $150 USD', 'w3-total-cache'),
             'linux_config' => __('Linux Server Optimization & Plugin Configuration: Starting @ $200 USD', 'w3-total-cache')
         );
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        $this->_page = w3tc_get_current_page();
     }
 
     /**
@@ -429,7 +438,7 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
 
             $request_data_url = sprintf('%s/w3tc_request_data/%s', w3_get_home_url(), $hash);
         } else {
-            $request_data_url = null;
+            $request_data_url = '';
         }
 
         $nonce = wp_create_nonce('w3tc_support_request');
@@ -438,7 +447,12 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
         } else {
             update_option('w3tc_support_request', $nonce);
         }
-        $post['file_access'] = WP_PLUGIN_URL . '/' . dirname(W3TC_FILE) . '/pub/files.php';
+        $file_access = WP_PLUGIN_URL . '/' . dirname(W3TC_FILE) . '/pub/files.php';
+        if (w3_get_domain(w3_get_home_url()) != w3_get_domain(w3_get_site_url())) {
+            $file_access = str_replace(w3_get_domain(w3_get_home_url()), w3_get_domain(w3_get_site_url()), $file_access);
+        }
+
+        $post['file_access'] =  $file_access;
         $post['nonce'] = $nonce;
         $post['request_data_url'] = $request_data_url;
         $post['ip'] = $_SERVER['REMOTE_ADDR'];
@@ -446,6 +460,13 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
         $post['version'] = W3TC_VERSION;
         $post['plugin'] = 'W3 Total Cache';
         $post['request_id'] = $request_id;
+        $license_level = 'community';
+        if (w3_is_pro($this->_config))
+            $license_level = 'pro';
+        elseif (w3_is_enterprise($this->_config))
+            $license_level = 'enterprise';
+
+        $post['license_level'] = $license_level;
 
         $unset = array('wp_login', 'wp_password', 'ftp_host', 'ftp_login', 'ftp_password');
 
@@ -475,14 +496,15 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
 
         if (defined('W3_SUPPORT_DEBUG') && W3_SUPPORT_DEBUG) {
             $filename = w3_cache_blog_dir('log') . '/support.log';
-            $data = sprintf("[%s] Post response %s %s\n", date('r'), $response['response']['code'], $response['body']);
+            $data = sprintf("[%s] Post response \n%s\n", date('r'), print_r($response, true));
             @file_put_contents($filename, $data, FILE_APPEND);
         }
 
         if (!is_wp_error($response))
             $result = $response['response']['code'] == 200 && $response['body'] == 'Ok';
-        else
+        else  {
             $result = false;
+        }
         /**
          * Remove temporary files
          */
@@ -625,8 +647,13 @@ class W3_AdminActions_SupportActionsAdmin extends W3_UI_PluginView {
      * @return void
      */
     function action_support_us() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin_ui.php');
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
         $supports = $this->get_supports();
-
+        global $current_user;
+        get_currentuserinfo();
+        $email = $current_user->user_email;
         include W3TC_INC_DIR . '/lightbox/support_us.php';
     }
 }

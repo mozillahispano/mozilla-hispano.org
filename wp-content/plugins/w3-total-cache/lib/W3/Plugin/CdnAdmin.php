@@ -49,7 +49,7 @@ class W3_Plugin_CdnAdmin extends W3_Plugin {
     function queue_update($queue_id, $last_error) {
         global $wpdb;
 
-        $sql = sprintf('UPDATE %s SET last_error = "%s", date = NOW() WHERE id = %d', $wpdb->prefix . W3TC_CDN_TABLE_QUEUE, $wpdb->escape($last_error), $queue_id);
+        $sql = sprintf('UPDATE %s SET last_error = "%s", date = NOW() WHERE id = %d', $wpdb->prefix . W3TC_CDN_TABLE_QUEUE, esc_sql($last_error), $queue_id);
 
         return $wpdb->query($sql);
     }
@@ -706,5 +706,94 @@ WHERE p.post_type = "attachment" AND (pm.meta_value IS NOT NULL OR pm2.meta_valu
         ));
 
         return $actions;
+    }
+
+    /**
+     * Changes settings on MaxCDN/NetDNA site
+     */
+    function change_canonical_header() {
+        if (in_array($cdn_engine = $this->_config->get_string('cdn.engine'), array('maxcdn', 'netdna'))) {
+            w3_require_once(W3TC_LIB_NETDNA_DIR . '/NetDNA.php');
+            $authorization_key = $this->_config->get_string("cdn.$cdn_engine.authorization_key");
+            if ($authorization_key) {
+                $keys = explode('+', $authorization_key);
+                if (sizeof($keys) == 3) {
+                    list($alias, $consumer_key, $consumer_secret) =  $keys;
+                    $api = new NetDNA($alias, $consumer_key, $consumer_secret);
+                    $zone = array();
+                    $zone_id = $this->_config->get_string("cdn.$cdn_engine.zone_id");
+                    $zone['canonical_link_headers'] = $this->_config->get_boolean('cdn.canonical_header') ? 1 : 0;
+                    try {
+                        $api->update_pull_zone($zone_id, $zone);
+                    } catch (Exception $ex) {}
+                }
+            }
+        }
+    }
+
+    function is_running() {
+        /**
+         * CDN
+         */
+        $running = true;
+
+        /**
+         * Check CDN settings
+         */
+        $cdn_engine = $this->_config->get_string('cdn.engine');
+
+        switch (true) {
+            case ($cdn_engine == 'ftp' && !count($this->_config->get_array('cdn.ftp.domain'))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 's3' && ($this->_config->get_string('cdn.s3.key') == '' || $this->_config->get_string('cdn.s3.secret') == '' || $this->_config->get_string('cdn.s3.bucket') == '')):
+                $running = false;                    break;
+
+            case ($cdn_engine == 'cf' && ($this->_config->get_string('cdn.cf.key') == '' || $this->_config->get_string('cdn.cf.secret') == '' || $this->_config->get_string('cdn.cf.bucket') == '' || ($this->_config->get_string('cdn.cf.id') == '' && !count($this->_config->get_array('cdn.cf.cname'))))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'cf2' && ($this->_config->get_string('cdn.cf2.key') == '' || $this->_config->get_string('cdn.cf2.secret') == '' || ($this->_config->get_string('cdn.cf2.id') == '' && !count($this->_config->get_array('cdn.cf2.cname'))))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'rscf' && ($this->_config->get_string('cdn.rscf.user') == '' || $this->_config->get_string('cdn.rscf.key') == '' || $this->_config->get_string('cdn.rscf.container') == '' || !count($this->_config->get_array('cdn.rscf.cname')))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'azure' && ($this->_config->get_string('cdn.azure.user') == '' || $this->_config->get_string('cdn.azure.key') == '' || $this->_config->get_string('cdn.azure.container') == '')):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'mirror' && !count($this->_config->get_array('cdn.mirror.domain'))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'netdna'):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'maxcdn'):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'cotendo' && !count($this->_config->get_array('cdn.cotendo.domain'))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'edgecast' && !count($this->_config->get_array('cdn.edgecast.domain'))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'att' && !count($this->_config->get_array('cdn.att.domain'))):
+                $running = false;
+                break;
+
+            case ($cdn_engine == 'akamai' && !count($this->_config->get_array('cdn.akamai.domain'))):
+                $running = false;
+                break;
+        }
+        return $running;
     }
 }

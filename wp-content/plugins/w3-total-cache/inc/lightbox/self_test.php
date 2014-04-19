@@ -217,7 +217,7 @@ w3_require_once(W3TC_INC_DIR . '/functions/rule.php');
     </ul>
     <?php $additional_checks = apply_filters('w3tc_compatibility_test', __return_empty_array());
     if ($additional_checks):?>
-    <h4><?php _e('Additional modules','w3-total-cache')?></h4>
+    <h4><?php _e('Additional Server Modules','w3-total-cache')?></h4>
     <ul>
     <?php
     foreach($additional_checks as $check)

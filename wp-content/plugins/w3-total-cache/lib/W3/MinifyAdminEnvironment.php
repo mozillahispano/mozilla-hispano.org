@@ -90,7 +90,7 @@ class W3_MinifyAdminEnvironment {
             }
 
             if (!wp_next_scheduled('w3_minify_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_minify_cleanup', 'w3_minify_cleanup');
             }
         } else {

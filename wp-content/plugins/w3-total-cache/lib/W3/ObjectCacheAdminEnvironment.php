@@ -42,7 +42,7 @@ class W3_ObjectCacheAdminEnvironment {
         if ($config->get_boolean('objectcache.enabled') && 
                 $config->get_string('objectcache.engine') == 'file') {
             if (!wp_next_scheduled('w3_objectcache_cleanup')) {
-                wp_schedule_event(current_time('timestamp'), 
+                wp_schedule_event(time(), 
                     'w3_objectcache_cleanup', 'w3_objectcache_cleanup');
             }
         } else {
@@ -101,9 +101,14 @@ class W3_ObjectCacheAdminEnvironment {
                 if ($script_data == @file_get_contents($src))
                     return;
             } elseif (!$this->objectcache_check_old_add_in()){
-                $remove_url = is_network_admin() ?
-                    network_admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=objectcache') :
-                    admin_url('admin.php?page=' . $_GET['page'] . '&amp;w3tc_default_remove_add_in=objectcache');
+                w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/other.php');
+                w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
+                if (isset($_GET['page']))
+                    $url = 'admin.php?page=' . $_GET['page'] . '&amp;';
+                else
+                    $url = basename(w3_remove_query($_SERVER['REQUEST_URI'])) . '?page=w3tc_dashboard&amp;';
+                $remove_url = w3_admin_url($url . 'w3tc_default_remove_add_in=objectcache');
+
                 throw new FilesystemOperationException(
                     sprintf(__('The Object Cache add-in file object-cache.php is not a W3 Total Cache drop-in.
                     Remove it or disable Object Caching. %s', 'w3-total-cache'),
@@ -150,6 +155,6 @@ class W3_ObjectCacheAdminEnvironment {
      */
     public function is_objectcache_add_in() {
         return (($script_data = @file_get_contents(W3TC_ADDIN_FILE_OBJECT_CACHE))
-            && strstr($script_data, '//ObjectCache Version: 1.1') !== false);
+            && strstr($script_data, '//ObjectCache Version: 1.3') !== false);
     }
 }

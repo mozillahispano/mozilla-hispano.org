@@ -22,6 +22,9 @@ class W3_Widget_NetDNA extends W3_Plugin {
      */
     private $api;
     function run() {
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        if(w3tc_get_current_wp_page() == 'w3tc_dashboard')
+            add_action('admin_enqueue_scripts', array($this,'enqueue'));
         add_action('w3tc_dashboard_setup', array(
             &$this,
             'wp_dashboard_setup'
@@ -57,7 +60,6 @@ class W3_Widget_NetDNA extends W3_Plugin {
                 list($alias, $consumerkey, $consumersecret) =  $keys;
 
             $this->api = new NetDNA($alias, $consumerkey, $consumersecret);
-
             add_action('admin_head', array(&$this, 'admin_head'));
         }
     }
@@ -111,10 +113,6 @@ echo "                ", implode(',', $list);
      * @return void
      */
     function wp_dashboard_setup() {
-        wp_enqueue_style('w3tc-widget');
-        wp_enqueue_script('w3tc-metadata');
-        wp_enqueue_script('w3tc-widget');
-
             $view = '<span> </span>';
         w3tc_add_dashboard_widget('w3tc_netdna', $view, array(
             &$this,
@@ -132,6 +130,8 @@ echo "                ", implode(',', $list);
         $have_zone = $this->have_zone;
         $is_sealed = $this->_sealed;
         $error = '';
+        $pull_zones = array();
+        $zone_info = false;
         if ($authorized && $have_zone) {
             $zone_id = $this->_config->get_integer('cdn.netdna.zone_id');
             try{
@@ -152,10 +152,16 @@ echo "                ", implode(',', $list);
                     $account_status = NetDNAPresentation::get_account_status($account['status']);
                     include W3TC_INC_WIDGET_DIR . '/netdna.php';
                 } catch(Exception $ex) {
+                    try {
+                        $pull_zones = $this->api->get_zones_by_url(home_url());
+                    } catch(Exception $ex) {}
                     $error = $ex->getMessage();
                     include W3TC_INC_WIDGET_DIR . '/netdna_signup.php';
                 }
             } else {
+                try {
+                    $pull_zones = $this->api->get_zones_by_url(home_url());
+                } catch(Exception $ex) {}
                 include W3TC_INC_WIDGET_DIR . '/netdna_signup.php';
             }
         } else {
@@ -169,7 +175,15 @@ echo "                ", implode(',', $list);
     private function _setup($config) {
         $this->authorized = $config->get_string('cdn.netdna.authorization_key') != '' &&
             $config->get_string('cdn.engine') == 'netdna';
+        $keys = explode('+', $config->get_string('cdn.netdna.authorization_key'));
+        $this->authorized = $this->authorized  && sizeof($keys) == 3;
 
         $this->have_zone = $config->get_string('cdn.netdna.zone_id') != 0;
+    }
+
+    public function enqueue() {
+        wp_enqueue_style('w3tc-widget');
+        wp_enqueue_script('w3tc-metadata');
+        wp_enqueue_script('w3tc-widget');
     }
 }

@@ -55,7 +55,6 @@ class YARPP {
 
         /**
 		 * If we're using thumbnails, register yarpp-thumbnail size, if theme has not already.
-		 * TODO: make these UI-configurable?
 		 * Note: see FAQ in the readme if you would like to change the YARPP thumbnail size.
          */
 		if ($this->diagnostic_using_thumbnails() && (!($dimensions = $this->thumbnail_dimensions()) || isset($dimensions['_default']))) {
@@ -210,7 +209,6 @@ class YARPP {
 
 	/*
 	 * INFRASTRUCTURE
-	 * TODO:  to a separate class.
 	 */
 
     /**
@@ -228,19 +226,21 @@ class YARPP {
     }
 
 	public function enabled() {
-		if ($this->cache->is_enabled() === false) return false;
-		if (!$this->diagnostic_fulltext_disabled()) return $this->diagnostic_fulltext_indices();
+		if (!(bool) $this->cache->is_enabled()) return false;
+		if (!(bool) $this->diagnostic_fulltext_disabled()) return $this->diagnostic_fulltext_indices();
 		return true;
 	}
 	
 	public function activate() {
 	
-		/* if it's not known to be disabled, but the indexes aren't there. */
+		/*
+		 * If it's not known to be disabled, but the indexes aren't there.
+		 */
 		if (!$this->diagnostic_fulltext_disabled() && !$this->diagnostic_fulltext_indices()) {
 			$this->enable_fulltext();
 		}
 
-		if ($this->cache->is_enabled() === false) {
+		if ((bool) $this->cache->is_enabled() === false) {
 			$this->cache->setup();
 		}
 
@@ -260,7 +260,6 @@ class YARPP {
 	/**
 	 * DIAGNOSTICS
 	 * @since 4.0 Moved into separate functions. Note return value types can differ.
-     * TODO: Move to a separate class.
 	 */
 	public function diagnostic_myisam_posts() {
 		global $wpdb;
@@ -279,15 +278,18 @@ class YARPP {
 		return get_option('yarpp_fulltext_disabled', false);
 	}
 	
-	public function enable_fulltext( $override_myisam = false ) {
+	public function enable_fulltext() {
 		global $wpdb;
-
-		/* TODO: Check the myisam_override option instead. */
-		if (!$override_myisam) {
+        /*
+         * If overwrite is not set go thru the normal process.
+         * Otherwise force it.
+         */
+        $overwrite = (bool) $this->get_option('myisam_override', false);
+		if (!$overwrite) {
 			$table_type = $this->diagnostic_myisam_posts();
 			if ($table_type !== true) {
 				$this->disable_fulltext();
-				return;
+				return false;
 			}
 		}
 
@@ -295,17 +297,25 @@ class YARPP {
 		$previous_value = $wpdb->hide_errors();
 
 		$wpdb->query("ALTER TABLE $wpdb->posts ADD FULLTEXT `yarpp_title` (`post_title`)");
-		if (!empty($wpdb->last_error)) $this->disable_fulltext();
+		if (!empty($wpdb->last_error)){
+            $this->disable_fulltext();
+            return false;
+        }
 
 		$wpdb->query("ALTER TABLE $wpdb->posts ADD FULLTEXT `yarpp_content` (`post_content`)");
-		if (!empty($wpdb->last_error)) $this->disable_fulltext();
+		if (!empty($wpdb->last_error)){
+            $this->disable_fulltext();
+            return false;
+        }
 		
 		/* Restore previous setting */
 		$wpdb->show_errors($previous_value);
+
+        return true;
 	}
 	
 	public function disable_fulltext() {
-		if (get_option('yarpp_fulltext_disabled', false) === true) return;
+		if ((bool) get_option('yarpp_fulltext_disabled', false) === true) return;
 	
 		/* Remove title and body weights: */
 		$weight = $this->get_option('weight');
@@ -319,7 +329,11 @@ class YARPP {
 
 		update_option('yarpp_fulltext_disabled', true);
 	}
-	
+
+    /*
+     * Try to retrieve fulltext index from database.
+     * @return bool
+     */
 	public function diagnostic_fulltext_indices() {
 		global $wpdb;
 		$wpdb->get_results("SHOW INDEX FROM {$wpdb->posts} WHERE Key_name = 'yarpp_title' OR Key_name = 'yarpp_content'");
@@ -328,7 +342,11 @@ class YARPP {
 	
 	public function diagnostic_hidden_metaboxes() {
 		global $wpdb;
-		$raw = $wpdb->get_var("SELECT meta_value FROM $wpdb->usermeta WHERE meta_key = 'metaboxhidden_settings_page_yarpp' ORDER BY length(meta_value) ASC LIMIT 1");
+		$raw = $wpdb->get_var(
+            "SELECT meta_value FROM $wpdb->usermeta ".
+            "WHERE meta_key = 'metaboxhidden_settings_page_yarpp' ".
+            "ORDER BY length(meta_value) ASC LIMIT 1"
+        );
 		
 		if (!$raw) return $this->default_hidden_metaboxes;
 		
@@ -364,7 +382,7 @@ class YARPP {
 	private $default_dimensions = array(
 		'width'     => 120,
 		'height'    => 120,
-		'crop'      => false, // TODO: True for crop?
+		'crop'      => false,
 		'size'      => '120x120',
 		'_default'  => true
 	);
@@ -735,7 +753,6 @@ class YARPP {
 	
 	/*
 	 * UTILITIES
-	 * TODO: Create its own class
 	 */
 	
 	private $current_post;
@@ -1075,7 +1092,7 @@ class YARPP {
                     "<p>".
                         sprintf(
                             __("Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.",'yarpp'),
-                            'http://yarpp.com'
+                            'http://www.yarpp.com'
                         ).
                     "</p>\n";
             }
@@ -1257,7 +1274,7 @@ class YARPP {
                             "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.",
                             'yarpp'
                         ),
-                        'http://yarpp.com'
+                        'http://www.yarpp.com'
                     ).
                 "</p>\n";
         }
@@ -1435,7 +1452,6 @@ class YARPP {
 	
 	/*
 	 * UTILS
-	 * TODO: Move it to its own class.
 	 */
 
     /**

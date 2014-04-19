@@ -4,6 +4,10 @@ global $wpdb, $wp_version, $yarpp;
 /* Enforce YARPP setup: */
 $yarpp->enforce();
 
+if(!$yarpp->enabled() && !$yarpp->activate()) {
+    echo '<div class="updated">'.__('The YARPP database has an error which could not be fixed.','yarpp').'</div>';
+}
+
 /* Check to see that templates are in the right place */
 if (!$yarpp->diagnostic_custom_templates()) {
 
@@ -65,66 +69,15 @@ if (current_user_can('update_plugins')) {
 	}
 }
 
-/* MyIsam message */
-if (isset($_POST['myisam_override'])) {
-	yarpp_set_option('myisam_override', 1);
+/* MyISAM Check */
+include 'yarpp_myisam_notice.php';
 
-	echo(
-        "<div class='updated'>"
-	    .__("The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria.",'yarpp')
-	    ."</div>"
-    );
-	
-	$yarpp->enable_fulltext(true);
-}
-
-$table_type = $yarpp->diagnostic_myisam_posts();
-
-if ($table_type !== true) $yarpp->disable_fulltext();
-
-if (!yarpp_get_option('myisam_override') && $yarpp->diagnostic_fulltext_disabled()) {
-	echo(
-        "<div class='updated'>".
-            sprintf(
-                __("YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code>
-                    table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>,
-                    but the table seems to be using the <code>%s</code> engine. These two options have been disabled.",'yarpp'),
-                $wpdb->posts,
-                $table_type
-            ).
-            "<br />".
-            sprintf(
-                __("To restore these features, please update your <code>%s</code> table by executing the following SQL
-                    directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the
-                    table's engine, although there are performance implications.",'yarpp'),
-                $wpdb->posts,
-                $wpdb->posts
-            ).
-            "<br />".
-            sprintf(
-                __("If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic
-                    button:",'yarpp'),
-                $wpdb->posts
-            ).
-            "<br />".
-            "<form method='post'>".
-                "<input type='submit' class='button' name='myisam_override' value='".__("Trust me. Let me use MyISAM features.",'yarpp')."'/>".
-            "</form>"
-	    ."</div>"
-    );
-}
-
-if(!$yarpp->enabled() && !$yarpp->activate()) {
-	echo '<div class="updated">'.__('The YARPP database has an error which could not be fixed.','yarpp').'</div>';
-}
-
-/* This is not a yarpp pluging update, it is an yarpp uption update */
+/* This is not a yarpp pluging update, it is an yarpp option update */
 if (isset($_POST['update_yarpp'])) {
 	$new_options = array();
 	foreach ($yarpp->default_options as $option => $default) {
 		if ( is_bool($default) )
 			$new_options[$option] = isset($_POST[$option]);
-		// @todo: do we really want to stripslashes here anymore?
 		if ( (is_string($default) || is_int($default)) &&
 			 isset($_POST[$option]) && is_string($_POST[$option]) )
 			$new_options[$option] = stripslashes($_POST[$option]);
@@ -191,8 +144,6 @@ if (!count($yarpp->admin->get_templates()) && $yarpp->admin->can_copy_templates(
     wp_nonce_field('yarpp_copy_templates', 'yarpp_copy_templates-nonce', false);
 }
 
-$switch = (isset($_GET['go']) && $_GET['go'] === 'pro') ? true : false;
-
 ?>
 
 <div class="wrap">
@@ -204,75 +155,24 @@ $switch = (isset($_GET['go']) && $_GET['go'] === 'pro') ? true : false;
     </h2>
 
     <div id="yarpp_switch_container">
-
         <ul id="yarpp_switch_tabs">
-            <li class="<?php echo (($switch) ? 'disabled': null)?>">
+            <li>
                 <a href="options-general.php?page=yarpp">YARPP Basic</a>
             </li>
-            <li class="<?php echo (($switch) ? null : 'disabled')?>">
-                <a href="options-general.php?page=yarpp&go=pro">YARPP Pro</a>
+            <li class="disabled">
+                <a href="<?php echo plugins_url('/', dirname(__FILE__)) ?>includes/yarpp_switch.php" class="yarpp_switch_button" data-go="pro">YARPP Pro</a>
             </li>
         </ul>
 
-        <?php if ($switch): ?>
-
-            <div class="yarpp_switch_content">
-                <h1>YARPP Pro is now available!</h1>
-                <p>
-                    Access more powerful features with <em>YARPP Pro</em>! Try it today for <strong>FREE</strong>, switch back at any
-                    time with no lost custom settings. <a href="http://www.yarpp.com" target="_blank">Find out more.</a>
-                </p>
-                <ul>
-                    <li>
-                        Make money by displaying sponsored ads.
-                    </li>
-                    <li>
-                        Easily customize thumbnail display.
-                    </li>
-                    <li>
-                        Pull related content from multiple domains.
-                    </li>
-                    <li>
-                        Get detailed traffic reports.
-                    </li>
-                    <li>
-                        No lost settings. Trying <em>YARPP Pro</em> will not delete your Basic settings. Switch back any time.
-                    </li>
-                    <li>
-                        You at decide how much sponsored ad content to display, from 25% to 100% of your related content.
-                        When visitors click, you get paid.<br/>
-                        <em>(Note: Ad content will be loaded from an external site and usage data will be sent back to YARPP servers.)</em>
-                    </li>
-                    <li>
-                        <em>YARPP Pro</em> does not support non-English ad content at this time so non-English sites will not
-                        display sponsored ads.
-                    </li>
-                    <li>
-                        <em>YARPP Pro</em> does not support custom post types at this time.
-                    </li>
-                    <li>
-                        Some <em>YARPP Basic</em> features may not yet be available in <em>YARPP Pro</em>.
-                    </li>
-                </ul>
-                <p>
-                    <a href="<?php echo plugins_url('includes/', dirname(__FILE__)).'yarpp_switch.php' ?>" id="yarpp_switch_button" data-go="pro" class="button">
-                        Enable YARPP Pro for FREE!
-                    </a>
-                    &nbsp;&nbsp
-                    <a href="options-general.php?page=yarpp" id="yarpp_switch_cancel"  class="button">No, thanks</a>
-                </p>
-            </div>
-
-        <?php else: ?>
-
-            <div class="yarpp_switch_content">
-                <p>
-                    The settings below allow you to configure the basic version of Yet Another Related Post Plugin (YARPP).
-                    Click on the "YARPP Pro" tab for enhanced functionality: Make money by displaying sponsored ads,
-                    further customize thumbnail display, pull related content from multiple domains, and get detailed
-                    reporting. <a href="http://yarpp.com" target="_blank">Learn more.</a>
-                </p>
-            </div>
+        <div class="yarpp_switch_content">
+            <p>
+                The settings bellow allow you to configure the basic version of Yet Another Related Post Plugin (YARPP).
+                Click on the "YARPP Pro" tab for enhanced functionality: <strong>Earn money</strong> from sponsored ads,
+                easily <strong>customize thumbnail layout</strong>, pull related posts from <strong>multiple sites</strong>
+                , and get <strong>detailed reporting.</strong>&nbsp;&nbsp;
+                <a href="http://www.yarpp.com" target="_blank">Learn more.</a>
+            </p>
+        </div>
     </div>
 
     <form method="post">
@@ -309,7 +209,5 @@ $switch = (isset($_GET['go']) && $_GET['go'] === 'pro') ? true : false;
         </div><!--#poststuff-->
 
     </form>
-
-    <?php endif ?>
 
 </div>

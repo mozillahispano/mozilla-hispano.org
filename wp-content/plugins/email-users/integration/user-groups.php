@@ -15,7 +15,7 @@
 function mailusers_get_user_groups($exclude_id='', $meta_filter = '') {
 	$ug = array();
 
-	$terms = get_terms(MAILUSERS_USER_GROUPS_TAXONOMY, array('hide_empty' => false));
+	$terms = get_terms(MAILUSERS_USER_GROUPS_TAXONOMY, array('hide_empty' => true));
 	foreach ( $terms as $term ) {
 		$users_in_group = mailusers_get_recipients_from_user_groups(array($term->term_id), $exclude_id, $meta_filter);
 		if (!empty($users_in_group)) {

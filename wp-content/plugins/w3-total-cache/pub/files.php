@@ -39,7 +39,12 @@ if (file_exists($attachment_location) && $nonce == $stored_nonce && $stored_atta
     header("Content-Length:".filesize($attachment_location));
     header("Content-Disposition: attachment; filename=" . basename($attachment_location));
 
-    readfile($attachment_location);
+    $file = fopen($attachment_location, 'rb');
+    if ( $file !== false ) {
+        fpassthru($file);
+        fclose($file);
+    }
+
     w3tc_file_log('success', $attachment_location);
     die();
 } elseif ($nonce != $stored_nonce || $stored_attachment != $attachment_location) {

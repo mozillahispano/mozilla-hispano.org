@@ -90,7 +90,7 @@ class W3_Plugin_MinifyAdmin extends W3_Plugin {
     <script type="text/javascript">/*<![CDATA[*/
         jQuery(function() {
             var filename = new Array(<?php echo $this->_config->get_integer('minify.auto.filename_length', 246) ?>+1).join('X');
-            var url = '<?php echo w3_filename_to_url(w3_cache_blog_dir('minify').'/') ?>';
+            var url = '<?php echo w3_filename_to_url(w3_cache_blog_dir('minify').'/', w3_get_domain(w3_get_home_url()) != w3_get_domain(w3_get_site_url())) ?>';
 
             w3tc_minify_filename_test_once(url, filename);
         });
@@ -100,9 +100,9 @@ class W3_Plugin_MinifyAdmin extends W3_Plugin {
 
     function print_script() { ?>
         <script type="text/javascript">
-            var w3_use_network_link = <?php echo w3_force_master() ? 'true' : 'false' ?>;
+            var w3_use_network_link = <?php echo is_network_admin() || (w3_is_multisite() && w3_force_master()) ? 'true' : 'false' ?>;
             function w3tc_start_minify_try_solve() {
-                var testUrl = '<?php echo w3_filename_to_url(w3_cache_blog_dir('minify').'/') ?>';
+                var testUrl = '<?php echo w3_filename_to_url(w3_cache_blog_dir('minify').'/', w3_get_domain(w3_get_home_url()) != w3_get_domain(w3_get_site_url())) ?>';
                 w3tc_filename_auto_solve(testUrl);
             }
         </script>

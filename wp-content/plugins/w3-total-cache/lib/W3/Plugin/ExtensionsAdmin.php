@@ -23,8 +23,9 @@ class W3_Plugin_ExtensionsAdmin extends W3_Plugin {
         add_action('w3tc_saved_options', array(
             $this, 
             'on_saved_options'), 10, 2);
+        w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/admin.php');
+        if (is_w3tc_admin_page()) {
 
-        if (isset($_GET['page']) && $_GET['page'] == 'w3tc_extensions') {
             w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/extensions.php');
             w3_extensions_admin_init();
             if (isset($_GET['extension']) && isset($_GET['action'])) {
@@ -35,6 +36,25 @@ class W3_Plugin_ExtensionsAdmin extends W3_Plugin {
                 add_action('init', array($this, 'change_extensions_status'));
             }
         }
+        add_action('w3tc_hide_button_custom-hide-extension-notification', array($this, 'hide_notification'));
+    }
+
+    /**
+     * Hides an extension notification
+     */
+    public function hide_notification() {
+        $extension = W3_Request::get_string('w3tc_default_hide_note_custom');
+        /**
+         * @var W3_ConfigAdmin $w3_config_admin
+         */
+        $w3_config_admin = w3_instance('W3_ConfigAdmin');
+        $exts = $w3_config_admin->get_array('notes.hide_extensions');
+        $exts[] = $extension;
+        $exts = array_unique($exts);
+        try {
+            $w3_config_admin->set('notes.hide_extensions', $exts);
+            $w3_config_admin->save();
+        } catch (Exception $ex) {}
     }
 
     /**
@@ -73,17 +93,16 @@ class W3_Plugin_ExtensionsAdmin extends W3_Plugin {
         w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
         $extensions = W3_Request::get_array('checked');
         $action = W3_Request::get('action');
-        $all_extensions = w3_get_extensions($this->_config);
         $message = '';
         if ('activate-selected' == $action) {
             foreach ($extensions as $extension) {
-                if ($this->activate($extension, $all_extensions))
+                if (w3tc_activate_extension($extension, $this->_config))
                     $message .= '&activated=' . $extension;
             }
             wp_redirect(w3_admin_url(sprintf('admin.php?page=w3tc_extensions%s', $message)));
         } elseif ('deactivate-selected' == $action) {
             foreach ($extensions as $extension) {
-                if ($this->deactivate($extension, $this->_config))
+                if (w3tc_deactivate_extension($extension, $this->_config))
                     $message .= '&deactivated=' . $extension;
             }
             wp_redirect(w3_admin_url(sprintf('admin.php?page=w3tc_extensions%s', $message)));
@@ -102,12 +121,11 @@ class W3_Plugin_ExtensionsAdmin extends W3_Plugin {
             w3_require_once(W3TC_INC_FUNCTIONS_DIR . '/ui.php');
 
             $extension = W3_Request::get_string('extension');
-            $all_extensions = w3_get_extensions($this->_config);
             if ('activate' == $action) {
-                $this->activate($extension, $all_extensions);
+                w3tc_activate_extension($extension, $this->_config);
                 wp_redirect(w3_admin_url(sprintf('admin.php?page=w3tc_extensions&activated=%s', $extension)));
             } elseif ('deactivate' == $action) {
-                $this->deactivate($extension, $this->_config);
+                w3tc_deactivate_extension($extension, $this->_config);
                 wp_redirect(w3_admin_url(sprintf('admin.php?page=w3tc_extensions&deactivated=%s', $extension)));
             }
         }
@@ -138,51 +156,9 @@ class W3_Plugin_ExtensionsAdmin extends W3_Plugin {
         $all_extensions = w3_get_extensions($config);
 
         foreach ($all_extensions as $name => $descriptor) {
-            if (!$descriptor['enabled']) {
-                $this->deactivate($name, $config, $dont_save_config);
+            if (isset($descriptor['enabled']) && !$descriptor['enabled']) {
+                w3tc_deactivate_extension($name, $config, $dont_save_config);
             }
         }
-    }
-
-    /**
-     * @param $extension
-     * @param $all_extensions
-     * @return bool
-     */
-    private function activate($extension, $all_extensions) {
-        $extensions = $this->_config->get_array('extensions.active');
-        if (!w3_is_extension_active($extension)) {
-            $meta = $all_extensions[$extension];
-            $extensions[$extension] = $meta['path'];
-
-            ksort($extensions, SORT_STRING);
-            $this->_config->set('extensions.active', $extensions);
-            try {
-                $this->_config->save();
-                do_action("w3tc_activate_extension-{$extension}");
-                return true;
-            } catch (Exception $ex) {}
-        }
-        return false;
-    }
-
-    /**
-     * @param $extension
-     * @return bool
-     */
-    private function deactivate($extension, $config, $dont_save_config = false) {
-        $extensions = $config->get_array('extensions.active');
-        if (array_key_exists($extension, $extensions)) {
-            unset($extensions[$extension]);
-            ksort($extensions, SORT_STRING);
-            $config->set('extensions.active', $extensions);
-            try {
-                if (!$dont_save_config)
-                    $config->save();
-                do_action("w3tc_deactivate_extension-{$extension}");
-                return true;
-            } catch (Exception $ex) {}
-        }
-        return false;
     }
 }

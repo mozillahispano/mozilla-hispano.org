@@ -75,8 +75,13 @@ class W3_Cache {
                 default:
                     trigger_error('Incorrect cache engine', E_USER_WARNING);
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Base.php');
-                    $instances[$instance_key] = new W3_Cache_Base();
+                    $instances[$instance_key] = new W3_Cache_Base($config);
                     break;
+            }
+
+            if (!$instances[$instance_key]->available()) {
+                w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Base.php');
+                $instances[$instance_key] = new W3_Cache_Base($config);
             }
         }
 

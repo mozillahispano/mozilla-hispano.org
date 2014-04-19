@@ -75,7 +75,7 @@ class W3_ConfigBase {
      *
      * @param string $key
      * @param string $value
-     * @return value set
+     * @return object value set
      */
     function set($key, $value) {
         $this->_data[$key] = $value;

@@ -63,7 +63,8 @@ class W3_AdminActions_ConfigActionsAdmin {
      * @return void
      */
     function action_config_export() {
-        @header(sprintf(__('Content-Disposition: attachment; filename=%s.php', 'w3-total-cache'), w3_get_blog_id()));
+        $filename = substr(w3_get_home_url(), strpos(w3_get_home_url(), '//')+2);
+        @header(sprintf(__('Content-Disposition: attachment; filename=%s.php', 'w3-total-cache'), $filename));
         echo $this->_config->export();
         die();
     }
@@ -159,10 +160,21 @@ class W3_AdminActions_ConfigActionsAdmin {
     function action_config_save_support_us() {
         $support = W3_Request::get_string('support');
         $tweeted = W3_Request::get_boolean('tweeted');
-
+        $signmeup = W3_Request::get_boolean('signmeup');
         $this->_config->set('common.support', $support);
         $this->_config->set('common.tweeted', $tweeted);
-
+        if ($signmeup) {
+            if (w3_is_pro($this->_config))
+                $license = 'pro';
+            elseif (w3_is_enterprise())
+                $license = 'enterprise';
+            else
+                $license = 'community';
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            wp_remote_post(W3TC_MAILLINGLIST_SIGNUP_URL, array(
+                'body' => array( 'email' => $email, 'license' => $license )
+            ));
+        }
         $this->_config->save();
 
         w3_instance('W3_AdminLinks')->link_update($this->_config);

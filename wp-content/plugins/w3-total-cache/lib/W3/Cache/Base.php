@@ -165,6 +165,14 @@ class W3_Cache_Base {
     }
 
     /**
+     * Checks if engine can function properly in this environment
+     * @return bool
+     */
+    public function available() {
+        return true;
+    }
+
+    /**
      * Constructs key version key
      * @param $group
      * @return string

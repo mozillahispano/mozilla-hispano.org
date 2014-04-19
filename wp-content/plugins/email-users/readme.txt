@@ -2,9 +2,9 @@
 Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
-Requires at least: 3.5.1
-Tested up to: 3.7.1
-Stable tag: 4.6.2
+Requires at least: 3.6.1
+Tested up to: 3.8.1
+Stable tag: 4.6.7
 License: GPL
 
 == Description ==
@@ -19,7 +19,7 @@ All the instructions for installation, the support forums, a FAQ, etc. can be fo
 
 Email Users has language translation support for a number of languages.  New languages and updates to existing languages are always welcome.  Thank you to the people who have provided these translations.
 
-1. Spanish (es_ES) - Ponç J. Llaneras (last updated:  4.6.0)
+1. Spanish (es_ES) - Ponç J. Llaneras (last updated:  4.6.3)
 1. Bulgarian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/) (last update 4.6.2)
 1. Italian (it_IT) - ? (last updated 4.5.1)
 1. German (de_DE) - Tobias Bechtold (last updated 4.4.1)
@@ -27,6 +27,7 @@ Email Users has language translation support for a number of languages.  New lan
 1. French (fr_FR) - Emilie DCCLXI (last updated 4.3.6)
 1. Russian (ru_RU) - ? (last updated 4.3.8)
 1. Chinese (zh_CN) - ? (last updated 4.5.1)
+1. Dutch (nl_NL) - Bart van Strien (last updated 4.6.3)
 
 
 == License ==
@@ -188,6 +189,33 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.6.7 =
+* Fixed problem with User Access Manager integration which resulted in sending email to all users regardless of UAM group assignment.
+
+= Version 4.6.6 =
+* Added new option to filter users with no role from the User Recipient List.
+* Bumped supported version of WordPress to 3.6.1.
+* Added ability to have recipient appear in To: list instead of Bcc: list when using BCC option of 1.
+* Fixed internationalization of BCC options.
+* Fixed problem with User Groups when using non-English versions of WordPress or groups which contain hyphen characters.
+
+= Version 4.6.5 =
+* Fixed sorting issue which was caused by commenting out code for debugging purposes to resolve problem fixed in 4.6.4.
+
+= Version 4.6.4 =
+* Fixed bug which caused first and last names to display as N/A in some instances.
+* Updated Dutch translation support (thank you Bart van Strien).
+
+= Version 4.6.3 =
+* Fixed several strings which were not properly set up for language translation.
+* Re-added French translation file as it had gotten corrupted somehow and wouldn't load in WordPress.
+* Added Dutch translation support (thank you Bart van Strien).
+* Fixed bug where sites with large numbers of users would exhaust memory.
+* Updated Spanish translation (thank you Ponc J. Llaneras)
+* Added additional options for BCC limit.
+* Fixed several CSS bugs on Settings page.
+* Initial implementation of Paid Memeberships Pro integration.
 
 = Version 4.6.2 =
 * Refactored integration with other "Groups" plugins.

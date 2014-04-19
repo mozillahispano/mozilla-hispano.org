@@ -2,10 +2,10 @@
 <?php include W3TC_INC_DIR . '/options/common/header.php'; ?>
 
 <p>
-    <?php echo sprintf(__('The plugin is currently <span class="w3tc-%s">%s</span> in <strong>%s</strong> mode.', 'w3-total-cache')
+    <?php echo sprintf(__('The plugin is currently <span class="w3tc-%s">%s</span> in <strong>%s%s</strong> mode.', 'w3-total-cache')
                       , $enabled ? "enabled" : "disabled"
                       , $enabled ? __('enabled', 'w3-total-cache') : __('disabled', 'w3-total-cache')
-                      , w3_w3tc_release_version($this->_config));
+                      , w3_w3tc_release_version($this->_config), (w3tc_edge_mode() ? __(' edge', 'w3-total-cache') : ''));
     ?>
 </p>
 <form id="w3tc_dashboard" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
@@ -13,10 +13,7 @@
         Perform a
         <input type="button" class="button button-self-test {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" value="<?php _e('compatibility check', 'w3-total-cache') ?>" />,
         <?php echo $this->nonce_field('w3tc'); ?>
-        <input id="flush_all" class="button" type="submit" name="w3tc_flush_all" value="<?php _e('empty all caches', 'w3-total-cache') ?>"<?php if (! $can_empty_memcache && ! $can_empty_opcode && ! $can_empty_file && ! $can_empty_cloudflare && ! $can_empty_varnish): ?> disabled="disabled"<?php endif; ?> /> <?php _e('at once or', 'w3-total-cache') ?>
-        <?php if ($can_empty_cloudflare): ?>
-        <input id="flush_all_except_cf" class="button" type="submit" name="w3tc_flush_all_except_cf" value="<?php _e('empty all caches except CloudFlare', 'w3-total-cache') ?>"<?php if (! $can_empty_memcache && ! $can_empty_opcode && ! $can_empty_file && ! $can_empty_cloudflare && ! $can_empty_varnish): ?> disabled="disabled"<?php endif; ?> /> <?php _e('at once or', 'w3-total-cache') ?>
-        <?php endif; ?>
+        <input id="flush_all" class="button" type="submit" name="w3tc_flush_all" value="<?php _e('empty all caches', 'w3-total-cache') ?>"<?php if (! $can_empty_memcache && ! $can_empty_opcode && ! $can_empty_file && ! $can_empty_varnish): ?> disabled="disabled"<?php endif; ?> /> <?php _e('at once or', 'w3-total-cache') ?>
         <input class="button" type="submit" name="w3tc_flush_memcached" value="<?php _e('empty only the memcached cache(s)', 'w3-total-cache') ?>"<?php if (! $can_empty_memcache): ?> disabled="disabled"<?php endif; ?> /> <?php _e('or', 'w3-total-cache') ?>
         <input class="button" type="submit" name="w3tc_flush_opcode" value="<?php _e('empty only the opcode cache', 'w3-total-cache') ?>"<?php if (! $can_empty_opcode): ?> disabled="disabled"<?php endif; ?> /> <?php _e('or', 'w3-total-cache') ?>
         <?php if ($can_empty_apc_system): ?>
@@ -26,7 +23,10 @@
         <?php if ($cdn_mirror_purge && $cdn_enabled): ?>
         <input class="button" type="submit" name="w3tc_flush_cdn" value="<?php _e('purge CDN completely', 'w3-total-cache') ?>" /> <?php _e('or', 'w3-total-cache') ?>
         <?php endif; ?>
-        <input type="submit" name="w3tc_flush_browser_cache" value="<?php _e('update Media Query String', 'w3-total-cache') ?>" <?php disabled(! ($browsercache_enabled && $browsercache_update_media_qs)) ?> class="button" />.
+        <input type="submit" name="w3tc_flush_browser_cache" value="<?php _e('update Media Query String', 'w3-total-cache') ?>" <?php disabled(! ($browsercache_enabled && $browsercache_update_media_qs)) ?> class="button" />
+        <?php
+        $string = __('or', 'w3-total-cache');
+        echo implode(" $string ", apply_filters('w3tc_dashboard_actions', array())) ?>.
     </p>
 </form>
 
