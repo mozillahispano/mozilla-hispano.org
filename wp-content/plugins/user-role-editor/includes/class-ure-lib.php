@@ -2406,6 +2406,42 @@ class Ure_Lib extends Garvs_WP_Lib {
            
     }
     // end of show_other_default_roles()
+
     
+    public function create_no_rights_role() {
+        global $wp_roles;
+        
+        $role_id = 'no_rights';
+        $role_name = 'No rights';
+        
+        if (!isset($wp_roles)) {
+            $wp_roles = new WP_Roles();
+        }
+        if (isset($wp_roles->roles[$role_name])) {
+            return;
+        }
+        add_role($role_id, $role_name, array());
+        
+    }
+    // end of create_no_rights_role()
+    
+    
+    public function get_users_without_role() {
+        
+        global $wpdb;
+        
+        $id = get_current_blog_id();
+        $blog_prefix = $wpdb->get_blog_prefix($id);
+        $query = "select ID from {$wpdb->users} users
+                    where not exists (select user_id from {$wpdb->usermeta}
+                                          where user_id=users.ID and meta_key='{$blog_prefix}capabilities') or
+                          exists (select user_id from wp_usermeta 
+                                    where user_id=users.ID and meta_key='{$blog_prefix}capabilities' and meta_value='a:0:{}')                ;";
+        $users = $wpdb->get_col($query);
+        
+        return $users;
+        
+    }
+    // end of get_users_without_role()
 }
 // end of URE_Lib class

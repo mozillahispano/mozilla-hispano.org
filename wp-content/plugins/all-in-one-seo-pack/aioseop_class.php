@@ -50,7 +50,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 	function All_in_One_SEO_Pack() {
 		global $aioseop_options;
 		$this->log_file = dirname( __FILE__ ) . '/all_in_one_seo_pack.log';
-		if ( $aioseop_options['aiosp_do_log'] )
+	
+		if ( !empty( $aioseop_options ) && isset( $aioseop_options['aiosp_do_log'] ) && $aioseop_options['aiosp_do_log'] )
 			$this->do_log = true;
 		else
 			$this->do_log = false;
@@ -172,7 +173,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			"ga_use_universal_analytics" => __( "Use the new Universal Analytics tracking code for Google Analytics; do this for new analytics accounts.", 'all_in_one_seo_pack' ),
 			"ga_domain"				=> __( "Enter your domain name if you have enabled tracking of Subdomains in Google Analytics.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"ga_multi_domain"		=> __( "Check this if you have enabled tracking of Multiple top-level domains in Google Analytics.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
-			"ga_display_advertising"=> __( "Support for Doubleclick Display Advertising tracking with legacy ga.js tracking method (not required for Universal Analytics).", 'all_in_one_seo_pack' ),
+			"ga_display_advertising"=> __( "Support for Doubleclick Display Advertising tracking.", 'all_in_one_seo_pack' ),
 			"ga_exclude_users"		=> __( "Exclude logged-in users from Google Analytics tracking by role.", 'all_in_one_seo_pack' ),
 			"ga_track_outbound_links"=> __( "Check this if you want to track outbound links with Google Analytics.<br /><a href='http://semperplugins.com/documentation/google-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 			"cpostnoindex" 			=> __( "Set the default NOINDEX setting for each Post Type.<br /><a href='http://semperplugins.com/documentation/noindex-settings/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
@@ -398,8 +399,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			"ga_display_advertising"=> Array(
 				'name' => __( '"Display Advertising" Tracking:', 'all_in_one_seo_pack' ),
 				'type' => 'checkbox',
-				'condshow' => Array( 'aiosp_google_analytics_id' => Array( 'lhs' => 'aiosp_google_analytics_id', 'op' => '!=', 'rhs' => '' ),
-									 'aiosp_ga_use_universal_analytics' => Array( 'lhs' => 'aiosp_ga_use_universal_analytics', 'op' => '!=', 'rhs' => 'on' ) ) ),				
+				'condshow' => Array( 'aiosp_google_analytics_id' => Array( 'lhs' => 'aiosp_google_analytics_id', 'op' => '!=', 'rhs' => '' ) ) ),				
 			"ga_exclude_users"=> Array(
 				'name' => __( 'Exclude Users From Tracking:', 'all_in_one_seo_pack' ),
 				'type' => 'multicheckbox',
@@ -1337,8 +1337,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( empty( $googleplus ) && !empty( $aioseop_options['aiosp_google_publisher'] ) )
 				$googleplus = $aioseop_options['aiosp_google_publisher'];
 
-
-			if ( $is_front_page ) {
+			$page = $this->get_page_number();
+			if ( ( $is_front_page ) && ( $page < 2 ) ) {
 				if ( !empty( $aioseop_options['aiosp_google_publisher'] ) )
 					$publisher = $aioseop_options['aiosp_google_publisher'];
 
@@ -1363,14 +1363,14 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				
 			if ( !empty( $aioseop_options['aiosp_google_author_advanced'] ) && isset( $aioseop_options['aiosp_google_author_location'] ) ) {
 				if ( $is_front_page && !in_array( 'front', $aioseop_options['aiosp_google_author_location'] ) ) {
-					unset( $author );
+					$author = '';
 				} else {
 					if ( in_array( 'all', $aioseop_options['aiosp_google_author_location'] ) ) {
 						if ( is_singular() && !is_singular( $aioseop_options['aiosp_google_author_location'] ) )
-								unset( $author );
+								$author = '';
 					} else {
 						if ( !is_singular( $aioseop_options['aiosp_google_author_location'] ) )
-							unset( $author );
+							$author = '';
 					}
 				}
 			}
@@ -1394,7 +1394,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( is_home() || is_archive() || is_paged() ) {
 				global $wp_query;
 				$max_page = $wp_query->max_num_pages;
-				$page = $this->get_page_number();
 				if ( $page > 1 )
 					$prev = get_previous_posts_page_link();
 				if ( $page < $max_page ) {
@@ -1707,6 +1706,10 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( !empty( $aioseop_options['aiosp_ga_multi_domain'] ) ) {
 				$allow_linker = "'allowLinker': true";
 			}
+			$display_advertising = '';
+			if (!empty( $aioseop_options['aiosp_ga_display_advertising'] ) ) {
+				$display_advertising = "ga('require', 'displayfeatures');";
+			}
 			$js_options = Array();
 			foreach( Array( 'cookie_domain', 'allow_linker' ) as $opts ) {
 				if ( !empty( $$opts ) ) $js_options[] = $$opts;
@@ -1724,6 +1727,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 			ga('create', '{$analytics_id}'{$js_options});
+			{$display_advertising}
 			ga('send', 'pageview');
 			</script>
 
@@ -1898,7 +1902,9 @@ function aiosp_google_analytics() {
 			if ( !empty( $term ) )
 				$link = get_term_link( $term, $taxonomy );
         } elseif ( $query->is_archive && function_exists( 'get_post_type_archive_link' ) && ( $post_type = get_query_var( 'post_type' ) ) ) {
-            $link = get_post_type_archive_link( $post_type );
+				if ( is_array( $post_type ) )
+					$post_type = reset( $post_type );
+	            $link = get_post_type_archive_link( $post_type );			
 	    } else {
 	        return false;
 	    }

@@ -360,6 +360,12 @@ div.aioseop_feature#aioseop_opengraph .aioseop_featured_image {
 div.aioseop_feature#aioseop_opengraph .aioseop_featured_image.active {
 	background-image: url(images/SocialMeta-Color-Standard.png);
 }
+div.aioseop_feature#aioseop_importer_exporter .aioseop_featured_image {
+	background-image: url(images/ImporterExporter-BW-Standard.png);
+}
+div.aioseop_feature#aioseop_importer_exporter .aioseop_featured_image.active {
+	background-image: url(images/ImporterExporter-Color-Standard.png);
+}
 div.aioseop_feature#aioseop_performance .aioseop_featured_image {
 	background-image: url(images/Performance-BW-Standard.png);
 }
@@ -637,6 +643,9 @@ table.aioseop_table td, table.aioseop_table th {
 .aioseop_input input[type="radio"] {
 	vertical-align: text-bottom;
 	margin: 15px 0 0 0;
+}
+#aiosp_importer_exporter_import_export_help_wrapper .aioseop_option_div {
+	max-height: initial;
 }
 #aiosp {
 	width: 100%;

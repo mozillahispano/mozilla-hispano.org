@@ -48,7 +48,7 @@ function ts_fab_show_bio( $context = '', $authorid = '' ) {
 					} else {
 						$ts_fab_googleplus_url = 'http://plus.google.com/' . get_user_meta( $author->ID, 'ts_fab_googleplus', true ) . '?rel=author';
 					}
-					$ts_fab_bio .= '<a href="' . esc_attr( $ts_fab_googleplus_url ) . '" title="Google+" rel="nofollow"><img src="' . plugins_url( 'images/googleplus.png', dirname(__FILE__) ) . '" width="24" height="24" alt="' . __( 'My Google+ profile', 'ts-fab' ) . '" /></a>';
+					$ts_fab_bio .= '<a href="' . esc_attr( $ts_fab_googleplus_url ) . '" title="Google+"><img src="' . plugins_url( 'images/googleplus.png', dirname(__FILE__) ) . '" width="24" height="24" alt="' . __( 'My Google+ profile', 'ts-fab' ) . '" /></a>';
 				}
 				
 				// LinkedIn

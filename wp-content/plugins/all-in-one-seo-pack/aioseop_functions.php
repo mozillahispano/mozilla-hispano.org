@@ -609,3 +609,27 @@ if( !function_exists( 'fnmatch' ) ) {
         return preg_match( "#^" . strtr( preg_quote( $pattern, '#' ), array( '\*' => '.*', '\?' => '.' ) ) . "$#i", $string );
     }
 }
+
+/***
+ * parse_ini_string() doesn't exist pre PHP 5.3
+ */
+if ( !function_exists( 'parse_ini_string' ) ) {
+	function parse_ini_string( $string, $process_sections ) {
+		if ( !class_exists( 'parse_ini_filter' ) ) {
+			/* Define our filter class */
+			class parse_ini_filter extends php_user_filter {
+				static $buf = '';
+				function filter( $in, $out, &$consumed, $closing ) {
+					$bucket = stream_bucket_new( fopen('php://memory', 'wb'), self::$buf );
+					stream_bucket_append( $out, $bucket );
+					return PSFS_PASS_ON;
+				}
+			}
+			/* Register our filter with PHP */
+			if ( !stream_filter_register("parse_ini", "parse_ini_filter") )
+				return false;
+		}
+		parse_ini_filter::$buf = $string;
+		return parse_ini_file( "php://filter/read=parse_ini/resource=php://memory", $process_sections );
+	}
+}
