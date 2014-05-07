@@ -23,6 +23,14 @@
   }
 }
 
+@media screen and (max-width: 880px) {
+
+  #contenido h3 {
+    font-size: 1.6em;
+  }
+
+}
+
 @media screen and (min-width: 795px) {
   #page-body {
     width: 75%;
@@ -32,10 +40,8 @@
     width: 15%;
   }
 
-  #contenido h3 {
-	  font-size: 1.05em;
-  }
 }
+
 
 @media screen and (max-width: 330px) {
   #tullido {
@@ -48,6 +54,10 @@
 
   #main-content {
     width: auto !important;
+  }
+
+  #contenido h3 {
+    font-size: 1.05em;
   }
 
   /*#lienzo, #tullido {
