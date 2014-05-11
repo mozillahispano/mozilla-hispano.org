@@ -35,7 +35,7 @@ function listar_tag($atts, $content = null) {
         $list='<ul class="listado-'.$tag.'">';
         foreach($myposts as $post) :
                 setup_postdata($post);
-             $list.='<li><a href="'.get_permalink().'">'.the_title("","",false).'</a> <small>'.get_the_time('j F, 
+             $list.='<li><a href="'.get_permalink().'">'.the_title("","",false).'</a> <small>'.get_the_time('j F,
 Y').'</small></li>';
         endforeach;
 	#rewind_posts();
@@ -57,13 +57,13 @@ function video($atts, $content = null) {
         /* Tomamos tamaños o si no tomamos valores por defecto */
 		if (empty($width)) $width = "640";
 		if (empty($height)) $height = "510";
-		
+
         $salida = "<video";
 		$salida .= " width=\"" . $width . "\" ";
 		$salida .= " height=\"" . $height . "\" ";
 
 		if (!empty($poster))
-			$salida .= "poster=\"" . $poster . "\" "; 
+			$salida .= "poster=\"" . $poster . "\" ";
 
 		$salida .= "controls>";
 
@@ -72,13 +72,13 @@ function video($atts, $content = null) {
 		if (!empty($mp4))
 			$salida .= "<source src=\"" . $mp4 . "\" type=\"video/mp4\" />";
 
-		$salida .= "<object width=\"" . $width . "\" height=\"" . $height . "\" 
+		$salida .= "<object width=\"" . $width . "\" height=\"" . $height . "\"
 type=\"application/x-shockwave-flash\"";
 		$salida .= " data=\"" . $flash . "\">";
 		$salida .= "<param name=\"movie\" value=\"" . $flash . "\" />";
 		$salida .=	"<p>Necesitas el plugin de Flash para ver este vídeo</p></object></video>";
 
-		$salida .= "<p class=\"descarga-video\">Descargar vídeo <a href=\"" . $ogv . "\">en formato 
+		$salida .= "<p class=\"descarga-video\">Descargar vídeo <a href=\"" . $ogv . "\">en formato
 libre ogv</a>";
 
 		if (!empty($mp4))
@@ -91,20 +91,20 @@ add_shortcode("video", "video");
 
 function podcast_metadata() {
 global $post;
-$text="<p>Podéis descargar directamente el archivo o suscribiros al <a hreflang=\"es\" 
-href=\"http://feeds.mozilla-hispano.org/mozillahispano-podcast\">RSS del podcast</a> con vuestro lector de 
-podcast preferido, <a hreflang=\"es\" 
+$text="<p>Podéis descargar directamente el archivo o suscribiros al <a hreflang=\"es\"
+href=\"http://feeds.mozilla-hispano.org/mozillahispano-podcast\">RSS del podcast</a> con vuestro lector de
+podcast preferido, <a hreflang=\"es\"
 href=\"http://itunes.apple.com/es/podcast/el-podcast-de-mozilla-hispano/id347273991\">iTunes</a> o <a href=\"http://www.miroguide.com/audio/14695\">Miro</a>.</p>";
 
-$text.= "<p>MP3 | <strong><a href=\"" . get_post_meta($post->ID, 'podcast_mp3', true) . "\">El podcast de Mozilla 
+$text.= "<p>MP3 | <strong><a href=\"" . get_post_meta($post->ID, 'podcast_mp3', true) . "\">El podcast de Mozilla
 Hispano #" . get_post_meta($post->ID, 'podcast_num', true) . "</a></strong></p>";
 
-$text.= "<p>OGG | <strong><a href=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\">El podcast de Mozilla 
+$text.= "<p>OGG | <strong><a href=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\">El podcast de Mozilla
 Hispano #" . get_post_meta($post->ID, 'podcast_num', true) . "</a></strong></p>";
 
-$text.= "<p> 
-	<audio controls=\"controls\" src=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\" 
-tabindex=\"0\"></audio>										
+$text.= "<p>
+        <audio controls=\"controls\" src=\"" . get_post_meta($post->ID, 'podcast_ogg', true) . "\"
+tabindex=\"0\"></audio>
 </p>";
 return $text;
 }
@@ -122,7 +122,7 @@ function get_search_MH_form() {
 
 	$form = '<form method="get" id="searchform" action="/buscar.php" >
 	<div><label class="screen-reader-text" for="s">' . __('Search for:') . '</label>
-	<input type="text" value="' . esc_attr(apply_filters('the_search_query', get_search_query())) . '" 
+	<input type="text" placeholder="Buscar" value="' . esc_attr(apply_filters('the_search_query', get_search_query())) . '"
 name="q" id="s" />
 	<input type="hidden" name="desde" value="noti" />
 	<input type="hidden" name="donde" value="noti" />
@@ -142,7 +142,7 @@ function ultimos_posts() {
 				$salida .= $listado ;
 			$salida .= "</ul>";
 		endif;
-		
+
         return $salida;
 }
 add_shortcode("ultimos-posts", "ultimos_posts");
@@ -155,11 +155,11 @@ function listar_noticias($atts, $content = null) {
         global $post;
         $tmp_post = $post;
         $myposts = get_posts('numberposts='.$num.'&order=DESC&orderby=date&tag='.$tag);
-        
+
         foreach($myposts as $post) :
         	setup_postdata($post);
         	$list.="<div class=\"noticia-".$tag."\">";
-        		$list.="<h3><a title=\"" . get_the_title() . "\" href=\"" . get_permalink() . "\">" . 
+        		$list.="<h3><a title=\"" . get_the_title() . "\" href=\"" . get_permalink() . "\">" .
 get_the_title() ."</a></h3>";
         		$list.='<p>' . get_the_excerpt() . '</p>';
         	$list.='</div>';
@@ -176,17 +176,17 @@ function listar_fecha($atts, $content = null) {
 		"year" => ''
         ), $atts));
 	$myposts = get_posts('monthnum='.$month.'&year=' . $year . '&order=DESC&orderby=date&tag='.$tag);
-        
+
         foreach($myposts as $post) :
         	setup_postdata($post);
         	$list.='<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-		
+
 		if ( has_post_thumbnail() )
 		{
 			// the current post has a thumbnail
 			$list.='<p style="float:left; margin-right: 1em;">' . get_the_post_thumbnail( array(130,185) ) . '</p>';
 		}
-		
+
 		$list.='<p>' . get_the_excerpt() . '</p>';
         endforeach;
         wp_reset_query();

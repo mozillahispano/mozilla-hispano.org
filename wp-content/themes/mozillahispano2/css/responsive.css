@@ -16,22 +16,47 @@
    Media Queries
    ========================================================================== */
 
-@media screen and (max-width: 795px) {
-  #pie #pie-contenido .c2 {
-    width: 100%;
-    background-position: 50% 50%;
-  }
-}
-
 @media screen and (max-width: 880px) {
 
   #contenido h3 {
     font-size: 1.6em;
   }
 
+  #contenido .portada-individual {
+    width: 65%;
+  }
+
+  #searchform {
+    padding: 5%;
+  }
+
+  #searchform input[type="text"] {
+    width: 100% !important;
+  }
+
+  #searchsubmit {
+    display: none;
+  }
+
+  #social {
+    width: 150px;
+    position: relative;
+    left: -10px;
+  }
+
+  #menu {
+    margin-right: 0;
+  }
+
 }
 
 @media screen and (min-width: 795px) {
+
+  #pie #pie-contenido .c2 {
+    width: 100%;
+    background-position: 50% 50%;
+  }
+
   #page-body {
     width: 75%;
   }
@@ -58,6 +83,10 @@
 
   #contenido h3 {
     font-size: 1.05em;
+  }
+
+   #contenido .portada-individual {
+    width: 95%;
   }
 
   /*#lienzo, #tullido {
@@ -380,7 +409,7 @@ ul.topiclist dt {
    Main Nav
    -------------------------------------------------------------------------- */
   #menu li:hover, #menu li:hover a, .js #menu li:hover span {
-    background: #FFFFFF; 
+    background: #FFFFFF;
     box-shadow: none;
   }
 
@@ -435,7 +464,7 @@ ul.topiclist dt {
   }
 
   #menu li {
-    display: block; 
+    display: block;
     background: #fff;
     float: none;
     width: 100%;
