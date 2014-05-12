@@ -409,7 +409,18 @@ ul.topiclist dt {
    Main Nav
    -------------------------------------------------------------------------- */
   #menu li:hover, #menu li:hover a, .js #menu li:hover span {
-    background: #FFFFFF;
+    background-color: #247ac1;
+    background-position: 94% 50%;
+    background-repeat: no-repeat;
+    background-image: -moz-linear-gradient(#43a6e2, #247ac1);
+    background-image: -ms-linear-gradient(#43a6e2, #247ac1);
+    background-image: -o-linear-gradient(#43a6e2, #247ac1);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
+    background-image: -webkit-linear-gradient(#43a6e2, #247ac1);
+    background-image: linear-gradient(#43a6e2, #247ac1);
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.25);
     box-shadow: none;
   }
 
@@ -432,7 +443,7 @@ ul.topiclist dt {
     position: relative;
   }
 
-  #toggle:active {
+  #toggle.open {
     background-position: center -100px;
   }
 
@@ -504,11 +515,18 @@ ul.topiclist dt {
   #menu li ul.submenu li, #menu li ul.submenu li a {
     width: 100%;
     margin: 0;
-    background: rgb(222, 227, 230);
+    background: #FFF;
+    text-shadow: none;
+    color: #000;
+  }
+
+  #menu li ul.submenu li:last-child {
+    padding-bottom: 5px
   }
 
   #menu li ul.submenu li a, #menu li ul.submenu li a:hover {
     border-radius: 0;
+    padding: 5px 10px;
   }
 
   .close {
