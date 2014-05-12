@@ -673,11 +673,6 @@ Author URI: http://dev7studios.com
     width: 100% !important;
 }
 
-a.fancybox img.size-full, img.size-medium {
-	float: left;
-    margin: 0 20px 12px 0;
-}
-
 .portada-individual, .portada-extra{
 	border-bottom: 1px solid #E5E5E5 !important;
     margin: 1em !important;
