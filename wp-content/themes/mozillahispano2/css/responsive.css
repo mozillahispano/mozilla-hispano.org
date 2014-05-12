@@ -16,22 +16,47 @@
    Media Queries
    ========================================================================== */
 
-@media screen and (max-width: 795px) {
-  #pie #pie-contenido .c2 {
-    width: 100%;
-    background-position: 50% 50%;
-  }
-}
-
 @media screen and (max-width: 880px) {
 
   #contenido h3 {
     font-size: 1.6em;
   }
 
+  #contenido .portada-individual {
+    width: 65%;
+  }
+
+  #searchform {
+    padding: 5%;
+  }
+
+  #searchform input[type="text"] {
+    width: 100% !important;
+  }
+
+  #searchsubmit {
+    display: none;
+  }
+
+  #social {
+    width: 150px;
+    position: relative;
+    left: -10px;
+  }
+
+  #menu {
+    margin-right: 0;
+  }
+
 }
 
 @media screen and (min-width: 795px) {
+
+  #pie #pie-contenido .c2 {
+    width: 100%;
+    background-position: 50% 50%;
+  }
+
   #page-body {
     width: 75%;
   }
@@ -58,6 +83,10 @@
 
   #contenido h3 {
     font-size: 1.05em;
+  }
+
+   #contenido .portada-individual {
+    width: 95%;
   }
 
   /*#lienzo, #tullido {
@@ -380,7 +409,18 @@ ul.topiclist dt {
    Main Nav
    -------------------------------------------------------------------------- */
   #menu li:hover, #menu li:hover a, .js #menu li:hover span {
-    background: #FFFFFF; 
+    background-color: #247ac1;
+    background-position: 94% 50%;
+    background-repeat: no-repeat;
+    background-image: -moz-linear-gradient(#43a6e2, #247ac1);
+    background-image: -ms-linear-gradient(#43a6e2, #247ac1);
+    background-image: -o-linear-gradient(#43a6e2, #247ac1);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6e2), color-stop(100%,#247ac1));
+    background-image: -webkit-linear-gradient(#43a6e2, #247ac1);
+    background-image: linear-gradient(#43a6e2, #247ac1);
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.25);
     box-shadow: none;
   }
 
@@ -403,7 +443,7 @@ ul.topiclist dt {
     position: relative;
   }
 
-  #toggle:active {
+  #toggle.open {
     background-position: center -100px;
   }
 
@@ -435,7 +475,7 @@ ul.topiclist dt {
   }
 
   #menu li {
-    display: block; 
+    display: block;
     background: #fff;
     float: none;
     width: 100%;
@@ -475,11 +515,18 @@ ul.topiclist dt {
   #menu li ul.submenu li, #menu li ul.submenu li a {
     width: 100%;
     margin: 0;
-    background: rgb(222, 227, 230);
+    background: #FFF;
+    text-shadow: none;
+    color: #000;
+  }
+
+  #menu li ul.submenu li:last-child {
+    padding-bottom: 5px
   }
 
   #menu li ul.submenu li a, #menu li ul.submenu li a:hover {
     border-radius: 0;
+    padding: 5px 10px;
   }
 
   .close {
