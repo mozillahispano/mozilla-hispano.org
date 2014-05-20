@@ -201,4 +201,20 @@ add_filter( 'automatic_updates_is_vcs_checkout', '__return_false' );
 remove_action('wp_head', 'wp_generator');
 /* Quitamos los enlaces a los feeds, lo meteremos a mano */
 remove_theme_support('automatic-feed-links');
+
+/* Conseguimos sacar los posts más vistos */
+function setPostViews($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+// Remove issues with prefetching adding extra views
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 ?>
