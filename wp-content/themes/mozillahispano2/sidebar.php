@@ -80,7 +80,7 @@
 
 		<h3 id="descargas">Descargas</h3>
                 <p class="boletin">
-                    <a href="/productos">Descarga</a> los programas de mozilla.
+                    <a href="https://www.mozilla.org/es-ES/products/">Descarga</a> los programas de mozilla.
                 </p>
 
 		<!-- Artículos destacados -->
