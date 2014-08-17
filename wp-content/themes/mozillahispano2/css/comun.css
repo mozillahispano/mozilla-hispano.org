@@ -63,13 +63,12 @@ video {
 }
 
 #lienzo {
-    overflow: hidden;
+	overflow: hidden;
 	margin: 0px auto;
-	max-width: 1000px;
 }
 
 #tullido {
-	margin: 0px 20px;
+	margin: auto;
 	position: relative;
 	text-align: left;
 	max-width: 980px;
