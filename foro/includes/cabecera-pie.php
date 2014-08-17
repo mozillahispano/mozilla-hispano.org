@@ -121,6 +121,10 @@ var pageTracker = _gat._getTracker("UA-2846159-1");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
+
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
+
 PINTA;
 return $temp;
 }
@@ -150,10 +154,6 @@ return $temp;
 function pintaJs()
 {
 $temp= <<<PINTA
-<script type="text/javascript" src="/wp-includes/js/jquery/jquery.js"></script>
-<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
-<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
-
 PINTA;
 return $temp;
 }
