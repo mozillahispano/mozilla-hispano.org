@@ -52,10 +52,6 @@
 
 @media screen and (min-width: 795px) {
 
-  #pie #pie-contenido .c2 {
-    width: 100%;
-    background-position: 50% 50%;
-  }
 
   #page-body {
     width: 75%;
@@ -597,10 +593,6 @@ ul.topiclist dt {
     margin-top: 30px;
     width: 100%;
     position: relative; }
-
-  #pie #pie-contenido {
-    margin: auto;
-    width: 100%; }
 
   #pie #pie-contenido .c2 {
     background-position: 50% 50%;
