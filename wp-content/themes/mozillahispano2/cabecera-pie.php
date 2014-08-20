@@ -7,7 +7,8 @@ $temp= <<<PINTA
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
 				</div>
 				<div id="menu">
-					<ul class="clearfix">
+          <span id="toggle"></span>
+					<ul id="menu-nav" class="clearfix">
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
 							<ul class="submenu">
@@ -138,25 +139,27 @@ $temp= <<<PINTA
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
 tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
 
-
-
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["setDomains", ["*.www.mozilla-hispano.org"]]);
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
-
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
   (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.mozilla-hispano.org/stats/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "1"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.mozilla-hispano.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><img src="//www.mozilla-hispano.org/stats/piwik.php?idsite=1&amp;rec=1" style="border:0" alt="" /></noscript>
+<noscript><p><img src="//stats.mozilla-hispano.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
+
+<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
+
 PINTA;
 return $temp;
 }
@@ -176,6 +179,7 @@ $temp= <<<PINTA
 
 	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
+	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 
 PINTA;
 return $temp;
@@ -183,8 +187,6 @@ return $temp;
 function pintaJs()
 {
 $temp= <<<PINTA
-<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
-
 PINTA;
 return $temp;
 }

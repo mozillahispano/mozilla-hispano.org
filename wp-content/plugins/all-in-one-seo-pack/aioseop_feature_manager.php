@@ -23,6 +23,8 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Feature_Manager' ) ) {
 				'performance' => Array( 'name'			=> __( 'Performance', 'all_in_one_seo_pack' ),
 										'description'	=> __( 'Optimize performance related to SEO and check your system status.', 'all_in_one_seo_pack' ),
 										'default'	=> 'on' ),
+				'importer_exporter'	=> Array( 'name' => __( 'Importer & Exporter', 'all_in_one_seo_pack' ),
+									  'description' => __( 'Exports and imports your All in One SEO Pack plugin settings.', 'all_in_one_seo_pack' ) ),
 				'coming_soon' => Array( 'name'			=> __( 'Coming Soon...', 'all_in_one_seo_pack' ),
 					 					'description'	=> __( 'File Editor', 'all_in_one_seo_pack' ),
 										'save'		=> false ) );

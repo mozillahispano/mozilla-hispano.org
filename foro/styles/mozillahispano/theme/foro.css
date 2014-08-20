@@ -3,8 +3,8 @@
 	Style name:		proSilver
 	Based on style:	proSilver (this is the default phpBB 3 style)
 	Original author:	subBlue ( http://www.subBlue.com/ )
-	Modified by:		
-	
+	Modified by:
+
 	Copyright 2006 phpBB Group ( http://www.phpbb.com/ )
     --------------------------------------------------------------
 */
@@ -30,7 +30,6 @@
 	text-transform: uppercase;
 	margin-bottom: 3px;
 	padding-bottom: 2px;
-	font-size: 1.05em;
 	color: #989898;
 	margin-top: 20px;
 }
@@ -88,7 +87,6 @@
 
 #page-body {
 	float: left;
-    width: 75%;
 }
 
 #page-footer {
@@ -395,7 +393,7 @@ table.info tbody th {
 
 /* Misc layout styles
 ---------------------------------------- */
-/* column[1-2] styles are containers for two column layouts 
+/* column[1-2] styles are containers for two column layouts
    Also see tweaks.css */
 .column1 {
 	float: left;
@@ -692,10 +690,10 @@ a.topictitle:active {
 }
 
 
-/* Profile searchresults */	
+/* Profile searchresults */
 .search .postprofile a {
 
-	text-decoration: none; 
+	text-decoration: none;
 	font-weight: normal;
 }
 
@@ -1017,8 +1015,8 @@ div[class].topic-actions {
 	width: 74%;
 	float: right;
 	clear: both;
-	padding-left: 10px;  
-	border-left: 1px solid #FFFFFF; 
+	padding-left: 10px;
+	border-left: 1px solid #FFFFFF;
 }
 
 .postbody .ignore {
@@ -1218,7 +1216,7 @@ blockquote blockquote {
 	/* Nested quotes */
 	background-color:#bababa;
 	font-size:1em;
-	margin:0.5em 1px 0pt 15px;	
+	margin:0.5em 1px 0pt 15px;
 }
 
 blockquote blockquote blockquote {
@@ -1289,7 +1287,7 @@ dl.codebox code {
 ----------------------------------------*/
 .attachbox {
 	float: left;
-	width: auto; 
+	width: auto;
 	margin: 5px 5px 5px 0;
 	padding: 6px;
 	background-color: #FFFFFF;
@@ -1368,7 +1366,7 @@ dl.file dt {
 dl.file dd {
 	color: #666666;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 }
 
 dl.thumbnail img {
@@ -2146,7 +2144,7 @@ ol.def-rules li {
 
 .pmlist li.pm_replied_colour, .pm_replied_colour {
 	border: solid 3px #c2c2c2;
-	border-width: 0 3px;	
+	border-width: 0 3px;
 }
 
 .pmlist li.pm_friend_colour, .pm_friend_colour {
@@ -2241,7 +2239,7 @@ fieldset dl {
 }
 
 fieldset dt {
-	float: left;	
+	float: left;
 	width: 40%;
 	text-align: left;
 	display: block;
@@ -2329,7 +2327,6 @@ fieldset.quick-login {
 }
 
 fieldset.quick-login input {
-	width: 15%;
 	vertical-align: middle;
 	margin-right: 5px;
 }
@@ -2487,7 +2484,7 @@ input.button1, input.button2 {
 }
 
 a.button1, input.button1, input.button3, a.button2, input.button2 {
-	width: auto !important;
+	width: auto;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	color: #000;
@@ -2544,16 +2541,16 @@ input.search {
 }
 /* proSilver Style Sheet Tweaks
 
-These style definitions are mainly IE specific 
+These style definitions are mainly IE specific
 tweaks required due to its poor CSS support.
 -------------------------------------------------*/
 
 * html table, * html select, * html input { font-size: 100%; }
 * html hr { margin: 0; }
-* html span.corners-top, * html span.corners-bottom { 
+* html span.corners-top, * html span.corners-bottom {
 /*background-image: url("{T_THEME_PATH}/images/corners_left.gif"); */
 }
-* html span.corners-top span, * html span.corners-bottom span { 
+* html span.corners-top span, * html span.corners-bottom span {
 /*background-image: url("{T_THEME_PATH}/images/corners_right.gif"); */
 }
 
@@ -2581,12 +2578,12 @@ html>body dd label input { vertical-align: text-bottom; }	/* Align checkboxes/ra
 * html .column1, * html .column2 { width: 45%; }
 
 /* Nice method for clearing floated blocks without having to insert any extra markup (like spacer above)
-   From http://www.positioniseverything.net/easyclearing.html 
+   From http://www.positioniseverything.net/easyclearing.html
 #tabs:after, #minitabs:after, .post:after, .navbar:after, fieldset dl:after, ul.topiclist dl:after, ul.linklist:after, dl.polls:after {
-	content: "."; 
-	display: block; 
-	height: 0; 
-	clear: both; 
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
 	visibility: hidden;
 }*/
 
@@ -2639,7 +2636,7 @@ dl.icon {
 	margin: 0 -2px 0px -1px;
 }
 }
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for common.css
 -------------------------------------------------------------- */
@@ -2853,7 +2850,7 @@ p.rules {
 	background-image: none;
 }
 
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for links.css
 -------------------------------------------------------------- */
@@ -2934,7 +2931,7 @@ a.topictitle:active {
 
 }
 
-/* Profile searchresults */	
+/* Profile searchresults */
 .search .postprofile a {
 
 }
@@ -2971,7 +2968,7 @@ a.right:hover {
 }
 
 
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for content.css
 -------------------------------------------------------------- */
@@ -3221,7 +3218,7 @@ fieldset.polls dd div {
 	background-image: url("{T_IMAGESET_PATH}/es/icon_user_online.gif");
 }
 
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for buttons.css
 -------------------------------------------------------------- */
@@ -3288,7 +3285,7 @@ a.fontsize {
 .solve-icon, .solve-icon a		{ background-image: url("{IMG_ICON_TOPIC_SOLVED_SET_SRC}"); }
 .unsolve-icon, .unsolve-icon a		{ background-image: url("{IMG_ICON_TOPIC_SOLVED_UNSET_SRC}"); }
 
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for cp.css
 -------------------------------------------------------------- */
@@ -3484,7 +3481,7 @@ pmlist li.pm_foe_colour, .pm_foe_colour {
 	background-color: #EEE;
 }
 
-/*  	
+/*
 --------------------------------------------------------------
 Colours and backgrounds for forms.css
 -------------------------------------------------------------- */
@@ -3530,7 +3527,7 @@ fieldset.quick-login input {
 /* Input field styles
 ---------------------------------------- */
 .inputbox {
-	background-color: #FFFFFF; 
+	background-color: #FFFFFF;
 	border-color: #B6B9BE;
 	color: #333333;
 }
@@ -3644,7 +3641,7 @@ a.unsolvedlink {
 		background: -ms-linear-gradient(top,  rgba(67,166,226,1) 0%,rgba(39,122,193,1) 100%); /* IE10+ */
 		background: linear-gradient(to bottom,  rgba(67,166,226,1) 0%,rgba(39,122,193,1) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43a6e2', endColorstr='#277ac1',GradientType=0 ); /* IE6-9 */
-		
+
     background-repeat: repeat-x;
     border: 0 none;
     border-radius: 0.25em 0.25em 0.25em 0.25em;

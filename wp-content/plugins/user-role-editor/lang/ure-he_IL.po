@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 08:39+0700\n"
+"POT-Creation-Date: 2014-04-06 12:21+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: Ahrale, Atar4U.com <contact@atar4u.com>\n"
@@ -20,16 +20,36 @@ msgstr ""
 # <input type="submit" class="button-primary" name="user_role_editor_settings_update" value="<?php _e('Save', 'ure') ?>" />
 # </p>
 # wpml-name: c9cc8cce247e49bae79f15173ce97354
-#: ../includes/settings-template.php:63
+#: ../includes/settings-template.php:80 ../includes/settings-template.php:111
+#: ../includes/settings-template.php:140
 msgid "Save"
 msgstr "שמירה"
+
+#: ../includes/settings-template.php:104
+msgid ""
+"Note for multisite environment: take into account that other default roles "
+"should exist at the site, in order to be assigned to the new registered "
+"users."
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:185
+msgid "Change role for users without role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:186
+msgid "No rights"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:187
+msgid "Provide new role"
+msgstr ""
 
 # if (!is_array($caps_to_remove) || count($caps_to_remove) == 0 || !isset($caps_to_remove[$capability_id])) {
 # return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability_id);
 # }
 # wpml-name: 0e132e68574d9609d956f9be409f7384
-#: ../includes/class-user-role-editor.php:171
-#: ../includes/class-user-role-editor.php:173
+#: ../includes/class-user-role-editor.php:271
+#: ../includes/class-user-role-editor.php:273
 msgid "You do not have permission to edit this user."
 msgstr ""
 
@@ -37,7 +57,7 @@ msgstr ""
 # '">' . __('Capabilities', 'ure') . '</a>';
 # }
 # wpml-name: 82ec2cd6fda87713f588da75c3b1d0ed
-#: ../includes/class-user-role-editor.php:314
+#: ../includes/class-user-role-editor.php:414
 msgid "Capabilities"
 msgstr "יכולות"
 
@@ -45,7 +65,7 @@ msgstr "יכולות"
 # $settings_link = "<a href='options-general.php?page=settings-".URE_PLUGIN_FILE."'>" . __('Settings', 'ure') . "</a>";
 # array_unshift($links, $settings_link);
 # wpml-name: f4f70727dc34561dfde1a3c529b6205c
-#: ../includes/class-user-role-editor.php:407
+#: ../includes/class-user-role-editor.php:507
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -53,12 +73,12 @@ msgstr "הגדרות"
 # $links[] = '<a target="_blank" href="http://role-editor.com/changelog">' . __('Changelog', 'ure') . '</a>';
 # }
 # wpml-name: c49182dc0c7a70b9cd2e10853d9ec6c7
-#: ../includes/class-user-role-editor.php:420
-#: ../includes/class-ure-lib.php:2089
+#: ../includes/class-user-role-editor.php:520
+#: ../includes/class-ure-lib.php:2235
 msgid "Changelog"
 msgstr "יומן שינויים"
 
-#: ../includes/class-user-role-editor.php:442
+#: ../includes/class-user-role-editor.php:542
 msgid "Overview"
 msgstr ""
 
@@ -66,28 +86,38 @@ msgstr ""
 # esc_html__('User Role Editor', 'ure'),
 # $this->key_capability, 'settings-'.URE_PLUGIN_FILE, array(&$this, 'settings'));
 # wpml-name: c26ad3b67c7211a5872194d68cb5a8eb
-#: ../includes/class-user-role-editor.php:451
-#: ../includes/class-user-role-editor.php:479
-#: ../includes/class-user-role-editor.php:678
-#: ../includes/class-ure-lib.php:223
+#: ../includes/class-user-role-editor.php:551
+#: ../includes/class-user-role-editor.php:579
+#: ../includes/class-user-role-editor.php:873
+#: ../includes/class-ure-lib.php:225
 msgid "User Role Editor"
 msgstr "User Role Editor"
-
-#: ../includes/class-user-role-editor.php:497
-msgid ""
-"You do not have sufficient permissions to manage options for User Role "
-"Editor."
-msgstr ""
 
 # $this->lib->flush_options();
 # $this->lib->show_message(__('User Role Editor options are updated', 'ure'));
 # } else { // get options from the options storage
 # wpml-name: aef323fbbd25d577170fff17c15cf857
-#: ../includes/class-user-role-editor.php:526
+#: ../includes/class-user-role-editor.php:639
+#: ../includes/class-user-role-editor.php:684
 msgid "User Role Editor options are updated"
 msgstr "אפשרויות עורך תפקיד משתמש עודכנו"
 
-#: ../includes/class-user-role-editor.php:571
+# 'reset_warning' => __('Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?', 'ure'),
+# 'default_role' => __('Default Role', 'ure'),
+# 'set_new_default_role' => __('Set New Default Role', 'ure'),
+# wpml-name: db135301eaf77a955b2b016f9b9d6a99
+#: ../includes/class-user-role-editor.php:668
+#, fuzzy
+msgid "Default Roles are updated"
+msgstr "תפקיד ברירת מחדל"
+
+#: ../includes/class-user-role-editor.php:692
+msgid ""
+"You do not have sufficient permissions to manage options for User Role "
+"Editor."
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:764
 msgid "Insufficient permissions to work with User Role Editor"
 msgstr ""
 
@@ -95,7 +125,7 @@ msgstr ""
 # 'select_all' => __('Select All', 'ure'),
 # 'unselect_all' => __('Unselect All', 'ure'),
 # wpml-name: 45e96c0a422ce8a1a6ec1bd5eb9625c6
-#: ../includes/class-user-role-editor.php:624
+#: ../includes/class-user-role-editor.php:818
 msgid "Select All"
 msgstr "בחירת הכל"
 
@@ -103,7 +133,7 @@ msgstr "בחירת הכל"
 # 'unselect_all' => __('Unselect All', 'ure'),
 # 'reverse' => __('Reverse', 'ure'),
 # wpml-name: 016269c0d83a19a19a2ee0a4294740b4
-#: ../includes/class-user-role-editor.php:625
+#: ../includes/class-user-role-editor.php:819
 msgid "Unselect All"
 msgstr "לא לבחור שום דבר"
 
@@ -111,7 +141,7 @@ msgstr "לא לבחור שום דבר"
 # 'reverse' => __('Reverse', 'ure'),
 # 'update' => __('Update', 'ure'),
 # wpml-name: 67f115c1fddc4ce1aeb1c754001585bc
-#: ../includes/class-user-role-editor.php:626
+#: ../includes/class-user-role-editor.php:820
 msgid "Reverse"
 msgstr "להפוך"
 
@@ -119,7 +149,7 @@ msgstr "להפוך"
 # 'update' => __('Update', 'ure'),
 # 'confirm_submit' => __('Please confirm permissions update', 'ure'),
 # wpml-name: 06933067aafd48425d67bcb01bba5cb6
-#: ../includes/class-user-role-editor.php:627
+#: ../includes/class-user-role-editor.php:821
 msgid "Update"
 msgstr "עדכן"
 
@@ -127,7 +157,7 @@ msgstr "עדכן"
 # 'confirm_submit' => __('Please confirm permissions update', 'ure'),
 # 'add_new_role_title' => __('Add New Role', 'ure'),
 # wpml-name: 85251872440cc94c6080a90451e018c4
-#: ../includes/class-user-role-editor.php:628
+#: ../includes/class-user-role-editor.php:822
 msgid "Please confirm permissions update"
 msgstr "נא לאשר את עדכון ההרשאות"
 
@@ -135,7 +165,7 @@ msgstr "נא לאשר את עדכון ההרשאות"
 # 'add_new_role_title' => __('Add New Role', 'ure'),
 # 'role_name_required' => __(' Role name (ID) can not be empty!', 'ure'),
 # wpml-name: cf46e7fb1093a47a76f35fc61ab5d432
-#: ../includes/class-user-role-editor.php:629
+#: ../includes/class-user-role-editor.php:823
 msgid "Add New Role"
 msgstr "הוסף סוג משתמש חדש"
 
@@ -143,7 +173,7 @@ msgstr "הוסף סוג משתמש חדש"
 # 'role_name_required' => __(' Role name (ID) can not be empty!', 'ure'),
 # 'role_name_valid_chars' => __(' Role name (ID) must contain latin characters, digits, hyphens or underscore only!', 'ure'),
 # wpml-name: 1400ecabfd5a7c9527f71723da18dad0
-#: ../includes/class-user-role-editor.php:630
+#: ../includes/class-user-role-editor.php:824
 msgid " Role name (ID) can not be empty!"
 msgstr " שם התפקיד (מזהה) אינו יכול להישאר ריק!"
 
@@ -151,18 +181,24 @@ msgstr " שם התפקיד (מזהה) אינו יכול להישאר ריק!"
 # 'role_name_valid_chars' => __(' Role name (ID) must contain latin characters, digits, hyphens or underscore only!', 'ure'),
 # 'add_role' => __('Add Role', 'ure'),
 # wpml-name: 7b94f04285f5efc287652bd40338e730
-#: ../includes/class-user-role-editor.php:631
+#: ../includes/class-user-role-editor.php:825
 msgid ""
 " Role name (ID) must contain latin characters, digits, hyphens or underscore "
 "only!"
 msgstr ""
 " שם התפקיד (מזהה) חייב להכיל אותיות לטיניות, ספרות, מקפים או קו תחתון בלבד!"
 
+#: ../includes/class-user-role-editor.php:826
+msgid ""
+" WordPress does not support numeric Role name (ID). Add latin characters to "
+"it."
+msgstr ""
+
 # 'role_name_valid_chars' => __(' Role name (ID) must contain latin characters, digits, hyphens or underscore only!', 'ure'),
 # 'add_role' => __('Add Role', 'ure'),
 # 'delete_role' => __('Delete Role', 'ure'),
 # wpml-name: 1453b39dcc15a372640d960c6db7db25
-#: ../includes/class-user-role-editor.php:632
+#: ../includes/class-user-role-editor.php:827
 msgid "Add Role"
 msgstr "הוספת תפקיד"
 
@@ -170,7 +206,7 @@ msgstr "הוספת תפקיד"
 # 'delete_role' => __('Delete Role', 'ure'),
 # 'cancel' =>  __('Cancel', 'ure'),
 # wpml-name: 4e2626418b461869a386850b0f3b437f
-#: ../includes/class-user-role-editor.php:633
+#: ../includes/class-user-role-editor.php:828
 msgid "Delete Role"
 msgstr "מחיקת סוג משתמש"
 
@@ -178,7 +214,7 @@ msgstr "מחיקת סוג משתמש"
 # 'cancel' =>  __('Cancel', 'ure'),
 # 'add_capability' => __('Add Capability', 'ure'),
 # wpml-name: ea4788705e6873b424c65e91c2846b19
-#: ../includes/class-user-role-editor.php:634
+#: ../includes/class-user-role-editor.php:829
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -186,7 +222,7 @@ msgstr "ביטול"
 # 'add_capability' => __('Add Capability', 'ure'),
 # 'delete_capability' => __('Delete Capability', 'ure'),
 # wpml-name: 39cc0b416ba0d26679547346b8c5cf8d
-#: ../includes/class-user-role-editor.php:635
+#: ../includes/class-user-role-editor.php:830
 msgid "Add Capability"
 msgstr "הוספת יכולת"
 
@@ -194,8 +230,8 @@ msgstr "הוספת יכולת"
 # 'delete_capability' => __('Delete Capability', 'ure'),
 # 'delete_capability_warning' => __('Warning! Be careful - removing critical capability could crash some plugin or other custom code', 'ure'),
 # wpml-name: 06844dd4ec4b29fa8a354aaacbd4861a
-#: ../includes/class-user-role-editor.php:636
-#: ../includes/class-user-role-editor.php:645
+#: ../includes/class-user-role-editor.php:831
+#: ../includes/class-user-role-editor.php:840
 msgid "Delete Capability"
 msgstr "מחיקת יכולת"
 
@@ -203,21 +239,21 @@ msgstr "מחיקת יכולת"
 # 'reset' => __('Reset', 'ure'),
 # 'reset_warning' => __('Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?', 'ure'),
 # wpml-name: 526d688f37a86d3c3f27d0c5016eb71d
-#: ../includes/class-user-role-editor.php:637
+#: ../includes/class-user-role-editor.php:832
 msgid "Reset"
 msgstr "איפוס"
 
-#: ../includes/class-user-role-editor.php:638
+#: ../includes/class-user-role-editor.php:833
 msgid "DANGER! Resetting will restore default settings from WordPress Core."
 msgstr ""
 
-#: ../includes/class-user-role-editor.php:639
+#: ../includes/class-user-role-editor.php:834
 msgid ""
 "If any plugins have changed capabilities in any way upon installation (such "
 "as S2Member, WooCommerce, and many more), those capabilities will be DELETED!"
 msgstr ""
 
-#: ../includes/class-user-role-editor.php:640
+#: ../includes/class-user-role-editor.php:835
 msgid ""
 "For more information on how to undo changes and restore plugin capabilities "
 "go to"
@@ -227,7 +263,7 @@ msgstr ""
 # __('Contributor', 'ure');
 # __('Subscriber', 'ure');
 # wpml-name: 23d21ad4dea7aadf907e5e601b1905e6
-#: ../includes/class-user-role-editor.php:642
+#: ../includes/class-user-role-editor.php:837
 msgid "Continue?"
 msgstr ""
 
@@ -235,7 +271,7 @@ msgstr ""
 # 'default_role' => __('Default Role', 'ure'),
 # 'set_new_default_role' => __('Set New Default Role', 'ure'),
 # wpml-name: db135301eaf77a955b2b016f9b9d6a99
-#: ../includes/class-user-role-editor.php:643
+#: ../includes/class-user-role-editor.php:838
 msgid "Default Role"
 msgstr "תפקיד ברירת מחדל"
 
@@ -243,7 +279,7 @@ msgstr "תפקיד ברירת מחדל"
 # 'set_new_default_role' => __('Set New Default Role', 'ure'),
 # 'delete_capability' => __('Delete Capability', 'ure'),
 # wpml-name: f28d52a1096a73cff427d1216dc578ad
-#: ../includes/class-user-role-editor.php:644
+#: ../includes/class-user-role-editor.php:839
 msgid "Set New Default Role"
 msgstr "הגדר תפקיד ברירת מחדל חדש"
 
@@ -251,7 +287,7 @@ msgstr "הגדר תפקיד ברירת מחדל חדש"
 # 'delete_capability_warning' => __('Warning! Be careful - removing critical capability could crash some plugin or other custom code', 'ure'),
 # 'capability_name_required' => __(' Capability name (ID) can not be empty!', 'ure'),
 # wpml-name: b8827a096ab461b8e26931adf82c8d85
-#: ../includes/class-user-role-editor.php:646
+#: ../includes/class-user-role-editor.php:841
 msgid ""
 "Warning! Be careful - removing critical capability could crash some plugin "
 "or other custom code"
@@ -263,7 +299,7 @@ msgstr ""
 # 'capability_name_required' => __(' Capability name (ID) can not be empty!', 'ure'),
 # 'capability_name_valid_chars' => __(' Capability name (ID) must contain latin characters, digits, hyphens or underscore only!', 'ure'),
 # wpml-name: ba38256d66e3ae37b7b16052a0f94729
-#: ../includes/class-user-role-editor.php:647
+#: ../includes/class-user-role-editor.php:842
 msgid " Capability name (ID) can not be empty!"
 msgstr " שם היכולת (מזהה) לא יכול להיות ריק!"
 
@@ -271,7 +307,7 @@ msgstr " שם היכולת (מזהה) לא יכול להיות ריק!"
 # 'capability_name_valid_chars' => __(' Capability name (ID) must contain latin characters, digits, hyphens or underscore only!', 'ure'),
 # ) );
 # wpml-name: 6d4c115be3e7b4f1fd70112642c9a72d
-#: ../includes/class-user-role-editor.php:648
+#: ../includes/class-user-role-editor.php:843
 msgid ""
 " Capability name (ID) must contain latin characters, digits, hyphens or "
 "underscore only!"
@@ -282,8 +318,8 @@ msgstr ""
 # <th scope="row"><?php _e('Other Roles', 'ure'); ?></th>
 # <td>
 # wpml-name: a5f40dc2b5f2552187d0326e77e267eb
-#: ../includes/class-user-role-editor.php:681
-#: ../includes/class-user-role-editor.php:709
+#: ../includes/class-user-role-editor.php:876
+#: ../includes/class-user-role-editor.php:905
 msgid "Other Roles"
 msgstr "תפקידים אחרים"
 
@@ -291,136 +327,31 @@ msgstr "תפקידים אחרים"
 # echo $output . '&nbsp;&nbsp;&gt;&gt;&nbsp;<a href="' . wp_nonce_url("users.php?page=users-".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . __('Edit', 'ure') . '</a>';
 # ?>
 # wpml-name: 7dce122004969d56ae2e0245cb754d35
-#: ../includes/class-user-role-editor.php:691
+#: ../includes/class-user-role-editor.php:887
 msgid "Edit"
 msgstr "עריכה"
-
-# <?php
-# $this->display_box_start(__('Select Role and change its capabilities list', 'ure'), 'min-width:800px;');
-# ?>
-# wpml-name: 6a9631dbe20237a244cb3721ab6fc7d8
-#: ../includes/ure-role-edit.php:17
-msgid "Select Role and change its capabilities list"
-msgstr "בחר סוג משתמש ושנה את היכולות שלו"
-
-# <div style="padding:10px;">
-# <div class="ure-label"><?php _e('Select Role:', 'ure');?></div>
-# <div class="ure-input"><?php echo $this->role_delete_html; ?></div>
-# wpml-name: 6ae3f08b992f68a1bf8924945d2c7c98
-#: ../includes/ure-role-edit.php:19 ../includes/class-ure-lib.php:184
-msgid "Select Role:"
-msgstr "בחר סוג משתמש"
-
-# <?php echo $checked; ?> onclick="ure_turn_caps_readable(<?php echo $this->user_to_edit->ID; ?>);"  />
-# <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label>&nbsp;&nbsp;&nbsp;
-# <?php
-# wpml-name: 5e09edd7b2ed1864deffbd964073b27a
-#: ../includes/ure-role-edit.php:30 ../includes/ure-user-edit.php:51
-msgid "Show capabilities in human readable form"
-msgstr "הראה יכולות משתמשים בשפה קריאה"
-
-# <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $this->user_to_edit->ID; ?>);"/>
-# <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>
-# </td>
-# wpml-name: 130b09deaec4b13948be95555d546f25
-#: ../includes/ure-role-edit.php:40 ../includes/ure-user-edit.php:61
-#: ../includes/class-ure-screen-help.php:21
-msgid "Show deprecated capabilities"
-msgstr "הצג הרשאות לפי מספר"
 
 #
 #
 #
 # wpml-name: a1fbf81a928fffd1bb4665b5af8952ab
-#: ../includes/ure-role-edit.php:45
+#: ../includes/ure-role-edit.php:44
 msgid "If checked, then apply action to ALL sites of this Network"
 msgstr "אם סומן, החל פעולה על כל האתרים ברשת זאת"
-
-# <?php echo $checked; ?> title="<?php echo $hint;?>" onclick="ure_applyToAllOnClick(this)"/>
-# <label for="ure_apply_to_all" title="<?php echo $hint;?>"><?php _e('Apply to All Sites', 'ure');?></label>
-# </div>
-# wpml-name: 3c3416f05587ed480626948fab988eea
-#: ../includes/ure-role-edit.php:57
-msgid "Apply to All Sites"
-msgstr "החל על כל האתרים"
-
-# <td style="padding-left: 5px; padding-top: 5px; border-top: 1px solid #ccc;">
-# <span style="font-weight: bold;"><?php _e('Core capabilities:', 'ure'); ?></span>
-# <div style="display:table-inline; float: right; margin-right: 12px;">
-# wpml-name: cca700a30d083e59a9879c24f255abe3
-#: ../includes/ure-role-edit.php:64 ../includes/ure-user-edit.php:104
-msgid "Core capabilities:"
-msgstr "יכולות ליבה:"
-
-# <div style="display:table-inline; float: right; margin-right: 12px;">
-# <?php _e('Quick filter:', 'ure'); ?>&nbsp;
-# <input type="text" id="quick_filter" name="quick_filter" value="" size="20" onkeyup="ure_filter_capabilities(this.value);" />
-# wpml-name: dfcd600fb9e5ccb12b8bb4d83f45d35a
-#: ../includes/ure-role-edit.php:66 ../includes/ure-user-edit.php:106
-msgid "Quick filter:"
-msgstr "סינון מהיר:"
-
-# ?>
-# <span style="font-weight: bold;"><?php _e('Custom capabilities:', 'ure'); ?></span>
-# <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
-# wpml-name: 0e57c9d7615e130906e8fc6e10065ae1
-#: ../includes/ure-role-edit.php:84 ../includes/ure-user-edit.php:125
-msgid "Custom capabilities:"
-msgstr "יכולות מותאמות אישית:"
 
 # if (!$this->editor_init0()) {
 # $this->show_message(__('Error: wrong request', 'URE'));
 # return false;
 # wpml-name: a4b9ac7e09dc5996d763f6bae29fd31a
-#: ../includes/class-ure-lib.php:141
+#: ../includes/class-ure-lib.php:143
 msgid "Error: wrong request"
 msgstr "שגיאה: בקשה מוטעית"
-
-# <form id="ure_add_role_form" name="ure_add_role_form" method="POST">
-# <div class="ure-label"><?php echo __('Role name (ID): ', 'ure'); ?></div>
-# <div class="ure-input"><input type="text" name="user_role_id" id="user_role_id" size="25"/></div>
-# wpml-name: 37b0a122a7eb7b961dc33e61b8d5df10
-#: ../includes/class-ure-lib.php:173
-msgid "Role name (ID): "
-msgstr "שם התפקיד (מזהה): "
-
-# <div class="ure-input"><input type="text" name="user_role_id" id="user_role_id" size="25"/></div>
-# <div class="ure-label"><?php echo __('Display Role Name: ', 'ure'); ?></div>
-# <div class="ure-input"><input type="text" name="user_role_name" id="user_role_name" size="25"/></div>
-# wpml-name: 246c9066a0e20805752f69f87ffb66af
-#: ../includes/class-ure-lib.php:175
-msgid "Display Role Name: "
-msgstr "הצג שם תפקיד:"
-
-# <div class="ure-input"><input type="text" name="user_role_name" id="user_role_name" size="25"/></div>
-# <div class="ure-label"><?php echo __('Make copy of: ', 'ure'); ?></div>
-# <div class="ure-input"><?php echo $this->role_to_copy_html; ?></div>
-# wpml-name: 1f2d970e46f567eb2fe77e1f8387f37a
-#: ../includes/class-ure-lib.php:177
-msgid "Make copy of: "
-msgstr "העתק:"
-
-# <div style="padding:10px;">
-# <div class="ure-label"><?php _e('Delete:', 'ure');?></div>
-# <div class="ure-input"><?php echo $this->capability_remove_html; ?></div>
-# wpml-name: 62f0d909f4edb78b805e4cf6747a4c36
-#: ../includes/class-ure-lib.php:199
-msgid "Delete:"
-msgstr "מחיקה:"
-
-# <div style="padding:10px;">
-# <div class="ure-label"><?php echo __('Capability name (ID): ', 'ure'); ?></div>
-# <div class="ure-input"><input type="text" name="capability_id" id="capability_id" size="25"/></div>
-# wpml-name: 42eabb45e3d2920f6a763458c3c5fffe
-#: ../includes/class-ure-lib.php:206
-msgid "Capability name (ID): "
-msgstr "שם היכולת (מזהה): "
 
 # if (!isset($this->roles[$_POST['user_role']])) {
 # $mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . esc_html($_POST['user_role']) . '</em> ' . __('does not exist', 'ure');
 # $this->current_role = '';
 # wpml-name: f97d2eb0a66987899d02bb180936afa3
-#: ../includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:322
 msgid "Error: "
 msgstr "שגיאה:"
 
@@ -428,7 +359,7 @@ msgstr "שגיאה:"
 # $mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . esc_html($_POST['user_role']) . '</em> ' . __('does not exist', 'ure');
 # $this->current_role = '';
 # wpml-name: bbbabdbe1b262f75d99d62880b953be1
-#: ../includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:322
 msgid "Role"
 msgstr "סוג משתמש:"
 
@@ -436,7 +367,7 @@ msgstr "סוג משתמש:"
 # $mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . esc_html($_POST['user_role']) . '</em> ' . __('does not exist', 'ure');
 # $this->current_role = '';
 # wpml-name: 9416a531e05cf18f1c26b97263e3c96b
-#: ../includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:323
 msgid "does not exist"
 msgstr "לא נמצא"
 
@@ -444,7 +375,7 @@ msgstr "לא נמצא"
 # $mess = __('Role is updated successfully', 'ure');
 # } else {
 # wpml-name: 9fd866f99b55510d60384b7efeb22018
-#: ../includes/class-ure-lib.php:364
+#: ../includes/class-ure-lib.php:366
 msgid "Role is updated successfully"
 msgstr "התפקיד עודכן בהצלחה"
 
@@ -452,7 +383,7 @@ msgstr "התפקיד עודכן בהצלחה"
 # $mess = __('Roles are updated for all network', 'ure');
 # }
 # wpml-name: f89c187756348dad944b0fcca790fde6
-#: ../includes/class-ure-lib.php:366
+#: ../includes/class-ure-lib.php:368
 msgid "Roles are updated for all network"
 msgstr "התפקידים עודכנו עבור כל הרשת"
 
@@ -460,7 +391,7 @@ msgstr "התפקידים עודכנו עבור כל הרשת"
 # $mess = __('Error occured during role(s) update', 'ure');
 # }
 # wpml-name: 9f528ca4741155f636c4331b19f2b170
-#: ../includes/class-ure-lib.php:372
+#: ../includes/class-ure-lib.php:374
 msgid "Error occured during role(s) update"
 msgstr "קרתה שגיאה בעת עדכון תפקידי המשתמש"
 
@@ -468,7 +399,7 @@ msgstr "קרתה שגיאה בעת עדכון תפקידי המשתמש"
 # $mess = __('User capabilities are updated successfully', 'ure');
 # } else {
 # wpml-name: ee37618edaa53156b3a18d543ec60412
-#: ../includes/class-ure-lib.php:379
+#: ../includes/class-ure-lib.php:381
 msgid "User capabilities are updated successfully"
 msgstr "יכולות המשתמש עודכנו בהצלחה"
 
@@ -476,7 +407,7 @@ msgstr "יכולות המשתמש עודכנו בהצלחה"
 # $mess = __('Error occured during user update', 'ure');
 # }
 # wpml-name: f7283da5501e7e1cb13255d323859feb
-#: ../includes/class-ure-lib.php:384
+#: ../includes/class-ure-lib.php:386
 msgid "Error occured during user update"
 msgstr "קרתה שגיאה בזמן עדכון המשתמש"
 
@@ -484,7 +415,7 @@ msgstr "קרתה שגיאה בזמן עדכון המשתמש"
 # $this->notification = __('User Roles are restored to WordPress default values. ', 'ure');
 # } else if ($action == 'update') {
 # wpml-name: 7182950b4f92d446844be24cfea6276a
-#: ../includes/class-ure-lib.php:439
+#: ../includes/class-ure-lib.php:441
 msgid "User Roles are restored to WordPress default values. "
 msgstr "תפקידי משתמש שוחזרו לערכי ברירת המחדל של וורדפרס."
 
@@ -492,7 +423,7 @@ msgstr "תפקידי משתמש שוחזרו לערכי ברירת המחדל ש
 # $link = '<a href="' . $url . '" title="read about ' . $capability . ' user capability" target="new"><img src="' . URE_PLUGIN_URL . '/images/help.png" alt="' . __('Help', 'ure') . '" /></a>';
 # } else {
 # wpml-name: 6a26f548831e6a8c26bfbbd9f6ec61e0
-#: ../includes/class-ure-lib.php:1237
+#: ../includes/class-ure-lib.php:1340
 msgid "Help"
 msgstr "עזרה"
 
@@ -500,7 +431,7 @@ msgstr "עזרה"
 # $this->show_message('Error! ' . __('Error is occur. Please check the log file.', 'ure'));
 # }
 # wpml-name: 766a60ac9e13c76c28bdf714ddecaa25
-#: ../includes/class-ure-lib.php:1576
+#: ../includes/class-ure-lib.php:1690
 msgid "Error is occur. Please check the log file."
 msgstr "ארעה שגיאה, אנא בדוק את קובץ היומן."
 
@@ -508,18 +439,24 @@ msgstr "ארעה שגיאה, אנא בדוק את קובץ היומן."
 # return __('Error: Role ID must contain latin characters, digits, hyphens or underscore only!', 'ure');
 # }
 # wpml-name: f9182094e24a9e2fbb7317b1724a69c9
-#: ../includes/class-ure-lib.php:1601
+#: ../includes/class-ure-lib.php:1733
 msgid ""
 "Error: Role ID must contain latin characters, digits, hyphens or underscore "
 "only!"
 msgstr ""
 "שגיאה: תפקיד המשתמש חייב לכלול אותיות לטיניות, ספרות, מקפים וקו תחתון בלבד!"
 
+#: ../includes/class-ure-lib.php:1737
+msgid ""
+"Error: WordPress does not support numeric Role name (ID). Add latin "
+"characters to it."
+msgstr ""
+
 # if (isset($wp_roles->roles[$user_role_id])) {
 # return sprintf('Error! ' . __('Role %s exists already', 'ure'), $user_role_id);
 # }
 # wpml-name: 61b6d86154b5437be56e6565f2820391
-#: ../includes/class-ure-lib.php:1616
+#: ../includes/class-ure-lib.php:1752
 #, php-format
 msgid "Role %s exists already"
 msgstr "סוג המשתמש %s כבר קיים"
@@ -528,7 +465,7 @@ msgstr "סוג המשתמש %s כבר קיים"
 # $mess = 'Error! ' . __('Error is encountered during new role create operation', 'ure');
 # } else {
 # wpml-name: e0618b1a4160611a46b1b95acab0821c
-#: ../includes/class-ure-lib.php:1631
+#: ../includes/class-ure-lib.php:1767
 msgid "Error is encountered during new role create operation"
 msgstr "ארעה שגיאה בעת יצירת סוג המשתמש החדש"
 
@@ -536,7 +473,7 @@ msgstr "ארעה שגיאה בעת יצירת סוג המשתמש החדש"
 # $mess = sprintf(__('Role %s is created successfully', 'ure'), $user_role_name);
 # }
 # wpml-name: 1613afddcbdf86bd48660e5443be00ff
-#: ../includes/class-ure-lib.php:1633
+#: ../includes/class-ure-lib.php:1769
 #, php-format
 msgid "Role %s is created successfully"
 msgstr "סוג המשתמש %s נוצר בהצלחה"
@@ -545,7 +482,7 @@ msgstr "סוג המשתמש %s נוצר בהצלחה"
 # $mess = 'Error! ' . __('Error encountered during role delete operation', 'ure');
 # } else {
 # wpml-name: 5ca27dda122445e597586a22e18088e6
-#: ../includes/class-ure-lib.php:1699
+#: ../includes/class-ure-lib.php:1838
 msgid "Error encountered during role delete operation"
 msgstr "ארעה שגיאה במהלך נסיון המחיקה של סוג המשתמש"
 
@@ -553,7 +490,7 @@ msgstr "ארעה שגיאה במהלך נסיון המחיקה של סוג המ�
 # $mess = sprintf(__('Role %s is deleted successfully', 'ure'), $role);
 # }
 # wpml-name: 53552ec95bc8303219e8c39375763370
-#: ../includes/class-ure-lib.php:1701
+#: ../includes/class-ure-lib.php:1840
 msgid "Unused roles are deleted successfully"
 msgstr ""
 
@@ -561,7 +498,7 @@ msgstr ""
 # $mess = sprintf(__('Role %s is deleted successfully', 'ure'), $role);
 # }
 # wpml-name: 53552ec95bc8303219e8c39375763370
-#: ../includes/class-ure-lib.php:1703
+#: ../includes/class-ure-lib.php:1842
 #, php-format
 msgid "Role %s is deleted successfully"
 msgstr "סוג המשתמש %s נמחק בהצלחה"
@@ -570,7 +507,7 @@ msgstr "סוג המשתמש %s נמחק בהצלחה"
 # $errorMessage = 'Error! ' . __('Error encountered during default role change operation', 'ure');
 # if (isset($wp_roles->role_objects[$user_role_id]) && $user_role_id !== 'administrator') {
 # wpml-name: b64bfe4842bc0638b79a24687976394e
-#: ../includes/class-ure-lib.php:1728
+#: ../includes/class-ure-lib.php:1867
 msgid "Error encountered during default role change operation"
 msgstr "ארעה שגיאה בעת הנסיון לשנות את סוג משתמש ברירת מחדל"
 
@@ -578,7 +515,7 @@ msgstr "ארעה שגיאה בעת הנסיון לשנות את סוג משתמ�
 # $mess = sprintf(__('Default role for new users is set to %s successfully', 'ure'), $wp_roles->role_names[$user_role_id]);
 # }
 # wpml-name: 94978d82edc73eba0f44bc7bceb299f4
-#: ../includes/class-ure-lib.php:1734
+#: ../includes/class-ure-lib.php:1873
 #, php-format
 msgid "Default role for new users is set to %s successfully"
 msgstr "סוג המשתמש %s נקבע כברירת מחדל"
@@ -587,7 +524,7 @@ msgstr "סוג המשתמש %s נקבע כברירת מחדל"
 # __('Editor', 'ure');
 # __('Author', 'ure');
 # wpml-name: 344a7f427fb765610ef96eb7bce95257
-#: ../includes/class-ure-lib.php:1753
+#: ../includes/class-ure-lib.php:1892
 msgid "Editor"
 msgstr "עורך"
 
@@ -595,7 +532,7 @@ msgstr "עורך"
 # __('Author', 'ure');
 # __('Contributor', 'ure');
 # wpml-name: a517747c3d12f99244ae598910d979c5
-#: ../includes/class-ure-lib.php:1754
+#: ../includes/class-ure-lib.php:1893
 msgid "Author"
 msgstr "כותב"
 
@@ -603,7 +540,7 @@ msgstr "כותב"
 # __('Contributor', 'ure');
 # __('Subscriber', 'ure');
 # wpml-name: 23d21ad4dea7aadf907e5e601b1905e6
-#: ../includes/class-ure-lib.php:1755
+#: ../includes/class-ure-lib.php:1894
 msgid "Contributor"
 msgstr "תורם"
 
@@ -611,7 +548,7 @@ msgstr "תורם"
 # __('Subscriber', 'ure');
 # // Standard WordPress capabilities
 # wpml-name: 992c4a5b4628d8ebf671cf460254ee81
-#: ../includes/class-ure-lib.php:1756
+#: ../includes/class-ure-lib.php:1895
 msgid "Subscriber"
 msgstr "מנוי"
 
@@ -619,7 +556,7 @@ msgstr "מנוי"
 # __('Switch themes', 'ure');
 # __('Edit themes', 'ure');
 # wpml-name: 87d980c0c79638536655ce7fa0a4b85d
-#: ../includes/class-ure-lib.php:1758
+#: ../includes/class-ure-lib.php:1897
 msgid "Switch themes"
 msgstr "החלפת תבניות"
 
@@ -627,7 +564,7 @@ msgstr "החלפת תבניות"
 # __('Edit themes', 'ure');
 # __('Activate plugins', 'ure');
 # wpml-name: 8395d1904c778ee1b2762e07a6a03878
-#: ../includes/class-ure-lib.php:1759
+#: ../includes/class-ure-lib.php:1898
 msgid "Edit themes"
 msgstr "עריכת תבניות"
 
@@ -635,7 +572,7 @@ msgstr "עריכת תבניות"
 # __('Activate plugins', 'ure');
 # __('Edit plugins', 'ure');
 # wpml-name: c38bc47406355ef06ad3e10a98505536
-#: ../includes/class-ure-lib.php:1760
+#: ../includes/class-ure-lib.php:1899
 msgid "Activate plugins"
 msgstr "הפעלת תוספים"
 
@@ -643,7 +580,7 @@ msgstr "הפעלת תוספים"
 # __('Edit plugins', 'ure');
 # __('Edit users', 'ure');
 # wpml-name: a6e42eb142c87e881a0d0c92acf4ef9f
-#: ../includes/class-ure-lib.php:1761
+#: ../includes/class-ure-lib.php:1900
 msgid "Edit plugins"
 msgstr "עריכת תוספים"
 
@@ -651,7 +588,7 @@ msgstr "עריכת תוספים"
 # __('Edit users', 'ure');
 # __('Edit files', 'ure');
 # wpml-name: 70118d8574d7c13da8c0a7c2acc0f659
-#: ../includes/class-ure-lib.php:1762
+#: ../includes/class-ure-lib.php:1901
 msgid "Edit users"
 msgstr "עריכת משתמשים"
 
@@ -659,7 +596,7 @@ msgstr "עריכת משתמשים"
 # __('Edit files', 'ure');
 # __('Manage options', 'ure');
 # wpml-name: 91c6e7a54b91cdc161f71958c597ed11
-#: ../includes/class-ure-lib.php:1763
+#: ../includes/class-ure-lib.php:1902
 msgid "Edit files"
 msgstr "עריכת קבצים"
 
@@ -667,7 +604,7 @@ msgstr "עריכת קבצים"
 # __('Manage options', 'ure');
 # __('Moderate comments', 'ure');
 # wpml-name: 9f285ad90d3e9f5122241f2e8abd3836
-#: ../includes/class-ure-lib.php:1764
+#: ../includes/class-ure-lib.php:1903
 msgid "Manage options"
 msgstr "ניהול אפשרויות אתר"
 
@@ -675,7 +612,7 @@ msgstr "ניהול אפשרויות אתר"
 # __('Moderate comments', 'ure');
 # __('Manage categories', 'ure');
 # wpml-name: abb293cb5d17f4acca429ea13d74c593
-#: ../includes/class-ure-lib.php:1765
+#: ../includes/class-ure-lib.php:1904
 msgid "Moderate comments"
 msgstr "ניהול תגובות"
 
@@ -683,7 +620,7 @@ msgstr "ניהול תגובות"
 # __('Manage categories', 'ure');
 # __('Manage links', 'ure');
 # wpml-name: 74c12b9adae95b65772e8c9c9c8e5af3
-#: ../includes/class-ure-lib.php:1766
+#: ../includes/class-ure-lib.php:1905
 msgid "Manage categories"
 msgstr "ניהול קטגוריות"
 
@@ -691,7 +628,7 @@ msgstr "ניהול קטגוריות"
 # __('Manage links', 'ure');
 # __('Upload files', 'ure');
 # wpml-name: fa1a08e2a749c9f330c9a8e60cac9cc3
-#: ../includes/class-ure-lib.php:1767
+#: ../includes/class-ure-lib.php:1906
 msgid "Manage links"
 msgstr "ניהול קישורים"
 
@@ -699,7 +636,7 @@ msgstr "ניהול קישורים"
 # __('Upload files', 'ure');
 # __('Import', 'ure');
 # wpml-name: c7de86f69db264c3950d8ae46ed2e33f
-#: ../includes/class-ure-lib.php:1768
+#: ../includes/class-ure-lib.php:1907
 msgid "Upload files"
 msgstr "העלאת קבצים"
 
@@ -707,7 +644,7 @@ msgstr "העלאת קבצים"
 # __('Import', 'ure');
 # __('Unfiltered html', 'ure');
 # wpml-name: 72d6d7a1885885bb55a565fd1070581a
-#: ../includes/class-ure-lib.php:1769
+#: ../includes/class-ure-lib.php:1908
 msgid "Import"
 msgstr "יבוא"
 
@@ -715,7 +652,7 @@ msgstr "יבוא"
 # __('Unfiltered html', 'ure');
 # __('Edit posts', 'ure');
 # wpml-name: fdd95e5640d6d73230b7544ac261457a
-#: ../includes/class-ure-lib.php:1770
+#: ../includes/class-ure-lib.php:1909
 msgid "Unfiltered html"
 msgstr "עריכת HTML"
 
@@ -723,7 +660,7 @@ msgstr "עריכת HTML"
 # __('Edit posts', 'ure');
 # __('Edit others posts', 'ure');
 # wpml-name: 9cd92b1d45220e13e5e257f185f3fec3
-#: ../includes/class-ure-lib.php:1771
+#: ../includes/class-ure-lib.php:1910
 msgid "Edit posts"
 msgstr "עריכת פוסטים"
 
@@ -731,7 +668,7 @@ msgstr "עריכת פוסטים"
 # __('Edit others posts', 'ure');
 # __('Edit published posts', 'ure');
 # wpml-name: 5fbf3fd2d5fd1e393df2c639fa16dbc9
-#: ../includes/class-ure-lib.php:1772
+#: ../includes/class-ure-lib.php:1911
 msgid "Edit others posts"
 msgstr "עריכת פוסטים של אחרים"
 
@@ -739,7 +676,7 @@ msgstr "עריכת פוסטים של אחרים"
 # __('Edit published posts', 'ure');
 # __('Publish posts', 'ure');
 # wpml-name: d42efc04e7900de59ed3667c971e9e9d
-#: ../includes/class-ure-lib.php:1773
+#: ../includes/class-ure-lib.php:1912
 msgid "Edit published posts"
 msgstr "עריכת פוסטים שפורסמו"
 
@@ -747,7 +684,7 @@ msgstr "עריכת פוסטים שפורסמו"
 # __('Publish posts', 'ure');
 # __('Edit pages', 'ure');
 # wpml-name: 64a4f8f7a855c54e1ca7c910439f5e90
-#: ../includes/class-ure-lib.php:1774
+#: ../includes/class-ure-lib.php:1913
 msgid "Publish posts"
 msgstr "פוסטים שפורסמו"
 
@@ -755,7 +692,7 @@ msgstr "פוסטים שפורסמו"
 # __('Edit pages', 'ure');
 # __('Read', 'ure');
 # wpml-name: e7a51430fa0fbb32587c083ffae4b525
-#: ../includes/class-ure-lib.php:1775
+#: ../includes/class-ure-lib.php:1914
 msgid "Edit pages"
 msgstr "עריכת עמודים"
 
@@ -763,7 +700,7 @@ msgstr "עריכת עמודים"
 # __('Read', 'ure');
 # __('Level 10', 'ure');
 # wpml-name: 7a1a5f3e79fdc91edf2f5ead9d66abb4
-#: ../includes/class-ure-lib.php:1776
+#: ../includes/class-ure-lib.php:1915
 msgid "Read"
 msgstr "קורא"
 
@@ -771,7 +708,7 @@ msgstr "קורא"
 # __('Level 10', 'ure');
 # __('Level 9', 'ure');
 # wpml-name: b3ef2f43e2782f8d95a4c22d577cb1bc
-#: ../includes/class-ure-lib.php:1777
+#: ../includes/class-ure-lib.php:1916
 msgid "Level 10"
 msgstr "דרגה 10"
 
@@ -779,7 +716,7 @@ msgstr "דרגה 10"
 # __('Level 9', 'ure');
 # __('Level 8', 'ure');
 # wpml-name: d48252bc9cffec4bed5028a7c71d8196
-#: ../includes/class-ure-lib.php:1778
+#: ../includes/class-ure-lib.php:1917
 msgid "Level 9"
 msgstr "דרגה 9"
 
@@ -787,7 +724,7 @@ msgstr "דרגה 9"
 # __('Level 8', 'ure');
 # __('Level 7', 'ure');
 # wpml-name: 625fef0c34a92b3685266a47f16c85dd
-#: ../includes/class-ure-lib.php:1779
+#: ../includes/class-ure-lib.php:1918
 msgid "Level 8"
 msgstr "דרגה 8"
 
@@ -795,7 +732,7 @@ msgstr "דרגה 8"
 # __('Level 7', 'ure');
 # __('Level 6', 'ure');
 # wpml-name: a9acd6f427950dc61cac50b4e9ee6bc4
-#: ../includes/class-ure-lib.php:1780
+#: ../includes/class-ure-lib.php:1919
 msgid "Level 7"
 msgstr "דרגה 7"
 
@@ -803,7 +740,7 @@ msgstr "דרגה 7"
 # __('Level 6', 'ure');
 # __('Level 5', 'ure');
 # wpml-name: b30ce92fb9295725ef29254ba5ae17e1
-#: ../includes/class-ure-lib.php:1781
+#: ../includes/class-ure-lib.php:1920
 msgid "Level 6"
 msgstr "דרגה 6"
 
@@ -811,7 +748,7 @@ msgstr "דרגה 6"
 # __('Level 5', 'ure');
 # __('Level 4', 'ure');
 # wpml-name: 05988e43e8f2eb5efdddc2b467c4b2f3
-#: ../includes/class-ure-lib.php:1782
+#: ../includes/class-ure-lib.php:1921
 msgid "Level 5"
 msgstr "דרגה 5"
 
@@ -819,7 +756,7 @@ msgstr "דרגה 5"
 # __('Level 4', 'ure');
 # __('Level 3', 'ure');
 # wpml-name: 309531bbe9a9d3228cd0687ec6e66bed
-#: ../includes/class-ure-lib.php:1783
+#: ../includes/class-ure-lib.php:1922
 msgid "Level 4"
 msgstr "דרגה 4"
 
@@ -827,7 +764,7 @@ msgstr "דרגה 4"
 # __('Level 3', 'ure');
 # __('Level 2', 'ure');
 # wpml-name: 8f60a63315c55e659b1a2dd5064ceae8
-#: ../includes/class-ure-lib.php:1784
+#: ../includes/class-ure-lib.php:1923
 msgid "Level 3"
 msgstr "דרגה 3"
 
@@ -835,7 +772,7 @@ msgstr "דרגה 3"
 # __('Level 2', 'ure');
 # __('Level 1', 'ure');
 # wpml-name: 228e9da47384bacde793a2b78d488bb0
-#: ../includes/class-ure-lib.php:1785
+#: ../includes/class-ure-lib.php:1924
 msgid "Level 2"
 msgstr "דרגה 2"
 
@@ -843,7 +780,7 @@ msgstr "דרגה 2"
 # __('Level 1', 'ure');
 # __('Level 0', 'ure');
 # wpml-name: 5afaf1679ad0887adebaddb40e0bd3f7
-#: ../includes/class-ure-lib.php:1786
+#: ../includes/class-ure-lib.php:1925
 msgid "Level 1"
 msgstr "דרגה 1"
 
@@ -851,7 +788,7 @@ msgstr "דרגה 1"
 # __('Level 0', 'ure');
 # __('Edit others pages', 'ure');
 # wpml-name: 057e95a59e032dbed970592dd1245092
-#: ../includes/class-ure-lib.php:1787
+#: ../includes/class-ure-lib.php:1926
 msgid "Level 0"
 msgstr "דרגה 0"
 
@@ -859,7 +796,7 @@ msgstr "דרגה 0"
 # __('Edit others pages', 'ure');
 # __('Edit published pages', 'ure');
 # wpml-name: b10af907824940fe6a5aa0a77c62be6f
-#: ../includes/class-ure-lib.php:1788
+#: ../includes/class-ure-lib.php:1927
 msgid "Edit others pages"
 msgstr "עריכת דפים של אחרים"
 
@@ -867,7 +804,7 @@ msgstr "עריכת דפים של אחרים"
 # __('Edit published pages', 'ure');
 # __('Publish pages', 'ure');
 # wpml-name: c5bfc24b0b891c9465134b83b2c6c259
-#: ../includes/class-ure-lib.php:1789
+#: ../includes/class-ure-lib.php:1928
 msgid "Edit published pages"
 msgstr "עריכת דפים שפורסמו"
 
@@ -875,7 +812,7 @@ msgstr "עריכת דפים שפורסמו"
 # __('Publish pages', 'ure');
 # __('Delete pages', 'ure');
 # wpml-name: 70d789f104acf7aa83b1c5ab230f8e7c
-#: ../includes/class-ure-lib.php:1790
+#: ../includes/class-ure-lib.php:1929
 msgid "Publish pages"
 msgstr "פרסום דפים"
 
@@ -883,7 +820,7 @@ msgstr "פרסום דפים"
 # __('Delete pages', 'ure');
 # __('Delete others pages', 'ure');
 # wpml-name: b665a2b3cb33c08decc52b8a3f3d1742
-#: ../includes/class-ure-lib.php:1791
+#: ../includes/class-ure-lib.php:1930
 msgid "Delete pages"
 msgstr "מחיקת דפים"
 
@@ -891,7 +828,7 @@ msgstr "מחיקת דפים"
 # __('Delete others pages', 'ure');
 # __('Delete published pages', 'ure');
 # wpml-name: 23eaa8e106fde2a76d80bc907f55ab7e
-#: ../includes/class-ure-lib.php:1792
+#: ../includes/class-ure-lib.php:1931
 msgid "Delete others pages"
 msgstr "מחיקת דפים של אחרים"
 
@@ -899,7 +836,7 @@ msgstr "מחיקת דפים של אחרים"
 # __('Delete published pages', 'ure');
 # __('Delete posts', 'ure');
 # wpml-name: 75c6bfee9157bbc48bfc4d50baab89e0
-#: ../includes/class-ure-lib.php:1793
+#: ../includes/class-ure-lib.php:1932
 msgid "Delete published pages"
 msgstr "מחיקת דפים שפורסמו"
 
@@ -907,7 +844,7 @@ msgstr "מחיקת דפים שפורסמו"
 # __('Delete posts', 'ure');
 # __('Delete others posts', 'ure');
 # wpml-name: 3dce6f688c85f06c63224b5c3be13919
-#: ../includes/class-ure-lib.php:1794
+#: ../includes/class-ure-lib.php:1933
 msgid "Delete posts"
 msgstr "מחיקת פוסטים"
 
@@ -915,7 +852,7 @@ msgstr "מחיקת פוסטים"
 # __('Delete others posts', 'ure');
 # __('Delete published posts', 'ure');
 # wpml-name: c0496287732814df690c8966027a58d6
-#: ../includes/class-ure-lib.php:1795
+#: ../includes/class-ure-lib.php:1934
 msgid "Delete others posts"
 msgstr "מחיקת פוסטים של אחרים"
 
@@ -923,7 +860,7 @@ msgstr "מחיקת פוסטים של אחרים"
 # __('Delete published posts', 'ure');
 # __('Delete private posts', 'ure');
 # wpml-name: b0a2d2039494d73f81f4e476bfda24da
-#: ../includes/class-ure-lib.php:1796
+#: ../includes/class-ure-lib.php:1935
 msgid "Delete published posts"
 msgstr "מחיקת פוסטים שפורסמו"
 
@@ -931,7 +868,7 @@ msgstr "מחיקת פוסטים שפורסמו"
 # __('Delete private posts', 'ure');
 # __('Edit private posts', 'ure');
 # wpml-name: dcd02c374764e49b36f0f959cc2917bb
-#: ../includes/class-ure-lib.php:1797
+#: ../includes/class-ure-lib.php:1936
 msgid "Delete private posts"
 msgstr "מחיקת פוסטים פרטיים"
 
@@ -939,7 +876,7 @@ msgstr "מחיקת פוסטים פרטיים"
 # __('Edit private posts', 'ure');
 # __('Read private posts', 'ure');
 # wpml-name: da9ee842794f7caf9fa32271073d5f7a
-#: ../includes/class-ure-lib.php:1798
+#: ../includes/class-ure-lib.php:1937
 msgid "Edit private posts"
 msgstr "עריכת פוסטים פרטיים"
 
@@ -947,7 +884,7 @@ msgstr "עריכת פוסטים פרטיים"
 # __('Read private posts', 'ure');
 # __('Delete private pages', 'ure');
 # wpml-name: eab0355307288f6480f8c53a0d953d79
-#: ../includes/class-ure-lib.php:1799
+#: ../includes/class-ure-lib.php:1938
 msgid "Read private posts"
 msgstr "קריאת פוסטים פרטיים"
 
@@ -955,7 +892,7 @@ msgstr "קריאת פוסטים פרטיים"
 # __('Delete private pages', 'ure');
 # __('Edit private pages', 'ure');
 # wpml-name: 2136c12e2beeadfe0da80a36ef967eca
-#: ../includes/class-ure-lib.php:1800
+#: ../includes/class-ure-lib.php:1939
 msgid "Delete private pages"
 msgstr "מחיקת עמודים פרטיים"
 
@@ -963,7 +900,7 @@ msgstr "מחיקת עמודים פרטיים"
 # __('Edit private pages', 'ure');
 # __('Read private pages', 'ure');
 # wpml-name: 4f3859ba470cb61f22a600a93c4ce11f
-#: ../includes/class-ure-lib.php:1801
+#: ../includes/class-ure-lib.php:1940
 msgid "Edit private pages"
 msgstr "מחיקת עמודים פרטיים"
 
@@ -971,7 +908,7 @@ msgstr "מחיקת עמודים פרטיים"
 # __('Read private pages', 'ure');
 # __('Delete users', 'ure');
 # wpml-name: 5faa3f2e9585e107dc5f23748a825882
-#: ../includes/class-ure-lib.php:1802
+#: ../includes/class-ure-lib.php:1941
 msgid "Read private pages"
 msgstr "קריאת עמודים פרטיים"
 
@@ -979,7 +916,7 @@ msgstr "קריאת עמודים פרטיים"
 # __('Delete users', 'ure');
 # __('Create users', 'ure');
 # wpml-name: 61c484c7f1638a9dd4237cb666b91c1f
-#: ../includes/class-ure-lib.php:1803
+#: ../includes/class-ure-lib.php:1942
 msgid "Delete users"
 msgstr "מחיקת משתמשים"
 
@@ -987,7 +924,7 @@ msgstr "מחיקת משתמשים"
 # __('Create users', 'ure');
 # __('Unfiltered upload', 'ure');
 # wpml-name: 6cf6d76fc00f8dd12af98a37d11f623e
-#: ../includes/class-ure-lib.php:1804
+#: ../includes/class-ure-lib.php:1943
 msgid "Create users"
 msgstr "יצירת משתמשים"
 
@@ -995,7 +932,7 @@ msgstr "יצירת משתמשים"
 # __('Unfiltered upload', 'ure');
 # __('Edit dashboard', 'ure');
 # wpml-name: 7110d42a34cbb3316d6d0c658fa34c86
-#: ../includes/class-ure-lib.php:1805
+#: ../includes/class-ure-lib.php:1944
 msgid "Unfiltered upload"
 msgstr "העלאת קבצים חופשית"
 
@@ -1003,7 +940,7 @@ msgstr "העלאת קבצים חופשית"
 # __('Edit dashboard', 'ure');
 # __('Update plugins', 'ure');
 # wpml-name: b5577d27ebfdd60a3bda83ae726d574b
-#: ../includes/class-ure-lib.php:1806
+#: ../includes/class-ure-lib.php:1945
 msgid "Edit dashboard"
 msgstr "שינוי לוח הבקרה"
 
@@ -1011,7 +948,7 @@ msgstr "שינוי לוח הבקרה"
 # __('Update plugins', 'ure');
 # __('Delete plugins', 'ure');
 # wpml-name: 23c5b17dc24e40fa47ca6588932d32f7
-#: ../includes/class-ure-lib.php:1807
+#: ../includes/class-ure-lib.php:1946
 msgid "Update plugins"
 msgstr "עדכון תוספים"
 
@@ -1019,7 +956,7 @@ msgstr "עדכון תוספים"
 # __('Delete plugins', 'ure');
 # __('Install plugins', 'ure');
 # wpml-name: f2a839940dae3934317d8d6a6f647ebd
-#: ../includes/class-ure-lib.php:1808
+#: ../includes/class-ure-lib.php:1947
 msgid "Delete plugins"
 msgstr "מחיקת תוספים"
 
@@ -1027,7 +964,7 @@ msgstr "מחיקת תוספים"
 # __('Install plugins', 'ure');
 # __('Update themes', 'ure');
 # wpml-name: 9d06472988c53bfc768bc7b6a788b697
-#: ../includes/class-ure-lib.php:1809
+#: ../includes/class-ure-lib.php:1948
 msgid "Install plugins"
 msgstr "התקנת תוספים"
 
@@ -1035,7 +972,7 @@ msgstr "התקנת תוספים"
 # __('Update themes', 'ure');
 # __('Install themes', 'ure');
 # wpml-name: 504ea4a27260ac1e8822c5877ffe526b
-#: ../includes/class-ure-lib.php:1810
+#: ../includes/class-ure-lib.php:1949
 msgid "Update themes"
 msgstr "עדכון תבניות"
 
@@ -1043,7 +980,7 @@ msgstr "עדכון תבניות"
 # __('Install themes', 'ure');
 # __('Update core', 'ure');
 # wpml-name: a7d67fb17876569a4590902d3566a6fd
-#: ../includes/class-ure-lib.php:1811
+#: ../includes/class-ure-lib.php:1950
 msgid "Install themes"
 msgstr "התקנת תבניות חדשות"
 
@@ -1051,7 +988,7 @@ msgstr "התקנת תבניות חדשות"
 # __('Update core', 'ure');
 # __('List users', 'ure');
 # wpml-name: e56e5b87db548cd42be7a8a0f916205d
-#: ../includes/class-ure-lib.php:1812
+#: ../includes/class-ure-lib.php:1951
 msgid "Update core"
 msgstr "עדכון וורדפרס"
 
@@ -1059,7 +996,7 @@ msgstr "עדכון וורדפרס"
 # __('List users', 'ure');
 # __('Remove users', 'ure');
 # wpml-name: f923f903857a5387d3db70494e074632
-#: ../includes/class-ure-lib.php:1813
+#: ../includes/class-ure-lib.php:1952
 msgid "List users"
 msgstr "בצפייה במשתמשים"
 
@@ -1067,7 +1004,7 @@ msgstr "בצפייה במשתמשים"
 # __('Remove users', 'ure');
 # __('Add users', 'ure');
 # wpml-name: 8c7e9f2dfcd0125922dfbce36a1a4c2a
-#: ../includes/class-ure-lib.php:1814
+#: ../includes/class-ure-lib.php:1953
 msgid "Remove users"
 msgstr "הסרת משתמשים"
 
@@ -1075,7 +1012,7 @@ msgstr "הסרת משתמשים"
 # __('Add users', 'ure');
 # __('Promote users', 'ure');
 # wpml-name: 3bf6330f5f4c7c3dfddc9670cfaf4a22
-#: ../includes/class-ure-lib.php:1815
+#: ../includes/class-ure-lib.php:1954
 msgid "Add users"
 msgstr "הוספת משתמשים"
 
@@ -1083,7 +1020,7 @@ msgstr "הוספת משתמשים"
 # __('Promote users', 'ure');
 # __('Edit theme options', 'ure');
 # wpml-name: 12f4ba95cdfd04b791820b9c20887913
-#: ../includes/class-ure-lib.php:1816
+#: ../includes/class-ure-lib.php:1955
 msgid "Promote users"
 msgstr "שינוי משתמשים"
 
@@ -1091,7 +1028,7 @@ msgstr "שינוי משתמשים"
 # __('Edit theme options', 'ure');
 # __('Delete themes', 'ure');
 # wpml-name: 8841974497684dad4d55beaf2b6c52ef
-#: ../includes/class-ure-lib.php:1817
+#: ../includes/class-ure-lib.php:1956
 msgid "Edit theme options"
 msgstr "עריכת אפשרויות התבנית"
 
@@ -1099,7 +1036,7 @@ msgstr "עריכת אפשרויות התבנית"
 # __('Delete themes', 'ure');
 # __('Export', 'ure');
 # wpml-name: 335e9dea5f21dc3f591f3aceefdeed54
-#: ../includes/class-ure-lib.php:1818
+#: ../includes/class-ure-lib.php:1957
 msgid "Delete themes"
 msgstr "מחיקת תבניות"
 
@@ -1107,7 +1044,7 @@ msgstr "מחיקת תבניות"
 # __('Export', 'ure');
 # }
 # wpml-name: 0095a9fa74d1713e43e370a7d7846224
-#: ../includes/class-ure-lib.php:1819
+#: ../includes/class-ure-lib.php:1958
 msgid "Export"
 msgstr "ייצוא תוכן"
 
@@ -1115,7 +1052,7 @@ msgstr "ייצוא תוכן"
 # return 'Error! ' . __('Error: Capability name must contain latin characters and digits only!', 'ure');
 # ;
 # wpml-name: 03766b9586d3012af6fc788e85d39530
-#: ../includes/class-ure-lib.php:1929
+#: ../includes/class-ure-lib.php:2068
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr "שגיאה! שם יכולת חייב להכיל אותיות באנגלית וספרות בלבד"
 
@@ -1123,7 +1060,7 @@ msgstr "שגיאה! שם יכולת חייב להכיל אותיות באנגל�
 # $mess = sprintf(__('Capability %s is added successfully', 'ure'), $user_capability);
 # } else {
 # wpml-name: 6dcaae98207ba2673da987515b02fe31
-#: ../includes/class-ure-lib.php:1942
+#: ../includes/class-ure-lib.php:2081
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr "היכולת %s נוספה בהצלחה"
@@ -1132,7 +1069,7 @@ msgstr "היכולת %s נוספה בהצלחה"
 # $mess = sprintf('Error! ' . __('Capability %s exists already', 'ure'), $user_capability);
 # }
 # wpml-name: d5c1ec0556aadfa88cadffb62266b83d
-#: ../includes/class-ure-lib.php:1944
+#: ../includes/class-ure-lib.php:2083
 #, php-format
 msgid "Capability %s exists already"
 msgstr "כבר קיימת יכולת בשם %s"
@@ -1141,7 +1078,7 @@ msgstr "כבר קיימת יכולת בשם %s"
 # return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability_id);
 # }
 # wpml-name: 0e132e68574d9609d956f9be409f7384
-#: ../includes/class-ure-lib.php:1969
+#: ../includes/class-ure-lib.php:2108
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr "שגיאה! אין לך הרשאה למחוק את היכולת %s"
@@ -1150,24 +1087,16 @@ msgstr "שגיאה! אין לך הרשאה למחוק את היכולת %s"
 # $mess = sprintf(__('Capability %s is removed successfully', 'ure'), $capability_id);
 # }
 # wpml-name: d819128cbb44d0e2fe4eb8b8b6397871
-#: ../includes/class-ure-lib.php:1988
+#: ../includes/class-ure-lib.php:2127
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr "היכולת %s הוסרה בהצלחה"
-
-# protected function about() {
-# $this->display_box_start(__('About this Plugin:', 'ure'));
-# ?>
-# wpml-name: 426a0f7faa99074ad799f9923e41aff4
-#: ../includes/class-ure-lib.php:2085
-msgid "About this Plugin:"
-msgstr "אודות תוסף זה:"
 
 # ?>
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/vladimir.png'; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://role-editor.com"><?php _e('Plugin webpage', 'ure'); ?></a>
 # wpml-name: b63bc6c033363c8ee66beaf4ea4d5bc3
-#: ../includes/class-ure-lib.php:2087
+#: ../includes/class-ure-lib.php:2232
 msgid "Author's website"
 msgstr "אתר היוצר"
 
@@ -1175,15 +1104,24 @@ msgstr "אתר היוצר"
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://role-editor.com"><?php _e('Plugin webpage', 'ure'); ?></a>
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
 # wpml-name: f919d1248270e1eca5cc6a39253264f7
-#: ../includes/class-ure-lib.php:2088
+#: ../includes/class-ure-lib.php:2233
 msgid "Plugin webpage"
+msgstr "דף התוסף"
+
+# <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/vladimir.png'; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
+# <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://role-editor.com"><?php _e('Plugin webpage', 'ure'); ?></a>
+# <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
+# wpml-name: f919d1248270e1eca5cc6a39253264f7
+#: ../includes/class-ure-lib.php:2234
+#, fuzzy
+msgid "Plugin download"
 msgstr "דף התוסף"
 
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
 # <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/faq-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq"><?php _e('FAQ', 'ure'); ?></a>
 # <?php
 # wpml-name: 1fe917b01f9a3f87fa2d7d3b7643fac1
-#: ../includes/class-ure-lib.php:2090
+#: ../includes/class-ure-lib.php:2236
 msgid "FAQ"
 msgstr "שאלות נפוצות"
 
@@ -1191,7 +1129,7 @@ msgstr "שאלות נפוצות"
 # <option value="none" selected="selected">' . __('None', 'ure') . '</option>';
 # $this->role_select_html = '<select id="user_role" name="user_role" onchange="ure_role_change(this.value);">';
 # wpml-name: 6adf97f83acf6453d4a6a4b1070f3754
-#: ../includes/class-ure-lib.php:2131
+#: ../includes/class-ure-lib.php:2284
 msgid "None"
 msgstr "תרום"
 
@@ -1199,11 +1137,11 @@ msgstr "תרום"
 #
 #
 # wpml-name: 7aa3fd37413ab803143d28fcc65287cf
-#: ../includes/class-ure-lib.php:2157
+#: ../includes/class-ure-lib.php:2311
 msgid "Delete All Unused Roles"
 msgstr ""
 
-#: ../includes/class-ure-lib.php:2181
+#: ../includes/class-ure-lib.php:2335
 msgid "&mdash; No role for this site &mdash;"
 msgstr ""
 
@@ -1222,30 +1160,6 @@ msgstr "מנהל-על של רשת"
 #: ../includes/ure-user-edit.php:34
 msgid "Change capabilities for user"
 msgstr "שינוי יכולות המשתמש"
-
-# <td class="ure-user-roles">
-# <div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
-# <?php
-# wpml-name: 670867664b460254a4dfcb782c811472
-#: ../includes/ure-user-edit.php:66
-msgid "Primary Role:"
-msgstr "תפקיד עיקרי:"
-
-# ?>
-# <div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('bbPress Role:', 'ure'); ?></div>
-# <?php
-# wpml-name: 918b62d985dd5ef7af537376c0a8273b
-#: ../includes/ure-user-edit.php:75
-msgid "bbPress Role:"
-msgstr "תפקיד bbPress:"
-
-# ?>
-# <div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('Other Roles:', 'ure'); ?></div>
-# <?php
-# wpml-name: 3ebb5c3609cf2634c669e655a7bfb162
-#: ../includes/ure-user-edit.php:85
-msgid "Other Roles:"
-msgstr "תפקידים אחרים:"
 
 # <tr>
 # <td><label for="show_admin_role"><?php esc_html_e('Show Administrator role at User Role Editor:', 'ure'); ?></label></td>
@@ -1276,6 +1190,14 @@ msgid ""
 "use like \"edit_others_posts\" to more user friendly form, e.g. \"Edit "
 "others posts\"."
 msgstr ""
+
+# <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $this->user_to_edit->ID; ?>);"/>
+# <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>
+# </td>
+# wpml-name: 130b09deaec4b13948be95555d546f25
+#: ../includes/class-ure-screen-help.php:21
+msgid "Show deprecated capabilities"
+msgstr "הצג הרשאות לפי מספר"
 
 #: ../includes/class-ure-screen-help.php:22
 msgid ""

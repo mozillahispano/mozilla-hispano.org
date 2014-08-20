@@ -16,9 +16,13 @@ video {
 }
 
 #searchform input[type='text'] {
-	width: 170px;
+	height: 25px;
+	width: 60%;
 }
 
+#searchsubmit {
+	float: right;
+}
 #contenido #main-content {
 	float: left;
 	width: 70%;
@@ -667,11 +671,6 @@ Author URI: http://dev7studios.com
     float:left !important;
     margin-top: 20px;
     width: 100% !important;
-}
-
-a.fancybox img.size-full, img.size-medium {
-	float: left;
-    margin: 0 20px 12px 0;
 }
 
 .portada-individual, .portada-extra{

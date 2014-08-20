@@ -6,7 +6,7 @@
 ?>
 	<div id="barra">
 				<?php get_search_MH_form(); ?>
-			
+
 			<?php 	/* Widgetized sidebar, if you have the plugin installed. */
 					if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
 
@@ -75,31 +75,42 @@
 			<?php } ?>
 
 			<?php endif; ?>
-                
+
                <!-- Descargas -->
-		
+
 		<h3 id="descargas">Descargas</h3>
                 <p class="boletin">
-                    <a href="/productos">Descarga</a> los programas de mozilla.
-                </p>       
-			
+                    <a href="https://www.mozilla.org/es-ES/products/">Descarga</a> los programas de mozilla.
+                </p>
+
 		<!-- Artículos destacados -->
-		
-		<h3 id="destacado">Destacado</h3>
+
+		<h3 id="destacado">Lo más visto</h3>
 			<ul>
-				<?php 
-					// Listamos los 3 ultimos destacados
-					global $post;
-					$tmp_post = $post;
-					$myposts = get_posts('tag=destacado&showposts=3&order=DESC&orderby=date');
-					foreach($myposts as $post) :
-					setup_postdata($post);
+				<?php
+				// Listamos posts destacados de los últimos 3 meses
+				function filter_where( $where = '' ) {
+				    // Posts de los últimos 90 días
+				    $where .= " AND post_date > '" . date('Y-m-d', strtotime('-90 days')) . "'";
+				    return $where;
+				}
+
+				add_filter( 'posts_where', 'filter_where' );
+
+				$query = new WP_Query( array(
+					'meta_key' => 'post_views_count',
+					'orderby' => 'meta_value_num',
+					'posts_per_page' => 3
+				) );
+
+				query_posts($query);
+
+				if (have_posts()) : while (have_posts()) : the_post(); ?>
+					<li><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+				<?php
+				endwhile; endif;
+				wp_reset_query();
 				?>
-				
-				<li><a title="<?php the_title_attribute('echo=0'); ?>" rel="bookmark" href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>
-				
-				<?php endforeach; ?>
-				<?php $post = $tmp_post; ?>
 			</ul>
 	</div>
 

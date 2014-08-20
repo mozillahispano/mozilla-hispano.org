@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,6 +60,7 @@ To read full FAQ section visit [this page](http://www.shinephp.com/user-role-edi
 2. screenshot-2.png Add/Remove roles or capabilities
 3. screenshot-3.png User Capabilities link
 4. screenshot-4.png User Capabilities Editor
+5. screenshot-5.png Bulk change role for users without roles
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
@@ -78,6 +79,14 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.11 =
+* 06.04.2014
+* Single-site: It is possible to bulk move users without role (--No role for this site--) to the selected role or automatically created role "No rights" without any capabilities. Get more details at http://role-editor.com/no-role-for-this-site/
+* Plugin uses for dialogs jQuery UI CSS included into WordPress package.
+* Pro version: It is possible to restrict editing posts/pages by its authors user ID (targeted user should have edit_others_posts or edit_others_pages capability).
+* Pro version, multi-site: Superadmin can setup individual lists of themes available for activation to selected sites administrators.
+* Pro version, Gravity Forms access restriction module was tested and compatible with Gravity Forms version 1.8.5
+
 = 4.10 =
 * 15.02.2014
 * Security enhancement: WordPress text translation functions were replaced with more secure esc_html__() and esc_html_e() variants.

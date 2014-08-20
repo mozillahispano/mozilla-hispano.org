@@ -78,9 +78,11 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				"sitename"				=> __( "The Site Name is the name that is used to identify your website.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"hometitle"				=> __( "The Home Title is the Open Graph title for your home page.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"description"			=> __( "The Home Description is the Open Graph description for your home page.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+				"homeimage"				=> __( "The Home Image is the Open Graph image for your home page.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"generate_descriptions"	=> __( "Check this and your Open Graph descriptions will be auto-generated from your content.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"disable_jetpack"		=> __( "Check this box to disable the Open Graph meta output by the Jetpack plugin.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"defimg"				=> __( "This option lets you choose which image will be displayed by default for the Open Graph image. You may override this on individual posts.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
+				"fallback"				=> __( "This option lets you fall back to the default image if no image could be found above.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"dimg"					=> __( "This option sets a default image that can be used for the Open Graph image. You can upload an image, select an image from your Media Library or paste the URL of an image here.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"meta_key"				=> __( "Enter the name of a custom field (or multiple field names separated by commas) to use that field to specify the Open Graph image on Pages or Posts.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
 				"categories"			=> __( "Set the Open Graph type for your website as either a blog or a website.<br /><a href='http://semperplugins.com/documentation/social-meta-module/' target='_blank'>Click here for documentation on this setting</a>", 'all_in_one_seo_pack' ),
@@ -103,9 +105,12 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 												'default'		=> '', 'type' => 'textarea', 'condshow' => Array( 'aiosp_opengraph_setmeta' => Array( 'lhs' => "aiosp_opengraph_setmeta", 'op' => '!=', 'rhs' => 'on' ) ) ),
 					'description' 	=> Array(	'name'			=> __( 'Home Description',  'all_in_one_seo_pack'),
 												'default'		=> '', 'type' => 'textarea', 'condshow' => Array( 'aiosp_opengraph_setmeta' => Array( 'lhs' => "aiosp_opengraph_setmeta", 'op' => '!=', 'rhs' => 'on' ) ) ),
+					'homeimage'		=> Array(	'name'			=> __( 'Home Image', 'all_in_one_seo_pack' ),
+												 						'type'			=> 'image' ),
 					'generate_descriptions' => Array( 'name'	=> __( 'Autogenerate OG Descriptions', 'all_in_one_seo_pack' ), 'default' => 1 ),
 					'disable_jetpack'		=> Array( 'name'	=> __( 'Disable Jetpack Tags', 'all_in_one_seo_pack' ), 'default' => 0 ),
 					'defimg'		=> Array( 	'name'			=> __( 'Select OG:Image Source', 'all_in_one_seo_pack' ), 'type' => 'select', 'initial_options' => Array( '' => __( 'Default Image' ), 'featured' => __( 'Featured Image' ), 'attach' => __( 'First Attached Image' ), 'content' => __( 'First Image In Content' ), 'custom' => __( 'Image From Custom Field' ), 'auto' => __( 'First Available Image' ) ) ),
+					'fallback'		=> Array(	'name'			=> __( 'Use Default If No Image Found', 'all_in_one_seo_pack' ), 'type' => 'checkbox' ),
 					'dimg' 			=> Array(	'name'			=> __( 'Default OG:Image',  'all_in_one_seo_pack' ), 'default' => AIOSEOP_PLUGIN_IMAGES_URL . 'default-user-image.png', 'type' => 'image' ),
 					'meta_key'		=> Array(	'name'			=> __( 'Use Custom Field For Image', 'all_in_one_seo_pack' ), 'type' => 'text', 'default' => '' ),
 					'categories' 	=> Array( 	'name'	  		=> __( 'Facebook Object Type', 'all_in_one_seo_pack'),
@@ -144,7 +149,7 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 
 			$this->locations = array(
 				'opengraph'	=> 	Array( 'name' => $this->name, 'prefix' => 'aiosp_', 'type' => 'settings',
-									   'options' => Array('scan_header', 'setmeta', 'key', 'sitename', 'hometitle', 'description', 'disable_jetpack', 'generate_descriptions', 'defimg', 'dimg', 'meta_key', 'categories', 'types') ),
+									   'options' => Array('scan_header', 'setmeta', 'key', 'sitename', 'hometitle', 'description', 'homeimage', 'disable_jetpack', 'generate_descriptions', 'defimg', 'fallback', 'dimg', 'meta_key', 'categories', 'types') ),
 				'settings'	=>	Array(	'name'		=> __('Social Settings', 'all_in_one_seo_pack'),
 														  'type'		=> 'metabox', 'help_link' => 'http://semperplugins.com/documentation/social-meta-module/#pagepost_settings',
 														  'options'	=> Array( 'title', 'desc', 'image', 'customimg', 'imagewidth', 'imageheight', 'category' ),
@@ -314,7 +319,10 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				if ( $first_page )
 					$description = $this->options['aiosp_opengraph_description'];
 				$type = $this->options['aiosp_opengraph_categories'];
-				$thumbnail = $this->options['aiosp_opengraph_dimg'];
+				if ( !empty( $this->options['aiosp_opengraph_homeimage'] ) )
+					$thumbnail = $this->options['aiosp_opengraph_homeimage'];
+				else
+					$thumbnail = $this->options['aiosp_opengraph_dimg'];
 				
 				/* If Use AIOSEO Title and Desc Selected */
 				if( $setmeta ) {
@@ -397,6 +405,9 @@ if ( !class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 					}
 				}
 			}
+			
+			if ( ( empty( $thumbnail ) && !empty( $this->options['aiosp_opengraph_fallback'] ) ) )
+				$thumbnail = $this->options['aiosp_opengraph_dimg'];
 			
 			$width = $height = '';
 			if ( !empty( $thumbnail ) ) {

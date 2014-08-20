@@ -57,8 +57,20 @@
                         <label for="show_deprecated_caps"><?php esc_html_e('Show deprecated capabilities', 'ure'); ?></label></td>
                     <td>                        
                     </td>
-                </tr>      
+                </tr>   
+<?php
+if (!$this->lib->multisite) {
+?>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="count_users_without_role" id="count_users_without_role" value="1" 
+                               <?php echo ($count_users_without_role == 1) ? 'checked="checked"' : ''; ?> /> 
+                        <label for="count_users_without_role"><?php esc_html_e('Count users without role', 'ure'); ?></label></td>
+                    <td>                        
+                    </td>
+                </tr>
 <?php      
+}
     do_action('ure_settings_show');
 ?>
             </table>
