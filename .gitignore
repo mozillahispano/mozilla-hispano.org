@@ -10,7 +10,6 @@
 !documentacion/
 !planet/
 
-wp-content/*
 !wp-content/themes/
 !wp-content/plugins/
 
