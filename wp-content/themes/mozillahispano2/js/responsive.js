@@ -1,7 +1,6 @@
 (function() {
     var toggle = document.getElementById('toggle');
     var menu = document.getElementById('menu-nav');
-    var windowWidth = window.innerWidth;
 
     function showMenu(el) {
         if (el.classList.contains('open')) {
