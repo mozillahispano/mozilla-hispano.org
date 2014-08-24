@@ -470,6 +470,14 @@ ul.topiclist dt {
     background-position: center -100px;
   }
 
+  #menu-nav {
+    display: none;
+  }
+
+  #menu-nav.open {
+    display: block;
+  }
+
   #menu {
     font-size: 12px;
     padding-top: 20px;
@@ -550,14 +558,6 @@ ul.topiclist dt {
   #menu li ul.submenu li a, #menu li ul.submenu li a:hover {
     border-radius: 0;
     padding: 5px 10px;
-  }
-
-  .close {
-    display: none;
-  }
-
-  .open {
-    display: block;
   }
 
   #cc {
