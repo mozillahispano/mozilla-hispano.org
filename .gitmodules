@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins"]
+	path = wp-content/plugins
+	url = git@github.com:mozillahispano/wp-plugins.git
