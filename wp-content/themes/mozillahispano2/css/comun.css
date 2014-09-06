@@ -403,7 +403,8 @@ input.text {
 }
 
 #barra p.boletin {
-	text-align: center;
+	margin-left: 14px;
+	font-size: 0.85rem;
 }
 
 #barra h3#destacado {
@@ -419,14 +420,16 @@ input.text {
 	line-height: 57px;
 	padding-left: 79px;
 }
+
 #barra dl dt {
-	font-size: 1.5em;
+	font-size: 0.95Rem;
 	margin: 1em 0 0.5em 1em;
 }
 
 #barra dl dd {
-	margin-left: 1.5em;
 	margin-top: -0.5em;
+	margin-left: 14px;
+	font-size: 0.85rem;
 }
 
 #barra ul {
