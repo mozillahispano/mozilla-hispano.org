@@ -84,6 +84,7 @@
     width: 95%;
   }
 
+  /* Carousel de portada */
   .custom-slider .orbit-wrapper .orbit-caption {
     bottom: auto;
     top: 0;
@@ -796,9 +797,7 @@ p.postmetadata {
   #tullido {
     margin: 0 5px;
   }
-  /* ==========================================================================
-  Carousel
-  ========================================================================== */
+  /* Carousel de portada */
   .custom-slider .orbit-wrapper .orbit-caption {
     bottom: auto;
     top: 0;
