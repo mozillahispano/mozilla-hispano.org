@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/mozillahispano/mozilla-hispano.org.png?label=ready&title=Ready)](https://waffle.io/mozillahispano/mozilla-hispano.org)
 # Entorno de desarrollo mozilla-hispano.org
 
 ## Licencia
