@@ -796,6 +796,9 @@ p.postmetadata {
   #tullido {
     margin: 0 5px;
   }
+  /* ==========================================================================
+  Carousel
+  ========================================================================== */
   .custom-slider .orbit-wrapper .orbit-caption {
     bottom: auto;
     top: 0;
