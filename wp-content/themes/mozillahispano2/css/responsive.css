@@ -490,10 +490,11 @@ ul.topiclist dt {
   }
 
   #menu {
-    font-size: 12px;
+    position: absolute;
     padding-top: 20px;
     display: block;
-    position: absolute;
+    z-index: 999999;
+    font-size: 12px;
  }
 
   #menu .clearfix {
