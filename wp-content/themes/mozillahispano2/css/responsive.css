@@ -49,7 +49,6 @@
   }
 
 }
-
 @media screen and (min-width: 795px) {
 
   #pie #pie-contenido {
@@ -67,15 +66,8 @@
 }
 
 
-@media screen and (max-width: 330px) {
-  #tullido {
-    margin: 0 5px;
-  }
-}
-
-/* Mobile Layout: 320px */
+/* Mobile Layout: 760px */
 @media only screen and (max-width: 760px) {
-
   #pie-contenido {
     width: auto;
   }
@@ -90,6 +82,26 @@
 
    #contenido .portada-individual {
     width: 95%;
+  }
+
+  /* Carousel de portada */
+  .custom-slider .orbit-wrapper .orbit-caption {
+    bottom: auto;
+    top: 0;
+    padding: 0;
+    width: 100%;
+  }
+  #contenido .custom-slider .orbit-caption h3 {
+
+    max-width: 80%;
+    font-size: 1.4em;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0));
+    color: #282828;
   }
 
   /*#lienzo, #tullido {
@@ -470,11 +482,20 @@ ul.topiclist dt {
     background-position: center -100px;
   }
 
+  #menu-nav {
+    display: none;
+  }
+
+  #menu-nav.open {
+    display: block;
+  }
+
   #menu {
-    font-size: 12px;
+    position: absolute;
     padding-top: 20px;
     display: block;
-    position: absolute;
+    z-index: 999999;
+    font-size: 12px;
  }
 
   #menu .clearfix {
@@ -550,14 +571,6 @@ ul.topiclist dt {
   #menu li ul.submenu li a, #menu li ul.submenu li a:hover {
     border-radius: 0;
     padding: 5px 10px;
-  }
-
-  .close {
-    display: none;
-  }
-
-  .open {
-    display: block;
   }
 
   #cc {
@@ -778,4 +791,29 @@ p.postmetadata {
 }
 /* }}} */
 
+}
+
+
+@media screen and (max-width: 330px) {
+  #tullido {
+    margin: 0 5px;
+  }
+  /* Carousel de portada */
+  .custom-slider .orbit-wrapper .orbit-caption {
+    bottom: auto;
+    top: 0;
+    padding: 0;
+    width: 80%;
+  }
+  #contenido .custom-slider .orbit-caption h3 {
+    background-color: green;
+    background-color: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0));
+    color: #000;
+    max-width: none;
+    font-size: 1.1em;
+    text-align: left;
+    margin: 0;
+    padding: 0.5em 0.2em;
+  }
 }

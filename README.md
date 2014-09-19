@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/mozillahispano/mozilla-hispano.org.png?label=ready&title=Ready)](https://waffle.io/mozillahispano/mozilla-hispano.org)
 # Entorno de desarrollo mozilla-hispano.org
 
 ## Licencia
@@ -245,26 +246,11 @@ Reemplazar `<usuario>` y `<password>` por los valores correspondientes al usuari
 y password configurados para el FTP. Por lo general suele ser los datos de la
 cuenta del usuario del sistema.
 
-Instalar uno a uno los siguientes plugins:
+#### Plugins
 
-* All in One SEO Pack
-* Digg Digg
-* FancyBox for WordPress
-* FeedWordPress
-* Fetch Feed shortcode pageable
-* Google Social Analytics Extension
-* Mozilla Persona
-* Quick Cache
-* Stealth Publish
-* WP-Syntax
-* WP Orbit Slider
-* Yet Another Related Posts Plugin
-* Wordpress Importer
+Los plugins de Wordpress se gestionan en un [repositorio a parte](https://github.com/mozillahispano/wp-plugins). Agrégalo como submodulo para cargarlos desde esa repo. La información de este repositorio está en el fichero ```.gitmodules```.
 
-> Los siguientes plugins deben ser instalados pero deshabilitados hasta que se
-> indique lo contrario:
-> * WP-Phpbb Last Topics
-> * Wp2BB
+Para agregarlo, ejecuta ```git submodule init``` en la raíz del repositorio. Debería clonarse automaticamente el repositorio en ```wp-content/plugins/```.
 
 Si alguno de los plugins falla, puede ser por falte de permisos totales de
 escritura en wp-content. Agregarlos de la siguient manera.
