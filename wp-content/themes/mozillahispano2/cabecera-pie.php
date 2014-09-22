@@ -157,6 +157,8 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <noscript><p><img src="//stats.mozilla-hispano.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
+<!-- Estilos responsive compartidos -->
+<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 <script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
@@ -180,7 +182,6 @@ $temp= <<<PINTA
 
 	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
-	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 
 PINTA;
 return $temp;
