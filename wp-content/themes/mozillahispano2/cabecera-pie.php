@@ -14,6 +14,7 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
 								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li> 	
 							</ul>
 						</li>
 						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
