@@ -162,6 +162,7 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/jquery.cookiebar.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery.cookieBar({});
