@@ -205,8 +205,7 @@ input.text {
 }
 
 #menu li {
-	display: inline-block;
-	float: left;
+	display: table-cell;
 	margin: 0;
 	padding: 0;
 	position: relative;
