@@ -8,7 +8,7 @@ $temp= <<<PINTA
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
 				</div>
 				<div id="menu">
-          <span id="toggle"></span>
+					<span id="toggle"></span>
 					<ul id="menu-nav" class="clearfix">
 							<li><a href="/">Noticias</a></li>
 							<li><a href="/foro/">Foro</a>
@@ -100,7 +100,7 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Noticias">Noticias</a></li>
 				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
 				<li><a href="/documentacion/Labs">Labs</a></li>
-                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
+				<li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
 				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
 			</ul>
 		</div>
@@ -124,6 +124,12 @@ pageTracker._trackPageview();
 
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
+<script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/jquery.cookiebar.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery.cookieBar({});
+	});
+</script>
 
 PINTA;
 return $temp;
@@ -138,7 +144,7 @@ $temp= <<<PINTA
 
 	<link rel="alternate" type="application/rss+xml" title="Noticias de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano" />
 	<link rel="alternate" type="application/rss+xml" title="Artículos en Planet Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-planet" />
-  <link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
+	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
 
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
@@ -217,4 +223,3 @@ function mozeuChooseRightLocale_old($product){
 echo $link;
 } // end mozeuChooseRightLocale
 
-?>
