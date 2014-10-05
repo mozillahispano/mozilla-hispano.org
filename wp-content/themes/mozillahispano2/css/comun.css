@@ -561,3 +561,8 @@ input.text {
 #beast404re{left:231px;top:68px;}
 #error404-info > p{margin-bottom:0em;padding:0em;}
 #error404-info > ul{padding:0em;}
+
+/* Cookie Bar */
+#cookie-bar {background:#484848; line-height:30px; color:#eeeeee; text-align:center; padding:3px 0;}
+#cookie-bar.fixed {position:fixed; bottom:0; left:0; width:100%;}
+#cookie-bar p {margin:0; padding:0;font-size: 1.25em;}
