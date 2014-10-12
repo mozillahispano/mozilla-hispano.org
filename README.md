@@ -22,7 +22,11 @@ Una vez arrancada la máquina puedes entrar en ella utilizando el comando ``vagr
 
 ## Envía mejoras
 
-Una vez que tengas tus mejoras implementadas, no olvides dar pull-request para que las integremos en la web.
+Comienza a contribuir en MH eligiendo un issue. Para ello, consulta los issues en Github o en nuestra vista de Kanban en [Waffle](https://waffle.io/mozillahispano/mozilla-hispano.org), en donde los issues se encuentran ordenados por prioridad.
+
+Una vez que tengas tus mejoras implementadas, no olvides enviar un pull request para que sean integradas.
+
+Si tienes cualquier duda puedes contactar con otros desarrolladores de MH en nuestro canal de [Gitter](http://gitter.im/mozillahispano).
 
 Revisa la [documentación en el wiki](https://www.mozilla-hispano.org/documentacion/C%C3%B3mo_usar_el_repositorio_de_c%C3%B3digo#Github) sobre cómo crear un fork y enviar mejoras.
 
