@@ -157,7 +157,6 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <noscript><p><img src="//stats.mozilla-hispano.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
-<script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/jquery.cookiebar.js"></script>
