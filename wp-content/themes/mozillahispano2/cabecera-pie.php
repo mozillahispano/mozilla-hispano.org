@@ -7,7 +7,7 @@ $temp= <<<PINTA
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
 				</div>
 				<div id="menu">
-          <span id="toggle"></span>
+					<span id="toggle"></span>
 					<ul id="menu-nav" class="clearfix">
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
@@ -26,12 +26,12 @@ $temp= <<<PINTA
 							</ul>
 						</li>
 						<li><a href="/podcast/">Podcast</a></li>
-                        <li><span title="Desarrolla con Labs">Labs</span>
-                            <ul class="submenu">
-                                <li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
-                                <li><a href="/foro/viewforum.php?f=25">Foros</a></li>
-                            </ul>
-                        </li>
+						<li><span title="Desarrolla con Labs">Labs</span>
+							<ul class="submenu">
+								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
+								<li><a href="/foro/viewforum.php?f=25">Foros</a></li>
+							</ul>
+						</li>
 						<li><span>Comunidad</span>
 							<ul class="submenu">
 								<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
@@ -55,15 +55,15 @@ $temp= <<<PINTA
 						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
-                                                                <li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-                                                                <li><a href="/foro/viewforum.php?f=6">Foros</a></li>
-                                                                <li><a href="/documentacion/Proyectos">Proyectos</a></li>
-                                                                <li><a href="/documentacion/Tareas">Tareas</a></li>
-                                                                <li><a href="/documentacion/Reuniones">Reuniones</a></li>
+								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+								<li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
+								<li><a href="/documentacion/Tareas">Tareas</a></li>
+								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
 							</ul>
 						</li>
 					</ul>
-                                </div>
+				</div>
 				<div id="social">
 					<ul>
 						<li><a title="Síguenos en Twitter" id="twitter-icon" href="http://twitter.com/mozilla_hispano">Síguenos en Twitter</a></li>
@@ -157,8 +157,6 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <noscript><p><img src="//stats.mozilla-hispano.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
-<!-- Estilos responsive compartidos -->
-<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 <script type="application/x-javascript" src="/wp-content/themes/mozillahispano2/js/labs_functions.js" ></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
@@ -181,7 +179,7 @@ $temp= <<<PINTA
 
 	<link rel="alternate" type="application/rss+xml" title="Noticias de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano" />
 	<link rel="alternate" type="application/rss+xml" title="Artículos en Planet Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-planet" />
-    	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
+	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
 
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
@@ -189,6 +187,7 @@ $temp= <<<PINTA
 
 	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
+	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 
 PINTA;
 return $temp;
@@ -259,4 +258,3 @@ function mozeuChooseRightLocale_old($product){
 echo $link;
 } // end mozeuChooseRightLocale
 
-?>

@@ -4,35 +4,64 @@ function pintaCabecera()
 $temp= <<<PINTA
 <div id="cabecera">
 				<div id="alojaLogo">
-
 					<h1><a href="/">Mozilla hispano, tu comunidad en español de Mozilla</a></h1>
 				</div>
 				<div id="menu">
 					<span id="toggle"></span>
 					<ul id="menu-nav" class="clearfix">
-							<li><a href="/">Noticias</a></li>
-							<li><a href="/foro/">Foro</a>
-								<ul class="submenu">
-									<li><a href="/foro/viewforum.php?f=1" title="Foro de asistencia técnica">Foro de asistencia</a></li>
-									<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
-								</ul>
-							</li>
-							<li><a href="/difusion/" title="Ayuda a difundir Mozilla en español">Difusión</a>
-								<ul class="submenu">
-									<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
-									<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
-								</ul>
-							</li>
-							<li><a href="/podcast/">Podcast</a></li>
-							<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Labs</a></li>
-							<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
-							<li><a href="/documentacion/Colabora" title="Únete y colabora con Mozilla Hispano">Únete</a>
-								<ul class="submenu">
-										<li><a href="/documentacion/Programa_de_mentores" title="Programa de mentores">Programa de mentores</a></li>
-										<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-										<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
-								</ul>
-							</li>
+						<li><a href="/">Noticias</a></li>
+						<li><span>Asistencia</span>
+							<ul class="submenu">
+								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
+								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li>
+							</ul>
+						</li>
+						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
+							<ul class="submenu">
+								<li><a href="/difusion/">Promociona Mozilla</a></li>
+								<li><a href="/foro/viewforum.php?f=6" title="Foro de difusión">Foros</a></li>
+								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
+								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
+							</ul>
+						</li>
+						<li><a href="/podcast/">Podcast</a></li>
+						<li><span title="Desarrolla con Labs">Labs</span>
+							<ul class="submenu">
+								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
+								<li><a href="/foro/viewforum.php?f=25">Foros</a></li>
+							</ul>
+						</li>
+						<li><span>Comunidad</span>
+							<ul class="submenu">
+								<li><a href="/planet/" title="Artículos de opinión, mensajes y fotos de los miembros de la comunidad">Planet</a></li>
+								<li><a href="/documentacion/Colaboradores" title="Listado de colaboradores">Colaboradores</a></li>
+								<li><a href="/ar/">Argentina</a></li>
+								<li><a href="/bo/">Bolivia</a></li>
+								<li><a href="/co/">Colombia</a></li>
+								<li><a href="/cr/">Costa Rica</a></li>
+								<li><a href="/cl/">Chile</a></li>
+								<li><a href="/cu/">Cuba</a></li>
+								<li><a href="/es/">España</a></li>
+								<li><a href="/ec/">Ecuador</a></li>
+								<li><a href="/ni/">Nicaragua</a></li>
+								<li><a href="/mx/">México</a></li>
+								<li><a href="/py/">Paraguay</a></li>
+								<li><a href="/pe/">Perú</a></li>
+								<li><a href="/uy/">Uruguay</a></li>
+								<li><a href="/ve/">Venezuela</a></li>
+							</ul>
+						</li>
+						<li><span title="Únete y colabora con Mozilla Hispano">Participa</span>
+							<ul class="submenu">
+								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
+								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
+								<li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
+								<li><a href="/documentacion/Tareas">Tareas</a></li>
+								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<div id="social">
@@ -99,28 +128,34 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Asistencia">Asistencia</a></li>
 				<li><a href="/documentacion/Noticias">Noticias</a></li>
 				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
-				<li><a href="/documentacion/Labs">Labs</a></li>
-				<li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
+                <li><a href="/documentacion/Labs">Labs</a></li>
+                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
 				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
-<script type='text/javascript' src='https://www.mozilla.org/tabzilla/media/js/tabzilla.js'></script>
+<script type="text/javascript" src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
 tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
 
+<!-- Piwik -->
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.mozilla-hispano.org"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.mozilla-hispano.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
 </script>
-
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-2846159-1");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
+<noscript><p><img src="//stats.mozilla-hispano.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/menu.js"></script>
 <script type="text/javascript" src="/wp-content/themes/mozillahispano2/js/responsive.js"></script>
@@ -131,6 +166,7 @@ pageTracker._trackPageview();
 	});
 </script>
 
+
 PINTA;
 return $temp;
 }
@@ -138,7 +174,7 @@ return $temp;
 function pintaCss()
 {
 $temp= <<<PINTA
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
 
