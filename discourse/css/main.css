@@ -1,0 +1,22 @@
+#lienzo.discourse {
+	overflow: visible;
+	z-index: 10;
+}
+.discourse #menu {
+	font-size: 1.4em;
+}
+.d-header {
+	box-shadow: unset;
+	background-color: transparent;
+}
+.docked .d-header {
+	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.25);
+	background-color: #fff;
+}
+#main {
+	z-index: 0;
+	font-size: 1.4em;
+}
+.modal-open #main {
+	z-index: 2000;
+}
