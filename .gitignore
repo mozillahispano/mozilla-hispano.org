@@ -7,6 +7,7 @@
 !README.md
 !wp-content/
 !foro/
+!discourse/
 !documentacion/
 !planet/
 
@@ -26,6 +27,8 @@ foro/includes/*
 
 foro/includes/styles/*
 !foro/includes/styles/mozillahispano/
+
+!discourse/*
 
 documentacion/*
 !documentacion/skins/
