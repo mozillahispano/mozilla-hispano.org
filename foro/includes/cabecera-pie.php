@@ -163,6 +163,13 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery.cookieBar({});
+
+		// Temporal forum migration warning
+		if (document.URL.indexOf('/foro/')) {
+			jQuery('body').prepend('<div id="warning-foro">A partir del día 10 de febrero, la asistencia de los productos Mozilla se realizará desde la plataforma de support.mozilla.org, todos los temas aquí quedarán cerrados no pudiéndose realizar más cambios.</div>');
+			jQuery('#warning-foro').slideDown();
+		}
+
 	});
 </script>
 
@@ -258,4 +265,3 @@ function mozeuChooseRightLocale_old($product){
 	}
 echo $link;
 } // end mozeuChooseRightLocale
-
