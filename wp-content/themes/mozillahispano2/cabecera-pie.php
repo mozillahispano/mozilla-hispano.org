@@ -13,7 +13,7 @@ $temp= <<<PINTA
 						<li><span>Asistencia</span>
 							<ul class="submenu">
 								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
-								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="https://support.mozilla.org/es/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
 								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li>
 							</ul>
 						</li>
