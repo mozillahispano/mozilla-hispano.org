@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="5 -10 247 67.5"
+   enable-background="new 0 0 100 100"
+   xml:space="preserve"
+   height="50"
+   width="247"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="foro_discusion_mh.svg"><metadata
+   id="metadata18"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+   id="defs16" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1366"
+   inkscape:window-height="706"
+   id="namedview14"
+   showgrid="false"
+   showguides="true"
+   inkscape:guide-bbox="true"
+   inkscape:zoom="4.72"
+   inkscape:cx="106.23513"
+   inkscape:cy="1.6727576"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1"><sodipodi:guide
+     orientation="0,1"
+     position="87.789105,35.055718"
+     id="guide3769" /></sodipodi:namedview>
+     <defs>
+	  <style type="text/css">
+	   <![CDATA[
+	    @font-face {
+	        font-family: Open Sans;
+	        src: url('//mozorg.cdn.mozilla.net/media/fonts/OpenSans-Regular-webfont.woff');
+	    }
+	   ]]>
+	 </style>
+	</defs>
+<rect
+   x="-888.5"
+   y="-645"
+   display="none"
+   width="1400"
+   height="920"
+   id="rect3"
+   style="fill:#000000;display:none" />
+<g
+   id="forum"
+   style="fill:#484848;fill-opacity:1"
+   transform="translate(-50.345958,-26.402687)">
+	<path
+   d="m 36.1,52.9 -8.7,8.4 0,-8.7 c 0,-0.2 -0.1,-0.5 -0.3,-0.7 -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 H 21.1 V 22.5 h 41.7 l 0,9.9 c 0,0.5 0.4,0.9 0.9,0.9 0.5,0 0.9,-0.4 0.9,-0.9 l 0,-10.9 c 0,-0.2 -0.1,-0.5 -0.3,-0.7 -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 H 20.2 c -0.2,0 -0.5,0.1 -0.7,0.3 -0.2,0.2 -0.3,0.4 -0.3,0.7 v 31.1 c 0,0.2 0.1,0.5 0.3,0.7 0.2,0.2 0.4,0.3 0.7,0.3 h 5.3 v 9.9 c 0,0.4 0.2,0.7 0.6,0.9 0.3,0.1 0.7,0.1 1,-0.2 l 10.3,-9.9 c 0.4,-0.4 0.4,-0.9 0,-1.3 -0.3,-0.4 -0.9,-0.5 -1.3,-0.1 l 0,0 z"
+   id="path6"
+   style="fill:#484848;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+	<polygon
+   points="79.3,37.1 42,37.1 42,68.2 62.2,68.2 73.1,79 73.1,68.2 79.3,68.2 "
+   id="polygon8"
+   style="fill:#484848;fill-opacity:1" />
+</g>
+<text
+   xml:space="preserve"
+   style="font-size:54px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#484848;fill-opacity:1;stroke:none;font-family:'Open Sans'"
+   x="39.436897"
+   y="40.504086"
+   id="text3765"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan3767"
+     x="39.436897"
+     y="40.504086"
+     style="font-size:37.79999923999999800px;fill:#484848;fill-opacity:1;font-weight:normal;-inkscape-font-specification:Open Sans">foro discusión</tspan></text>
+</svg>
