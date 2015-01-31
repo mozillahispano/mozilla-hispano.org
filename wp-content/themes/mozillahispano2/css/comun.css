@@ -205,7 +205,7 @@ input.text {
 }
 
 #menu > ul > li {
-	display: table-cell;	
+        display: table-cell;
 }
 
 #menu li {
@@ -569,3 +569,14 @@ input.text {
 #cookie-bar {background:#484848; line-height:30px; color:#eeeeee; text-align:center; padding:3px 0;}
 #cookie-bar.fixed {position:fixed; bottom:0; left:0; width:100%;}
 #cookie-bar p {margin:0; padding:0;font-size: 1.25em;}
+
+/* Forum Warning */
+#warning-foro {
+  display: none;
+  padding: 20px 12.5%;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 25px;
+  background-color: rgb(229, 229, 229);
+  height: auto;
+}
