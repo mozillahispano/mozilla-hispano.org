@@ -34,6 +34,12 @@ body .topic-body li {
 	list-style: outside disc none;
 	margin-left: 1em;
 }
+body .topic-body .topic-map ul,
+body .topic-body .topic-map ol,
+body .topic-body .topic-map li {
+	list-style: outside none none;
+	margin: 0;
+}
 body .contents p {
 	margin-bottom: 1em;
 }
