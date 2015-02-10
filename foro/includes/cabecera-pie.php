@@ -12,8 +12,8 @@ $temp= <<<PINTA
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
 							<ul class="submenu">
-								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
-								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="http://support.mozilla.org/es/questions" title="Foros de asistencia técnica">Foros de asistencia</a></li>
+								<li><a href="http://support.mozilla.org/es/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
 								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li>
 							</ul>
 						</li>
@@ -56,7 +56,7 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-								<li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+								<li><a href="https://foro.mozilla-hispano.org/">Foros</a></li>
 								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
 								<li><a href="/documentacion/Tareas">Tareas</a></li>
 								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
@@ -103,8 +103,8 @@ $temp= <<<PINTA
 			<strong>Comunidad</strong>
 			<ul>
 				<li><a href="/">Noticias</a></li>
-				<li><a href="/foro/">Foro</a></li>
-				<li><a href="/documentacion/">Documentación</a></li>
+				<li><a href="http://support.mozilla.org/es/">Asistencia</a></li>
+				<li><a href="https://foro.mozilla-hispano.org">Foro</a></li>
 				<li><a href="/planet/">Planet</a></li>
 				<li><a href="/labs/">Labs</a></li>
 				<li><a href="/difusion/">Difusión</a></li>
