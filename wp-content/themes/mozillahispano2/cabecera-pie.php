@@ -12,15 +12,15 @@ $temp= <<<PINTA
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
 							<ul class="submenu">
-								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
 								<li><a href="https://support.mozilla.org/es/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="https://support.mozilla.org/es/questions/new" title="Haz una pregunta en el foro de asistencia">Haz una pregunta</a></li>
 								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li>
 							</ul>
 						</li>
 						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
 							<ul class="submenu">
 								<li><a href="/difusion/">Promociona Mozilla</a></li>
-								<li><a href="/foro/viewforum.php?f=6" title="Foro de difusión">Foros</a></li>
+								<li><a href="https://foro.mozilla-hispano.org/c/difusion-eventos" title="Foro de difusión">Foros</a></li>
 								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
@@ -29,7 +29,7 @@ $temp= <<<PINTA
 						<li><span title="Desarrolla con Labs">Labs</span>
 							<ul class="submenu">
 								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
-								<li><a href="/foro/viewforum.php?f=25">Foros</a></li>
+								<li><a href="https://foro.mozilla-hispano.org/c/labs">Foros</a></li>
 							</ul>
 						</li>
 						<li><span>Comunidad</span>
@@ -56,7 +56,7 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-								<li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+								<li><a href="https://foro.mozilla-hispano.org/">Foro de discusión</a></li>
 								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
 								<li><a href="/documentacion/Tareas">Tareas</a></li>
 								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
@@ -103,8 +103,8 @@ $temp= <<<PINTA
 			<strong>Comunidad</strong>
 			<ul>
 				<li><a href="/">Noticias</a></li>
-				<li><a href="/foro/">Foro</a></li>
-				<li><a href="/documentacion/">Documentación</a></li>
+				<li><a href="https://foro.mozilla-hispano.org/">Foro de discusión</a></li>
+				<li><a href="https://support.mozilla.org/es/">Documentación</a></li>
 				<li><a href="/planet/">Planet</a></li>
 				<li><a href="/labs/">Labs</a></li>
 				<li><a href="/difusion/">Difusión</a></li>
@@ -182,7 +182,6 @@ $temp= <<<PINTA
 	<link rel="alternate" type="application/rss+xml" title="El Podcast de Mozilla Hispano" href="http://feeds.mozilla-hispano.org/mozillahispano-podcast" />
 
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
-	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Foro" href="/archivos/foro.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
 
 	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
