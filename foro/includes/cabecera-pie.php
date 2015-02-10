@@ -12,8 +12,8 @@ $temp= <<<PINTA
 						<li><a href="/">Noticias</a></li>
 						<li><span>Asistencia</span>
 							<ul class="submenu">
-								<li><a href="/foro/" title="Foro de asistencia técnica">Foro de asistencia</a></li>
-								<li><a href="/documentacion/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
+								<li><a href="http://support.mozilla.org/es/questions" title="Foros de asistencia técnica">Foros de asistencia</a></li>
+								<li><a href="http://support.mozilla.org/es/" title="Documentos, artículos y preguntas frecuentes de ayuda a los usuarios">Documentación</a></li>
 								<li><a href="/documentacion/Asistencia" title="Proyectos">Proyectos</a></li>
 							</ul>
 						</li>
@@ -56,7 +56,7 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-								<li><a href="/foro/viewforum.php?f=6">Foros</a></li>
+								<li><a href="https://foro.mozilla-hispano.org/">Foros</a></li>
 								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
 								<li><a href="/documentacion/Tareas">Tareas</a></li>
 								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
@@ -103,8 +103,8 @@ $temp= <<<PINTA
 			<strong>Comunidad</strong>
 			<ul>
 				<li><a href="/">Noticias</a></li>
-				<li><a href="/foro/">Foro</a></li>
-				<li><a href="/documentacion/">Documentación</a></li>
+				<li><a href="http://support.mozilla.org/es/">Asistencia</a></li>
+				<li><a href="https://foro.mozilla-hispano.org">Foro</a></li>
 				<li><a href="/planet/">Planet</a></li>
 				<li><a href="/labs/">Labs</a></li>
 				<li><a href="/difusion/">Difusión</a></li>
@@ -166,7 +166,7 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 
 		// Temporal forum migration warning
 		if (document.URL.indexOf('/foro/')) {
-			jQuery('body').prepend('<div id="warning-foro">A partir del día 10 de febrero, la asistencia de los productos Mozilla se realizará desde la plataforma de support.mozilla.org, todos los temas aquí quedarán cerrados no pudiéndose realizar más cambios.</div>');
+			jQuery('body').prepend('<div id="warning-foro">Este foro se guarda como histórico y no se pueden añadir mas comentarios, si aun quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>, si quieres participar las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusion</a>.</div>');
 			jQuery('#warning-foro').slideDown();
 		}
 
