@@ -166,7 +166,7 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 
 		// Temporal forum migration warning
 		if (document.URL.indexOf('/foro/')) {
-			jQuery('body').prepend('<div id="warning-foro">Este foro se guarda como histórico y no se pueden añadir mas comentarios, si aun quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org">la plataforma de ayuda de Mozilla</a>, si quieres participar las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusion</a>".</div>');
+			jQuery('body').prepend('<div id="warning-foro">Este foro se guarda como histórico y no se pueden añadir mas comentarios, si aun quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>, si quieres participar las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusion</a>.</div>');
 			jQuery('#warning-foro').slideDown();
 		}
 
