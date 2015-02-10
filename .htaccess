@@ -80,18 +80,17 @@ Redirect 301 /foro/viewforum.php?f=47 https://support.mozilla.org/es/questions/n
 
 # Antiguos foros de comunidad
 Redirect 301 /foro/viewforum.php?f=6 https://foro.mozilla-hispano.org/
-Options +FollowSymLinks
-RewriteEngine on 
-RedirectMatch 301 ^/foro/viewforum.php?f=12(.*)$ https://foro.mozilla-hispano.org/c/participa-en-el-proyecto [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=16(.*)$ https://foro.mozilla-hispano.org/c/discusion-general [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=26(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=27(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=35(.*)$ https://foro.mozilla-hispano.org/c/noticias [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=7(.*)$ https://foro.mozilla-hispano.org/c/traduccion [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=25(.*)$ https://foro.mozilla-hispano.org/c/labs [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=17(.*)$ https://foro.mozilla-hispano.org/c/presentaciones [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=14(.*)$ https://foro.mozilla-hispano.org/c/miembros [L,R=301]
-RedirectMatch 301 ^/foro/viewforum.php?f=50(.*)$ https://foro.mozilla-hispano.org/c/discusion-general/firefox-os [L,R=301]
+
+RedirectMatch 301 ^/foro/viewforum.php?f=12(.*)$ https://foro.mozilla-hispano.org/c/participa-en-el-proyecto
+RedirectMatch 301 ^/foro/viewforum.php?f=16(.*)$ https://foro.mozilla-hispano.org/c/discusion-general
+RedirectMatch 301 ^/foro/viewforum.php?f=26(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos
+RedirectMatch 301 ^/foro/viewforum.php?f=27(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos
+RedirectMatch 301 ^/foro/viewforum.php?f=35(.*)$ https://foro.mozilla-hispano.org/c/noticias
+RedirectMatch 301 ^/foro/viewforum.php?f=7(.*)$ https://foro.mozilla-hispano.org/c/traduccion
+RedirectMatch 301 ^/foro/viewforum.php?f=25(.*)$ https://foro.mozilla-hispano.org/c/labs
+RedirectMatch 301 ^/foro/viewforum.php?f=17(.*)$ https://foro.mozilla-hispano.org/c/presentaciones
+RedirectMatch 301 ^/foro/viewforum.php?f=14(.*)$ https://foro.mozilla-hispano.org/c/miembros
+RedirectMatch 301 ^/foro/viewforum.php?f=50(.*)$ https://foro.mozilla-hispano.org/c/discusion-general/firefox-os
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
