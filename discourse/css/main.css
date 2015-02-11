@@ -53,3 +53,6 @@ body .contents p {
 .bootbox.modal {
 	z-index: 2010;
 }
+.wmd-prompt-dialog {
+	font-size: 1.8em;
+}
