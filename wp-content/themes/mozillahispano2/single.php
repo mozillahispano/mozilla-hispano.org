@@ -39,9 +39,7 @@ if (function_exists("is_syndicated")) {
 			<h2>Compartir artículo:</h2>
 				<!-- Social Media buttons -->
 			<div data-social-share-privacy='true'></div>
-			<p class="postmetadata alt">
-			
-			<?php edit_post_link('Editar esta entrada','','.'); ?>
+			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
 
 
 	<?php // If comments are open or we have at least one comment, load up the comment template.
