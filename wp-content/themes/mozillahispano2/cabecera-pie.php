@@ -25,7 +25,7 @@ $temp= <<<PINTA
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
 						</li>
-						<li><a href="/podcast/">Podcast</a></li>
+						<li><a href="//foro.mozilla-hispano.org/" title="Foros de discusión">Foros</a></li>
 						<li><span title="Desarrolla con Labs">Labs</span>
 							<ul class="submenu">
 								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
