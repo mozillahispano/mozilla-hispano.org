@@ -877,6 +877,51 @@ p.postmetadata, div.sociable {
     clear: both;
 }
 
+/* Comments */
+
+#comments h2.comments-title {
+    color: rgb(153, 153, 153);
+    margin: 1em 0px;
+    font-size: 2em;
+}
+
+#comments .comment-list li {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+#comments article.comment-body {
+    margin: 2em 0px;
+}
+
+#comments .comment-author img {
+    float: left;
+    margin-right: 14px;
+}
+
+#comments .comment-author .fn {
+    font-size: 1.7em;
+}
+
+#comments .comment-metadata {
+    font-size: 1.4em;
+    margin-top: 1px;
+}
+
+#comments .comment-content {
+    margin-top: 37px;
+    font-size: 1.5em;
+}
+
+#comments .comment-reply-title a {
+    font-size: 1.7em;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 136, 204);
+    border-radius: 5px;
+    padding: 9px 15px;
+    float: right;
+}
+
+
 /*
 PAGE TEMPLATES
 */
