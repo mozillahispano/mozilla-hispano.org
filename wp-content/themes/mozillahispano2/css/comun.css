@@ -574,9 +574,18 @@ input.text {
 #warning-foro {
   display: none;
   padding: 20px 12.5%;
-  font-size: 1rem;
   text-align: center;
   line-height: 25px;
-  background-color: rgb(229, 229, 229);
+  background-color: #D64720;
+  z-index: 999;
+  bottom: 0px;
+  position: fixed;
   height: auto;
+  font-size: 0.85rem;
+  color: #FFF;
+}
+
+#warning-foro a {
+  color: #FFF;
+  text-decoration: underline;
 }
