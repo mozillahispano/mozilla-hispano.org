@@ -41,13 +41,12 @@ get_header();
 				<!-- Social Media buttons -->
 			<div data-social-share-privacy='true'></div>
 			
-			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
+			<p><?php edit_post_link('Editar esta entrada','','.');?></p>
+			
+			<?php comments_template(); ?>
 		</div>
 
 	<?php
-		comments_template();
-
-	
 	endwhile; else: ?>
 
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
