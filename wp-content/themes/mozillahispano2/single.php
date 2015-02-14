@@ -44,10 +44,9 @@ get_header();
 			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
 		</div>
 
-	<?php // If comments are open or we have at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-	comments_template();
-	}
+	<?php
+		comments_template();
+
 	
 	endwhile; else: ?>
 
