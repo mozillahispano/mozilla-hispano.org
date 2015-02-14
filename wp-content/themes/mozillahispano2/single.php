@@ -36,35 +36,18 @@ if (function_exists("is_syndicated")) {
 }
 ?>
 			</div>
-			<p class="postmetadata alt">
-						<?php if (function_exists("wp2bb")) wp2bb(); ?>
-						<?php// if ( comments_open() && pings_open() ) {
-							// Both Comments and Pings are open ?>
-							<!-- You can <a href="#respond">leave a response</a>, or <a href="<?php trackback_url(); ?>" rel="trackback">trackback</a> from your own site.
-
-						<?php// } elseif ( !comments_open() && pings_open() ) {
-							// Only Pings are Open ?>
-							Responses are currently closed, but you can <a href="<?php trackback_url(); ?> " rel="trackback">trackback</a> from your own site.
-
-						<?php// } elseif ( comments_open() && !pings_open() ) {
-							// Comments are open, Pings are not ?>
-							You can skip to the end and leave a response. Pinging is currently not allowed.
-
-						<?php// } elseif ( !comments_open() && !pings_open() ) {
-							// Neither Comments, nor Pings are open ?>
-							Both comments and pings are currently closed.-->
-
-						<?php /*}*/ edit_post_link('Editar esta entrada','','.'); ?>
-			</p>
 			<h2>Compartir artículo:</h2>
 				<!-- Social Media buttons -->
 			<div data-social-share-privacy='true'></div>
-		</div>
+			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
 
 
-	<?php comments_template(); ?>
-
-	<?php endwhile; else: ?>
+	<?php // If comments are open or we have at least one comment, load up the comment template.
+	if ( comments_open() || get_comments_number() ) {
+	comments_template();
+	}
+	
+	endwhile; else: ?>
 
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
 
