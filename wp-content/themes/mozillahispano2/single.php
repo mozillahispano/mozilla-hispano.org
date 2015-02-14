@@ -50,7 +50,7 @@ if (function_exists("is_syndicated")) {
 	endwhile; else: ?>
 
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
-
+	</div>
 <?php endif; ?>
 
 <?php get_sidebar(); ?>
