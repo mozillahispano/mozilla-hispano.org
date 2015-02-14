@@ -54,9 +54,9 @@ get_header();
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
 
 	<?php endif; ?>
+	
+	<?php get_sidebar(); ?>
 
 	</div> <!-- Fin contenido -->
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
