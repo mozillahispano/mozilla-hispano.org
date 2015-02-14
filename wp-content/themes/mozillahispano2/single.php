@@ -25,22 +25,24 @@ get_header();
 
 				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 				<?php //the_tags( '<p>Tags: ', ', ', '</p>'); ?>
-<?php
-/* Nota para los artículos que importamos extenamente */
-if (function_exists("is_syndicated")) {
-	if (is_syndicated() and (get_the_author() !== get_syndication_source())):
-	    echo '<p><cite class="feed">Publicado por '; the_author(); echo ' en <a href="';  the_syndication_source_link(); echo '">';
-	    the_syndication_source();
-	    echo '</a></cite></p>';
-	endif;
-}
-?>
+				<?php
+				/* Nota para los artículos que importamos extenamente */
+				if (function_exists("is_syndicated")) {
+					if (is_syndicated() and (get_the_author() !== get_syndication_source())):
+					    echo '<p><cite class="feed">Publicado por '; the_author(); echo ' en <a href="';  the_syndication_source_link(); echo '">';
+					    the_syndication_source();
+					    echo '</a></cite></p>';
+					endif;
+				}
+				?>
 			</div>
+			
 			<h2>Compartir artículo:</h2>
 				<!-- Social Media buttons -->
 			<div data-social-share-privacy='true'></div>
+			
 			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
-
+		</div>
 
 	<?php // If comments are open or we have at least one comment, load up the comment template.
 	if ( comments_open() || get_comments_number() ) {
@@ -50,11 +52,11 @@ if (function_exists("is_syndicated")) {
 	endwhile; else: ?>
 
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
-	</div>
-<?php endif; ?>
+
+	<?php endif; ?>
+
+	</div> <!-- Fin contenido -->
 
 <?php get_sidebar(); ?>
-
-</div>
 
 <?php get_footer(); ?>
