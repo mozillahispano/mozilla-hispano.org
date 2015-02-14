@@ -25,7 +25,7 @@ $temp= <<<PINTA
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
 						</li>
-						<li><a href="/podcast/">Podcast</a></li>
+						<li><a href="//foro.mozilla-hispano.org/" title="Foros de discusión">Foros</a></li>
 						<li><span title="Desarrolla con Labs">Labs</span>
 							<ul class="submenu">
 								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
@@ -166,7 +166,7 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 		jQuery.cookieBar({});
 
                 // Forum migration warning
-		if (document.URL.indexOf('/foro/')) {
+		if (document.URL.indexOf('/foro/') !== -1) {
 			jQuery('body').prepend('<div id="warning-foro">Este foro se guarda como histórico y no se pueden añadir más comentarios. Si aún quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>. Si quieres participar en las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusión</a>.</div>');
 			jQuery('#warning-foro').slideDown();
 		}
