@@ -41,14 +41,12 @@ get_header();
 				<!-- Social Media buttons -->
 			<div data-social-share-privacy='true'></div>
 			
-			<p><?php edit_post_link('Editar esta entrada','','.'); ?></p>
+			<p><?php edit_post_link('Editar esta entrada','','.');?></p>
+			
+			<?php comments_template(); ?>
 		</div>
 
-	<?php // If comments are open or we have at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-	comments_template();
-	}
-	
+	<?php
 	endwhile; else: ?>
 
 		<p>Lo sentimos, no se ha encontrado el artículo.</p>
