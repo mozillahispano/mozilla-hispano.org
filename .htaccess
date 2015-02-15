@@ -25,36 +25,8 @@ RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^mozilla-hispano\.org$ [NC]
 RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
 
-#Django cache
-RewriteRule ^/qa$ http://www.mozilla-hispano.org/qa/ [R,L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/)$ cache/index.html [L]
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^(qa/testing/)$ cache/products.html [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/help/)$ cache/help.html [L]
-
-#Django
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/.*|qa$) django.cgi/$1 [L]
-
 #Fiesta Madrid págna estáca
 Redirect /launchparty http://www.mozilla-hispano.org/eventos/fx35madrid
-
-#Redirects de antiguas URL de DC
-RewriteRule /[0-9]+-([a-z0-9\-]+) $1 [R=301,L]
-Redirect 301 /labs/tuentifox/ayuda.php http://www.mozilla-hispano.org/labs/tuentifox/manual/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.3.html http://www.mozilla-hispano.org/labs/tuentifox/023/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.2.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.1.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /themes/mozillahispano/js/cabecera.js http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/js/cabecera.js
-Redirect 301 /themes/mozillahispano/css/paisaje.css http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/css/paisaje.css
-Redirect 301 /themes/mozillahispano/css/iebugs.css http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/css/iebugs.css
-Redirect 301 _rss.php /feed/
-Redirect 301 /labs/tuentifox/update/tuentiPatters.xml http://www.mozilla-hispano.org/archivos/labs/tuentifox/update/tuentiPatters.xml
-Redirect 301 /labs/tuentifox/update/update.txt http://www.mozilla-hispano.org/archivos/labs/tuentifox/update/update.txt
-Redirect 301 /labs/tuentifox/actualizacion.php http://www.mozilla-hispano.org/labs/tuentifox/actualizacion/
 
 #  Tuentifox a TFox
 Redirect 301 /labs/tuentifox http://www.mozilla-hispano.org/labs/tfox/
@@ -72,6 +44,86 @@ Redirect 301 /difusion/eventos/ http://www.mozilla-hispano.org/documentacion/Eve
 
 # Pagina colabora con url bonita
 Redirect /participa https://www.mozilla-hispano.org/documentacion/Colabora
+
+# Wiki a SUMO
+Redirect 301 /documentacion/Detección_básica_de_problemas https://support.mozilla.org/es/kb/resolucion-y-diagnostico-de-problemas-con-firefox
+Redirect 301 /documentacion/Documentos_sobre_Firefox https://support.mozilla.org/es/products/firefox
+Redirect 301 /documentacion/Documentos_sobre_Thunderbird https://support.mozilla.org/es/products/thunderbird
+Redirect 301 /documentacion/Firefox_no_se_inicia https://support.mozilla.org/es/kb/firefox-no-se-inicia-encuentra-una-solucion
+
+# Top visitas
+Redirect 301 /documentacion/Desinstalar_Firefox_en_Windows https://support.mozilla.org/es/kb/desinstalar-firefox-de-tu-equipo
+Redirect 301 /documentacion/Descargar_e_instalar_Firefox "https://support.mozilla.org/es/kb/Instalar%20Firefox%20en%20Windows"
+
+# Antiguos foros de asistencia
+
+RewriteCond %{QUERY_STRING} ^f=1$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=1&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=2$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/desktop? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=2&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/desktop? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=46$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/mobile? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=46&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/mobile? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=3$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/thunderbird? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=3&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/thunderbird? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=47$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/firefox-os? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=47&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/firefox-os? [R=301,L]
+
+# Antiguos foros de comunidad
+
+RewriteCond %{QUERY_STRING} f=6
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=12
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/participa-en-el-proyecto? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=16
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/discusion-general? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=26
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=27
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=35
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/noticias? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=8
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/desarrollo-mozilla? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=7
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/traduccion? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=25
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/labs? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=17
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/presentaciones-mentoria? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=14
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/miembros? [R=301,L]
+
+RewriteCond %{QUERY_STRING} f=50
+RewriteRule ^foro/(.*)$ https://foro.mozilla-hispano.org/c/discusion-general/firefox-os? [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
