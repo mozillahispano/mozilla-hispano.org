@@ -572,7 +572,6 @@ input.text {
 
 /* Forum Warning */
 #warning-foro {
-  display: none;
   padding: 20px 12.5%;
   text-align: center;
   line-height: 25px;
@@ -580,9 +579,15 @@ input.text {
   z-index: 999;
   bottom: 0px;
   position: fixed;
-  height: auto;
+  height: 4em;
   font-size: 0.85rem;
   color: #FFF;
+  transition: 0.5s ease height;
+}
+
+#warning-foro.off {
+  padding: 0 12.5%;
+  height: 0;
 }
 
 #warning-foro a {
