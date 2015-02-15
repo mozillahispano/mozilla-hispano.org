@@ -1,4 +1,4 @@
-# Importante para que funcione la documentacion y el planet
+# Importante para que funcione la documentacion y el planet 
 SetEnv PHP_VER 5
 SetEnv REGISTER_GLOBALS 0
 SetEnv ZEND_OPTIMIZER 1
@@ -24,6 +24,19 @@ RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
 # Obligamos el uso de www en el .org
 RewriteCond %{HTTP_HOST} ^mozilla-hispano\.org$ [NC]
 RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
+
+#Django cache
+RewriteRule ^/qa$ http://www.mozilla-hispano.org/qa/ [R,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(qa/)$ cache/index.html [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(qa/testing/)$ cache/products.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(qa/help/)$ cache/help.html [L]
+
+#Django
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(qa/.*|qa$) django.cgi/$1 [L]
 
 #Fiesta Madrid págna estáca
 Redirect /launchparty http://www.mozilla-hispano.org/eventos/fx35madrid
@@ -61,7 +74,7 @@ Redirect 301 /difusion/eventos/ http://www.mozilla-hispano.org/documentacion/Eve
 Redirect /participa https://www.mozilla-hispano.org/documentacion/Colabora
 
 # Wiki a SUMO
-Redirect 301 /documentacion/Detecci(ó|\%C3\%B3)n_b(á|\%C3\%A1)sica_de_problemas https://support.mozilla.org/es/kb/resolucion-y-diagnostico-de-problemas-con-firefox
+Redirect 301 /documentacion/Detección_básica_de_problemas https://support.mozilla.org/es/kb/resolucion-y-diagnostico-de-problemas-con-firefox
 Redirect 301 /documentacion/Documentos_sobre_Firefox https://support.mozilla.org/es/products/firefox
 Redirect 301 /documentacion/Documentos_sobre_Thunderbird https://support.mozilla.org/es/products/thunderbird
 Redirect 301 /documentacion/Firefox_no_se_inicia https://support.mozilla.org/es/kb/firefox-no-se-inicia-encuentra-una-solucion
@@ -71,34 +84,54 @@ Redirect 301 /documentacion/Desinstalar_Firefox_en_Windows https://support.mozil
 Redirect 301 /documentacion/Descargar_e_instalar_Firefox "https://support.mozilla.org/es/kb/Instalar%20Firefox%20en%20Windows"
 
 # Antiguos foros de asistencia
-RedirectMatch 301 ^/foro/viewforum\.php\?f=1$ https://support.mozilla.org/es/questions/new
-RedirectMatch 301 ^/foro/viewforum\.php\?f=2$ https://support.mozilla.org/es/questions/new/desktop
-RedirectMatch 301 ^/foro/viewforum\.php\?f=46$ https://support.mozilla.org/es/questions/new/mobile
-RedirectMatch 301 ^/foro/viewforum\.php\?f=3$ https://support.mozilla.org/es/questions/new/thunderbird
-RedirectMatch 301 ^/foro/viewforum\.php\?f=47$ https://support.mozilla.org/es/questions/new/firefox-os
+RewriteCond %{QUERY_STRING} ^f=1$
+RewriteRule ^(.*)$ https://support.mozilla.org/es/questions/new? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=2$
+RewriteRule ^(.*)$ https://support.mozilla.org/es/questions/new/desktop? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=46$
+RewriteRule ^(.*)$ https://support.mozilla.org/es/questions/new/mobile? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=3$
+RewriteRule ^(.*)$ https://support.mozilla.org/es/questions/new/thunderbird? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=47$
+RewriteRule ^(.*)$ https://support.mozilla.org/es/questions/new/firefox-os? [R=301,L]
 
 # Antiguos foros de comunidad
-RedirectMatch 301  ^/foro/(viewforum|viewtopic)\.php\?f=6(.*)$ https://foro.mozilla-hispano.org/
+RewriteCond %{QUERY_STRING} f=6
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=12(.*)$ https://foro.mozilla-hispano.org/c/participa-en-el-proyecto
+RewriteCond %{QUERY_STRING} f=12
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/participa-en-el-proyecto? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=16(.*)$ https://foro.mozilla-hispano.org/c/discusion-general
+RewriteCond %{QUERY_STRING} f=16
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/discusion-general? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=26(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos
+RewriteCond %{QUERY_STRING} f=26
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=27(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos
+RewriteCond %{QUERY_STRING} f=27
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/difusion-eventos? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=35(.*)$ https://foro.mozilla-hispano.org/c/noticias
+RewriteCond %{QUERY_STRING} f=35
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/noticias? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=7(.*)$ https://foro.mozilla-hispano.org/c/traduccion
+RewriteCond %{QUERY_STRING} f=7
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/traduccion? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=25(.*)$ https://foro.mozilla-hispano.org/c/labs
+RewriteCond %{QUERY_STRING} f=25
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/labs? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=17(.*)$ https://foro.mozilla-hispano.org/c/presentaciones
+RewriteCond %{QUERY_STRING} f=17
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/presentaciones-mentoria? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=14(.*)$ https://foro.mozilla-hispano.org/c/miembros
+RewriteCond %{QUERY_STRING} f=14
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/miembros? [R=301,L]
 
-RedirectMatch 301 ^/foro/(viewforum|viewtopic)\.php\?f=50(.*)$ https://foro.mozilla-hispano.org/c/discusion-general/firefox-os
+RewriteCond %{QUERY_STRING} f=50
+RewriteRule ^(.*)$ https://foro.mozilla-hispano.org/c/discusion-general/firefox-os? [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -134,7 +167,7 @@ AddType video/webm webm
 # twitter.com/FontSquirrel/status/14855840545
 AddType image/svg+xml svg svgz
 AddEncoding gzip svgz
-
+                                       
 # webfonts
 AddType application/vnd.ms-fontobject eot
 AddType font/truetype ttf
@@ -176,7 +209,7 @@ AddCharset utf-8 .html .css .js .xml .json .rss
 
 # your document html
   ExpiresByType text/html "access plus 0 seconds"
-
+  
 # data
   ExpiresByType text/xml "access plus 0 seconds"
   ExpiresByType application/xml "access plus 0 seconds"
@@ -196,26 +229,26 @@ AddCharset utf-8 .html .css .js .xml .json .rss
   ExpiresByType video/ogg "access plus 1 month"
   ExpiresByType audio/ogg "access plus 1 month"
   ExpiresByType video/webm "access plus 1 month"
-
+  
 # htc files (css3pie)
   ExpiresByType text/x-component "access plus 1 month"
-
+  
 # webfonts
   ExpiresByType font/truetype "access plus 1 month"
   ExpiresByType font/opentype "access plus 1 month"
   ExpiresByType application/x-font-woff "access plus 1 month"
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
-
+    
 # css and javascript
   ExpiresByType text/css "access plus 2 months"
   ExpiresByType application/javascript "access plus 2 months"
   ExpiresByType text/javascript "access plus 2 months"
-
+  
   <IfModule mod_headers.c>
     Header append Cache-Control "public"
   </IfModule>
-
+  
 </IfModule>
 
 
@@ -233,3 +266,4 @@ FileETag None
 AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
 </ifmodule>
 # END GZIP
+
