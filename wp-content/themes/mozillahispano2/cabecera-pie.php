@@ -164,13 +164,16 @@ tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.i
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery.cookieBar({});
-
-                // Forum migration warning
-		if (document.URL.indexOf('/foro/') !== -1) {
-			jQuery('body').prepend('<div id="warning-foro">Este foro se guarda como histórico y no se pueden añadir más comentarios. Si aún quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>. Si quieres participar en las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusión</a>.</div>');
-			jQuery('#warning-foro').slideDown();
-		}
 	});
+
+	// Forum migration warning
+	var dBody = document.querySelector('body');
+	dBody.insertAdjacentHTML('afterbegin',
+		'<div id="warning-foro" class="off">Este foro se guarda como histórico y no se pueden añadir más comentarios. Si aún quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>. Si quieres participar en las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusión</a>.</div>');
+	// Slidein animation
+	window.setTimeout(function() {
+		document.getElementById("warning-foro").classList.remove("off");
+	}, 500);
 </script>
 
 PINTA;
