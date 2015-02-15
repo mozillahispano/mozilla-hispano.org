@@ -60,16 +60,31 @@ Redirect 301 /documentacion/Descargar_e_instalar_Firefox "https://support.mozill
 RewriteCond %{QUERY_STRING} ^f=1$
 RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new? [R=301,L]
 
+RewriteCond %{QUERY_STRING} ^f=1&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new? [R=301,L]
+
 RewriteCond %{QUERY_STRING} ^f=2$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/desktop? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=2&sid=(.*)$
 RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/desktop? [R=301,L]
 
 RewriteCond %{QUERY_STRING} ^f=46$
 RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/mobile? [R=301,L]
 
+RewriteCond %{QUERY_STRING} ^f=46&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/mobile? [R=301,L]
+
 RewriteCond %{QUERY_STRING} ^f=3$
 RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/thunderbird? [R=301,L]
 
+RewriteCond %{QUERY_STRING} ^f=3&sid=(.*)$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/thunderbird? [R=301,L]
+
 RewriteCond %{QUERY_STRING} ^f=47$
+RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/firefox-os? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^f=47&sid=(.*)$
 RewriteRule ^foro/(.*)$ https://support.mozilla.org/es/questions/new/firefox-os? [R=301,L]
 
 # Antiguos foros de comunidad
