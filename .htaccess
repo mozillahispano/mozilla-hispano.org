@@ -25,36 +25,8 @@ RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^mozilla-hispano\.org$ [NC]
 RewriteRule ^(.*)$ http://www.mozilla-hispano.org/$1 [R=301,L]
 
-#Django cache
-RewriteRule ^/qa$ http://www.mozilla-hispano.org/qa/ [R,L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/)$ cache/index.html [L]
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^(qa/testing/)$ cache/products.html [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/help/)$ cache/help.html [L]
-
-#Django
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(qa/.*|qa$) django.cgi/$1 [L]
-
 #Fiesta Madrid págna estáca
 Redirect /launchparty http://www.mozilla-hispano.org/eventos/fx35madrid
-
-#Redirects de antiguas URL de DC
-RewriteRule /[0-9]+-([a-z0-9\-]+) $1 [R=301,L]
-Redirect 301 /labs/tuentifox/ayuda.php http://www.mozilla-hispano.org/labs/tuentifox/manual/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.3.html http://www.mozilla-hispano.org/labs/tuentifox/023/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.2.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /labs/tuentifox/releasenotes/tuentifox-0.2.1.html http://www.mozilla-hispano.org/labs/tuentifox/022/
-Redirect 301 /themes/mozillahispano/js/cabecera.js http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/js/cabecera.js
-Redirect 301 /themes/mozillahispano/css/paisaje.css http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/css/paisaje.css
-Redirect 301 /themes/mozillahispano/css/iebugs.css http://www.mozilla-hispano.org/wp-content/themes/mozillahispano/css/iebugs.css
-Redirect 301 _rss.php /feed/
-Redirect 301 /labs/tuentifox/update/tuentiPatters.xml http://www.mozilla-hispano.org/archivos/labs/tuentifox/update/tuentiPatters.xml
-Redirect 301 /labs/tuentifox/update/update.txt http://www.mozilla-hispano.org/archivos/labs/tuentifox/update/update.txt
-Redirect 301 /labs/tuentifox/actualizacion.php http://www.mozilla-hispano.org/labs/tuentifox/actualizacion/
 
 #  Tuentifox a TFox
 Redirect 301 /labs/tuentifox http://www.mozilla-hispano.org/labs/tfox/
