@@ -1,3 +1,7 @@
+ul,ol, li {
+	list-style: initial
+}
+
 html #tullido {
 	max-width: 1100px;
 }
@@ -57,6 +61,7 @@ body .topic-body .topic-map li {
 
 body .contents p {
 	margin-bottom: 1em;
+	line-height: 20px;
 }
 
 #main {
@@ -74,4 +79,14 @@ body .contents p {
 
 .wmd-prompt-dialog {
 	font-size: 1.8em;
+}
+
+.preview-wrapper ul {
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.quote blockquote {
+    margin-top: 0px;
+    padding: 10px;
 }
