@@ -90,3 +90,8 @@ body .contents p {
     margin-top: 0px;
     padding: 10px;
 }
+
+.d-header .icons > li {
+    float: left;
+    list-style: none;
+}
