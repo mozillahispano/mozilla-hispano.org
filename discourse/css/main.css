@@ -1,58 +1,97 @@
+ul,ol, li {
+	list-style: initial
+}
+
 html #tullido {
 	max-width: 1100px;
 }
-@media only screen and (max-width: 1139px){
-html #tullido{
-	max-width:990px
-}
-}
+
 html #menu {
 	float: right;
 	margin-right: 150px;
 }
+
+@media only screen and (max-width: 1139px){
+	html #tullido{
+		max-width:990px
+	}
+}
+
 #lienzo.discourse {
 	overflow: visible;
 	z-index: 10;
 }
+
 .discourse #menu {
 	font-size: 1.4em;
 }
+
 .d-header {
 	box-shadow: unset;
 	background-color: transparent;
 }
+
 .docked .d-header {
 	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.25);
 	background-color: #fff;
 }
+
 .container {
 	font-size: 1.2em;
 }
+
 body .topic-body ul,
 body .topic-body ol,
 body .topic-body li {
 	list-style: outside disc none;
-	margin-left: 1em;
 }
+
+body .topic-body ul {
+	padding-left: 40px;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
 body .topic-body .topic-map ul,
 body .topic-body .topic-map ol,
 body .topic-body .topic-map li {
 	list-style: outside none none;
 	margin: 0;
 }
+
 body .contents p {
 	margin-bottom: 1em;
+	line-height: 20px;
 }
+
 #main {
 	z-index: 0;
 	font-size: 1.4em;
 }
+
 .modal-open #main {
 	z-index: 2000;
 }
+
 .bootbox.modal {
 	z-index: 2010;
 }
+
 .wmd-prompt-dialog {
 	font-size: 1.8em;
+}
+
+.preview-wrapper ul {
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.quote blockquote {
+    margin-top: 0px;
+    padding: 10px;
+}
+
+.d-header .icons > li {
+    float: left;
+    list-style: none;
 }
