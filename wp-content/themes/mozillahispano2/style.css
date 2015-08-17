@@ -62,8 +62,9 @@ text-align: center;
 	font-size: 80%;
 }
 
-.portada-individual .texto-portada-individual blockquote {
-background:url(/foro/styles/mozillahispano/theme/images/quote.gif) #EBEADD no-repeat scroll 6px 8px;
+body blockquote {
+	border-left: 0.2em solid #ccc;
+	background-color: #EBEADD;
 	padding:1em 2em;
 	margin: 1em 0em;
 	font-style: italic;
