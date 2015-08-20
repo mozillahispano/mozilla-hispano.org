@@ -33,7 +33,6 @@ foro/includes/styles/*
 documentacion/*
 !documentacion/skins/
 !documentacion/htmlets/
-!documentacion/extensions/
 
 documentacion/skins/*
 !documentacion/skins/bookjive.php
