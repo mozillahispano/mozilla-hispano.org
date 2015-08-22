@@ -1,9 +1,0 @@
-/**
-* Style sheet for the wikieditor
-*/
-
-textarea.wikieditor {
-	border: none;
-	padding: 0;
-	line-height: 1.5em;
-}
