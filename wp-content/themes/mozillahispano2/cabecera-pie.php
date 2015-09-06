@@ -136,9 +136,9 @@ $temp= <<<PINTA
 	</div>
 </div>
 
-<script type="text/javascript" src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 <script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
 tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
+<script type="text/javascript" src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 
 <!-- Piwik -->
 <script type="text/javascript">
