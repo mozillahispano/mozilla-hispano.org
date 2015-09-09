@@ -35,8 +35,7 @@ documentacion/*
 !documentacion/htmlets/
 
 documentacion/skins/*
-!documentacion/skins/bookjive.php
-!documentacion/skins/bookjive/
+!documentacion/skins/foregroundMozillaHispano/
 
 
 planet/*

@@ -1,6 +1,10 @@
 [![Stories in Ready](https://badge.waffle.io/mozillahispano/mozilla-hispano.org.png?label=ready&title=Ready)](https://waffle.io/mozillahispano/mozilla-hispano.org)
 
-# Cómo empezar a desarrollar
+# Colabora con Mozilla Hispano
+
+Si estás interesado en formar parte del área de Labs de Mozilla Hispano, echa un vistazo a [nuestro foro](https://foro.mozilla-hispano.org/c/labs) para presentantarte y poder guiarte en los primeros pasos. ¡Te esperamos!
+
+## Cómo empezar a desarrollar
 
 La forma más fácil de comenzar es mediante la máquina virtual de Vagrant. Al descargarla, podrás comenzar a trabajar sin necesidad de instalar o configurar dependencias.
 
