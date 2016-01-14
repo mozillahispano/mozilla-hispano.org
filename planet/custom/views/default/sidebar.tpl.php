@@ -1,6 +1,7 @@
 <?php
-$all_people = &$Planet->getPeople();
-usort($all_people, array('PlanetFeed', 'compare'));
+$all_people = $Planet->getPeople();
+// Roto en las nuevas versiones de php
+//usort($all_people, array('PlanetFeed', 'compare'));
 ?>
 <div id="barra-small">
     <div id="sidebar-people">
@@ -15,46 +16,14 @@ usort($all_people, array('PlanetFeed', 'compare'));
             <?php endforeach; ?>
         </ul>
 	</div>
-	
+
 		<h3>Twitter</h3>
 		<div>
-			<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-			<script>
-						    new TWTR.Widget({
-						      version: 2,
-						      type: 'search',
-						      search: '#mozillahispano',
-						      interval: 6000,
-						      title: 'Mozilla Hispano',
-						      subject: '#mozillahispano',
-						      width: 220,
-						      height: 600,
-						      theme: {
-							shell: {
-							  background: 'transparent',
-							  color: '#444444'
-							},
-							tweets: {
-							  background: '#ffffff',
-							  color: '#444444',
-							  links: '#264373'
-							}
-						      },
-						      features: {
-							scrollbar: true,
-							loop: false,
-							live: true,
-							hashtags: false,
-							timestamp: true,
-							avatars: true,
-							toptweets: false,
-							behavior: 'all'
-						      }
-						    }).render().start();
-			</script>
+			<a class="twitter-timeline"  href="https://twitter.com/hashtag/mozillahispano" data-widget-id="686702045420765184">Tweets sobre #mozillahispano</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</div>
 
-	
+
 
         <h3>Últimas fotos</h3>
         <div class="cajacontenido">
@@ -66,34 +35,34 @@ usort($all_people, array('PlanetFeed', 'compare'));
 					$nsid = ""; //NSID Usuario, conseguir en: http://idgettr.com/
 					//Incluir tag, ordenamieno, privacidad, y numero de imagenes a mostrar
 					$photos = $f->photos_search(array("tags"=>"mozilla-hispano", "user_id"=>$nsid, "sort"=>"date-posted-desc", "privacy_filter"=>"1", "per_page"=>"10"));
-					$url    = "http://www.flickr.com/photos/".$photo['id']."/"; //Url de la Imgen Original
+					$url    = "//www.flickr.com/photos/".$photo['id']."/"; //Url de la Imgen Original
 					if (is_array($photos['photo']))
 					{
 						echo "<div><ul>";
 						$sw= 1;
 						foreach ($photos['photo'] as $photo)
 						{
-							if ($sw == 1) 
+							if ($sw == 1)
 							{
 								$salida = "<li class='foto'>";
 								$salida .= "<a href='".$f->buildPhotoURL($photo, "medium")."' title='".$photo['title']."' class='thickbox' rel='mozilla-hispano'><img alt='".$photo['title']."' title='".$photo['title']."' "."src='".$f->buildPhotoURL($photo, "square")."' /></a>";
 								$sw=0;
 							}
-							else 
+							else
 							{
 								$salida .= "<a href='".$f->buildPhotoURL($photo, "medium")."' title='".$photo['title']."' class='thickbox' rel='mozilla-hispano'><img alt='".$photo['title']."' title='".$photo['title']."' "."src='".$f->buildPhotoURL($photo, "square")."' /></a>";
 								echo $salida."</li>";
 								$sw=1;
 							}
 						}
-						
+
 						echo "</ul></div>";
 					}
 				?>
 			</div><!-- Fotos -->
-			<p class="all-photos"><a href="http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"><img width="12" height="12" alt="" src="postload.php?url=http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"/> RSS de las fotos</a></p>
+			<p class="all-photos"><a href="//api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"><img width="12" height="12" alt="" src="postload.php?url=http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"/> RSS de las fotos</a></p>
 			<p class="all-photos"><a href="http://www.flickr.com/photos/tags/mozilla-hispano/">Ver todas las fotos</a></p>
-			
+
 		</div>
 
         <h3>RSS</h3>
@@ -104,7 +73,7 @@ usort($all_people, array('PlanetFeed', 'compare'));
 				</ul>
 		</div>
 
-	
+
 
         <h3>Archivos</h3>
         <div class="cajacontenido">
