@@ -728,6 +728,25 @@ p.postmetadata {
 
 }
 
+/* Labs https://www.mozilla-hispano.org/labs/ */
+  #cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    clear: both;
+  }
+    .page-template-labs-index-php #post-363 {
+      order: 1;
+      width: 100%;
+    }
+    .page-template-labs-index-php #ultimas-noticias {
+      order: 2;
+      width: 100%;
+    }
+    .page-template-labs-index-php #labs-sidebar {
+      order: 3;
+      width: 100%;
+    }
 }
 
 /* TODO */
@@ -791,6 +810,7 @@ p.postmetadata {
   display: none;
 }
 /* }}} */
+  /* Labs https://www.mozilla-hispano.org/labs/ */
 
 }
 
