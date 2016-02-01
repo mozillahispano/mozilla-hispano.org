@@ -219,7 +219,7 @@ ul.listado-podcast li small {
 	background-image:url(./media/mh-labs.png);
 	background-position:18px 10px;
 	background-repeat:no-repeat;
-	height:120px;
+	min-height:120px;
 	padding-left:130px;
 	padding-top:40px;
 }
