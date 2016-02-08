@@ -728,6 +728,29 @@ p.postmetadata {
 
 }
 
+/* Labs https://www.mozilla-hispano.org/labs/ */
+  body.page-template-labs-index-php #cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    clear: both;
+  }
+    body.page-template-labs-index-php #cuerpo #post-363 {
+      order: 1;
+      width: 100%;
+    }
+    body.page-template-labs-index-php #cuerpo #ultimas-noticias {
+      float: inherit;
+      padding: 0 1em;
+      order: 2;
+      width: 100%;
+    }
+    body.page-template-labs-index-php #cuerpo #labs-sidebar {
+      float: inherit;
+      padding: 0 1em;
+      order: 3;
+      width: 100%;
+    }
 }
 
 /* TODO */
@@ -791,6 +814,7 @@ p.postmetadata {
   display: none;
 }
 /* }}} */
+  /* Labs https://www.mozilla-hispano.org/labs/ */
 
 }
 
