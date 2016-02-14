@@ -1,5 +1,5 @@
 <?php
- 
+
 	include("../wp-content/themes/mozillahispano2/cabecera-pie.php");
 
 	require ($_SERVER['DOCUMENT_ROOT'].'/eventos/twitter/multiTwitterOU.php');

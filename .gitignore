@@ -1,49 +1,33 @@
 # Ignorar todo en el directorio inicial expecto las carpetas que nos interesan.
+# http://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files
 /*
 
 !.gitignore
-!.gitmodules
-!.htaccess
-!README.md
-!wp-content/
-!foro/
+
 !discourse/
-!documentacion/
+
 !planet/
+planet/*
+!planet/custom/*
 
+!wp-content/
+wp-content/*
 !wp-content/themes/
-!wp-content/plugins/
-
 wp-content/themes/*
 !wp-content/themes/mozillahispano2/
 
+!foro/
 foro/*
 !foro/includes/
-
 foro/includes/*
 !foro/includes/cabecera-pie.php
 !foro/includes/functions.php
-!foro/includes/styles/
 
-foro/includes/styles/*
-!foro/includes/styles/mozillahispano/
+foro/styles/*
+!foro/styles/mozillahispano/
 
-!discourse/*
-
+!documentacion/
 documentacion/*
-!documentacion/skins/
 !documentacion/htmlets/
-
 documentacion/skins/*
-!documentacion/skins/bookjive.php
-!documentacion/skins/bookjive/
-
-
-planet/*
-!planet/custom/
-
-planet/custom/*
-!planet/custom/views.php
-!planet/custom/views/
-!planet/custom/style/
-!planet/custom/img/
+!documentacion/skins/foregroundMozillaHispano/
