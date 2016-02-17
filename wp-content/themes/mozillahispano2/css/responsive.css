@@ -705,6 +705,15 @@ ul {
     border-bottom: 1px dotted;
     font-size: 1.6em;
     margin-bottom: 0.5em;
+	padding-right: 1.2em;
+}
+
+.portada-individual .texto-portada-individual p {
+    padding-right: 1.2em;
+}
+
+.page-template-labs-index-php p#labs-more {
+	padding-right: 1.2em;
 }
 
 .dia-publicacion{
