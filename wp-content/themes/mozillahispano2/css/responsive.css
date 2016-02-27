@@ -741,7 +741,7 @@ p.postmetadata {
     }
     body.page-template-labs-index-php #cuerpo #ultimas-noticias {
       float: inherit;
-      padding: 0 1em;
+      padding: 0;
       order: 2;
       width: 100%;
     }
