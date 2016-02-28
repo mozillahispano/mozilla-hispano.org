@@ -240,6 +240,11 @@ ul.listado-podcast li small {
 	width: 60%;
 }
 
+/* Título RSS + artículos */
+.page-template-labs-index-php #ultimas-noticias > h2 {
+	margin: 1em 0.5em;
+}
+
 .page-template-labs-index-php #ultimas-noticias .portada-individual {
 	margin: 0 !important;
 	width: auto;
@@ -249,7 +254,7 @@ ul.listado-podcast li small {
 	font-size: 1.4em;
 	text-align: center;
 	clear: both;
-	margin: 1em 0;
+	margin: 1em;
 	float: right;
 }
 
