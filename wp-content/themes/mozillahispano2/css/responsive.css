@@ -81,8 +81,12 @@
   }
 
    #contenido .portada-individual {
-    width: 95%;
+    width: 92%;
     margin: 1em !important;
+  }
+  #contenido .portada-individual img {
+    width: 100%;
+    height: auto;
   }
 
   /* Carousel de portada */
