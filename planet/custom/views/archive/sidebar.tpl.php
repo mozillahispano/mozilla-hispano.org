@@ -55,11 +55,9 @@ usort($all_people, array('PlanetPerson', 'compare'));
 		</div>
 
 
-
+<!--
 		<h3>Últimas fotos</h3>
 		<div class="cajacontenido">
-			<!-- Aquí­ vienen las fotos... -->
-<!--
 			<div id="fotos">
 				<?php
 				if (false) { // Desactivamos las fotos de flickr porque la biblioteca no funciona en php 7
