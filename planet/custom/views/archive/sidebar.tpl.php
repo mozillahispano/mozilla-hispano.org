@@ -62,7 +62,7 @@ usort($all_people, array('PlanetPerson', 'compare'));
 <!--
 			<div id="fotos">
 				<?php
-		if (false) { // Desactivamos las fotos de flickr porque la biblioteca no funciona en php 7
+				if (false) { // Desactivamos las fotos de flickr porque la biblioteca no funciona en php 7
 					require_once("../eventos/flickr/phpFlickr.php"); //Incluyendo el API de Flickr
 					$f = new phpFlickr("03e1411633d36816cc74fb82204549ec"); //Clase de Api, conseguir en: http://www.flickr.com/services/api/keys/
 					$nsid = ""; //NSID Usuario, conseguir en: http://idgettr.com/
@@ -91,9 +91,9 @@ usort($all_people, array('PlanetPerson', 'compare'));
 
 						echo "</ul></div>";
 					}
-		}
+				}
 				?>
-			</div><!-- Fotos -->
+			</div><
 			<p class="all-photos"><a href="http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"><img width="12" height="12" alt="" src="postload.php?url=http://api.flickr.com/services/feeds/photos_public.gne?tags=mozilla-hispano&amp;lang=es-us&amp;format=rss_200"/> RSS de las fotos</a></p>
 			<p class="all-photos"><a href="http://www.flickr.com/photos/tags/mozilla-hispano/">Ver todas las fotos</a></p>
 
