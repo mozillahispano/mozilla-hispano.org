@@ -96,6 +96,7 @@ $temp= <<<PINTA
 				<li><a href="/documentacion/Colabora" title="Colabora con el proyecto">Colabora</a></li>
 				<li><a href="/comunidad/">Comunidad</a></li>
 				<li><a href="/marca/">Uso de marca y logos</a></li>
+				<li><a href="https://www.mozilla.org/es-ES/about/governance/policies/participation/" title="Pautas de participación">Pautas de participación</a></li>
 			</ul>
 		</div>
 
