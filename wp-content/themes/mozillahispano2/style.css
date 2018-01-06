@@ -682,7 +682,6 @@ Author URI: http://dev7studios.com
 .portada-individual, .portada-extra{
     border-bottom: 1px solid #E5E5E5 !important;
     margin: 1em !important;
-    padding: 1em 1em 2em 1em !important;
     float:left;
     width:70%;
 }
