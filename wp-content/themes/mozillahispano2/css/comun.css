@@ -88,11 +88,6 @@ input.text {
 	border:1px solid #CCCCCC;
 }
 
-#tabzilla {
-	position: absolute;
-	right: 0;
-}
-
 /* Cabecera */
 #cabecera {
 	height: 100px;
@@ -598,15 +593,16 @@ input.text {
 /* Tabzilla https://github.com/mozilla/tabzilla/ */
 
 #tabzilla {
+	right: 0;
 	float: right;
-	position: relative;
+	position: absolute;
 }
 
 #tabzilla a {
 	text-indent: 120%;
 	white-space: nowrap;
 	overflow: hidden;
-	background-image: url('img/tabzilla-static.png');
+	background-image: url('../img/tabzilla-static.png');
 	background-repeat: no-repeat;
 	display: block;
 	height: 37px;
@@ -620,7 +616,7 @@ input.text {
 (-o-min-device-pixel-ratio: 3/2),
 (min-resolution: 1.5dppx) {
 	#tabzilla a {
-		background-image: url('img/tabzilla-static-high-res.png');
+		background-image: url('../img/tabzilla-static-high-res.png');
 		-webkit-background-size: 147px 37px;
 		background-size: 147px 37px;
 	}
