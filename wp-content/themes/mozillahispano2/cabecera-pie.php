@@ -137,9 +137,16 @@ $temp= <<<PINTA
 	</div>
 </div>
 
-<script type='text/javascript'>var tab=document.createElement('a');tab.href="https://www.mozilla.org/";tab.id="tabzilla";
-tab.innerHTML="mozilla";var tullido=document.getElementById('tullido');tullido.insertBefore(tab,tullido.firstChild);</script>
-<script type="text/javascript" src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
+<script type='text/javascript'>
+var tab=document.createElement('div');
+tab.id = "tabzilla";
+var tab_a = document.createElement('a');
+tab_a.href="https://www.mozilla.org/";
+tab_a.textContent = "mozilla";
+tab.appendChild(tab_a);
+var tullido=document.getElementById('tullido');
+tullido.insertBefore(tab,tullido.firstChild);
+</script>
 
 <!-- Piwik -->
 <script type="text/javascript">
@@ -195,7 +202,6 @@ $temp= <<<PINTA
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Noticias" href="/archivos/noticias.xml" />
 	<link rel="search" type="application/opensearchdescription+xml" title="Mozilla Hispano - Documentación" href="/archivos/documentacion.xml" />
 
-	<link type="text/css" rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/comun.css" type="text/css" />
 	<link rel="stylesheet" href="/wp-content/themes/mozillahispano2/css/responsive.css" type="text/css" />
 
