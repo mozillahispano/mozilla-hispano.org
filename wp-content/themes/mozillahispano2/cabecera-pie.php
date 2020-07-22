@@ -20,16 +20,16 @@ $temp= <<<PINTA
 						<li><span title="Ayuda a difundir Mozilla en español">Difusión</span>
 							<ul class="submenu">
 								<li><a href="/difusion/">Promociona Mozilla</a></li>
-								<li><a href="https://foro.mozilla-hispano.org/c/difusion-eventos" title="Foro de difusión">Foros</a></li>
+								<!-- <li><a href="https://foro.mozilla-hispano.org/c/difusion-eventos" title="Foro de difusión">Foros</a></li> -->
 								<li><a href="/documentacion/Eventos" title="Eventos Mozilla">Eventos</a></li>
 								<li><a href="/documentacion/Difusi%C3%B3n" title="Proyectos de difusión">Proyectos</a></li>
 							</ul>
 						</li>
-						<li><a href="//foro.mozilla-hispano.org/" title="Foros de discusión">Foros</a></li>
+						<li><a href="https://discourse.mozilla.org/c/community-portal/mozilla-hispano" title="Foros de discusión">Foros</a></li>
 						<li><span title="Desarrolla con Labs">Labs</span>
 							<ul class="submenu">
 								<li><a href="/labs/" title="Centro de desarrollo e innovación en la plataforma Mozilla">Blog y proyectos</a></li>
-								<li><a href="https://foro.mozilla-hispano.org/c/labs">Foros</a></li>
+								<!-- <li><a href="https://foro.mozilla-hispano.org/c/labs">Foros</a></li> -->
 							</ul>
 						</li>
 						<li><span>Comunidad</span>
@@ -56,7 +56,7 @@ $temp= <<<PINTA
 							<ul class="submenu">
 								<li><a href="/documentacion/Colabora">Cómo participar</a></li>
 								<li><a href="/documentacion/Recursos_para_colaboradores" title="Recursos para colaboradores">Recursos para colaboradores</a></li>
-								<li><a href="https://foro.mozilla-hispano.org/">Foro de discusión</a></li>
+								<li><a href="https://discourse.mozilla.org/c/community-portal/mozilla-hispano">Foro de discusión</a></li>
 								<li><a href="/documentacion/Proyectos">Proyectos</a></li>
 								<li><a href="/documentacion/Tareas">Tareas</a></li>
 								<li><a href="/documentacion/Reuniones">Reuniones</a></li>
@@ -104,7 +104,7 @@ $temp= <<<PINTA
 			<strong>Comunidad</strong>
 			<ul>
 				<li><a href="/">Noticias</a></li>
-				<li><a href="https://foro.mozilla-hispano.org/">Foro de discusión</a></li>
+				<li><a href="https://discourse.mozilla.org/c/community-portal/mozilla-hispano">Foro de discusión</a></li>
 				<li><a href="https://support.mozilla.org/es/">Documentación</a></li>
 				<li><a href="/planet/">Planet</a></li>
 				<li><a href="/labs/">Labs</a></li>
@@ -178,7 +178,7 @@ tullido.insertBefore(tab,tullido.firstChild);
 	if (document.URL.indexOf('/foro/') !== -1) {
 		var dBody = document.querySelector('body');
 		dBody.insertAdjacentHTML('afterbegin',
-			'<div id="warning-foro" class="off">Este foro se guarda como histórico y no se pueden añadir más comentarios. Si aún quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>. Si quieres participar en las discusiones y debates de la comunidad, <a href="http://foro.mozilla-hispano.org">accede a los nuevos foros de discusión</a>.</div>');
+			'<div id="warning-foro" class="off">Este foro se guarda como histórico y no se pueden añadir más comentarios. Si aún quieres hacer una petición de ayuda accede a <a href="https://support.mozilla.org/es/">la plataforma de ayuda de Mozilla</a>. Si quieres participar en las discusiones y debates de la comunidad, <a href="https://discourse.mozilla.org/c/community-portal/mozilla-hispano">accede a los nuevos foros de discusión</a>.</div>');
 		// Slidein animation
 		window.setTimeout(function() {
 			document.getElementById("warning-foro").classList.remove("off");
