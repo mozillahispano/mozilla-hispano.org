@@ -55,9 +55,9 @@ $temp= <<<PINTA
 		<div class="c1">
 			<strong>Acerca de</strong>
 			<ul>
-				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano" title="Conoce más sobre el proyecto">Acerca de Mozilla Hispano</a></li>
-				<li><a href="/documentacion/Organizaci%C3%B3n_de_Mozilla_Hispano#Contacto" title="Contacta con el proyecto">Contacto</a></li>
-				<li><a href="/documentacion/Colabora" title="Colabora con el proyecto">Colabora</a></li>
+				<li><a href="https://discourse.mozilla.org/t/leeme-como-participar-en-la-comunidad/64161" title="Conoce más sobre el proyecto">Acerca de Mozilla Hispano</a></li>
+				<li><a href="https://community.mozilla.org/groups/mozilla-hispano/" title="Contacta con el proyecto">Contacto</a></li>
+				<li><a href="https://discourse.mozilla.org/t/leeme-como-participar-en-la-comunidad/64161" title="Colabora con el proyecto">Colabora</a></li>
 				<li><a href="/comunidad/">Comunidad</a></li>
 				<li><a href="/marca/">Uso de marca y logos</a></li>
 				<li><a href="https://www.mozilla.org/es-ES/about/governance/policies/participation/" title="Pautas de participación">Pautas de participación</a></li>
@@ -69,9 +69,7 @@ $temp= <<<PINTA
 			<ul>
 				<li><a href="/">Noticias</a></li>
 				<li><a href="https://discourse.mozilla.org/c/community-portal/mozilla-hispano">Foro de discusión</a></li>
-				<li><a href="https://support.mozilla.org/es/">Documentación</a></li>
-				<li><a href="/planet/">Planet</a></li>
-				<li><a href="/labs/">Labs</a></li>
+				<li><a href="https://support.mozilla.org/">Documentación</a></li>
 				<li><a href="/difusion/">Difusión</a></li>
 			</ul>
 		</div>
@@ -79,23 +77,10 @@ $temp= <<<PINTA
 		<div class="c1">
 			<strong>Webs Mozilla</strong>
 			<ul>
-				<li><a href="http://addons.mozilla.org/es-ES/">Mozilla Addons</a></li>
-				<li><a href="http://developer.mozilla.org/es">Mozilla Developer Network</a></li>
-				<li><a href="http://www.mozilla.org/es-ES/newsletter/">Boletín Firefox</a></li>
-				<li><a href="http://input.mozilla.com/es/">Firefox Input</a></li>
-			</ul>
-		</div>
-
-		<div class="c1">
-			<strong>Únete</strong>
-			<ul>
-				<li><a href="/documentacion/Difusi%C3%B3n">Difusión</a></li>
-				<li><a href="/documentacion/Asistencia">Asistencia</a></li>
-				<li><a href="/documentacion/Noticias">Noticias</a></li>
-				<li><a href="/documentacion/Localizaci%C3%B3n">Localización</a></li>
-                <li><a href="/documentacion/Labs">Labs</a></li>
-                <li><a href="/documentacion/Control_de_calidad">Control de calidad</a></li>
-				<li><a href="/documentacion/Administraci%C3%B3n_t%C3%A9cnica">Adm. Técnica</a></li>
+				<li><a href="https://addons.mozilla.org/">Mozilla Addons</a></li>
+				<li><a href="https://developer.mozilla.org/">Mozilla Developer Network</a></li>
+				<li><a href="https://www.mozilla.org/newsletter/">Boletín Firefox</a></li>
+				<li><a href="https://input.mozilla.com/">Firefox Input</a></li>
 			</ul>
 		</div>
 	</div>
